@@ -75,24 +75,22 @@ manual failover的目标是在没有数据丢失的情况下，执行快速故�
 
 - 大致内容:
 
-  > clusterMsg->sig[4] = "RCmb";
-  > clusterMsg->type 由传入参数决定;
-  > clusterMsg->sender = myself->name;
-  > clusterMsg->port = server->port;
-  > clusterMsg->flags = myself->flags;
-  > clusterMsg->state = server.cluster->state; 集群的状态(上线还是下线);
-  > clusterMsg->currentEpoch =  server.cluster-> currentEpoch; 集群配置纪元
-  > clusterMsg->offset = 如果是slave,则是slave复制偏移; 如果是master,则是master_repl_offset(master每执行一次更新操作,offset都会加上相关的值);
-  > 如果当前节点是master节点,且正在manual failover中.则 clusterMsg->mflags[0] |= CLUSTERMSG_FLAG0_PAUSED; 代表当前master节点处于 PAUSED_CLIENT状态;
-  > clusterMsg->totlen 如果TYPE是 `CLUSTERMSG_TYPE_FAIL`|`CLUSTERMSG_TYPE_UPDATE`,则该函数会自己计算; 
+  > clusterMsg->sig[4] = "RCmb";  
+  > clusterMsg->type 由传入参数决定;   
+  > clusterMsg->sender = myself->name;   
+  > clusterMsg->port = server->port;   
+  > clusterMsg->flags = myself->flags;   
+  > clusterMsg->state = server.cluster->state; 集群的状态(上线还是下线);   
+  > clusterMsg->currentEpoch =  server.cluster-> currentEpoch; 集群配置纪元   
+  > clusterMsg->offset = 如果是slave,则是slave复制偏移; 如果是master,则是master_repl_offset(master每执行一次更新操作,offset都会加上相关的值);   
+  > 如果当前节点是master节点,且正在manual failover中.则 clusterMsg->mflags[0] |= CLUSTERMSG_FLAG0_PAUSED; 代表当前master节点处于 PAUSED_CLIENT状态;  
+  > clusterMsg->totlen 如果TYPE是 `CLUSTERMSG_TYPE_FAIL`|`CLUSTERMSG_TYPE_UPDATE`,则该函数会自己计算;  
   >
-  > 如果TYPE是**PING**   **PONG** **MEET**, 则由调用者自己计算` clusterMsg->totlen`;
+  > 如果TYPE是**PING**   **PONG** **MEET**, 则由调用者自己计算` clusterMsg->totlen`;    
   >
-  > 
-  >
-  > clusterMsg->myslots = master->slots;
-  > clusterMsg->slaveof = master->name;
-  > clusterMsg->configEpoch = master->configEpoch;
+  > clusterMsg->myslots = master->slots;  
+  > clusterMsg->slaveof = master->name;  
+  > clusterMsg->configEpoch = master->configEpoch;  
 
 #### void clusterBroadcastMessage(void *buf, size_t len)
 
