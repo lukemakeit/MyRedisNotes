@@ -1,0 +1,1306 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Redis集群 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="Redis复制.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="Redis备份.html">
+            
+                <a href="Redis备份.html">
+            
+                    
+                    Redis备份
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="Redis复制.html">
+            
+                <a href="Redis复制.html">
+            
+                    
+                    Redis复制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.4" data-path="Redis集群.html">
+            
+                <a href="Redis集群.html">
+            
+                    
+                    Redis集群
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >Redis集群</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="redis&#x96C6;&#x7FA4;">Redis&#x96C6;&#x7FA4;</h2>
+<h3 id="cluster&#x76F8;&#x5173;&#x51FD;&#x6570;">Cluster&#x76F8;&#x5173;&#x51FD;&#x6570;</h3>
+<h3 id="cluster-manual-failover&#x5927;&#x81F4;&#x6D41;&#x7A0B;">cluster manual failover&#x5927;&#x81F4;&#x6D41;&#x7A0B;</h3>
+<p>&#x5728;manual failover&#x671F;&#x95F4;, &#x8FD9;&#x91CC;slave&#x4F1A;&#x6267;&#x884C;&#x51E0;&#x6B65;&#x5F88;&#x91CD;&#x8981;&#x7684;&#x6B65;&#x9AA4;:</p>
+<p>1) &#x7528;&#x6237;&#x53D1;&#x9001; CLUSTER FAILOVER &#x547D;&#x4EE4;&#x3002;&#x521D;&#x59CB;&#x5316;failover&#x72B6;&#x6001;, mf_end &#x5C06;&#x88AB;&#x8BBE;&#x7F6E;&#x4E3A;&#x6211;&#x4EEC;&#x5C06;&#x7EC8;&#x6B62;&#x5C1D;&#x8BD5;&#x7684;&#x6BEB;&#x79D2;&#x65F6;&#x95F4;;
+2) slave&#x53D1;&#x9001;&#x4E00;&#x6761; MFSTART &#x4FE1;&#x606F;&#x7ED9; master, &#x8BF7;&#x6C42;&#x5C06;&#x5BA2;&#x6237;&#x7AEF;&#x6682;&#x505C;(&#x6267;&#x884C;&#x4E24;&#x6B21;,manual failover&#x8D85;&#x65F6;&#x65F6;&#x95F4;&#x662F; REDIS_CLUSTER_MF_TIMEOUT)&#x3002;
+   &#x5F53;master&#x56E0; manual failover&#x6682;&#x505C;(&#x63A5;&#x6536;&#x5BA2;&#x6237;&#x7AEF;)&#x65F6;,master&#x4F1A;&#x88AB;&#x8BBE;&#x7F6E;&#x4E0A; CLUSTERMSG_FLAG0_PAUSED &#x6807;&#x5FD7;&#x4F4D;;
+3) slave &#x7B49;&#x5F85;master &#x53D1;&#x9001;&#x6807;&#x8BB0;&#x4E3A; PAUSED&#x7684;&#x590D;&#x5236;&#x504F;&#x79FB;&#x91CF;(replication offset);
+4) &#x5982;&#x679C;slave&#x63A5;&#x6536;&#x5230;&#x6765;&#x81EA;&#x4E8E;master&#x7684;replication offset, &#x548C;&#x81EA;&#x5DF1;&#x7684;offset &#x76F8;&#x7B49;, mf_can_start &#x8BBE;&#x7F6E;&#x4E3A; 1;
+   clusterHandleSlaveFailover()  &#x5C06;&#x6267;&#x884C;&#x6B63;&#x5E38;&#x7684;failover&#x6D41;&#x7A0B;;
+   &#x4E0D;&#x540C;&#x4E4B;&#x5904;&#x5728;&#x4E8E;&#x6295;&#x7968;&#x8BF7;&#x6C42;&#x5C06;&#x88AB;&#x4FEE;&#x6539; &#x5F3A;&#x8FEB;master&#x4EEC;&#x6295;&#x7968;&#x7ED9;&#x4E00;&#x4E2A; slave.</p>
+<p>&#x4ECE;master&#x7684;&#x89C6;&#x89D2;&#x770B;,&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#x6BD4;&#x8F83;&#x7B80;&#x5355;: &#x5F53;&#x63A5;&#x6536;&#x5230;&#x4E00;&#x4E2A; PAUSE_CLIENTS &#x5305;, master&#x5C06;&#x8BBE;&#x7F6E; mf_end, mf_slave&#x8BBE;&#x7F6E;&#x4E3A;&#x53D1;&#x9001;&#x8005;.
+&#x5728;manual failover&#x671F;&#x95F4;, master&#x4F1A;&#x66F4;&#x9891;&#x7E41;&#x7684;&#x53D1;&#x9001; PING &#x7ED9;&#x8FD9;&#x4E2A;salve, PING&#x5305;&#x88AB;&#x7528;PAUSED&#x6807;&#x8BB0;&#x4E3A;&#x6807;&#x8BB0;, &#x6240;&#x4EE5;slave&#x5728;&#x63A5;&#x6536;&#x5230; master&#x5E26; PAUSED&#x6807;&#x8BB0;&#x4F4D;&#x7684;&#x5305;&#x540E;,&#x5C06;&#x8BBE;&#x7F6E; mf_master_offset.</p>
+<p>manual failover&#x7684;&#x76EE;&#x6807;&#x662F;&#x5728;&#x6CA1;&#x6709;&#x6570;&#x636E;&#x4E22;&#x5931;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x6267;&#x884C;&#x5FEB;&#x901F;&#x6545;&#x969C;&#x8FC1;&#x79FB;&#xFF0C;&#x4E0D;&#x4F1A;&#x56E0;&#x4E3A;&#x4E3B;&#x4ECE;&#x5F02;&#x6B65;&#x590D;&#x5236;&#x800C;&#x5BFC;&#x81F4;&#x6570;&#x636E;&#x4E22;&#x5931;.</p>
+<h4 id="resetmanualfailover">resetManualFailover()</h4>
+<ul>
+<li>&#x5982;&#x679C;&#x6709;&#x6B63;&#x5728;&#x6267;&#x884C;&#x4E2D;manual failover, &#x5219;&#x7EC8;&#x6B62;; &#x540C;&#x65F6;&#x5C06;&#x6240;&#x6709;paused&#x7684;client &#x4E0D;&#x518D; paused(server.clients&#x52A0;&#x5165;&#x5230;server.unblocked_clients&#x4E2D;);</li>
+<li>&#x540C;&#x65F6;&#x5C06;&#x6240;&#x6709; manual failover&#x76F8;&#x5173;&#x72B6;&#x6001;&#x91CD;&#x7F6E;:
+server.cluster-&gt;mf_end = 0;
+server.cluster-&gt;mf_can_start = 0;
+server.cluster-&gt;mf_slave = NULL;
+server.cluster-&gt;mf_master_offset = 0;</li>
+</ul>
+<h4 id="clusternode-createclusternodechar-nodename-int-flags">clusterNode<em> createClusterNode(char </em>nodename, int flags)</h4>
+<p>&#x76EE;&#x6807;: &#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x5E26;&#x6709;&#x6307;&#x5B9A;flags&#x6807;&#x8BB0;&#x7684;&#x96C6;&#x7FA4;&#x8282;&#x70B9;;</p>
+<p>&#x6267;&#x884C;&#x6D41;&#x7A0B;:</p>
+<ul>
+<li>&#x5982;&#x679C;nodename == NULL, &#x90A3;&#x4E48;&#x8868;&#x793A;&#x6211;&#x4EEC;&#x662F;&#x7B2C;&#x4E00;&#x6B21;&#x548C;&#x8BE5;node&#x63E1;&#x624B;; &#x8FD9;&#x91CC;&#x4F1A;&#x4E3A;&#x8BE5;node&#x8BBE;&#x7F6E;&#x4E00;&#x4E2A;&#x968F;&#x673A;&#x7684;nodename. nodename&#x5728;&#x4E4B;&#x540E;&#x63A5;&#x6536;&#x5230;node&#x7684;&#x7B2C;&#x4E00;&#x4E2A;PONG&#x56DE;&#x590D;&#x4E4B;&#x540E;&#x5C31;&#x4F1A;&#x88AB;&#x66F4;&#x65B0;;</li>
+<li>&#x8FD4;&#x56DE;&#x4F1A;&#x8FD4;&#x56DE;&#x65B0;&#x521B;&#x5EFA;&#x7684;Node, &#x4F46;&#x4E0D;&#x4F1A;&#x81EA;&#x52A8;&#x5C06;&#x5B83;&#x6DFB;&#x52A0;&#x5230;&#x5F53;&#x524D;&#x8282;&#x70B9;&#x7684;<code>cluster-&gt;nodes</code>&#x54C8;&#x5E0C;&#x8868;&#x4E2D;;</li>
+</ul>
+<h4 id="int-clusterhandshakeinprogresschar-ip-int-port">int clusterHandshakeInProgress(char *ip, int port)</h4>
+<p>&#x76EE;&#x7684;: &#x5982;&#x679C;&#x5F53;&#x524D;&#x8282;&#x70B9;&#x5DF2;&#x7ECF;&#x5411;<code>ip</code>&#x548C;<code>port</code>&#x6240;&#x6307;&#x5B9A;&#x7684;&#x8282;&#x70B9;&#x8FDB;&#x884C;&#x4E86;&#x63E1;&#x624B;&#xFF0C;&#x8FD4;&#x56DE;1&#x3002;(&#x8BE5;&#x51FD;&#x6570;&#x7528;&#x4E8E;&#x9632;&#x6B62;&#x5BF9;&#x540C;&#x4E00;&#x8282;&#x70B9;&#x8FDB;&#x884C;&#x591A;&#x6B21;&#x63E1;&#x624B;)</p>
+<p>&#x6267;&#x884C;&#x6D41;&#x7A0B;:</p>
+<ul>
+<li>&#x904D;&#x5386;<code>server.cluster-&gt;nodes</code>,&#x8DF3;&#x8FC7;&#x4E0D;&#x662F;&#x5904;&#x4E8E;handshake<code>&#x72B6;&#x6001;&#x7684;</code>node`; </li>
+<li>&#x5269;&#x4E0B;&#x7684;&#x90FD;&#x662F;&#x6B63;&#x5728;&#x5904;&#x4E8E;<code>handshake</code>&#x72B6;&#x6001;&#x7684;&#x8282;&#x70B9;&#xFF0C;&#x5982;&#x679C;&#x8FD9;&#x4E9B;&#x8282;&#x70B9;&#x7684;ip&#x548C;<code>port</code> &#x4E0E; node&#x7684;&#x76F8;&#x7B49;, &#x5219;&#x8DF3;&#x51FA;&#x5FAA;&#x73AF;;</li>
+<li>&#x5982;&#x679C;&#x5F97;&#x5230;&#x7684;&#x8282;&#x70B9;&#x975E;&#x7A7A;&#xFF0C;&#x5219;&#x4EE3;&#x8868;<code>ip</code>&#x548C;<code>port</code>&#x5BF9;&#x5E94;&#x7684;&#x8282;&#x70B9;&#x6B63;&#x5728;&#x8FDB;&#x884C;&#x63E1;&#x624B;;</li>
+</ul>
+<h4 id="int-clusteraddnodeclusternode-node">int clusterAddNode(clusterNode *node)</h4>
+<p>&#x76EE;&#x6807;: &#x5C06;&#x53C2;&#x6570;&#x4E2D;&#x7684;node&#x6DFB;&#x52A0;&#x5230;<code>server.cluster-&gt;nodes</code>&#x54C8;&#x5E0C;&#x8868;&#x4E2D;, &#x8FD9;&#x6837;&#x63A5;&#x4E0B;&#x6765;&#x5F53;&#x524D;&#x8282;&#x70B9;&#x5C31;&#x4F1A;&#x521B;&#x5EFA;&#x8FDE;&#x63A5;node&#x7684;Link;</p>
+<h4 id="int-clusterstarthandshakechar-ip-int-port">int clusterStartHandshake(char *ip, int port)</h4>
+<p>&#x76EE;&#x7684;: &#x5982;&#x679C;&#x8FD8;&#x6CA1;&#x548C;&#x6307;&#x5B9A;&#x7684;&#x5730;&#x5740;&#x8FDB;&#x884C;&#x63E1;&#x624B;&#xFF0C;&#x90A3;&#x4E48;&#x8FDB;&#x884C;&#x63E1;&#x624B;&#x3002;&#x8FD4;&#x56DE;1 &#x8868;&#x793A;&#x63E1;&#x624B;&#x5F00;&#x59CB;&#xFF1B;&#x8FD4;&#x56DE; 0 &#x5E76;&#x5C06; errno &#x8BBE;&#x7F6E;&#x4E3A;&#x4E00;&#x4E0B;&#x503C;&#x6765;&#x8868;&#x793A;&#x610F;&#x5916;&#x60C5;&#x51B5;:</p>
+<ul>
+<li><code>EAGAIN</code>  &#x4E0E;&#x8BE5;&#x5730;&#x5740;&#x5DF2;&#x7ECF;&#x6709;&#x63E1;&#x624B;&#x5728;&#x8FDB;&#x884C;&#x4E2D;&#x4E86;;</li>
+<li><code>EINVAL</code> ip &#x6216; port &#x53C2;&#x6570;&#x4E0D;&#x5408;&#x6CD5;;</li>
+</ul>
+<p>&#x6267;&#x884C;&#x6D41;&#x7A0B;:</p>
+<ul>
+<li>&#x68C0;&#x67E5;<code>ip</code>&#x548C;<code>port</code>&#x662F;&#x5426;&#x5408;&#x6CD5;, &#x4E0D;&#x5408;&#x6CD5;&#x5219;&#x8FD4;&#x56DE;0&#xFF1B;</li>
+<li>&#x8C03;&#x7528;&#x51FD;&#x6570;<code>clusterHandshakeInProgres()</code>&#x68C0;&#x67E5;&#x8282;&#x70B9;&#x662F;&#x5426;&#x5DF2;&#x7ECF;&#x53D1;&#x9001;&#x4E86;&#x63E1;&#x624B;&#x8BF7;&#x6C42;&#xFF0C;&#x5982;&#x679C;&#x662F;&#x5219;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;;</li>
+<li>&#x8C03;&#x7528;<code>createClusterNode()</code>&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x5E26;&#x6709;<code>REDIS_NODE_HANDSHAKE|REDIS_NODE_MEET</code>&#x6807;&#x8BB0;&#x7684;node(&#x5E26;&#x6709;&#x4E00;&#x4E2A;&#x968F;&#x673A;nodename);</li>
+<li>&#x8C03;&#x7528;<code>clusterAddNode()</code>&#x5C06;&#x8282;&#x70B9;&#x6DFB;&#x52A0;&#x5230;<code>server.cluster-&gt;nodes</code>&#x4E2D;;</li>
+</ul>
+<h4 id="void-clusterbuildmessagehdrclustermsg-hdr-int-type">void clusterBuildMessageHdr(clusterMsg *hdr, int type)</h4>
+<p>&#x76EE;&#x6807;: &#x6784;&#x5EFA;clusterMsg;
+&#x6267;&#x884C;&#x6D41;&#x7A0B;:</p>
+<ul>
+<li><p>&#x5982;&#x679C;&#x5F53;&#x524D;&#x8282;&#x70B9;&#x662F;&#x4E00;&#x4E2A;master&#x8282;&#x70B9;, &#x6211;&#x4EEC;&#x5C06;&#x5176; slots bitmap&#x548C;&#x914D;&#x7F6E;&#x7EAA;&#x5143;(configEpoch)&#x4FE1;&#x606F;&#x5305;&#x542B;&#x5728; clusterMsg&#x4E2D;;
+&#x5982;&#x679C;&#x5F53;&#x524D;&#x8282;&#x70B9;&#x662F;&#x4E00;&#x4E2A;slave&#x8282;&#x70B9;, &#x6211;&#x4EEC;&#x5C06;&#x53D1;&#x9001;&#x5176;master&#x7684;&#x4FE1;&#x606F;(slots bitmap&#x3001;configEpoch&#x7B49;),&#x5F53;&#x524D;&#x8282;&#x70B9;&#x88AB;&#x6807;&#x8BB0;&#x4E3A;slave, &#x6240;&#x4EE5;&#x63A5;&#x53D7;&#x8005;&#x77E5;&#x9053;&#x5E76;&#x4E0D;&#x771F;&#x5B9E;&#x8D1F;&#x8D23;&#x8FD9;&#x4E9B;slots;</p>
+</li>
+<li><p>&#x5927;&#x81F4;&#x5185;&#x5BB9;:</p>
+<blockquote>
+<p>clusterMsg-&gt;sig[4] = &quot;RCmb&quot;;
+clusterMsg-&gt;type &#x7531;&#x4F20;&#x5165;&#x53C2;&#x6570;&#x51B3;&#x5B9A;;
+clusterMsg-&gt;sender = myself-&gt;name;
+clusterMsg-&gt;port = server-&gt;port;
+clusterMsg-&gt;flags = myself-&gt;flags;
+clusterMsg-&gt;state = server.cluster-&gt;state; &#x96C6;&#x7FA4;&#x7684;&#x72B6;&#x6001;(&#x4E0A;&#x7EBF;&#x8FD8;&#x662F;&#x4E0B;&#x7EBF;);
+clusterMsg-&gt;currentEpoch =  server.cluster-&gt; currentEpoch; &#x96C6;&#x7FA4;&#x914D;&#x7F6E;&#x7EAA;&#x5143;
+clusterMsg-&gt;offset = &#x5982;&#x679C;&#x662F;slave,&#x5219;&#x662F;slave&#x590D;&#x5236;&#x504F;&#x79FB;; &#x5982;&#x679C;&#x662F;master,&#x5219;&#x662F;master_repl_offset(master&#x6BCF;&#x6267;&#x884C;&#x4E00;&#x6B21;&#x66F4;&#x65B0;&#x64CD;&#x4F5C;,offset&#x90FD;&#x4F1A;&#x52A0;&#x4E0A;&#x76F8;&#x5173;&#x7684;&#x503C;);
+&#x5982;&#x679C;&#x5F53;&#x524D;&#x8282;&#x70B9;&#x662F;master&#x8282;&#x70B9;,&#x4E14;&#x6B63;&#x5728;manual failover&#x4E2D;.&#x5219; clusterMsg-&gt;mflags[0] |= CLUSTERMSG_FLAG0_PAUSED; &#x4EE3;&#x8868;&#x5F53;&#x524D;master&#x8282;&#x70B9;&#x5904;&#x4E8E; PAUSED_CLIENT&#x72B6;&#x6001;;
+clusterMsg-&gt;totlen &#x5982;&#x679C;TYPE&#x662F; <code>CLUSTERMSG_TYPE_FAIL</code>|<code>CLUSTERMSG_TYPE_UPDATE</code>,&#x5219;&#x8BE5;&#x51FD;&#x6570;&#x4F1A;&#x81EA;&#x5DF1;&#x8BA1;&#x7B97;; </p>
+<p>&#x5982;&#x679C;TYPE&#x662F;<strong>PING</strong>   <strong>PONG</strong> <strong>MEET</strong>, &#x5219;&#x7531;&#x8C03;&#x7528;&#x8005;&#x81EA;&#x5DF1;&#x8BA1;&#x7B97;<code>clusterMsg-&gt;totlen</code>;</p>
+<p>clusterMsg-&gt;myslots = master-&gt;slots;
+clusterMsg-&gt;slaveof = master-&gt;name;
+clusterMsg-&gt;configEpoch = master-&gt;configEpoch;</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="void-clusterbroadcastmessagevoid-buf-sizet-len">void clusterBroadcastMessage(void *buf, size_t len)</h4>
+<p>&#x76EE;&#x6807;: &#x5411;&#x6709;&#x8FDE;&#x63A5;&#x7684;&#x6240;&#x6709;&#x5176;&#x4ED6;&#x8282;&#x70B9;&#x53D1;&#x9001;message&#x3002;</p>
+<p>&#x6267;&#x884C;&#x6D41;&#x7A0B;:</p>
+<ul>
+<li>&#x904D;&#x5386;<code>server.cluster-&gt;nodes</code>, &#x6392;&#x9664;<code>node-&gt;link==NULL</code> &#x548C; &#x672C;&#x8282;&#x70B9;&#x3001;<code>REDIS_NODE_HANDSHAKE</code>&#x72B6;&#x6001;&#x7684;&#x8282;&#x70B9;;</li>
+<li>&#x8C03;&#x7528;<code>clusterSendMessage()</code> &#x53D1;&#x9001;&#x4FE1;&#x606F;;</li>
+</ul>
+<h4 id="void-clustersendfailchar-nodename">void clusterSendFail(char* nodename)</h4>
+<p>&#x76EE;&#x6807;: &#x5411;&#x672C;&#x8282;&#x70B9;&#x5DF2;&#x77E5;&#x7684;&#x6240;&#x6709;&#x8282;&#x70B9;&#x53D1;&#x9001; <code>FAIL</code>&#x6D88;&#x606F;(<code>server.cluster-&gt;nodes</code>);</p>
+<p>&#x672C;&#x8282;&#x70B9;&#x63A2;&#x6D4B;&#x5230;<code>nodename</code>&#x4E0B;&#x7EBF;&#x540E;(<code>REDIS_NODE_PFAIL</code>)&#x53D1;&#x9001;&#x3002;&#x540C;&#x65F6;&#x6211;&#x4EEC;&#x4E5F;&#x5F97;&#x5230;&#x8DB3;&#x591F;&#x6570;&#x91CF;&#x8282;&#x70B9;&#x7684; <code>nodename</code>&#x5DF2;&#x4E0B;&#x7EBF;&#x7684;&#x652F;&#x6301;&#x3002;&#x90A3;&#x4E48;&#x672C;&#x8282;&#x70B9;&#x5C31;&#x4F1A;&#x5C06; <code>nodename</code>&#x6807;&#x8BB0;&#x4E3A;<code>FAIL</code>(&#x5176;&#x5B9E;&#x4E5F;&#x5C31;&#x662F;markNodeAsFailingIfNeeded()&#x51FD;&#x6570;&#x6240;&#x505A;&#x7684;&#x5DE5;&#x4F5C;)&#x3002;</p>
+<p>&#x5E76;&#x6267;&#x884C;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x5411;&#x5176;&#x4ED6;node&#x53D1;&#x9001;<code>FAIL</code>&#x6D88;&#x606F;&#xFF0C;&#x8981;&#x6C42;&#x5B83;&#x4EEC;&#x4E5F;&#x5C06;nodename&#x6807;&#x8BB0;&#x4E3A;<code>FAIL</code>&#x3002;</p>
+<p>&#x6267;&#x884C;&#x6D41;&#x7A0B;:</p>
+<ul>
+<li>&#x8C03;&#x7528;<code>type=CLUSTERMSG_TYPE_FAIL</code>&#x7684;<code>clusterMessage</code>;</li>
+<li><code>clusterMessage</code>&#x4E2D;&#x5305;&#x542B;<code>nodename</code>;</li>
+<li>&#x8C03;&#x7528;<code>clusterBroadcastMessage()</code>&#x5E7F;&#x64AD;&#x6D88;&#x606F;;</li>
+</ul>
+<h4 id="void-clusterwritehandleraeeventloop-el-int-fd-void-privdata-int-mask">void clusterWriteHandler(aeEventLoop <em>el, int fd, void </em>privdata, int mask)</h4>
+<p>&#x76EE;&#x6807;: &#x5199;&#x4E8B;&#x4EF6;&#x5904;&#x7406;&#x5668;, &#x5411;&#x96C6;&#x7FA4;&#x8282;&#x70B9;&#x53D1;&#x9001;&#x4FE1;&#x606F;;</p>
+<p>&#x6267;&#x884C;&#x6D41;&#x7A0B;:</p>
+<ul>
+<li><code>void *pridata</code> &#x8F6C;&#x6362;&#x4E3A; <code>clusterLink</code>;</li>
+<li>&#x5C06;<code>link-&gt;sndbuf</code>&#x4E2D;&#x7684;&#x5185;&#x5BB9;&#x5199;&#x5165;&#x5230; fd&#x4E2D;;</li>
+<li>&#x4ECE;<code>link-&gt;sndbuf</code>&#x4E2D;&#x5220;&#x9664;&#x5DF2;&#x5199;&#x5165;&#x90E8;&#x5206;;</li>
+<li>&#x5982;&#x679C;<code>link-&gt;sndbuf</code>&#x4E2D;&#x6240;&#x6709;&#x5185;&#x5BB9;&#x90FD;&#x5DF2;&#x5199;&#x5165;&#x5B8C;&#x6BD5;(&#x7F13;&#x51B2;&#x533A;&#x4E3A;&#x7A7A;) , &#x90A3;&#x4E48;&#x5220;&#x9664;<code>link-&gt;fd</code>&#x76F8;&#x5173;&#x7684;&#x5199;&#x4E8B;&#x4EF6;&#x5904;&#x7406;&#x5668;;</li>
+</ul>
+<h4 id="void-clusterreadhandleraeeventloop-el-int-fd-void-privdata-int-mask">void clusterReadHandler(aeEventLoop <em>el, int fd, void </em>privdata, int mask)</h4>
+<p>&#x76EE;&#x6807;: &#x8BFB;&#x4E8B;&#x4EF6;&#x5904;&#x7406;&#x5668;, &#x5C1D;&#x8BD5;&#x8BFB;&#x53D6;header&#x7684;&#x7B2C;&#x4E00;&#x4E2A;field(8&#x5B57;&#x8282;), &#x8FDB;&#x800C;&#x68C0;&#x67E5;&#x6570;&#x636E;&#x5305;(data packet)&#x7684;&#x5927;&#x5C0F;. &#x5F53;&#x6574;&#x4E2A;&#x6570;&#x636E;&#x5305;(a whole packet)&#x5728;&#x5185;&#x5B58;&#x4E2D;&#xFF0C;&#x8BE5;&#x51FD;&#x6570;&#x5C06;&#x8C03;&#x7528;&#x51FD;&#x6570;&#x5904;&#x7406;&#x6570;&#x636E;&#x5305;.</p>
+<p>&#x6267;&#x884C;&#x6D41;&#x7A0B;:</p>
+<ul>
+<li><code>void *pridata</code> &#x8F6C;&#x6362;&#x4E3A; <code>cluserLink</code>;</li>
+<li><code>link-&gt;rcvbuf</code>&#x4EE3;&#x8868;&#x5DF2;&#x7ECF;&#x8BFB;&#x53D6;&#x5230;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x5982;&#x679C;<code>link-&gt;rcvbuf</code>&#x4E2D;&#x5DF2;&#x8BFB;&#x53D6;&#x7684;&#x6570;&#x636E;8&#x4E2A;&#x5B57;&#x8282;&#x90FD;&#x6CA1;&#x6709;&#xFF0C;&#x90A3;&#x5C31;&#x4F18;&#x5148;&#x4ECE;fd&#x4E2D;&#x8BFB;&#x53D6;8&#x4E2A;&#x5B57;&#x8282;&#x3002;(<strong>&#x6CE8;&#x610F;: clusterMsg&#x7684;&#x524D;8&#x5B57;&#x8282;&#x5305;&#x542B;: char sig[4]&#x56DB;&#x4E2A;&#x5B57;&#x8282; +  uint32_t totlen &#x56DB;&#x4E2A;&#x5B57;&#x8282;</strong>)</li>
+<li>&#x5DF2;&#x8BFB;&#x524D;8&#x5B57;&#x8282;,&#x6211;&#x4EEC;&#x4ECE;&#x8FD9;8&#x5B57;&#x8282;&#x4E2D;&#x53EF;&#x4EE5;&#x5F97;&#x5230;clusterMsg&#x7684;&#x771F;&#x5B9E;&#x5927;&#x5C0F;(<code>clusterMsg-&gt;totlen</code>),&#x540E;&#x7EED;&#x5C06;&#x8BFB;&#x5165;&#x5B8C;&#x6574;&#x7684;<code>clusterMsg</code>;</li>
+<li>&#x5982;&#x679C;<code>clusterMsg</code>&#x8FC7;&#x5927;&#xFF0C;&#x4E00;&#x4E2A;<code>buf</code>&#x88C5;&#x4E0D;&#x4E0B;&#xFF0C;&#x5219;&#x6BCF;&#x6B21;&#x6700;&#x591A;&#x53EA;&#x80FD;&#x8BFB;&#x53D6;<code>sizeof(buf)</code>&#x5927;&#x5C0F;&#x7684;&#x5185;&#x5BB9;;</li>
+<li>&#x5F53;&#x8BFB;&#x53D6;&#x7684;&#x6570;&#x91CF;<code>rcvbuflen</code> &#x7B49;&#x4E8E; <code>clusterMsg-&gt;totlen</code>&#x5927;&#x5C0F;&#x65F6;&#xFF0C;&#x8C03;&#x7528;<code>clusterProcessPacket()</code> &#x5904;&#x7406;&#x8BFB;&#x53D6;&#x5230;&#x7684;&#x6570;&#x636E;;</li>
+<li>&#x91CA;&#x653E;<code>clusterMsg-&gt;rcvbuf</code>&#x7684;&#x7A7A;&#x95F4;;</li>
+</ul>
+<h4 id="int-clusternodeaddfailurereportclusternode-failing-clusternode-sender">int clusterNodeAddFailureReport(clusterNode <em>failing, clusterNode </em>sender)</h4>
+<p>&#x76EE;&#x6807;: &#x8BE5;&#x51FD;&#x6570;&#x4F1A;&#x5728; &#x5F53;&#x524D;&#x8282;&#x70B9; &#x63A5;&#x6536;&#x5230; &#x6765;&#x81EA;&#x67D0;&#x4E2A;&#x8282;&#x70B9;(<code>sender</code>)&#x7684;&#x4E0B;&#x7EBF;&#x62A5;&#x544A;&#x65F6;&#x8C03;&#x7528;&#x3002;</p>
+<p>&#x6267;&#x884C;&#x6D41;&#x7A0B;:</p>
+<ul>
+<li><code>failing-&gt;fail_reports</code>&#x6307;&#x5411;&#x4E0B;&#x7EBF;&#x62A5;&#x544A;&#x7684;&#x94FE;&#x8868;;</li>
+<li>&#x5982;&#x679C;<code>sender</code>&#x5728;&#x4E0B;&#x7EBF;&#x62A5;&#x544A;&#x4E2D;, &#x5219;&#x53EA;&#x66F4;&#x65B0;&#x8BE5;&#x62A5;&#x544A;&#x7684;&#x65F6;&#x95F4;&#x6233;;</li>
+<li>&#x5426;&#x5219;,&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x62A5;&#x544A;, &#x5E76;&#x6DFB;&#x52A0;&#x5230;<code>failing-&gt;fail_repots</code>&#x4E2D;;</li>
+</ul>
+<h4 id="void-clusternodecleanupfailurereportsclusternode-node">void clusterNodeCleanupFailureReports(clusterNode *node)</h4>
+<p>&#x76EE;&#x6807;: &#x79FB;&#x9664;node&#x8282;&#x70B9;&#x592A;&#x65E7;&#x7684;<code>failure reports</code>,&#x592A;&#x65E7;&#x610F;&#x5473;&#x7740;&#x6BD4;global node timeout&#x8FD8;&#x8001;( &#x591A;&#x957F;&#x65F6;&#x95F4;&#x4E3A;&#x8FC7;&#x671F;&#x662F;&#x6839;&#x636E;node timeout &#x9009;&#x9879;&#x7684;&#x503C;&#x6765;&#x51B3;&#x5B9A;&#x7684;)&#x3002;</p>
+<p>&#x6CE8;&#x610F;: &#x5C06;node&#x6807;&#x8BB0;&#x4E3A;<code>FAIL</code>&#x72B6;&#x6001;&#xFF0C;&#x6211;&#x4EEC;&#x90FD;&#x9700;&#x8981;&#x672C;&#x5730;<code>PFAIL state</code>&#x81F3;&#x5C11;&#x6BD4;global node timeout&#x66F4;&#x65E7;(older)&#x3002;&#x56E0;&#x6B64;&#x6211;&#x4EEC;&#x4E0D;&#x4EC5;&#x4EC5;&#x60F3;&#x60F3;&#x6765;&#x81EA;&#x4E8E;&#x5176;&#x4ED6;&#x8282;&#x70B9;&#x7684;<code>failure reports</code>&#x3002;</p>
+<p>&#x6267;&#x884C;&#x6D41;&#x7A0B;:</p>
+<ul>
+<li><code>failure report</code>&#x7684;&#x6700;&#x5927;&#x4FDD;&#x8D28;&#x671F;: <code>maxtime= server.cluster_node_timeout * REDIS_CLUSTER_FAIL_REPORT_VALIDTIY_MULT</code>;<ul>
+<li><code>REDIS_CLUSTER_FAIL_REPORT_VALIDTIY_MULT</code> &#x503C;&#x4E3A;2;</li>
+</ul>
+</li>
+<li>&#x904D;&#x5386;<code>node-&gt;fail_reports</code>,&#x5220;&#x9664;<code>now - item-&gt;time &gt; maxtime</code>&#x7684;&#x5143;&#x7D20;;</li>
+</ul>
+<h4 id="int-clusternodedelfailurereportclusternode-node-clusternode-sender">int clusterNodeDelFailureReport(clusterNode <em>node, clusterNode </em>sender)</h4>
+<p>&#x76EE;&#x6807;: &#x4ECE;node&#x7684;&#x4E0B;&#x7EBF;&#x62A5;&#x544A;(<code>failure_reports</code>)&#x4E2D;&#x79FB;&#x9664;<code>sender</code>&#x5BF9;node&#x7684;&#x4E0B;&#x7EBF;&#x62A5;&#x544A;;</p>
+<p>&#x8BE5;&#x51FD;&#x6570;&#x5728;&#x4EE5;&#x4E0B;&#x60C5;&#x51B5;&#x4E0B;&#x4F7F;&#x7528;: &#x672C;&#x8282;&#x70B9;&#x4ECD;&#x4E3A;node&#x5DF2;&#x4E0B;&#x7EBF;(<code>FAIL</code>&#x6216;<code>PFAIL</code>)&#xFF0C;&#x4F46;<code>sender</code>&#x5374;&#x5411;&#x672C;&#x8282;&#x70B9;&#x53D1;&#x6765;&#x62A5;&#x544A;&#xFF0C;&#x8BF4;&#x5B83;&#x8BA4;&#x4E3A;node&#x8282;&#x70B9;&#x6CA1;&#x6709;&#x4E0B;&#x7EBF;&#x3002;</p>
+<p>&#x90A3;&#x4E48;&#x5F53;&#x524D;&#x8282;&#x70B9;&#x5C31;&#x8981;&#x79FB;&#x9664;<code>sender</code>&#x5BF9;node&#x7684;&#x4E0B;&#x7EBF;&#x62A5;&#x544A;&#x2014;&#x2014;&#x5982;&#x679C;<code>sender</code>&#x66FE;&#x62A5;&#x544A;&#x8FC7;node&#x4E0B;&#x7EBF;&#x7684;&#x8BDD;&#x3002;</p>
+<p>&#x5373;&#x4F7F; &#x5728;&#x8282;&#x70B9;&#x6CA1;&#x6709;&#x4E0B;&#x7EBF;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x4E5F;&#x4F1A;&#x88AB;&#x8C03;&#x7528;&#xFF0C;&#x5E76;&#x4E14;&#x8C03;&#x7528;&#x7684;&#x6B21;&#x6570;&#x8FD8;&#x6BD4;&#x8F83;&#x9891;&#x7E41;&#x3002;&#x5728;&#x4E00;&#x822C;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x7684;&#x590D;&#x6742;&#x5EA6;&#x4E3A;<code>O(N)</code>&#x3002;&#x4E0D;&#x8FC7;&#x5728;&#x4E0D;&#x5B58;&#x5728;&#x4E0B;&#x7EBF;&#x62A5;&#x544A;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x590D;&#x6742;&#x5EA6;&#x4EC5;&#x4E3A;&#x5E38;&#x6570;&#x3002;</p>
+<p>&#x6267;&#x884C;&#x6D41;&#x7A0B;:</p>
+<ul>
+<li>&#x904D;&#x5386;<code>node-&gt;fail_reports</code>&#xFF0C;&#x627E;&#x5230;<code>sender</code>&#x8282;&#x70B9;&#x7684;&#x4E0B;&#x7EBF;&#x62A5;&#x544A;;</li>
+<li>&#x5982;&#x679C;&#x6CA1;&#x627E;&#x5230;&#xFF0C;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;;</li>
+<li>&#x5982;&#x679C;&#x627E;&#x5230;&#xFF0C;&#x5219;&#x4ECE;node-&gt;<code>fail_reports</code>&#x4E2D;&#x5220;&#x9664;&#x3002;</li>
+<li>&#x540C;&#x65F6;&#x8C03;&#x7528;<code>clusterNodeCleanupFailureReports()</code>&#x5220;&#x9664;<code>node-&gt;failure_reports</code>&#x4E2D;&#x7684;&#x8FC7;&#x671F;&#x62A5;&#x544A;;</li>
+</ul>
+<h4 id="int-clusternodefailurereportscountclusternode-node">int clusterNodeFailureReportsCount(clusterNode *node)</h4>
+<p>&#x76EE;&#x6807;: &#x8BA1;&#x7B97;&#x4E0D;&#x5305;&#x62EC;&#x672C;&#x8282;&#x70B9;&#x5728;&#x5185;&#x7684;&#xFF0C;&#x5C06;node&#x6807;&#x8BB0;&#x4E3A;<code>PFAIL</code> &#x6216; <code>FAIL</code>&#x7684;&#x8282;&#x70B9;&#x7684;&#x6570;&#x91CF;(<code>node-&gt;fail_reports</code>&#x7684;&#x957F;&#x5EA6;);</p>
+<p>&#x6267;&#x884C;&#x6D41;&#x7A0B;:</p>
+<ul>
+<li>&#x8C03;&#x7528;<code>clusterNodeCleanupFailureReports(node)</code> &#x4ECE;<code>node-&gt;fail_reports</code>&#x4E2D;&#x79FB;&#x9664;&#x8FC7;&#x671F;&#x7684;&#x5143;&#x7D20;;</li>
+<li>&#x8FD4;&#x56DE;<code>node-&gt;fail_reports</code>&#x7684;&#x957F;&#x5EA6;;</li>
+</ul>
+<h4 id="void-marknodeasfailingifneededclusternode-node">void markNodeAsFailingIfNeeded(clusterNode *node)</h4>
+<p>&#x76EE;&#x7684;: &#x8BE5;&#x51FD;&#x6570;&#x7528;&#x4E8E;&#x5224;&#x65AD;&#x662F;&#x5426;&#x9700;&#x8981;&#x5C06;node&#x6807;&#x8BB0;&#x4E3A; FAIL;</p>
+<p>&#x6CE8;&#x91CA;: &#x5C06;node&#x6807;&#x8BB0;&#x4E3A;FAIL&#x9700;&#x8981;&#x6EE1;&#x8DB3;&#x4EE5;&#x4E0B;&#x4E24;&#x4E2A;&#x6761;&#x4EF6;.</p>
+<ul>
+<li>&#x901A;&#x8FC7;gossip&#x63A5;&#x6536;&#x5230;&#x534A;&#x6570;&#x4EE5;&#x4E0A;&#x7684;master &#x5C06;&#x8BE5;node&#x6DFB;&#x52A0;&#x5230;<code>failure reports</code>&#x4E2D;&#x3002;&#x4E5F;&#x5C31;&#x662F;<code>PFAIL</code>&#x72B6;&#x6001;;</li>
+<li>&#x5F53;&#x524D;&#x8282;&#x70B9;&#x4E5F;&#x5C06;node&#x6807;&#x8BB0;&#x4E3A;<code>PFAIL</code>&#x72B6;&#x6001;;</li>
+</ul>
+<p>&#x5982;&#x679C;&#x786E;&#x8BA4;Node&#x5DF2;&#x8FDB;&#x5165;FAIL&#x72B6;&#x6001;&#xFF0C;&#x90A3;&#x4E48;&#x5F53;&#x524D;&#x8282;&#x70B9;&#x8FD8;&#x4F1A;&#x5411;&#x5176;&#x4ED6;&#x8282;&#x70B9;&#x53D1;&#x9001;<code>FAIL</code>&#x6D88;&#x606F;&#xFF0C;&#x8BA9;&#x5176;&#x4ED6;&#x8282;&#x70B9;&#x4E5F;&#x5C06;node&#x6807;&#x8BB0;&#x4E3A;<code>FAIL</code>&#x3002;</p>
+<p>&#x6CE8;&#x610F;&#xFF1A;&#x96C6;&#x7FA4;&#x5224;&#x65AD;&#x4E00;&#x4E2A;node&#x8FDB;&#x5165;<code>FAIL</code>&#x6240;&#x9700;&#x7684;&#x6761;&#x4EF6;&#x662F;<code>weak</code>&#x7684;&#xFF0C;&#x56E0;&#x4E3A;&#x8282;&#x70B9;&#x5BF9;node&#x7684;&#x72B6;&#x6001;&#x62A5;&#x544A;&#x4E0D;&#x662F;&#x5B9E;&#x65F6;&#x7684;&#xFF0C;&#x800C;&#x662F;&#x7ECF;&#x8FC7;&#x4E00;&#x6BB5;&#x65F6;&#x95F4;&#x95F4;&#x9694;(&#x8FD9;&#x6BB5;&#x65F6;&#x95F4;&#x5185;node&#x7684;&#x72B6;&#x6001;&#x53EF;&#x80FD;&#x5DF2;&#x7ECF;&#x53D1;&#x751F;&#x6539;&#x53D8;)&#x3002;</p>
+<p>&#x5E76;&#x4E14;&#x5C3D;&#x7BA1;&#x5F53;&#x524D;&#x8282;&#x70B9;&#x4F1A;&#x5411;&#x5176;&#x4ED6;&#x8282;&#x70B9;&#x53D1;&#x9001;<code>FAIL</code>&#x6D88;&#x606F;&#xFF0C;&#x4F46;&#x662F;&#x56E0;&#x4E3A;&#x7F51;&#x7EDC;&#x5206;&#x88C2;(net partition)&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x6709;&#x4E00;&#x90E8;&#x5206;node&#x53EF;&#x80FD;&#x8FD8;&#x662F;&#x4E0D;&#x4F1A;&#x5C06;node&#x6807;&#x8BB0;&#x4E3A;<code>FAIL</code>&#x3002;</p>
+<p>&#x4E0D;&#x8FC7;:</p>
+<ul>
+<li>&#x53EA;&#x8981;&#x6211;&#x4EEC;&#x6210;&#x529F;&#x5C06; node &#x6807;&#x8BB0;&#x4E3A; FAIL&#xFF0C;&#x90A3;&#x4E48;&#x8FD9;&#x4E2A;<code>FAIL</code>&#x72B6;&#x6001;&#x6700;&#x7EC8;&#x603B;&#x4F1A;&#x4F20;&#x64AD;&#x81F3;&#x6574;&#x4E2A;&#x96C6;&#x7FA4;&#x7684;&#x6240;&#x6709;&#x8282;&#x70B9;;</li>
+<li>&#x6291;&#x6216;&#xFF0C;&#x56E0;&#x4E3A;&#x534A;&#x6570;&#x8282;&#x70B9;&#x7684;&#x652F;&#x6301;&#xFF0C;&#x5F53;&#x524D;&#x8282;&#x70B9;&#x4E0D;&#x80FD;&#x591F;&#x5C06;node&#x6807;&#x8BB0;&#x4E3A;<code>FAIL</code>&#xFF0C;&#x6240;&#x4EE5;&#x5BF9; <code>FAIL</code>&#x8282;&#x70B9;&#x7684;&#x6545;&#x969C;&#x8FC1;&#x79FB;&#x5C06;&#x65E0;&#x6CD5;&#x8FDB;&#x884C;&#xFF0C;<code>fail</code>&#x6807;&#x8BC6;&#x53EF;&#x80FD;&#x4F1A;&#x5728;&#x4E4B;&#x540E;&#x88AB;&#x79FB;&#x9664;;</li>
+</ul>
+<p>&#x6267;&#x884C;&#x6D41;&#x7A0B;:</p>
+<ul>
+<li>&#x6807;&#x8BB0;(&#x53C2;&#x6570;)node&#x4E3A;<code>FAIL</code>&#x6240;&#x9700;&#x7684;&#x8282;&#x70B9;&#x6570;&#x91CF;: <code>server.cluster-&gt;size/2 +1</code>, <code>server.cluster-&gt;size</code>&#x4EE3;&#x8868;&#x96C6;&#x7FA4;&#x4E2D;&#x81F3;&#x5C11;&#x8D1F;&#x8D23;&#x4E00;&#x4E2A;slot&#x7684;master&#x7684;&#x4E2A;&#x6570;;</li>
+<li>&#x5982;&#x679C;&#x5F53;&#x524D;node&#x8FD8;&#x6CA1;&#x5C06; &#x53C2;&#x6570;node &#x6807;&#x8BB0;&#x4E3A; PFAIL &#x72B6;&#x6001; &#x6216;  &#x53C2;&#x6570;node&#x5DF2;&#x88AB;&#x6807;&#x8BB0;&#x4E3A; <code>FAIL</code>&#x72B6;&#x6001;&#xFF0C;&#x5219;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;;</li>
+<li>&#x8C03;&#x7528;<code>failures=clusterNodeFailureReportsCount()</code> &#xFF0C;&#x7EDF;&#x8BA1;&#x5C06;&#x53C2;&#x6570;node&#x6807;&#x8BB0;&#x4E3A;<code>PFAIL</code>&#x6216;<code>FAIL</code>&#x72B6;&#x6001;&#x7684; &#x8282;&#x70B9;&#x6570;&#x91CF;, &#x4E5F;&#x5C31;&#x662F;&#x8FD4;&#x56DE;<code>node-&gt;fail_reports</code>&#x7684;&#x957F;&#x5EA6;;</li>
+<li>&#x5982;&#x679C;&#x672C;node&#x662F;&#x4E00;&#x4E2A;master&#x8282;&#x70B9;&#xFF0C;&#x5728;<code>failures++</code>&#x3002;&#x56E0;&#x4E3A;&#x672C;node&#x5DF2;&#x7ECF;&#x5C06;&#x53C2;&#x6570;node&#x6807;&#x8BB0;&#x4E3A;<code>PFAIL</code>;</li>
+<li>&#x5982;&#x679C;<code>failures</code>&#x5C0F;&#x4E8E;&#x8282;&#x70B9;&#x603B;&#x6570;&#x7684;&#x4E00;&#x534A;&#xFF0C;&#x5219;&#x4E0D;&#x80FD;&#x5224;&#x65AD;&#x8282;&#x70B9;&#x4E3A;<code>FAIL</code>&#x3002;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;;</li>
+<li>&#x5426;&#x5219;&#xFF0C;&#x5C06;node&#x6807;&#x8BB0;&#x4E3A;<code>REDIS_NODE_FAIL</code>,&#x66F4;&#x65B0;<code>node-&gt;fail_time</code>&#x4E3A;&#x5F53;&#x524D;&#x65F6;&#x95F4;&#x3002;</li>
+<li>&#x5982;&#x679C;&#x672C;node&#x662F;master&#x7684;&#x8BDD;&#xFF0C;&#x90A3;&#x4E48;&#x5411;&#x5176;&#x4ED6;node&#x53D1;&#x9001;&#x53C2;&#x6570;node&#x7684;<code>FAIL</code>&#x4FE1;&#x606F;(<code>clusterSendFail()</code>)&#xFF0C;&#x8BA9;&#x5176;&#x4ED6;node&#x5C06;&#x53C2;&#x6570;node&#x6807;&#x8BB0;&#x4E3A;<code>FAIL</code>;</li>
+</ul>
+<h4 id="void-clusterprocessgossipsectionclustermsg-hdr-clusterlink-link">void clusterProcessGossipSection(clusterMsg <em>hdr, clusterLink </em>link)</h4>
+<p>&#x76EE;&#x7684;: &#x5904;&#x7406;MEET&#x3001;PING &#x6216; PONG&#x6D88;&#x606F;&#x4E2D;<code>gossip</code>&#x534F;&#x8BAE;&#x76F8;&#x5173;&#x7684;&#x4FE1;&#x606F;&#x3002;</p>
+<p>&#x786E;&#x5B9A;gossip section&#x4E2D;&#x7684;node&#x662F;&#x5426;&#x88AB;sender&#x6807;&#x8BB0;&#x4E3A;PFAIL<code>&#x6216;</code>FAIL<code>, &#x5982;&#x679C;</code>FAIL<code>&#x4E86;&#xFF0C;&#x5219;&#x5E7F;&#x64AD;&#xFF1B;&#x5982;&#x679C;node&#x6CA1;&#x88AB;sender&#x6807;&#x8BB0;&#x4E3A;PFAIL/FAIL&#xFF0C;&#x8BF4;&#x660E;node&#x72B6;&#x6001;&#x6B63;&#x5E38;&#xFF0C;&#x90A3;&#x4E48;&#x66F4;&#x65B0;</code>node-&gt;failure_repots<code>; &#x5982;&#x679C; node&#x662F;&#x4E00;&#x4E2A;&#x65B0;&#x8282;&#x70B9;&#xFF0C;&#x5219;&#x8C03;&#x7528;</code>clusterStartHandshake()<code>&#x4E0E;&#x5176;&#x8FDB;&#x884C;&#x6CA1;&#x6536;&#xFF0C;&#x5E76;&#x5C06;&#x5176;&#x4FDD;&#x5B58;&#x5230;</code>server.cluster-&gt;nodes`&#x4E2D;.</p>
+<p>&#x6CE8;&#x610F;&#xFF1A;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x5047;&#x8BBE;&#x8C03;&#x7528;&#x8005;&#x5DF2;&#x7ECF;&#x6839;&#x636E;&#x6D88;&#x606F;&#x957F;&#x5EA6;&#xFF0C;&#x5BF9;&#x6D88;&#x606F;&#x8FDB;&#x884C;&#x8FC7;&#x5408;&#x6CD5;&#x7684;&#x68C0;&#x67E5;&#x3002;</p>
+<p>&#x53C2;&#x6570;<code>clusterLink *link</code>&#x4FDD;&#x5B58;&#x7740;<code>sender</code>&#x7684;&#x4FE1;&#x606F;&#xFF0C;<code>link-&gt;rcvbuf</code>&#x4FDD;&#x5B58;&#x7740;&#x53D1;&#x9001;&#x8FC7;&#x6765;&#x7684;<code>clusterMsg</code>&#xFF0C;&#x5176;&#x5B9E;&#x5C31;&#x662F;&#x53C2;&#x6570;<code>hdr</code>;</p>
+<p>&#x6267;&#x884C;&#x6D41;&#x7A0B;:</p>
+<ul>
+<li><p>&#x904D;&#x5386;<code>hdr-&gt;data.ping.gossip</code>, <code>hdr-&gt;data.ping.gossip</code>&#x6709;&#x591A;&#x5C11;&#x4E2A;node&#x5143;&#x7D20;&#xFF0C;&#x5C31;&#x4EE3;&#x8868;&#x8BE5;clusterMsg&#x4E2D;&#x5305;&#x542B;&#x4E86;&#x591A;&#x5C11;&#x4E2A;node&#x7684;&#x4FE1;&#x606F;;</p>
+</li>
+<li><p>&#x6253;&#x5370;node&#x7684;&#x4E00;&#x4E9B;<code>GOSSIP</code>&#x4FE1;&#x606F;;</p>
+</li>
+<li><p>&#x4ECE;<code>server.cluster-&gt;nodes</code>&#x4E2D;&#x67E5;&#x627E;node:</p>
+<ul>
+<li><p>&#x5982;&#x679C;&#x627E;&#x5230;&#x4E86;&#xFF0C;&#x5219;:</p>
+<ul>
+<li><p>&#x5982;&#x679C;sender&#x662F;master&#xFF0C;&#x4E14;node&#x4E0D;&#x662F;&#x672C;&#x8282;&#x70B9;&#xFF0C;&#x5219;&#x786E;&#x5B9A;sender&#x662F;&#x5426;&#x5C06;node&#x6807;&#x8BB0;&#x4E3A;PFAIL<code>&#x6216;</code>FAIL`&#x72B6;&#x6001;:</p>
+<ul>
+<li><p>&#x5982;&#x679C;sender&#x5C06;node&#x6807;&#x8BB0;&#x4E3A;<code>PFAIL</code>&#x6216;<code>FAIL</code>&#x72B6;&#x6001;&#xFF0C;&#x5219;&#x8C03;&#x7528;<code>clusterNodeAddFailureReport()</code>&#x51FD;&#x6570;&#xFF0C;&#x6DFB;&#x52A0; sender &#x5BF9; node &#x7684;&#x4E0B;&#x7EBF;&#x62A5;&#x544A;(&#x5C06;sender&#x4FDD;&#x5B58;&#x5728;node-&gt;fail_reports&#x94FE;&#x8868;&#x4E2D;,&#x4EE3;&#x8868;sender&#x62A5;&#x544A;Node&#x5DF2;&#x4E0B;&#x7EBF;); </p>
+<p>&#x7EE7;&#x7EED;&#x8C03;&#x7528;<code>markNodeAsFailingIfNeeded()</code>&#x5C1D;&#x8BD5;&#x5C06;node&#x6807;&#x8BB0;&#x4E3A;<code>FAIL</code>&#x72B6;&#x6001;&#x4E5F;&#x5C31;&#x662F;&#x5DF2;&#x4E0B;&#x7EBF;&#x72B6;&#x6001;&#xFF0C;&#x5982;&#x679C;&#x6807;&#x8BB0;&#x6210;&#x529F;&#xFF0C;&#x5219;&#x5E7F;&#x64AD;&#x5DF2;&#x4E0B;&#x7EBF;&#x4FE1;&#x606F;;</p>
+</li>
+<li><p>&#x5982;&#x679C;sender&#x6CA1;&#x5C06;node&#x6807;&#x8BB0;&#x4E3A;<code>PFAIL</code>&#x6216;<code>FAIL</code>&#x72B6;&#x6001;&#xFF0C;&#x5219;&#x8C03;&#x7528;<code>clusterNodeDelFailureReport()</code> : &#x5982;&#x679C; sender &#x66FE;&#x7ECF;&#x53D1;&#x9001;&#x8FC7;&#x5BF9; node &#x7684;&#x4E0B;&#x7EBF;&#x62A5;&#x544A;&#xFF0C;&#x6B64;&#x65F6; &#x6E05;&#x9664;&#x8BE5;&#x62A5;&#x544A;(&#x4E5F;&#x5C31;&#x662F;&#x4ECE;node-&gt;failure_reports&#x4E2D;&#x5220;&#x9664;sender&#x7684;&#x4E0B;&#x7EBF;&#x62A5;&#x544A;);</p>
+</li>
+</ul>
+</li>
+<li><p>&#x5982;&#x679C;node&#x4E4B;&#x524D;&#x5904;&#x4E8E; PFAIL &#x6216;&#x8005; FAIL &#x72B6;&#x6001;&#xFF0C;&#x5E76;&#x4E14;&#x8BE5;node&#x7684; IP &#x6216;&#x8005;port&#x5DF2;&#x7ECF;&#x53D1;&#x751F;&#x53D8;&#x5316;&#xFF0C;&#x90A3;&#x4E48;&#x53EF;&#x80FD;&#x662F;&#x8282;&#x70B9;&#x6362;&#x4E86;&#x65B0;&#x5730;&#x5740;&#xFF0C;&#x8C03;&#x7528;<code>clusterStartHandshake()</code>&#x5BF9;&#x5B83;&#x8FDB;&#x884C;&#x63E1;&#x624B;;</p>
+</li>
+</ul>
+</li>
+<li><p>&#x5982;&#x679C;&#x6CA1;&#x627E;&#x5230;&#xFF0C;&#x4EE3;&#x8868;&#x672C;&#x8282;&#x70B9;&#x4E0D;&#x8BA4;&#x8BC6;node:</p>
+<ul>
+<li>&#x5982;&#x679C; node &#x4E0D;&#x662F; NOADDR &#x72B6;&#x6001;&#xFF0C;&#x5E76;&#x4E14;node&#x4E0D;&#x5728; server.cluster-&gt;nodes_black_list &#x9ED1;&#x540D;&#x5355;&#x4E2D;&#xFF0C;&#x90A3;&#x4E48;&#x8C03;&#x7528;<code>clusterStartHandshake()</code>&#x5BF9;&#x5B83;&#x8FDB;&#x884C;&#x63E1;&#x624B;(&#x65B0;&#x5EFA;&#x5E26;<code>REDIS_NODE_HANDSHAKE|REDIS_NODE_MEET</code>&#x6807;&#x8BB0;&#x7684;node&#xFF0C;&#x5E76;&#x5C06;&#x5176;&#x52A0;&#x5165;<code>server.cluster-&gt;nodes</code>&#x4E2D;);</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="void-clustersendmessageclusterlink-link-unsigned-char-msg-sizet-msglen">void clusterSendMessage(clusterLink <em>link, unsigned char </em>msg, size_t msglen)</h4>
+<p>&#x76EE;&#x6807;: &#x5C06;msg&#x653E;&#x5165;link&#x7684;&#x53D1;&#x9001;&#x7F13;&#x51B2;&#x533A;&#x4E2D;, &#x5E76;&#x7ED9; link-&gt;fd &#x7ED1;&#x5B9A;&#x5199;&#x4E8B;&#x4EF6;&#x5904;&#x7406;&#x51FD;&#x6570;(clusterWriteHandler);</p>
+<p>&#x6267;&#x884C;&#x6D41;&#x7A0B;:</p>
+<ul>
+<li>&#x4E3A; <code>link-&gt;fd</code> &#x7ED1;&#x5B9A;&#x5199;&#x4E8B;&#x4EF6;&#x5904;&#x7406;&#x51FD;&#x6570;(clusterWriteHandler());</li>
+<li>&#x5C06;msg&#x4FE1;&#x606F;&#x8FFD;&#x52A0;&#x5230;<code>link-&gt;sndbuf</code>&#x4E2D;;</li>
+<li><code>server.cluster-&gt;status_bus_messages_sent++</code>;</li>
+</ul>
+<h4 id="void-clustersendpingclusterlink-link-int-type">void clusterSendPing(clusterLink *link, int type)</h4>
+<p>&#x76EE;&#x7684;: &#x5411;&#x6307;&#x5B9A;&#x8282;&#x70B9;&#x53D1;&#x9001;&#x4E00;&#x6761; MEET &#x3001;PING &#x6216;  PONG&#x6D88;&#x606F;(&#x6D88;&#x606F;&#x4E2D;<code>clusterMsg-&gt;data.ping.gossip</code>&#x90E8;&#x5206;&#x4F1A;&#x643A;&#x5E26;2&#x4E2A;&#x5176;&#x4ED6;node&#x7684;&#x4FE1;&#x606F;&#x4E00;&#x5E76;&#x53D1;&#x9001;&#x7ED9;receiver)&#x3002;</p>
+<p>&#x6267;&#x884C;&#x6D41;&#x7A0B;:</p>
+<ul>
+<li><p>&#x521D;&#x59CB;&#x5316;&#x53D8;&#x91CF;<code>int freshnodes=dictSize(server.cluster-&gt;nodes)-2</code>:  freshnodes &#x8868;&#x793A;&#x5728;ping packet&#x4E2D;, &#x6211;&#x4EEC;&#x80FD;&#x5728; gossip section&#x4E2D;&#x6DFB;&#x52A0;&#x7684;node&#x7684;&#x8BA1;&#x6570;&#x5668;&#x3002;freshnodes &#x521D;&#x59CB;&#x503C;&#x662F;server.cluster-&gt;nodes &#x4E2D;&#x7684;&#x8282;&#x70B9;&#x6570;&#x91CF;&#x51CF;&#x53BB; 2 (<code>server.cluster-&gt;nodes -2</code>), &#x8FD9;&#x91CC;&#x7684; 2 &#x6307;&#x4E24;&#x4E2A;&#x8282;&#x70B9;&#xFF0C;&#x4E00;&#x4E2A;&#x662F; myself &#x8282;&#x70B9;&#xFF08;&#x4E5F;&#x5373;&#x662F;&#x53D1;&#x9001;&#x4FE1;&#x606F;&#x7684;&#x8FD9;&#x4E2A;&#x8282;&#x70B9;),&#x53E6;&#x4E00;&#x4E2A;&#x662F;&#x63A5;&#x53D7; gossip &#x4FE1;&#x606F;&#x7684;&#x8282;&#x70B9;&#x3002;&#x6BCF;&#x5C06;&#x4E00;&#x4E2A;node&#x6DFB;&#x52A0;(&#x5230;gossip section)&#xFF0C;&#x7A0B;&#x5E8F;&#x5C06; freshnodes &#x7684;&#x503C;&#x51CF;&#x4E00;, &#x5F53; freshnodes &#x7684;&#x6570;&#x503C;&#x5C0F;&#x4E8E;&#x7B49;&#x4E8E; 0 &#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x77E5;&#x9053;&#x6CA1;&#x6709;&#x66F4;&#x591A;gossip &#x4FE1;&#x606F;&#x9700;&#x8981;&#x6211;&#x4EEC;&#x53D1;&#x9001;&#x4E86;&#x3002;</p>
+</li>
+<li><p>&#x8C03;&#x7528;<code>clusterBuildMessageHdr(hdr,type)</code>&#x6784;&#x5EFA;&#x4E00;&#x4E2A;type&#x7C7B;&#x578B;&#x7684;<code>clusterMsg</code>: clusterMsg&#x4E2D;&#x5C06;&#x643A;&#x5E26;&#x672C;node&#x7684;<code>configEpoch</code>&#x3001;<code>slots bitmap</code>&#x7B49;&#x5F88;&#x591A;&#x4FE1;&#x606F;;</p>
+</li>
+<li><p>&#x5FAA;&#x73AF;&#x4E24;&#x6B21;&#xFF0C;&#x6BCF;&#x6B21;&#x4ECE;<code>server.cluster-&gt;nodes</code>&#x4E2D;&#x968F;&#x673A;&#x9009;&#x62E9;&#x4E00;&#x4E2A;node: </p>
+<ul>
+<li>&#x5982;&#x679C;node &#x662F;&#x5982;&#x4E0B;&#x60C5;&#x51B5;&#x4E4B;&#x4E00;&#xFF0C;&#x5219;&#x76F4;&#x63A5;&#x8DF3;&#x8FC7;(&#x540C;&#x65F6;freshnodes-- ):<ul>
+<li>node == myself: node&#x662F;&#x8282;&#x70B9;&#x672C;&#x8EAB;;</li>
+<li>node&#x5904;&#x4E8E;<code>HANDSHAKE</code>&#x72B6;&#x6001;;</li>
+<li>node&#x5E26;&#x6709;<code>NOADDR</code>&#x6807;&#x8BC6;;</li>
+<li>node&#x90E8;&#x5206;&#x8D1F;&#x8D23;&#x4EFB;&#x4F55;slot;</li>
+</ul>
+</li>
+<li>&#x5C06;node&#x7684;&#x4FE1;&#x606F;(<code>ping_sent</code>&#x3001;<code>pong_received</code>&#x3001;<code>ip</code>&#x3001;<code>flags</code>&#x7B49;)&#x6DFB;&#x52A0;&#x5230;<code>hdr-&gt;data.ping.gossip[i]</code>&#x4E2D;;</li>
+</ul>
+</li>
+<li><p>&#x91CD;&#x65B0;&#x8BA1;&#x7B97;<code>clusterMsg</code>&#x4FE1;&#x606F;&#x7684;&#x957F;&#x5EA6;:</p>
+<pre><code class="lang-c++">totlen = <span class="hljs-keyword">sizeof</span>(clusterMsg)-<span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">union</span> clusterMsgData);
+totlen += (<span class="hljs-keyword">sizeof</span>(clusterMsgDataGossip)*gossipcount);
+</code></pre>
+</li>
+<li><p>&#x8C03;&#x7528;<code>clusterSendMessage(link,buf,totlen)</code> &#x5411;<code>link-&gt;fd</code>&#x6240;&#x4EE3;&#x8868;&#x7684;node&#x53D1;&#x9001;&#x6D88;&#x606F;;</p>
+</li>
+</ul>
+<h4 id="void-clustersendmfstartclusternode-node">void clusterSendMFStart(clusterNode *node)</h4>
+<p>&#x76EE;&#x6807;: &#x5411;&#x7ED9;&#x5B9A;node&#x53D1;&#x9001;&#x4E00;&#x6761;<strong>MFSTART</strong>&#x6D88;&#x606F;. &#x8BE5;&#x6D88;&#x606F;&#x76EE;&#x6807;&#x662F;: &#x5728;slave&#x4E0A;&#x6267;&#x884C;<code>cluster failover</code>&#x547D;&#x4EE4;&#x540E;, slave&#x5411;master&#x53D1;&#x9001;<code>MFSTART</code>&#x6D88;&#x606F;,&#x4EE3;&#x8868;<code>manual failover</code>&#x5F00;&#x59CB;, master&#x8FDB;&#x5165;<code>PAUSED_CLIENT</code>&#x72B6;&#x6001;(&#x4E0D;&#x518D;&#x63A5;&#x53D7;client&#x7684;&#x8BF7;&#x6C42;)? &#x540C;&#x65F6; master &#x66F4;&#x9891;&#x7E41;&#x7684;&#x5411;slave &#x53D1;&#x9001; PING&#x547D;&#x4EE4;&#xFF0C;&#x4EE5;&#x4FBF;&#x5C06;&#x81EA;&#x5DF1;&#x7684;<code>master_repl_offset</code>&#x53D1;&#x9001;&#x7ED9;slave&#x3002;slave&#x4EE5;&#x4FBF;&#x4E0E;&#x81EA;&#x5DF1;&#x7684;<code>repl_offset</code>&#x8FDB;&#x884C;&#x5BF9;&#x6BD4;&#xFF0C;&#x8FDB;&#x800C;&#x6267;&#x884C; <code>manual failover</code>;</p>
+<p>&#x6267;&#x884C;&#x6D41;&#x7A0B;:</p>
+<ul>
+<li>&#x5982;&#x679C;<code>node-&gt;link</code>&#x4E3A;&#x7A7A;, &#x5219;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;;</li>
+<li>&#x8C03;&#x7528;<code>clusterBuildMessageHdr()</code>&#x6784;&#x5EFA;&#x4E00;&#x4E2A;<code>type=CLUSTERMSG_TYPE_MFSTART</code>&#x6D88;&#x606F;;</li>
+<li>&#x8C03;&#x7528;<code>clusterSendMessage(node-&gt;link,buf,totlen)</code> &#x53D1;&#x9001;;</li>
+</ul>
+<h4 id="int-nodeupdateaddressifneededclusternode-node-clusterlink-link-int-port">int nodeUpdateAddressIfNeeded(clusterNode <em>node, clusterLink </em>link, int port)</h4>
+<p>&#x76EE;&#x7684;: &#x66F4;&#x65B0;node&#x8282;&#x70B9;&#x7684;&#x5730;&#x5740;(IP&#x548C;port)&#xFF0C;IP&#x548C;&#x7AEF;&#x53E3;&#x53EF;&#x4EE5;&#x4ECE; <code>link-&gt;fd</code>&#x4E2D;&#x83B7;&#x5F97;&#x3002;&#x65AD;&#x5F00;<code>node-&gt;link</code>&#xFF0C;&#x5E76;&#x6839;&#x636E;&#x65B0;&#x7684;&#x5730;&#x5740;&#x521B;&#x5EFA;&#x65B0;&#x8FDE;&#x63A5;&#x3002;</p>
+<p>&#x5982;&#x679C;ip &#x548C; &#x7AEF;&#x53E3;&#x548C;&#x73B0;&#x5728;&#x7684;&#x8FDE;&#x63A5;&#x76F8;&#x540C;&#xFF0C;&#x4E0D;&#x6267;&#x884C;&#x4EFB;&#x4F55;&#x52A8;&#x4F5C;&#x3002;</p>
+<p>&#x51FD;&#x6570;&#x8FD4;&#x56DE;0&#x8868;&#x793A;&#x5730;&#x5740;&#x4E0D;&#x53D8;&#xFF0C;&#x5730;&#x5740;&#x5DF2;&#x88AB;&#x66F4;&#x65B0;&#x5219;&#x8FD4;&#x56DE;1&#x3002;</p>
+<p>&#x6267;&#x884C;&#x6D41;&#x7A0B;:</p>
+<ul>
+<li>&#x5982;&#x679C;<code>link == node-&gt;link</code>&#xFF0C;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;;</li>
+<li>&#x83B7;&#x53D6;&#x5B57;&#x7B26;&#x4E32;&#x683C;&#x5F0F;&#x7684;ip&#x5730;&#x5740; &#x548C; &#x7AEF;&#x53E3;&#x53F7; &#x5E76;&#x4E0E; <code>node-&gt;ip</code>&#x3001;<code>node-&gt;port</code>&#x6BD4;&#x8F83;&#xFF0C;&#x6CA1;&#x6709;&#x53D8;&#x5316;&#x8FD4;&#x56DE; 0;</li>
+<li>&#x91CA;&#x653E;&#x65E7;&#x7684;<code>node-&gt;link</code>, &#x65B0;&#x8FDE;&#x63A5;&#x4F1A;&#x5728;&#x4E4B;&#x540E;clusterCron&#x4E2D;&#x81EA;&#x52A8;&#x5EFA;&#x7ACB;;</li>
+<li>&#x5982;&#x679C;node&#x662F;&#x672C;node(&#x672C;node&#x4E3A;slave)&#x7684;master, &#x90A3;&#x4E48;&#x6839;&#x636E;&#x6700;&#x65B0;&#x5730;&#x5740; &#x8BBE;&#x7F6E;&#x590D;&#x5236;&#x5BF9;&#x8C61;;</li>
+</ul>
+<h4 id="void-clusterrenamenodeclusternode-node-char-newname">void clusterRenameNode(clusterNode <em>node, char </em>newname)</h4>
+<p>&#x76EE;&#x6807;: &#x7B2C;&#x4E00;&#x6B21;&#x5411;&#x8282;&#x70B9;&#x53D1;&#x9001;cluster meet&#x547D;&#x4EE4;&#x65F6;&#xFF0C;&#x56E0;&#x4E3A;&#x53D1;&#x9001;&#x547D;&#x4EE4;&#x7684;&#x8282;&#x70B9;&#x8FD8;&#x4E0D;&#x77E5;&#x9053;&#x76EE;&#x6807;&#x8282;&#x70B9;&#x7684;&#x540D;&#x5B57;&#xFF0C;&#x6240;&#x4EE5;&#x5B83;&#x4F1A;&#x7ED9;&#x76EE;&#x6807;&#x8282;&#x70B9;&#x5206;&#x914D;&#x4E00;&#x4E2A;&#x968F;&#x673A;&#x7684;&#x540D;&#x5B57;&#x3002;</p>
+<p>&#x5F53;&#x76EE;&#x6807;&#x8282;&#x70B9;&#x5411;&#x53D1;&#x9001;&#x8282;&#x70B9;&#x8FD4;&#x56DE;PONG&#x56DE;&#x590D;&#x65F6;&#xFF0C;&#x53D1;&#x9001;&#x8282;&#x70B9;&#x5C31;&#x77E5;&#x9053;&#x4E86;&#x76EE;&#x6807;&#x8282;&#x70B9;&#x7684;IP &#x548C; port&#xFF0C;&#x6B64;&#x65F6; &#x53D1;&#x9001;&#x8282;&#x70B9;&#x5C31;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x8C03;&#x7528;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x4E3A;&#x76EE;&#x6807;&#x8282;&#x70B9;&#x6539;&#x540D;&#x3002;</p>
+<p>&#x6267;&#x884C;&#x6D41;&#x7A0B;:</p>
+<ul>
+<li>&#x6839;&#x636E;<code>node-&gt;name</code>&#xFF0C;&#x5148;&#x5C06;&#x5176;&#x4ECE;<code>server.cluster-&gt;nodes</code>&#x4E2D;&#x5220;&#x9664;;</li>
+<li>&#x5C06;<code>newname</code> &#x62F7;&#x8D1D;&#x7ED9; <code>node-&gt;name</code>;</li>
+<li>&#x518D;&#x8C03;&#x7528;<code>clusterAddNode()</code> &#x5C06; <code>node</code>&#x52A0;&#x5165;&#x5230;<code>server.cluster-&gt;nodes</code>&#x4E2D;: <code>node-&gt;name</code>&#x662F;key, <code>node</code>&#x662F;value;</li>
+</ul>
+<h4 id="void-clearnodefailureifneededclusternode-node">void clearNodeFailureIfNeeded(clusterNode *node)</h4>
+<p>&#x76EE;&#x7684;: &#x8BE5;&#x51FD;&#x6570;&#x5728; &#x672C;&#x8282;&#x70B9; &#x63A5;&#x6536;&#x5230; <strong>&#x4E00;&#x4E2A;&#x88AB;&#x6807;&#x8BB0;&#x4E3A; FAIL &#x72B6;&#x6001;</strong> &#x7684;&#x8282;&#x70B9;&#x90A3;&#x91CC;&#x63A5;&#x6536;&#x5230;&#x6D88;&#x606F;&#x65F6;&#x4F7F;&#x7528;&#x3002;&#x8BE5;&#x51FD;&#x6570;&#x5C06;&#x786E;&#x8BA4;&#x662F;&#x5426;&#x80FD;&#x5C06;&#x8BE5;node&#x7684; FAIL &#x72B6;&#x6001;&#x79FB;&#x9664;&#x3002;</p>
+<p>&#x6267;&#x884C;&#x6D41;&#x7A0B;:</p>
+<ul>
+<li>&#x5982;&#x679C;node&#x4E0D;&#x662F;<code>FAIL</code>&#x72B6;&#x6001;&#xFF0C;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;;</li>
+<li>&#x5982;&#x679C;node&#x662F;slave &#x6216; node&#x4E0D;&#x8D1F;&#x8D23;&#x4EFB;&#x4F55;slots(<code>node-&gt;numslots==0</code>), &#x90A3;&#x4E48;&#x76F4;&#x63A5;&#x79FB;&#x9664;&#x8BE5;node&#x7684;<code>FAIL</code>&#x6807;&#x8BB0;;</li>
+<li>&#x5982;&#x679C;&#x540C;&#x65F6;&#x6EE1;&#x8DB3;&#x4E0B;&#x9762;&#x6761;&#x4EF6;&#x4E5F;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x6E05;&#x7406; node&#x7684; FAIL &#x6807;&#x8BB0;:<ul>
+<li>node&#x662F;master;</li>
+<li>&#x4ECE;&#x672C;&#x8282;&#x70B9;&#x7684;&#x89C6;&#x89D2;&#xFF0C;node&#x8D1F;&#x8D23;&#x5904;&#x7406;&#x7684;slots&#x4E0D;&#x4E3A;&#x7A7A;(<code>node-&gt;numslots&gt;0</code>), &#x4E5F;&#x5C31;&#x610F;&#x5473;&#x7740;&#x8FD8;&#x6CA1;&#x6267;&#x884C; <code>failover</code>;</li>
+</ul>
+</li>
+<li>&#x6B64;&#x65F6;&#x8BF4;&#x660E; node&#x8282;&#x70B9;&#x4ECD;&#x7136;&#x6709;slot&#x6CA1;&#x8FC1;&#x79FB;&#x5B8C;&#xFF0C;&#x90A3;&#x4E48;&#x5F53;&#x524D;&#x8282;&#x70B9;&#x79FB;&#x9664;node&#x7684;FAIL&#x6807;&#x8BC6;;</li>
+</ul>
+<h4 id="void-clusterupdateslotsconfigwithclusternode-sender-uint64t-senderconfigepoch-unsigned-char-slots">void clusterUpdateSlotsConfigWith(clusterNode <em>sender, uint64_t senderConfigEpoch, unsigned char </em>slots)</h4>
+<p>&#x76EE;&#x7684;: &#x8BE5;&#x51FD;&#x6570;&#x5728;&#x8282;&#x70B9;&#x901A;&#x8FC7; PING&#x3001;PONG&#x3001;UPDATE&#x6D88;&#x606F;&#x63A5;&#x6536;&#x5230;&#x4E00;&#x4E2A; master &#x7684;&#x914D;&#x7F6E;&#x65F6;&#x8C03;&#x7528;&#xFF0C;&#x51FD;&#x6570;&#x4EE5;a node&#x3001;a configEpoch of the node&#x3001;&#x4EE5;&#x53CA;&#x8282;&#x70B9;&#x5728; configEpoch &#x7EAA;&#x5143;&#x4E0B;&#x7684;slot&#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#x3002;</p>
+<p>(&#x6CE8;&#x610F;&#x4E09;&#x4E2A;&#x53C2;&#x6570;&#x90FD;&#x5C5E;&#x4E8E; sender)</p>
+<p>&#x8BE5;&#x51FD;&#x6570;&#x8981;&#x505A;&#x7684;&#x5C31;&#x662F;: &#x5C06;&#x53C2;&#x6570;slosts&#x6700;&#x65B0;&#x914D;&#x7F6E; &#x548C; &#x672C;&#x8282;&#x70B9;slots&#x8FDB;&#x884C;&#x5BF9;&#x6BD4;&#xFF0C;&#x5E76;&#x66F4;&#x65B0;&#x672C;&#x8282;&#x70B9;&#x7684;slots&#x5E03;&#x5C40;&#x3002;&#x5982;&#x679C;&#x6709;&#x9700;&#x8981;&#xFF0C;&#x51FD;&#x6570;&#x8FD8;&#x4F1A;&#x5C06;&#x672C;&#x8282;&#x70B9;&#x8F6C;&#x6362;&#x6210; sender &#x7684;slave&#x3002;</p>
+<p>&apos;sender&apos;&#x53EF;&#x4EE5;&#x662F;&#x6211;&#x4EEC;&#x63A5;&#x6536;&#x5230;&#x7684; &quot;&#x6700;&#x65B0;&#x914D;&#x7F6E;&quot; &#x7684;&#x53D1;&#x9001;&#x8005;&#xFF0C;&#x6709;&#x65F6; &#x4ED6;&#x53EF;&#x80FD;&#x4E0D;&#x662F;&#x6D88;&#x606F;&#x7684;&apos;sender&apos;&#xFF0C;&#x5982;&#x6211;&#x4EEC;&#x63A5;&#x6536;&#x5230;&#x4E00;&#x4E2A;&apos;UPDATE&apos;&#x6D88;&#x606F;&#x65F6;&#x3002;</p>
+<p>&#x6267;&#x884C;&#x6D41;&#x7A0B;:</p>
+<ul>
+<li><p><code>dirty_count</code> &#x53D8;&#x91CF;&#x662F;&#x4E00;&#x4E2A;slot&#x5217;&#x8868;, &#x8FD9;&#x4E9B;slot&#x4E2D;&#x4ECD;&#x7136;&#x5B58;&#x5728;key&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x6211;&#x4EEC;&#x4E22;&#x5931;&#x4E86;&#x8FD9;&#x4E9B;slot&#x7684;&#x6240;&#x6709;&#x6743;&#x3002;&#x8FD9;&#x901A;&#x5E38;&#x53D1;&#x751F;&#x5728;<code>failover</code>&#x4E4B;&#x540E; &#x6216; &#x7BA1;&#x7406;&#x5458;&#x5C06;&#x96C6;&#x7FA4;&#x91CD;&#x65B0;&#x914D;&#x7F6E;&#x540E;;</p>
+<p>&#x5982;&#x679C;&#x4E00;&#x4E2A;update&#x6D88;&#x606F;&#x4E0D;&#x80FD;&#x5C06;master&#x964D;&#x7EA7;&#x4E3A;slave&#xFF0C;&#x90A3;&#x4E48;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x5220;&#x9664;&#x4E22;&#x5931;&#x6240;&#x6709;&#x6743;&#x7684;slot&#x4E2D;&#x7684;&#x6240;&#x6709;key;</p>
+<p>&#x5982;&#x679C;&#x5C06;master&#x964D;&#x7EA7;&#x4E3A;slave&#xFF0C;&#x90A3;&#x4E48;&#x6211;&#x4EEC;&#x5C06;&#x4E0E;new master&#x91CD;&#x65B0;&#x540C;&#x6B65;&#xFF0C;&#x66F4;&#x65B0;&#x6574;&#x4E2A;key&#x7A7A;&#x95F4;&#x3002;</p>
+</li>
+<li><p><code>curmaster</code> &#x4EE3;&#x8868;  </p>
+<ul>
+<li>&#x5982;&#x679C;&#x5F53;&#x524D;&#x8282;&#x70B9;&#x662F;master&#xFF0C;&#x90A3;&#x4E48;&#x5C06;<code>curmaster</code>&#x8BBE;&#x7F6E;&#x4E3A;master;</li>
+<li>&#x5982;&#x679C;&#x5F53;&#x524D;&#x8282;&#x70B9;&#x662F;slave, &#x90A3;&#x4E48;&#x5C06; <code>curmaster</code>&#x8BBE;&#x7F6E;&#x4E3A;&#x5F53;&#x524D;&#x8282;&#x70B9;&#x90A3;&#x6B63;&#x5728;&#x590D;&#x5236;&#x7684;master&#x8282;&#x70B9;;</li>
+<li>&#x7A0D;&#x540E;&#x5728;for&#x5FAA;&#x73AF;&#x4E2D; &#x6211;&#x4EEC;&#x5C06;&#x4F7F;&#x7528; <code>curmaster</code>&#x68C0;&#x67E5;&#x4E0E;&#x5F53;&#x524D;&#x8282;&#x70B9;&#x6709;&#x5173;&#x7684;slot&#x662F;&#x5426;&#x53D1;&#x751F;&#x4E86;&#x53D8;&#x52A8;&#x3002;</li>
+</ul>
+</li>
+<li><p>&#x5982;&#x679C;<code>sender</code> &#x5176;&#x5B9E;&#x5C31;&#x662F;&#x5F53;&#x524D;&#x8282;&#x70B9;&#xFF0C;&#x5219;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;(<code>sender</code>==<code>myself</code>)&#xFF0C;&#x5FFD;&#x7565;&#x81EA;&#x5DF1;&#x7684;Update&#x6D88;&#x606F;;</p>
+</li>
+<li><p>for&#x5FAA;&#x73AF;&#x6240;&#x6709;slot&#xFF0C;&#x770B;&#x8FD9;&#x4E9B;slot&#x662F;&#x5426;&#x53D1;&#x751F;&#x6539;&#x53D8;(<code>for (j = 0; j &lt; REDIS_CLUSTER_SLOTS; j++)</code>)</p>
+<ul>
+<li><p>&#x5982;&#x679C; &#x53C2;&#x6570;slots&#x4E2D;&#x5305;&#x542B; slot[j], &#x4EE3;&#x8868; slot[j] &#x5DF2;&#x7ECF;&#x88AB; sender&#x63A5;&#x7BA1;&#xFF0C;&#x90A3;&#x4E48;&#x6267;&#x884C;&#x5982;&#x4E0B;&#x4EE3;&#x7801;:</p>
+<ul>
+<li><p>&#x5982;&#x679C;&#x672C;&#x5730;&#x8BB0;&#x5F55; slot[j] &#x5C31;&#x662F; sender &#x5728;&#x8D1F;&#x8D23;&#xFF0C;&#x5219;continue: <code>server.cluster-&gt;slots[j]==sender</code>;</p>
+</li>
+<li><p>slot[j] &#x5728;&#x672C;&#x5730;&#x4F9D;&#x7136;&#x5904;&#x4E8E;&#x6B63;&#x5728;<code>importing</code>&#x72B6;&#x6001;&#xFF0C;&#x5219;continue: &#x5E94;&#x8BE5;&#x6B63;&#x901A;&#x8FC7;<code>redis-trib</code>&#x5BF9;<code>slot[j]</code> &#x8FDB;&#x884C;&#x624B;&#x52A8;&#x4FEE;&#x6539;&#xFF0C;&#x6B63;&#x5728;&#x8FDB;&#x884C;&#x8FC1;&#x79FB;&#xFF0C;migrating &#x7684;node &#x7684;slot&#x5DF2;&#x7ECF;&#x5173;&#x95ED;&#x4E14;&#x6B63;&#x5728;&#x53D1;&#x5E03;&#x914D;&#x7F6E;&#xFF0C;&#x4F46;&#x6211;&#x4EEC;&#x8FD9;&#x91CC;&#x4F9D;&#x7136;&#x5E0C;&#x671B;(migrating &#x7684;node)&#x901A;&#x8FC7;&#x624B;&#x52A8;&#x5173;&#x95ED;&#x8BE5;slot&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x7A0B;&#x5E8F;&#x81EA;&#x52A8;&#x5B8C;&#x6210;;</p>
+</li>
+<li><p>&#x4EE5;&#x4E0B;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;slot&#x91CD;&#x65B0;&#x7ED1;&#x5B9A;&#x5230;&#x4ED6;&#x7684;&#x65B0;&#x8282;&#x70B9;(sender)&#x4E0A;:</p>
+<ul>
+<li>slot&#x672A;&#x88AB;&#x5206;&#x914D;(<code>server.cluster-&gt;slots[j]</code>==NULL) &#x6216; &#x65B0;&#x7684;node&#x4F7F;&#x7528;&#x66F4;&#x5927;&#x7684;configEpoch &#x58F0;&#x660E;&#x4E86;&#x8BE5;slot (<code>server.cluster-&gt;slots[j]-&gt;configEpoch &lt; senderConfigEpoch</code>);</li>
+<li>&#x6211;&#x4EEC;&#x5F53;&#x524D;&#x6CA1;&#x6709;&#x5728;<code>importing</code> slot;</li>
+</ul>
+<p>&#x5982;&#x679C;slot[j]&#x539F;&#x672C;&#x5F52;&#x5C5E;&#x4E0E;&#x6211;&#x4EEC; &#x4E14; slot&#x4E2D;&#x5305;&#x542B;&#x4E86; key&#xFF0C;&#x90A3;&#x4E48;&#x5C06;&#x5176;&#x6807;&#x8BB0;&#x4E3A; <code>dirty_slot</code></p>
+<p>&#x5982;&#x679C;&#x4EE5;&#x524D;&#x8D1F;&#x8D23;slot[j]&#x7684;&#x662F;curmaster&#xFF0C;(&#x4F46;&#x662F;&#x73B0;&#x5728;&#x662F;sender)&#xFF0C;&#x8FD9;&#x8BF4;&#x660E;&#x6545;&#x969C;&#x8FC1;&#x79FB;&#x4E86;&#xFF0C;&#x6240;&#x4EE5;&#x5F53;&#x524D;&#x8282;&#x70B9;&#x5C06;&#x590D;&#x5236; new master(&#x60F3;&#x4E00;&#x60F3;&#x4E00;&#x4E3B;&#x591A;&#x5907; manual failover&#x7684;&#x573A;&#x666F;);</p>
+<p>&#x8C03;&#x7528;<code>clusterAddSlot(sender,j)</code>&#x5C06;slot[j]&#x6307;&#x6D3E;&#x7ED9;sender;</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>&#x5982;&#x679C;&#x5F53;&#x524D;&#x8282;&#x70B9;&#xFF08;&#x6216;&#x8005;&#x5F53;&#x524D;&#x8282;&#x70B9;&#x7684;&#x4E3B;&#x8282;&#x70B9;&#xFF09;&#x6709;&#x81F3;&#x5C11;&#x4E00;&#x4E2A;&#x69FD;&#x88AB;&#x6307;&#x6D3E;&#x5230;&#x4E86; sender&#xFF0C;&#x4E14; sender &#x7684; configEpoch &#x6BD4;&#x5F53;&#x524D;&#x8282;&#x70B9;&#x7684;configEpoch&#x8981;&#x5927;&#xFF0C;&#x90A3;&#x4E48;&#x53EF;&#x80FD;&#x53D1;&#x751F;&#x4E86;:</p>
+<ul>
+<li>&#x5F53;&#x524D;&#x8282;&#x70B9;&#x662F;&#x4E00;&#x4E2A;&#x4E0D;&#x518D;&#x5904;&#x7406;&#x4EFB;&#x4F55;&#x69FD;&#x7684;master, &#x8FD9;&#x610F;&#x5473;&#x7740;&#x6211;&#x4EEC;failed over(&#x6545;&#x969C;&#x8FC1;&#x79FB;&#x4E86;,&#x5982;manual failover&#x540E;, old master&#x7684;&#x72B6;&#x6001;); &#x8FD9;&#x65F6;&#x5E94;&#x8BE5;&#x5C06;&#x5F53;&#x524D;&#x8282;&#x70B9;&#x8BBE;&#x7F6E;&#x4E3A;new master(sender)&#x7684;slave&#x3002;</li>
+<li>&#x5F53;&#x524D;&#x8282;&#x70B9;&#x662F;&#x4E00;&#x4E2A;slave, &#x5E76;&#x4E14;&#x5F53;&#x524D;&#x8282;&#x70B9;&#x7684;curmaster&#x5DF2;&#x7ECF;&#x4E0D;&#x518D;&#x5904;&#x7406;&#x4EFB;&#x4F55;&#x69FD;,&#x8FD9;&#x65F6;&#x5E94;&#x8BE5;&#x5C06;&#x5F53;&#x524D;&#x8282;&#x70B9;&#x8BBE;&#x7F6E;&#x4E3A;new  master&#x7684;&#x4ECE;&#x8282;&#x70B9;;</li>
+<li>&#x53CD;&#x6B63;: newmaster &#x4E0D;&#x4E3A;NULL&#xFF0C; &#x4E14;curmaster-&gt;numslots==0, &#x90A3;&#x4E48;&#x5C31;&#x5C06;new(master) &#x8BBE;&#x7F6E;&#x4E3A;&#x5F53;&#x524D;&#x8282;&#x70B9;&#x7684;master;</li>
+</ul>
+</li>
+<li><p>&#x5982;&#x679C; <code>dirty_slots_count &gt;0</code></p>
+<ul>
+<li><p>&#x6211;&#x4EEC;&#x6536;&#x5230;&#x4E00;&#x4E2A;<code>update message</code>, &#x8BE5;message &#x5220;&#x9664;&#x4E86;&#x6211;&#x4EEC;&#x5BF9;&#x67D0;&#x4E9B;slot&#x7684;&#x6240;&#x6709;&#x6743;, &#x8FD9;&#x4E9B;slot&#x4E2D;&#x6211;&#x4EEC;&#x8FD8;&#x6709;key&#x5728;&#x91CC;&#x9762;;</p>
+<p>(&#x4F46;&#x662F;&#x6211;&#x4EEC;&#x4F9D;&#x7136;&#x6301;&#x6709;&#x4E00;&#x4E9B;slot&#x7684;&#x6240;&#x6709;&#x6743;&#x6B64;&#x65F6;&#x8BE5;master &#x4E0D;&#x4F1A; &#x964D;&#x7EA7;&#x4E3A; slave); 
+&#x4E3A;&#x4E86;&#x5728;key &#x548C; slots&#x4E4B;&#x95F4;&#x4FDD;&#x6301;&#x4E00;&#x81F4;&#x6027;&#x72B6;&#x6001;, &#x6211;&#x4EEC;&#x9700;&#x8981;&#x5C06; &#x65F6;&#x533A;&#x6240;&#x6709;&#x6743;&#x7684;slot&#x4E2D;&#x7684;key &#x5220;&#x9664;;</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="void-clustersendfailoverauthifneededclusternode-node-clustermsg-request">void clusterSendFailoverAuthIfNeeded(clusterNode <em>node, clusterMsg </em>request)</h4>
+<p>&#x76EE;&#x7684;: &#x6761;&#x4EF6;&#x6EE1;&#x8DB3;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x4E3A;&#x8BF7;&#x6C42;&#x8FDB;&#x884C;&#x6545;&#x969C;&#x8F6C;&#x79FB;&#x7684;node&#x8FDB;&#x884C;&#x6295;&#x7968;&#xFF0C;&#x652F;&#x6301;&#x5B83;&#x8FDB;&#x884C;failover.</p>
+<p>&#x6267;&#x884C;&#x6D41;&#x7A0B;:</p>
+<ul>
+<li>&#x5982;&#x679C;&#x672C;&#x8282;&#x70B9;&#x662F;slave&#xFF0C;&#x6216; &#x662F;&#x4E00;&#x4E2A;&#x6CA1;&#x6709;&#x5904;&#x7406;&#x4EFB;&#x4F55;slot&#x7684;master&#xFF0C;&#x5219;&#x6CA1;&#x6743;&#x9650;&#x6295;&#x7968;;</li>
+<li>request-&gt;currentEpoch &#x5FC5;&#x987B;&#x5927;&#x4E8E;&#x7B49;&#x4E8E; <code>server.cluster-&gt;currentEpoch</code>, &#x5426;&#x5219;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;;</li>
+<li>&#x5982;&#x679C;&#x672C;&#x8282;&#x70B9;&#x5DF2;&#x7ECF;&#x6295;&#x8FC7;&#x7968;&#x4E86;&#xFF0C;&#x4E0D;&#x7EE7;&#x7EED;&#x6295;&#x7968;; <code>server.cluster-&gt;lastVoteEpoch == server.cluster.currentEpoch</code>;</li>
+<li>&#x53C2;&#x6570;node&#x5FC5;&#x987B;&#x662F;<code>slave</code> &#x4E14; &#x5176;master&#x5FC5;&#x987B;&#x662F;<code>FAIL</code>&#x72B6;&#x6001; &#x6216;&#x8005; request&#x4E2D;&#x4F7F;&#x7528; <code>CLUSTERMSG_FLAG0_FORCEACK&#x6807;&#x8BB0;</code>&#x6807;&#x8BB0;(force manual failover)&#xFF0C;&#x5219;master&#x53EF;&#x4EE5;&#x5904;&#x4E8E;&#x975E;<code>FAIL</code>&#x72B6;&#x6001;;</li>
+<li>&#x672C;&#x8282;&#x70B9;&#x5728; <code>2*node_timeout</code> &#x65F6;&#x95F4;&#x5185;&#x4E0D;&#x4F1A;&#x518D;&#x6B21;&#x4E3A;&#x8BE5;slave(&#x4E5F;&#x5C31;&#x662F;&#x53C2;&#x6570;node)&#x6295;&#x7968;&#x3002;&#x8FD9;&#x5BF9;&#x7B97;&#x6CD5;&#x7684;&#x6B63;&#x786E;&#x6027;&#x4E0D;&#x662F;&#x5FC5;&#x987B;&#x7684;&#xFF0C;&#x4F46;&#x662F;&#x4F1A;&#x4F7F;&#x5F97;&#x57FA;&#x672C;&#x60C5;&#x51B5;&#x66F4;&#x52A0;&#x7EBF;&#x6027;;</li>
+<li>&#x904D;&#x5386;&#x6240;&#x6709;slots:<code>for (j = 0; j &lt; REDIS_CLUSTER_SLOTS; j++)</code><ul>
+<li>&#x8DF3;&#x8FC7; request &#x6CA1;&#x6709;&#x8D1F;&#x8D23;&#x7684;slot;</li>
+<li>request&#x8D1F;&#x8D23;&#x7684;slot[j]&#xFF0C;&#x672C;&#x8282;&#x70B9;&#x4E2D;&#x8BB0;&#x5F55;&#x7740;&#x5176;&#x5E94;&#x8BE5;&#x662F;nodeA&#x8D1F;&#x8D23;(<code>nodeA=server.cluster-&gt;slots[j]</code>)&#xFF0C;&#x90A3;&#x4E48;<code>nodeA-&gt;configEpoch</code> &#x5FC5;&#x987B;&#x5C0F;&#x4E8E; <code>requestConfigEpoch</code>;</li>
+<li>&#x5982;&#x679C;  <code>nodeA-&gt;configEpoch</code> &#x5927;&#x4E8E; <code>requestConfigEpoch</code>&#xFF0C;&#x90A3;&#x4E48;&#x8BF4;&#x660E;<code>request&#x7684;configEpoch</code>&#x5DF2;&#x7ECF;&#x8FC7;&#x671F;&#xFF0C;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;;</li>
+</ul>
+</li>
+<li>&#x8C03;&#x7528;<code>clusterSendFailoverAuth(node)</code> &#x51FD;&#x6570;&#x4E3A; <code>node</code>&#x6295;&#x7968;: &#x5411;node&#x53D1;&#x9001;<code>CLUSTERMSG_TYPE_FAILOVER_AUTH_ACK</code>&#x7C7B;&#x578B;&#x7684;&#x6D88;&#x606F;;</li>
+<li><code>node-&gt;slaveof-&gt;voted_time</code>&#x66F4;&#x65B0;&#x4E3A;&#x5F53;&#x524D;&#x65F6;&#x95F4;;</li>
+</ul>
+<h4 id="gossip&#x51E0;&#x79CD;&#x6D88;&#x606F;&#x7C7B;&#x578B;"><code>Gossip</code>&#x51E0;&#x79CD;&#x6D88;&#x606F;&#x7C7B;&#x578B;</h4>
+<pre><code class="lang-c++"><span class="hljs-comment">// &#x6CE8;&#x610F;&#xFF0C;PING &#x3001; PONG &#x548C; MEET &#x5B9E;&#x9645;&#x4E0A;&#x662F;&#x540C;&#x4E00;&#x79CD;&#x6D88;&#x606F;&#xFF0C;&#x90FD;&#x662F; clusterMsg - clusterMsgData + clusterMsgDataGossip</span>
+<span class="hljs-comment">// PONG &#x662F;&#x5BF9; PING &#x7684;&#x56DE;&#x590D;&#xFF0C;&#x5B83;&#x7684;&#x5B9E;&#x9645;&#x683C;&#x5F0F;&#x4E5F;&#x4E3A; PING &#x6D88;&#x606F;&#xFF0C;</span>
+<span class="hljs-comment">// &#x800C; MEET &#x5219;&#x662F;&#x4E00;&#x79CD;&#x7279;&#x6B8A;&#x7684; PING &#x6D88;&#x606F;&#xFF0C;&#x7528;&#x4E8E;&#x5F3A;&#x5236;&#x6D88;&#x606F;&#x7684;&#x63A5;&#x6536;&#x8005;&#x5C06;&#x6D88;&#x606F;&#x7684;&#x53D1;&#x9001;&#x8005;&#x6DFB;&#x52A0;&#x5230;&#x96C6;&#x7FA4;&#x4E2D;</span>
+<span class="hljs-comment">// &#xFF08;&#x5982;&#x679C;&#x8282;&#x70B9;&#x5C1A;&#x672A;&#x5728;&#x8282;&#x70B9;&#x5217;&#x8868;&#x4E2D;&#x7684;&#x8BDD;&#xFF09;</span>
+<span class="hljs-comment">// PING</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> CLUSTERMSG_TYPE_PING 0          <span class="hljs-comment">/* Ping */</span></span>
+<span class="hljs-comment">// PONG &#xFF08;&#x56DE;&#x590D; PING&#xFF09;</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> CLUSTERMSG_TYPE_PONG 1          <span class="hljs-comment">/* Pong (reply to Ping) */</span></span>
+<span class="hljs-comment">// &#x8BF7;&#x6C42;&#x5C06;&#x67D0;&#x4E2A;&#x8282;&#x70B9;&#x6DFB;&#x52A0;&#x5230;&#x96C6;&#x7FA4;&#x4E2D;</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> CLUSTERMSG_TYPE_MEET 2          <span class="hljs-comment">/* Meet &quot;let&apos;s join&quot; message */</span></span>
+<span class="hljs-comment">// &#x5C06;&#x67D0;&#x4E2A;&#x8282;&#x70B9;&#x6807;&#x8BB0;&#x4E3A; FAIL, &#x7C7B;&#x578B;&#x662F;: clusterMsg - clusterMsgData + clusterMsgDataFail</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> CLUSTERMSG_TYPE_FAIL 3          <span class="hljs-comment">/* Mark node xxx as failing */</span></span>
+<span class="hljs-comment">// &#x901A;&#x8FC7;&#x53D1;&#x5E03;&#x4E0E;&#x8BA2;&#x9605;&#x529F;&#x80FD;&#x5E7F;&#x64AD;&#x6D88;&#x606F;&#xFF0C;&#x7C7B;&#x578B;&#x662F;: clusterMsg - clusterMsgData + clusterMsgDataPublish + channel_len + message_len</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> CLUSTERMSG_TYPE_PUBLISH 4       <span class="hljs-comment">/* Pub/Sub Publish propagation */</span></span>
+
+<span class="hljs-comment">// CLUSTERMSG_TYPE_FAILOVER_AUTH_REQUEST CLUSTERMSG_TYPE_FAILOVER_AUTH_ACK CLUSTERMSG_TYPE_MFSTART &#x51E0;&#x79CD;&#x6D88;&#x606F;&#x7C7B;&#x578B;&#x4E00;&#x6837;&#xFF0C;&#x90FD;&#x662F; clusterMsg - clusterMsgData</span>
+<span class="hljs-comment">// &#x8BF7;&#x6C42;&#x8FDB;&#x884C;&#x6545;&#x969C;&#x8F6C;&#x79FB;&#x64CD;&#x4F5C;&#xFF0C;&#x8981;&#x6C42;&#x6D88;&#x606F;&#x7684;&#x63A5;&#x6536;&#x8005;&#x901A;&#x8FC7;&#x6295;&#x7968;&#x6765;&#x652F;&#x6301;&#x6D88;&#x606F;&#x7684;&#x53D1;&#x9001;&#x8005;</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> CLUSTERMSG_TYPE_FAILOVER_AUTH_REQUEST 5 <span class="hljs-comment">/* May I failover? */</span></span>
+<span class="hljs-comment">// &#x6D88;&#x606F;&#x7684;&#x63A5;&#x6536;&#x8005;&#x540C;&#x610F;&#x5411;&#x6D88;&#x606F;&#x7684;&#x53D1;&#x9001;&#x8005;&#x6295;&#x7968;</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> CLUSTERMSG_TYPE_FAILOVER_AUTH_ACK 6     <span class="hljs-comment">/* Yes, you have my vote */</span></span>
+
+<span class="hljs-comment">// CLUSTERMSG_TYPE_UPDATE &#x7C7B;&#x578B;&#x7684;&#x6D88;&#x606F;&#xFF0C;&#x957F;&#x5EA6;: clusterMsg - clusterMsgData + clusterMsgDataUpdate</span>
+<span class="hljs-comment">// &#x69FD;&#x5E03;&#x5C40;&#x5DF2;&#x7ECF;&#x53D1;&#x751F;&#x53D8;&#x5316;&#xFF0C;&#x6D88;&#x606F;&#x53D1;&#x9001;&#x8005;&#x8981;&#x6C42;&#x6D88;&#x606F;&#x63A5;&#x6536;&#x8005;&#x8FDB;&#x884C;&#x76F8;&#x5E94;&#x7684;&#x66F4;&#x65B0;</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> CLUSTERMSG_TYPE_UPDATE 7        <span class="hljs-comment">/* Another node slots configuration */</span></span>
+<span class="hljs-comment">// &#x4E3A;&#x4E86;&#x8FDB;&#x884C;&#x624B;&#x52A8;&#x6545;&#x969C;&#x8F6C;&#x79FB;&#xFF0C;&#x6682;&#x505C;&#x5404;&#x4E2A;&#x5BA2;&#x6237;&#x7AEF;</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> CLUSTERMSG_TYPE_MFSTART 8       <span class="hljs-comment">/* Pause clients for manual failover */</span></span>
+</code></pre>
+<h4 id="int-clusterprocesspacketclusterlink-link">int clusterProcessPacket(clusterLink *link)</h4>
+<p>&#x76EE;&#x7684;: &#x5F53;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x88AB;&#x8C03;&#x7528;&#x65F6;&#xFF0C;&#x8BF4;&#x660E;<code>node-&gt;rcvbuf</code>&#x4E2D;&#x6709;&#x4E00;&#x6761;&#x5F85;&#x5904;&#x7406;&#x7684;&#x4FE1;&#x606F;&#x3002;&#x4FE1;&#x606F;&#x5904;&#x7406;&#x5B8C;&#x6BD5;&#x540E;&#xFF0C;buffer&#x7684;&#x91CA;&#x653E;&#x5DE5;&#x4F5C;&#x7531;&#x8C03;&#x7528;&#x8005;&#x5B8C;&#x6210;&#xFF0C;&#x6240;&#x4EE5;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x53EA;&#x9700;&#x8981;&#x8D1F;&#x8D23;&#x5904;&#x7406;&#x4FE1;&#x606F;&#x5373;&#x53EF;&#x3002;</p>
+<ul>
+<li>&#x5982;&#x679C;&#x51FD;&#x6570;&#x8FD4;&#x56DE;1, &#x90A3;&#x4E48;&#x8BF4;&#x660E;&#x5904;&#x7406;&#x4FE1;&#x606F;&#x65F6;&#x6CA1;&#x6709;&#x9047;&#x5230;&#x95EE;&#x9898;&#xFF0C;&#x8FDE;&#x63A5;&#x4F9D;&#x7136;&#x53EF;&#x7528;;</li>
+<li>&#x5982;&#x679C;&#x51FD;&#x6570;&#x8FD4;&#x56DE;0&#xFF0C;&#x90A3;&#x4E48;&#x8BF4;&#x660E;&#x4FE1;&#x606F;&#x5904;&#x7406;&#x65F6;&#x9047;&#x5230;&#x95EE;&#x9898;(&#x6BD4;&#x5982;PONG&#x6D88;&#x606F;&#x7684;sender ID&#x4E0D;&#x5BF9;)</li>
+</ul>
+<p>&#x6267;&#x884C;&#x6D41;&#x7A0B;:</p>
+<ul>
+<li><p>&#x5982;&#x679C;&#x6D88;&#x606F;&#x957F;&#x5EA6;&#x5C0F;&#x4E8E; 16&#x5B57;&#x8282;&#xFF0C;&#x8FD4;&#x56DE; 1;</p>
+</li>
+<li><p>&#x5982;&#x679C;<code>totlen &#x5927;&#x4E8E; sdslen(link-&gt;rcvbuf)</code>, &#x8FD4;&#x56DE; 1;</p>
+</li>
+<li><p>&#x5982;&#x679C;&#x6D88;&#x606F;&#x7C7B;&#x578B;&#x662F; <code>CLUSTERMSG_TYPE_PING</code> &#x6216;&#x8005; <code>CLUSTERMSG_TYPE_PONG</code> &#x6216;&#x8005; <code>CLUSTERMSG_TYPE_MEET</code></p>
+<ul>
+<li>&#x6D88;&#x606F;&#x7684;&#x957F;&#x5EA6;: <code>explen=sizeof(clusterMsg)-sizeof(union clusterMsgData) + sizeof(clusterMsgDataGossip)*count</code>;</li>
+</ul>
+</li>
+<li><p>&#x5982;&#x679C;&#x6D88;&#x606F;&#x7C7B;&#x578B;&#x662F; <code>CLUSTERMSG_TYPE_FAIL</code></p>
+<ul>
+<li>&#x6D88;&#x606F;&#x957F;&#x5EA6;: <code>explen=sizeof(clusterMsg)-sizeof(union clusterMsgData) + sizeof(clusterMsgDataFail)</code></li>
+</ul>
+</li>
+<li><p>&#x5982;&#x679C;&#x6D88;&#x606F;&#x7C7B;&#x578B;&#x662F; <code>CLUSTERMSG_TYPE_FAILOVER_AUTH_REQUEST</code> <code>CLUSTERMSG_TYPE_FAILOVER_AUTH_ACK</code> <code>CLUSTERMSG_TYPE_MFSTART</code></p>
+<ul>
+<li>&#x6D88;&#x606F;&#x957F;&#x5EA6;: <code>explen=sizeof(clusterMsg)-sizeof(union clusterMsgData)</code></li>
+</ul>
+</li>
+<li><p>&#x5982;&#x679C;&#x6D88;&#x606F;&#x7C7B;&#x578B;&#x662F; <code>CLUSTERMSG_TYPE_UPDATE</code></p>
+<ul>
+<li><p>&#x6D88;&#x606F;&#x957F;&#x5EA6;:<code>explen=sizeof(clusterMsg)-sizeof(union clusterMsgData) + sizeof(clusterMsgDataUpdate)</code> </p>
+<p>&#x5982;&#x679C;&#x6D88;&#x606F;<code>explen</code>&#x4E0D;&#x7B49;&#x4E8E;<code>totlen</code>, &#x7136;&#x540E;1;</p>
+</li>
+</ul>
+</li>
+<li><p>&#x67E5;&#x627E;&#x6D88;&#x606F;&#x53D1;&#x9001;&#x8005;, &#x672C;&#x5730;&#x662F;&#x5426;&#x5DF2;&#x7ECF;&#x8BB0;&#x5F55;&#x4E86;&#x8BE5;node: <code>sender = clusterLookupNode(hdr-&gt;sender)</code>&#xFF0C; <code>sender</code>&#x5C31;&#x4EE3;&#x8868;&#x672C;node&#x4E2D;&#x8BB0;&#x5F55;&#x7684; &#x6D88;&#x606F;&#x53D1;&#x9001;&#x8005;node &#x7684;&#x4FE1;&#x606F;</p>
+<ul>
+<li>&#x5982;&#x679C;&#x672C;&#x5730; &#x5DF2;&#x8BB0;&#x5F55; &#x6D88;&#x606F;&#x53D1;&#x9001;&#x8005;node&#xFF0C; &#x540C;&#x65F6;&#x8BE5;node&#x4E0D;&#x662F; <code>HANDSHAKE</code>&#x72B6;&#x6001;<ul>
+<li>&#x5982;&#x679C;&#x53D1;&#x9001;&#x8005;&#x7684;<code>senderCurrentEpoch &gt; server.cluster-&gt;currentEpoch</code>, &#x5219; <code>server.cluster-&gt;currentEpoch=senderCurrentEpoch</code>;</li>
+<li>&#x5982;&#x679C;&#x53D1;&#x9001;&#x8005;&#x7684;<code>senderConfigEpoch &gt; sender-&gt;configEpoch</code>, &#x5219; <code>sender-&gt;configEpoch= senderConfigEpoch</code>;</li>
+<li>&#x66F4;&#x65B0;<code>sender-&gt;repl_offset = hdr-&gt;offset</code>; &#x66F4;&#x65B0;<code>sender-&gt;repl_offset_time</code>&#x4E3A;&#x5F53;&#x524D;&#x65F6;&#x95F4;;<ul>
+<li><code>repl_offset</code>&#x5728;node&#x662F;master&#x65F6;&#x4EE3;&#x8868;master&#x7684;&#x590D;&#x5236;&#x504F;&#x79FB;&#x91CF;&#xFF0C;&#x5728;node&#x662F;slave&#x65F6;&#x4EE3;&#x8868;&#x590D;&#x5236;master&#x7684;&#x590D;&#x5236;&#x504F;&#x79FB;&#x91CF;;</li>
+</ul>
+</li>
+<li>&#x5982;&#x679C;&#x6211;&#x4EEC;&#x662F;&#x4E00;&#x4E2A;slave, &#x6B63;&#x5728;&#x6267;&#x884C;manual failover(cluster-&gt;mf_end&#x4E0D;&#x4E3A;0, mf_end&#x4EE3;&#x8868;manual failover&#x7684;&#x6700;&#x957F;&#x8D85;&#x65F6;&#x65F6;&#x95F4;), &#x6211;&#x4EEC;&#x7684;master&#x5C31;&#x662F;sender; master&#x5DF2;&#x7ECF;&#x5904;&#x4E8E;paused_client&#x72B6;&#x6001;, &#x5F53;&#x524D;&#x5C06;&#x5176;<code>rerpl_offset</code>&#x53D1;&#x9001;&#x7ED9;&#x6211;&#x4EEC;&#x3002;<ul>
+<li><code>server.cluster-&gt;mf_master_offset = sender-&gt;repl_offset</code>;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>&#x5982;&#x679C;&#x6D88;&#x606F;&#x7C7B;&#x578B;&#x662F; <code>CLUSTERMSG_TYPE_PING</code>  &#x6216;&#x8005; <code>CLUSTERMSG_TYPE_MEET</code></p>
+<ul>
+<li><p>&#x5982;&#x679C;&#x6211;&#x4EEC;&#x662F;&#x7B2C;&#x4E00;&#x6B21;&#x9047;&#x5230;&#x6D88;&#x606F;&#x53D1;&#x9001;&#x8005;(<code>sender==NULL</code>)&#xFF0C;&#x4E14;&#x6D88;&#x606F;&#x7C7B;&#x578B;&#x662F; MEET</p>
+<ul>
+<li><p>&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;<code>HANDSHAKE</code>&#x72B6;&#x6001;&#x7684;node&#xFF0C;&#x4ECE;&#x63A5;&#x6536;&#x5230;&#x7684;&#x6D88;&#x606F;&#x4E2D;&#x5F97;&#x5230;&#x53D1;&#x9001;&#x8005;&#x7684;ip + port &#x590D;&#x5236;&#x7ED9; node, &#x5C06;node&#x6DFB;&#x52A0;&#x5230; <code>server.clsuter-&gt;nodes</code>&#x4E2D;;</p>
+<p>&#x6CE8;&#x610F;&#x6211;&#x4EEC;&#x4E0D;&#x4F1A;&#x62F7;&#x8D1D; &#x6D88;&#x606F;&#x53D1;&#x9001;&#x8005;&#x7684;<code>flags</code>&#x3001;<code>slaveof</code>&#x7B49;&#x4FE1;&#x606F;&#xFF0C;&#x7B49;&#x5F53;&#x524D;&#x8282;&#x70B9;(clusterCron&#x51FD;&#x6570;)&#x5411;&#x5BF9;&#x65B9;&#x53D1;&#x9001; <code>PING</code> &#x5E76;&#x63A5;&#x53D7;&#x5230;&#x5BF9;&#x65B9; <code>PONG</code>&#x56DE;&#x590D;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x4ECE;<code>PONG</code>&#x56DE;&#x590D;&#x4E2D;&#x5F97;&#x5230;;</p>
+</li>
+<li><p>&#x8C03;&#x7528;<code>clusterProcessGossipSection(hdr,link)</code>&#x5206;&#x6790;&#x6D88;&#x606F;&#x4E2D;<code>gossip section</code>&#x90E8;&#x5206;&#x7684;&#x4FE1;&#x606F;: &#x5904;&#x7406;&#x8FD9;&#x4E9B;node&#x662F;&#x5426;<code>FAIL</code>&#x3001;<code>PFAIL</code>&#x7B49;flags&#xFF0C;&#x5982;&#x679C;&#x672C;&#x5730;&#x4ECE;&#x6CA1;&#x8BB0;&#x5F55;&#x8FC7;&#x8FD9;&#x4E9B;node&#xFF0C;&#x5219;&#x8C03;<code>clusterStartHandshake</code>&#x5C1D;&#x8BD5;&#x4E0E;&#x4ED6;&#x4EEC;&#x8FDB;&#x884C;&#x63E1;&#x624B;&#xFF0C;&#x5E76;&#x5C06;&#x5176;&#x6DFB;&#x52A0;&#x5230;<code>server.cluster-&gt;nodes</code>&#x4E2D;;</p>
+</li>
+<li><p>&#x8C03;&#x7528; <code>clusterSendPing()</code>&#x7ED9;sender&#x56DE;&#x590D;&#x4E00;&#x4E2A;<code>PONG</code>&#x6D88;&#x606F;;</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>&#x5982;&#x679C;&#x6D88;&#x606F;&#x7C7B;&#x578B;&#x662F; <code>CLUSTERMSG_TYPE_PING</code> &#x6216;&#x8005; <code>CLUSTERMSG_TYPE_PONG</code> &#x6216;&#x8005; <code>CLUSTERMSG_TYPE_MEET</code></p>
+<ul>
+<li><p>&#x5982;&#x679C;<code>link-&gt;node</code>&#x4E0D;&#x4E3A;&#x7A7A;&#xFF0C;<code>link</code>&#x4E2D;&#x4FDD;&#x5B58;&#x4E86;&#x53D1;&#x9001;&#x6D88;&#x606F;&#x8005;&#x7684;&#x6240;&#x6709;&#x4FE1;&#x606F;&#xFF0C;node&#x3001;flag&#x3001;ip&#x3001;port&#x7B49;</p>
+<ul>
+<li><p>&#x5982;&#x679C;<code>link-&gt;node</code>&#x5904;&#x4E8E;<code>HANDSHAKE</code>&#x72B6;&#x6001;</p>
+<p>(&#x4E00;&#x4E2A;&#x5178;&#x578B;&#x7684;&#x573A;&#x666F;: nodeB&#x4E0A;&#x6267;&#x884C; cluster meet nodeA, &#x6B64;&#x65F6;nodeB&#x4F1A;&#x4E0E;nodeA&#x63E1;&#x624B;&#xFF0C;&#x5E76;&#x4E14;&#x5728;nodeB&#x4E2D;, nodeA&#x5C31;&#x662F;&#x5904;&#x4E8E;HANDSHAKE&#x72B6;&#x6001;, nodeA&#x6536;&#x5230;MEET&#x6D88;&#x606F;&#x540E;&#xFF0C;&#x5C06;&#x5411;nodeB&#x56DE;&#x590D;PONG&#x6D88;&#x606F;&#xFF0C;nodeB&#x6839;&#x636E;PONG&#x6D88;&#x606F;&#x4E2D;&#x7684;&#x5185;&#x5BB9;&#x8DDF;&#x65B0;&#x81EA;&#x5DF1;&#x8BB0;&#x5F55;&#x7684;nodeA&#x7684;&#x76F8;&#x5173;&#x4FE1;&#x606F;)</p>
+<ul>
+<li><p>&#x5982;&#x679C;&#x672C;&#x5730;<code>server.cluster-&gt;nodes</code>&#x4E2D;&#x8BB0;&#x5F55;&#x4E86;&#x53D1;&#x9001;&#x8005;&#x7684;&#x4FE1;&#x606F;&#xFF08;<code>sender!=NULL</code>&#xFF09;, &#x5219;&#x5229;&#x7528;<code>link</code>&#x4E2D;&#x7684;&#x4FE1;&#x606F;&#xFF0C;&#x66F4;&#x65B0;<code>sender</code>&#x7684;ip port &#x7B49;&#x3002;&#x8FD4;&#x56DE;0&#x3002;</p>
+<p>&#x6211;&#x80FD;&#x60F3;&#x5230;&#x7684;&#x5C31;&#x662F;&#x4E0A;&#x9762;&#x8BF4;&#x7684;: NodeB &#x4E0E;NodeA&#x5EFA;&#x7ACB;&#x8FDE;&#x63A5;&#x540E;&#xFF0C;&#x5C06;NodeA&#x8BB0;&#x5F55;&#x4E3A; HANDSHAKE&#x72B6;&#x6001;&#xFF0C;NodeA&#x8FD4;&#x56DE;PONG&#x56DE;&#x590D;&#x4E4B;&#x540E;&#xFF0C;&#x5728;NodeB&#x4E2D;&#x6267;&#x884C;&#x7684;&#x5C31;&#x662F;&#x8FD9;&#x4E00;&#x90E8;&#x5206;&#x5427;;</p>
+</li>
+<li><p>&#x5982;&#x679C;&#x672C;&#x5730;<code>server.cluster-&gt;nodes</code>&#x4E2D;&#x6CA1;&#x6709;&#x8BB0;&#x5F55;&#x53D1;&#x9001;&#x8005;&#x7684;&#x4FE1;&#x606F;(sender == NULL), &#x5173;&#x95ED;<code>link-&gt;node-&gt;flags</code>&#x7684;<code>HANDSHAKE</code>&#x72B6;&#x6001;&#xFF0C;&#x5E76;&#x786E;&#x5B9A;<code>link-&gt;node</code>&#x662F;<code>MASTER</code>&#x8FD8;&#x662F;<code>slave</code></p>
+<p>&#x6211;&#x80FD;&#x60F3;&#x5230;&#x7684;&#x5C31;&#x662F;&#x4E0A;&#x9762;&#x8BF4;&#x7684;: NodeB &#x4E0E; Node&#x5EFA;&#x7ACB;&#x8054;&#x7CFB;&#xFF0C;&#x671D;NodeA&#x53D1;&#x9001;&#x4E86;&#x4E00;&#x4E2A; MEET&#x6D88;&#x606F;&#xFF0C;&#x6B64;&#x65F6;nodeA&#x7684;<code>server.cluster-&gt;nodes</code>&#x4E2D;&#x80AF;&#x5B9A;&#x6CA1;&#x6709;NodeB&#x3002;</p>
+<p> &#x6240;&#x4EE5;NodeB&#x7B2C;&#x4E00;&#x6B21;MEET  NodeA&#xFF0C;NodeA&#x5C31;&#x4E3A; <code>link-&gt;node</code>&#x53BB;&#x6389;flags&#x7684; HANDSHAKE&#x72B6;&#x6001;&#x4E86;&#xFF1F;&#xFF1F;</p>
+</li>
+</ul>
+</li>
+<li><p>&#x5982;&#x679C;link-&gt;node&#x4E0D;&#x662F;&#x5904;&#x4E8E;HANDSHAKE<code>&#x72B6;&#x6001;&#xFF0C;&#x4E14;</code>link-&gt;node-&gt;name<code>&#x548C;</code>hdr-&gt;sender`&#x4E0D;&#x76F8;&#x7B49;&#xFF0C;&#x6B64;&#x65F6;&#x4EE3;&#x8868;&#x672C;&#x5730;link&#x4E2D;&#x8BB0;&#x5F55;&#x7684;&#x53D1;&#x9001;&#x8005;id  &#x4E0E; &#x5B9E;&#x9645;&#x53D1;&#x9001;&#x8005;id&#x4E0D;&#x76F8;&#x7B49;&#xFF0C;&#x65AD;&#x5F00;link&#x8FD4;&#x56DE; 0;</p>
+</li>
+</ul>
+</li>
+<li><p>&#x5982;&#x679C;<code>sender!=NULL</code>&#x4E14;sender&#x90E8;&#x7F72;&#x5904;&#x4E8E;<code>handshake</code>&#x72B6;&#x6001;&#xFF0C;&#x53D1;&#x8FC7;&#x6765;&#x7684;&#x662F;PING&#x6D88;&#x606F;&#xFF0C; &#x8C03;&#x7528;<code>nodeUpdateAddressIfNeeded()</code> &#x66F4;&#x65B0;sender&#x7684;ip port,&#x5982;&#x679C;ip port&#x88AB;&#x66F4;&#x65B0;&#xFF0C;&#x5219;&#x65AD;&#x5F00;<code>node-&gt;link</code>&#xFF0C;&#x7B49;&#x7740;&#x4E0B;&#x6B21;&#x91CD;&#x8FDE;;</p>
+</li>
+<li><p>&#x5982;&#x679C;<code>link-&gt;node!=NULL</code>&#x4E14;&#x53D1;&#x8FC7;&#x6765;&#x7684;&#x662F;PONG&#x6D88;&#x606F;&#xFF0C;&#x5219;&#x66F4;&#x65B0;<code>link-&gt;node</code>&#x7684;PONG&#x63A5;&#x6536;&#x65F6;&#x95F4;<code>pong_received</code>&#x3001;&#x6E05;&#x96F6;&#x6700;&#x8FD1;&#x4E00;&#x6B21;&#x7B49;&#x5F85;ping&#x547D;&#x4EE4;&#x7684;&#x65F6;&#x95F4;<code>ping_sent</code>;</p>
+<ul>
+<li>&#x5982;&#x679C;<code>link-&gt;node</code>&#x5904;&#x4E8E;<code>PFAIL</code>&#x72B6;&#x6001;&#xFF0C;&#x5219;&#x5C06;<code>PFAIL</code>&#x72B6;&#x6001;&#x53D6;&#x6D88;;</li>
+<li>&#x5982;&#x679C;<code>link-&gt;node</code>&#x5904;&#x4E8E;<code>FAIL</code>&#x72B6;&#x6001;&#xFF0C;&#x5219;&#x8C03;&#x7528;<code>clearNodeFailureIfNeeded()</code>&#x770B;<code>link-&gt;node</code>&#x7684;<code>FAIL</code>&#x72B6;&#x6001;&#x662F;&#x5426;&#x80FD;&#x53D6;&#x6D88;;</li>
+</ul>
+</li>
+<li><p>&#x5982;&#x679C;<code>sender!=NULL</code>,&#x6211;&#x4EEC;&#x8FD9;&#x91CC;&#x8BB2;&#x66F4;&#x65B0;&#x4ED6;&#x7684;&#x89D2;&#x8272;&#x4FE1;&#x606F;:<code>master-&gt;slave or slave -&gt; master</code></p>
+<ul>
+<li>&#x5982;&#x679C;<code>hdr-&gt;slaveof</code>&#x4E3A;<code>REDIS_NODE_NULL_NAME</code>,&#x8BF4;&#x660E;sender&#x662F;&#x4E00;&#x4E2A;master&#xFF0C;&#x8C03;&#x7528;<code>clusterSetNodeAsMaster(sender)</code>&#x5C06;&#x5176;&#x8BBE;&#x7F6E;&#x4E3A;master;</li>
+<li>&#x5426;&#x5219;&#xFF0C;&#x8BF4;&#x660E;<code>sender</code>&#x662F;&#x4E00;&#x4E2A;slave&#xFF0C;&#x4E0B;&#x9762;&#x6211;&#x4EEC;&#x5C31;&#x8981;&#x770B;&#x4ED6;&#x7684;master&#x4FE1;&#x606F;&#x662F;&#x5426;&#x66F4;&#x65B0;&#x4E86;<ul>
+<li><code>hdr-&gt;slaveof</code>&#x4E2D;&#x5C31;&#x662F;&#x6700;&#x65B0;&#x7684;master&#x4FE1;&#x606F;&#xFF1B;</li>
+<li>&#x5982;&#x679C;&#x4EE5;&#x5F80;<code>sender</code>&#x662F;&#x4E00;&#x4E2A;master&#xFF0C;&#x73B0;&#x5728;<code>hdr-&gt;slaveof</code>&#x4E0D;&#x4E3A;&#x7A7A;&#xFF0C;&#x4EE3;&#x8868;sender&#x6709;&#x4E86;master&#xFF0C;&#x6B64;&#x65F6;&#x6211;&#x4EEC;&#x5220;&#x9664;sender&#x8D1F;&#x8D23;&#x7684;&#x6240;&#x6709;slot&#x4FE1;&#x606F;&#xFF0C;&#x5E76;&#x5C06;sender&#x8BBE;&#x7F6E;&#x4E3A;slave; &#x4E0B;&#x4E00;&#x6B65;&#x914D;&#x7F6E;<code>sender-&gt;slaveof</code>;</li>
+<li>&#x5982;&#x679C;<code>sender-&gt;slaveof</code>&#x4E0D;&#x7B49;&#x4E8E;<code>hdr-&gt;slaveof</code><ul>
+<li>&#x5982;&#x679C;<code>sender-&gt;slaveof</code>&#x4E0D;&#x4E3A;&#x7A7A;&#xFF0C;&#x5219;&#x8C03;&#x7528;<code>clusterNodeRemoveSlave()</code>&#x4ECE;&#x65E7;&#x7684;<code>sender-&gt;slaveof</code>&#x8FD9;&#x4E2A;master&#x4E2D;&#x5C06;<code>sender</code>&#x8FD9;&#x4E2A;slave&#x79FB;&#x9664;;</li>
+<li>&#x66F4;&#x65B0;<code>sender-&gt;slaveof</code>&#x4E3A;<code>hdr-&gt;slaveof</code>;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>&#x66F4;&#x65B0;&#x5F53;&#x524D;&#x8282;&#x70B9;&#x5BF9;<code>sender</code>&#x6240;&#x5904;&#x7406;<code>slot</code>&#x7684;&#x8BA4;&#x8BC6;&#xFF0C;&#x8FD9;&#x91CC;&#x5FC5;&#x987B;&#x5728;&#x4E0A;&#x4E00;&#x6B65;&#x66F4;&#x65B0;<code>sender</code>&#x7684;master/slave&#x4FE1;&#x606F;&#x540E;&#xFF0C;&#x56E0;&#x4E3A;&#x8FD9;&#x91CC;&#x7528;&#x5230;&#x4E86;<code>REDIS_NODE_MASTER</code>&#x6807;&#x8BC6;:</p>
+<ul>
+<li>&#x5C06;<code>sender_master-&gt;slot</code>(sender&#x662F;master&#x5C31;&#x662F;<code>sender-&gt;slot</code>), &#x548C; <code>hdr-&gt;myslot</code>&#x505A;&#x5BF9;&#x6BD4;&#xFF0C;&#x4E24;&#x8005;&#x662F;&#x5426;&#x4E00;&#x81F4;&#x8BB0;&#x5F55;&#x4E3A;<code>dirty_slots</code>;</li>
+<li>&#x5982;&#x679C;<code>sender</code>&#x662F;&#x4E00;&#x4E2A;master&#xFF0C;&#x4E14;sender&#x7684;slot&#x4FE1;&#x606F;&#x51FA;&#x73B0;&#x4E86;&#x53D8;&#x52A8;, &#x5219;&#x8C03;&#x7528; <code>clusterUpdateSlotsConfigWith(sender,senderConfigEpoch,hdr-&gt;myslots)</code>&#x51FD;&#x6570;: &#x8BE5;&#x51FD;&#x6570;&#x7684;&#x76EE;&#x7684;&#x5C31;&#x662F; &#x5C06;&#x53C2;&#x6570;slosts&#x6700;&#x65B0;&#x914D;&#x7F6E; &#x548C; &#x672C;&#x8282;&#x70B9;slots&#x8FDB;&#x884C;&#x5BF9;&#x6BD4;&#xFF0C;&#x5E76;&#x66F4;&#x65B0;&#x672C;&#x8282;&#x70B9;&#x7684;slots&#x5E03;&#x5C40;&#x3002;&#x5982;&#x679C;&#x6709;&#x9700;&#x8981;&#xFF0C;&#x51FD;&#x6570;&#x8FD8;&#x4F1A;&#x5C06;&#x672C;&#x8282;&#x70B9;&#x8F6C;&#x6362;&#x6210; sender &#x7684;slave;</li>
+<li>&#x5982;&#x679C; sender&#x8BF4; slot[j] &#x662F;&#x81EA;&#x5DF1;&#x8D1F;&#x8D23;, &#x5B9E;&#x9645;&#x4E0A;&#x6211;&#x4EEC;&#x77E5;&#x9053;&#x6709;&#x53E6;&#x4E00;&#x4E2A;&#x8282;&#x70B9; configEpoch&#x6BD4;sender&#x7684;&#x5927;, &#x540C;&#x65F6;&#x4E5F;&#x8BF4;&#x81EA;&#x5DF1;&#x8D1F;&#x8D23;&#x5904;&#x7406; slot[j], &#x6B64;&#x65F6;&#x6211;&#x4EEC;&#x5C31;&#x9700;&#x8981;&#x8C03;&#x7528;<code>clusterSendUpdate()</code>&#x544A;&#x8BC9; sender;</li>
+</ul>
+</li>
+<li><p>&#x5982;&#x679C;&#x6211;&#x4EEC;&#x7684;configEpoch &#x548C; sender&#x7684;configEpoch &#x76F8;&#x7B49;, &#x90A3;&#x4E48;&#x5C1D;&#x8BD5;&#x8C03;&#x7528;<code>clusterHandleConfigEpochCollision(sender)</code>&#x89E3;&#x51B3;&#x4ED6;: </p>
+</li>
+</ul>
+<pre><code class="lang-c++">server.cluster-&gt;currentEpoch++;
+myself-&gt;configEpoch = server.cluster-&gt;currentEpoch;
+</code></pre>
+<ul>
+<li>&#x8C03;&#x7528;<code>clusterProcessGossipSection(hdr,link)</code>&#x63D0;&#x53D6;&#x5E76;&#x5206;&#x6790;<code>gossip</code>&#x4E2D;&#x7684;&#x4FE1;&#x606F;: &#x786E;&#x5B9A;gossip section&#x4E2D;&#x7684;node&#x662F;&#x5426;&#x88AB;sender&#x6807;&#x8BB0;&#x4E3A;PFAIL<code>&#x6216;</code>FAIL<code>, &#x5982;&#x679C;</code>FAIL<code>&#x4E86;&#xFF0C;&#x5219;&#x5E7F;&#x64AD;&#xFF1B;&#x5982;&#x679C;node&#x6CA1;&#x88AB;sender&#x6807;&#x8BB0;&#x4E3A;PFAIL/FAIL&#xFF0C;&#x8BF4;&#x660E;node&#x72B6;&#x6001;&#x6B63;&#x5E38;&#xFF0C;&#x90A3;&#x4E48;&#x66F4;&#x65B0;</code>node-&gt;failure_repots<code>; &#x5982;&#x679C; node&#x662F;&#x4E00;&#x4E2A;&#x65B0;&#x8282;&#x70B9;&#xFF0C;&#x5219;&#x8C03;&#x7528;</code>clusterStartHandshake()<code>&#x4E0E;&#x5176;&#x8FDB;&#x884C;&#x6CA1;&#x6536;&#xFF0C;&#x5E76;&#x5C06;&#x5176;&#x4FDD;&#x5B58;&#x5230;</code>server.cluster-&gt;nodes`&#x4E2D;;</li>
+</ul>
+</li>
+<li><p>&#x5982;&#x679C;&#x6D88;&#x606F;&#x7C7B;&#x578B;&#x662F;<code>CLUSTERMSG_TYPE_FAIL</code>: sender&#x544A;&#x8BC9;&#x5F53;&#x524D;&#x8282;&#x70B9;&#xFF0C;&#x67D0;&#x4E2A;&#x8282;&#x70B9;&#x8FDB;&#x5165;&#x4E86;<code>FAIL</code>&#x72B6;&#x6001;;</p>
+</li>
+<li><p>&#x5982;&#x679C;&#x6D88;&#x606F;&#x7C7B;&#x578B;&#x662F;<code>CLUSTERMSG_TYPE_PUBLISH</code>: &#x8FD9;&#x662F;&#x4E00;&#x6761;publish&#x6D88;&#x606F;&#xFF0C;&#x8C03;&#x7528;<code>pubsubPublishMessage()</code>&#x5904;&#x7406;;</p>
+</li>
+<li><p>&#x5982;&#x679C;&#x6D88;&#x606F;&#x7C7B;&#x578B;&#x662F; <code>CLUSTERMSG_TYPE_FAILOVER_AUTH_REQUEST</code>: sender &#x8BF7;&#x6C42;&#x5F53;&#x524D;&#x8282;&#x70B9;&#x4E3A;&#x5B83;&#x8FDB;&#x884C;failover&#x6295;&#x7968;&#xFF0C;&#x901A;&#x8FC7;&#x8C03;&#x7528;<code>clusterSendFailoverAuthIfNeeded(sender,hdr)</code>&#x5B8C;&#x6210;&#xFF0C;&#x5982;&#x679C;&#x6295;&#x7968;&#x5B8C;&#x6210;&#xFF0C;&#x5C31;&#x5411;<code>sender</code>&#x56DE;&#x590D;<code>CLUSTERMSG_TYPE_FAILOVER_AUTH_ACK</code>&#x7C7B;&#x578B;&#x7684;&#x6D88;&#x606F;;</p>
+</li>
+<li><p>&#x5982;&#x679C;&#x6D88;&#x606F;&#x7C7B;&#x578B;&#x662F; <code>CLUSTERMSG_TYPE_FAILOVER_AUTH_ACK</code>: sender &#x652F;&#x6301;&#x5F53;&#x524D;&#x8282;&#x70B9;&#x6267;&#x884C;&#x6545;&#x969C;&#x8FC1;&#x79FB;&#x64CD;&#x4F5C;&#xFF0C;&#x53EA;&#x6709;&#x7B26;&#x5408;&#x4E00;&#x4E0B;&#x4EE5;&#x4E0B;&#x51E0;&#x4E2A;&#x6761;&#x4EF6;&#xFF0C;sender&#x7684;&#x6295;&#x7968;&#x624D;&#x6709;&#x6548;:</p>
+<ul>
+<li>sender&#x662F;&#x4E3B;&#x8282;&#x70B9;;</li>
+<li>sender&#x81F3;&#x5C11;&#x8D1F;&#x8D23;&#x4E00;&#x4E2A;slot;</li>
+<li>sender&#x7684;currentEpoch &#x5927;&#x4E8E; &#x5F53;&#x524D;&#x8282;&#x70B9;&#x7684; currentEpoch (<code>server.cluster-&gt;failover_auth_epoch</code>);</li>
+</ul>
+<p>&#x6EE1;&#x8DB3;&#x6761;&#x4EF6;&#x540E;&#xFF0C;<code>server.cluster-&gt;failover_auth_count++</code>;</p>
+</li>
+<li><p>&#x5982;&#x679C;&#x6D88;&#x606F;&#x7C7B;&#x578B;&#x662F;<code>CLUSTERMSG_TYPE_MFSTART</code>&#xFF1A;&#x8FD9;&#x6761;&#x6D88;&#x606F;&#x53EA;&#x53EF;&#x80FD;&#x6765;&#x81EA;&#x4E8E;&#x672C;&#x8282;&#x70B9;&#x81EA;&#x5DF1;&#x7684;slave, &#x8BF7;&#x6C42;&#x81EA;&#x5DF1;&#x8FD9;&#x4E2A;master &#x6682;&#x505C;&#x5BA2;&#x6237;&#x7AEF; &#x7684;&#x8BF7;&#x6C42;, &#x8981;&#x6267;&#x884C; <code>manual failover</code>&#x4E86;</p>
+<ul>
+<li>&#x6B64;&#x65F6;&#x672C;&#x8282;&#x70B9;(master), &#x8C03;&#x7528;<code>resetManualFailover()</code>&#x91CD;&#x7F6E;failover&#x7684;&#x5404;&#x79CD;&#x72B6;&#x6001;;</li>
+<li>&#x8BB0;&#x5F55;manual failover&#x7684;&#x8D85;&#x65F6;&#x65F6;&#x95F4;: <code>server.cluster-&gt;mf_end = mstime() + REDIS_CLUSTER_MF_TIMEOUT</code>;</li>
+<li>&#x8BB0;&#x5F55;manual failover&#x662F;&#x54EA;&#x4E2A;slave&#x53D1;&#x8D77;&#x7684;: <code>server.cluster-&gt;mf_slave = sender</code>;</li>
+<li>&#x672C;&#x8282;&#x70B9;&#x8FDB;&#x5165;<code>PAUSED_CLIENT</code>&#x72B6;&#x6001;&#xFF0C;&#x8BA9;&#x670D;&#x52A1;&#x5668;&#x5728;&#x6307;&#x5B9A;&#x7684;&#x65F6;&#x95F4;&#x5185;(&#x5F53;&#x524D;&#x65F6;&#x95F4;+<code>REDIS_CLUSTER_MF_TIMEOUT*2</code>)&#x4E0D;&#x518D;&#x63A5;&#x53D7;&#x88AB;&#x5BA2;&#x6237;&#x7AEF;&#x53D1;&#x6765;&#x7684;&#x8BF7;&#x6C42;(slave&#x6B63;&#x5E38;);</li>
+</ul>
+</li>
+<li><p>&#x5982;&#x679C;&#x6D88;&#x606F;&#x7C7B;&#x578B;&#x662F;<code>CLUSTERMSG_TYPE_UPDATE</code>: sender&#x544A;&#x8BC9;&#x672C;&#x8282;&#x70B9;slot&#x4FE1;&#x606F;&#x5DF2;&#x7ECF;&#x53D1;&#x751F;&#x53D8;&#x5316;&#xFF0C;&#x6D88;&#x606F;&#x53D1;&#x9001;&#x8005;&#x8981;&#x6C42;&#x63A5;&#x53D7;&#x8005;&#x8FDB;&#x884C;&#x76F8;&#x5E94;&#x7684;&#x66F4;&#x65B0;</p>
+<ul>
+<li>&#x6D88;&#x606F;&#x4E2D;&#x7684;<code>MsgUpdate-&gt;configEpoch</code>&#x5FC5;&#x987B;&#x5927;&#x4E8E;<code>node-&gt;configEpoch</code>(node&#x662F;&#x6839;&#x636E;<code>MsgUpdate-&gt;nodename</code>&#x4ECE;<code>server.cluster-&gt;nodes</code>&#x4E2D;&#x627E;&#x5230;&#x7684;);</li>
+<li>&#x5982;&#x679C;node&#x5728;&#x672C;&#x8282;&#x70B9;&#x4E2D;&#x4EE5;&#x524D;&#x8BB0;&#x5F55;&#x4E3A;&#x4E00;&#x4E2A;slave&#xFF0C;&#x6B64;&#x65F6;(&#x53D1;&#x9001;slot&#x4FE1;&#x606F;)&#x4EE3;&#x8868;&#x5176;&#x5DF2;&#x53D8;&#x6210;&#x4E00;&#x4E2A;master&#xFF0C;&#x6240;&#x4EE5;&#x5C06;node&#x89D2;&#x8272;&#x5207;&#x6362;&#x6210;master;</li>
+<li>&#x8C03;&#x7528;<code>clusterUpdateSlotsConfigWith(node,reportedConfigEpoch,hdr-&gt;...slots)</code>&#x66F4;&#x65B0;slot&#x5E03;&#x5C40;;</li>
+</ul>
+</li>
+</ul>
+<h4 id="void-clusterupdatestatevoid">void clusterUpdateState(void)</h4>
+<p>&#x76EE;&#x6807;: &#x66F4;&#x65B0;&#x8282;&#x70B9;&#x72B6;&#x6001;(<code>server.cluster-&gt;state</code>)</p>
+<p>&#x6267;&#x884C;&#x6D41;&#x7A0B;:</p>
+<ul>
+<li>&#x5982;&#x679C;&#x8FD9;&#x662F;&#x4E00;&#x4E2A;master&#x8282;&#x70B9;, &#x5728;&#x5C06;&#x5176;&#x72B6;&#x6001;&#x8F6C;&#x4E3A;OK&#x524D;&#x7B49;&#x5F85;&#x4E00;&#x6BB5;&#x65F6;&#x95F4;(<code>REDIS_CLUSTER_WRITABLE_DELAY=2s</code>)&#x3002;&#x56E0;&#x4E3A;&#x5728;&#x4E00;&#x4E2A;node&#x91CD;&#x542F;&#x540E;&#xFF0C;&#x4E0D;&#x7ED9;cluster&#x91CD;&#x65B0;&#x914D;&#x7F6E;&#x8FD9;&#x4E2A;node&#x7684;&#x673A;&#x4F1A;&#xFF0C;&#x5C31;&#x5C06;&#x8FD9;&#x4E2A;&#x53EF;&#x5199;&#x7684;master&#x52A0;&#x5165;&#x5230;cluster&#x4E2D;&#xFF0C;&#x5E76;&#x4E0D;&#x660E;&#x667A;;</li>
+<li>&#x68C0;&#x67E5;&#x662F;&#x5426;&#x6240;&#x6709;slot&#x90FD;&#x5DF2;&#x7ECF;&#x6709;&#x67D0;&#x4E2A;&#x8282;&#x70B9;&#x8D1F;&#x8D23;&#x4E86;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8BE5;&#x96C6;&#x7FA4;&#x6240;&#x6709;slot&#x90FD;&#x8986;&#x76D6;&#x4E86;&#x3002;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x88AB;&#x8986;&#x76D6;&#xFF0C;&#x5219;<code>new_sate=REDIS_CLUSTER_FAIL</code>;</li>
+<li>&#x7EDF;&#x8BA1;&#x5728;&#x7EBF;&#x4E14;&#x6B63;&#x5728;&#x5904;&#x7406;(&#x81F3;&#x5C11;)&#x4E00;&#x4E2A;slot&#x7684;master&#x7684;&#x6570;&#x91CF;(<code>server.cluster-&gt;size</code>); &#x4EE5;&#x53CA;&#x4E0B;&#x7EBF;<code>master</code>&#x7684;&#x6570;&#x91CF;(<code>unreachable_masters</code>,&#x8FD9;&#x4E9B;master&#x4E5F;&#x8D1F;&#x8D23;&#x7740;&#x76F8;&#x5173;slot);</li>
+<li>&#x5982;&#x679C;<code>unreachable_masters</code>&#x8D85;&#x8FC7;&#x534A;&#x6570;&#xFF0C;&#x90A3;&#x4E48;&#x5C06;&#x6211;&#x4EEC;&#x81EA;&#x5DF1;&#x7684;&#x72B6;&#x6001;&#x8BBE;&#x7F6E;&#x4E3A;<code>new_state=REDIS_CLUSTER_FAIL</code>;</li>
+<li>&#x5982;&#x679C;<code>new_state != server.cluster-&gt;state</code><ul>
+<li>&#x5982;&#x679C;&#x5F53;&#x524D;&#x8282;&#x70B9;&#x662F;&#x4E00;&#x4E2A;master &#x540C;&#x65F6;&#x5DF2;&#x7ECF;&#x548C;&#x96C6;&#x7FA4;&#x5206;&#x9694;&#x53D8;&#x6210;&#x4E86;&#x5C11;&#x90E8;&#x5206;(partitioned away),&#x5F53;&#x524D;&#x96C6;&#x7FA4;&#x72B6;&#x6001;&#x4E3A;<code>FAIL</code>;</li>
+<li>&#x90A3;&#x4E48;&#x5728;&#x91CD;&#x8FDE;&#x4E0A;cluster&#x540E;(partition heals) &#x4E00;&#x6BB5;&#x65F6;&#x95F4;&#x5185;, &#x4E0D;&#x8981;&#x8BA9;&#x5B83;&#x63A5;&#x6536;&#x8BF7;&#x6C42;(&#x4E0D;&#x8981;&#x5C06;&#x5176;&#x72B6;&#x6001;&#x53D8;&#x6210;OK), &#x4EE5;&#x786E;&#x4FDD;&#x8DB3;&#x591F;&#x7684;&#x65F6;&#x95F4;&#x63A5;&#x6536;&#x914D;&#x7F6E;&#x66F4;&#x65B0;;</li>
+<li>&#x5426;&#x5219;&#xFF0C;&#x66F4;&#x65B0;&#x8282;&#x70B9;&#x72B6;&#x6001;&#x4E3A; <code>new_state</code>;</li>
+</ul>
+</li>
+</ul>
+<h4 id="void-clusterhandleslavefailovervoid">void clusterHandleSlaveFailover(void)</h4>
+<p>&#x76EE;&#x7684;: &#x6267;&#x884C; slave failover, &#x5982;&#x679C;&#x5F53;&#x524D;&#x8282;&#x70B9;&#x662F;&#x4E00;&#x4E2A;slave&#x8282;&#x70B9;&#xFF0C;&#x5176;master&#x8D1F;&#x8D23;&#x975E;&#x96F6;&#x4E2A;slot &#x4F46;&#x5904;&#x4E8E; <code>FAIL</code>&#x72B6;&#x6001;&#xFF0C;&#x90A3;&#x4E48;&#x6267;&#x884C;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;.</p>
+<p>&#x8BE5;&#x51FD;&#x6570;&#x6709;&#x4E09;&#x4E2A;&#x76EE;&#x6807;:</p>
+<ol>
+<li>&#x68C0;&#x67E5;&#x662F;&#x5426;&#x53EF;&#x4EE5;&#x5BF9;master&#x6267;&#x884C;&#x4E00;&#x6B21;failover, &#x8282;&#x70B9;&#x7684;&#x5173;&#x4E8E;master&#x7684;&#x4FE1;&#x606F;&#x662F;&#x5426;&#x51C6;&#x786E;&#x548C;&#x6700;&#x65B0;(updated);</li>
+<li>&#x9009;&#x4E3E;&#x4E00;&#x4E2A; new master;</li>
+<li>&#x6267;&#x884C;failover, &#x5E76;&#x901A;&#x77E5;&#x5176;&#x4ED6;&#x8282;&#x70B9;;</li>
+</ol>
+<p>&#x6267;&#x884C;&#x6D41;&#x7A0B;:</p>
+<ul>
+<li><p>&#x65E0;&#x8BBA;&#x662F;automatic &#x8FD8;&#x662F; manual failover&#x68C0;&#x67E5;&#x5FC5;&#x987B;&#x540C;&#x65F6;&#x6EE1;&#x8DB3;&#x4E0B;&#x9762;&#x51E0;&#x4E2A;&#x6761;&#x4EF6;&#xFF0C;&#x5426;&#x5219;&#x8FD4;&#x56DE;:</p>
+<ul>
+<li>&#x6211;&#x4EEC;&#x662F;&#x4E00;&#x4E2A;slave;</li>
+<li>&#x6211;&#x4EEC;&#x7684;master&#x88AB;&#x6807;&#x8BB0;&#x4E3A;<code>FAIL</code> &#x6216; &#x8FD9;&#x662F;&#x4E00;&#x4E2A; <code>manual_failover</code>;</li>
+<li>&#x6211;&#x4EEC;&#x7684;master&#x8D1F;&#x8D23;&#x4E86;&#x4E00;&#x90E8;&#x5206;slot;</li>
+</ul>
+</li>
+<li><p>&#x83B7;&#x53D6;&#x672C;&#x8282;&#x70B9;&#x548C;master&#x7684;&#x65AD;&#x5F00;&#x79D2;&#x6570;:<code>data_age</code></p>
+<p>&#x5982;&#x679C;<code>data_aget &gt; server.repl_ping_slave_period * 1000 + server.cluster_node_timeout * REDIS_CLUSTER_SLAVE_VALIDITY_MULT</code>, &#x5219;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;;</p>
+<ul>
+<li><code>repl_ping_slave_period</code> &#x4EE3;&#x8868; master&#x7ED9;slave&#x53D1;&#x9001;PING&#x7684;&#x9891;&#x7387;;</li>
+<li><code>REDIS_CLUSTER_SLAVE_VALIDITY_MULT</code>&#x5F53;&#x524D;&#x662F;10;</li>
+</ul>
+</li>
+<li><p>&#x5982;&#x679C;&#x4E0A;&#x4E00;&#x6B21;<code>failover</code>&#x8D85;&#x65F6; &#x6216; &#x91CD;&#x8BD5;&#x65F6;&#x95F4;&#x5DF2;&#x8FC7;&#xFF0C;&#x6211;&#x4EEC;&#x4F1A;&#x53D1;&#x8D77;&#x4E00;&#x4E2A;&#x65B0;&#x7684;:</p>
+<ul>
+<li>&#x4E0B;&#x4E00;&#x6B21;<code>failover</code>&#x7684;&#x5F00;&#x59CB;&#x65F6;&#x95F4;&#x662F;: <code>mstime()+ 500ms + random() % 500ms + failover_auth_rank * 1000ms</code>;</li>
+<li><code>server.cluster-&gt;failover_auth_rank</code>: &#x5F53;&#x524D;slave&#x7684;&#x6392;&#x540D;(rank), &#x4E5F;&#x5C31;&#x662F;&#x5728;&#x76F8;&#x540C;&#x7684;master&#x4E0B;&#xFF0C;&#x548C;&#x5176;&#x4ED6;slave&#x76F8;&#x6BD4;&#xFF0C;&#x5F53;&#x524D;slave&#x7684;&#x6392;&#x540D;&#xFF0C;&#x6392;&#x540D;&#x7531;&#x6BCF;&#x4E2A;slave&#x7684;<code>replication offset</code>&#x51B3;&#x5B9A;&#x3002;<code>rank=0</code>&#x7684;slave replication offset&#x66F4;&#x5927;&#x3002;&#x6CE8;&#x610F;,&#x53EF;&#x80FD;&#x591A;&#x4E2A;slave&#x5177;&#x6709;&#x76F8;&#x540C;&#x7684;rank&#xFF0C;&#x8FD9;&#x662F;&#x56E0;&#x4E3A;&#x4ED6;&#x4EEC;&#x7684;offset &#x76F8;&#x540C;;</li>
+<li>&#x5982;&#x679C;<code>failover</code>&#x662F;<code>manual failover</code>, &#x5219;&#x4E0D;&#x9700;&#x8981;&#x53D1;&#x8D77;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#x8D77;&#x5F00;&#x59CB;&#x65F6;&#x95F4;&#x662F;:<code>mstime()</code>, &#x5176;<code>failover_auth_rank=0</code>&#x3002; (&#x4F46;&#x5E76;&#x4E0D;&#x610F;&#x5473;&#x7740;&#x9A6C;&#x4E0A;&#x4F1A;&#x6267;&#x884C;<code>failover</code>&#xFF0C;&#x800C;&#x662F;&#x5728;<code>clusterCron()</code>&#x4E0B;&#x4E00;&#x6B21;&#x6267;&#x884C;&#x65F6;&#x4F1A;&#x53D1;&#x8D77;)</li>
+<li>&#x5E7F;&#x64AD;&#x4E00;&#x6761;PONG&#x6D88;&#x606F;&#x7ED9;&#x6240;&#x6709;slave(&#x548C;&#x672C;&#x8282;&#x70B9;&#x4E00;&#x4E2A;master&#x7684;slave)&#xFF0C; &#x4EE5;&#x4FBF;&#x83B7;&#x5F97;&#x4ED6;&#x4EEC;&#x7684;offset&#xFF0C;&#x8FDB;&#x884C;&#x6392;&#x540D;;</li>
+<li>&#x8FD4;&#x56DE;;</li>
+</ul>
+</li>
+<li><p>&#x5982;&#x679C;&#x4E0D;&#x662F;<code>manual failover</code>&#x4E14;&#x8FD8;&#x6CA1;&#x5411;&#x5176;&#x4ED6;&#x8282;&#x70B9;&#x53D1;&#x9001;&#x6295;&#x7968;&#x8BF7;&#x6C42;&#xFF0C;&#x5219;&#x8BA1;&#x7B97;slave&#x7684;&#x6392;&#x540D;(<code>new rank</code>)&#xFF0C;&#x6392;&#x540D;&#x6709;&#x53D8;&#x5316;&#xFF0C;&#x5219;&#x66F4;&#x65B0;&#x54CD;&#x5E94;&#x7684;<code>failover</code>&#x5F00;&#x59CB;&#x65F6;&#x95F4;;</p>
+</li>
+<li><p>&#x5982;&#x679C;&#x5F53;&#x524D;&#x65F6;&#x95F4; &#x8FD8;&#x6CA1;&#x5230; <code>failover</code>&#x5F00;&#x59CB;&#x65F6;&#x95F4;&#xFF0C;&#x5219;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;(&#x6211;&#x4EEC;&#x672C;&#x5730;&#x8FD8;&#x6CA1;&#x5230;<code>failover</code>&#x5F00;&#x59CB;&#x65F6;&#x95F4;&#xFF0C;&#x4F46;&#x4E0D;&#x4EE3;&#x8868;&#x5176;&#x4ED6;slave&#x6CA1;&#x5230;<code>failover</code>&#x5F00;&#x59CB;&#x65F6;&#x95F4;&#xFF0C;&#x6240;&#x4EE5;&#x6392;&#x540D;&#x9760;&#x524D;&#x7684;slave&#x4F1A;&#x4F18;&#x5148;&#x6267;&#x884C;<code>failover</code>);</p>
+</li>
+<li><p>&#x5982;&#x679C;&#x5DF2;&#x7ECF;&#x8FC7;&#x4E86;&#x6545;&#x969C;&#x8FC1;&#x79FB;&#x7684;&#x8D85;&#x65F6;&#x65F6;&#x95F4;&#xFF0C;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;;</p>
+</li>
+<li><p>&#x5411;&#x5176;&#x4ED6;&#x8282;&#x70B9;&#x53D1;&#x9001;failover&#x8BF7;&#x6C42;:</p>
+<ul>
+<li>&#x589E;&#x52A0;&#x672C;&#x8282;&#x70B9;&#x7684;&#x914D;&#x7F6E;&#x7EAA;&#x5143;, <code>server.cluster-&gt;currentEpoch++</code>;</li>
+<li>&#x8BB0;&#x5F55;&#x53D1;&#x8D77;failover&#x7684;&#x914D;&#x7F6E;&#x7EAA;&#x5143;:<code>server.cluster-&gt;failover_auth_epoch = server.cluster-&gt;currentEpoch</code>;</li>
+<li>&#x5411;&#x5176;&#x4ED6;&#x6240;&#x6709;&#x8282;&#x70B9;&#x5E7F;&#x64AD;<code>CLUSTERMSG_TYPE_FAILOVER_AUTH_REQUEST</code>&#x6D88;&#x606F;&#xFF0C;&#x5BFB;&#x6C42;&#x5176;&#x4ED6;&#x8282;&#x70B9;&#x6295;&#x7968;&#x652F;&#x6301;&#x672C;&#x8282;&#x70B9;&#x6267;&#x884C;<code>failover</code>;</li>
+<li>&#x6253;&#x5F00;<code>failover</code>&#x5DF2;&#x5F00;&#x59CB;&#x6807;&#x8BC6;:<code>server.cluster-&gt;failover_auth_sent = 1</code>;</li>
+<li><code>return</code>;</li>
+</ul>
+</li>
+<li><p>&#x5982;&#x679C;&#x5F53;&#x524D;&#x8282;&#x70B9;&#x83B7;&#x5F97;&#x8DB3;&#x591F;&#x591A;&#x7684;&#x6295;&#x7968;&#xFF0C;&#x90A3;&#x4E48;&#x5BF9;FAIL&#x72B6;&#x6001;&#x7684;master&#x8FDB;&#x884C;failover:</p>
+<ul>
+<li>&#x5F53;&#x524D;&#x8282;&#x70B9;&#x8EAB;&#x4EFD;&#x7531;slave&#x53D8;&#x6210;master&#xFF0C;&#x51FD;&#x6570;: <code>clusterSetNodeAsMaster()</code>, &#x5C06;&#x81EA;&#x5DF1;&#x4ECE;master&#x7684;<code>slaves</code>&#x5217;&#x8868;&#x4E2D;&#x79FB;&#x9664;&#xFF0C;&#x672C;&#x8282;&#x70B9;<code>node-&gt;flags</code>&#x6DFB;&#x52A0;<code>REDIS_NODE_MASTER</code>;</li>
+<li>&#x8BA9;slave&#x53BB;&#x6389;&#x590D;&#x5236;&#xFF0C;&#x6210;&#x4E3A;&#x65B0;&#x7684;master&#xFF0C;&#x51FD;&#x6570;: <code>replicationUnsetMaster()</code>&#xFF0C;<code>free</code> master&#x5BA2;&#x6237;&#x7AEF;&#x3001;<code>backlog</code>&#x7B49;&#x7B49;;</li>
+<li>&#x63A5;&#x624B;&#x6240;&#x6709;master&#x8D1F;&#x8D23;&#x7684;slot: <code>server.cluster-&gt;slots</code>&#x3001;<code>node-&gt;slots</code>;</li>
+<li>&#x66F4;&#x65B0;&#x5F53;&#x524D;&#x8282;&#x70B9;&#x914D;&#x7F6E;&#x7EAA;&#x5143; &#x4E3A; &#x6295;&#x7968;&#x65F6;&#x7684;&#x914D;&#x7F6E;&#x7EAA;&#x5143;:<code>myself-&gt;configEpoch = server.cluster-&gt;failover_auth_epoch</code>;</li>
+<li>&#x8C03;&#x7528;<code>clusterUpdateState()</code>&#x66F4;&#x65B0;&#x8282;&#x70B9;&#x72B6;&#x6001;;</li>
+<li>&#x8C03;&#x7528;<code>clusterSaveConfigOrDie()</code> &#x4FDD;&#x5B58;&#x914D;&#x7F6E;&#x6587;&#x4EF6;;</li>
+<li>&#x5411;&#x6240;&#x6709;&#x8282;&#x70B9;&#x53D1;&#x9001;<code>PONG</code>&#x6D88;&#x606F;&#xFF0C;&#x8BA9;&#x5176;&#x4ED6;&#x4EBA;&#x77E5;&#x9053;&#x5F53;&#x524D;&#x8282;&#x70B9;&#x5DF2;&#x7ECF;&#x5347;&#x7EA7;&#x4E3A;master &#x5E76;&#x8D1F;&#x8D23;&#x76F8;&#x5E94;slots;</li>
+<li>&#x8C03;&#x7528;<code>resetManualFailover()</code>&#x91CD;&#x7F6E;manual failover&#x76F8;&#x5173;&#x72B6;&#x6001;(<code>mf_end</code>&#x3001;<code>mf_slave</code>&#x7B49;)&#xFF0C;&#x5173;&#x95ED;<code>PAUSED CLIENT</code>&#x72B6;&#x6001;, &#x7EE7;&#x7EED;&#x63A5;&#x53D7;&#x5BA2;&#x6237;&#x7AEF;&#x7684;&#x8BF7;&#x6C42;;</li>
+</ul>
+</li>
+</ul>
+<h4 id="void-clustercronvoid">void clusterCron(void)</h4>
+<p>&#x76EE;&#x7684;: &#x5468;&#x671F;&#x51FD;&#x6570;&#xFF0C;&#x9ED8;&#x8BA4;&#x6BCF;&#x79D2;&#x6267;&#x884C;10&#x6B21;(&#x6BCF;&#x9694;100&#x6BEB;&#x79D2;&#x6267;&#x884C;&#x4E00;&#x6B21;);</p>
+<p>&#x6267;&#x884C;&#x6D41;&#x7A0B;:</p>
+<ul>
+<li><p>&#x904D;&#x5386;&#x6240;&#x6709;nodes, <code>server.cluster-&gt;nodes</code>:</p>
+<ul>
+<li><p>&#x5982;&#x679C;node&#x662F;&#x672C;&#x8282;&#x70B9;&#x81EA;&#x8EAB;(<code>REDIS_NODE_MYSELF</code>) &#x6216;  &#x6CA1;&#x6709;&#x5730;&#x5740;(<code>REDIS_NODE_NOADDR</code>)&#x7684;node, &#x5219;&#x7EE7;&#x7EED;;</p>
+</li>
+<li><p>&#x5982;&#x679C;node&#x5904;&#x4E8E;<code>HANDSHAKE</code>&#x72B6;&#x6001;&#x65F6;&#x95F4;&#x8D85;&#x8FC7;<code>handshake_timeout</code>(&#x4E00;&#x822C;&#x548C;<code>node_timeout</code>&#x76F8;&#x7B49;)&#xFF0C;&#x5219;&#x76F4;&#x63A5;&#x5254;&#x9664;&#x8BE5;node; <code>continue</code>;</p>
+</li>
+<li><p>&#x5982;&#x679C;<code>node-&gt;link==NULL</code>, &#x5219;&#x4E3A;&#x8BE5;&#x672A;&#x521B;&#x5EFA;&#x8FDE;&#x63A5;&#x7684;&#x8282;&#x70B9;&#x521B;&#x5EFA;&#x8FDE;&#x63A5;(&#x5982;&#x672C;&#x8282;&#x70B9;`cluster meet $some_node):</p>
+<ul>
+<li><p>&#x8C03;&#x7528;<code>anetTcpNonBlockBindConnect()</code>&#x3001;<code>createClusterLink()</code>&#x7B49;&#x51FD;&#x6570;&#x521B;&#x5EFA;&#x8FDE;&#x63A5;;</p>
+</li>
+<li><p>&#x5411;&#x8BE5;&#x8282;&#x70B9;&#x53D1;&#x9001;<code>MEET/PING</code>&#x6D88;&#x606F;&#xFF0C;&#x5982;&#x679C;&#x5904;&#x4E8E;<code>MEET</code>&#x72B6;&#x6001;&#x5219;&#x53D1;&#x9001;<code>MEET</code>&#x6D88;&#x606F;&#xFF0C;&#x5982;&#x679C;&#x5904;&#x4E8E;<code>PING</code>&#x72B6;&#x6001;&#x5219;&#x53D1;&#x9001;<code>PING</code>&#x6D88;&#x606F;;</p>
+</li>
+<li><p>node&#x53BB;&#x9664;<code>REDIS_NODE_MEET</code>&#x6807;&#x8BB0;(&#x8BE5;&#x8282;&#x70B9;&#x540E;&#x7EED;&#x53EF;&#x80FD;&#x5904;&#x4E8E;<code>HANDSHAKE</code>&#x72B6;&#x6001;)</p>
+<p><strong>&#x5982;&#x679C;&#x5F53;&#x524D;&#x8282;&#x70B9;(&#x53D1;&#x9001;&#x8005;) &#x6CA1;&#x80FD;&#x6536;&#x5230;<code>MEET</code>&#x4FE1;&#x606F;&#x7684;<code>PONG</code>&#x56DE;&#x590D;&#xFF0C;&#x90A3;&#x4E48;&#x5B83;&#x5C06;&#x4E0D;&#x518D;&#x5411;&#x76EE;&#x6807;&#x8282;&#x70B9;&#x53D1;&#x9001;&#x547D;&#x4EE4;(&#x5728;&#x51FD;&#x6570;<code>clusterSendPing()</code>&#x4E2D;&#x5B9E;&#x73B0;, <code>clusterSednPing()</code>&#x4F1A;&#x8DF3;&#x8FC7;&#x5904;&#x4E8E;<code>NOADDR/HANDSHAKE</code>&#x72B6;&#x6001;&#x7684;&#x8282;&#x70B9;);</strong></p>
+<p>&#x5982;&#x679C;&#x5F53;&#x524D;&#x8282;&#x70B9;(&#x53D1;&#x9001;&#x8005;)&#x6536;&#x5230;MEET&#x4FE1;&#x606F;&#x7684;PONG&#x56DE;&#x590D;&#xFF0C;&#x90A3;&#x4E48;&#x8282;&#x70B9;&#x5C06;&#x4E0D;&#x518D;&#x5904;&#x4E8E;<code>MEET/HANDSHAKE</code>&#x72B6;&#x6001;&#xFF0C;&#x5C06;&#x7EE7;&#x7EED;&#x5411;&#x76EE;&#x6807;&#x8282;&#x70B9;&#x53D1;&#x9001;&#x666E;&#x901A;&#x7684;<code>PING</code>&#x547D;&#x4EE4;;</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code>clusterCron()</code>&#x51FD;&#x6570;&#x6BCF;&#x8F6E;&#x8BE2;10&#x6B21;(&#x81F3;&#x5C11;&#x95F4;&#x9694;&#x4E00;&#x79D2;)&#xFF0C; &#x5C31;&#x968F;&#x673A;&#x9009;&#x62E9;&#x4E00;&#x4E2A;node&#x5411;&#x5176;&#x53D1;&#x9001;<code>GOSSIP</code>&#x4FE1;&#x606F;</p>
+<ul>
+<li>&#x968F;&#x673A;&#x904D;&#x5386; 5 &#x4E2A;node(&#x8DF3;&#x8FC7;<code>node-&gt;link==MULL</code>&#x3001;<code>MYSELF</code>&#x3001;<code>HANDSHAKE</code>)&#xFF0C;&#x9009;&#x51FA;&#x5176;&#x4E2D; oldest <code>pong_received</code> time&#x7684;&#x8282;&#x70B9;(&#x63A5;&#x6536;&#x5230;&#x5B83;&#x7684;<code>PONG</code>&#x56DE;&#x590D;&#x65F6;&#x95F4;&#x8DDD;&#x79BB;&#x5F53;&#x524D;&#x6700;&#x4E45;)&#xFF0C; &#x5411;&#x5176;&#x53D1;&#x9001;<code>PING</code>&#x6D88;&#x606F;;</li>
+</ul>
+</li>
+<li><p>&#x904D;&#x5386;&#x6240;&#x6709;nodes :<code>server.cluster-&gt;nodes</code>:</p>
+<ul>
+<li><p>&#x4F9D;&#x7136;&#x8DF3;&#x8FC7;<code>MYSELF|NOADDR|HANDSHAKE</code>&#x72B6;&#x6001;&#x7684;&#x8282;&#x70B9;;</p>
+</li>
+<li><p>&#x83B7;&#x5F97;<code>orphaned_master</code>&#x3001;<code>max_slaves</code>&#x3001;<code>this_slaves</code>&#x7B49;&#x4FE1;&#x606F;:</p>
+<ul>
+<li><code>orphaned_master</code> : master&#x8D1F;&#x8D23;slots, &#x4F46;&#x662F;&#x5176;&#x6CA1;&#x6709;&#x72B6;&#x6001;ok&#x7684;slave&#xFF0C;&#x8FD9;&#x7C7B;master&#x7684;&#x4E2A;&#x6570;;</li>
+<li><code>max_slaves</code>: &#x96C6;&#x7FA4;&#x4E2D;master&#x62E5;&#x6709;&#x72B6;&#x6001;ok&#x7684;<code>slave</code>&#x7684;&#x6700;&#x5927;&#x4E2A;&#x6570;&#xFF0C;&#x8FD9;&#x91CC;&#x8BF4;&#x7684;&#x662F;&#x5355;&#x4E2A;master;</li>
+<li><code>this_slaves</code>:  &#x5982;&#x679C;&#x6211;&#x4EEC;&#x662F;slave, &#x6211;&#x4EEC;&#x7684;master&#x5177;&#x6709;&#x72B6;&#x6001;ok&#x7684;slave&#x7684;&#x4E2A;&#x6570;;</li>
+</ul>
+</li>
+<li><p>&#x5982;&#x679C;(<code>PING</code>&#x6D88;&#x606F;&#x5DF2;&#x7ECF;&#x53D1;&#x51FA;),&#x7B49;&#x5230; <code>PONG</code> &#x56DE;&#x590D;&#x7684;&#x65F6;&#x95F4; &#x8D85;&#x8FC7;&#x4E86; node timeout &#x7684;&#x4E00;&#x534A;,&#x91CA;&#x653E;&#x8BE5;<code>node-&gt;link</code>,&#x7B49;&#x5F85;&#x4E0B;&#x4E00;&#x6B21;<code>clusterCron()</code>&#x81EA;&#x52A8;&#x91CD;&#x8FDE;: &#x56E0;&#x4E3A;&#x5C3D;&#x7BA1;node&#x4F9D;&#x7136;&#x6B63;&#x5E38;&#xFF0C;&#x4F46;<code>link</code>&#x53EF;&#x80FD;&#x5DF2;&#x7ECF;&#x51FA;&#x95EE;&#x9898;&#xFF0C;&#x6240;&#x4EE5;&#x91CD;&#x8FDE;&#x4E00;&#x4E0B;;</p>
+</li>
+<li><p><strong>&#x5982;&#x679C;&#x6211;&#x4EEC;&#x76EE;&#x524D;&#x5BF9;&#x8BE5;node&#x6240;&#x6709;<code>PING</code>&#x90FD;&#x5DF2;&#x6536;&#x5230;&#x56DE;&#x590D;(&#x5F53;&#x524D;&#x6CA1;&#x6709;<code>PING</code>&#x5DF2;&#x53D1;&#x51FA;&#x4F46;&#x6CA1;&#x6536;&#x5230;&#x56DE;&#x590D;), &#x540C;&#x65F6;&#x6700;&#x540E;&#x4E00;&#x6B21;&#x6536;&#x5230;&#x6765;&#x81EA;&#x8BE5;node PONG&#x56DE;&#x590D;&#x65F6;&#x95F4;&#x5DF2;&#x7ECF;&#x8D85;&#x8FC7; <code>node_timeout/2</code>&#xFF1B;&#x90A3;&#x4E48;&#x5411;node&#x7EE7;&#x7EED;&#x53D1;&#x9001;&#x4E00;&#x4E2A;<code>PING</code>&#xFF0C;&#x786E;&#x4FDD;&#x6240;&#x6709;node&#x4E0D;&#x4F1A;&#x5EF6;&#x8FDF;&#x592A;&#x4E45;&#x624D;&#x88AB;<code>PING</code>&#x5230;</strong>;</p>
+</li>
+<li><p>&#x5982;&#x679C;&#x5F53;&#x524D;&#x8282;&#x70B9;&#x662F;&#x4E00;&#x4E2A;&#x4E3B;&#x8282;&#x70B9;&#xFF0C;node&#x662F;&#x5176;slave, node&#x8BF7;&#x6C42;&#x8FDB;&#x884C;<code>manual failover</code>( <code>server.cluster-&gt;mf_end</code> &#x5C31;&#x4EE3;&#x8868;&#x63A5;&#x6536;&#x5230;&#x4E86;slave&#x7684;manual failover&#x8BF7;&#x6C42;), &#x90A3;&#x4E48;&#x5411;node&#x53D1;&#x9001; PING &#x56DE;&#x590D;&#xFF0C;&#x5E76;continue;</p>
+<p>(&#x8FD9;&#x9075;&#x5FAA;&#x4E86;&#x5904;&#x4E8E; manual failover&#x72B6;&#x6001;&#x7684;master &#x66F4;&#x9891;&#x7E41;&#x7684;&#x5411;slave&#x53D1;&#x9001; PING &#x6D88;&#x606F;&#x7684;&#x539F;&#x5219;)</p>
+</li>
+<li><p>&#x5982;&#x679C;&#x5411;&#x8282;&#x70B9;&#x53D1;&#x9001;<code>PING</code>&#x6D88;&#x606F;&#xFF0C;&#x7B49;&#x5F85;<code>PONG</code>&#x56DE;&#x590D;&#x7684;&#x65F6;&#x95F4;&#x8D85;&#x8FC7;<code>node_timeout</code>&#xFF0C;&#x90A3;&#x4E48;&#x5C06;node&#x6807;&#x8BB0;&#x4E3A;<code>REDIS_NODE_PFAIL</code>;</p>
+</li>
+</ul>
+</li>
+<li><p>&#x5982;&#x679C;&#x6211;&#x4EEC;&#x662F;&#x4E00;&#x4E2A;slave&#x8282;&#x70B9;,&#x4F46;&#x662F;&#x590D;&#x5236;&#x5173;&#x7CFB;&#x5F53;&#x524D;&#x4F9D;&#x7136;&#x662F;&#x5173;&#x95ED;&#x72B6;&#x6001;&#x3002;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x5DF2;&#x77E5;master&#x7684;&#x5730;&#x5740;,&#x6B64;&#x65F6;&#x6211;&#x4EEC;&#x5C06;&#x91CD;&#x65B0;&#x5F00;&#x542F;&#x590D;&#x5236;;</p>
+</li>
+<li><p>&#x5982;&#x679C;<code>manual failover</code>&#x8D85;&#x65F6;&#xFF0C;&#x5219;&#x7EC8;&#x6B62;&#x4ED6;: <code>manualFailoverCheckTimeout()</code>;</p>
+</li>
+<li><p>&#x5982;&#x679C;&#x5F53;&#x524D;&#x8282;&#x70B9;&#x662F;slave:</p>
+<ul>
+<li><p>&#x5224;&#x65AD;manual failover &#x662F;&#x5426;&#x53EF;&#x4EE5;&#x5F00;&#x59CB;&#x4E86;(&#x5982;&#x679C;ok&#x5219;<code>server.cluster-&gt;mf_can_start=1</code>)</p>
+<p>&#x6700;&#x4E3B;&#x8981;&#x7684;&#x5224;&#x65AD;: <code>server.cluster-&gt;mf_master_offset == server.master-&gt;reploff</code>;</p>
+</li>
+<li><p>&#x8C03;&#x7528;<code>clusterHandleSlaveFailover()</code> &#x6267;&#x884C;<code>failover</code>&#x64CD;&#x4F5C;;</p>
+</li>
+</ul>
+</li>
+<li><p>&#x8C03;&#x7528;:<code>clusterUpdateState()</code>&#x66F4;&#x65B0;&#x96C6;&#x7FA4;&#x72B6;&#x6001;;</p>
+</li>
+</ul>
+<h4 id="&#x4E00;&#x4E9B;&#x5173;&#x952E;&#x65F6;&#x95F4;&#x7684;&#x8BA1;&#x7B97;">&#x4E00;&#x4E9B;&#x5173;&#x952E;&#x65F6;&#x95F4;&#x7684;&#x8BA1;&#x7B97;</h4>
+<ul>
+<li>failover&#x8D85;&#x65F6;&#x65F6;&#x95F4;: <code>auth_timeout=server.cluster_node_timeout*2</code>, &#x6700;&#x5C11; 2s;</li>
+<li>failover&#x91CD;&#x8BD5;&#x65F6;&#x95F4;: <code>auth_retrytime=auth_timeout*2</code>(&#x8D85;&#x65F6;&#x65F6;&#x95F4;&#x7684;&#x4E24;&#x500D;);</li>
+<li>handshake&#x8D85;&#x65F6;&#x65F6;&#x95F4;: <code>handshake_timeout=server.cluster_node_timeout</code>, &#x6700;&#x5C11; 1&#x79D2;;</li>
+<li>slave&#x8FDB;&#x5165;<code>manual failover</code>&#x7684;&#x8D85;&#x65F6;&#x65F6;&#x95F4;(<code>mf_end</code>): <code>mstime() + REDIS_CLUSTER_MF_TIMEOUT</code>, <code>REDIS_CLUSTER_MF_TIMEOUT</code>&#x5728;Redis 3.0&#x7684;&#x7248;&#x672C;&#x4E2D;&#x503C;&#x4E3A; 5&#x79D2;;</li>
+<li>master&#x8FDB;&#x5165;<code>manual failover</code>&#x7684;&#x8D85;&#x65F6;&#x65F6;&#x95F4;(<code>mf_end</code>): <code>mstime()+REDIS_CLUSTER_MF_TIMEOUT*2</code>, <code>REDIS_CLUSTER_MF_TIMEOUT</code>&#x5728;Redis 3.0&#x7684;&#x7248;&#x672C;&#x4E2D;&#x503C;&#x4E3A; 5&#x79D2;;</li>
+<li>&#x672C;&#x8282;&#x70B9;&#x5C06;&#x4E00;&#x4E2A;node&#x6807;&#x8BB0;&#x4E3A;<code>PFAIL</code>&#x7684;&#x65F6;&#x95F4;: <code>server.cluster_node_timeout</code>;</li>
+</ul>
+<h4 id="&#x9605;&#x8BFB;&#x6E90;&#x7801;&#x4E2D;&#x7684;&#x95EE;&#x9898;">&#x9605;&#x8BFB;&#x6E90;&#x7801;&#x4E2D;&#x7684;&#x95EE;&#x9898;:</h4>
+<ol>
+<li><p><code>server.cluster-&gt;nodes[j]</code>&#x548C;<code>link-&gt;node</code>&#x5230;&#x5E95;&#x6709;&#x5565;&#x533A;&#x522B;? &#x7279;&#x522B;&#x662F;<code>clusterProcessPacket()</code>&#x51FD;&#x6570;&#x4E2D;&#x4E00;&#x4F1A;&#x513F;&#x68C0;&#x6D4B;&#x7684;&#x662F;<code>link-&gt;node!=NULL</code> &#x4E00;&#x4F1A;&#x513F;&#x662F;<code>sender!=NULL</code>&#xFF0C;&#x641E;&#x4E0D;&#x61C2;;</p>
+<p>&#x6BD4;&#x5982;NodeAA &#x7ED9;  NodeBB &#x53D1;&#x9001;MEET&#x6D88;&#x606F;&#xFF0C;NodeBB&#x65B0;&#x63A5;&#x6536;&#x5230;&#x8FD9;&#x4E2A;&#x6D88;&#x606F;&#x65F6;&#xFF0C;<code>link-&gt;node</code>&#x662F;&#x5426;&#x662F;NULL;</p>
+<p>&#x7B54;: </p>
+<blockquote>
+<p>&#x4EC0;&#x4E48;&#x65F6;&#x5019; link-&gt;node == NULL, &#x4EC0;&#x4E48;&#x65F6;&#x5019; link-&gt;node != NULL?</p>
+<p><code>clusterProcessPacket()</code>&#x53EA;&#x4F1A;&#x88AB;<code>clusterReadHandler()</code>&#x51FD;&#x6570;&#x8C03;&#x7528;&#xFF0C;&#x800C;&#x5728;<code>clusterReadHandler()</code>&#x4E2D;<code>link</code>&#x4E5F;&#x662F;&#x901A;&#x8FC7;<code>void *privdata</code>&#x53C2;&#x6570;&#x8F6C;&#x6362;&#x800C;&#x6765;, &#x6240;&#x4EE5;<code>link-&gt;node</code>&#x662F;&#x5426;&#x4E3A;NULL&#x4E0D;&#x662F;<code>clusterReadHandler()</code>&#x51B3;&#x5B9A;&#x7684;&#xFF0C;<code>clusterReadHandler()</code>&#x51FD;&#x6570;&#x53EA;&#x662F;&#x7B80;&#x5355;&#x7684;&#x4ECE;<code>link-&gt;fd</code>&#x4E2D;&#x8BFB;&#x53D6;&#x5185;&#x5BB9;&#x5230;<code>link-&gt;rcvbuf</code>&#x800C;&#x5DF2;;</p>
+<p><code>clusterReadHandler()</code>&#x51FD;&#x6570;&#x4E3B;&#x8981;&#x6709;&#x4E24;&#x4E2A;&#x5730;&#x65B9;&#x8C03;&#x7528;:</p>
+<ul>
+<li><code>clusterAcceptHandler()</code>&#xFF0C;&#x8BE5;&#x51FD;&#x6570;&#x5728;cluster&#x542F;&#x52A8;&#x65F6;&#x7ED1;&#x5B9A;&#x76F8;&#x5173;<code>fd</code>&#xFF0C;&#x4E3B;&#x8981;&#x7528;&#x4E8E;&#x63A5;&#x6536;cluster&#x7684;&#x8FDE;&#x63A5;&#x8BF7;&#x6C42;&#x3002;&#x5728;&#x8BE5;&#x51FD;&#x6570;&#x4E2D;, <code>link-&gt;node</code>&#x59CB;&#x7EC8;&#x4E3A;NULL&#xFF0C;&#x800C;&#x540E;<code>clusterReadHandler()</code>&#x51FD;&#x6570;&#x53EF;&#x4EE5;&#x4ECE;<code>link-&gt;fd</code>&#x4E2D;&#x8BFB;&#x53D6;&#x5185;&#x5BB9;&#x586B;&#x5145;<code>link-&gt;rcvbuf</code>; &#x7EE7;&#x800C;<code>clusterProcessPacket()</code>&#x53EF;&#x4EE5;&#x4ECE;<code>link-&gt;fd</code>&#x4E2D;&#x8BFB;&#x53D6;&#x53D1;&#x9001;&#x8005; ip &#x548C; port; </li>
+<li><code>clusterCron()</code>, &#x8BE5;&#x51FD;&#x6570;&#x88AB;cluster node&#x5B9A;&#x671F;&#x8C03;&#x7528;&#xFF0C;&#x4F20;&#x5165;<code>link-&gt;node</code>&#x4E0D;&#x662F;<code>NULL</code>&#x3002;</li>
+</ul>
+<p>&#x6839;&#x636E;&#x4E0A;&#x9762;&#x8FD9;&#x4E24;&#x4E2A;&#x51FD;&#x6570;&#x7684;&#x8C03;&#x7528;&#x60C5;&#x51B5;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5F97;&#x51FA; &quot;NodeAA &#x7ED9;  NodeBB &#x53D1;&#x9001;MEET&#x6D88;&#x606F;&quot; &#x7684;&#x5927;&#x81F4;&#x6267;&#x884C;&#x6D41;&#x7A0B;&#x3002;</p>
+</blockquote>
+</li>
+<li><p><font color="red"><strong>NodeAA &#x7ED9;  NodeBB &#x53D1;&#x9001;MEET&#x6D88;&#x606F; &#x7684;&#x5927;&#x81F4;&#x6267;&#x884C;&#x6D41;&#x7A0B; &#x662F;&#x5565;(&#x4E5F;&#x662F;&#x4E00;&#x4E2A;&#x96C6;&#x7FA4;&#x65B0;&#x589E;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#x6D41;&#x7A0B;)</strong></font>&#xFF1F;</p>
+<ul>
+<li><p>NodeAA&#x4E0A;&#x6267;&#x884C;<code>cluster meet NodeBB_ip NodeBB_port</code></p>
+<p>NodeAA&#x5C06;&#x8C03;&#x7528;<code>clusterStartHandshake()</code>: &#x68C0;&#x67E5;ip port&#x7684;&#x5408;&#x6CD5;&#x6027;&#xFF0C;&#x5E76;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;nodeBB(nodename&#x968F;&#x673A;)&#x4FDD;&#x5B58;ip port&#xFF0C;&#x5E76;&#x5C06;&#x8BE5;nodeBB&#x4FDD;&#x5B58;&#x5230; <code>server.cluster-&gt;nodes</code>&#x4E2D;&#xFF0C;&#x6CE8;&#x610F;: &#x6B64;&#x65F6;nodeBB&#x88AB;&#x6807;&#x8BB0;&#x4E3A;<code>REDIS_NODE_HANDSHAKE|REDIS_NODE_MEET</code>&#xFF0C;&#x540C;&#x65F6;<code>node-&gt;link==NULL</code>;</p>
+</li>
+<li><p>NodeAA&#x5728;<code>clusterCron()</code>&#x51FD;&#x6570;&#x4E2D;&#xFF0C;&#x904D;&#x5386;<code>server.cluster-&gt;nodes</code>,&#x521A;&#x597D;&#x904D;&#x5386;&#x5230;nodeBB:</p>
+<ul>
+<li><p>&#x6B64;&#x65F6;<code>nodeBB-&gt;link==NULL</code>&#xFF0C;&#x5219;&#x6839;&#x636E;nodeBB  <code>ip port</code>&#x7B49;&#x521B;&#x5EFA;link =&gt; <code>nodeBB-&gt;link!=NULL</code>&#x3002;</p>
+<p>&#x4E14;<code>nodeBB-&gt;fd</code>&#x8BFB;&#x53D6;&#x4E8B;&#x4EF6;&#x548C;<code>clusterReadHandler()</code>&#x7ED1;&#x5B9A;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8BF4; <code>nodeBB-&gt;fd&#x6709;&#x6570;&#x636E;&#x53EF;&#x8BFB;&#xFF0C;&#x5219;server&#x8C03;&#x7528;</code>clusterReadHandler()`&#x5904;&#x7406;;</p>
+<p>NodeAA&#x8C03;&#x7528;<code>clusterSendPing()</code>&#x5411;NodeBB&#x53D1;&#x9001;<code>MEET</code>&#x6D88;&#x606F;;</p>
+<p><code>nodeBB-&gt;flags</code>&#x53BB;&#x6389;<code>REDIS_NODE_MEET</code>&#x6807;&#x8BB0;&#xFF0C;<code>nodeBB-&gt;flags</code>&#x7B49;&#x4E8E;<code>REDIS_NODE_HANDSHAKE</code>;</p>
+</li>
+</ul>
+</li>
+<li><p>NodeBB&#x63A5;&#x6536;&#x5230;&#x6765;&#x81EA;NodeAA&#x7684;<code>MEET</code>&#x6D88;&#x606F;&#xFF0C;&#x8C03;&#x7528;<code>clusterAcceptHandler()</code>&#x5904;&#x7406;&#xFF0C;&#x5728;&#x8BE5;&#x51FD;&#x6570;&#x4E2D;<code>link-&gt;node==NULL</code>;</p>
+<ul>
+<li><code>clusterAcceptHandler()</code>&#x7EE7;&#x7EED;&#x8C03;&#x7528;<code>clusterReadHandler()</code>&#x5904;&#x7406;&#xFF0C;<code>clusterReadHandler()</code>&#x51FD;&#x6570;&#x7B80;&#x5355;&#x5730;&#x4ECE;<code>link-&gt;fd</code>&#x4E2D;&#x8BFB;&#x53D6;&#x5185;&#x5BB9;&#x5230;<code>link-&gt;rcvbuf</code>&#xFF0C;<code>clusterReadHandler()</code>&#x7EE7;&#x7EED;&#x8C03;&#x7528;<code>clusterProcessPacket()</code>&#x5904;&#x7406;;</li>
+<li><code>clusterProcessPacket()</code>&#x4E2D;&#xFF0C;NodeBB&#x56E0;&#x4E3A;&#x662F;&#x7B2C;&#x4E00;&#x6B21;&#x6536;&#x5230;MEET&#x6D88;&#x606F;:<ul>
+<li><code>server.cluster-&gt;nodes</code>&#x6839;&#x636E;nodename&#x627E;&#x4E0D;&#x5230;&#x53D1;&#x9001;&#x8005;nodeAA&#xFF0C;&#x56E0;&#x6B64;<code>sender==NULL</code>;</li>
+<li>&#x540C;&#x65F6;<code>link-&gt;node</code>&#x4E5F;&#x662F;NULL;</li>
+<li>nodeBB&#x53EA;&#x80FD;&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;nodeAA(nodename&#x968F;&#x673A;)&#xFF0C;&#x4ECE;<code>link-&gt;fd</code>&#x4E2D;&#x5F97;&#x5230;<code>nodeAA_ip</code>&#x3001;<code>nodeAA_port</code>&#x4FDD;&#x5B58;&#x5230;<code>nodeAA</code>&#x4E2D;&#xFF0C;&#x5E76;&#x5C06;nodeAA&#x6DFB;&#x52A0;<code>server.cluster-&gt;nodes</code>&#x4E2D;&#x3002;</li>
+<li>nodeBB&#x7EE7;&#x7EED;&#x8C03;&#x7528;<code>clusterProcessGossipSection()</code>&#x51FD;&#x6570;&#x89E3;&#x6790;<code>gossip section</code>&#x7684;&#x5185;&#x5BB9;&#xFF0C;&#x56E0;&#x4E3A;<ul>
+<li><code>gossip section</code>&#x4E2D;&#x7684;node&#x5BF9;&#x4E8E;nodeBB&#x6765;&#x8BF4;&#x4F9D;&#x7136;&#x662F;&#x4E00;&#x4E2A;&#x4E5F;&#x4E0D;&#x8BA4;&#x8BC6;(<code>node=clusterLookupNode(g-&gt;nodename),node==NULL</code>);</li>
+<li>&#x540C;&#x65F6;nodeBB&#x4E5F;&#x4E0D;&#x77E5;&#x9053;&#x53D1;&#x9001;&#x8005;&#x662F;&#x8C01;: <code>link-&gt;node==NULL</code> &#x540C;&#x65F6; <code>clusterLookupNode(hdr-&gt;sender)==NULL</code>;</li>
+<li>&#x6240;&#x4EE5;<code>clusterProcessGossipSection()</code>&#x4EC0;&#x4E48;&#x4E5F;&#x505A;&#x4E0D;&#x4E86;;</li>
+</ul>
+</li>
+<li>nodeBB&#x5411;nodeAA&#x56DE;&#x590D;<code>PONG</code>&#x6D88;&#x606F;(&#x6CE8;&#x610F;PONG&#x6D88;&#x606F;&#x4E2D;&#x5E26;&#x6709;nodeBB&#x771F;&#x5B9E;&#x7684;nodename);</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>NodeAA&#x63A5;&#x6536;&#x5230;&#x6765;&#x81EA;NodeBB&#x7684;<code>PONG</code>&#x6D88;&#x606F;&#xFF0C;&#x5E76;&#x8C03;&#x7528;<code>clusterProcessPacket()</code>&#x5904;&#x7406;:</p>
+<ul>
+<li>&#x6B64;&#x65F6;NodeAA&#x867D;&#x7136;&#x4FDD;&#x5B58;&#x4E86;nodeBB&#x8282;&#x70B9;&#x4FE1;&#x606F;&#xFF0C;&#x4F46;&#x662F;<code>nodeBB-&gt;name</code>&#x8FD8;&#x662F;&#x968F;&#x673A;&#x751F;&#x6210;&#x7684;&#xFF0C;&#x6240;&#x4EE5;<code>sender=NULL</code>;</li>
+<li>&#x7136;&#x540E;&#x8C03;&#x7528;<code>clusterRenameNode(link-&gt;node, hdr-&gt;sender)</code>&#x5C06;&#x53D1;&#x9001;&#x8005;(NodeBB)&#x7684;name&#x8D4B;&#x503C;&#x7ED9;<code>link-&gt;node-&gt;name</code>,&#x5F53;&#x7136; <code>server.cluster-&gt;nodes</code>&#x4E2D;&#x7684;&#x4FE1;&#x606F;&#x4E5F;&#x4F1A;&#x88AB;&#x66F4;&#x65B0;;</li>
+<li>NodeAA&#x53BB;&#x6389;NodeBB&#x7684;<code>REDIS_NODE_HANDSHAKE</code>&#x6807;&#x8BB0;&#xFF0C; &#x4E14;&#x786E;&#x5B9A;NodeBB&#x662F;master&#x8FD8;&#x662F;slave&#x3002;</li>
+<li>&#x7EE7;&#x7EED;&#x66F4;&#x65B0;NodeBB&#x7684;<code>pong_received</code>&#x3001;<code>ping_sent</code>&#x7B49;&#x4FE1;&#x606F;;</li>
+<li>&#x81F3;&#x6B64;&#xFF0C;NodeAA &#x4E2D; NodeBB&#x5C5E;&#x4E8E;&#x4E00;&#x4E2A;&#x666E;&#x901A;&#x6B63;&#x5E38;&#x7684;&#x8282;&#x70B9;&#x4E86;&#xFF0C;NodeAA&#x5411;NodeBB&#x63E1;&#x624B;&#x5B8C;&#x6210;;</li>
+</ul>
+</li>
+<li><p>NodeBB&#x4E2D;&#x6B64;&#x65F6;&#x8BB0;&#x5F55;&#x7684;nodeAA&#xFF0C;&#x4F9D;&#x7136;&#x662F;<code>HANDSHAKE</code>&#xFF0C;&#x800C;&#x540E;&#x5728;NodeBB&#x7684;<code>clusterCron()</code>&#x51FD;&#x6570;&#x4E2D;&#xFF0C;&#x5C06;&#x91CD;&#x590D;&#x4E0A;&#x9762;nodeAA&#x7684;&#x6B65;&#x9AA4;:</p>
+<ul>
+<li><p>&#x6839;&#x636E;NodeAA  <code>ip port</code>&#x7B49;&#x521B;&#x5EFA;link =&gt; <code>nodeAA-&gt;link!=NULL</code>&#x3002;</p>
+<p>&#x4E14;<code>nodeAA-&gt;fd</code>&#x8BFB;&#x53D6;&#x4E8B;&#x4EF6;&#x548C;<code>clusterReadHandler()</code>&#x7ED1;&#x5B9A;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8BF4; <code>nodeAA-&gt;fd</code>&#x6709;&#x6570;&#x636E;&#x53EF;&#x8BFB;&#xFF0C;&#x5219;server&#x8C03;&#x7528;<code>clusterReadHandler()</code>&#x5904;&#x7406;;</p>
+<p>NodeBB&#x8C03;&#x7528;<code>clusterSendPing()</code>&#x5411;NodeAA&#x53D1;&#x9001;<code>MEET</code>&#x6D88;&#x606F;;</p>
+<p>NodeAA&#x56DE;&#x590D;NodeBB PONG&#x6D88;&#x606F;&#x540E;&#xFF0C;NodeBB&#x5C06;&#x8C03;&#x7528;<code>clusterProcessPacket()</code>&#x5904;&#x7406;&#xFF0C;&#x5E76;&#x4ECE;&#x4E2D;&#x5F97;&#x5230;&#x53D1;&#x9001;&#x8005;(NodeAA)&#x7684;name&#x7B49;&#x4FE1;&#x606F;&#xFF0C;&#x53BB;&#x6389;&#x672C;&#x5730;NodeAA&#x7684; <code>HANDSHAKE</code>&#x6807;&#x8BB0;&#x3002;&#x81F3;&#x6B64;&#xFF0C;NodeBB&#x5411;NodeAA&#x4E5F;&#x63E1;&#x624B;&#x5B8C;&#x6210;;</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><font color="red">**`manual failover`&#x7684;&#x6267;&#x884C;&#x6D41;&#x7A0B;**</font>
+
+<ul>
+<li><p>&#x7528;&#x6237;&#x5728;<code>redis_slave</code>&#x4E0A;&#x6267;&#x884C;:<code>cluster failover [force]</code>&#x547D;&#x4EE4;;</p>
+<ul>
+<li><p>&#x5982;&#x679C;&#x5F53;&#x524D;&#x8282;&#x70B9;&#x4E0D;&#x662F;slave&#xFF0C;&#x8FD4;&#x56DE;&#x9519;&#x8BEF;;</p>
+</li>
+<li><p>&#x5982;&#x679C;&#x5F53;&#x524D;&#x8282;&#x70B9;&#x7684;master&#x4E3A;&#x7A7A;&#x6216;&#x5904;&#x4E8E;FAIL&#x72B6;&#x6001;(<code>myself-&gt;slaveof==NULL</code>&#x3001;<code>nodeFailed(myself-&gt;slaveof)</code>),&#x5219;&#x5FC5;&#x987B;&#x5904;&#x4E8E;&#x5E26;&#x4E0A;<code>force</code>&#x53C2;&#x6570;;</p>
+</li>
+<li><p>&#x91CD;&#x7F6E;<code>manual failover</code>&#x6709;&#x5173;&#x7684;&#x72B6;&#x6001;&#x5C5E;&#x6027;&#xFF0C;&#x5982;<code>server.cluster-&gt;mf_end</code>&#x7B49;;</p>
+</li>
+<li><p>&#x8BBE;&#x7F6E;<code>manual failover</code>&#x7684;&#x6700;&#x5927;&#x6267;&#x884C;&#x65F6;&#x95F4;(&#x8D85;&#x8FC7;&#x8FD9;&#x4E2A;&#x65F6;&#x95F4;&#x5931;&#x8D25; or &#x7EC8;&#x6B62;): <code>server.cluster-&gt;mf_end= mstime() + REDIS_CLUSTER_MF_TIMEOUT</code>; </p>
+<p><code>REDIS_CLUSTER_MF_TIMEOUT</code>&#x5F53;&#x524D;&#x662F; 5&#x79D2;;</p>
+</li>
+<li><p>&#x5982;&#x679C;&#x662F;&#x5F3A;&#x5236;manual failover(<code>force==true</code>), &#x90A3;&#x4E48;&#x8BBE;&#x7F6E;<code>mf_can_start=1</code>, &#x4EE3;&#x8868;&#x53EF;&#x4EE5;&#x7ACB;&#x5373;&#x5F00;&#x59CB; failover;</p>
+</li>
+<li><p>&#x5982;&#x679C;&#x4E0D;&#x662F;&#x5F3A;&#x5236;manual failover(<code>force==true</code>), &#x90A3;&#x4E48;&#x5411;&#x672C;&#x8282;&#x70B9;&#x7684;<code>master</code>&#x53D1;&#x9001;<code>CLUSTERMSG_TYPE_MFSTART</code>&#x6D88;&#x606F;;</p>
+</li>
+<li><p>&#x56DE;&#x590D;&#x5BA2;&#x6237;&#x7AEF;;</p>
+</li>
+</ul>
+</li>
+<li><p>master&#x63A5;&#x6536;&#x5230;<code>CLUSTERMSG_TYPE_MFSTART</code>&#x6D88;&#x606F;&#x540E;:</p>
+<ul>
+<li><p>&#x5982;&#x679C;&#x6D88;&#x606F;&#x53D1;&#x9001;&#x8005;<code>sender</code>&#x7684;master&#x4E0D;&#x662F;&#x6211;&#xFF0C;&#x5219;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;;</p>
+</li>
+<li><p>&#x8BBE;&#x7F6E;<code>manual failover</code>&#x7684;&#x6700;&#x5927;&#x6267;&#x884C;&#x65F6;&#x95F4;(&#x8D85;&#x8FC7;&#x8FD9;&#x4E2A;&#x65F6;&#x95F4;&#x5931;&#x8D25; or &#x7EC8;&#x6B62;): <code>server.cluster-&gt;mf_end= mstime() + REDIS_CLUSTER_MF_TIMEOUT</code>; </p>
+</li>
+<li><p>&#x8BB0;&#x5F55;&#x8BF7;&#x6C42;<code>manual failover</code>&#x7684;&#x8282;&#x70B9;: <code>server.cluster-&gt;mf_slave=sender</code>;</p>
+</li>
+<li><p>&#x8C03;&#x7528;<code>pauseClients()</code>&#x8BA9;master&#x8282;&#x70B9;&#x8FDB;&#x5165;<code>PAUSED_CLIENT</code>&#x72B6;&#x6001;:<code>server.clients_paused = 1</code>;</p>
+<p>&#x8BA9;master&#x5728;&#x6307;&#x5B9A;&#x65F6;&#x95F4;&#x5185;(<code>mstime()+REDIS_CLUSTER_MF_TIMEOUT*2</code>)&#x4E0D;&#x518D;&#x63A5;&#x6536;&#x5BA2;&#x6237;&#x7AEF;&#x7684;&#x8BF7;&#x6C42;(slave&#x7684;&#x8BF7;&#x6C42;&#x6B63;&#x5E38;);</p>
+</li>
+<li><p>&#x540E;&#x7EED;<code>master</code>&#x5728;<code>clusterCron()</code>&#x51FD;&#x6570;&#x4E2D;&#x5411;slave&#x53D1;&#x9001;<code>PING</code>&#x6D88;&#x606F;&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;, <code>clusterBuildMessageHdr()</code>&#x51FD;&#x6570;&#x5C06;&#x6267;&#x884C;:</p>
+<ul>
+<li><code>PING</code>&#x6D88;&#x606F;&#x5C06;&#x5E26;&#x6709;<code>CLUSTERMSG_FLAG0_PAUSED</code>&#x6807;&#x8BC6;: <code>clusterMsg-&gt;mflags[0] |= CLUSTERMSG_FLAG0_PAUSED</code>;</li>
+<li>&#x540C;&#x65F6;&#x5E26;&#x6709;&#x81EA;&#x5DF1;&#x7684;<code>offset</code>: <code>clusterMsg-&gt;offset=server.master_repl_offset</code>;</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>slave&#x63A5;&#x6536;&#x5230;master&#x7684;<code>PING</code>&#x6D88;&#x606F;&#x540E;:</p>
+<ul>
+<li><p>&#x66F4;&#x65B0;&#x81EA;&#x5DF1;&#x672C;&#x5730;&#x7684;<code>master-&gt;repl_offset</code>: <code>sender-&gt;repl_offset=hdr-&gt;offset</code>;</p>
+</li>
+<li><p>&#x5982;&#x679C;slave &#x5904;&#x4E8E;<code>manual failover</code>&#x72B6;&#x6001;&#xFF0C;&#x5176;&#x53D1;&#x9001;&#x8FC7;&#x6765;&#x7684;<code>clusterMsg</code>&#x5E26;&#x6709;<code>CLUSTERMSG_FLAG0_PAUSED</code>&#x6807;&#x8BC6;</p>
+<p>&#x5219;&#x66F4;&#x65B0;&#x672C;&#x8282;&#x70B9;&#x7684;<code>mf_master_offset</code>: <code>server.cluster-&gt;mf_master_offset= sender-&gt;repl_offset</code>;</p>
+</li>
+<li><p>&#x8BBE;&#x7F6E;<code>clusterDoBeforeSleep(CLUSTER_TODO_HANDLE_MANUALFAILOVER)</code></p>
+</li>
+</ul>
+</li>
+<li><p>slave&#x5728;<code>clusterBeforeSleep()</code>&#x51FD;&#x6570;&#x4E2D;:</p>
+<ul>
+<li><p>&#x8C03;&#x7528;<code>clusterHandleManualFailover()</code>&#x786E;&#x5B9A;<code>manual failover</code>&#x662F;&#x5426;&#x53EF;&#x4EE5;&#x5F00;&#x59CB;&#x4E86;, &#x5982;&#x679C;&#x53EF;&#x4EE5;&#x5F00;&#x59CB;&#x4E86;: <code>server.cluster-&gt;mf_can_start=1</code>;</p>
+</li>
+<li><p>&#x8C03;&#x7528;<code>clusterHandleSlaveFailover()</code>&#x6267;&#x884C;<code>failover</code>:</p>
+<ul>
+<li><p>&#x505A;&#x4E00;&#x4E9B;&#x524D;&#x7F6E;&#x68C0;&#x67E5;&#xFF0C;&#x5982;&#x672C;&#x8282;&#x70B9;&#x662F;&#x4E00;&#x4E2A;slave&#xFF0C;&#x6211;&#x4EEC;&#x7684;master&#x88AB;&#x6807;&#x8BB0;&#x4E3A;<code>FAIL</code> &#x6216; &#x8FD9;&#x662F;&#x4E00;&#x4E2A;<code>manual failover</code>;</p>
+</li>
+<li><p>&#x786E;&#x5B9A;&#x672C;&#x8282;&#x70B9;&#x5728;&#x5DE6;&#x53F3;slave&#x4E2D;&#x7684;&#x6392;&#x540D;&#xFF0C;&#x8FDB;&#x800C;&#x786E;&#x5B9A;&#x672C;&#x8282;&#x70B9;<code>failover</code>&#x7684;&#x5F00;&#x59CB;&#x65F6;&#x95F4;&#xFF0C;&#x5982;&#x679C;&#x5F00;&#x59CB;&#x65F6;&#x95F4;&#x6CA1;&#x5230;&#xFF0C;&#x5219;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;&#x3002;</p>
+<p>(&#x6211;&#x4EEC;&#x672C;&#x5730;&#x8FD8;&#x6CA1;&#x5230;<code>failover</code>&#x5F00;&#x59CB;&#x65F6;&#x95F4;&#xFF0C;&#x4F46;&#x4E0D;&#x4EE3;&#x8868;&#x5176;&#x4ED6;slave&#x6CA1;&#x5230;<code>failover</code>&#x5F00;&#x59CB;&#x65F6;&#x95F4;&#xFF0C;&#x6240;&#x4EE5;&#x6392;&#x540D;&#x9760;&#x524D;&#x7684;slave&#x4F1A;&#x4F18;&#x5148;&#x6267;&#x884C;<code>failover</code>);</p>
+</li>
+<li><p>&#x5982;&#x679C;&#x662F;<code>manual failover</code>&#xFF0C;&#x4E0A;&#x4E00;&#x6B65;&#x4E0D;&#x5B58;&#x5728;&#xFF0C;&#x4F1A;&#x9A6C;&#x4E0A;&#x5F00;&#x59CB;<code>failover</code>;</p>
+</li>
+<li><p>&#x589E;&#x52A0;&#x672C;&#x8282;&#x70B9;&#x7684;&#x914D;&#x7F6E;&#x7EAA;&#x5143;;</p>
+</li>
+<li><p>&#x5411;&#x5176;&#x4ED6;&#x6240;&#x6709;&#x8282;&#x70B9;&#x5E7F;&#x64AD;<code>CLUSTERMSG_TYPE_FAILOVER_AUTH_REQUEST</code>&#x6D88;&#x606F;&#xFF0C;&#x5BFB;&#x6C42;&#x5176;&#x4ED6;&#x8282;&#x70B9;&#x6295;&#x7968;&#x652F;&#x6301;&#x672C;&#x8282;&#x70B9;&#x6267;&#x884C;<code>failover</code>;</p>
+</li>
+<li><p>&#x7B49;&#x5F85;&#x4E0B;&#x4E00;&#x6B21;<code>clusterCron()</code>&#x518D;&#x6B21;&#x8C03;&#x7528;<code>clusterHandleSlaveFailover()</code>;</p>
+</li>
+</ul>
+</li>
+<li><p>&#x4E0B;&#x4E00;&#x6B21;<code>clusterCron()</code>&#x8C03;&#x7528;<code>clusterHandleSlaveFailover()</code>:</p>
+<ul>
+<li>&#x5982;&#x679C;&#x672C;&#x8282;&#x70B9;&#x83B7;&#x5F97;&#x4E86;&#x8DB3;&#x591F;&#x591A;&#x7684;&#x9009;&#x7968;&#xFF0C;&#x5219;:<ul>
+<li>&#x5F53;&#x524D;&#x8282;&#x70B9;&#x8EAB;&#x4EFD;&#x7531;slave&#x53D8;&#x6210;master,&#x8BA9;&#x672C;&#x8282;&#x70B9;&#x53BB;&#x6389;&#x590D;&#x5236;&#xFF0C;&#x6210;&#x4E3A;&#x65B0;&#x7684;master;</li>
+<li>&#x63A5;&#x624B;&#x6240;&#x6709;master&#x8D1F;&#x8D23;&#x7684;slot;</li>
+<li>&#x66F4;&#x65B0;&#x5F53;&#x524D;&#x8282;&#x70B9;&#x914D;&#x7F6E;&#x7EAA;&#x5143; &#x4E3A; &#x6295;&#x7968;&#x65F6;&#x7684;&#x914D;&#x7F6E;&#x7EAA;&#x5143;;</li>
+<li>&#x5411;&#x6240;&#x6709;&#x8282;&#x70B9;&#x53D1;&#x9001;<code>PONG</code>&#x6D88;&#x606F;&#xFF0C;&#x8BA9;&#x5176;&#x4ED6;&#x4EBA;&#x77E5;&#x9053;&#x5F53;&#x524D;&#x8282;&#x70B9;&#x5DF2;&#x7ECF;&#x5347;&#x7EA7;&#x4E3A;master &#x5E76;&#x8D1F;&#x8D23;&#x76F8;&#x5E94;slots;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><font color="red">**&#x6545;&#x969C;&#x68C0;&#x6D4B;&#x6D41;&#x7A0B;**</font>
+
+<p>&#x6BD4;&#x5982;&#x5177;&#x6709;8&#x8282;&#x70B9;&#x7684;&#x96C6;&#x7FA4;&#xFF0C;&#x5305;&#x542B;nodeA&#x3001;nodeB&#x3001;nodeC..., &#x5176;&#x4E2D;nodeB&#x6545;&#x969C;</p>
+<ul>
+<li><p>&#x96C6;&#x7FA4;&#x4E2D;&#x5176;&#x4ED6;&#x8282;&#x70B9;&#x5728;<code>clusterCron()</code>&#x4E2D;&#x90FD;&#x4F1A;&#x4E0D;&#x65AD;&#x53D1;&#x9001;PING&#x6D88;&#x606F;&#x7ED9; nodeB&#xFF0C;&#x800C;nodeB &#x8D85;&#x8FC7;<code>server.cluster_node_timeout</code>&#x65F6;&#x95F4;&#x6CA1;&#x6709;&#x56DE;&#x590D;&#xFF0C;&#x5176;&#x4ED6;&#x8282;&#x70B9;&#x5C06;&#x628A;<code>nodeB</code>&#x6807;&#x8BB0;&#x4E3A;<code>REDIS_NODE_PFAIL</code>:<code>node-&gt;flags |= REDIS_NODE_PFAIL</code></p>
+<ul>
+<li>&#x901A;&#x8FC7;&#x6BCF;&#x4E2A;&#x8282;&#x70B9;&#x672C;&#x5730;&#x7684;<code>nodeB-&gt;ping_sent</code>&#x5B9E;&#x73B0;</li>
+<li><code>nodeB-&gt;ping_sent</code>: &#x4EE3;&#x8868;&#x672C;&#x8282;&#x70B9;&#x6700;&#x540E;&#x4E00;&#x6B21;&#x53D1;&#x9001;PING&#x6D88;&#x606F;&#x7ED9;<code>nodeB</code>&#x7684;&#x65F6;&#x95F4;&#xFF0C;&#x5982;&#x679C;&#x672C;&#x8282;&#x70B9;&#x63A5;&#x6536;&#x5230;nodeB&#x7684;PONG&#x56DE;&#x590D;&#xFF0C;&#x5219;&#x5C06;<code>nodeB-&gt;ping_sent=0</code>;</li>
+<li><code>nodeB-&gt;pong_received</code>: &#x4EE3;&#x8868;&#x672C;&#x8282;&#x70B9;&#x6700;&#x540E;&#x4E00;&#x6B21;&#x4ECE;nodeB&#x63A5;&#x6536;&#x5230;<code>PONG</code>&#x56DE;&#x590D;&#x7684;&#x65F6;&#x95F4;;</li>
+</ul>
+</li>
+<li><p>&#x6BD4;&#x5982;&#x6B64;&#x65F6;<code>nodeA</code>&#x5C06;<code>nodeB</code>&#x6807;&#x8BB0;&#x4E3A;<code>PFAIL</code>&#x72B6;&#x6001;&#xFF0C;&#x90A3;&#x4E48;<code>nodeA</code>&#x5411;&#x5176;&#x4ED6;&#x8282;&#x70B9;&#x53D1;&#x9001;PING&#x6D88;&#x606F;&#x7684;<code>gossip section</code>&#x4E2D;&#xFF0C;&#x5982;&#x679C;&#x9009;&#x5230;<code>nodeB</code>&#x5C31;&#x4F1A;&#x5E26;&#x4E0A;<code>nodeB</code>&#x7684;<code>flags</code>&#x4FE1;&#x606F;:<code>gissip-&gt;flags=this-&gt;flags</code>;</p>
+</li>
+<li><p>&#x6BD4;&#x5982;&#x6B64;&#x65F6;<code>nodeC</code>&#x6536;&#x5230;&#x6765;&#x81EA;&#x4E8E;<code>nodeA</code>&#x7684;PING&#x6D88;&#x606F;&#xFF0C;PING&#x6D88;&#x606F;<code>gossip section</code>&#x4E2D;&#x5E26;&#x6709;<code>nodeB-&gt;flags==REDIS_NODE_PFAIL</code></p>
+<ul>
+<li><p>&#x8C03;&#x7528;<code>clusterProcessGossipSection()</code> &#x5904;&#x7406;PING&#x6D88;&#x606F;&#x7684;<code>gossip section</code>&#x90E8;&#x5206;;</p>
+</li>
+<li><p>&#x5219;&#x6DFB;&#x52A0;sender(nodeA)&#x5BF9;nodeB&#x7684;&#x4E0B;&#x7EBF;&#x62A5;&#x544A;(&#x5C06;nodeA&#x4FDD;&#x5B58;&#x5728;<code>nodeB-&gt;fail_reports</code>&#x94FE;&#x8868;&#x4E2D;&#xFF0C;&#x4EE3;&#x8868;nodeA&#x62A5;&#x544A;nodeB&#x5DF2;&#x4E0B;&#x7EBF;);</p>
+<p>&#x8C03;&#x7528;<code>clusterNodeAddFailureReport(node,sender)</code>&#x5B8C;&#x6210;;</p>
+</li>
+<li><p>&#x8C03;&#x7528;<code>markNodeAsFailingIfNeed(nodeB)</code>&#x5C1D;&#x8BD5;&#x5C06;nodeB&#x6807;&#x8BB0;&#x4E3A; FAIL:  <strong><font color="red">&#x5982;&#x679C;&#x6211;&#x4EEC;&#x68C0;&#x6D4B;&#x5230;&#x8D85;&#x8FC7;&#x534A;&#x6570;&#x7684;&#x5176;&#x4ED6;&#x8282;&#x70B9;&#x5C06;nodeB&#x90FD;&#x6807;&#x8BB0;&#x4E3A;<code>PFAIL</code>, &#x90A3;&#x4E48;&#x6211;&#x4EEC;&#x5C06;&#x628A;<code>nodeB</code>&#x6807;&#x8BB0;&#x4E3A;<code>FAIL</code>&#x3002;&#x540C;&#x65F6;&#x5E7F;&#x64AD;<code>nodeB</code>&#x8FDB;&#x5165;<code>FAIL</code>&#x72B6;&#x6001;&#x8FD9;&#x4E2A;&#x6D88;&#x606F;</font></strong>;</p>
+</li>
+</ul>
+</li>
+<li><p><strong>&#x5176;&#x4ED6;&#x8282;&#x70B9;&#x63A5;&#x6536;&#x5230;<code>nodeC</code>&#x53D1;&#x9001;&#x8FC7;&#x6765;&#x7684;<code>nodeB</code>&#x8FDB;&#x5165;<code>CLUSTERMSG_TYPE_FAIL</code>&#x7C7B;&#x578B;&#x7684;&#x6D88;&#x606F;&#x540E;&#xFF0C;&#x7EB7;&#x7EB7;&#x5C06;&#x5176;&#x6807;&#x8BB0;&#x4E3A;<code>CLUSTERMSG_TYPE_FAIL</code>&#xFF0C;&#x5E76;&#x8BB0;&#x5F55;&#x4E0B;nodeC&#x8FDB;&#x5165;<code>CLUSTERMSG_TYPE_FAIL</code>&#x7684;&#x65F6;&#x95F4;</strong><code>nodeC-&gt;fail_time=mstime()</code>;</p>
+</li>
+<li><p>&#x4E0A;&#x9762;&#x7684;<code>CLUSTERMSG_TYPE_FAIL</code>&#x6D88;&#x606F;<code>nodeB</code>&#x7684;slave&#x4E5F;&#x4F1A;&#x6536;&#x5230;&#xFF0C;&#x6BD4;&#x5982;<code>slave01_of_nodeB</code>&#x6536;&#x5230;&#x6D88;&#x606F;&#x540E;&#xFF0C;&#x5C06;&#x8BB0;&#x5F55;&#x672C;&#x5730;<code>master-&gt;flags=CLUSTERMSG_TYPE_FAIL</code></p>
+<ul>
+<li><p>&#x5728;<code>slave01_of_nodeB</code>&#x7684;<code>clusterCron()</code>&#x51FD;&#x6570;&#x4E2D;&#xFF0C;&#x53EA;&#x8981;&#x672C;&#x8282;&#x70B9;&#x662F;slave&#xFF0C;&#x90FD;&#x4F1A;&#x6267;&#x884C;<code>clusterHandleSlaveFailover()</code>&#x51FD;&#x6570;:</p>
+<ul>
+<li><p>&#x505A;&#x4E00;&#x4E9B;&#x524D;&#x7F6E;&#x68C0;&#x67E5;: &#x6211;&#x4EEC;&#x662F;&#x4E00;&#x4E2A;slave&#xFF0C;&#x6211;&#x4EEC;&#x7684;master&#x88AB;&#x6807;&#x8BB0;&#x4E3A;<code>FAIL</code>&#xFF0C;&#x6211;&#x4EEC;&#x7684;master&#x8D1F;&#x8D23;&#x4E86;&#x4E00;&#x90E8;&#x5206;<code>slots</code>&#xFF0C;&#x68C0;&#x67E5;&#x4E3B;&#x4ECE;&#x65AD;&#x5F00;&#x65F6;&#x95F4;&#x662F;&#x5426;&#x8D85;&#x8FC7;<code>10*node_timeout</code>;</p>
+</li>
+<li><p>&#x786E;&#x5B9A;&#x672C;&#x8282;&#x70B9;&#x5728;&#x5DE6;&#x53F3;slave&#x4E2D;&#x7684;&#x6392;&#x540D;&#xFF0C;&#x8FDB;&#x800C;&#x786E;&#x5B9A;&#x672C;&#x8282;&#x70B9;<code>failover</code>&#x7684;&#x5F00;&#x59CB;&#x65F6;&#x95F4;&#xFF0C;&#x5982;&#x679C;&#x5F00;&#x59CB;&#x65F6;&#x95F4;&#x6CA1;&#x5230;&#xFF0C;&#x5219;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;&#x3002;</p>
+<p>(&#x6211;&#x4EEC;&#x672C;&#x5730;&#x8FD8;&#x6CA1;&#x5230;<code>failover</code>&#x5F00;&#x59CB;&#x65F6;&#x95F4;&#xFF0C;&#x4F46;&#x4E0D;&#x4EE3;&#x8868;&#x5176;&#x4ED6;slave&#x6CA1;&#x5230;<code>failover</code>&#x5F00;&#x59CB;&#x65F6;&#x95F4;&#xFF0C;&#x6240;&#x4EE5;&#x6392;&#x540D;&#x9760;&#x524D;&#x7684;slave&#x4F1A;&#x4F18;&#x5148;&#x6267;&#x884C;<code>failover</code>);</p>
+</li>
+<li><p>&#x5982;&#x679C;&#x8FBE;&#x5230;<code>failover</code>&#x7684;&#x5F00;&#x59CB;&#x65F6;&#x95F4;&#xFF0C;&#x5219;:</p>
+<ul>
+<li>&#x589E;&#x52A0;&#x672C;&#x8282;&#x70B9;&#x7684;&#x914D;&#x7F6E;&#x7EAA;&#x5143;;</li>
+<li>&#x5411;&#x5176;&#x4ED6;&#x6240;&#x6709;&#x8282;&#x70B9;&#x5E7F;&#x64AD;<code>CLUSTERMSG_TYPE_FAILOVER_AUTH_REQUEST</code>&#x6D88;&#x606F;&#xFF0C;&#x5BFB;&#x6C42;&#x5176;&#x4ED6;&#x8282;&#x70B9;&#x6295;&#x7968;&#x652F;&#x6301;&#x672C;&#x8282;&#x70B9;&#x6267;&#x884C;<code>failover</code>;</li>
+<li>&#x7B49;&#x5F85;&#x4E0B;&#x4E00;&#x6B21;<code>clusterCron()</code>&#x518D;&#x6B21;&#x8C03;&#x7528;<code>clusterHandleSlaveFailover()</code>;</li>
+</ul>
+</li>
+<li><p>&#x4E0B;&#x4E00;&#x6B21;<code>clusterCron()</code>&#x8C03;&#x7528;<code>clusterHandleSlaveFailover()</code>:</p>
+<ul>
+<li>&#x5982;&#x679C;&#x672C;&#x8282;&#x70B9;&#x83B7;&#x5F97;&#x4E86;&#x8DB3;&#x591F;&#x591A;&#x7684;&#x9009;&#x7968;&#xFF0C;&#x5219;:</li>
+<li>&#x5F53;&#x524D;&#x8282;&#x70B9;&#x8EAB;&#x4EFD;&#x7531;slave&#x53D8;&#x6210;master,&#x8BA9;&#x672C;&#x8282;&#x70B9;&#x53BB;&#x6389;&#x590D;&#x5236;&#xFF0C;&#x6210;&#x4E3A;&#x65B0;&#x7684;master;</li>
+<li>&#x63A5;&#x624B;&#x6240;&#x6709;master&#x8D1F;&#x8D23;&#x7684;slot: &#x8C03;&#x7528;<code>clusterAddSlot()</code>&#x3001;<code>clusterDelSlot()</code>,<code>server.cluster-&gt;slots&#x3001;node-&gt;slots&#x3001;node-&gt;numslots</code>&#x90FD;&#x4F1A;&#x88AB;&#x66F4;&#x65B0;;</li>
+<li>&#x66F4;&#x65B0;&#x5F53;&#x524D;&#x8282;&#x70B9;&#x914D;&#x7F6E;&#x7EAA;&#x5143; &#x4E3A; &#x6295;&#x7968;&#x65F6;&#x7684;&#x914D;&#x7F6E;&#x7EAA;&#x5143;;</li>
+<li>&#x5411;&#x6240;&#x6709;&#x8282;&#x70B9;&#x53D1;&#x9001;<code>PONG</code>&#x6D88;&#x606F;&#xFF0C;&#x8BA9;&#x5176;&#x4ED6;&#x4EBA;&#x77E5;&#x9053;&#x5F53;&#x524D;&#x8282;&#x70B9;&#x5DF2;&#x7ECF;&#x5347;&#x7EA7;&#x4E3A;master &#x5E76;&#x8D1F;&#x8D23;&#x76F8;&#x5E94;slots;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>&#x6B64;&#x65F6;nodeA&#x3001;nodeC&#x63A5;&#x6536;&#x5230;&#x6765;&#x81EA;&#x4E8E;<code>slave01_of_nodeB</code>&#x7684;PONG&#x6D88;&#x606F;&#xFF0C;&#x8C03;&#x7528;<code>clusterProcessPacket()</code>&#x5904;&#x7406;</p>
+<ul>
+<li>&#x5982;nodeA&#x53D1;&#x73B0;&#x672C;&#x5730;<code>server.cluster-&gt;nodes</code>&#x4E2D;<code>slave01_of_nodeB</code>&#x8FD8;&#x662F;&#x4E00;&#x4E2A;slave&#xFF0C;&#x4F46;&#x53D1;&#x9001;&#x8FC7;&#x6765;&#x7684;&#x6D88;&#x606F;&#x4E2D;<code>hdr-&gt;slaveof</code>&#x4E3A;&#x7A7A;&#xFF0C;&#x5219;&#x66F4;&#x65B0;&#x672C;&#x5730;&#x5173;&#x4E8E;<code>slave01_of_nodeB</code>&#x7684;&#x8BB0;&#x5F55;&#xFF0C;&#x5C06;&#x5176;&#x66F4;&#x65B0;&#x4E3A;&#x4E00;&#x4E2A;maseter;</li>
+<li>&#x5BF9;&#x6BD4;<code>sender_master-&gt;slots</code>&#x548C;<code>hdr-&gt;myslots</code>&#x662F;&#x5426;&#x6709;&#x53D8;&#x5316;&#xFF0C;&#x5982;&#x679C;&#x6709;&#x53D8;&#x5316;&#x4E14;<code>sender</code>&#x662F;&#x4E00;&#x4E2A;master&#xFF0C;&#x5219;&#x8C03;&#x7528;<code>clusterUpdateSlotsConfigWith()</code>&#x5904;&#x7406;:<ul>
+<li>&#x66F4;&#x65B0;&#x672C;&#x5730;<code>sender</code>&#x7684;slots&#x4FE1;&#x606F;: <code>server.cluster-&gt;slots&#x3001;node-&gt;slots&#x3001;node-&gt;numslots</code>&#x90FD;&#x4F1A;&#x88AB;&#x66F4;&#x65B0;;</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>&#x7ECF;&#x8FC7;&#x4E0A;&#x9762;&#x7684;&#x8FC7;&#x7A0B;&#xFF0C;<code>nodeB</code>&#x8D1F;&#x8D23;&#x7684;slots&#x5168;&#x90E8;&#x8FC1;&#x79FB;&#x4E3A;<code>slave01_of_nodeB</code>&#x8D1F;&#x8D23;&#xFF0C;&#x6B64;&#x65F6;<code>nodeB-&gt;numslots==0</code>:</p>
+<ul>
+<li>&#x800C;&#x540E;&#xFF0C;<code>nodB</code>&#x5904;&#x4E8E;<code>CLUSTEER_NODE_FAIL</code>&#x72B6;&#x6001;&#xFF0C;<code>nodeB-&gt;numslots==0</code>, <font color="red"><code>nodeB</code>&#x867D;&#x7136;&#x5728;&#x96C6;&#x7FA4;&#x6BCF;&#x4E2A;&#x8282;&#x70B9;&#x7684;<code>server.cluster-&gt;nodes</code>&#x4E2D;&#x6709;&#x8BB0;&#x5F55;&#xFF0C;&#x4F46;&#x662F;&#x5E76;&#x4E0D;&#x8BA1;&#x5165;<code>server.cluster-&gt;size</code>&#x4E2D;</font>;</li>
+<li>&#x901A;&#x8FC7;&#x51FD;&#x6570;<code>clusterSendFailoverAuthIfNeeded()</code>&#x53EF;&#x4EE5;&#x77E5;&#x9053;, &#x5982;&#x679C;&#x8282;&#x70B9;&#x662F;<code>slave</code>&#x6216;<code>node-&gt;numslots==0</code>, &#x5219;&#x8BE5;&#x8282;&#x70B9;&#x4E0D;&#x53C2;&#x4E0E;&#x6295;&#x7968;;</li>
+<li>&#x5982;&#x679C;<code>nodeB</code> &#x5728;<code>cluster_node_timeout/2</code>&#x65F6;&#x95F4;&#x5185;&#x6CA1;&#x6709;&#x56DE;&#x590D;<code>PONG</code>&#x6D88;&#x606F;&#xFF0C;&#x5219;&#x6211;&#x4EEC;&#x5C06;&#x4F1A;&#x628A;<code>nodeB-&gt;link</code>&#x91CA;&#x653E;&#x3002;&#x5E76;&#x5728;&#x4E0B;&#x4E00;&#x6B21;<code>clusterCron()</code>&#x4E2D;&#x7EE7;&#x7EED;&#x5C1D;&#x8BD5;&#x4E0E;&#x5176;&#x5EFA;&#x7ACB;&#x8FDE;&#x63A5;;</li>
+</ul>
+</li>
+<li><p>&#x5982;&#x679C;FAIL nodeB&#x5728;&#x4E00;&#x6BB5;&#x65F6;&#x95F4;&#x540E;&#x590D;&#x6D3B;:</p>
+<ul>
+<li><p>&#x96C6;&#x7FA4;&#x5176;&#x4ED6;&#x8282;&#x70B9;&#x5728;<code>clusterCron()</code>&#x4E2D;&#x4E0E;&#x5176;&#x91CD;&#x65B0;&#x5EFA;&#x7ACB;&#x8FDE;&#x63A5;&#x6210;&#x529F;:<code>node-&gt;link!=NULL</code>&#xFF0C; &#x5E76;&#x5411;&#x5176;&#x53D1;&#x9001;&#x4E00;&#x4E2A;PING&#x6D88;&#x606F;;</p>
+</li>
+<li><p>FAIL nodeB&#x63A5;&#x6536;&#x5230;<code>PING</code>&#x6D88;&#x606F;:</p>
+<ul>
+<li><p>&#x66F4;&#x65B0;<code>server.cluster-&gt;currentEpoch</code>&#x3001;<code>sender-&gt;configEpoch</code>&#x3002;&#x6CE8;&#x610F;FAIL nodeB&#x81EA;&#x5DF1;&#x7684;configEpoch&#x8FD8;&#x662F;&#x65E7;&#x7684;;</p>
+</li>
+<li><p>&#x5411;&#x53D1;&#x9001;&#x8005;&#x56DE;&#x590D;<code>PONG</code>&#x6D88;&#x606F;, <code>PONG</code>&#x6D88;&#x606F;&#x4E2D;&#x5C06;&#x643A;&#x5E26;&#x4E0A;<code>nodeB-&gt;ip</code>&#x3001;<code>nodeB-&gt;port</code>&#x3001;<code>node-&gt;flags</code>&#x3001;<code>node-&gt;configEpoch</code>&#x3001;<code>nodeB-&gt;myslots</code>&#x7B49;&#x4FE1;&#x606F;;</p>
+</li>
+<li><p>&#x6BD4;&#x5982;&#x6B64;&#x65F6;<code>nodeA</code>&#x63A5;&#x6536;&#x5230;<code>FAIL nodeB</code>&#x56DE;&#x590D;&#x7684;PONG&#x6D88;&#x606F;&#xFF0C;&#x8C03;&#x7528;<code>clusterProcessPacket()</code>&#x5904;&#x7406;:</p>
+<ul>
+<li><p>&#x53BB;&#x6389;<code>FAIL nodeB</code>&#x7684;<code>REDIS_NODE_PFAIL</code>&#x6807;&#x8BC6;;</p>
+</li>
+<li><p>PONG&#x6D88;&#x606F;&#x4E2D;<code>FAIL nodeB</code>&#x5BA3;&#x79F0;&#x5BF9;<code>slot[j]</code>&#x8D1F;&#x8D23;&#x7684;&#xFF0C;&#x4F46;&#x5B9E;&#x9645;&#x4E0A;&#x8FD9;&#x90E8;&#x5206;slot&#x5DF2;&#x7ECF;&#x662F;<code>slave01_of_nodeB</code>&#x8D1F;&#x8D23;</p>
+<p>&#x4E14;<code>PONG</code>&#x6D88;&#x606F;&#x4E2D;<code>PFAIL nodeB</code>&#x7684;configEpoch &#x5C0F;&#x4E8E; <code>slaveof_01_nodeB</code>&#x7684;configEpoch;</p>
+<p>&#x6240;&#x4EE5;&#x8FD9;&#x4E2A;<code>PONG</code>&#x6D88;&#x606F;&#x4E0D;&#x4F1A;&#x4EA7;&#x751F;&#x4EFB;&#x4F55;&#x4F5C;&#x7528;;</p>
+</li>
+<li><p>nodeA&#x5C06;&#x8C03;&#x7528;<code>clusterSendUpdate()</code>&#x5411;<code>FAIL nodeB</code>&#x53D1;&#x9001;<code>CLUSTERMSG_TYPE_UPDATE</code>&#x6D88;&#x606F;&#x3002;&#x66F4;&#x65B0;<code>FAIL nodeB</code>&#x7684;slot&#x4FE1;&#x606F;;</p>
+</li>
+</ul>
+</li>
+<li><p><code>FAIL nodeB</code>&#x63A5;&#x6536;&#x5230;&#x6765;&#x81EA;&#x4E8E;&#x5176;&#x4ED6;&#x8282;&#x70B9;&#x7684;&#x66F4;&#x65B0;slots&#x7684;&#x4FE1;&#x606F;&#x540E;&#xFF0C;&#x8C03;&#x7528;<code>clusterUpdateSlotsConfigWith()</code>&#x5904;&#x7406;:</p>
+<ul>
+<li>&#x66F4;&#x65B0;&#x672C;&#x5730;slots&#x60C5;&#x51B5;&#xFF0C;&#x6B64;&#x65F6;<code>FAIL nodeB</code>&#x4E0D;&#x518D;&#x8D1F;&#x8D23;&#x4EFB;&#x4F55;slots;</li>
+<li>&#x5C06;<code>FAIL nodeB</code>&#x505A;&#x67D0;&#x4E2A;master node&#x7684;slave&#xFF0C;&#x54EA;&#x4E2A; master node&#x5462;&#xFF1F;&#x8FD9;&#x4E2A;node&#x5C31;&#x662F;&#x63A5;&#x624B;<code>FAIL nodeB</code>&#x8D1F;&#x8D23;&#x5BF9;&#x5E94;<code>slot[j]</code>&#x7684;&#x8282;&#x70B9;&#xFF0C;&#x5728;&#x6211;&#x4EEC;&#x8FD9;&#x91CC;&#x5C31;&#x662F;&#x8282;&#x70B9;<code>slave01_of_nodeB</code>;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>&#x5982;&#x679C;&#x4EA7;&#x751F;&#x8111;&#x88C2;, &#x8282;&#x70B9;&#x6570;&#x5C11;&#x7684;&#x90A3;&#x4E00;&#x90E8;&#x5206;&#x5982;&#x4F55;&#x786E;&#x4FDD;&#x81EA;&#x5DF1;&#x4E0D;&#x518D;&#x63A5;&#x6536;client&#x7684;&#x547D;&#x4EE4;&#xFF1F;</p>
+<ul>
+<li><p>&#x8FD9;&#x4E00;&#x90E8;&#x5206;&#x5185;&#x5BB9;&#x5728;&#x51FD;&#x6570;<code>clusterUpdateState()</code>&#x4E2D;&#x5B8C;&#x6210;:</p>
+<ul>
+<li><p>&#x904D;&#x5386;<code>server.cluster-&gt;nodes</code>, &#x786E;&#x5B9A;<code>unreachable_masters</code>&#x7684;&#x4E2A;&#x6570;&#xFF0C;&#x5982;&#x679C;<code>unreachable_master</code>&#x7684;&#x4E2A;&#x6570;&#x8D85;&#x8FC7;<code>server.cluster-&gt;size/2+1</code>, &#x5219;&#x4EE3;&#x8868;&#x4EA7;&#x751F;&#x4E86;&#x8111;&#x88C2;&#xFF0C;&#x4E14;&#x6211;&#x4EEC;&#x662F;&#x8111;&#x88C2;&#x540E;&#x8282;&#x70B9;&#x6570;&#x8F83;&#x5C11;&#x7684;&#x90A3;&#x4E00;&#x90E8;&#x5206;&#x3002;</p>
+<p>&#x800C;&#x540E;&#x5C06;<code>server.cluster-&gt;state</code>&#x7F6E;&#x4E3A;<code>REDIS_CLUSTER_FAIL</code>, &#x8BE5;&#x8282;&#x70B9;&#x4E0D;&#x518D;&#x63A5;&#x53D7;&#x4EFB;&#x4F55;&#x8BF7;&#x6C42;;</p>
+</li>
+</ul>
+</li>
+<li><p><code>clusterCron()</code>&#x6BCF;&#x6267;&#x884C;&#x4E00;&#x6B21;&#x51E0;&#x4E4E;&#x90FD;&#x4F1A;&#x6267;&#x884C;<code>clusterUpdateState()</code>;</p>
+</li>
+</ul>
+</li>
+<li><p>node&#x6302;&#x6389;&#xFF0C;&#x88AB;&#x63A2;&#x6D4B;&#x5230;&#x5E76;&#x5E7F;&#x64AD;&#xFF0C;&#x8FD9;&#x4E2A;&#x884C;&#x4E3A;&#x96BE;&#x9053;&#x662F;&#x5728;<code>clusterProcessGossipSection()</code>&#x4E2D;&#x5B8C;&#x6210;&#x7684;&#xFF1F;</p>
+</li>
+<li><p>failover&#x540E;&#xFF0C;&#x5C06;old master&#x53D8;&#x6210; new master&#x7684;slave&#xFF0C;&#x96BE;&#x9053;&#x5C31;&#x662F;&#x5728;<code>clusterUpdateSlotsConfigWith()</code>&#x51FD;&#x6570;&#x4E2D;&#x5B8C;&#x6210;&#x7684;?</p>
+</li>
+<li><p><code>server.cluster-&gt;importing_slots_from</code>&#x3001;<code>server.cluster-&gt;migrating_slots_to</code>&#x8FD9;&#x4E24;&#x4E2A;dict&#x5728;&#x8FC1;&#x79FB;&#x5B8C;&#x6210;&#x540E;&#x5230;&#x5E95;&#x4F1A;&#x4E0D;&#x4F1A;&#x88AB;&#x6E05;&#x7A7A;&#xFF0C;&#x4EC0;&#x4E48;&#x65F6;&#x5019;&#x6E05;&#x7A7A;&#xFF1F;</p>
+</li>
+<li><p>&#x907F;&#x514D;&#x91CD;&#x590D;&#x6295;&#x7968;&#x5565;&#x7684;&#xFF0C;&#x5E94;&#x8BE5;&#x662F;&#x5728;<code>clusterSendFailoverAuthIfNeeded()</code>&#x5B8C;&#x6210;&#x7684;;</p>
+</li>
+<li><p>&#x4EC0;&#x4E48;&#x60C5;&#x51B5;&#x4E0B;&#x4F1A;&#x8C03;&#x7528;<code>clusterDelNode()</code>&#x5220;&#x9664;node?</p>
+<p>a. &#x8C03;&#x7528;<code>cluster reset</code>&#x547D;&#x4EE4;&#xFF0C;&#x90A3;&#x4E48;&#x6267;&#x884C;&#x8BE5;&#x547D;&#x4EE4;&#x7684;node&#x5C06;&#x8C03;&#x7528;<code>clusterDelNode()</code>&#x5220;&#x9664;&#x6240;&#x6709;<code>server.cluster-&gt;nodes</code>;</p>
+<p>b. <code>clusterProcessPacket()</code>&#x4E2D;&#x5982;&#x679C;<code>link-&gt;node</code>&#x5904;&#x4E8E;<code>HANDSHAKE</code>&#x72B6;&#x6001;&#xFF0C;&#x540C;&#x65F6;&#x53C8;&#x627E;&#x5230;&#x4E86;<code>sender</code>&#xFF0C; &#x5219;&#x5220;&#x9664;node;</p>
+<p>c. <code>clusterCron()</code> &#x603B;&#x5982;&#x679C;&#x67D0;&#x4E2A;&#x8282;&#x70B9;&#x5904;&#x4E8E;<code>handshake</code>&#x72B6;&#x6001;&#x8D85;&#x8FC7;<code>handshake_timeout</code>&#xFF0C;&#x5219;&#x4E0D;&#x4F1A;&#x5220;&#x9664;;</p>
+<p>d. &#x8C03;&#x7528;<code>cluster forget</code>&#x547D;&#x4EE4;, &#x4F1A;&#x5C06;&#x8BE5;node&#x52A0;&#x5165;&#x5230;<code>server.cluster-&gt;blacklist</code>&#x4E2D;&#xFF0C;&#x540C;&#x65F6;<code>clusterDelNode()</code>&#x5220;&#x9664;&#x8BE5;node;</p>
+</li>
+<li><p>Redis cluster&#x4E2D;<code>slave</code>&#x662F;&#x5426;&#x53C2;&#x4E0E;&#x6295;&#x7968;?</p>
+<ul>
+<li>&#x901A;&#x8FC7;&#x51FD;&#x6570;<code>clusterSendFailoverAuthIfNeeded()</code>&#x53EF;&#x4EE5;&#x77E5;&#x9053;, &#x5982;&#x679C;&#x8282;&#x70B9;&#x662F;<code>slave</code>&#x6216;<code>node-&gt;numslots==0</code>, &#x5219;&#x8BE5;&#x8282;&#x70B9;&#x4E0D;&#x53C2;&#x4E0E;&#x6295;&#x7968;;</li>
+<li>&#x4F46;&#x662F;&#x901A;&#x8FC7;&#x51FD;&#x6570;<code>clusterRequestFailoverAuth()</code>&#x53EF;&#x4EE5;&#x77E5;&#x9053;&#xFF0C;&#x8BF7;&#x6C42;&#x6295;&#x7968;&#x7684;<code>CLUSTERMSG_TYPE_FAILOVER_AUTH_REQUEST</code>&#x7C7B;&#x578B;&#x6D88;&#x606F;&#x4F1A;&#x53D1;&#x9001;&#x7ED9;&#x6240;&#x6709;<code>node-&gt;link!=NULL</code>&#x7684;&#x8282;&#x70B9;&#xFF0C;&#x5305;&#x62EC;slave&#x3001;&#x5305;&#x62EC;<code>node-&gt;numslots==0</code>&#x7684;&#x6B63;&#x5E38;&#x8282;&#x70B9;;</li>
+<li>&#x540C;&#x65F6;&#x5728;<code>slave</code>&#x63A5;&#x6536;&#x5230;<code>CLUSTERMSG_TYPE_FAILOVER_AUTH_ACK</code>&#x7C7B;&#x578B;&#x7684;&#x6D88;&#x606F;&#xFF0C;&#x5982;&#x679C;&#x6D88;&#x606F;&#x53D1;&#x9001;&#x8005;&#x662F;&#x4E00;&#x4E2A;slave&#xFF0C;&#x4E5F;&#x4F1A;&#x5FFD;&#x7565;&#x8FD9;&#x5F20;&#x7968;&#xFF1B;</li>
+<li><code>server.cluster-&gt;size</code>&#x7684;&#x8BA1;&#x7B97;&#x4E5F;&#x53EA;&#x5305;&#x542B; &#x8D1F;&#x8D23;slot&#x7684;master&#x8282;&#x70B9;&#x4E2A;&#x6570;;</li>
+</ul>
+</li>
+<li><p>Redis cluster&#x4E2D;nodeB&#x88AB;&#x6807;&#x8BB0;&#x4E3A;<code>FAIL</code>&#x72B6;&#x6001;&#xFF0C;&#x5E76;&#x5DF2;&#x5B8C;&#x6210;<code>failover</code>;  &#x4F46;&#x662F;nodeB&#x5E76;&#x4E0D;&#x4F1A;&#x5728;<code>server.cluster-&gt;nodes</code>&#x4E2D;&#x88AB;&#x5220;&#x9664;&#x3002;</p>
+<p>&#x96C6;&#x7FA4;&#x4E2D;nodeA&#x7B49;&#x8282;&#x70B9;&#x8FD8;&#x4F1A;&#x5728;<code>cronCluster()</code>&#x4E2D;&#x4E0D;&#x65AD;&#x91CD;&#x8FDE;: <code>free(nodeB-&gt;link)</code>, &#x53C8;&#x4E0D;&#x65AD;&#x5C1D;&#x8BD5;<code>create(nodeB-&gt;link)</code>&#xFF0C;&#x8FD9;&#x4E2A;&#x8FC7;&#x7A0B;&#x6C38;&#x4E0D;&#x505C;&#x6B47;&#x3002;</p>
+<p>&#x73B0;&#x5728;&#x8003;&#x8651;&#x4E00;&#x79CD;&#x573A;&#x666F;: <code>2.2.2.2#30000</code>&#x4EE5;&#x524D;&#x662F;clusterA&#x7684;&#x8282;&#x70B9;&#xFF0C;&#x540E;&#x6765;&#x56E0;&#x4E3A;&#x673A;&#x5668;&#x6545;&#x969C;&#x6302;&#x4E86;&#xFF0C;&#x8FD9;&#x8FC7;&#x7A0B;&#x4E2D;&#x5DF2;&#x7ECF;&#x5B8C;&#x6210;&#x4E86;failover&#x3002;&#x673A;&#x5668;&#x4FEE;&#x590D;ok&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x5728;<code>2.2.2.2</code>&#x4E0A;&#x91CD;&#x65B0;&#x4E0A;&#x4E86;&#x4E00;&#x4E2A;<code>30000</code>&#x7684;redis&#x5B9E;&#x4F8B;&#xFF0C;&#x4E5F;&#x662F;<code>cluster_abled yes</code>&#x3002;&#x4F46;&#x6211;&#x8FD9;&#x91CC;&#x7684;&#x76EE;&#x7684;&#x662F;&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;&#x96C6;&#x7FA4;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x5C06;<code>2.2.2.2#30000</code>&#x52A0;&#x5165;&#x5230;&#x4EE5;&#x524D;&#x7684;&#x96C6;&#x7FA4;&#x4E2D;&#x3002;</p>
+<p>&#x6B64;&#x65F6;&#xFF0C;nodeA&#x3001;nodeC&#x7B49;&#x8001;&#x96C6;&#x7FA4;&#x7684;&#x8282;&#x70B9;&#x8FD8;&#x4F1A;&#x5C1D;&#x8BD5;&#x4E0E;<code>2.2.2.2#30000</code>&#x5EFA;&#x7ACB;&#x8FDE;&#x63A5;&#xFF0C;&#x5EFA;&#x7ACB;&#x8FDE;&#x63A5;&#x6210;&#x529F;&#x540E;&#xFF0C;&#x5219;&#x53D1;&#x9001;<code>PING</code>&#x6D88;&#x606F;&#xFF0C;&#x770B;&#x4EE3;&#x7801;&#x91CC;<code>2.2.2.2#30000</code>&#x4F3C;&#x4E4E;&#x8FD8;&#x4F1A;&#x63A5;&#x53D7;nodeB&#x7684;&#x7ED9; nodeA&#x8FD4;&#x56DE;<code>PONG</code>&#x6D88;&#x606F;&#xFF0C;&#x5E76;&#x5C1D;&#x8BD5;&#x4E0E;&#x5176;&#x5EFA;&#x7ACB;&#x8FDE;&#x63A5;&#x3002;</p>
+</li>
+<li><p>nodeA &#x6267;&#x884C;cluster meet nodeB_IP nodeB_Port&#xFF0C;&#x4E24;&#x8005;&#x5EFA;&#x7ACB;&#x5173;&#x7CFB;&#x540E;&#xFF0C;&#x96C6;&#x7FA4;&#x5DF2;&#x6709;&#x7684;&#x8282;&#x70B9;&#x662F;&#x600E;&#x4E48;&#x77E5;&#x9053;nodeA&#x8FD9;&#x4E2A;&#x65B0;&#x8282;&#x70B9;&#x7684;?</p>
+<ul>
+<li>nodeB&#x4F1A;&#x5C06;nodeA&#x7684;&#x4FE1;&#x606F;&#x4FDD;&#x5B58;&#x5728; <code>server.cluster-&gt;nodes</code>&#x4E2D;&#xFF0C;&#x4E14;&#x5728;<code>clusterCron()</code>&#x4E2D;&#x4F1A;&#x7ED9;&#x96C6;&#x7FA4;&#x5176;&#x4ED6;&#x8282;&#x70B9;&#x53D1;&#x9001;PING&#x6D88;&#x606F;&#x3002;PING&#x6D88;&#x606F;&#x7684;gossip &#x90E8;&#x5206;&#x4F1A;&#x5E26;&#x4E0A;nodeA&#x7684;&#x4FE1;&#x606F;;</li>
+<li>&#x6BD4;&#x5982;&#x96C6;&#x7FA4;&#x4E2D;&#x7684;nodeC&#x6536;&#x5230;nodeB&#x7684;PING&#x6D88;&#x606F;&#x540E;&#xFF0C;&#x4F1A;&#x66F4;&#x65B0;&#x672C;&#x5730;&#x5BF9;nodeB&#x7684;&#x8BA4;&#x8BC6;&#xFF0C;&#x540C;&#x65F6;&#x5904;&#x7406;gossip&#x90E8;&#x5206;&#xFF0C;&#x51FD;&#x6570;:<code>clusterProcessGossipSection()</code>;</li>
+<li><code>clusterProcessGossipSection()</code>&#x53D1;&#x73B0;gossip&#x4E2D;&#x4FDD;&#x5B58;&#x7684;node&#x81EA;&#x5DF1;&#x4E0D;&#x8BA4;&#x8BC6;&#xFF0C;&#x5C31;&#x4F1A;&#x8C03;&#x7528;<code>createClusterNode()</code>&#x4E3A;&#x8FD9;&#x4E2A;node&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#xFF0C;&#x5E76;&#x4FDD;&#x5B58;&#x5230;<code>server.cluster-&gt;nodes</code>&#x4E2D;&#x3002;&#x8FD9;&#x4E2A;node-&gt;link=NULL;</li>
+<li>&#x540E;&#x7EED;<code>nodeB</code>&#x7684;<code>clusterCron()</code>&#x4F1A;&#x5C1D;&#x8BD5;&#x4E0E;&#x5176;&#x5EFA;&#x7ACB;&#x8FDE;&#x63A5;;</li>
+</ul>
+</li>
+</ol>
+<h3 id="&#x6539;&#x9020;rediscluster&#xFF0C;&#x6DFB;&#x52A0;&#x53EA;&#x6295;&#x7968;&#xFF0C;&#x4E0D;&#x8D1F;&#x8D23;&#x6570;&#x636E;&#x7684;&#x8282;&#x70B9;">&#x6539;&#x9020;rediscluster&#xFF0C;&#x6DFB;&#x52A0;&#x53EA;&#x6295;&#x7968;&#xFF0C;&#x4E0D;&#x8D1F;&#x8D23;&#x6570;&#x636E;&#x7684;&#x8282;&#x70B9;</h3>
+<ul>
+<li>clusterSendFailoverAuthIfNeeded() &#x5FC5;&#x987B;&#x4FEE;&#x6539;;</li>
+<li>&#x65B0;&#x52A0;&#x5165;&#x7684;&#x8282;&#x70B9;&#x8981;&#x7B97;&#x5230; <code>server.cluster-&gt;size</code>&#x4E2D;&#x5417;? &#x8FD9;&#x4E2A;&#x53C2;&#x6570;&#x751A;&#x81F3;&#x5F71;&#x54CD;&#x4E86;&#x6295;&#x7968;&#x65F6; <code>needed_quorum</code>&#x7684;&#x5224;&#x65AD;;</li>
+</ul>
+<h2 id="redis-&#x666E;&#x901A;&#x51FD;&#x6570;&#x4E0E;&#x673A;&#x5236;">Redis &#x666E;&#x901A;&#x51FD;&#x6570;&#x4E0E;&#x673A;&#x5236;</h2>
+<ol>
+<li><p>&#x670D;&#x52A1;&#x5668;&#x4E2D;&#x7684;&#x6570;&#x636E;&#x5E93;:<code>struct redisServer</code></p>
+<p>&#x666E;&#x901A;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x6211;&#x4EEC;redisServer&#x6709;16&#x4E2A;&#x6570;&#x636E;&#x5E93;(&#x901A;&#x8FC7;<code>databases 16</code>&#x53C2;&#x6570;&#x63A7;&#x5236;)&#xFF0C;Redis&#x670D;&#x52A1;&#x5668;&#x5C06;&#x6240;&#x6709;&#x6570;&#x636E;&#x5E93;&#x90FD;&#x4FDD;&#x5B58;&#x5728;<code>struct redisServer</code>&#x7ED3;&#x6784;&#x7684;<code>db</code>&#x6570;&#x7EC4;&#x4E2D;&#x3002;</p>
+<p><code>db</code>&#x6570;&#x7EC4;&#x7684;&#x6BCF;&#x4E2A;&#x9879;&#x90FD;&#x662F;&#x4E00;&#x4E2A;<code>struct redisDb</code>&#x7ED3;&#x6784;&#xFF0C;&#x6BCF;&#x4E2A;<code>redisDb</code>&#x7ED3;&#x6784;&#x4EE3;&#x8868;&#x4E00;&#x4E2A;&#x6570;&#x636E;&#x5E93;:</p>
+<pre><code class="lang-c"><span class="hljs-keyword">struct</span> redisServer {
+    <span class="hljs-comment">// &#x6570;&#x636E;&#x5E93;</span>
+  redisDb *db;
+  <span class="hljs-comment">// &#x6570;&#x636E;&#x5E93;&#x6570;&#x91CF;</span>
+  <span class="hljs-keyword">int</span> dbnum;
+  ...
+}
+<span class="hljs-keyword">struct</span> redisDb {
+  <span class="hljs-comment">// &#x6570;&#x636E;&#x5E93;&#x952E;&#x7A7A;&#x95F4;&#xFF0C;&#x4FDD;&#x5B58;&#x7740;&#x6570;&#x636E;&#x5E93;&#x4E2D;&#x7684;&#x6240;&#x6709;&#x952E;&#x503C;&#x5BF9;</span>
+  dict *dict;
+  <span class="hljs-comment">// &#x952E;&#x7684;&#x8FC7;&#x671F;&#x65F6;&#x95F4;, &#x5B57;&#x5178;&#x7684;&#x952E;&#x4E3A;&#x952E;&#xFF0C;&#x5B57;&#x5178;&#x7684;&#x503C;&#x4E3A;&#x8FC7;&#x671F;&#x4E8B;&#x4EF6; UNIX &#x65F6;&#x95F4;&#x6233;</span>
+  dict *expires;
+}
+</code></pre>
+<p><img src="Users/lukexwang/Library/Application Support/typora-user-images/image-20200921113513758.png" alt="image-20200921113513758" style="zoom:40%;"></p>
+</li>
+</ol>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="Redis复制.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Redis复制">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Redis集群","level":"1.4","depth":1,"previous":{"title":"Redis复制","level":"1.3","depth":1,"path":"Redis复制.md","ref":"Redis复制.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Redis集群.md","mtime":"2021-11-18T09:25:18.293Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-11-18T09:27:11.029Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
