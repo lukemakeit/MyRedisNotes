@@ -4,7 +4,7 @@
 
 ### cluster manual failover大致流程
 
-在manual failover期间, 这里slave会执行几步很重要的步骤:
+**<font color="red">在manual failover期间</font>**, 这里slave会执行几步很重要的步骤:
 
 1) 用户发送 CLUSTER FAILOVER 命令。初始化failover状态, mf_end 将被设置为我们将终止尝试的毫秒时间;
 2) slave发送一条 MFSTART 信息给 master, 请求将客户端暂停(执行两次,manual failover超时时间是 REDIS_CLUSTER_MF_TIMEOUT)。
@@ -867,7 +867,7 @@ manual failover的目标是在没有数据丢失的情况下，执行快速故�
          - 更新当前节点配置纪元 为 投票时的配置纪元;
          - 向所有节点发送`PONG`消息，让其他人知道当前节点已经升级为master 并负责相应slots;
 
-4. <font color="red">**故障检测流程**</font>
+4. **<font color="red">故障检测流程</font>**
 
    比如具有8节点的集群，包含nodeA、nodeB、nodeC..., 其中nodeB故障
 
