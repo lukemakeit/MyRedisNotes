@@ -1,17 +1,15 @@
-## RocksDB基础概念
+# RocksDB基础概念
 
-### LSM-Tree
+## LSM-Tree
 
 **背景说明**
 
 参考文章:
 
-- [深入理解什么是LSM-Tree](https://cloud.tencent.com/developer/article/1441835)
-
-- [Log Structured Merge Trees](http://www.benstopford.com/2015/02/14/log-structured-merge-trees/)
-
-- [LSM 算法的原理是什么?](https://www.zhihu.com/question/19887265/answer/78839142) 这个回答是上面文章的翻译
-- [RocksDB 笔记](http://alexstocks.github.io/html/rocksdb.html)
+* [深入理解什么是LSM-Tree](https://cloud.tencent.com/developer/article/1441835)
+* [Log Structured Merge Trees](http://www.benstopford.com/2015/02/14/log-structured-merge-trees/)
+* [LSM 算法的原理是什么?](https://www.zhihu.com/question/19887265/answer/78839142) 这个回答是上面文章的翻译
+* [RocksDB 笔记](http://alexstocks.github.io/html/rocksdb.html)
 
 磁盘随机读写慢，顺序读写快。无论是SATA 还是 SSD。
 
@@ -41,37 +39,29 @@
 
 LSM(Log-Structured-Merge Tree) 使用了一种不同于上述四种的方法，保持了日志文件写性能，以及微小的读操作性能损失。他完全以磁盘为中心，几乎不需要内存来提高效率，同时也保留了我们与简单日志文件相关联的大部分写入性能。与B+Tree相比，一个缺点是读性能稍差。
 
-#### LSM基础算法
+### LSM基础算法
 
 概念上，LSM树非常简单。没有一个巨大的索引结构，批量的写入会被顺序保存到一系小的索引文件中。所以每个文件保存了一小段时间的更改。**每个文件都是有序的 所以后面检索会很快。文件是不能修改的。新的数据更新会写入到新文件中。读取将检查所有文件。同时文件会定期合并，以减少文件数据。**
 
 来看一些实现细节：
 
-- 当更新操作到达时，他们将被添加到 内存buffer中(也就是memtable)，memtable通常保存为一个Tree(红黑树等)以保证 key的有序性。
+* 当更新操作到达时，他们将被添加到 内存buffer中(也就是memtable)，memtable通常保存为一个Tree(红黑树等)以保证 key的有序性。
+* memtable通过WAL的方式备份到磁盘，以便能恢复，防止数据丢失。
+* 当memtable满了，有序的数据会被flush到一个新的磁盘文件中。当更多的写入到来时，该过程会不断重复。重要的是，系统只做顺序IO，因为没有文件被编辑，新的数据 或 修改只用简单的生成新文件(.sst文件)。
+* 当更多数据到达时，会有更多无法修改、顺序的文件会被创建。每个文件代表一个小的、按时间顺序更改的、有序子集；
+* 旧文件不再更新，因此新建重复项以覆盖前面的记录(或删除标记)。这会产生一些冗余；
+* 系统会周期性的执行 compation操作。compation 会选择多个文件 然后将他们合并，移除 重复的更新 或 已删除的项。这对清理冗余很重要，同时更重要的是处理因文件数量大量增长 而 导致读性能下降问题。值得庆幸的是，因文件是有序的，合并文件的过程效率也很高；
+* 当接收到读请求时，系统首先检查内存buffer(也就是memtable)。如果memtable中不存在，则按照文件生成时间顺序倒序检查 磁盘文件，直到key被找到。每个文件都经过排序，因此可以导航，然而随着文件数量增加，每个文件都需要检查，读取会变得越来越慢。这是 一个问题；
+* 所以LSM Treee的读取比其他做in-place更新的数据库慢。幸运的是，也有一些小技巧让读取性能更好。最常用的方法是在内存中保存 page-index(页面索引)。这提供了一个查找，使你接近你的目标 key。LevelDB、RocksDB 和 BigTable通过在每个文件末尾保存块索引来执行此操作。这通常比直接二进制搜索更有效，因为它允许使用变长字段且更适合压缩数据。
+* 及时每个文件都有索引，在文件数量剧增时读取操作依然很慢。只能通过定期做compaction，让文件合并，将文件数量和读取性能保持在可接受范围内。
+* 通过compaction，虽然能减少文件数据量 读操作但依然需要访问大量的文件。大多数通过使用布隆过滤器来避免这种情况。布隆过滤器是一种确定文件是否包含key的高效内存方式。
+*   所以从 “写”的角度来看，所有的写入都是 一批一批写入的，并且是连续的块写入。compaction 会产生额外的、周期性IO成本。然而在进行读取时，可能会读取到大量文件。这就是算法的工作方式。我们以读取时的随机IO 替换 交换 写入的随机IO。如果我们能用布隆过滤器等软件技巧 或者 大文件缓存等硬件技巧来优化读性能，那么这种权衡是明智的。
 
-- memtable通过WAL的方式备份到磁盘，以便能恢复，防止数据丢失。
 
-- 当memtable满了，有序的数据会被flush到一个新的磁盘文件中。当更多的写入到来时，该过程会不断重复。重要的是，系统只做顺序IO，因为没有文件被编辑，新的数据 或 修改只用简单的生成新文件(.sst文件)。
 
-- 当更多数据到达时，会有更多无法修改、顺序的文件会被创建。每个文件代表一个小的、按时间顺序更改的、有序子集；
+![](https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20211119172131999.png)
 
-- 旧文件不再更新，因此新建重复项以覆盖前面的记录(或删除标记)。这会产生一些冗余；
-
-- 系统会周期性的执行 compation操作。compation 会选择多个文件 然后将他们合并，移除 重复的更新 或 已删除的项。这对清理冗余很重要，同时更重要的是处理因文件数量大量增长 而 导致读性能下降问题。值得庆幸的是，因文件是有序的，合并文件的过程效率也很高；
-
-- 当接收到读请求时，系统首先检查内存buffer(也就是memtable)。如果memtable中不存在，则按照文件生成时间顺序倒序检查 磁盘文件，直到key被找到。每个文件都经过排序，因此可以导航，然而随着文件数量增加，每个文件都需要检查，读取会变得越来越慢。这是 一个问题；
-
-- 所以LSM Treee的读取比其他做in-place更新的数据库慢。幸运的是，也有一些小技巧让读取性能更好。最常用的方法是在内存中保存 page-index(页面索引)。这提供了一个查找，使你接近你的目标 key。LevelDB、RocksDB 和 BigTable通过在每个文件末尾保存块索引来执行此操作。这通常比直接二进制搜索更有效，因为它允许使用变长字段且更适合压缩数据。
-
-- 及时每个文件都有索引，在文件数量剧增时读取操作依然很慢。只能通过定期做compaction，让文件合并，将文件数量和读取性能保持在可接受范围内。
-
-- 通过compaction，虽然能减少文件数据量 读操作但依然需要访问大量的文件。大多数通过使用布隆过滤器来避免这种情况。布隆过滤器是一种确定文件是否包含key的高效内存方式。
-
-- 所以从 “写”的角度来看，所有的写入都是 一批一批写入的，并且是连续的块写入。compaction 会产生额外的、周期性IO成本。然而在进行读取时，可能会读取到大量文件。这就是算法的工作方式。我们以读取时的随机IO 替换 交换 写入的随机IO。如果我们能用布隆过滤器等软件技巧 或者 大文件缓存等硬件技巧来优化读性能，那么这种权衡是明智的。
-
-  ![image-20211119172131999](https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20211119172131999.png)
-
-#### Basic Compation
+### Basic Compation
 
 为了让LSM读取相对更快，管理文件数量很重要，所以我们来看下compaction这个过程。这个过程有点像分代(generational)垃圾回收：
 
@@ -85,53 +75,45 @@ LSM(Log-Structured-Merge Tree) 使用了一种不同于上述四种的方法，�
 
 ![image-20211119160711343](https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20211119160711343.png)
 
-#### Levelled Compaction
+### Levelled Compaction
 
 在较新的实现中，例如LevelDB、RocksDB 和 Cassandra中的实现，通过基于level 而不是基于size的compaction的压缩来解决这个问题。这减少了最坏情况下读取操作必须检索的文件数量，并减少单次compaction的影响。
 
 基于level的compaction 对比 base compaction有两个关键的区别：
 
-1. 每个level都包含多个文件(**某个level保存的文件数是固定的？**)，并保证作为的一个整体其中没有重复的keys。也就是说，keys 横跨多个可用文件被 partitioned 。因此在某个level查找一个key，只需查阅一个文件即可；
+1.  每个level都包含多个文件(**某个level保存的文件数是固定的？**)，并保证作为的一个整体其中没有重复的keys。也就是说，keys 横跨多个可用文件被 partitioned 。因此在某个level查找一个key，只需查阅一个文件即可；
 
-   level 0 是很特殊，不满足上述性质。keys可以跨域多个文件(同一个key的多次修改保存在不同文件中)。
-
+    level 0 是很特殊，不满足上述性质。keys可以跨域多个文件(同一个key的多次修改保存在不同文件中)。
 2. 某个时间，文件会被合并到更高一层的level的一个文恶剪中。当一个level 填满时，一个文件会被提取出来并合并到更高一层的level中(这个level会创建空间以便更多数据加入)。这和 base compaction一点细微区别：base compaction是将几个相似大小的文件合并为一个更大的文件。
 
 这些区别也意味着基于level的compaction 可以随着时间的推移分散compaction的影响，并且需要更少的空间。它还具有更好的性能。然而，对大多数工作负载来说，总IO更高，这也意味着一些更简单的大部分只是写入的工作负载将不会受益。
 
-### RocksDB的一些概念
+## RocksDB的一些概念
 
 ![image](https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/20211119234624.png)
 
-#### Column family
+### Column family
 
 参考内容:
 
 [What is the point of column families?](https://dba.stackexchange.com/questions/166159/what-is-the-point-of-column-families) 、[中文版](https://qastack.cn/dba/166159/what-is-the-point-of-column-families)
 
 1. Column Family的用途是啥？
+   * 不同的数据部分使用不同的compaction 配置、比较器、压缩类型、merge operators 或 compactions filter;
+   * 通过删除column family以便删除数据；
+   * 一个column family用于存储元数据(meta)、另一个column family用于存储真正的数据；
+2.  将数据存储在不同的 column family 和 存储在多个rocksdb数据库中有啥不同？
 
-   - 不同的数据部分使用不同的compaction 配置、比较器、压缩类型、merge operators 或 compactions filter;
-   - 通过删除column family以便删除数据；
-   - 一个column family用于存储元数据(meta)、另一个column family用于存储真正的数据；
+    最主要的区别是备份、原子写入 和 写入性能。
 
-2. 将数据存储在不同的 column family 和 存储在多个rocksdb数据库中有啥不同？
+    使用多个rocksdb数据库的优势是：数据库是备份 和 checkpoint的单位。拷贝一个数据库到另一台机器 比 一个column family更容易。
 
-   最主要的区别是备份、原子写入 和 写入性能。
-
-   使用多个rocksdb数据库的优势是：数据库是备份 和 checkpoint的单位。拷贝一个数据库到另一台机器 比 一个column family更容易。
-
-   使用multi column family的优势是：(1) 一个数据库中跨多个column family批量写入是原子的，而多个rocksdb无法实现这一点。(2) 如果对WAL进行同步写入，多个数据库可能会随时性能。
-
+    使用multi column family的优势是：(1) 一个数据库中跨多个column family批量写入是原子的，而多个rocksdb无法实现这一点。(2) 如果对WAL进行同步写入，多个数据库可能会随时性能。
 3. 我有不同的key spaces，我应该通过前缀来将它们进行区分 还是 使用不同的column families？
-
-   - 如果每个key space很大，那将他们放到不同的column families中更好。
-   - 如果每个key space不大，那你应该考虑将多个key spaces放到同一个column family中，以避免维护多个column family麻烦。
+   * 如果每个key space很大，那将他们放到不同的column families中更好。
+   * 如果每个key space不大，那你应该考虑将多个key spaces放到同一个column family中，以避免维护多个column family麻烦。
 
 一些点：
 
-- 每个KV都会关联一个column family，其中默认的column family是"default";
-
-- 不同的column family共享WAL，不过不同的column family都有自己的 memtable 和 SST。这也意味着我们可以给不同的column family设置不同的属性，同时能快速删除对应的column family；
-
-  
+* 每个KV都会关联一个column family，其中默认的column family是"default";
+* 不同的column family共享WAL，不过不同的column family都有自己的 memtable 和 SST。这也意味着我们可以给不同的column family设置不同的属性，同时能快速删除对应的column family；
