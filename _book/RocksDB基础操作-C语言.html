@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Redis备份 · GitBook</title>
+        <title>RocksDB基础操作-C语言 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,8 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="Redis复制.html" />
     
-    
-    <link rel="prev" href="redis-xue-xi/" />
+    <link rel="prev" href="RocksDB基础概念.html" />
     
 
     </head>
@@ -116,7 +114,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.2.1" data-path="Redis备份.html">
+        <li class="chapter " data-level="1.2.1" data-path="Redis备份.html">
             
                 <a href="Redis备份.html">
             
@@ -187,7 +185,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.2" data-path="RocksDB基础操作-C语言.html">
+        <li class="chapter active" data-level="1.3.2" data-path="RocksDB基础操作-C语言.html">
             
                 <a href="RocksDB基础操作-C语言.html">
             
@@ -267,7 +265,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Redis备份</a>
+        <a href="." >RocksDB基础操作-C语言</a>
     </h1>
 </div>
 
@@ -282,9 +280,60 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="redis&#x5907;&#x4EFD;">Redis&#x5907;&#x4EFD;</h2>
-<h3 id="rdb">RDB</h3>
-<h3 id="aof">AOF</h3>
+                                <h2 id="rocksdb&#x57FA;&#x7840;&#x64CD;&#x4F5C;&#x2014;&#x2014;c&#x8BED;&#x8A00;">RocksDB&#x57FA;&#x7840;&#x64CD;&#x4F5C;&#x2014;&#x2014;C&#x8BED;&#x8A00;</h2>
+<h4 id="open&#x4E00;&#x4E2A;db">Open&#x4E00;&#x4E2A;DB</h4>
+<pre><code class="lang-c"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-string">&quot;rocksdb/c.h&quot;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;assert.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdlib.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;string.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;unistd.h&gt;</span></span>
+
+<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> DBPath[] = <span class="hljs-string">&quot;./data/c_simple_example&quot;</span>;
+<span class="hljs-keyword">rocksdb_t</span> *db;
+<span class="hljs-keyword">rocksdb_options_t</span> *options = rocksdb_options_create();
+<span class="hljs-comment">//&#x8BBE;&#x7F6E;&#x5E76;&#x53D1;&#x5EA6;</span>
+<span class="hljs-keyword">long</span> cpus = sysconf(_SC_NPROCESSORS_ONLN);
+rocksdb_options_increase_parallelism(options, cpus);
+rocksdb_options_optimize_level_style_compaction(options, <span class="hljs-number">0</span>);
+<span class="hljs-comment">//&#x5982;&#x679C;DB&#x4E0D;&#x5B58;&#x5728;,&#x5219;&#x521B;&#x5EFA;</span>
+rocksdb_options_set_create_if_missing(options, <span class="hljs-number">1</span>);
+
+<span class="hljs-keyword">char</span> *err = <span class="hljs-literal">NULL</span>;
+db = rocksdb_open(options, DBPath, &amp;err);
+<span class="hljs-keyword">if</span> (err)
+{
+    perror(err);
+    <span class="hljs-built_in">exit</span>(<span class="hljs-number">-1</span>);
+}
+rocksdb_options_destroy(options);
+rocksdb_close(db);
+</code></pre>
+<h4 id="&#x5199;&#x5165;kv">&#x5199;&#x5165;k/v</h4>
+<pre><code class="lang-c"><span class="hljs-keyword">char</span> *err = <span class="hljs-literal">NULL</span>;
+<span class="hljs-comment">//put key-value</span>
+<span class="hljs-keyword">rocksdb_writeoptions_t</span> *writeopt = rocksdb_writeoptions_create();
+<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> key[] = <span class="hljs-string">&quot;hello&quot;</span>;
+<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *val = <span class="hljs-string">&quot;world&quot;</span>;
+rocksdb_put(db, writeopt, key, <span class="hljs-built_in">strlen</span>(key), val, <span class="hljs-built_in">strlen</span>(val), &amp;err);
+<span class="hljs-keyword">if</span> (err)
+{
+    perror(err);
+    <span class="hljs-built_in">exit</span>(<span class="hljs-number">-1</span>);
+}
+rocksdb_writeoptions_destroy(writeopt);
+</code></pre>
+<h4 id="&#x8BFB;&#x53D6;kv">&#x8BFB;&#x53D6;k/v</h4>
+<pre><code class="lang-c"><span class="hljs-comment">//get value</span>
+<span class="hljs-keyword">rocksdb_readoptions_t</span> *readopt = rocksdb_readoptions_create();
+<span class="hljs-keyword">size_t</span> len;
+<span class="hljs-keyword">char</span> *ret_val = rocksdb_get(db, readopt, key, <span class="hljs-built_in">strlen</span>(key), &amp;len, &amp;err);
+assert(!err);
+assert(<span class="hljs-built_in">strncmp</span>(ret_val, val, len) == <span class="hljs-number">0</span>);
+<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;ret_val=&gt;%.*s val_len=&gt;%d\n&quot;</span>, len, ret_val, len);
+<span class="hljs-built_in">free</span>(ret_val);
+rocksdb_readoptions_destroy(readopt);
+</code></pre>
 
                                 
                                 </section>
@@ -312,14 +361,10 @@
 
             
                 
-                <a href="redis-xue-xi/" class="navigation navigation-prev " aria-label="Previous page: Redis学习">
+                <a href="RocksDB基础概念.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: RocksDB基础概念">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="Redis复制.html" class="navigation navigation-next " aria-label="Next page: Redis复制">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -328,7 +373,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Redis备份","level":"1.2.1","depth":2,"next":{"title":"Redis复制","level":"1.2.2","depth":2,"path":"Redis复制.md","ref":"Redis复制.md","articles":[]},"previous":{"title":"Redis学习","level":"1.2","depth":1,"path":"redis-xue-xi/README.md","ref":"redis-xue-xi/README.md","articles":[{"title":"Redis备份","level":"1.2.1","depth":2,"path":"Redis备份.md","ref":"Redis备份.md","articles":[]},{"title":"Redis复制","level":"1.2.2","depth":2,"path":"Redis复制.md","ref":"Redis复制.md","articles":[]},{"title":"Redis集群","level":"1.2.3","depth":2,"path":"Redis集群.md","ref":"Redis集群.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Redis备份.md","mtime":"2021-11-18T09:26:18.537Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-11-22T12:37:52.835Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"RocksDB基础操作-C语言","level":"1.3.2","depth":2,"next":{"title":"C语言笔记","level":"1.4","depth":1,"ref":"","articles":[{"title":"C语言补充笔记一","level":"1.4.1","depth":2,"path":"C语言补充笔记一.md","ref":"C语言补充笔记一.md","articles":[]}]},"previous":{"title":"RocksDB基础概念","level":"1.3.1","depth":2,"path":"RocksDB基础概念.md","ref":"RocksDB基础概念.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"RocksDB基础操作-C语言.md","mtime":"2021-11-21T03:38:03.706Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-11-22T12:37:52.835Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

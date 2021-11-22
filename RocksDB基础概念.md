@@ -117,3 +117,12 @@ LSM(Log-Structured-Merge Tree) 使用了一种不同于上述四种的方法，�
 
 * 每个KV都会关联一个column family，其中默认的column family是"default";
 * 不同的column family共享WAL，不过不同的column family都有自己的 memtable 和 SST。这也意味着我们可以给不同的column family设置不同的属性，同时能快速删除对应的column family；
+
+### 几种文件类型
+
+- `memtable`: 常驻内存中，在Write Ahead Log写之后，接受具体的key-value数据。每个memtable大小以及个数都有指定的参数进行控制, `write_buffeere_size` 表示memtable的大小，`max_write_buffer_number` 表示内存中最多可以同时存在多少个memtable；
+- `Immutable memtable`: 当memtable被写满之后会生成一个新的 memtable 继续接受IO，就的memtable 就会变成 immutable memtable，只读状态，且开始flush到.sst文件中；
+- `*.log`: rocksdb的Write Ahead Log，用于数据恢复。当memtable => immutable memtable 中的数据刷到L0之后，之前的LOG会被删除；
+- `*.sst`: 存储key-value的文件；
+- MANIFEST：保存当前DB的状态信息(类似于快照)，主要是SST文件的各个版本信息(Compaction过程会添加新文件并从数据库中删除旧文件，sst文件被改动，即生成对应的versionEdit，并触发sync写manifest文件)。用于异常断电后恢复；
+- CURRENT：记录当前最新的manifest文件编号。
