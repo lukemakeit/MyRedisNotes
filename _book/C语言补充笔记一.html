@@ -233,6 +233,38 @@
             
         </li>
     
+        <li class="chapter " data-level="1.5" >
+            
+                <span>
+            
+                    
+                    工具使用
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="VS Code使用.html">
+            
+                <a href="VS Code使用.html">
+            
+                    
+                    VS Code使用小技巧
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
 
     
 
@@ -279,15 +311,15 @@
                                 <section class="normal markdown-section">
                                 
                                 <h2 id="c&#x8BED;&#x8A00;&#x8865;&#x5145;&#x7B14;&#x8BB0;&#x4E00;">C&#x8BED;&#x8A00;&#x8865;&#x5145;&#x7B14;&#x8BB0;&#x4E00;</h2>
-<ol>
+<ul>
 <li><code>malloc()</code>:&#x52A8;&#x6001;&#x5206;&#x914D;&#x7A7A;&#x95F4;&#x5E76;&#x5B58;&#x653E;&#x6570;&#x636E;&#xFF0C;<mark style="color:red;"><strong>malloc() &#x4E0D;&#x521D;&#x59CB;&#x5316;&#xFF0C;&#x91CC;&#x8FB9;&#x6570;&#x636E;&#x662F;&#x672A;&#x77E5;&#x7684;&#x5783;&#x573E;&#x6570;&#x636E;</strong></mark></li>
-</ol>
+</ul>
 <pre><code class="lang-c">buffer = (<span class="hljs-keyword">char</span>*)<span class="hljs-built_in">malloc</span>(i+<span class="hljs-number">1</span>);  <span class="hljs-comment">// &#x5B57;&#x7B26;&#x4E32;&#x6700;&#x540E;&#x5305;&#x542B; \0</span>
 <span class="hljs-keyword">if</span>(buffer==<span class="hljs-literal">NULL</span>) <span class="hljs-built_in">exit</span>(<span class="hljs-number">1</span>);  <span class="hljs-comment">// &#x5224;&#x65AD;&#x662F;&#x5426;&#x5206;&#x914D;&#x6210;&#x529F;</span>
 </code></pre>
-<ol>
+<ul>
 <li><code>calloc()</code>:&#x52A8;&#x6001;&#x5206;&#x914D;&#x7A7A;&#x95F4;&#xFF0C;<mark style="color:red;"><strong>&#x5E76;&#x521D;&#x59CB;&#x5316;&#x4E3A;</strong></mark></li>
-</ol>
+</ul>
 <pre><code class="lang-c"><span class="hljs-keyword">int</span> i=<span class="hljs-number">100</span>,n;
 <span class="hljs-keyword">int</span> * pData;
 pData = (<span class="hljs-keyword">int</span>*) <span class="hljs-built_in">calloc</span> (i,<span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">int</span>)); <span class="hljs-comment">//&#x5206;&#x914D;100&#x4E2A;int&#x7684;&#x7A7A;&#x95F4;</span>
@@ -310,9 +342,9 @@ pData = (<span class="hljs-keyword">int</span>*) <span class="hljs-built_in">cal
 <span class="hljs-keyword">char</span> *str2 = (<span class="hljs-keyword">char</span> *)<span class="hljs-built_in">malloc</span>(<span class="hljs-number">20</span>);
 <span class="hljs-built_in">memset</span>(str2, <span class="hljs-number">0</span>, <span class="hljs-number">20</span>);
 </code></pre>
-<ol>
+<ul>
 <li>&#x7ED9;&#x4E00;&#x4E2A;struct&#x505A;&#x521D;&#x59CB;&#x5316;,&#x6216;&#x8005;&#x5206;&#x914D;&#x5185;&#x5B58;:</li>
-</ol>
+</ul>
 <pre><code class="lang-c"><span class="hljs-keyword">struct</span> addrinfo *hints=<span class="hljs-built_in">calloc</span>(<span class="hljs-number">1</span>, <span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">struct</span> addrinfo));
 or
 <span class="hljs-keyword">struct</span> addrinfo *hints=(<span class="hljs-keyword">struct</span> addrinfo*)<span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">struct</span> addrinfo));
@@ -321,9 +353,9 @@ or
 hints-&gt;ai_addr = <span class="hljs-literal">NULL</span>;
 hints-&gt;ai_addrlen = <span class="hljs-number">0</span>
 </code></pre>
-<ol>
+<ul>
 <li><code>atoi()</code>:<code>char*</code>&#x8F6C;&#x6362;&#x4E3A;<code>int</code>:</li>
-</ol>
+</ul>
 <pre><code class="lang-c"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdlib.h&gt;</span></span>
 <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">atoi</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *<span class="hljs-built_in">string</span>)</span></span>;
 
@@ -333,17 +365,18 @@ hints-&gt;ai_addrlen = <span class="hljs-number">0</span>
 s = <span class="hljs-string">&quot; -9885&quot;</span>;
 i = atoi(s);     <span class="hljs-comment">/* i = -9885 */</span>
 </code></pre>
-<ol>
+<ul>
 <li><code>sprintf()</code>:&#x5C06;int&#x8F6C;&#x6362;&#x4E3A;&#x683C;&#x5F0F;&#x5316;&#x5B57;&#x7B26;:</li>
-</ol>
+</ul>
 <pre><code class="lang-c"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span></span>
 
 <span class="hljs-keyword">int</span> i=<span class="hljs-number">8</span>;
 <span class="hljs-keyword">char</span> ret[<span class="hljs-number">20</span>] = {<span class="hljs-number">0</span>}; <span class="hljs-comment">//&#x5148;&#x5168;&#x90E8;&#x521D;&#x59CB;&#x5316;&#x4E3A;0</span>
 (ret, <span class="hljs-string">&quot;%d\n&quot;</span>, i);
 </code></pre>
-<ol>
-<li><p><code>isspace()</code>:&#x5224;&#x65AD;&#x67D0;&#x4E2A;&#x5B57;&#x7B26;&#x662F;&#x5426;&#x662F;&#x7A7A;&#x683C;:</p>
+<ul>
+<li><code>isspace()</code>:&#x5224;&#x65AD;&#x67D0;&#x4E2A;&#x5B57;&#x7B26;&#x662F;&#x5426;&#x662F;&#x7A7A;&#x683C;:</li>
+</ul>
 <p>&#x6807;&#x51C6;&#x7684;&#x7A7A;&#x683C;&#x6709;&#x8FD9;&#x4E9B;</p>
 <pre><code class="lang-c">&apos; &apos;   (0x20)    space (SPC)
 &apos;\t&apos;    (0x09)    horizontal tab (TAB)
@@ -376,10 +409,9 @@ char *trimwhitespace(char *str)
     return str;
 }
 </code></pre>
-</li>
-<li><p>&#x7ECF;&#x5E38;&#x770B;&#x5230;Redis&#x4E2D;&#x4ECE;&#x4E00;&#x4E2A;<code>char *</code>&#x7C7B;&#x578B;&#x4E2D;&#x89E3;&#x6790;longlong or int,&#x5176;&#x5B9E;&#x662F;&#x975E;&#x5E38;&#x5408;&#x7406;&#x7684;&#x3002;</p>
-</li>
-</ol>
+<ul>
+<li>&#x7ECF;&#x5E38;&#x770B;&#x5230;Redis&#x4E2D;&#x4ECE;&#x4E00;&#x4E2A;<code>char *</code>&#x7C7B;&#x578B;&#x4E2D;&#x89E3;&#x6790;longlong or int,&#x5176;&#x5B9E;&#x662F;&#x975E;&#x5E38;&#x5408;&#x7406;&#x7684;&#x3002;</li>
+</ul>
 <p>&#x4F8B;&#x5982;:</p>
 <pre><code class="lang-c"><span class="hljs-keyword">int</span> a = <span class="hljs-number">97</span>;
 <span class="hljs-keyword">size_t</span> len = <span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">int</span>);
@@ -394,14 +426,18 @@ char *trimwhitespace(char *str)
 &#x7ED3;&#x679C;&#x6253;&#x5370;:
 intlen=&gt;<span class="hljs-number">4</span>,p01=&gt;a,<span class="hljs-built_in">strlen</span>=&gt;<span class="hljs-number">1</span>,*b==<span class="hljs-number">97</span>,tmp=&gt;<span class="hljs-number">97</span> <span class="hljs-comment">//&#x5B57;&#x7B26;&apos;a&apos;&#x7684;ascii&#x7801;&#x503C;&#x5C31;&#x662F;97,&#x6240;&#x4EE5;&#x8FD9;&#x91CC;p01==a</span>
 </code></pre>
-<ol>
-<li>&#x89E3;&#x6790;&#x4E8C;&#x8FDB;&#x5236;&#x6587;&#x4EF6; &#x6216;&#x8005; &#x5E94;&#x7528;&#x5C42;&#x7684;&#x7F51;&#x7EDC;&#x534F;&#x8BAE;,<mark style="color:red;"><strong>&#x4E00;&#x822C;&#x6709;&#x4E0B;&#x5217;&#x7684;&#x601D;&#x8DEF;&#x6765;&#x5B9A;&#x4E49;&#x6D88;&#x606F;&#xFF0C;&#x4EE5;&#x4FDD;&#x8BC1;&#x5B8C;&#x6574;&#x8FDB;&#x884C;&#x8BFB;&#x53D6;</strong></mark>:<ul>
-<li><mark style="color:red;"><strong>&#x5B9A;&#x957F;&#x6D88;&#x606F;</strong></mark>;</li>
-<li><mark style="color:red;"><strong>&#x6D88;&#x606F;&#x5C3E;&#x90E8;&#x6DFB;&#x52A0;&#x7279;&#x6B8A;&#x5206;&#x9694;&#x7B26;&#xFF0C;&#x5982;Echo&#x670D;&#x52A1;&#x5668;,&#x4F7F;&#x7528;&apos;\n&apos;&#x4F5C;&#x4E3A;&#x5206;&#x5272;&#x7B26;</strong></mark>; </li>
-<li><mark style="color:red;"><strong>&#x5C06;&#x6D88;&#x606F;&#x5206;&#x4E3A;header&#x548C;body&#xFF0C;&#x5728;header&#x4E2D;&#x63D0;&#x4F9B;bodu&#x603B;&#x957F;&#x5EA6;&#x3002;&#x8FD9;&#x79CD;&#x5206;&#x5305;&#x65B9;&#x5F0F;&#x79F0;&#x4E3A;LTV(length,type,value)&#x3002;&#x8FD9;&#x662F;&#x5E94;&#x7528;&#x6700;&#x5E7F;&#x6CDB;&#x7684;&#x7B56;&#x7565;&#xFF0C;&#x5982;HTTP&#x534F;&#x8BAE;&#x3002;&#x5F53;&#x4ECE;header&#x4E2D;&#x83B7;&#x5F97;body&#x957F;&#x5EA6;&#x540E;&#xFF0C;io.ReadFULL&#x51FD;&#x6570;&#x4F1A;&#x8BFB;&#x53D6;&#x6307;&#x5B9A;&#x5B57;&#x8282;&#x6D41;&#xFF0C;&#x4ECE;&#x800C;&#x89E3;&#x6790;&#x5E94;&#x7528;&#x5C42;&#x6D88;&#x606F;</strong></mark>&#x3002;</li>
+<ul>
+<li><p>&#x89E3;&#x6790;&#x4E8C;&#x8FDB;&#x5236;&#x6587;&#x4EF6; &#x6216;&#x8005; &#x5E94;&#x7528;&#x5C42;&#x7684;&#x7F51;&#x7EDC;&#x534F;&#x8BAE;,<mark style="color:red;"><strong>&#x4E00;&#x822C;&#x6709;&#x4E0B;&#x5217;&#x7684;&#x601D;&#x8DEF;&#x6765;&#x5B9A;&#x4E49;&#x6D88;&#x606F;&#xFF0C;&#x4EE5;&#x4FDD;&#x8BC1;&#x5B8C;&#x6574;&#x8FDB;&#x884C;&#x8BFB;&#x53D6;</strong></mark>:</p>
+<ul>
+<li><p><mark style="color:red;"><strong>&#x5B9A;&#x957F;&#x6D88;&#x606F;</strong></mark>;</p>
+</li>
+<li><p><mark style="color:red;"><strong>&#x6D88;&#x606F;&#x5C3E;&#x90E8;&#x6DFB;&#x52A0;&#x7279;&#x6B8A;&#x5206;&#x9694;&#x7B26;&#xFF0C;&#x5982;Echo&#x670D;&#x52A1;&#x5668;,&#x4F7F;&#x7528;&apos;\n&apos;&#x4F5C;&#x4E3A;&#x5206;&#x5272;&#x7B26;</strong></mark>; </p>
+</li>
+<li><p><mark style="color:red;"><strong>&#x5C06;&#x6D88;&#x606F;&#x5206;&#x4E3A;header&#x548C;body&#xFF0C;&#x5728;header&#x4E2D;&#x63D0;&#x4F9B;bodu&#x603B;&#x957F;&#x5EA6;&#x3002;&#x8FD9;&#x79CD;&#x5206;&#x5305;&#x65B9;&#x5F0F;&#x79F0;&#x4E3A;LTV(length,type,value)&#x3002;&#x8FD9;&#x662F;&#x5E94;&#x7528;&#x6700;&#x5E7F;&#x6CDB;&#x7684;&#x7B56;&#x7565;&#xFF0C;&#x5982;HTTP&#x534F;&#x8BAE;&#x3002;&#x5F53;&#x4ECE;header&#x4E2D;&#x83B7;&#x5F97;body&#x957F;&#x5EA6;&#x540E;&#xFF0C;io.ReadFULL&#x51FD;&#x6570;&#x4F1A;&#x8BFB;&#x53D6;&#x6307;&#x5B9A;&#x5B57;&#x8282;&#x6D41;&#xFF0C;&#x4ECE;&#x800C;&#x89E3;&#x6790;&#x5E94;&#x7528;&#x5C42;&#x6D88;&#x606F;</strong></mark>&#x3002;</p>
+</li>
 </ul>
 </li>
-</ol>
+</ul>
 <p>Redis&#x7684;RESP&#x534F;&#x8BAE;&#xFF0C;&#x5982;AOF&#x6587;&#x4EF6;&#x5C31;&#x662F;&#xFF0C;&#x5206;&#x9694;&#x7B26;&#x548C;LTV&#x5305;&#x7684;&#x7ED3;&#x5408;&#x4F7F;&#x7528;&#x3002;</p>
 <p>&#x4E0D;&#x8FC7;Redis&#x4E2D;&#x4E5F;&#x6709;&#x5B9A;&#x957F;&#x6D88;&#x606F;&#x7684;&#x4F7F;&#x7528;&#xFF0C;&#x4E0B;&#x9762;&#x662F;&#x4E00;&#x4E2A;&#x5B9A;&#x957F;&#x6D88;&#x606F;&#x7684;&#x793A;&#x4F8B;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x671D;fd(fd&#x53EF;&#x4EE5;&#x662F;&#x6587;&#x4EF6;&#xFF0C;&#x53EF;&#x4EE5;&#x662F;pipeline&#xFF0C;&#x53EF;&#x4EE5;&#x662F;&#x7F51;&#x7EDC;socket)&#x4E2D;&#x5199;&#x5165;&#x5B9A;&#x957F;&#x7684;struct student&#xFF0C;&#x8BFB;&#x53D6;&#x65F6;&#x5019;&#x4E5F;&#x662F;&#x5B9A;&#x957F;&#x53BB;&#x8BFB;&#x53D6;&#x3002;</p>
 <p>&#x6CE8;&#x610F;: <strong>&#x4E0B;&#x9762;&#x7A0B;&#x5E8F;&#x8FD0;&#x884C;&#x7684;&#x524D;&#x63D0;&#x662F; struct student&#x4E2D;&#x6CA1;&#x6709;&#x6307;&#x9488;</strong></p>
@@ -431,6 +467,20 @@ close(f02);
 <p>Redis&#x5B9A;&#x957F;&#x6D88;&#x606F;&#x7528;&#x5728;&#x6267;&#x884C;BGSAVE&#x65F6;&#xFF0C;child&#x8FDB;&#x7A0B; &#x901A;&#x8FC7;pipeline &#x4E0D;&#x65AD;&#x5411; parent&#x8FDB;&#x7A0B; &#x4F20;&#x8F93;RDB&#x5907;&#x4EFD;&#x8FDB;&#x5EA6;&#x3002;</p>
 <p><img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20211122203335223.png" alt="image-20211122203335223"></p>
 <p><img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20211122203415897.png" alt="image-20211122203415897"></p>
+<ul>
+<li><p><code>strcpy</code>&#x548C;<code>strdup</code>&#x7684;&#x533A;&#x522B;</p>
+<p>&#x53C2;&#x8003;&#x95EE;&#x9898;: <a href="https://stackoverflow.com/questions/14020380/strcpy-vs-strdup" target="_blank">strcpy vs strdup</a></p>
+<ul>
+<li><code>strcpy</code>&#x548C;<code>strncpy</code>&#x662F;C&#x8BED;&#x8A00;&#x6807;&#x51C6;&#x7248;&#x7684;&#x4E00;&#x90E8;&#x5206;&#x3002;&#x5728;&#x4F7F;&#x7528;&#x8FD9;&#x4FE9;&#x51FD;&#x6570;&#x65F6;&#xFF0C;&#x8C03;&#x7528;&#x8005;<strong>&#x5FC5;&#x987B;&#x81EA;&#x5DF1;&#x786E;&#x4FDD;&#x5C06;&#x6240;&#x9700;&#x5185;&#x5B58;&#x5206;&#x914D;&#x597D;</strong>&#xFF1B;</li>
+<li>&#x76F8;&#x53CD;&#xFF0C;<code>strdup</code>&#x662F;Posix&#x6807;&#x51C6;&#x91CC;&#x7684;&#x51FD;&#x6570;&#xFF0C;<mark style="color:red"><strong>&#x4ED6;&#x4F1A;&#x81EA;&#x52A8;&#x4E3A;&#x4F60;&#x5206;&#x914D;&#x5185;&#x5B58;(&#x51FD;&#x6570;&#x4E2D;&#x9690;&#x85CF;&#x8FD9;&#x4E00;&#x4E2A;<code>malloc</code>)</strong></mark>&#x3002;&#x7136;&#x540E;&#x8FD4;&#x56DE;&#x65B0;&#x5206;&#x914D;&#x7684;&#x5185;&#x5B58;&#x7684;&#x5730;&#x5740;&#xFF1B;&#x65B0;&#x5730;&#x5740;&#x7684;&#x5185;&#x5B58;&#x7531;&#x4F60;&#x81EA;&#x5DF1;&#x91CA;&#x653E;&#x3002;</li>
+<li><code>strcpy(ptr2,ptr1)</code>&#x7B49;&#x4EF7;&#x4E8E; <code>while(*ptr2++ = *ptr1++)</code>;</li>
+<li><code>strdup</code>&#x7B49;&#x4EF7;&#x4E8E;</li>
+</ul>
+<pre><code class="lang-c">ptr2 = <span class="hljs-built_in">malloc</span>(<span class="hljs-built_in">strlen</span>(ptr1)+<span class="hljs-number">1</span>);
+<span class="hljs-built_in">strcpy</span>(ptr2,ptr1);
+</code></pre>
+</li>
+</ul>
 
                                 
                                 </section>
@@ -466,7 +516,7 @@ close(f02);
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"C语言补充笔记一","level":"1.4.1","depth":2,"previous":{"title":"C语言笔记","level":"1.4","depth":1,"ref":"","articles":[{"title":"C语言补充笔记一","level":"1.4.1","depth":2,"path":"C语言补充笔记一.md","ref":"C语言补充笔记一.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"C语言补充笔记一.md","mtime":"2021-11-22T12:37:27.155Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-11-22T12:37:52.835Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"C语言补充笔记一","level":"1.4.1","depth":2,"next":{"title":"工具使用","level":"1.5","depth":1,"ref":"","articles":[{"title":"VS Code使用小技巧","level":"1.5.1","depth":2,"path":"VS Code使用.md","ref":"VS Code使用.md","articles":[]}]},"previous":{"title":"C语言笔记","level":"1.4","depth":1,"ref":"","articles":[{"title":"C语言补充笔记一","level":"1.4.1","depth":2,"path":"C语言补充笔记一.md","ref":"C语言补充笔记一.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"C语言补充笔记一.md","mtime":"2021-11-22T12:55:54.385Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-11-24T17:49:50.493Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

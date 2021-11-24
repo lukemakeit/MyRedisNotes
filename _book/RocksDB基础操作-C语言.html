@@ -235,6 +235,38 @@
             
         </li>
     
+        <li class="chapter " data-level="1.5" >
+            
+                <span>
+            
+                    
+                    工具使用
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="VS Code使用.html">
+            
+                <a href="VS Code使用.html">
+            
+                    
+                    VS Code使用小技巧
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
 
     
 
@@ -334,6 +366,136 @@ assert(<span class="hljs-built_in">strncmp</span>(ret_val, val, len) == <span cl
 <span class="hljs-built_in">free</span>(ret_val);
 rocksdb_readoptions_destroy(readopt);
 </code></pre>
+<h4 id="&#x4F7F;&#x7528;pinnableslice-&#x8FDB;&#x884C;&#x8BFB;&#x53D6;&#xFF0C;&#x53EF;&#x51CF;&#x5C11;&#x4E00;&#x6B21;&#x5185;&#x5B58;&#x62F7;&#x8D1D;">&#x4F7F;&#x7528;pinnableslice &#x8FDB;&#x884C;&#x8BFB;&#x53D6;&#xFF0C;&#x53EF;&#x51CF;&#x5C11;&#x4E00;&#x6B21;&#x5185;&#x5B58;&#x62F7;&#x8D1D;</h4>
+<pre><code class="lang-c"><span class="hljs-keyword">rocksdb_readoptions_t</span> *readopt = rocksdb_readoptions_create();
+<span class="hljs-keyword">size_t</span> len;
+<span class="hljs-keyword">char</span> *err = <span class="hljs-literal">NULL</span>;
+<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> key[] = <span class="hljs-string">&quot;hello&quot;</span>;
+<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *val = <span class="hljs-string">&quot;world&quot;</span>;
+<span class="hljs-keyword">rocksdb_pinnableslice_t</span> *pinVal = rocksdb_get_pinned(db, readopt, key, <span class="hljs-built_in">strlen</span>(key), &amp;err);
+<span class="hljs-keyword">if</span> (err)
+{
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;rocksdb_get_pinned fail,err:%s\n&quot;</span>, err);
+    <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;
+}
+<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *pConstVal = rocksdb_pinnableslice_value(pinVal, &amp;len); <span class="hljs-comment">//&#x4ECE;pinnableslice&#x4E2D;&#x8BFB;&#x53D6;&#x503C;</span>
+assert(<span class="hljs-built_in">strncmp</span>(pConstVal, val, len) == <span class="hljs-number">0</span>);
+<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;pConstVal=&gt;%.*s pConstValLen=&gt;%d\n&quot;</span>, len, pConstVal, len);
+
+rocksdb_pinnableslice_destroy(pinVal);
+</code></pre>
+<h4 id="&#x4FDD;&#x5B58;&#x4E8C;&#x8FDB;&#x5236;key-&#x540C;&#x65F6;-&#x6839;&#x636E;&#x524D;&#x7F00;&#x904D;&#x5386;">&#x4FDD;&#x5B58;&#x4E8C;&#x8FDB;&#x5236;key &#x540C;&#x65F6; &#x6839;&#x636E;&#x524D;&#x7F00;&#x904D;&#x5386;</h4>
+<pre><code class="lang-c"><span class="hljs-keyword">char</span> *k01 = (<span class="hljs-keyword">char</span> *)<span class="hljs-built_in">malloc</span>(<span class="hljs-number">20</span>);
+<span class="hljs-keyword">char</span> name[<span class="hljs-number">20</span>] = {<span class="hljs-number">0</span>};
+<span class="hljs-keyword">char</span> delimiter = <span class="hljs-string">&apos;:&apos;</span>;
+<span class="hljs-keyword">size_t</span> l01 = <span class="hljs-number">0</span>;
+<span class="hljs-keyword">size_t</span> prefixLen = <span class="hljs-number">0</span>;
+<span class="hljs-keyword">int</span> serverID = <span class="hljs-number">666666</span>; <span class="hljs-comment">//&#x5982;&#x679C;&#x5C06;666666&#x4FDD;&#x5B58;&#x4E3A;&#x5B57;&#x7B26;&#x4E32;&#x9700;&#x8981;6&#x4E2A;&#x5B57;&#x8282;,&#x4FDD;&#x5B58;&#x4E3A;int&#x5219;&#x53EA;&#x9700;&#x8981;4&#x4E2A;&#x5B57;&#x8282;</span>
+<span class="hljs-built_in">memcpy</span>(k01 + l01, (<span class="hljs-keyword">char</span> *)&amp;serverID, <span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">int</span>)); <span class="hljs-comment">//4&#x4E2A;&#x5B57;&#x8282;&#x4FDD;&#x5B58;int</span>
+l01 += <span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">int</span>);
+<span class="hljs-built_in">memcpy</span>(k01 + l01, &amp;delimiter, <span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">char</span>));
+l01 += <span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">char</span>);
+prefixLen = l01;
+
+<span class="hljs-built_in">strcpy</span>(name, <span class="hljs-string">&quot;zhangsan&quot;</span>);
+<span class="hljs-built_in">memcpy</span>(k01 + l01, name, <span class="hljs-built_in">strlen</span>(name));
+l01 += <span class="hljs-built_in">strlen</span>(name);
+rocksdb_put(db, writeopt, k01, l01, val, <span class="hljs-built_in">strlen</span>(val), &amp;err);
+<span class="hljs-keyword">if</span> (err)
+{
+    perror(err);
+    <span class="hljs-built_in">exit</span>(<span class="hljs-number">-1</span>);
+}
+
+l01 = prefixLen;
+<span class="hljs-built_in">strcpy</span>(name, <span class="hljs-string">&quot;lisi&quot;</span>);
+<span class="hljs-built_in">memcpy</span>(k01 + l01, name, <span class="hljs-built_in">strlen</span>(name));
+l01 += <span class="hljs-built_in">strlen</span>(name);
+rocksdb_put(db, writeopt, k01, l01, val, <span class="hljs-built_in">strlen</span>(val), &amp;err);
+<span class="hljs-keyword">if</span> (err)
+{
+    perror(err);
+    <span class="hljs-built_in">exit</span>(<span class="hljs-number">-1</span>);
+}
+
+l01 = prefixLen;
+<span class="hljs-built_in">strcpy</span>(name, <span class="hljs-string">&quot;wangwu&quot;</span>);
+<span class="hljs-built_in">memcpy</span>(k01 + l01, name, <span class="hljs-built_in">strlen</span>(name));
+l01 += <span class="hljs-built_in">strlen</span>(name);
+rocksdb_put(db, writeopt, k01, l01, val, <span class="hljs-built_in">strlen</span>(val), &amp;err);
+<span class="hljs-keyword">if</span> (err)
+{
+    perror(err);
+    <span class="hljs-built_in">exit</span>(<span class="hljs-number">-1</span>);
+}
+
+<span class="hljs-comment">//&#x51C6;&#x5907;&#x904D;&#x5386;</span>
+<span class="hljs-keyword">rocksdb_iterator_t</span> *iter = rocksdb_create_iterator(db, readopt);
+<span class="hljs-keyword">if</span> (iter == <span class="hljs-literal">NULL</span>)
+{
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;create iterator fail\n&quot;</span>);
+    <span class="hljs-keyword">return</span>;
+}
+rocksdb_iter_seek(iter, (<span class="hljs-keyword">char</span> *)&amp;serverID, <span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">int</span>));
+rocksdb_iter_get_error(iter, &amp;err);
+<span class="hljs-keyword">if</span> (err != <span class="hljs-literal">NULL</span>)
+{
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;rocksdb iterator failed...%s\n&quot;</span>, err);
+    <span class="hljs-keyword">return</span>;
+}
+<span class="hljs-keyword">while</span> (rocksdb_iter_valid(iter))
+{
+    <span class="hljs-keyword">size_t</span> keyLen = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">size_t</span> valLen = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">char</span> *keyData = rocksdb_iter_key(iter, &amp;keyLen);
+    rocksdb_iter_get_error(iter, &amp;err);
+    <span class="hljs-keyword">if</span> (err != <span class="hljs-literal">NULL</span>)
+    {
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;rocksdb iterator key failed...%s\n&quot;</span>, err);
+        <span class="hljs-keyword">return</span>;
+    }
+    <span class="hljs-keyword">char</span> *valData = rocksdb_iter_value(iter, &amp;valLen);
+    rocksdb_iter_get_error(iter, &amp;err);
+    <span class="hljs-keyword">if</span> (err != <span class="hljs-literal">NULL</span>)
+    {
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;rocksdb iterator value failed...%s\n&quot;</span>, err);
+        <span class="hljs-keyword">return</span>;
+    }
+
+    <span class="hljs-comment">//&#x89E3;&#x6790;key&#x4E2D;&#x7684;serverID</span>
+    <span class="hljs-keyword">int</span> keySerID = *(<span class="hljs-keyword">int</span> *)(keyData);
+    <span class="hljs-keyword">char</span> keyBuf[<span class="hljs-number">40</span>] = {<span class="hljs-number">0</span>};
+    <span class="hljs-built_in">sprintf</span>(keyBuf, <span class="hljs-string">&quot;key=&gt;%d&quot;</span>, keySerID);
+    <span class="hljs-comment">//&#x83B7;&#x53D6;key&#x4E2D;&#x7684;&#x5269;&#x4F59;&#x90E8;&#x5206;</span>
+    <span class="hljs-built_in">memcpy</span>(keyBuf + <span class="hljs-built_in">strlen</span>(keyBuf), keyData + <span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">int</span>), keyLen - <span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">int</span>));
+
+    <span class="hljs-comment">//&#x83B7;&#x53D6;value</span>
+    <span class="hljs-built_in">sprintf</span>(keyBuf, <span class="hljs-string">&quot;%s value=&gt;&quot;</span>, keyBuf);
+    <span class="hljs-built_in">memcpy</span>(keyBuf + <span class="hljs-built_in">strlen</span>(keyBuf), valData, valLen);
+
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;[iter] %s\n&quot;</span>, keyBuf);
+    rocksdb_iter_next(iter);
+    rocksdb_iter_get_error(iter, &amp;err);
+    <span class="hljs-keyword">if</span> (err != <span class="hljs-literal">NULL</span>)
+    {
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;rocksdb iterator next failed...%s\n&quot;</span>, err);
+        <span class="hljs-keyword">return</span>;
+    }
+}
+
+rocksdb_iter_destroy(iter);
+<span class="hljs-built_in">free</span>(k01);
+rocksdb_writeoptions_destroy(writeopt);
+rocksdb_readoptions_destroy(readopt);
+rocksdb_options_destroy(options);
+rocksdb_backup_engine_close(be);
+rocksdb_close(db);
+
+&#x7ED3;&#x679C;:
+[iter] key=&gt;<span class="hljs-number">666666</span>:lisi value=&gt;world
+[iter] key=&gt;<span class="hljs-number">666666</span>:wangwu value=&gt;world
+[iter] key=&gt;<span class="hljs-number">666666</span>:zhangsan value=&gt;world
+</code></pre>
 
                                 
                                 </section>
@@ -373,7 +535,7 @@ rocksdb_readoptions_destroy(readopt);
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"RocksDB基础操作-C语言","level":"1.3.2","depth":2,"next":{"title":"C语言笔记","level":"1.4","depth":1,"ref":"","articles":[{"title":"C语言补充笔记一","level":"1.4.1","depth":2,"path":"C语言补充笔记一.md","ref":"C语言补充笔记一.md","articles":[]}]},"previous":{"title":"RocksDB基础概念","level":"1.3.1","depth":2,"path":"RocksDB基础概念.md","ref":"RocksDB基础概念.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"RocksDB基础操作-C语言.md","mtime":"2021-11-21T03:38:03.706Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-11-22T12:37:52.835Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"RocksDB基础操作-C语言","level":"1.3.2","depth":2,"next":{"title":"C语言笔记","level":"1.4","depth":1,"ref":"","articles":[{"title":"C语言补充笔记一","level":"1.4.1","depth":2,"path":"C语言补充笔记一.md","ref":"C语言补充笔记一.md","articles":[]}]},"previous":{"title":"RocksDB基础概念","level":"1.3.1","depth":2,"path":"RocksDB基础概念.md","ref":"RocksDB基础概念.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"RocksDB基础操作-C语言.md","mtime":"2021-11-23T15:30:51.321Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-11-24T17:49:50.493Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

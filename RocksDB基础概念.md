@@ -126,3 +126,33 @@ LSM(Log-Structured-Merge Tree) 使用了一种不同于上述四种的方法，�
 - `*.sst`: 存储key-value的文件；
 - MANIFEST：保存当前DB的状态信息(类似于快照)，主要是SST文件的各个版本信息(Compaction过程会添加新文件并从数据库中删除旧文件，sst文件被改动，即生成对应的versionEdit，并触发sync写manifest文件)。用于异常断电后恢复；
 - CURRENT：记录当前最新的manifest文件编号。
+
+### RocksDB 相关参数
+
+参考文档:
+
+[RocksDB参数调优](https://xiking.win/2018/12/05/rocksdb-tuning/)
+
+[RocksDB 笔记](http://alexstocks.github.io/html/rocksdb.html)
+
+- **target_file_size_base**: sst 文件的大小。level0 的 sst 文件的大小受 write-buffer-size 和 level0 采用的压缩算法的影响。target-file-size-base 参数用于控制 level1-level6 单个 sst 文件的大小。
+
+- **max_open_files**: RocksDB 能够打开的最大文件句柄数;
+
+- **max_manifest_file_size**: RocksDB MANIFEST 文件的大小限制 。更详细的信息请参考：https://github.com/facebook/rocksdb/wiki/MANIFEST
+
+- **write_buffer_size**: 单个 memtable 的大小，默认是64MB。当 memtable 大小达到此阈值时，就会被标记为不可变。一般来讲，适当增大这个参数可以减小写放大带来的影响，但同时会增大 flush 后 L0、L1 层的压力，所以还需要配合修改 compaction 参数。
+
+- **block_cache**: 
+
+  Block Cache 是 RocksDB 的数据的缓存,一般默认的Block Cache 中存储的值是未压缩的，而用户可以再指定一个 Block Cache，里面的数据可以是压缩的。用户访问数据先访问默认的 Block Cache，待无法获取后再访问用户 Cache，用户 Cache 的数据可以直接存入 page cache 中。
+  Cache 有两种：`LRUCache` 和 `BlockCache`。Block 分为很多分片，以减小竞争，所以分片大小均匀一致相等，默认 Cache 最多有 64 个分片，每个 分片 的 最小 size 为 512k，总大小是 8M，类别是 LRU。
+  由于访问cache需要加锁访问，当大部分数据都在cache中时，多线程并发访问cache可能会出现锁竞争的瓶颈，所以LRU cache还有一个shard_bits参数，将LRU cache分片，其实就是对锁进行拆分，不同分片的cache不会出现竞争。默认shard_bits是6，那么cache的shard数目就是`2^6=64`。
+
+- **table_cache_numshardbits**：和block_cache中的shard_bits作用一致，主要是为了拆分互斥锁;
+
+- **block_size**: RocksDB中sstable文件的由block组成，block也是文件读写的最小逻辑单位，当读取一个很小的key，其实会读取一个block到内存，然后查找数据。默认的block_size大小为4KB。每个sstable文件都会包含索引的block，用来加快查找。所以block_size越大，index就会越少，也会相应的节省内存和存储空间，降低空间放大率，但是会加剧读放大，因为读取一个key实际需要读取的文件大小随之增加了。
+
+  经常进行`bulk scan`操作的用户可能希望增大`block size`，而经常进行单`key`读写的用户则可能希望减小其值，官方建议这个值减小不要低于`1KB`的下限，变大也不要超过`a few megabytes`。启用压缩也可以起到增大 block size 的好处。
+
+- 

@@ -10,3 +10,5 @@
   * [RocksDB基础操作-C语言](RocksDB基础操作-C语言.md)
 * C语言笔记
   * [C语言补充笔记一](C语言补充笔记一.md)
+* 工具使用
+  * [VS Code使用小技巧](VS Code使用.md)
