@@ -28,9 +28,9 @@
 
 5、设置终端选择后复制到粘贴板，右键则粘贴
 
-<img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20211125011850180.png" alt="image-20211125011850180" style="zoom:67%;" />
+![](https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20211125011850180.png)
 
-<img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20211125011942150.png" alt="image-20211125011942150" style="zoom:67%;" />
+![](https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20211125011942150.png)
 
 6、三分钟教你同步 Visual Studio Code 设置](https://juejin.im/post/5b9b5a6f6fb9a05d22728e36)
 
@@ -42,33 +42,33 @@
 
 设置C的标准:
 
-<img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20211125012602565.png" alt="image-20211125012602565"  />
+![ga](https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20211125012602565.png)
 
 设置C++的标准:
 
-<img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20211125012700911.png" alt="image-20211125012700911"  />
+![ga](https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20211125012700911.png)
 
 `build task`的配置:
 
-<img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20211125012807618.png" alt="image-20211125012807618 "  />
+![aga](https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20211125012807618.png)
 
 8、vs code调试C/C++程序，如何设置`LD_PRELOAD`?
 
 参考文档: [miDebuggerArgs to enable LD_PRELOAD doesn't seem to have any effect ](https://github.com/microsoft/vscode-cpptools/issues/4567)
 
 ```json
-			"environment": [
-					{
-						"name":"LD_LIBRARY_PATH",
-						"value":"/data/home/xxxx/code/xxxx/deps/so"
-					},{
-					 	"name":"LD_PRELOAD",
-					 	"value":"/data/home/xxx/code/xxxx/deps/so/libjemalloc.so"
-					}
-			],
+"environment": [
+		{
+			"name":"LD_LIBRARY_PATH",
+			"value":"/data/home/xxxx/code/xxxx/deps/so"
+		},{
+		 	"name":"LD_PRELOAD",
+		 	"value":"/data/home/xxx/code/xxxx/deps/so/libjemalloc.so"
+		}
+],
 ```
 
-<img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20211125013329176.png" alt="image-20211125013329176"  />
+![gaga](https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20211125013329176.png)
 
 9、关于vscode中 debug console 打印变量
 
