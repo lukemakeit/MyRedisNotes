@@ -42,15 +42,15 @@
 
 设置C的标准:
 
-<img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20211125012602565.png" alt="image-20211125012602565" style="zoom:50%;" />
+<img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20211125012602565.png" alt="image-20211125012602565"  />
 
 设置C++的标准:
 
-<img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20211125012700911.png" alt="image-20211125012700911" style="zoom:50%;" />
+<img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20211125012700911.png" alt="image-20211125012700911"  />
 
 `build task`的配置:
 
-<img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20211125012807618.png" alt="image-20211125012807618 " style="zoom:50%;" />
+<img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20211125012807618.png" alt="image-20211125012807618 "  />
 
 8、vs code调试C/C++程序，如何设置`LD_PRELOAD`?
 
@@ -68,7 +68,7 @@
 			],
 ```
 
-<img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20211125013329176.png" alt="image-20211125013329176" style="zoom:50%;" />
+<img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20211125013329176.png" alt="image-20211125013329176"  />
 
 9、关于vscode中 debug console 打印变量
 
@@ -82,9 +82,9 @@
 
   参考文章: [VSCode display hex values for variables in debug mode](https://stackoverflow.com/questions/42645761/vscode-display-hex-values-for-variables-in-debug-mode)、 [How to display hex value in watch in vscode?](https://stackoverflow.com/questions/39973214/how-to-display-hex-value-in-watch-in-vscode)
 
-  <img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20211125014526577.png" alt="image-20211125014526577" style="zoom:50%;" />
+  <img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20211125014526577.png" alt="image-20211125014526577"/>
 
   <img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20211125014403109.png" alt="image-20211125014403109 " style="zoom:50%;" />
 
-  <img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20211125014655548.png" alt="image-20211125014655548 " style="zoom:50%;" />
+  <img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20211125014655548.png" alt="image-20211125014655548"/>
 
