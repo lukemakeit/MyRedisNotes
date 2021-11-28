@@ -1,11 +1,11 @@
 # Table of contents
 
 * [README](README.md)
-* [Redis学习](redis学习/redis-xue-xi/README.md)
+* [Redis学习](redis-xue-xi/README.md)
   * [Redis备份](redis学习/Redis备份.md)
   * [Redis复制](redis学习/Redis复制.md)
   * [Redis集群](redis学习/Redis集群.md)
-* [RocksDB学习](rocksdb学习/rocksdb-xue-xi/README.md)
+* [RocksDB学习](rocksdb-xue-xi/README.md)
   * [RocksDB基础概念](rocksdb学习/RocksDB基础概念.md)
   * [RocksDB基础操作-C语言](rocksdb学习/RocksDB基础操作-C语言.md)
 * [C语言笔记](c语言笔记/README.md)
@@ -16,4 +16,3 @@
   * [C++Primer基础:函数、重载、函数指针](c++学习笔记/C++Primer基础-函数重载函数指针.md)
 * [工具使用](工具使用/README.md)
   * [VS Code使用小技巧](工具使用/VSCode使用小技巧.md)
-
