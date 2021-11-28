@@ -8,12 +8,10 @@
 * [RocksDB学习](rocksdb-xue-xi/README.md)
   * [RocksDB基础概念](RocksDB基础概念.md)
   * [RocksDB基础操作-C语言](RocksDB基础操作-C语言.md)
-* C语言笔记
+* [C语言笔记](c-yu-yan-bi-ji/README.md)
   * [C语言补充笔记一](C语言补充笔记一.md)
-* C++学习笔记
+* [C++学习笔记](c++-xue-xi-bi-ji/README.md)
   * [C++Primer基础-引用、指针、const、auto](C++Primer基础-引用指针const.md)
   * [C++ Primer 基础: string、vector、数组](C++Primere基础-stringvector数组.md)
-  
-* 工具使用
+* [工具使用](gong-ju-shi-yong/README.md)
   * [VS Code使用小技巧](VSCode使用小技巧.md)
-
