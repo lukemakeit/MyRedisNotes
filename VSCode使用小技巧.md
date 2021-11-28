@@ -87,3 +87,9 @@
   ![](https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20211125014403109.png)
 
   ![](https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20211125014655548.png)
+
+10、使用vscode 开发go语言过程中，编译程序我们可以通过`export GO111MODULE=off`关掉一个项目的go mod。但是展示时gomod如何关闭？
+
+参考文章: [Disabling go modules in Visual Studio Code](https://dev.to/codeboten/disabling-go-modules-in-visual-studio-code-31mp)
+
+![image-20211127215048544](https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20211127215048544.png)
