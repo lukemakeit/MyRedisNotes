@@ -1,0 +1,806 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>C++ Primer 类设计:模板与泛型编程 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../工具使用/" />
+    
+    
+    <link rel="prev" href="C++Primer类设计-基类派生类虚函数.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    README
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../redis-xue-xi/">
+            
+                <a href="../redis-xue-xi/">
+            
+                    
+                    Redis学习
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../redis学习/Redis备份.html">
+            
+                <a href="../redis学习/Redis备份.html">
+            
+                    
+                    Redis备份
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../redis学习/Redis复制.html">
+            
+                <a href="../redis学习/Redis复制.html">
+            
+                    
+                    Redis复制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../redis学习/Redis集群.html">
+            
+                <a href="../redis学习/Redis集群.html">
+            
+                    
+                    Redis集群
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../rocksdb-xue-xi/">
+            
+                <a href="../rocksdb-xue-xi/">
+            
+                    
+                    RocksDB学习
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../rocksdb学习/RocksDB基础概念.html">
+            
+                <a href="../rocksdb学习/RocksDB基础概念.html">
+            
+                    
+                    RocksDB基础概念
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../rocksdb学习/RocksDB基础操作-C语言.html">
+            
+                <a href="../rocksdb学习/RocksDB基础操作-C语言.html">
+            
+                    
+                    RocksDB基础操作-C语言
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../c语言笔记/">
+            
+                <a href="../c语言笔记/">
+            
+                    
+                    C语言笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../c语言笔记/C语言补充笔记一.html">
+            
+                <a href="../c语言笔记/C语言补充笔记一.html">
+            
+                    
+                    C语言补充笔记一
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    C++学习笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="C++Primer基础-引用指针const.html">
+            
+                <a href="C++Primer基础-引用指针const.html">
+            
+                    
+                    C++Primer基础:引用、指针、const、auto
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="C++Primer基础-stringvector数组.html">
+            
+                <a href="C++Primer基础-stringvector数组.html">
+            
+                    
+                    C++Primer基础: string、vector、数组
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="C++Primer基础-函数重载函数指针.html">
+            
+                <a href="C++Primer基础-函数重载函数指针.html">
+            
+                    
+                    C++Primer基础:函数、重载、函数指针
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="C++Primer基础-类.html">
+            
+                <a href="C++Primer基础-类.html">
+            
+                    
+                    C++ Primer 基础: 类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="C++Primer标准库-IO库.html">
+            
+                <a href="C++Primer标准库-IO库.html">
+            
+                    
+                    C++ Primer 标准库: IO库
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="C++Primer标准库-顺序容器.html">
+            
+                <a href="C++Primer标准库-顺序容器.html">
+            
+                    
+                    C++ Primer 标准库: 顺序容器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" data-path="C++Primer标准库-泛型算法.html">
+            
+                <a href="C++Primer标准库-泛型算法.html">
+            
+                    
+                    C++ Primer 标准库: 泛型算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8" data-path="C++Primer标准库-关联容器.html">
+            
+                <a href="C++Primer标准库-关联容器.html">
+            
+                    
+                    C++ Primer 标准库: 关联容器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.9" data-path="C++Primer标准库-动态内存.html">
+            
+                <a href="C++Primer标准库-动态内存.html">
+            
+                    
+                    C++ Primer 标准库: 动态内存
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.10" data-path="C++Primer类设计-拷贝控制.html">
+            
+                <a href="C++Primer类设计-拷贝控制.html">
+            
+                    
+                    C++ Primer 类设计: 拷贝控制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.11" data-path="C++Primer类设计-基类派生类虚函数.html">
+            
+                <a href="C++Primer类设计-基类派生类虚函数.html">
+            
+                    
+                    C++ Primer 类设计: 基类、派生类、虚函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.5.12" data-path="C++Primer类设计-模板与泛型编程.html">
+            
+                <a href="C++Primer类设计-模板与泛型编程.html">
+            
+                    
+                    C++ Primer 类设计:模板与泛型编程
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../工具使用/">
+            
+                <a href="../工具使用/">
+            
+                    
+                    工具使用
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../工具使用/VSCode使用小技巧.html">
+            
+                <a href="../工具使用/VSCode使用小技巧.html">
+            
+                    
+                    VS Code使用小技巧
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >C++ Primer 类设计:模板与泛型编程</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="cprimer-&#x7C7B;&#x8BBE;&#x8BA1;-&#x6A21;&#x677F;&#x4E0E;&#x6CDB;&#x578B;&#x7F16;&#x7A0B;">C++Primer &#x7C7B;&#x8BBE;&#x8BA1;: &#x6A21;&#x677F;&#x4E0E;&#x6CDB;&#x578B;&#x7F16;&#x7A0B;</h2>
+<ul>
+<li>&#x6A21;&#x677F;&#x662F;C++&#x6CDB;&#x578B;&#x7F16;&#x7A0B;&#x7684;&#x57FA;&#x7840;;</li>
+<li>&#x4E00;&#x4E2A;&#x6A21;&#x677F;&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x521B;&#x5EFA;&#x7C7B; &#x6216; &#x51FD;&#x6570;&#x7684;&#x84DD;&#x56FE; &#x6216;&#x8005;&#x8BF4;&#x516C;&#x5F0F;;</li>
+<li><code>vector</code>&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x6CDB;&#x578B;&#x7C7B;&#x578B;&#xFF0C;<code>find</code>&#x5C31;&#x662F;&#x6CDB;&#x578B;&#x51FD;&#x6570;&#xFF1B;</li>
+</ul>
+<h3 id="&#x51FD;&#x6570;&#x6A21;&#x677F;">&#x51FD;&#x6570;&#x6A21;&#x677F;</h3>
+<ul>
+<li>&#x51FD;&#x6570;&#x6A21;&#x677F;&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x516C;&#x5F0F;&#xFF0C;&#x53EF;&#x4EE5;&#x7528;&#x6765;&#x751F;&#x6210;&#x9488;&#x5BF9;&#x7279;&#x5B9A;&#x7C7B;&#x578B;&#x7684;&#x51FD;&#x6570;&#x7248;&#x672C;;</li>
+<li>&#x6A21;&#x677F;&#x5B9A;&#x4E49;&#x5173;&#x952E;&#x5B57;<code>template</code>&#x5F00;&#x59CB;&#xFF0C;&#x540E;&#x8DDF;&#x4E00;&#x4E2A;<strong>&#x6A21;&#x677F;&#x53C2;&#x6570;&#x5217;&#x8868;(template parameter list)</strong>;</li>
+<li>&#x6A21;&#x677F;&#x53C2;&#x6570;&#x5217;&#x8868;&#x7684;&#x4F5C;&#x7528;&#x5F88;&#x50CF; &#x51FD;&#x6570;&#x53C2;&#x6570;&#x5217;&#x8868;&#xFF1B; &#x51FD;&#x6570;&#x53C2;&#x6570;&#x5217;&#x8868;&#x5B9A;&#x4E49;&#x4E86;&#x82E5;&#x5E72;&#x7279;&#x5B9A;&#x7C7B;&#x578B;&#x7684;&#x7684;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#xFF0C;&#x4F46;&#x5E76;&#x672A;&#x6307;&#x51FA;&#x5982;&#x4F55;&#x521D;&#x59CB;&#x5316;&#x5B83;&#x4EEC;&#x3002;&#x5728;&#x8FD0;&#x884C;&#x65F6;&#xFF0C;&#x8C03;&#x7528;&#x8005;&#x63D0;&#x4F9B;&#x5B9E;&#x53C2;&#x521D;&#x59CB;&#x5316;&#x5F62;&#x53C2;;</li>
+<li>&#x6A21;&#x677F;&#x53C2;&#x6570;&#x8868;&#x793A;&#x5728;&#x7C7B; &#x6216; &#x51FD;&#x6570;&#x5B9A;&#x4E49;&#x4E2D;&#x7528;&#x5230;&#x7684; &#x7C7B;&#x578B; &#x6216; &#x503C;&#x3002;&#x5F53;&#x4F7F;&#x7528;&#x6A21;&#x677F;&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x6307;&#x5B9A; &#x6A21;&#x677F;&#x5B9E;&#x53C2;&#xFF0C;&#x5C06;&#x5176;&#x7ED1;&#x5B9A;&#x5230; &#x6A21;&#x677F;&#x53C2;&#x6570;&#x4E0A;;</li>
+<li>&#x4E0B;&#x9762;&#x4F8B;&#x5B50;&#x4E2D;&#xFF0C;<code>T</code>&#x8868;&#x793A;&#x7684;&#x5B9E;&#x9645;&#x7C7B;&#x578B;&#x5728;&#x7F16;&#x8BD1;&#x65F6;&#x6839;&#x636E;<code>compare</code>&#x7684;&#x4F7F;&#x7528;&#x60C5;&#x51B5;&#x6765;&#x786E;&#x5B9A;&#xFF1B;<pre><code class="lang-cpp"><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> T&gt;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">compare</span><span class="hljs-params">(<span class="hljs-keyword">const</span> T &amp;v1,<span class="hljs-keyword">const</span> T &amp;v2)</span></span>{
+  <span class="hljs-keyword">if</span> (v1 &lt; v2) <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;
+  <span class="hljs-keyword">if</span> (v2 &lt; v1) <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
+  <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+</li>
+</ul>
+<p><strong>&#x5B9E;&#x4F8B;&#x5316;&#x51FD;&#x6570;&#x6A21;&#x677F;</strong></p>
+<ul>
+<li>&#x5F53;&#x6211;&#x4EEC;&#x8C03;&#x7528;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x6A21;&#x677F;&#x65F6;&#xFF0C;&#x7F16;&#x8BD1;&#x5668;(&#x901A;&#x5E38;)&#x7528;&#x51FD;&#x6570;&#x5B9E;&#x53C2;&#x6765;&#x4E3A;&#x6211;&#x4EEC;&#x63A8;&#x65AD;&#x6A21;&#x677F;&#x5B9E;&#x53C2;&#xFF1B;</li>
+<li>&#x4E5F;&#x5C31;&#x662F;&#x5F53;&#x6211;&#x4EEC;&#x8C03;&#x7528;<code>compare</code>&#x65F6;&#xFF0C;&#x7F16;&#x8BD1;&#x5668;&#x4F7F;&#x7528;&#x5B9E;&#x53C2;&#x7684;&#x7C7B;&#x578B;&#x6765;&#x786E;&#x5B9A; &#x7ED1;&#x5B9A;&#x5230;&#x6A21;&#x677F;&#x53C2;&#x6570;<code>T</code>&#x7684;&#x7C7B;&#x578B;;<pre><code class="lang-cpp"><span class="hljs-comment">// &#x5B9E;&#x4F8B;&#x5316;&#x51FA; int compare(const int &amp;, const int&amp;)</span>
+<span class="hljs-built_in">cout</span> &lt;&lt; compare(<span class="hljs-number">1</span>,<span class="hljs-number">0</span>) &lt;&lt; <span class="hljs-built_in">endl</span>; <span class="hljs-comment">// T&#x4E3A;int</span>
+<span class="hljs-comment">// &#x5B9E;&#x4F8B;&#x5316;&#x51FA; int compare(const vector&lt;int&gt;&amp;, const vector&lt;int&gt;&amp;)</span>
+<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; vec1{<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>}, vec2{<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>};
+<span class="hljs-built_in">cout</span>&lt;&lt; compare(vec1,vec2); <span class="hljs-comment">// T&#x4E3A;vector&lt;int&gt;</span>
+</code></pre>
+</li>
+</ul>
+<p><strong>&#x6A21;&#x677F;&#x7C7B;&#x578B;&#x53C2;&#x6570;</strong>
+<code>compare</code>&#x51FD;&#x6570;&#x6709;&#x4E00;&#x4E2A;&#x6A21;&#x677F;&#x7C7B;&#x578B;&#x53C2;&#x6570;(type parameter)&#x3002;
+&#x6211;&#x4EEC;&#x5C06;&#x7C7B;&#x578B;&#x53C2;&#x6570;&#x770B;&#x505A;&#x7C7B;&#x578B;&#x8BF4;&#x660E;&#x7B26;&#xFF0C;&#x5C31;&#x50CF;&#x5185;&#x7F6E;&#x7C7B;&#x578B; &#x6216; &#x7C7B;&#x7C7B;&#x578B;&#x8BF4;&#x660E;&#x7B26;&#x4E00;&#x6837;&#x4F7F;&#x7528;&#x3002;
+&#x7C7B;&#x578B;&#x53C2;&#x6570;&#x53EF;&#x4EE5;&#x7528;&#x6765;&#x6307;&#x5B9A; &#x8FD4;&#x56DE;&#x7C7B;&#x578B; &#x6216; &#x51FD;&#x6570;&#x7684;&#x53C2;&#x6570;&#x7C7B;&#x578B;&#xFF0C;&#x4EE5;&#x53CA;&#x5728;&#x51FD;&#x6570;&#x4F53;&#x5185;&#x7528;&#x4E8E;&#x53D8;&#x91CF;&#x58F0;&#x660E; &#x6216; &#x7C7B;&#x578B;&#x8F6C;&#x6362;&#x3002;
+&#x7C7B;&#x578B;&#x53C2;&#x6570;&#x524D;&#x5FC5;&#x987B;&#x4F7F;&#x7528; &#x5173;&#x952E;&#x5B57; <code>class</code> &#x6216; <code>typename</code>&#x3002;</p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> T&gt;
+<span class="hljs-function">T <span class="hljs-title">foo</span><span class="hljs-params">(T *p)</span>
+</span>{
+    T tmp = *p; <span class="hljs-comment">// tmp&#x7684;&#x7C7B;&#x578B;&#x5C06;&#x662F;&#x6307;&#x9488;p&#x6307;&#x5411;&#x7684;&#x7C7B;&#x578B;</span>
+    <span class="hljs-comment">// ....</span>
+    <span class="hljs-keyword">return</span> tmp;
+}
+</code></pre>
+<pre><code class="lang-cpp"><span class="hljs-comment">// &#x6B63;&#x786E;: &#x5728;&#x6A21;&#x677F;&#x53C2;&#x6570;&#x5217;&#x8868;&#x4E2D;&#xFF0C;typename &#x548C; class &#x6CA1;&#x6709;&#x4EC0;&#x4E48;&#x533A;&#x522B;</span>
+<span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> T, <span class="hljs-keyword">class</span> U&gt; calc (<span class="hljs-keyword">const</span> T&amp;, <span class="hljs-keyword">const</span> U&amp;);
+</code></pre>
+<p><strong>&#x975E;&#x7C7B;&#x578B;&#x6A21;&#x677F;&#x53C2;&#x6570;(&#x4E0D;&#x5E38;&#x7528;&#x5427;)</strong>
+&#x4E00;&#x4E2A; &#x975E;&#x7C7B;&#x578B;&#x53C2;&#x6570; &#x8868;&#x793A;&#x4E00;&#x4E2A;&#x503C;&#x800C;&#x975E;&#x4E00;&#x4E2A;&#x7C7B;&#x578B;&#x3002;&#x6211;&#x4EEC;&#x901A;&#x8FC7;&#x7279;&#x5B9A;&#x7684;&#x7C7B;&#x578B;&#x540D;&#x800C;&#x975E;&#x5173;&#x952E;&#x5B57; class&#x6216; typename &#x6765;&#x6307;&#x5B9A;&#x975E;&#x7C7B;&#x578B;&#x7684;&#x53C2;&#x6570;&#x3002;
+&#x4E0B;&#x9762;&#x8FD9;&#x4E2A;&#x4F8B;&#x5B50;&#xFF0C;&#x6BD4;&#x8F83;&#x4E0D;&#x540C;&#x957F;&#x5EA6;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x5B57;&#x9762;&#x5E38;&#x91CF;&#xFF0C;&#x56E0;&#x6B64;&#x4E3A;&#x6A21;&#x677F;&#x5B9A;&#x4E49;&#x4E86;&#x4E24;&#x4E2A;&#x975E;&#x7C7B;&#x578B;&#x7684;&#x53C2;&#x6570;&#x3002;
+&#x7B2C;&#x4E00;&#x4E2A;&#x6A21;&#x677F;&#x53C2;&#x6570;&#x8868;&#x793A; &#x7B2C;&#x4E00;&#x4E2A;&#x6570;&#x7EC4;&#x7684;&#x957F;&#x5EA6;&#xFF1B;
+&#x7B2C;&#x4E8C;&#x4E2A;&#x6A21;&#x677F;&#x53C2;&#x6570;&#x8868;&#x793A; &#x7B2C;&#x4E8C;&#x4E2A;&#x6570;&#x7EC4;&#x7684;&#x957F;&#x5EA6;&#x3002;</p>
+<pre><code class="lang-cpp">template&lt;unsigned N,unsigned M&gt;
+int compare(const char (&amp;p1)[N], const char (&amp;p2)[M]){
+    return strcmp(p1,p2);
+}
+</code></pre>
+<p>&#x8C03;&#x7528;:</p>
+<pre><code class="lang-cpp">compare(<span class="hljs-string">&quot;hi&quot;</span>,<span class="hljs-string">&quot;mom&quot;</span>);
+</code></pre>
+<p>&#x7F16;&#x8BD1;&#x5668;&#x4F1A;&#x4F7F;&#x7528;&#x5B57;&#x9762;&#x5E38;&#x91CF;&#x7684;&#x5927;&#x5C0F;&#x6765;&#x4EE3;&#x66FF;N &#x548C; M&#xFF0C;&#x540C;&#x65F6;&#x7F16;&#x8BD1;&#x5668;&#x4F1A;&#x5728;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#x5B57;&#x9762;&#x5E38;&#x91CF;&#x7684;&#x672B;&#x5C3E;&#x63D2;&#x5165;&#x4E00;&#x4E2A;&#x7A7A;&#x5B57;&#x7B26;&#x4F5C;&#x4E3A;&#x7EC8;&#x7ED3;&#x7B26;&#x3002;
+&#x6240;&#x4EE5;&#x7F16;&#x8BD1;&#x5668;&#x5B9E;&#x4F8B;&#x5316;&#x51FA;&#x5982;&#x4E0B;&#x7248;&#x672C;:</p>
+<pre><code class="lang-c++">int compare(const char (&amp;p1)[3], const char (&amp;p2)[4]);
+</code></pre>
+<p>&#x6CE8;&#x610F;: <strong>&#x975E;&#x7C7B;&#x578B;&#x6A21;&#x677F;&#x53C2;&#x6570;&#x7684;&#x6A21;&#x677F;&#x5B9E;&#x53C2;&#x5FC5;&#x987B;&#x662F; &#x5E38;&#x91CF;&#x8868;&#x8FBE;&#x5F0F;</strong></p>
+<p><strong><code>inline</code>&#x548C;<code>constexpr</code>&#x7684;&#x51FD;&#x6570;&#x6A21;&#x677F;</strong></p>
+<pre><code class="lang-cpp"><span class="hljs-comment">// &#x6B63;&#x786E;: inline &#x8BF4;&#x660E;&#x7B26;&#x8DDF;&#x5728;&#x6A21;&#x677F;&#x53C2;&#x6570;&#x5217;&#x8868;&#x4E4B;&#x540E;</span>
+<span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> T&gt; <span class="hljs-function"><span class="hljs-keyword">inline</span> T <span class="hljs-title">min</span><span class="hljs-params">(<span class="hljs-keyword">const</span> T&amp;, <span class="hljs-keyword">const</span> T&amp;)</span></span>;
+<span class="hljs-comment">// &#x9519;&#x8BEF;: inline&#x8BF4;&#x660E;&#x7B26;&#x4F4D;&#x7F6E;&#x4E0D;&#x6B63;&#x786E;</span>
+<span class="hljs-keyword">inline</span> <span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> T&gt; <span class="hljs-function">T <span class="hljs-title">min</span><span class="hljs-params">(<span class="hljs-keyword">const</span> T&amp;, <span class="hljs-keyword">const</span> T&amp;)</span></span>;
+</code></pre>
+<p><strong>&#x6A21;&#x677F;&#x7F16;&#x8BD1;</strong>
+&#x4E3A;&#x4E86;&#x751F;&#x6210;&#x4E00;&#x4E2A;&#x5B9E;&#x4F8B;&#x5316;&#x7248;&#x672C;&#xFF0C;&#x7F16;&#x8BD1;&#x5668;&#x9700;&#x8981;&#x638C;&#x63E1;&#x51FD;&#x6570;&#x6A21;&#x677F; &#x6216; &#x7C7B;&#x6A21;&#x677F;&#x6210;&#x5458;&#x51FD;&#x6570;&#x7684;&#x5B9A;&#x4E49;&#x3002;
+&#x56E0;&#x6B64;&#xFF0C;&#x6A21;&#x677F;&#x7684;&#x5934;&#x6587;&#x4EF6;&#x901A;&#x5E38;&#x5305;&#x62EC; &#x58F0;&#x660E; &#x4E5F;&#x5305;&#x62EC; &#x5B9A;&#x4E49;&#x3002;</p>
+<h3 id="&#x7C7B;&#x6A21;&#x677F;">&#x7C7B;&#x6A21;&#x677F;</h3>
+<p>&#x4E0E;&#x51FD;&#x6570;&#x6A21;&#x677F;&#x4E0D;&#x540C;&#x7684;&#x662F;&#xFF0C;&#x7F16;&#x8BD1;&#x5668;&#x4E0D;&#x80FD;&#x4E3A; &#x7C7B;&#x6A21;&#x677F; &#x63A8;&#x65AD;&#x6A21;&#x677F;&#x53C2;&#x6570;&#x7C7B;&#x578B;&#x3002;&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x5FC5;&#x987B;&#x5728;&#x6A21;&#x677F;&#x540D;&#x540E;&#x7684;&#x5C16;&#x62EC;&#x53F7;&#x4E2D;&#x63D0;&#x4F9B;&#x989D;&#x5916;&#x7684;&#x4FE1;&#x606F; &#x2014;&#x2014; &#x7528;&#x6765;&#x4EE3;&#x66FF;&#x6A21;&#x677F;&#x53C2;&#x6570;&#x7684;&#x6A21;&#x677F;&#x5B9E;&#x53C2;&#x5217;&#x8868;&#x3002;</p>
+<pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">ifndef</span> BLOB_H</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> BLOB_H</span>
+<span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> T&gt;
+<span class="hljs-keyword">class</span> Blob {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-keyword">typedef</span> T value_type;
+    <span class="hljs-keyword">typedef</span> <span class="hljs-keyword">typename</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;T&gt;::size_type size_type;
+    <span class="hljs-comment">// &#x6784;&#x9020;&#x51FD;&#x6570;</span>
+    Blob();
+    Blob(<span class="hljs-built_in">std</span>::<span class="hljs-built_in">initializer_list</span>&lt;T&gt; il);
+    <span class="hljs-comment">// Blob&#x4E2D;&#x7684;&#x5143;&#x7D20;&#x6570;&#x76EE;</span>
+    <span class="hljs-function">size_type <span class="hljs-title">size</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span>  data-&gt;size(); }
+    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">empty</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> data-&gt;empty(); }
+    <span class="hljs-comment">// &#x6DFB;&#x52A0;&#x548C;&#x5220;&#x9664;&#x5143;&#x7D20;</span>
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">push_back</span><span class="hljs-params">(<span class="hljs-keyword">const</span> T &amp;t)</span></span>{
+        data-&gt;push_back(t);
+    }
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">push_back</span><span class="hljs-params">(T &amp;&amp;t)</span></span>{
+        data-&gt;push_back(<span class="hljs-built_in">std</span>::move(t));
+    }
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">pop_back</span><span class="hljs-params">()</span></span>;
+    <span class="hljs-comment">// &#x5143;&#x7D20;&#x8BBF;&#x95EE;</span>
+    <span class="hljs-function">T&amp; <span class="hljs-title">back</span><span class="hljs-params">()</span></span>;
+    T&amp; <span class="hljs-keyword">operator</span>[](size_type i);
+
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">print</span><span class="hljs-params">()</span></span>{
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">auto</span> item:*data){
+            <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">&quot;item =&gt;&quot;</span> &lt;&lt; item &lt;&lt; <span class="hljs-built_in">std</span>::<span class="hljs-built_in">endl</span>;
+        }
+    }
+<span class="hljs-keyword">private</span>:
+    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">shared_ptr</span>&lt;<span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;T&gt;&gt; data;
+    <span class="hljs-comment">// &#x82E5;data[i]&#x65E0;&#x6548;&#xFF0C;&#x5219;&#x629B;&#x51FA;msg</span>
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">check</span><span class="hljs-params">(size_type i,<span class="hljs-keyword">const</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> &amp;msg)</span> <span class="hljs-keyword">const</span></span>;
+};
+
+<span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> T&gt;
+<span class="hljs-keyword">void</span> Blob&lt;T&gt;::pop_back(){
+    check(<span class="hljs-number">0</span>,<span class="hljs-string">&quot;pop_back on empty Blob&quot;</span>);
+    data-&gt;pop_back();
+}
+</code></pre>
+<p><strong>&#x5B9E;&#x4F8B;&#x5316;&#x7C7B;&#x6A21;&#x677F;</strong></p>
+<pre><code class="lang-c++">Blob&lt;<span class="hljs-keyword">int</span>&gt; ia; <span class="hljs-comment">// &#x7A7A;Blob&lt;int&gt;</span>
+Blob&lt;<span class="hljs-keyword">int</span>&gt; ia2={<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">34</span>}; <span class="hljs-comment">// &#x6709;5&#x4E2A;&#x5143;&#x7D20;&#x7684;Blob&lt;int&gt;</span>
+</code></pre>
+<p><code>ia</code>&#x548C;<code>ia2</code>&#x4F7F;&#x7528;&#x76F8;&#x540C;&#x7684;&#x7279;&#x5B9A;&#x7C7B;&#x578B;&#x7248;&#x672C;&#x7684;<code>Blob</code>&#x5373;(<code>Blob&lt;int&gt;</code>)&#x3002;</p>
+<p><strong>&#x5BF9;&#x6211;&#x4EEC;&#x6307;&#x5B9A;&#x7684;&#x6BCF;&#x79CD;&#x5143;&#x7D20;&#x7C7B;&#x578B;&#xFF0C;&#x7F16;&#x8BD1;&#x5668;&#x90FD;&#x751F;&#x6210;&#x4E00;&#x4E2A;&#x4E0D;&#x540C;&#x7684;&#x7C7B;:</strong></p>
+<pre><code class="lang-c++"><span class="hljs-comment">// &#x4E0B;&#x9762;&#x7684;&#x5B9A;&#x4E49;&#x5B9E;&#x4F8B;&#x5316;&#x4E24;&#x4E2A;&#x4E0D;&#x540C;&#x7684;Blob&#x7C7B;&#x578B;</span>
+Blob&lt;<span class="hljs-built_in">string</span>&gt; names; <span class="hljs-comment">// &#x4FDD;&#x5B58;string&#x7684;Blob</span>
+Blob&lt;<span class="hljs-keyword">double</span>&gt; prices; <span class="hljs-comment">// &#x4E0D;&#x540C;&#x7684;&#x5143;&#x7D20;&#x7C7B;&#x578B;</span>
+</code></pre>
+<p><strong>&#x7C7B;&#x6A21;&#x677F;&#x7684;&#x6210;&#x5458;&#x51FD;&#x6570;</strong>
+a. &#x7C7B;&#x6A21;&#x677F;&#x7684;&#x6210;&#x5458;&#x51FD;&#x6570;&#x5177;&#x6709;&#x548C;&#x6A21;&#x677F;&#x76F8;&#x540C;&#x7684;&#x6A21;&#x677F;&#x53C2;&#x6570;;
+b. &#x5B9A;&#x4E49;&#x5728;&#x7C7B;&#x6A21;&#x677F;&#x4E4B;&#x5916;&#x7684;&#x6210;&#x5458;&#x51FD;&#x6570;&#x5C31;&#x5FC5;&#x987B;&#x4EE5;&#x5173;&#x952E;&#x5B57;template&#x5F00;&#x59CB;&#xFF0C;&#x540E;&#x63A5;&#x7C7B;&#x6A21;&#x677F;&#x53C2;&#x6570;&#x5217;&#x8868;;</p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> T&gt;
+<span class="hljs-keyword">void</span> Blob&lt;T&gt;::check(size_type i, <span class="hljs-keyword">const</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> &amp;msg) <span class="hljs-keyword">const</span>
+{
+    <span class="hljs-keyword">if</span>(i &gt;= data-&gt;size())
+        <span class="hljs-keyword">throw</span> <span class="hljs-built_in">std</span>::out_of_range(msg);
+}
+<span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> T&gt;
+T&amp; Blob&lt;T&gt;::back()
+{
+    check(<span class="hljs-number">0</span>,<span class="hljs-string">&quot;back on empty Blob&quot;</span>);
+    <span class="hljs-keyword">return</span> data-&gt;back();
+}
+<span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> T&gt;
+T&amp; Blob&lt;T&gt;::<span class="hljs-keyword">operator</span>[](size_type i)
+{
+    check(i,<span class="hljs-string">&quot;back on empty Blob&quot;</span>);
+    <span class="hljs-keyword">return</span> (*data)[i];
+}
+</code></pre>
+<p><strong>Blob&#x6784;&#x9020;&#x51FD;&#x6570;</strong></p>
+<pre><code class="lang-cpp"><span class="hljs-comment">//&#x6784;&#x9020;&#x51FD;&#x6570;</span>
+<span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> T&gt;
+Blob&lt;T&gt;::Blob(): data(<span class="hljs-built_in">std</span>::make_shared&lt;<span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;T&gt;&gt;())
+{}
+
+<span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> T&gt;
+Blob&lt;T&gt;::Blob(<span class="hljs-built_in">std</span>::<span class="hljs-built_in">initializer_list</span>&lt;T&gt; il):data(<span class="hljs-built_in">std</span>::make_shared&lt;<span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;T&gt;&gt;(il))
+{}
+</code></pre>
+<p>&#x4F7F;&#x7528;&#x4E0A;&#x9762;&#x7684;&#x6784;&#x9020;&#x51FD;&#x6570;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x7C7B;&#x4F3C;&#x4E0B;&#x9762;&#x5B9E;&#x4F8B;&#x5316;Blob&#x7C7B;&#x578B;
+<code>Blob&lt;string&gt; articles= {&quot;a&quot;,&quot;an&quot;,&quot;the&quot;};</code></p>
+<p><strong>&#x7C7B;&#x6A21;&#x677F;&#x6210;&#x5458;&#x51FD;&#x6570;&#x7684;&#x5B9E;&#x4F8B;&#x5316;</strong>
+&#x5982;&#x679C;&#x4E00;&#x4E2A;&#x6210;&#x5458;&#x51FD;&#x6570;&#x6CA1;&#x6709;&#x88AB;&#x4F7F;&#x7528;&#xFF0C;&#x5219;&#x5B83;&#x4E0D;&#x4F1A;&#x88AB;&#x5B9E;&#x4F8B;&#x5316;&#x3002;&#x6210;&#x5458;&#x51FD;<strong>&#x53EA;&#x6709;&#x5728;&#x88AB;&#x7528;&#x5230;&#x65F6;&#x624D;&#x8FDB;&#x884C;&#x5B9E;&#x4F8B;&#x5316;</strong>
+&#x4E0B;&#x9762;&#x8FD9;&#x6BB5;&#x4EE3;&#x7801;&#x5B9E;&#x4F8B;&#x5316;&#x4E86;<code>Blob&lt;int&gt;</code>&#x7C7B;&#x548C;&#x5B83;&#x7684;&#x4E09;&#x4E2A;&#x6210;&#x5458;&#x51FD;&#x6570;:<code>operator[]</code>&#x3001;<code>size</code>&#x3001;&#x63A5;&#x53D7;<code>initializer_list&lt;int&gt;</code>&#x7684;&#x6784;&#x9020;&#x51FD;&#x6570;&#x3002;</p>
+<pre><code class="lang-cpp">Blob&lt;<span class="hljs-keyword">int</span>&gt; squares = {<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>};
+<span class="hljs-keyword">for</span>(<span class="hljs-keyword">size_t</span> i=<span class="hljs-number">0</span>; i!=squares.size(); ++i)
+    squares[i] = i*i; <span class="hljs-comment">// &#x5B9E;&#x4F8B;&#x5316; Blob&lt;int&gt;::operator[](size_t)</span>
+</code></pre>
+<p><strong>&#x7C7B;&#x4EE3;&#x7801;&#x5185;&#x7B80;&#x5316;&#x6A21;&#x677F;&#x7C7B;&#x540D;&#x7684;&#x4F7F;&#x7528;</strong>
+&#x5728;&#x7C7B;&#x6A21;&#x677F;&#x81EA;&#x5DF1;&#x7684;&#x4F5C;&#x7528;&#x57DF;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x4F7F;&#x7528;&#x6A21;&#x677F;&#x540D;&#x800C;&#x4E0D;&#x63D0;&#x4F9B;&#x5B9E;&#x53C2;:</p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> T&gt; 
+<span class="hljs-keyword">class</span> BlobPtr {
+<span class="hljs-keyword">public</span>:
+    BlobStr():curr(<span class="hljs-number">0</span>) {}
+    BlobPtr(Blob&lt;T&gt; &amp;a, <span class="hljs-keyword">size_t</span> sz =<span class="hljs-number">0</span>): wptr(a.data),curr(sz) {}
+    T&amp; <span class="hljs-keyword">operator</span>* () <span class="hljs-keyword">const</span>
+    {
+        <span class="hljs-keyword">auto</span> p = check(curr,<span class="hljs-string">&quot;dereference past end&quot;</span>);
+        <span class="hljs-keyword">return</span> (*p)[curr]; <span class="hljs-comment">// (*p)&#x4E3A;&#x672C;&#x5BF9;&#x8C61;&#x6307;&#x5411;&#x7684;vector</span>
+    }
+    <span class="hljs-comment">// &#x9012;&#x589E;&#x548C;&#x9012;&#x51CF;</span>
+    BlobPtr&amp; <span class="hljs-keyword">operator</span>++(); <span class="hljs-comment">//&#x524D;&#x7F6E;&#x8FD0;&#x7B97;&#x7B26;</span>
+    BlobPtr&amp; <span class="hljs-keyword">operator</span>--();
+<span class="hljs-keyword">private</span>:
+    <span class="hljs-comment">//&#x82E5;&#x68C0;&#x67E5;&#x6210;&#x529F;,check&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x6307;&#x5411;vector&#x7684;shared_ptr</span>
+    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">shared_ptr</span>&lt;<span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;T&gt;&gt; check(<span class="hljs-built_in">std</span>::<span class="hljs-keyword">size_t</span>, <span class="hljs-keyword">const</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> &amp;) <span class="hljs-keyword">const</span>;
+    <span class="hljs-comment">//&#x4FDD;&#x5B58;&#x4E00;&#x4E2A;weak_ptr,&#x8868;&#x793A;&#x5E95;&#x5C42;vector&#x53EF;&#x80FD;&#x88AB;&#x9500;&#x6BC1;</span>
+    <span class="hljs-built_in">std</span>::weak_ptr&lt;<span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;T&gt;&gt; wptr;
+    <span class="hljs-built_in">std</span>::<span class="hljs-keyword">size_t</span> curr; <span class="hljs-comment">//&#x6570;&#x7EC4;&#x4E2D;&#x5F53;&#x524D;&#x4F4D;&#x7F6E;</span>
+};
+<span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span>
+</code></pre>
+<p>&#x6211;&#x4EEC;&#x4ED4;&#x7EC6;&#x770B;<code>BlobPtr&amp; operator++();</code>&#x3001;<code>BlobPtr&amp; operator--();</code> &#x8FD4;&#x56DE;&#x503C;&#x662F;<code>BlobPtr&amp;</code>&#xFF0C;&#x800C;&#x4E0D;&#x662F;<code>BlobPtr&lt;T&gt;&amp;</code>&#x3002;</p>
+<p><strong>&#x5728;&#x7C7B;&#x6A21;&#x677F;&#x5916;&#x4F7F;&#x7528;&#x7C7B;&#x6A21;&#x677F;&#x540D;</strong>
+&#x5F53;&#x6211;&#x4EEC;&#x5728;&#x7C7B;&#x6A21;&#x677F;&#x5916;&#x5B9A;&#x4E49;&#x5176;&#x6210;&#x5458;&#x65F6;&#xFF0C;&#x5FC5;&#x987B;&#x8BB0;&#x4F4F;&#xFF0C;&#x6211;&#x4EEC;&#x5E76;&#x4E0D;&#x5728;&#x7C7B;&#x4F5C;&#x7528;&#x57DF;&#x4E2D;&#xFF0C;&#x76F4;&#x5230;&#x9047;&#x5230;&#x7C7B;&#x540D;&#x624D;&#x8FDB;&#x5165;&#x7C7B;&#x7684;&#x4F5C;&#x7528;&#x57DF;&#x3002;</p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> T&gt;
+BlobPtr&lt;T&gt; BlobPtr&lt;T&gt;::<span class="hljs-keyword">operator</span>++(<span class="hljs-keyword">int</span>){
+    <span class="hljs-comment">// &#x6B64;&#x5904;&#x65E0;&#x9700;&#x68C0;&#x67E5;; &#x8C03;&#x7528;&#x524D;&#x7F6E;&#x9012;&#x589E;&#x65F6;&#x4F1A;&#x8FDB;&#x884C;&#x68C0;&#x67E5;</span>
+    BlobPtr ret = * <span class="hljs-keyword">this</span>; <span class="hljs-comment">// &#x4FDD;&#x5B58;&#x5F53;&#x524D;&#x503C; </span>
+    ++*<span class="hljs-keyword">this</span>; <span class="hljs-comment">//  &#x63A8;&#x8FDB;&#x4E00;&#x4E2A;&#x5143;&#x7D20;;&#x524D;&#x7F6E;++&#x68C0;&#x67E5;&#x9012;&#x589E;&#x662F;&#x5426;&#x5408;&#x6CD5;</span>
+    <span class="hljs-keyword">return</span> ret; <span class="hljs-comment">// &#x8FD4;&#x56DE;&#x4FDD;&#x5B58;&#x72B6;&#x6001;</span>
+}
+</code></pre>
+<p>&#x6B64;&#x5904;&#x8FD4;&#x56DE;&#x7C7B;&#x578B;&#x4F4D;&#x4E8E;&#x7C7B;&#x7684;&#x4F5C;&#x7528;&#x57DF;&#x4E4B;&#x5916;&#xFF0C;&#x6240;&#x4EE5;&#x7528;<code>BlobPtr&lt;T&gt;</code>&#x3002;&#x4F46;&#x662F;<code>ret</code>&#x5728;&#x7C7B;&#x7684;&#x4F5C;&#x7528;&#x57DF;&#x4E2D;&#xFF0C;&#x6240;&#x4EE5;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x7528;:<code>BlobPtr ret = * this;</code>&#x3002;</p>
+<h4 id="&#x7C7B;&#x6A21;&#x677F;&#x548C;&#x53CB;&#x5143;&#x6709;&#x70B9;&#x96BE;">&#x7C7B;&#x6A21;&#x677F;&#x548C;&#x53CB;&#x5143;(&#x6709;&#x70B9;&#x96BE;)</h4>
+<p>&#x5982;&#x679C;&#x7C7B;&#x6A21;&#x677F;&#x5305;&#x542B;&#x4E00;&#x4E2A;&#x975E;&#x6A21;&#x677F;&#x7684;&#x53CB;&#x5143;&#xFF0C;&#x5219;&#x53CB;&#x5143;&#x88AB;&#x6388;&#x6743;&#x53EF;&#x4EE5;&#x8BBF;&#x95EE;&#x6240;&#x6709;&#x7C7B;&#x6A21;&#x677F;&#x5B9E;&#x4F8B;&#xFF0C;&#x5982;<code>Blob&lt;int&gt;</code>&#x3001;<code>Blob&lt;string&gt;</code>&#x90FD;&#x53EF;&#x4EE5;;
+&#x5982;&#x679C;&#x53CB;&#x5143;&#x81EA;&#x8EAB;&#x662F;&#x6A21;&#x677F;&#xFF0C;&#x7C7B;&#x53EF;&#x4EE5;&#x6388;&#x6743;&#x7ED9;&#x6240;&#x6709;&#x53CB;&#x5143;&#x6A21;&#x677F;&#x5B9E;&#x4F8B;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x53EA;&#x6388;&#x6743;&#x7ED9;&#x7279;&#x5B9A;&#x7684;&#x5B9E;&#x4F8B;&#x3002;</p>
+<p><strong>&#x4E00;&#x5BF9;&#x4E00;&#x53CB;&#x597D;&#x5173;&#x7CFB;</strong>
+&#x5982;&#x6211;&#x4EEC;&#x7684;Blob&#x7C7B;&#x5E94;&#x8BE5;&#x5C06; <code>BlobPtr</code>&#x7C7B; &#x548C; &#x4E00;&#x4E2A;&#x6A21;&#x677F;&#x7248;&#x672C;&#x7684;<code>Blob</code>&#x76F8;&#x7B49;&#x8FD0;&#x7B97;&#x7B26; &#x5B9A;&#x4E49;&#x4E3A;&#x53CB;&#x5143;&#x3002;
+&#x4E3A;&#x4E86;&#x5F15;&#x7528;&#x6A21;&#x677F;&#x7684;&#x7279;&#x5B9A;&#x5B9E;&#x4F8B;&#xFF0C;&#x6211;&#x4EEC;&#x5FC5;&#x987B;&#x9996;&#x5148;&#x58F0;&#x660E;&#x6A21;&#x677F;&#x81EA;&#x8EAB;&#x3002;&#x4E00;&#x4E2A;&#x6A21;&#x677F;&#x58F0;&#x660E;&#x5305;&#x62EC;&#x6A21;&#x677F;&#x53C2;&#x6570;&#x5217;&#x8868;:</p>
+<pre><code class="lang-cpp"><span class="hljs-comment">// &#x524D;&#x7F6E;&#x58F0;&#x660E;&#xFF0C;&#x5728;Blob&#x4E2D;&#x58F0;&#x660E;&#x53CB;&#x5143;&#x6240;&#x9700;&#x8981;&#x7684;</span>
+<span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span>&gt; <span class="hljs-keyword">class</span> BlobPtr;
+<span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span>&gt; <span class="hljs-keyword">class</span> Blob; <span class="hljs-comment">//&#x8FD0;&#x7B97;&#x7B26;==&#x4E2D;&#x7684;&#x53C2;&#x6570;&#x6240;&#x9700;&#x8981;&#x7684;</span>
+<span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> T&gt;
+    <span class="hljs-keyword">bool</span> <span class="hljs-keyword">operator</span>==(<span class="hljs-keyword">const</span> Blob&lt;T&gt;&amp;,<span class="hljs-keyword">const</span> Blob&lt;T&gt;&amp;);
+
+<span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> T&gt;
+<span class="hljs-keyword">class</span> Blob {
+    <span class="hljs-comment">//&#x6BCF;&#x4E2A;Blob&#x5B9E;&#x4F8B;&#x5C06;&#x8BBF;&#x95EE;&#x6743;&#x9650;&#x6388;&#x4E88;&#x7528;&#x76F8;&#x540C;&#x7C7B;&#x578B;&#x5B9E;&#x4F8B;&#x5316;&#x7684;BloPtr&#x548C;&#x76F8;&#x7B49;&#x8FD0;&#x7B97;&#x7B26;</span>
+    <span class="hljs-keyword">friend</span> <span class="hljs-keyword">class</span> BlobPtr&lt;T&gt;;
+    <span class="hljs-keyword">friend</span> <span class="hljs-keyword">bool</span> <span class="hljs-keyword">operator</span>==&lt;T&gt;(<span class="hljs-keyword">const</span> Blob&lt;T&gt;&amp;, <span class="hljs-keyword">const</span> Blob&lt;T&gt;&amp;);
+    <span class="hljs-comment">//&#x5176;&#x4ED6;&#x6210;&#x5458;&#x5B9A;&#x4E49;&#x76F8;&#x540C;</span>
+};
+</code></pre>
+<p>a. &#x6211;&#x4EEC;&#x9996;&#x5148;&#x5C06;<code>Blob</code>&#x3001;<code>BlobPtr</code>&#x3001;<code>operator==</code>&#x58F0;&#x660E;&#x4E3A;&#x6A21;&#x677F;&#xFF0C;&#x8FD9;&#x4E9B;&#x58F0;&#x660E;&#x662F;<code>operator==</code>&#x51FD;&#x6570;&#x7684;&#x53C2;&#x6570;&#x58F0;&#x660E;&#x4EE5;&#x53CA;<code>Blob</code>&#x4E2D;&#x7684;&#x53CB;&#x5143;&#x58F0;&#x660E;&#x6240;&#x9700;&#x8981;&#x7684;;
+b. &#x53CB;&#x5143;&#x7684;&#x58F0;&#x660E;&#x7528;Blob&#x7684;&#x6A21;&#x677F;&#x5F62;&#x53C2;&#x4F5C;&#x4E3A;&#x5B83;&#x4EEC;&#x81EA;&#x5DF1;&#x7684;&#x6A21;&#x677F;&#x5B9E;&#x53C2;&#x3002;&#x56E0;&#x6B64;&#xFF0C;&#x53CB;&#x597D;&#x5173;&#x7CFB;&#x88AB;&#x9650;&#x5B9A;&#x5728;<strong>&#x7528;&#x76F8;&#x540C;&#x7C7B;&#x578B;&#x5B9E;&#x4F8B;&#x5316;&#x7684;Blob&#x548C;BlobPtr&#x76F8;&#x7B49;&#x8FD0;&#x7B97;&#x7B26;&#x4E4B;&#x95F4;</strong></p>
+<pre><code class="lang-cpp">Blob&lt;<span class="hljs-keyword">char</span>&gt; ca; <span class="hljs-comment">// BlobPtr&lt;char&gt; &#x548C; operator==&lt;char&gt; &#x90FD;&#x662F;&#x672C;&#x5BF9;&#x8C61;&#x7684;&#x53CB;&#x5143;</span>
+Blob&lt;<span class="hljs-keyword">int</span>&gt; ia; <span class="hljs-comment">// BlobPtr&lt;int&gt; &#x548C; operator==&lt;int&gt; &#x90FD;&#x662F;&#x672C;&#x5BF9;&#x8C61;&#x7684;&#x53CB;&#x5143;</span>
+</code></pre>
+<p>a. <code>BlobPtr&lt;char&gt;</code>&#x7684;&#x6210;&#x5458;&#x53EF;&#x4EE5;&#x8BBF;&#x95EE;<code>ca</code>(&#x6216;&#x4EFB;&#x4F55;&#x5176;&#x4ED6;<code>Blob&lt;char&gt;</code>&#x5BF9;&#x8C61;)&#x7684;&#x975E;public&#x90E8;&#x5206;;
+b. &#x4F46;<code>ca</code>(<code>Blob&lt;char&gt;</code>) &#x5BF9;<code>ia</code>(<code>Blob&lt;int&gt;</code>) &#x6216; Blob&#x7684;&#x4EFB;&#x4F55;&#x5176;&#x4ED6;&#x5B9E;&#x4F8B;&#x90FD;&#x6CA1;&#x6709;&#x7279;&#x6B8A;&#x8BBF;&#x95EE;&#x6743;&#x9650;;</p>
+<p><strong>&#x901A;&#x7528;&#x548C;&#x7279;&#x5B9A;&#x7684;&#x6A21;&#x677F;&#x53CB;&#x597D;&#x5173;&#x7CFB;</strong>
+&#x4E00;&#x4E2A;&#x7C7B;&#x4E5F;&#x53EF;&#x4EE5;&#x5C06;&#x53E6;&#x4E00;&#x4E2A;&#x6A21;&#x677F;&#x7684;&#x6BCF;&#x4E2A;&#x5B9E;&#x4F8B;&#x90FD;&#x58F0;&#x660E;&#x4E3A;&#x81EA;&#x5DF1;&#x7684;&#x53CB;&#x5143;&#xFF0C;&#x6216;&#x9650;&#x5236;&#x7279;&#x5B9A;&#x7684;&#x5B9E;&#x4F8B;&#x4E3A;&#x53CB;&#x5143;&#x3002;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="C++Primer类设计-基类派生类虚函数.html" class="navigation navigation-prev " aria-label="Previous page: C++ Primer 类设计: 基类、派生类、虚函数">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../工具使用/" class="navigation navigation-next " aria-label="Next page: 工具使用">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"C++ Primer 类设计:模板与泛型编程","level":"1.5.12","depth":2,"next":{"title":"工具使用","level":"1.6","depth":1,"path":"工具使用/README.md","ref":"工具使用/README.md","articles":[{"title":"VS Code使用小技巧","level":"1.6.1","depth":2,"path":"工具使用/VSCode使用小技巧.md","ref":"工具使用/VSCode使用小技巧.md","articles":[]}]},"previous":{"title":"C++ Primer 类设计: 基类、派生类、虚函数","level":"1.5.11","depth":2,"path":"c++学习笔记/C++Primer类设计-基类派生类虚函数.md","ref":"c++学习笔记/C++Primer类设计-基类派生类虚函数.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"c++学习笔记/C++Primer类设计-模板与泛型编程.md","mtime":"2021-11-30T08:31:33.052Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-11-30T08:32:27.547Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

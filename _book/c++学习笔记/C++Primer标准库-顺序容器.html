@@ -1,0 +1,884 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>C++ Primer 标准库: 顺序容器 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="C++Primer标准库-泛型算法.html" />
+    
+    
+    <link rel="prev" href="C++Primer标准库-IO库.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    README
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../redis-xue-xi/">
+            
+                <a href="../redis-xue-xi/">
+            
+                    
+                    Redis学习
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../redis学习/Redis备份.html">
+            
+                <a href="../redis学习/Redis备份.html">
+            
+                    
+                    Redis备份
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../redis学习/Redis复制.html">
+            
+                <a href="../redis学习/Redis复制.html">
+            
+                    
+                    Redis复制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../redis学习/Redis集群.html">
+            
+                <a href="../redis学习/Redis集群.html">
+            
+                    
+                    Redis集群
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../rocksdb-xue-xi/">
+            
+                <a href="../rocksdb-xue-xi/">
+            
+                    
+                    RocksDB学习
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../rocksdb学习/RocksDB基础概念.html">
+            
+                <a href="../rocksdb学习/RocksDB基础概念.html">
+            
+                    
+                    RocksDB基础概念
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../rocksdb学习/RocksDB基础操作-C语言.html">
+            
+                <a href="../rocksdb学习/RocksDB基础操作-C语言.html">
+            
+                    
+                    RocksDB基础操作-C语言
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../c语言笔记/">
+            
+                <a href="../c语言笔记/">
+            
+                    
+                    C语言笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../c语言笔记/C语言补充笔记一.html">
+            
+                <a href="../c语言笔记/C语言补充笔记一.html">
+            
+                    
+                    C语言补充笔记一
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    C++学习笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="C++Primer基础-引用指针const.html">
+            
+                <a href="C++Primer基础-引用指针const.html">
+            
+                    
+                    C++Primer基础:引用、指针、const、auto
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="C++Primer基础-stringvector数组.html">
+            
+                <a href="C++Primer基础-stringvector数组.html">
+            
+                    
+                    C++Primer基础: string、vector、数组
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="C++Primer基础-函数重载函数指针.html">
+            
+                <a href="C++Primer基础-函数重载函数指针.html">
+            
+                    
+                    C++Primer基础:函数、重载、函数指针
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="C++Primer基础-类.html">
+            
+                <a href="C++Primer基础-类.html">
+            
+                    
+                    C++ Primer 基础: 类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="C++Primer标准库-IO库.html">
+            
+                <a href="C++Primer标准库-IO库.html">
+            
+                    
+                    C++ Primer 标准库: IO库
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.5.6" data-path="C++Primer标准库-顺序容器.html">
+            
+                <a href="C++Primer标准库-顺序容器.html">
+            
+                    
+                    C++ Primer 标准库: 顺序容器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" data-path="C++Primer标准库-泛型算法.html">
+            
+                <a href="C++Primer标准库-泛型算法.html">
+            
+                    
+                    C++ Primer 标准库: 泛型算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8" data-path="C++Primer标准库-关联容器.html">
+            
+                <a href="C++Primer标准库-关联容器.html">
+            
+                    
+                    C++ Primer 标准库: 关联容器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.9" data-path="C++Primer标准库-动态内存.html">
+            
+                <a href="C++Primer标准库-动态内存.html">
+            
+                    
+                    C++ Primer 标准库: 动态内存
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.10" data-path="C++Primer类设计-拷贝控制.html">
+            
+                <a href="C++Primer类设计-拷贝控制.html">
+            
+                    
+                    C++ Primer 类设计: 拷贝控制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.11" data-path="C++Primer类设计-基类派生类虚函数.html">
+            
+                <a href="C++Primer类设计-基类派生类虚函数.html">
+            
+                    
+                    C++ Primer 类设计: 基类、派生类、虚函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.12" data-path="C++Primer类设计-模板与泛型编程.html">
+            
+                <a href="C++Primer类设计-模板与泛型编程.html">
+            
+                    
+                    C++ Primer 类设计:模板与泛型编程
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../工具使用/">
+            
+                <a href="../工具使用/">
+            
+                    
+                    工具使用
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../工具使用/VSCode使用小技巧.html">
+            
+                <a href="../工具使用/VSCode使用小技巧.html">
+            
+                    
+                    VS Code使用小技巧
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >C++ Primer 标准库: 顺序容器</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="cprimer-&#x6807;&#x51C6;&#x5E93;-&#x987A;&#x5E8F;&#x5BB9;&#x5668;">C++Primer &#x6807;&#x51C6;&#x5E93;: &#x987A;&#x5E8F;&#x5BB9;&#x5668;</h2>
+<p>&#x987A;&#x5E8F;&#x5BB9;&#x5668;&#x5728;&#x4EE5;&#x4E0B;&#x51E0;&#x4E2A;&#x65B9;&#x9762;&#x90FD;&#x6709;&#x4E0D;&#x540C;&#x7684;&#x6027;&#x80FD;&#x6298;&#x4E2D;:</p>
+<ul>
+<li><p>&#x5411;&#x5BB9;&#x5668;&#x4E2D;&#x6DFB;&#x52A0;&#x6216;&#x4ECE;&#x5BB9;&#x5668;&#x4E2D;&#x5220;&#x9664;&#x5143;&#x7D20;&#x7684;&#x4EE3;&#x4EF7;&#xFF1B;</p>
+</li>
+<li><p>&#x975E;&#x987A;&#x5E8F;&#x8BBF;&#x95EE;&#x5BB9;&#x5668;&#x4E2D;&#x5143;&#x7D20;&#x7684;&#x4EE3;&#x4EF7;;</p>
+</li>
+</ul>
+<p><img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20211129164548276.png" alt="image-20211129164548276"></p>
+<p><strong>&#x786E;&#x5B9A;&#x4F7F;&#x7528;&#x54EA;&#x79CD;&#x987A;&#x5E8F;&#x5BB9;&#x5668;</strong></p>
+<ul>
+<li><p>&#x9664;&#x975E;&#x5F88;&#x597D;&#x9009;&#x62E9;&#x5176;&#x4ED6;&#x5BB9;&#x5668;&#x7684;&#x7406;&#x7531;&#xFF0C;&#x5426;&#x5219;&#x5E94;&#x4F7F;&#x7528;<code>vector</code>;</p>
+</li>
+<li><p>&#x5982;&#x679C;&#x7A0B;&#x5E8F;&#x8981;&#x6C42;&#x968F;&#x673A;&#x8BBF;&#x95EE;&#x5143;&#x7D20;&#xFF0C;&#x5219;&#x5E94;&#x4F7F;&#x7528;<code>vector</code>&#x3001;<code>deque</code>;</p>
+</li>
+<li><p>&#x5982;&#x679C;&#x7A0B;&#x5E8F;&#x8981;&#x5728;&#x5BB9;&#x5668;&#x4E2D;&#x95F4;&#x63D2;&#x5165; &#x6216; &#x5220;&#x9664;&#x5143;&#x7D20;&#xFF0C;&#x5219;&#x4F7F;&#x7528;<code>list</code>&#x3001;<code>forward_list</code>;</p>
+</li>
+<li><p>&#x5982;&#x679C;&#x7A0B;&#x5E8F;&#x9700;&#x8981;&#x5728;&#x5934;&#x90E8;&#x4F4D;&#x7F6E;&#x63D2;&#x5165;&#x6216;&#x8005;&#x5220;&#x9664;&#x5143;&#x7D20;&#xFF0C;&#x4F46;&#x4E0D;&#x4F1A;&#x518D;&#x4E2D;&#x95F4;&#x4F4D;&#x7F6E;&#x8FDB;&#x884C;&#x63D2;&#x5165;&#x6216;&#x5220;&#x9664;&#x64CD;&#x4F5C;&#xFF0C;&#x5219;&#x4F7F;&#x7528;<code>deque</code>;</p>
+<ul>
+<li>&#x9996;&#x5148;&#xFF0C;&#x786E;&#x5B9A;&#x662F;&#x5426;&#x771F;&#x7684;&#x9700;&#x8981;&#x5728;&#x5BB9;&#x5668;&#x4E2D;&#x95F4;&#x4F4D;&#x7F6E;&#x63D2;&#x5165;&#x5143;&#x7D20;&#x3002;&#x5F53;&#x5904;&#x7406;&#x8F93;&#x5165;&#x6570;&#x636E;&#x65F6;&#xFF0C;&#x901A;&#x5E38;&#x53EF;&#x4EE5;&#x5F88;&#x5BB9;&#x6613;&#x5730;&#x5411;<code>vector</code>&#x8FFD;&#x52A0;&#x6570;&#x636E;&#xFF0C;&#x7136;&#x540E;&#x518D;&#x8C03;&#x7528;&#x6807;&#x51C6;&#x5E93;&#x7684;sort&#x51FD;&#x6570;&#x91CD;&#x6392;&#x5BB9;&#x5668;&#x4E2D;&#x5143;&#x7D20;&#xFF0C;&#x4ECE;&#x800C;&#x907F;&#x514D;&#x5728;&#x4E2D;&#x95F4;&#x4F4D;&#x7F6E;&#x6DFB;&#x52A0;&#x5143;&#x7D20;&#xFF1B;</li>
+<li>&#x5982;&#x679C;&#x5FC5;&#x987B;&#x5728;&#x4E2D;&#x95F4;&#x4F4D;&#x7F6E;&#x63D2;&#x5165;&#x5143;&#x7D20;&#xFF0C;&#x8003;&#x8651;&#x5728;&#x8F93;&#x5165;&#x9636;&#x6BB5;&#x4F7F;&#x7528;<code>list</code>&#xFF0C;&#x4E00;&#x65E6;&#x8F93;&#x5165;&#x5B8C;&#x6210;&#xFF0C;&#x5C06;<code>list</code>&#x4E2D;&#x7684;&#x5185;&#x5BB9;&#x62F7;&#x8D1D;&#x5230;<code>vector</code>&#x4E2D;;</li>
+</ul>
+</li>
+</ul>
+<p>&#x5982;&#x679C;&#x7A0B;&#x5E8F;&#x65E2;&#x9700;&#x8981;&#x968F;&#x673A;&#x8BBF;&#x95EE;&#x5143;&#x7D20;&#xFF0C;&#x53C8;&#x9700;&#x8981;&#x5728;&#x5BB9;&#x5668;&#x4E2D;&#x95F4;&#x4F4D;&#x7F6E;&#x63D2;&#x5165;&#x5143;&#x7D20;&#xFF1F;&#x548B;&#x529E;&#xFF1F;</p>
+<p>&#x90A3;&#x53D6;&#x51B3;&#x4E8E;<code>list</code>&#x3001;<code>forward_list</code>&#x4E2D;&#x8BBF;&#x95EE;&#x5143;&#x7D20;&#x4E0E;<code>vector</code>&#x6216;<code>deque</code>&#x4E2D;&#x63D2;&#x5165;/&#x5220;&#x9664;&#x5143;&#x7D20;&#x7684;&#x76F8;&#x5BF9;&#x6027;&#x80FD;&#x3002;</p>
+<p>&#x4E00;&#x822C;&#x6765;&#x8BF4;&#xFF0C;&#x5E94;&#x7528;&#x4E2D;&#x5360;&#x6709;&#x4E3B;&#x5BFC;&#x5730;&#x4F4D;(&#x6267;&#x884C;&#x7684;&#x8BBF;&#x95EE;&#x64CD;&#x4F5C;&#x66F4;&#x591A;&#x65F6;&#x5019; or &#x63D2;&#x5165;/&#x5220;&#x9664;&#x66F4;&#x591A;)&#x51B3;&#x5B9A;&#x4E86;&#x5BB9;&#x5668;&#x7C7B;&#x578B;&#x7684;&#x9009;&#x62E9;&#x3002;</p>
+<h4 id="&#x5BB9;&#x5668;&#x5E93;&#x6982;&#x89C8;">&#x5BB9;&#x5668;&#x5E93;&#x6982;&#x89C8;</h4>
+<p>&#x5BB9;&#x5668;&#x7C7B;&#x578B;&#x4E0A;&#x64CD;&#x4F5C;&#x5F62;&#x6210;&#x4E86;&#x4E00;&#x79CD;&#x5C42;&#x6B21;:</p>
+<ul>
+<li><p>&#x67D0;&#x4E9B;&#x64CD;&#x4F5C;&#x662F;&#x6240;&#x6709;&#x5BB9;&#x5668;&#x7C7B;&#x578B;&#x90FD;&#x63D0;&#x4F9B;&#x7684;&#xFF1B;</p>
+</li>
+<li><p>&#x53E6;&#x5916;&#x4E00;&#x4E9B;&#x64CD;&#x4F5C;&#x4EC5;&#x9488;&#x5BF9;&#x987A;&#x5E8F;&#x5BB9;&#x5668;&#xFF1B;</p>
+</li>
+<li><p>&#x8FD8;&#x6709;&#x4E00;&#x4E9B;&#x64CD;&#x4F5C;&#x53EA;&#x9002;&#x7528;&#x4E8E;&#x5C11;&#x90E8;&#x5206;&#x5BB9;&#x5668;&#x7C7B;&#x578B;&#xFF1B; </p>
+</li>
+</ul>
+<p>&#x672C;&#x8282;&#x4ECB;&#x7ECD;&#x7684;&#xFF0C;&#x662F;&#x4ECB;&#x7ECD;&#x5BF9;&#x6240;&#x6709;&#x5BB9;&#x5668;&#x90FD;&#x9002;&#x7528;&#x7684;&#x64CD;&#x4F5C;&#x3002;</p>
+<p><img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20211129165143502.png" alt="image-20211129165143502"></p>
+<p><img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20211129165251864.png" alt="image-20211129165251864"></p>
+<p><img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20211129165317214.png" alt="image-20211129165317214"></p>
+<p><img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20211129165335346.png" alt="image-20211129165335346"></p>
+<h4 id="&#x8FED;&#x4EE3;&#x5668;">&#x8FED;&#x4EE3;&#x5668;</h4>
+<p>&#x6CE8;&#x610F;:<code>forward_list</code>&#x8FED;&#x4EE3;&#x5668;&#x4E0D;&#x652F;&#x6301;&#x9012;&#x51CF;&#x8FD0;&#x7B97;&#x7B26;(<code>--</code>);</p>
+<ul>
+<li><p><strong>&#x8FED;&#x4EE3;&#x5668;&#x7684;&#x8303;&#x56F4;</strong></p>
+<p>&#x5DE6;&#x95ED;&#x5408;&#x533A;&#x95F4;(left-inclusive interval),&#x5176;&#x6807;&#x51C6;&#x6570;&#x5B66;&#x63CF;&#x8FF0;&#x4E3A;:<code>[begin,end)</code></p>
+<p>&#x8868;&#x793A;&#x8303;&#x56F4;&#x81EA;<code>begin</code>&#x5F00;&#x59CB;&#xFF0C;&#x4E8E;<code>end</code>&#x4E4B;&#x524D;&#x7ED3;&#x675F;&#x3002;</p>
+</li>
+<li><p><strong>&#x4F7F;&#x7528;&#x5DE6;&#x95ED;&#x5408;&#x8303;&#x56F4;&#x8574;&#x542B;&#x7684;&#x7F16;&#x7A0B;&#x5047;&#x5B9A;:</strong></p>
+<ul>
+<li>&#x5982;&#x679C;<code>begin</code>&#x4E0E;<code>end</code>&#x76F8;&#x7B49;&#xFF0C;&#x5219;&#x8303;&#x56F4;&#x4E3A;&#x7A7A;;</li>
+<li>&#x5982;&#x679C;<code>begin</code>&#x4E0E;<code>end</code>&#x4E0D;&#x7B49;&#xFF0C;&#x5219;&#x8303;&#x56F4;&#x81F3;&#x5C11;&#x5305;&#x542B;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#xFF0C;&#x4E14;<code>begin</code>&#x6307;&#x5411;&#x8303;&#x56F4;&#x4E2D;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x5143;&#x7D20;;</li>
+<li>&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5BF9;<code>begin</code>&#x9012;&#x589E;&#x82E5;&#x5E72;&#x6B21;&#xFF0C;&#x4F7F;&#x5F97;<code>begin==end</code>;</li>
+</ul>
+<p>&#x95EE;&#x9898;: &#x4E0B;&#x9762;&#x7A0B;&#x5E8F;&#x6709;&#x4F55;&#x9519;&#x8BEF;&#xFF1F;&#x5E94;&#x8BE5;&#x5982;&#x4F55;&#x5904;&#x7406;&#xFF1F;</p>
+<pre><code class="lang-cpp"><span class="hljs-built_in">list</span>&lt;<span class="hljs-keyword">int</span>&gt; lst1;
+<span class="hljs-built_in">list</span>&lt;<span class="hljs-keyword">int</span>&gt;::iterator iter1 = lst1.begin(),iter2 = lst1.end();
+<span class="hljs-keyword">while</span> (iter1 &lt; iter2) <span class="hljs-comment">/* ... */</span>
+</code></pre>
+<p>&#x7B54;&#x6848;: <code>iter1 &lt; iter2</code>&#x662F;&#x9519;&#x8BEF;&#x7684;&#xFF0C;&#x8FED;&#x4EE3;&#x5668;&#x7C7B;&#x578B;&#x662F;&#x4E0D;&#x80FD;&#x6BD4;&#x8F83;&#x5927;&#x5C0F;&#x7684;&#xFF0C;&#x5E94;&#x8BE5;&#x7528;<code>iter1 != iter2</code>&#x3002;</p>
+<p>&#x95EE;&#x9898;: &#x7F16;&#x5199;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x63A5;&#x6536;&#x4E00;&#x5BF9;&#x6307;&#x5411;<code>vector&lt;int&gt;</code>&#x7684;&#x8FED;&#x4EE3;&#x5668;&#x548C;&#x4E00;&#x4E2A;int&#x503C;&#xFF0C;&#x5728;&#x4E24;&#x4E2A;&#x8FED;&#x4EE3;&#x5668;&#x4E4B;&#x95F4;&#x67E5;&#x627E;&#x7ED9;&#x5B9A;&#x7684;&#x503C;&#xFF0C;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;bool&#x503C;&#x6765;&#x786E;&#x5B9A;&#x662F;&#x5426;&#x627E;&#x5230;&#xFF1F;</p>
+<pre><code class="lang-cpp"><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">findItemInIterRange</span><span class="hljs-params">(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;::const_iterator begin,<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;::const_iterator end,<span class="hljs-keyword">int</span> target)</span></span>{
+    <span class="hljs-keyword">while</span>(begin != end){
+        <span class="hljs-keyword">if</span>(*begin == target){
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+        }
+        begin++;
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+}
+</code></pre>
+</li>
+</ul>
+<h4 id="&#x5BB9;&#x5668;&#x7C7B;&#x578B;&#x6210;&#x5458;">&#x5BB9;&#x5668;&#x7C7B;&#x578B;&#x6210;&#x5458;</h4>
+<p>&#x6BCF;&#x4E2A;&#x5BB9;&#x5668;&#x90FD;&#x5B9A;&#x4E49;&#x4E86;&#x5F88;&#x591A;&#x7C7B;&#x578B;&#x3002;&#x4E0A;&#x9762;&#x6211;&#x4EEC;&#x5DF2;&#x7ECF;&#x4F7F;&#x7528;&#x8FC7;&#x5176;&#x4E2D;&#x4E09;&#x79CD;: <code>size_type</code>&#x3001;<code>iterator</code>&#x3001;<code>const_iterator</code>&#x3002;</p>
+<p><strong>&#x53CD;&#x5411;&#x8FED;&#x4EE3;&#x5668;</strong>:&#x6240;&#x6709;&#x64CD;&#x4F5C;&#x7684;&#x542B;&#x4E49;&#x90FD;&#x662F;&#x98A0;&#x5012;&#x7684;&#xFF0C;&#x5982;&#x53CD;&#x5411;&#x8FED;&#x4EE3;&#x5668;&#x4E2D;&#x6267;&#x884C;<code>++</code>&#x64CD;&#x4F5C;&#xFF0C;&#x4F1A;&#x5F97;&#x5230;&#x4E0A;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#x3002;&#x540E;&#x7EED;&#x4ECB;&#x7ECD;&#x3002;</p>
+<p><strong>&#x7C7B;&#x578B;&#x522B;&#x540D;</strong>: &#x901A;&#x8FC7;&#x7C7B;&#x578B;&#x522B;&#x540D;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5728;&#x4E0D;&#x4E86;&#x89E3;&#x5BB9;&#x5668;&#x4E2D;&#x5143;&#x7D20;&#x7C7B;&#x578B;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x4F7F;&#x7528;&#x5B83;&#x3002;&#x5982;&#x679C;&#x9700;&#x8981;&#x5143;&#x7D20;&#x7C7B;&#x578B;&#xFF0C;&#x5219;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x5BB9;&#x5668;&#x7684;<code>value_type</code>&#x3001;&#x5982;&#x679C;&#x9700;&#x8981;&#x5143;&#x7D20;&#x4E2D;&#x7684;&#x4E00;&#x4E2A;&#x5F15;&#x7528;&#xFF0C;&#x5219;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;<code>refrence</code>&#x6216;<code>const_refrence</code>&#x3002;</p>
+<p>&#x95EE;&#x9898;: &#x4E3A;&#x4E86;&#x7D22;&#x5F15;int&#x7684;vector&#x5143;&#x7D20;&#xFF0C;&#x5E94;&#x8BE5;&#x4F7F;&#x7528;&#x4EC0;&#x4E48;&#x7C7B;&#x578B;&#xFF1F;</p>
+<p>&#x7B54;:<code>vector&lt;int&gt;::size_type</code></p>
+<p>&#x95EE;&#x9898;: &#x4E3A;&#x4E86;&#x8BFB;&#x53D6;string&#x7684;list&#x4E2D;&#x7684;&#x5143;&#x7D20;&#xFF0C;&#x5E94;&#x8BE5;&#x4F7F;&#x7528;&#x4EC0;&#x4E48;&#x7C7B;&#x578B;&#xFF1F;&#x5982;&#x679C;&#x5199;&#x5165;list&#xFF0C;&#x5E94;&#x8BE5;&#x4F7F;&#x7528;&#x4EC0;&#x4E48;&#x7C7B;&#x578B;&#xFF1F;</p>
+<p>&#x7B54;: &#x8BFB;&#x53D6;:<code>list&lt;string&gt;::iterator || list&lt;string&gt;::const_iterator</code>;</p>
+<p>&#x5199;&#x5165;:<code>list&lt;string&gt;::iterator</code></p>
+<h4 id="&#x5BB9;&#x5668;&#x5B9A;&#x4E49;&#x548C;&#x521D;&#x59CB;&#x5316;">&#x5BB9;&#x5668;&#x5B9A;&#x4E49;&#x548C;&#x521D;&#x59CB;&#x5316;</h4>
+<p><img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20211129170357199.png" alt="image-20211129170357199"></p>
+<p><strong>&#x5C06;&#x4E00;&#x4E2A;&#x5BB9;&#x5668;&#x521D;&#x59CB;&#x5316;&#x4E3A;&#x53E6;&#x4E00;&#x4E2A;&#x5BB9;&#x5668;&#x7684;&#x62F7;&#x8D1D;</strong></p>
+<p>&#x4E3A;&#x4E86;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x5BB9;&#x5668;&#x4E3A;&#x53E6;&#x4E00;&#x4E2A;&#x5BB9;&#x5668;&#x7684;&#x62F7;&#x8D1D;&#xFF0C;<strong>&#x4E24;&#x4E2A;&#x5BB9;&#x5668;&#x7684;&#x7C7B;&#x578B;&#x4EE5;&#x53CA;&#x5143;&#x7D20;&#x7C7B;&#x578B;&#x90FD;&#x5FC5;&#x987B;&#x5339;&#x914D;</strong>&#x3002;</p>
+<p>&#x4E0D;&#x8FC7;&#xFF0C;&#x5F53;&#x4F20;&#x9012;&#x8FED;&#x4EE3;&#x5668;&#x53C2;&#x6570;&#x6765;&#x62F7;&#x8D1D;&#x4E00;&#x4E2A;&#x8303;&#x56F4;&#x65F6;&#xFF0C;&#x5C31;&#x4E0D;&#x8981;&#x6C42;&#x5BB9;&#x5668;&#x7C7B;&#x578B;&#x76F8;&#x540C;&#x4E86;&#x3002;</p>
+<pre><code class="lang-cpp"><span class="hljs-comment">// &#x6BCF;&#x4E2A;&#x5BB9;&#x5668;&#x90FD;&#x6709;&#x4E09;&#x4E2A;&#x5143;&#x7D20;&#xFF0C;&#x7528;&#x7ED9;&#x5B9A;&#x7684;&#x521D;&#x59CB;&#x5316;&#x5668;&#x8FDB;&#x884C;&#x521D;&#x59CB;&#x5316;</span>
+<span class="hljs-built_in">list</span>&lt;<span class="hljs-built_in">string</span>&gt; authors = {<span class="hljs-string">&quot;Milton&quot;</span>, <span class="hljs-string">&quot;Shakespeare&quot;</span>, <span class="hljs-string">&quot;Austen&quot;</span>};
+<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>*&gt; articles = {<span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-string">&quot;an&quot;</span>, <span class="hljs-string">&quot;the&quot;</span>};
+
+<span class="hljs-built_in">list</span>&lt;<span class="hljs-built_in">string</span>&gt; list2(authors); <span class="hljs-comment">// &#x6B63;&#x786E;: &#x7C7B;&#x578B;&#x5339;&#x914D;</span>
+<span class="hljs-built_in">deque</span>&lt;<span class="hljs-built_in">string</span>&gt; authList(authors); <span class="hljs-comment">// error: &#x5BB9;&#x5668;&#x7C7B;&#x578B;&#x4E0D;&#x5339;&#x914D;</span>
+<span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">string</span>&gt; words(articles); <span class="hljs-comment">// error: &#x5143;&#x7D20;&#x7C7B;&#x578B;&#x5FC5;&#x987B;&#x5339;&#x914D;</span>
+
+<span class="hljs-comment">// ok: &#x53EF;&#x4EE5;&#x5C06;const char*&#x8F6C;&#x6362;&#x4E3A;string</span>
+forward_list&lt;<span class="hljs-built_in">string</span>&gt; words(articles.begin(), articles.end());
+</code></pre>
+<p>&#x6CE8;&#x610F;&#x54E6;: <strong>&#x5982;&#x679C;&#x662F;&#x5229;&#x7528; &#x4E24;&#x4E2A;&#x8FED;&#x4EE3;&#x5668; &#x53C2;&#x6570;&#x6765;&#x521D;&#x59CB;&#x5316;&#xFF0C;&#x4E24;&#x4E2A;&#x8FED;&#x4EE3;&#x5668; &#x5206;&#x522B;&#x8868;&#x793A;&#x60F3;&#x8981;&#x62F7;&#x8D1D;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#x548C;&#x5C3E;&#x5143;&#x7D20;&#x4E4B;&#x540E;&#x7684;&#x4F4D;&#x7F6E;</strong>&#x3002;</p>
+<pre><code class="lang-cpp"><span class="hljs-comment">// &#x62F7;&#x8D1D;&#x5143;&#x7D20;&#xFF0C;&#x76F4;&#x5230;(&#x4F46;&#x4E0D;&#x5305;&#x62EC;)it&#x6307;&#x5411;&#x7684;&#x5143;&#x7D20;</span>
+<span class="hljs-built_in">deque</span>&lt;<span class="hljs-built_in">string</span>&gt; authList(authors.begin(),it);
+</code></pre>
+<p><strong>&#x4E0E;&#x987A;&#x5E8F;&#x5BB9;&#x5668;&#x5927;&#x5C0F;&#x76F8;&#x5173;&#x7684;&#x6784;&#x9020;&#x51FD;&#x6570;(&#x4E0D;&#x652F;&#x6301;array)</strong></p>
+<pre><code class="lang-cpp"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; ivec(<span class="hljs-number">10</span>, <span class="hljs-number">-1</span>); <span class="hljs-comment">// 10&#x4E2A;int&#x5143;&#x7D20;&#xFF0C;&#x6BCF;&#x4E2A;&#x90FD;&#x521D;&#x59CB;&#x5316;&#x4E3A;-1</span>
+<span class="hljs-built_in">list</span>&lt;<span class="hljs-built_in">string</span>&gt; svec(<span class="hljs-number">10</span>, <span class="hljs-string">&quot;hi!&quot;</span>); <span class="hljs-comment">// 10&#x4E2A;string&#x5143;&#x7D20;&#xFF0C;&#x6BCF;&#x4E2A;&#x90FD;&#x521D;&#x59CB;&#x5316;&#x4E3A;&quot;hi!&quot;</span>
+</code></pre>
+<p>&#x6CE8;&#x610F;: &#x53EA;&#x6709;&#x987A;&#x5E8F;&#x5BB9;&#x5668;&#x7684;&#x6784;&#x9020;&#x51FD;&#x6570;&#x624D;&#x63A5;&#x53D7;&#x5927;&#x5C0F;&#x53C2;&#x6570;&#xFF0C;&#x5173;&#x8054;&#x5BB9;&#x5668;&#x5E76;&#x4E0D;&#x652F;&#x6301;&#x3002;</p>
+<p><strong>&#x6807;&#x51C6;&#x5E93;aaray&#x5177;&#x6709;&#x56FA;&#x5B9A;&#x5927;&#x5C0F;</strong></p>
+<pre><code class="lang-cpp"><span class="hljs-built_in">array</span>&lt;<span class="hljs-keyword">int</span>, 10&gt; ia1; <span class="hljs-comment">// 10&#x4E2A;&#x9ED8;&#x8BA4;&#x521D;&#x59CB;&#x5316;&#x7684;int</span>
+<span class="hljs-built_in">array</span>&lt;<span class="hljs-keyword">int</span>, 10&gt; ia2 = {<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>,<span class="hljs-number">7</span>,<span class="hljs-number">8</span>,<span class="hljs-number">9</span>}; <span class="hljs-comment">// &#x5217;&#x8868;&#x521D;&#x59CB;&#x5316;</span>
+<span class="hljs-built_in">array</span>&lt;<span class="hljs-keyword">int</span>, 10&gt; ia3 = {<span class="hljs-number">42</span>}; <span class="hljs-comment">// ia3[0] is 42, &#x5269;&#x4E0B;&#x7684;&#x5143;&#x7D20;&#x4E3A;0</span>
+
+<span class="hljs-keyword">int</span> digs[<span class="hljs-number">10</span>] = {<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>,<span class="hljs-number">7</span>,<span class="hljs-number">8</span>,<span class="hljs-number">9</span>};
+<span class="hljs-keyword">int</span> cpy[<span class="hljs-number">10</span>] = digs; <span class="hljs-comment">// error: &#x5185;&#x7F6E;&#x6570;&#x7EC4;&#x4E0D;&#x652F;&#x6301;&#x62F7;&#x8D1D;&#x6216;&#x8D4B;&#x503C;</span>
+<span class="hljs-built_in">array</span>&lt;<span class="hljs-keyword">int</span>, 10&gt; digits = {<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>,<span class="hljs-number">7</span>,<span class="hljs-number">8</span>,<span class="hljs-number">9</span>};
+<span class="hljs-built_in">array</span>&lt;<span class="hljs-keyword">int</span>, 10&gt; copy = digits; <span class="hljs-comment">// ok: &#x53EA;&#x8981;&#x6570;&#x7EC4;&#x7C7B;&#x578B;&#x5339;&#x914D;&#x5373;&#x5408;&#x6CD5;</span>
+</code></pre>
+<h4 id="&#x8D4B;&#x503C;&#x4E0E;swap">&#x8D4B;&#x503C;&#x4E0E;swap</h4>
+<p>&#x7531;&#x4E8E; &#x53F3;&#x8FB9;&#x5BF9;&#x8C61;&#x7684;&#x5927;&#x5C0F; &#x53EF;&#x80FD;&#x4E0E; &#x5DE6;&#x8FB9;&#x8FD0;&#x7B97;&#x5BF9;&#x8C61;&#x7684;&#x5927;&#x5C0F; &#x4E0D;&#x540C;&#x3002;&#x56E0;&#x6B64;array&#x7C7B;&#x578B;&#x4E0D;&#x652F;&#x6301;assign&#xFF0C;&#x4E5F;&#x4E0D;&#x5141;&#x8BB8;&#x7528;&#x82B1;&#x62EC;&#x53F7;&#x5305;&#x56F4;&#x7684;&#x503C;&#x5217;&#x8868;&#x8FDB;&#x884C;&#x8D4B;&#x503C;&#x3002;</p>
+<p><img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20211129170736674.png" alt="image-20211129170736674"></p>
+<p><strong>&#x4F7F;&#x7528;assign(&#x4EC5;&#x987A;&#x5E8F;&#x5BB9;&#x5668;)</strong></p>
+<pre><code class="lang-cpp"><span class="hljs-built_in">list</span>&lt;<span class="hljs-built_in">string</span>&gt; names;
+<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>*&gt; oldstyle;
+names = oldstyle; <span class="hljs-comment">// error: &#x5BB9;&#x5668;&#x7C7B;&#x578B;&#x4E0D;&#x5339;&#x914D;</span>
+<span class="hljs-comment">// ok: &#x53EF;&#x4EE5;&#x8BB2;const char*&#x8F6C;&#x6362;&#x4E3A;string</span>
+names.assign(oldstyle.cbegin(), oldstyle.cend());
+
+<span class="hljs-comment">// &#x7B49;&#x4EF7;&#x4E8E; slist1.clear()</span>
+<span class="hljs-comment">// &#x540E;&#x8DDF; slist1.insert(slist1.begin(),10,&quot;HiYa!&quot;)</span>
+<span class="hljs-built_in">list</span>&lt;<span class="hljs-built_in">string</span>&gt; slist1(<span class="hljs-number">1</span>); <span class="hljs-comment">// &#x4E00;&#x4E2A;&#x5143;&#x7D20;&#xFF0C;&#x7A7A;string</span>
+slist1.assign(<span class="hljs-number">10</span>, <span class="hljs-string">&quot;Hiya!&quot;</span>); <span class="hljs-comment">// 10&#x4E2A;&#x5143;&#x7D20;&#xFF0C;&#x6BCF;&#x4E2A;&#x90FD;&#x662F; &quot;Hiya!&quot;</span>
+</code></pre>
+<p><strong>&#x4F7F;&#x7528;swap</strong></p>
+<p>swap&#x64CD;&#x4F5C;&#x4EA4;&#x6362;&#x4E24;&#x4E2A;&#x76F8;&#x540C;&#x7C7B;&#x578B;&#x5BB9;&#x5668;&#x7684;&#x5185;&#x5BB9;&#x3002;</p>
+<pre><code class="lang-cpp"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">string</span>&gt; svec1(<span class="hljs-number">10</span>); <span class="hljs-comment">// vector with ten elements</span>
+<span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">string</span>&gt; svec2(<span class="hljs-number">24</span>); <span class="hljs-comment">// vector with 24 elements</span>
+swap(svec1, svec2);
+</code></pre>
+<p>swap&#x5B8C;&#x6210;&#x540E;&#xFF0C;svec1&#x5C06;&#x5305;&#x542B;24&#x4E2A;string&#x5143;&#x7D20;&#xFF0C;svec2&#x5C06;&#x5305;&#x542B;10&#x4E2A;sttring&#x3002;</p>
+<p>&#x9664;&#x4E86;array&#x5916;&#xFF0C;&#x4EA4;&#x6362;&#x4E24;&#x4E2A;&#x5BB9;&#x5668;&#x5185;&#x5BB9;&#x7684;&#x64CD;&#x4F5C;&#x662F;&#x5F88;&#x5FEB;&#x7684;&#x884C;&#x4E3A;&#x2014;&#x2014;&#x5143;&#x7D20;&#x672C;&#x8EAB;&#x5E76;&#x672A;&#x4EA4;&#x6362;&#xFF0C;swap&#x53EA;&#x662F;&#x4EA4;&#x6362;&#x4E86;&#x4E24;&#x4E2A;&#x5BB9;&#x5668;&#x7684;&#x5185;&#x90E8;&#x7ED3;&#x6784;&#x3002;</p>
+<p>swap&#x4E0D;&#x505A;&#x4EFB;&#x4F55;&#x5143;&#x7D20;&#x7684;&#x62F7;&#x8D1D;&#x3001;&#x5220;&#x9664;&#x3001;&#x63D2;&#x5165;&#x64CD;&#x4F5C;&#xFF0C;&#x56E0;&#x6B64;&#x53EF;&#x4EE5;&#x4FDD;&#x8BC1;&#x5728;&#x5E38;&#x6570;&#x65F6;&#x95F4;&#x5185;&#x5B8C;&#x6210;&#x3002;</p>
+<p>&#x5143;&#x7D20;&#x4E0D;&#x4F1A;&#x88AB;&#x79FB;&#x52A8;&#x7684;&#x4E8B;&#x5B9E;&#x610F;&#x5473;&#x7740;&#xFF0C;&#x9664;string&#x5916;&#xFF0C;&#x6307;&#x5411;&#x5BB9;&#x5668;&#x7684;&#x8FED;&#x4EE3;&#x5668;&#x3001;&#x5F15;&#x7528;&#x3001;&#x6307;&#x9488;&#x5728;swap&#x540E;&#x90FD;&#x4E0D;&#x4F1A;&#x5931;&#x6548;&#x3002;&#x53EA;&#x662F;swap&#x540E;&#xFF0C;&#x8FD9;&#x4E9B;&#x5143;&#x7D20;&#x5DF2;&#x7ECF;&#x5C5E;&#x4E8E;&#x4E0D;&#x540C;&#x5BB9;&#x5668;&#x4E86;&#x3002;</p>
+<p>&#x5982;&#xFF1A;&#x5047;&#x5B9A;<code>iter</code>&#x5728;swap&#x4E4B;&#x524D;&#x4E4B;&#x6307;&#x5411;<code>svec1[3]</code>&#x7684;string&#xFF0C;&#x90A3;&#x4E48;&#x518D;swap&#x4E4B;&#x540E;&#x5B83;&#x6307;&#x5411;<code>svec2[3]</code>&#x7684;&#x5143;&#x7D20;&#x3002;</p>
+<p>&#x6CE8;&#x610F;&#xFF1A;</p>
+<ul>
+<li><p>&#x5BF9;&#x4E00;&#x4E2A;<code>string</code>&#x8C03;&#x7528;swap&#x4F1A;&#x5BFC;&#x81F4;&#x8FED;&#x4EE3;&#x5668;&#x3001;&#x5F15;&#x7528;&#x548C;&#x6307;&#x9488;&#x5931;&#x6548;&#xFF1B;</p>
+</li>
+<li><p>swap&#x4E24;&#x4E2A;<code>array</code>&#x4F1A;&#x771F;&#x6B63;&#x4EA4;&#x6362;&#x5B83;&#x4EEC;&#x7684;&#x5143;&#x7D20;&#x3002;</p>
+</li>
+<li><p>&#x5BB9;&#x5668;&#x65E2;&#x63D0;&#x4F9B;&#x4E86;&#x6210;&#x5458;&#x51FD;&#x6570;&#x7684;<code>swap</code>,&#x4E5F;&#x63D0;&#x4F9B;&#x4E86;&#x975E;&#x6210;&#x5458;&#x7248;&#x672C;&#x7684;<code>swap</code>&#x3002;</p>
+<p><strong>&#x975E;&#x6210;&#x5458;&#x7248;&#x672C;&#x7684;swap&#x5728;&#x6CDB;&#x578B;&#x7F16;&#x7A0B;&#x4E2D;&#x975E;&#x5E38;&#x91CD;&#x8981;&#xFF0C;&#x7EDF;&#x4E00;&#x4F7F;&#x7528;&#x975E;&#x6210;&#x5458;&#x7248;&#x672C;&#x7684;<code>swap</code>&#x662F;&#x4E00;&#x4E2A;&#x597D;&#x4E60;&#x60EF;&#x3002;&#x4E5F;&#x5C31;&#x662F;&#x5C3D;&#x91CF;&#x4F7F;&#x7528;<code>swap(a,b)</code>&#x3001;&#x4E0D;&#x8981;&#x4F7F;&#x7528;</strong><code>a.swap(b)</code>;</p>
+</li>
+</ul>
+<h4 id="&#x5BB9;&#x5668;&#x5927;&#x5C0F;&#x64CD;&#x4F5C;">&#x5BB9;&#x5668;&#x5927;&#x5C0F;&#x64CD;&#x4F5C;</h4>
+<ul>
+<li><p><code>size()</code>&#x8FD4;&#x56DE;&#x5BB9;&#x5668;&#x4E2D;&#x5143;&#x7D20;&#x6570;&#x76EE;;</p>
+</li>
+<li><p><code>empty()</code>&#x5F53;size&#x4E3A;0&#x65F6;&#x8FD4;&#x56DE;true,&#x5426;&#x5219;false;</p>
+</li>
+<li><p><code>max_size()</code>&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x5927;&#x4E8E;&#x7B49;&#x4E8E;&#x8BE5;&#x7C7B;&#x578B;&#x6240;&#x80FD;&#x5BB9;&#x7EB3;&#x7684;&#x6700;&#x5927;&#x5143;&#x7D20;&#x6570;&#x7684;&#x503C;&#xFF1B;</p>
+</li>
+<li><p><code>forward_list</code>&#x652F;&#x6301;<code>max_size</code>&#x548C;<code>empty</code>,&#x4F46;&#x4E0D;&#x652F;&#x6301;<code>size()</code>;</p>
+</li>
+</ul>
+<h3 id="&#x987A;&#x5E8F;&#x5BB9;&#x5668;&#x64CD;&#x4F5C;">&#x987A;&#x5E8F;&#x5BB9;&#x5668;&#x64CD;&#x4F5C;</h3>
+<p>&#x4E0A;&#x9762;&#x4E00;&#x8282;&#x4ECB;&#x7ECD;&#x7684;&#x662F; &#x987A;&#x5E8F;&#x5BB9;&#x5668;&#x3001;&#x5173;&#x8054;&#x5BB9;&#x5668;&#x90FD;&#x5177;&#x6709;&#x7684;&#x64CD;&#x4F5C;&#xFF0C;&#x8FD9;&#x4E00;&#x8282;&#x4E3B;&#x8981;&#x4ECB;&#x7ECD; &#x987A;&#x5E8F;&#x5BB9;&#x5668;&#x6240;&#x7279;&#x6709;&#x7684;&#x64CD;&#x4F5C;&#x3002;</p>
+<h4 id="&#x5411;&#x987A;&#x5E8F;&#x5BB9;&#x5668;&#x4E2D;&#x975E;array&#x6DFB;&#x52A0;&#x5143;&#x7D20;">&#x5411;&#x987A;&#x5E8F;&#x5BB9;&#x5668;&#x4E2D;(&#x975E;array)&#x6DFB;&#x52A0;&#x5143;&#x7D20;</h4>
+<p><img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20211129171241741.png" alt="image-20211129171241741"></p>
+<p>&#x6CE8;&#x610F;&#xFF1A;&#x5BB9;&#x5668;&#x5143;&#x7D20;&#x662F;&#x62F7;&#x8D1D;</p>
+<p>&#x5F53;&#x6211;&#x4EEC;&#x7528;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x6765;&#x521D;&#x59CB;&#x5316;&#x5BB9;&#x5668;&#x65F6;&#xFF0C;&#x6216;&#x5C06;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x63D2;&#x5165;&#x5230;&#x5BB9;&#x5668;&#x4E2D;&#x65F6;&#xFF0C;&#x5B9E;&#x9645;&#x4E0A;&#x653E;&#x5165;&#x5230;&#x5BB9;&#x5668;&#x4E2D;&#x7684;&#x5BF9;&#x8C61;&#x503C;&#x662F;&#x4E00;&#x4E2A;&#x62F7;&#x8D1D;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x5BF9;&#x8C61;&#x672C;&#x8EAB;&#x3002;</p>
+<p>&#x5C31;&#x50CF;&#x6211;&#x4EEC;&#x7ED9;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x4F20;&#x9012;&#x975E;&#x5F15;&#x7528;&#x53C2;&#x6570;&#x4E00;&#x6837;&#x3002;</p>
+<p><strong>&#x5728;&#x5BB9;&#x5668;&#x4E2D;&#x7279;&#x5B9A;&#x4F4D;&#x7F6E;&#x6DFB;&#x52A0;&#x5143;&#x7D20;</strong></p>
+<p><code>push_back</code>&#x3001;<code>push_front</code>&#x5C31;&#x4E0D;&#x8BF4;&#x4E86;&#x3002;&#x4E0B;&#x9762;&#x6765;&#x8BF4;&#x8BF4;<code>insert</code>:</p>
+<pre><code class="lang-cpp"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">string</span>&gt; svec;
+<span class="hljs-built_in">list</span>&lt;<span class="hljs-built_in">string</span>&gt; slist;
+<span class="hljs-comment">// &#x7B49;&#x4EF7;&#x4E8E;&#x8C03;&#x7528; slist.push_front(&quot;Hello&quot;);</span>
+slist.insert(slist.begin(), <span class="hljs-string">&quot;Hello!&quot;</span>);
+<span class="hljs-comment">// vector&#x4E0D;&#x652F;&#x6301;push_front,&#x4F46;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x63D2;&#x5165;&#x5230;begin()&#x4E4B;&#x524D;</span>
+<span class="hljs-comment">// &#x8B66;&#x544A;&#xFF1A;&#x63D2;&#x5165;vector&#x672B;&#x5C3E;&#x4EE5;&#x5916;&#x7684;&#x4EFB;&#x4F55;&#x4F4D;&#x7F6E;&#x90FD;&#x5F88;&#x6162;&#x3002;</span>
+svec.insert(svec.begin(), <span class="hljs-string">&quot;Hello!&quot;</span>);
+</code></pre>
+<p>&#x5C06;&#x5143;&#x7D20;&#x63D2;&#x5165;&#x5230;<code>vector</code>&#x3001;<code>deque</code>&#x3001;<code>string</code>&#x4E2D;&#x7684;&#x4EFB;&#x4F55;&#x4F4D;&#x7F6E;&#x90FD;&#x662F;&#x5408;&#x6CD5;&#x7684;&#xFF0C;&#x7136;&#x800C;&#x8FD9;&#x79CD;&#x505A;&#x6CD5;&#x5F88;&#x8017;&#x65F6;&#x3002;</p>
+<p><strong>&#x63D2;&#x5165;&#x8303;&#x56F4;&#x5185;&#x5143;&#x7D20;</strong></p>
+<pre><code class="lang-cpp"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">string</span>&gt; v = {<span class="hljs-string">&quot;quasi&quot;</span>, <span class="hljs-string">&quot;simba&quot;</span>, <span class="hljs-string">&quot;frollo&quot;</span>, <span class="hljs-string">&quot;scar&quot;</span>};
+<span class="hljs-comment">// &#x5C06;v&#x7684;&#x968F;&#x540E;&#x4E24;&#x4E2A;&#x5143;&#x7D20;&#x6DFB;&#x52A0;&#x5230;slist&#x7684;&#x5F00;&#x59CB;&#x4F4D;&#x7F6E;</span>
+slist.insert(slist.begin(), v.end() - <span class="hljs-number">2</span>, v.end());
+slist.insert(slist.end(), {<span class="hljs-string">&quot;these&quot;</span>, <span class="hljs-string">&quot;words&quot;</span>, <span class="hljs-string">&quot;will&quot;</span>,
+<span class="hljs-string">&quot;go&quot;</span>, <span class="hljs-string">&quot;at&quot;</span>, <span class="hljs-string">&quot;the&quot;</span>, <span class="hljs-string">&quot;end&quot;</span>});
+<span class="hljs-comment">// &#x8FD0;&#x884C;&#x662F;&#x9519;&#x8BEF;&#xFF1A;&#x8FED;&#x4EE3;&#x5668;&#x8868;&#x793A;&#x8981;&#x62F7;&#x8D1D;&#x7684;&#x8303;&#x56F4;&#xFF0C;&#x4E0D;&#x80FD;&#x6307;&#x5411;&#x4E0E;&#x76EE;&#x7684;&#x4F4D;&#x7F6E;&#x76F8;&#x540C;&#x7684;&#x5BB9;&#x5668;</span>
+slist.insert(slist.begin(), slist.begin(), slist.end());
+</code></pre>
+<p><strong>&#x4F7F;&#x7528;insert&#x7684;&#x8FD4;&#x56DE;&#x503C;</strong></p>
+<p>&#x901A;&#x8FC7;&#x4F7F;&#x7528;insert&#x7684;&#x8FD4;&#x56DE;&#x503C;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5728;&#x5BB9;&#x5668;&#x4E2D;&#x7279;&#x5B9A;&#x4F4D;&#x7F6E;&#x53CD;&#x590D;&#x63D2;&#x5165;&#x4E00;&#x4E2A;&#x5143;&#x7D20;:</p>
+<pre><code class="lang-cpp"><span class="hljs-built_in">list</span>&lt;<span class="hljs-built_in">string</span>&gt; <span class="hljs-number">1</span>st;
+<span class="hljs-keyword">auto</span> iter = <span class="hljs-number">1</span>st.begin();
+<span class="hljs-keyword">while</span> (<span class="hljs-built_in">cin</span> &gt;&gt; word)
+    iter = <span class="hljs-number">1</span>st.insert(iter, word); <span class="hljs-comment">// same as calling push_front</span>
+</code></pre>
+<p><strong>&#x4F7F;&#x7528;emplace&#x64CD;&#x4F5C;</strong></p>
+<p>&#x65B0;&#x6807;&#x51C6;&#x5F15;&#x5165;&#x4E86;&#x4E09;&#x4E2A;&#x65B0;&#x6210;&#x5458;&#x2014;&#x2014;<code>emplace_front</code>&#x3001;<code>emplate</code>&#x548C;<code>emplace_back</code>&#xFF0C;&#x8FD9;&#x4E9B;&#x64CD;&#x4F5C;&#x6784;&#x9020;&#x800C;&#x4E0D;&#x662F;&#x62F7;&#x8D1D;&#x5143;&#x7D20;&#x3002;</p>
+<p>&#x5F53;&#x6211;&#x4EEC;&#x8C03;&#x7528;push&#x6216;insert&#x6210;&#x5458;&#x51FD;&#x6570;&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;&#x5143;&#x7D20;&#x7C7B;&#x578B;&#x7684;&#x5BF9;&#x8C61;&#x4F20;&#x9012;&#x7ED9;&#x4ED6;&#x4EEC;&#xFF0C;&#x8FD9;&#x4E9B;&#x5BF9;&#x8C61;&#x88AB;&#x62F7;&#x8D1D;&#x5230;&#x5BB9;&#x5668;&#x4E2D;&#x3002;</p>
+<p>&#x800C;&#x5F53;&#x6211;&#x4EEC;&#x8C03;&#x7528;&#x4E00;&#x4E2A;emplace&#x6210;&#x5458;&#x51FD;&#x6570;&#x65F6;&#xFF0C;&#x5219;&#x662F;&#x5C06;&#x53C2;&#x6570;&#x4F20;&#x9012;&#x7ED9;&#x5143;&#x7D20;&#x7C7B;&#x578B;&#x7684;&#x6784;&#x9020;&#x51FD;&#x6570;&#x3002;&#x5982;:</p>
+<pre><code class="lang-cpp"><span class="hljs-comment">// &#x5728;c&#x7684;&#x672B;&#x5C3E;&#x6784;&#x9020;&#x4E00;&#x4E2A;Sales_data&#x5BF9;&#x8C61;</span>
+<span class="hljs-comment">//&#x4F7F;&#x7528;&#x4E09;&#x53C2;&#x6570;&#x7684;Sales_data &#x6784;&#x9020;&#x51FD;&#x6570;</span>
+c.emplace_back(<span class="hljs-string">&quot;978-0590353403&quot;</span>, <span class="hljs-number">25</span>, <span class="hljs-number">15.99</span>);
+c.emplace_back(); <span class="hljs-comment">// &#x4F7F;&#x7528;Sales_data&#x7684;&#x9ED8;&#x8BA4;&#x6784;&#x9020;&#x51FD;&#x6570;</span>
+c.emplace(iter,<span class="hljs-string">&quot;999-9999999999&quot;</span>); <span class="hljs-comment">// &#x4F7F;&#x7528;Sales_data(string)&#x6784;&#x9020;&#x51FD;&#x6570;</span>
+c.emplace_front(<span class="hljs-string">&quot;999-999999999&quot;</span>,<span class="hljs-number">25</span>,<span class="hljs-number">15</span>,<span class="hljs-number">99</span>); <span class="hljs-comment">// &#x4F7F;&#x7528;Sales_data&#x7684;&#x63A5;&#x6536;&#x4E00;&#x4E2A;ISBN&#x3001;&#x4E00;&#x4E2A;cout&#x548C;&#x4E00;&#x4E2A;price&#x7684;&#x6784;&#x9020;&#x51FD;&#x6570;&#x3002;</span>
+
+<span class="hljs-comment">// &#x9519;&#x8BEF;: &#x6CA1;&#x6709;&#x63A5;&#x6536;&#x4E09;&#x53C2;&#x6570;&#x7684;push_back&#x7248;&#x672C;</span>
+c.push_back(<span class="hljs-string">&quot;978-0590353403&quot;</span>, <span class="hljs-number">25</span>, <span class="hljs-number">15.99</span>);
+<span class="hljs-comment">// &#x6B63;&#x786E;: &#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x4E34;&#x65F6;&#x7684;Sales_data&#x5BF9;&#x8C61;&#x4F20;&#x9012;&#x7ED9;push_back</span>
+c.push_back(Sales_data(<span class="hljs-string">&quot;978-0590353403&quot;</span>, <span class="hljs-number">25</span>, <span class="hljs-number">15.99</span>));
+</code></pre>
+<h4 id="&#x8BBF;&#x95EE;&#x5143;&#x7D20;">&#x8BBF;&#x95EE;&#x5143;&#x7D20;</h4>
+<ul>
+<li><p>&#x5305;&#x62EC;<code>array</code>&#x5728;&#x5185;&#x7684;&#x6BCF;&#x4E2A;&#x987A;&#x5E8F;&#x5BB9;&#x5668;&#x90FD;&#x6709;&#x4E00;&#x4E2A;<code>front</code>&#x6210;&#x5458;&#x51FD;&#x6570;&#x3002;&#x5982;&#x679C;&#x5BB9;&#x5668;&#x4E2D;&#x6CA1;&#x6709;&#x5143;&#x7D20;&#xFF0C;&#x8BBF;&#x95EE;&#x64CD;&#x4F5C;&#x7684;&#x7ED3;&#x679C;&#x662F;&#x672A;&#x5B9A;&#x4E49;&#x7684;&#xFF1B;</p>
+</li>
+<li><p>&#x5305;&#x62EC;<code>array</code>&#x5728;&#x5185;&#x7684;&#x6BCF;&#x4E2A;&#x987A;&#x5E8F;&#x5BB9;&#x5668;&#x90FD;&#x6709;&#x4E00;&#x4E2A;<code>front</code>&#x6210;&#x5458;&#x51FD;&#x6570;&#xFF0C;&#x800C;&#x9664;&#x4E86;<code>forward_list</code>&#x4E4B;&#x5916;&#x7684;&#x6240;&#x6709;&#x987A;&#x5E8F;&#x5BB9;&#x5668;&#x90FD;&#x6709;&#x4E00;&#x4E2A;<code>back</code>&#x6210;&#x5458;&#x51FD;&#x6570;&#x3002;</p>
+</li>
+<li><p><code>front</code>&#x3001;<code>back</code>&#x5206;&#x522B;&#x8FD4;&#x56DE;&#x5BB9;&#x5668;&quot;&#x9996;&#x5143;&#x7D20;&quot;&#x3001;&#x201C;&#x5C3E;&#x5143;&#x7D20;&#x201D;&#x7684;&#x5F15;&#x7528;;</p>
+</li>
+</ul>
+<pre><code class="lang-cpp"><span class="hljs-comment">// &#x5728;&#x8C03;&#x7528;front&#x3001;back&#x4EE5;&#x53CA;&#x89E3;&#x5F15;&#x7528;&#x8FED;&#x4EE3;&#x5668;&#x4EE5;&#x524D;&#xFF0C;&#x5148;&#x68C0;&#x67E5;&#x5BB9;&#x5668;&#x662F;&#x5426;&#x4E3A;&#x7A7A;</span>
+<span class="hljs-keyword">if</span> (!c.empty()) {
+    <span class="hljs-comment">// val and val2 &#x662F;c&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#x503C;&#x7684;&#x62F7;&#x8D1D;</span>
+    <span class="hljs-keyword">auto</span> val = *c.begin(), val2 = c.front();
+
+    <span class="hljs-comment">// val3 and val4 &#x662F;C&#x4E2D;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#x503C;&#x7684;&#x62F7;&#x8D1D;</span>
+    <span class="hljs-keyword">auto</span> last = c.end();
+    <span class="hljs-keyword">auto</span> val3 = *(--last); <span class="hljs-comment">// &#x4E0D;&#x80FD;&#x9012;&#x51CF;forward_list&#x8FED;&#x4EE3;&#x5668;</span>
+    <span class="hljs-keyword">auto</span> val4 = c.back(); <span class="hljs-comment">// forward_list &#x4E0D;&#x652F;&#x6301;</span>
+}
+</code></pre>
+<p>&#x6CE8;&#x610F;:</p>
+<ul>
+<li><p>&#x5224;&#x65AD;&#x5BB9;&#x5668;&#x662F;&#x5426;&#x4E3A;&#x7A7A;&#x5F88;&#x91CD;&#x8981;&#xFF1B;</p>
+</li>
+<li><p>end&#x8FD4;&#x56DE;&#x7684;&#x8FED;&#x4EE3;&#x5668;&#x662F;&#x4E0D;&#x5B58;&#x5728;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x4E3A;&#x4E86;&#x5C3E;&#x5143;&#x7D20;&#xFF0C;&#x5FC5;&#x987B;&#x9996;&#x5148;&#x9012;&#x51CF;&#x6B21;&#x8FED;&#x4EE3;&#x5668;&#x3002;</p>
+</li>
+</ul>
+<p><img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20211129172410160.png" alt="image-20211129172410160"></p>
+<p><strong>&#x8BBF;&#x95EE;&#x6210;&#x5458;&#x51FD;&#x6570;&#x8FD4;&#x56DE;&#x7684;&#x90FD;&#x662F;&#x5F15;&#x7528;</strong></p>
+<p><img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20211129172504361.png" alt="image-20211129172504361"></p>
+<h4 id="&#x5220;&#x9664;&#x5143;&#x7D20;">&#x5220;&#x9664;&#x5143;&#x7D20;</h4>
+<p><img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20211129172555066.png" alt="image-20211129172555066"></p>
+<p>&#x5220;&#x9664;&#x5143;&#x7D20;&#x7684;&#x6210;&#x5458;&#x51FD;&#x6570;&#x5E76;&#x4E0D;&#x68C0;&#x67E5;&#x5176;&#x53C2;&#x6570;&#x3002;&#x5728;&#x5220;&#x9664;&#x5143;&#x7D20;&#x4E4B;&#x524D;&#xFF0C;&#x7528;&#x6237;&#x5FC5;&#x987B;&#x786E;&#x4FDD;&#x5B83;&#x662F;&#x5B58;&#x5728;&#x7684;&#x3002;</p>
+<p><strong><code>pop_front</code>&#x548C;<code>pop_back</code>&#x6210;&#x5458;&#x51FD;&#x6570;</strong></p>
+<ul>
+<li><p><code>pop_front</code>&#x548C;<code>pop_back</code>&#x6210;&#x5458;&#x51FD;&#x6570;&#x5206;&#x522B;&#x5220;&#x9664;&#x9996;&#x5C3E;&#x5143;&#x7D20;;</p>
+</li>
+<li><p><code>vector</code>&#x548C;<code>string</code>&#x4E0D;&#x652F;&#x6301;<code>pop_front</code>;</p>
+</li>
+<li><p><code>forward_list</code>&#x4E0D;&#x652F;&#x6301;<code>pop_back</code>;</p>
+</li>
+<li><p>&#x8FD9;&#x4E9B;&#x64CD;&#x4F5C;&#x8FD4;&#x56DE;&#x7684;&#x90FD;&#x662F;<code>void</code>,&#x5982;&#x679C;&#x4F60;&#x9700;&#x8981;&#x5F39;&#x51FA;&#x8FD9;&#x4E9B;&#x5143;&#x7D20;&#x7684;&#x503C;&#xFF0C;&#x5C31;&#x5FC5;&#x987B;&#x5728;&#x6267;&#x884C;&#x5F39;&#x51FA;&#x64CD;&#x4F5C;&#x524D;&#x5C06;&#x5176;&#x4FDD;&#x5B58;:</p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">while</span> (!ilist.empty()) {
+    process(ilist.front()); <span class="hljs-comment">// &#x5BF9;ilist&#x7684;&#x9996;&#x5143;&#x7D20;&#x8FDB;&#x884C;&#x4E00;&#x4E9B;&#x5904;&#x7406;</span>
+    ilist.pop_front(); <span class="hljs-comment">// &#x5B8C;&#x6210;&#x5904;&#x7406;&#x540E;&#x5220;&#x9664;&#x9996;&#x5143;&#x7D20;</span>
+}
+</code></pre>
+</li>
+</ul>
+<p><strong>&#x4ECE;&#x5BB9;&#x5668;&#x5185;&#x90E8;&#x5220;&#x9664;&#x4E00;&#x4E2A;&#x5143;&#x7D20;</strong></p>
+<p>&#x6CE8;&#x610F;:<code>erase</code><strong>&#x8FD4;&#x56DE;&#x7684;&#x662F;&#x6307;&#x5411;&#x5220;&#x9664;&#x7684;(&#x6700;&#x540E;&#x4E00;&#x4E2A;)&#x5143;&#x7D20;&#x4E4B;&#x540E;&#x4F4D;&#x7F6E;&#x7684;&#x8FED;&#x4EE3;&#x5668;</strong>&#x3002;</p>
+<p>&#x4E0B;&#x9762;&#x793A;&#x4F8B;&#xFF0C;&#x5220;&#x9664;list&#x4E2D;&#x7684;&#x5947;&#x6570;&#x5143;&#x7D20;:</p>
+<pre><code class="lang-cpp"><span class="hljs-built_in">list</span>&lt;<span class="hljs-keyword">int</span>&gt; lst = {<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>,<span class="hljs-number">7</span>,<span class="hljs-number">8</span>,<span class="hljs-number">9</span>};
+<span class="hljs-keyword">auto</span> it = lst.begin();
+<span class="hljs-keyword">while</span> (it != lst.end())
+    <span class="hljs-keyword">if</span> (*it % <span class="hljs-number">2</span>) <span class="hljs-comment">// if the element is odd</span>
+        it = lst.erase(it); <span class="hljs-comment">// erase this element,it&#x4E0D;&#x9700;&#x8981;++</span>
+    <span class="hljs-keyword">else</span>
+        ++it;
+</code></pre>
+<p>&#x6CE8;&#x610F;: <strong><code>while</code>&#x7684;&#x6761;&#x4EF6;&#x5FC5;&#x9700;&#x5199;&#x6210;<code>it != lst.end()</code></strong></p>
+<p><strong>&#x5220;&#x9664;&#x591A;&#x4E2A;&#x5143;&#x7D20;</strong></p>
+<pre><code class="lang-cpp"><span class="hljs-comment">// &#x5220;&#x9664;&#x4E24;&#x4E2A;&#x8FED;&#x4EE3;&#x5668;&#x8868;&#x793A;&#x7684;&#x8303;&#x56F4;&#x5185;&#x7684;&#x5143;&#x7D20;</span>
+<span class="hljs-comment">// &#x8FD4;&#x56DE;&#x6307;&#x5411;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x88AB;&#x5220;&#x9664;&#x5143;&#x7D20;&#x4E4B;&#x540E;&#x4F4D;&#x7F6E;&#x7684;&#x8FED;&#x4EE3;&#x5668;</span>
+<span class="hljs-comment">// &#x6CE8;&#x610F;: elem2&#x662F;&#x4E0D;&#x4F1A;&#x88AB;&#x5220;&#x9664;&#x7684;&#xFF0C;&#x5B83;&#x6307;&#x5411;&#x4E86;&#x6211;&#x4EEC;&#x5220;&#x9664;&#x7684;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#x4E4B;&#x540E;&#x7684;&#x4F4D;&#x7F6E;</span>
+elem1 = slist.erease(elem1,elem2);
+</code></pre>
+<p>&#x5220;&#x9664;&#x5BB9;&#x5668;&#x4E2D;&#x6240;&#x6709;&#x5143;&#x7D20;:</p>
+<pre><code class="lang-cpp">slist.clear();
+slist.erease(slist.begin(),slist.end());
+</code></pre>
+<h4 id="&#x6539;&#x53D8;&#x5BB9;&#x5668;&#x5927;&#x5C0F;&#x6682;&#x65F6;&#x4E0D;&#x77E5;&#x9053;&#x4EC0;&#x4E48;&#x573A;&#x666F;&#x7528;">&#x6539;&#x53D8;&#x5BB9;&#x5668;&#x5927;&#x5C0F;(&#x6682;&#x65F6;&#x4E0D;&#x77E5;&#x9053;&#x4EC0;&#x4E48;&#x573A;&#x666F;&#x7528;)</h4>
+<p>&#x9664;&#x4E86;<code>array</code>&#x3002;</p>
+<p>&#x5982;&#x679C;&#x5F53;&#x524D;&#x5927;&#x5C0F;&#x5927;&#x4E8E;&#x6240;&#x8981;&#x6C42;&#x7684;&#x5927;&#x5C0F;&#xFF0C;&#x5BB9;&#x5668;&#x540E;&#x90E8;&#x7684;&#x5143;&#x7D20;&#x4F1A;&#x88AB;&#x5220;&#x9664;&#xFF1B;</p>
+<p>&#x5982;&#x679C;&#x5F53;&#x524D;&#x5927;&#x5C0F;&#x5C0F;&#x4E8E;&#x65B0;&#x5927;&#x5C0F;&#xFF0C;&#x4F1A;&#x5C06;&#x65B0;&#x5143;&#x7D20;&#x6DFB;&#x52A0;&#x5230;&#x5BB9;&#x5668;&#x540E;&#x90E8;&#x3002;</p>
+<pre><code class="lang-cpp"><span class="hljs-built_in">list</span>&lt;<span class="hljs-keyword">int</span>&gt; ilist(<span class="hljs-number">10</span>, <span class="hljs-number">42</span>); <span class="hljs-comment">// 10&#x4E2A;int&#xFF0C;&#x6BCF;&#x4E2A;&#x7684;&#x503C;&#x90FD;&#x662F;42</span>
+ilist.resize(<span class="hljs-number">15</span>); <span class="hljs-comment">// &#x5C06;5&#x4E2A;&#x503C;&#x4E3A;0&#x7684;&#x5143;&#x7D20;&#x6DFB;&#x52A0;&#x5230;ilist&#x7684;&#x672B;&#x5C3E;</span>
+ilist.resize(<span class="hljs-number">25</span>, <span class="hljs-number">-1</span>); <span class="hljs-comment">// &#x5C06;10&#x4E2A;&#x503C;&#x4E3A;-1&#x7684;&#x5143;&#x7D20;&#x6DFB;&#x52A0;&#x5230;ilist&#x7684;&#x672B;&#x5C3E;</span>
+ilist.resize(<span class="hljs-number">5</span>); <span class="hljs-comment">// &#x4ECE;ilist&#x672B;&#x5C3E;&#x5220;&#x9664;20&#x4E2A;&#x5143;&#x7D20;</span>
+</code></pre>
+<h4 id="&#x5BB9;&#x5668;&#x64CD;&#x4F5C;&#x53EF;&#x80FD;&#x4F7F;&#x5F97;&#x8FED;&#x4EE3;&#x5668;&#x3001;&#x5F15;&#x7528;&#x3001;&#x6307;&#x9488;&#x7B49;&#x5931;&#x6548;">&#x5BB9;&#x5668;&#x64CD;&#x4F5C;&#x53EF;&#x80FD;&#x4F7F;&#x5F97;&#x8FED;&#x4EE3;&#x5668;&#x3001;&#x5F15;&#x7528;&#x3001;&#x6307;&#x9488;&#x7B49;&#x5931;&#x6548;</h4>
+<p>&#x6211;&#x4EEC;&#x6765;&#x770B;&#x770B;&#x4F7F;&#x7528;<code>insert</code>&#x3001;<code>erease</code>&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x5982;&#x4F55;&#x66F4;&#x65B0;&#x8FED;&#x4EE3;&#x5668;&#xFF1F;</p>
+<pre><code class="lang-cpp"><span class="hljs-comment">// &#x50BB;&#x74DC;&#x5FAA;&#x73AF;&#xFF0C;&#x5220;&#x9664;&#x5076;&#x6570;&#x5143;&#x7D20;&#xFF0C;&#x590D;&#x5236;&#x6BCF;&#x4E2A;&#x5947;&#x6570;&#x5143;&#x7D20;</span>
+<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; vi = {<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>,<span class="hljs-number">7</span>,<span class="hljs-number">8</span>,<span class="hljs-number">9</span>};
+<span class="hljs-keyword">auto</span> iter = vi.begin(); <span class="hljs-comment">// &#x8C03;&#x7528;begin&#x800C;&#x4E0D;&#x662F;cbegin&#xFF0C;&#x56E0;&#x4E3A;&#x6211;&#x4EEC;&#x8981;&#x6539;&#x53D8;vi</span>
+<span class="hljs-keyword">while</span> (iter != vi.end()) {
+    <span class="hljs-keyword">if</span> (*iter % <span class="hljs-number">2</span>) {
+        iter = vi.insert(iter, *iter); <span class="hljs-comment">// &#x590D;&#x5236;&#x5F53;&#x524D;&#x5143;&#x7D20;</span>
+        iter += <span class="hljs-number">2</span>; <span class="hljs-comment">// &#x5411;&#x524D;&#x79FB;&#x52A8;&#x8FED;&#x4EE3;&#x5668;&#xFF0C;&#x6CE8;&#x610F;&#x662F;&#x4E24;&#x6B65;&#xFF0C;&#x8DF3;&#x8FC7;&#x5F53;&#x524D;&#x5143;&#x7D20;&#x4EE5;&#x53CA;&#x63D2;&#x5165;&#x5230;&#x5B83;&#x4E4B;&#x524D;&#x7684;&#x5143;&#x7D20;</span>
+    } <span class="hljs-keyword">else</span>
+        iter = vi.erase(iter); <span class="hljs-comment">// &#x5220;&#x9664;&#x5076;&#x6570;&#x5143;&#x7D20; </span>
+        <span class="hljs-comment">// erease&#x540E;&#x4E0D;&#x5E94;&#x5411;&#x524D;&#x79FB;&#x52A8;&#x8FED;&#x4EE3;&#x5668;&#xFF0C;iter&#x6307;&#x5411;&#x6211;&#x4EEC;&#x5220;&#x9664;&#x7684;&#x5143;&#x7D20;&#x4E4B;&#x540E;&#x7684;&#x5143;&#x7D20;</span>
+}
+</code></pre>
+<p><strong><mark style="color:red;">&#x4E0D;&#x4FDD;&#x5B58;end&#x8FD4;&#x56DE;&#x7684;&#x8FED;&#x4EE3;&#x5668;</mark></strong></p>
+<p>&#x5F53;&#x6211;&#x4EEC;&#x6DFB;&#x52A0;/&#x5220;&#x9664;vector&#x6216;string&#x7684;&#x5143;&#x7D20;&#x540E;&#xFF0C;&#x6216;&#x5728;deque&#x4E2D;&#x9996;&#x5143;&#x7D20;&#x4E4B;&#x5916;&#x4EFB;&#x4F55;&#x4F4D;&#x7F6E;&#x6DFB;&#x52A0;/&#x5220;&#x9664;&#x5143;&#x7D20;&#x4E4B;&#x540E;&#xFF0C;&#x539F;&#x6765;end&#x8FD4;&#x56DE;&#x7684;&#x8FED;&#x4EE3;&#x5668;&#x603B;&#x662F;&#x4F1A;&#x5931;&#x6548;&#x3002;</p>
+<p>&#x56E0;&#x6B64;&#xFF0C;&#x6DFB;&#x52A0;&#x6216;&#x8005;&#x5220;&#x9664;&#x5143;&#x7D20;&#x7684;&#x5FAA;&#x73AF;&#x7A0B;&#x5E8F;&#x5FC5;&#x987B;&#x53CD;&#x590D;&#x8C03;&#x7528;end&#xFF0C;&#x800C;&#x4E0D;&#x80FD;&#x5728;&#x5FAA;&#x73AF;&#x4E4B;&#x524D;&#x4FDD;&#x5B58;end&#x8FD4;&#x56DE;&#x7684;&#x4EFB;&#x4F55;&#x8FED;&#x4EE3;&#x5668;&#xFF0C;&#x5E76;&#x4E00;&#x76F4;&#x5F53;&#x505A;&#x5BB9;&#x5668;&#x672B;&#x5C3E;&#x4F7F;&#x7528;&#x3002;</p>
+<p><img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20211129173223016.png" alt="image-20211129173223016"></p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="C++Primer标准库-IO库.html" class="navigation navigation-prev " aria-label="Previous page: C++ Primer 标准库: IO库">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="C++Primer标准库-泛型算法.html" class="navigation navigation-next " aria-label="Next page: C++ Primer 标准库: 泛型算法">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"C++ Primer 标准库: 顺序容器","level":"1.5.6","depth":2,"next":{"title":"C++ Primer 标准库: 泛型算法","level":"1.5.7","depth":2,"path":"c++学习笔记/C++Primer标准库-泛型算法.md","ref":"c++学习笔记/C++Primer标准库-泛型算法.md","articles":[]},"previous":{"title":"C++ Primer 标准库: IO库","level":"1.5.5","depth":2,"path":"c++学习笔记/C++Primer标准库-IO库.md","ref":"c++学习笔记/C++Primer标准库-IO库.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"c++学习笔记/C++Primer标准库-顺序容器.md","mtime":"2021-11-29T09:32:27.463Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-11-30T08:32:27.547Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

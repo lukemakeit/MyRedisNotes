@@ -1,0 +1,820 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>C++ Primer 标准库: 关联容器 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="C++Primer标准库-动态内存.html" />
+    
+    
+    <link rel="prev" href="C++Primer标准库-泛型算法.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    README
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../redis-xue-xi/">
+            
+                <a href="../redis-xue-xi/">
+            
+                    
+                    Redis学习
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../redis学习/Redis备份.html">
+            
+                <a href="../redis学习/Redis备份.html">
+            
+                    
+                    Redis备份
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../redis学习/Redis复制.html">
+            
+                <a href="../redis学习/Redis复制.html">
+            
+                    
+                    Redis复制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../redis学习/Redis集群.html">
+            
+                <a href="../redis学习/Redis集群.html">
+            
+                    
+                    Redis集群
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../rocksdb-xue-xi/">
+            
+                <a href="../rocksdb-xue-xi/">
+            
+                    
+                    RocksDB学习
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../rocksdb学习/RocksDB基础概念.html">
+            
+                <a href="../rocksdb学习/RocksDB基础概念.html">
+            
+                    
+                    RocksDB基础概念
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../rocksdb学习/RocksDB基础操作-C语言.html">
+            
+                <a href="../rocksdb学习/RocksDB基础操作-C语言.html">
+            
+                    
+                    RocksDB基础操作-C语言
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../c语言笔记/">
+            
+                <a href="../c语言笔记/">
+            
+                    
+                    C语言笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../c语言笔记/C语言补充笔记一.html">
+            
+                <a href="../c语言笔记/C语言补充笔记一.html">
+            
+                    
+                    C语言补充笔记一
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    C++学习笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="C++Primer基础-引用指针const.html">
+            
+                <a href="C++Primer基础-引用指针const.html">
+            
+                    
+                    C++Primer基础:引用、指针、const、auto
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="C++Primer基础-stringvector数组.html">
+            
+                <a href="C++Primer基础-stringvector数组.html">
+            
+                    
+                    C++Primer基础: string、vector、数组
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="C++Primer基础-函数重载函数指针.html">
+            
+                <a href="C++Primer基础-函数重载函数指针.html">
+            
+                    
+                    C++Primer基础:函数、重载、函数指针
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="C++Primer基础-类.html">
+            
+                <a href="C++Primer基础-类.html">
+            
+                    
+                    C++ Primer 基础: 类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="C++Primer标准库-IO库.html">
+            
+                <a href="C++Primer标准库-IO库.html">
+            
+                    
+                    C++ Primer 标准库: IO库
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="C++Primer标准库-顺序容器.html">
+            
+                <a href="C++Primer标准库-顺序容器.html">
+            
+                    
+                    C++ Primer 标准库: 顺序容器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" data-path="C++Primer标准库-泛型算法.html">
+            
+                <a href="C++Primer标准库-泛型算法.html">
+            
+                    
+                    C++ Primer 标准库: 泛型算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.5.8" data-path="C++Primer标准库-关联容器.html">
+            
+                <a href="C++Primer标准库-关联容器.html">
+            
+                    
+                    C++ Primer 标准库: 关联容器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.9" data-path="C++Primer标准库-动态内存.html">
+            
+                <a href="C++Primer标准库-动态内存.html">
+            
+                    
+                    C++ Primer 标准库: 动态内存
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.10" data-path="C++Primer类设计-拷贝控制.html">
+            
+                <a href="C++Primer类设计-拷贝控制.html">
+            
+                    
+                    C++ Primer 类设计: 拷贝控制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.11" data-path="C++Primer类设计-基类派生类虚函数.html">
+            
+                <a href="C++Primer类设计-基类派生类虚函数.html">
+            
+                    
+                    C++ Primer 类设计: 基类、派生类、虚函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.12" data-path="C++Primer类设计-模板与泛型编程.html">
+            
+                <a href="C++Primer类设计-模板与泛型编程.html">
+            
+                    
+                    C++ Primer 类设计:模板与泛型编程
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../工具使用/">
+            
+                <a href="../工具使用/">
+            
+                    
+                    工具使用
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../工具使用/VSCode使用小技巧.html">
+            
+                <a href="../工具使用/VSCode使用小技巧.html">
+            
+                    
+                    VS Code使用小技巧
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >C++ Primer 标准库: 关联容器</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="cprimer&#x6807;&#x51C6;&#x5E93;-&#x5173;&#x8054;&#x5BB9;&#x5668;">C++Primer&#x6807;&#x51C6;&#x5E93;: &#x5173;&#x8054;&#x5BB9;&#x5668;</h2>
+<p><code>map</code>&#x548C;<code>set</code>&#xFF1A;</p>
+<ul>
+<li>&#x5141;&#x8BB8;&#x91CD;&#x590D;&#x5173;&#x952E;&#x5B57;&#x7684;&#x5BB9;&#x5668;&#x7684;&#x540D;&#x5B57;&#x4E2D;&#x90FD;&#x5305;&#x542B;&#x5355;&#x8BCD;<code>multi</code>;</li>
+<li>&#x4E0D;&#x4FDD;&#x6301;&#x5173;&#x952E;&#x5B57;&#x6309;&#x987A;&#x5E8F;&#x5B58;&#x50A8;&#x7684;&#x5BB9;&#x5668;&#x7684;&#x540D;&#x5B57;&#x90FD;&#x4EE5;&#x5355;&#x8BCD;<code>unordered</code>&#x5F00;&#x5934;;</li>
+<li>&#x56E0;&#x6B64;<code>unordered_multi_set</code> &#x662F;&#x4E00;&#x4E2A;&#x5141;&#x8BB8;&#x91CD;&#x590D;&#x5173;&#x952E;&#x5B57;&#x7684;&#xFF0C;&#x5143;&#x7D20;&#x65E0;&#x5E8F;&#x4FDD;&#x5B58;&#x7684;&#x96C6;&#x5408;;</li>
+</ul>
+<p><code>map</code>&#x548C;<code>multimap</code>&#x5B9A;&#x4E49;&#x5728;&#x5934;&#x6587;&#x4EF6;<code>map</code>&#x4E2D;;
+<code>set</code>&#x548C;<code>multiset</code>&#x5B9A;&#x4E49;&#x5728;&#x5934;&#x6587;&#x4EF6;<code>set</code>&#x4E2D;;
+&#x65E0;&#x5E8F;&#x5BB9;&#x5668;&#x5219;&#x5B9A;&#x4E49;&#x5728;&#x5934;&#x6587;&#x4EF6;<code>unordered_map</code>&#x548C;<code>unordered_set</code>&#x4E2D;&#x3002;</p>
+<p><img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/E142D2A8-3C2B-4736-8B3B-E61E06972859.png" alt="2445987c54d19846085c75de56be6f35"></p>
+<p><strong>&#x4F7F;&#x7528;map</strong></p>
+<pre><code class="lang-cpp"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">mapTest</span><span class="hljs-params">()</span></span>{
+    <span class="hljs-built_in">map</span>&lt;<span class="hljs-built_in">string</span>,<span class="hljs-keyword">size_t</span>&gt; word_count;
+    <span class="hljs-built_in">string</span> word;
+    <span class="hljs-keyword">while</span>(<span class="hljs-built_in">cin</span> &gt;&gt; word)
+        ++ word_count[word];
+
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">const</span> <span class="hljs-keyword">auto</span> &amp;w:word_count)
+        <span class="hljs-built_in">cout</span> &lt;&lt; w.first &lt;&lt; <span class="hljs-string">&quot; occurs &quot;</span> &lt;&lt; w.second &lt;&lt; (( w.second &gt; <span class="hljs-number">1</span> ? <span class="hljs-string">&quot; times &quot;</span>:<span class="hljs-string">&quot;time&quot;</span>)) &lt;&lt; <span class="hljs-built_in">endl</span>;
+}
+</code></pre>
+<p>&#x5F53;&#x4ECE;map&#x4E2D;&#x63D0;&#x53D6;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#x65F6;&#xFF0C;&#x4F1A;&#x5F97;&#x5230;&#x4E00;&#x4E2A;<code>pair</code>&#x7C7B;&#x578B;&#x7684;&#x5BF9;&#x8C61;&#x3002;&#x7B80;&#x5355;&#x6765;&#x8BF4;&#xFF0C;pair&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x6A21;&#x677F;&#x7C7B;&#x578B;&#xFF0C;&#x4FDD;&#x5B58;&#x4E24;&#x4E2A;&#x540D;&#x4E3A;<code>first</code>&#x548C;<code>second</code>&#x7684;&#x6570;&#x636E;&#x6210;&#x5458;&#x3002;<code>first</code>&#x4FDD;&#x5B58;&#x5173;&#x952E;&#x5B57;&#xFF0C;<code>second</code>&#x4FDD;&#x5B58;&#x5BF9;&#x5E94;&#x7684;&#x503C;&#x3002;</p>
+<p><strong>&#x4F7F;&#x7528;set</strong></p>
+<pre><code class="lang-cpp"><span class="hljs-comment">// &#x7EDF;&#x8BA1;&#x8F93;&#x51FA;&#x4E2D;&#x6BCF;&#x4E2A;&#x5355;&#x8BCD;&#x51FA;&#x73B0;&#x7684;&#x6B64;&#x65F6;&#xFF0C;&#x8FD9;&#x4E9B;&#x5355;&#x8BCD;&#x4E0D;&#x5305;&#x542B; The But&#x7B49;</span>
+<span class="hljs-built_in">map</span>&lt;<span class="hljs-built_in">string</span>, <span class="hljs-keyword">size_t</span>&gt; word_count; <span class="hljs-comment">// empty map from string to size_t</span>
+<span class="hljs-built_in">set</span>&lt;<span class="hljs-built_in">string</span>&gt; exclude = {<span class="hljs-string">&quot;The&quot;</span>, <span class="hljs-string">&quot;But&quot;</span>, <span class="hljs-string">&quot;And&quot;</span>, <span class="hljs-string">&quot;Or&quot;</span>, <span class="hljs-string">&quot;An&quot;</span>, <span class="hljs-string">&quot;A&quot;</span>,
+<span class="hljs-string">&quot;the&quot;</span>, <span class="hljs-string">&quot;but&quot;</span>, <span class="hljs-string">&quot;and&quot;</span>, <span class="hljs-string">&quot;or&quot;</span>, <span class="hljs-string">&quot;an&quot;</span>, <span class="hljs-string">&quot;a&quot;</span>};
+<span class="hljs-built_in">string</span> word;
+<span class="hljs-keyword">while</span> (<span class="hljs-built_in">cin</span> &gt;&gt; word)
+    <span class="hljs-comment">// count only words that are not in exclude</span>
+    <span class="hljs-keyword">if</span> (exclude.find(word) == exclude.end())
+        ++word_count[word]; <span class="hljs-comment">// fetch and increment the counter for word</span>
+</code></pre>
+<p>&#x95EE;&#x9898;: &#x4E0A;&#x9762;&#x7684;&#x7A0B;&#x5E8F;&#xFF0C;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x5FFD;&#x7565;&#x5927;&#x5C0F;&#x5199;&#x548C;&#x6807;&#x70B9;&#xFF0C;&#x4F8B;&#x5982;&#xFF0C;&quot;example.&quot;&#x3001;&quot;example,&quot;&#x548C;&quot;Example&quot;&#x3002;&#x5E94;&#x8BE5;&#x600E;&#x4E48;&#x5904;&#x7406;:</p>
+<pre><code class="lang-cpp">str.erease(remove_if(str.begin(),str.end(),<span class="hljs-built_in">ispunct</span>),str.end());
+remote_if&#x7684;&#x4F5C;&#x7528;&#x662F;&#x5C06;&#x6240;&#x6709;&#x6EE1;&#x8DB3;&#x6761;&#x4EF6;&#x7684;&#x5143;&#x7D20;&#x79FB;&#x52A8;&#x5230;&#x5BB9;&#x5668;&#x7684;&#x6700;&#x5DE6;&#x8FB9;&#xFF0C;str.erease&#x7528;&#x6765;&#x505A;&#x6E05;&#x7406;
+</code></pre>
+<p><strong>&#x5B9A;&#x4E49;&#x5173;&#x8054;&#x5BB9;&#x5668;</strong></p>
+<pre><code class="lang-cpp"><span class="hljs-built_in">map</span>&lt;<span class="hljs-built_in">string</span>, <span class="hljs-keyword">size_t</span>&gt; word_count; <span class="hljs-comment">// &#x7A7A;&#x5BB9;&#x5668;</span>
+<span class="hljs-comment">// &#x5217;&#x8868;&#x521D;&#x59CB;&#x5316;</span>
+<span class="hljs-built_in">set</span>&lt;<span class="hljs-built_in">string</span>&gt; exclude = {<span class="hljs-string">&quot;the&quot;</span>, <span class="hljs-string">&quot;but&quot;</span>, <span class="hljs-string">&quot;and&quot;</span>, <span class="hljs-string">&quot;or&quot;</span>, <span class="hljs-string">&quot;an&quot;</span>, <span class="hljs-string">&quot;a&quot;</span>,
+                    <span class="hljs-string">&quot;The&quot;</span>, <span class="hljs-string">&quot;But&quot;</span>, <span class="hljs-string">&quot;And&quot;</span>, <span class="hljs-string">&quot;Or&quot;</span>, <span class="hljs-string">&quot;An&quot;</span>, <span class="hljs-string">&quot;A&quot;</span>};
+<span class="hljs-comment">// &#x4E09;&#x4E2A;&#x5143;&#x7D20;&#xFF1B;authors&#x5C06;&#x59D3;&#x9690;&#x5C04;&#x4E3A;&#x540D;</span>
+<span class="hljs-built_in">map</span>&lt;<span class="hljs-built_in">string</span>, <span class="hljs-built_in">string</span>&gt; authors = { {<span class="hljs-string">&quot;Joyce&quot;</span>, <span class="hljs-string">&quot;James&quot;</span>},
+                        {<span class="hljs-string">&quot;Austen&quot;</span>, <span class="hljs-string">&quot;Jane&quot;</span>},
+                        {<span class="hljs-string">&quot;Dickens&quot;</span>, <span class="hljs-string">&quot;Charles&quot;</span>} };
+
+<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; ivec;
+<span class="hljs-keyword">for</span> (<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;::size_type i = <span class="hljs-number">0</span>; i != <span class="hljs-number">10</span>; ++i) {
+    ivec.push_back(i);
+    ivec.push_back(i); <span class="hljs-comment">// &#x6BCF;&#x4E2A;&#x6570;&#x5B57;&#x91CD;&#x590D;&#x4FDD;&#x5B58;</span>
+}
+<span class="hljs-comment">// iset&#x5305;&#x542B;&#x6765;&#x81EA;ivec&#x7684;&#x4E0D;&#x91CD;&#x590D;&#x7684;&#x5143;&#x7D20;&#xFF1B;miset&#x5305;&#x542B;&#x6240;&#x6709;20&#x4E2A;&#x5143;&#x7D20;</span>
+<span class="hljs-built_in">set</span>&lt;<span class="hljs-keyword">int</span>&gt; iset(ivec.cbegin(), ivec.cend());
+<span class="hljs-built_in">multiset</span>&lt;<span class="hljs-keyword">int</span>&gt; miset(ivec.cbegin(), ivec.cend());
+</code></pre>
+<h4 id="pair&#x7C7B;&#x578B;">pair&#x7C7B;&#x578B;</h4>
+<p>&#x5728;&#x5934;&#x6587;&#x4EF6;<code>utility</code>&#x4E2D;&#x3002;</p>
+<pre><code class="lang-cpp">pair&lt;<span class="hljs-built_in">string</span>, <span class="hljs-built_in">string</span>&gt; anon; <span class="hljs-comment">// holds two strings</span>
+pair&lt;<span class="hljs-built_in">string</span>, <span class="hljs-keyword">size_t</span>&gt; word_count; <span class="hljs-comment">// holds a string and an size_t</span>
+pair&lt;<span class="hljs-built_in">string</span>, <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&gt; line; <span class="hljs-comment">// holds string and vector&lt;int&gt;</span>
+
+pair&lt;<span class="hljs-built_in">string</span>, <span class="hljs-built_in">string</span>&gt; author{<span class="hljs-string">&quot;James&quot;</span>, <span class="hljs-string">&quot;Joyce&quot;</span>};
+</code></pre>
+<p>&#x4E0E;&#x5176;&#x4ED6;&#x6807;&#x51C6;&#x5E93;&#x7C7B;&#x578B;&#x4E0D;&#x540C;&#xFF0C;<code>pair</code>&#x7684;&#x6570;&#x636E;&#x6210;&#x5458;&#x662F;<code>public</code>&#x7684;&#x3002;&#x4E24;&#x4E2A;&#x6210;&#x5458;&#x5206;&#x522B;&#x547D;&#x540D;&#x4E3A;<code>first</code>&#x548C;<code>second</code>&#x3002;</p>
+<pre><code class="lang-cpp"><span class="hljs-comment">// print the results</span>
+<span class="hljs-built_in">cout</span> &lt;&lt; w.first &lt;&lt; <span class="hljs-string">&quot; occurs &quot;</span> &lt;&lt; w.second
+    &lt;&lt; ((w.second &gt; <span class="hljs-number">1</span>) ? <span class="hljs-string">&quot; times&quot;</span> : <span class="hljs-string">&quot; time&quot;</span>) &lt;&lt; <span class="hljs-built_in">endl</span>;
+</code></pre>
+<p><img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/0D1AD4C7-87D7-4EF4-954A-CF98FCC291F8.png" alt="dbd2ae3432296f820bdb30c53ffc2be4">
+&#x51FD;&#x6570;:</p>
+<pre><code class="lang-cpp">pair&lt;<span class="hljs-built_in">string</span>, <span class="hljs-keyword">int</span>&gt;
+process(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">string</span>&gt; &amp;v)
+{
+    <span class="hljs-comment">// process v</span>
+    <span class="hljs-keyword">if</span> (!v.empty())
+        <span class="hljs-keyword">return</span> {v.back(), v.back().size()}; <span class="hljs-comment">// &#x5217;&#x8868;&#x521D;&#x59CB;&#x5316;</span>
+    <span class="hljs-keyword">else</span>
+        <span class="hljs-keyword">return</span> pair&lt;<span class="hljs-built_in">string</span>, <span class="hljs-keyword">int</span>&gt;(); <span class="hljs-comment">// &#x9690;&#x58EB;&#x6784;&#x9020;&#x51FD;&#x6570;</span>
+}
+
+&#x8FD8;&#x53EF;&#x4EE5;&#x662F;:
+<span class="hljs-keyword">if</span> (!v.empty())
+    <span class="hljs-keyword">return</span> pair&lt;<span class="hljs-built_in">string</span>, <span class="hljs-keyword">int</span>&gt;(v.back(), v.back().size());
+
+&#x6216;&#x8005;:
+<span class="hljs-keyword">if</span> (!v.empty())
+    <span class="hljs-keyword">return</span> make_pair(v.back(), v.back().size());
+</code></pre>
+<h4 id="&#x5173;&#x8054;&#x5BB9;&#x5668;&#x64CD;&#x4F5C;">&#x5173;&#x8054;&#x5BB9;&#x5668;&#x64CD;&#x4F5C;</h4>
+<p><img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/F43DEDC6-4E21-430C-A063-5ACDA337613D.png" alt="2b2f3e1a468efc3b19fed7d00122a62e">
+<img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/9C91E63B-F37E-4461-9590-6566DE652745.png" alt="7db917383f0b0d2826d5d41074871ecf">
+<img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/404683A0-83D0-49E0-9F39-E82591DCD9D5.png" alt="836b203fd2964ea9c1b0be28b27c75bf"></p>
+<p><img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20211130001630650.png" alt="image-20211130001630650"></p>
+<p><img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/1B2D64E4-1840-4E78-B6B0-51C0956578EE.png" alt="139cc72a65a4e48414edecc1197dbb95">
+&#x5BF9;&#x4E8E;<code>set</code>&#x7C7B;&#x578B;&#xFF0C;<code>key_type</code>&#x548C;<code>value_type</code>&#x662F;&#x4E00;&#x6837;&#x7684;&#x3002;set&#x4E2D;&#x4FDD;&#x5B58;&#x7684;&#x503C;&#x5C31;&#x662F;&#x5173;&#x952E;&#x5B57;&#x3002;
+&#x5728;&#x4E00;&#x4E2A;map&#x4E2D;&#xFF0C;&#x5143;&#x7D20;&#x662F;&#x4E00;&#x4E2A;&#x952E;&#x503C;&#x5BF9;&#xFF0C;&#x5373;&#xFF0C;&#x6BCF;&#x4E2A;&#x5143;&#x7D20;&#x662F;&#x4E00;&#x4E2A;pair&#x5BF9;&#x8C61;&#xFF0C;&#x5305;&#x542B;&#x4E00;&#x4E2A;&#x5173;&#x952E;&#x5B57;&#x548C;&#x5173;&#x8054;&#x7684;&#x503C;&#x3002;
+&#x7531;&#x4E8E;&#x6211;&#x4EEC;&#x4E0D;&#x80FD;&#x6539;&#x53D8;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#x7684;&#x5173;&#x952E;&#x5B57;&#xFF0C;&#x56E0;&#x6B64;&#x8FD9;&#x4E9B;pair&#x7684;&#x5173;&#x952E;&#x5B57;&#x90E8;&#x5206;&#x662F;<code>const</code>&#x7684;</p>
+<pre><code class="lang-cpp"><span class="hljs-built_in">set</span>&lt;<span class="hljs-built_in">string</span>&gt;::value_type v1; <span class="hljs-comment">// v1 is a string</span>
+<span class="hljs-built_in">set</span>&lt;<span class="hljs-built_in">string</span>&gt;::key_type v2; <span class="hljs-comment">// v2 is a string</span>
+<span class="hljs-built_in">map</span>&lt;<span class="hljs-built_in">string</span>, <span class="hljs-keyword">int</span>&gt;::value_type v3; <span class="hljs-comment">// v3 is a pair&lt;const string, int&gt;</span>
+<span class="hljs-built_in">map</span>&lt;<span class="hljs-built_in">string</span>, <span class="hljs-keyword">int</span>&gt;::key_type v4; <span class="hljs-comment">// v4 is a string</span>
+<span class="hljs-built_in">map</span>&lt;<span class="hljs-built_in">string</span>, <span class="hljs-keyword">int</span>&gt;::mapped_type v5; <span class="hljs-comment">// v5 is an int</span>
+</code></pre>
+<h4 id="&#x5173;&#x8054;&#x5BB9;&#x5668;&#x8FED;&#x4EE3;&#x5668;">&#x5173;&#x8054;&#x5BB9;&#x5668;&#x8FED;&#x4EE3;&#x5668;</h4>
+<p><strong>&#x5F53;&#x6211;&#x4EEC;&#x89E3;&#x5F15;&#x7528;&#x4E00;&#x4E2A;&#x5173;&#x8054;&#x5BB9;&#x5668;&#x7684;&#x8FED;&#x4EE3;&#x5668;&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x4F1A;&#x5F97;&#x5230;&#x4E00;&#x4E2A;&#x7C7B;&#x578B;&#x4E3A;&#x5BB9;&#x5668;&#x7684;<code>value_type</code>&#x7684;&#x503C;&#x7684;&#x5F15;&#x7528;</strong>&#x3002;
+&#x5BF9;&#x4E8E;map&#x800C;&#x8A00;&#xFF0C;<code>value_type</code>&#x662F;&#x4E00;&#x4E2A;<code>pair</code>&#x7C7B;&#x578B;&#xFF0C;&#x5176;<code>first</code>&#x6210;&#x5458;&#x4FDD;&#x5B58;<code>const</code>&#x7684;&#x5173;&#x952E;&#x5B57;&#xFF0C;<code>second</code>&#x6210;&#x5458;&#x4FDD;&#x5B58;&#x503C;&#x3002;</p>
+<pre><code class="lang-cpp"><span class="hljs-comment">// &#x83B7;&#x5F97;&#x6307;&#x5411;word_count&#x4E2D;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#x7684;&#x8FED;&#x4EE3;&#x5668;</span>
+<span class="hljs-keyword">auto</span> map_it = word_count.begin();
+
+<span class="hljs-comment">// *map_it &#x662F;&#x6307;&#x5411;&#x4E00;&#x4E2A;pair&lt;const string,size_t&gt;&#x5BF9;&#x8C61;&#x7684;&#x5F15;&#x7528;</span>
+<span class="hljs-built_in">cout</span> &lt;&lt; map_it-&gt;first; <span class="hljs-comment">// &#x6253;&#x5370;&#x6B64;&#x5143;&#x7D20;&#x7684;&#x5173;&#x952E;&#x5B57;</span>
+<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">&quot; &quot;</span> &lt;&lt; map_it-&gt;second; <span class="hljs-comment">// &#x6253;&#x5370;&#x6B64;&#x5143;&#x7D20;&#x7684;&#x503C;</span>
+map_it-&gt;first = <span class="hljs-string">&quot;new key&quot;</span>; <span class="hljs-comment">// error: &#x5173;&#x952E;&#x5B57;&#x662F;const&#x7684;</span>
+++map_it-&gt;second; <span class="hljs-comment">// ok: &#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x8FED;&#x4EE3;&#x5668;&#x6539;&#x53D8;&#x5143;&#x7D20;</span>
+</code></pre>
+<p>&#x4E00;&#x5B9A;&#x6CE8;&#x610F;: map&#x7684;<code>value_type</code>&#x662F;&#x4E00;&#x4E2A;pair&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x6539;&#x53D8;pair&#x7684;&#x503C;&#xFF0C;&#x4F46;&#x4E0D;&#x80FD;&#x6539;&#x53D8;&#x5173;&#x952E;&#x5B57;&#x6210;&#x5458;&#x7684;&#x503C;&#x3002;</p>
+<p><strong>set&#x7684;&#x8FED;&#x4EE3;&#x5668;&#x662F;const&#x7684;</strong></p>
+<pre><code class="lang-cpp"><span class="hljs-built_in">set</span>&lt;<span class="hljs-keyword">int</span>&gt; iset = {<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>,<span class="hljs-number">7</span>,<span class="hljs-number">8</span>,<span class="hljs-number">9</span>};
+<span class="hljs-built_in">set</span>&lt;<span class="hljs-keyword">int</span>&gt;::iterator set_it = iset.begin();
+<span class="hljs-keyword">if</span> (set_it != iset.end()) {
+    *set_it = <span class="hljs-number">42</span>; <span class="hljs-comment">// error: set&#x4E2D;&#x5173;&#x952E;&#x5B57;&#x662F;&#x53EA;&#x8BFB;&#x7684;</span>
+    <span class="hljs-built_in">cout</span> &lt;&lt; *set_it &lt;&lt; <span class="hljs-built_in">endl</span>; <span class="hljs-comment">// ok: &#x53EF;&#x4EE5;&#x8BFB;&#x53D6;&#x5173;&#x952E;&#x5B57;</span>
+}
+</code></pre>
+<p><strong>&#x904D;&#x5386;&#x5173;&#x8054;&#x5BB9;&#x5668;</strong></p>
+<pre><code class="lang-cpp"><span class="hljs-comment">// &#x83B7;&#x53D6;&#x6307;&#x5411;&#x9996;&#x5143;&#x7D20;&#x7684;&#x8FED;&#x4EE3;&#x5668;</span>
+<span class="hljs-keyword">auto</span> map_it = word_count.cbegin();
+<span class="hljs-comment">// &#x6BD4;&#x8F83;&#x5F53;&#x524D;&#x8FED;&#x4EE3;&#x5668;&#x548C;&#x5C3E;&#x540E;&#x8FED;&#x4EE3;&#x5668;</span>
+<span class="hljs-keyword">while</span> (map_it != word_count.cend()) {
+    <span class="hljs-comment">// &#x89E3;&#x5F15;&#x7528;&#x8FED;&#x4EE3;&#x5668;&#xFF0C;&#x6253;&#x5370;&#x952E;&#x503C;&#x5BF9;</span>
+    <span class="hljs-built_in">cout</span> &lt;&lt; map_it-&gt;first &lt;&lt; <span class="hljs-string">&quot; occurs &quot;</span>
+    &lt;&lt; map_it-&gt;second &lt;&lt; <span class="hljs-string">&quot; times&quot;</span> &lt;&lt; <span class="hljs-built_in">endl</span>;
+    ++map_it; <span class="hljs-comment">// &#x79FB;&#x52A8;&#x5230;&#x4E0B;&#x4E00;&#x4E2A;&#x5143;&#x7D20;</span>
+}
+</code></pre>
+<p><strong>&#x6DFB;&#x52A0;&#x5143;&#x7D20;&#xFF0C;&#x5411;set&#x4E2D;&#x6DFB;&#x52A0;&#x5143;&#x7D20;</strong></p>
+<pre><code class="lang-cpp"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; ivec = {<span class="hljs-number">2</span>,<span class="hljs-number">4</span>,<span class="hljs-number">6</span>,<span class="hljs-number">8</span>,<span class="hljs-number">2</span>,<span class="hljs-number">4</span>,<span class="hljs-number">6</span>,<span class="hljs-number">8</span>}; <span class="hljs-comment">// ivec &#x6709;8&#x4E2A;&#x5143;&#x7D20;</span>
+<span class="hljs-built_in">set</span>&lt;<span class="hljs-keyword">int</span>&gt; set2; <span class="hljs-comment">// empty &#x96C6;&#x5408;</span>
+set2.insert(ivec.cbegin(), ivec.cend()); <span class="hljs-comment">// set2 &#x6709;4&#x4E2A;&#x5143;&#x7D20;</span>
+set2.insert({<span class="hljs-number">1</span>,<span class="hljs-number">3</span>,<span class="hljs-number">5</span>,<span class="hljs-number">7</span>,<span class="hljs-number">1</span>,<span class="hljs-number">3</span>,<span class="hljs-number">5</span>,<span class="hljs-number">7</span>}); <span class="hljs-comment">// set2 &#x73B0;&#x5728;&#x6709;8&#x4E2A;&#x5143;&#x7D20;</span>
+</code></pre>
+<p><strong>&#x6DFB;&#x52A0;&#x5143;&#x7D20;&#xFF0C;&#x5411;map&#x4E2D;&#x6DFB;&#x52A0;&#x5143;&#x7D20;</strong>
+&#x60F3;map&#x4E2D;&#x8FDB;&#x884C;insert&#x64CD;&#x4F5C;&#x65F6;&#xFF0C;&#x5FC5;&#x987B;&#x662F;<code>pair</code>&#x7C7B;&#x578B;&#x3002;</p>
+<pre><code class="lang-cpp">word_count.insert({word, <span class="hljs-number">1</span>});
+word_count.insert(make_pair(word, <span class="hljs-number">1</span>));
+word_count.insert(pair&lt;<span class="hljs-built_in">string</span>, <span class="hljs-keyword">size_t</span>&gt;(word, <span class="hljs-number">1</span>));
+word_count.insert(<span class="hljs-built_in">map</span>&lt;<span class="hljs-built_in">string</span>, <span class="hljs-keyword">size_t</span>&gt;::value_type(word, <span class="hljs-number">1</span>));
+</code></pre>
+<p><img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/E79A2F32-4171-4E2E-AA93-C7005295D766.png" alt="3a885bdf012d16d04b73466ef8722336"></p>
+<p><strong>&#x68C0;&#x6D4B;insert&#x7684;&#x8FD4;&#x56DE;&#x503C;</strong>
+<code>insert</code>&#x8FD4;&#x56DE;&#x7684;&#x503C;&#x4F9D;&#x8D56;&#x5BB9;&#x5668;&#x7C7B;&#x578B;&#x548C;&#x53C2;&#x6570;&#x3002;&#x5BF9;&#x4E8E;&#x4E0D;&#x5305;&#x542B;&#x91CD;&#x590D;&#x5173;&#x952E;&#x5B57;&#x7684;&#x5BB9;&#x5668;&#xFF0C;<mark style="color:red;"><strong>&#x6DFB;&#x52A0;&#x5355;&#x4E00;&#x5143;&#x7D20;&#x7684;insert&#x548C;emplace&#x7248;&#x672C;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;pair&#xFF0C;&#x544A;&#x8BC9;&#x6211;&#x4EEC;&#x63D2;&#x5165;&#x64CD;&#x4F5C;&#x662F;&#x5426;&#x6210;&#x529F;&#x3002;pair&#x7684;first&#x6210;&#x5458;&#x662F;&#x4E00;&#x4E2A;&#x8FED;&#x4EE3;&#x5668;&#xFF0C;&#x6307;&#x5411;&#x5177;&#x6709;&#x7ED9;&#x5B9A;&#x5173;&#x952E;&#x5B57;&#x7684;&#x5143;&#x7D20;&#xFF1B;second&#x6210;&#x5458;&#x662F;&#x4E00;&#x4E2A;bool&#x503C;&#xFF0C;&#x6307;&#x51FA;&#x5143;&#x7D20;&#x63D2;&#x5165;&#x6210;&#x529F;&#x8FD8;&#x662F;&#x5DF2;&#x7ECF;&#x5B58;&#x5728;&#x4E8E;&#x5BB9;&#x5668;&#x4E2D;&#x3002;</strong></mark>
+&#x5982;&#x679C;&#x5173;&#x952E;&#x5B57;&#x5DF2;&#x7ECF;&#x5728;&#x5BB9;&#x5668;&#x4E2D;&#xFF0C;&#x5219;insert&#x4EC0;&#x4E48;&#x4E8B;&#x60C5;&#x4E5F;&#x4E0D;&#x505A;&#xFF0C;&#x800C;&#x4E14;&#x8FD4;&#x56DE;&#x503C;&#x4E2D;bool&#x90E8;&#x5206;&#x4E3A;<code>false</code>&#xFF1B;&#x5426;&#x5219;Bool&#x503C;&#x4E3A;<code>true</code>&#x3002;</p>
+<pre><code class="lang-c++"><span class="hljs-comment">// more verbose way to count number of times each word occurs in the input</span>
+<span class="hljs-built_in">map</span>&lt;<span class="hljs-built_in">string</span>, <span class="hljs-keyword">size_t</span>&gt; word_count; <span class="hljs-comment">// empty map from string to size_t</span>
+<span class="hljs-built_in">string</span> word;
+<span class="hljs-keyword">while</span> (<span class="hljs-built_in">cin</span> &gt;&gt; word) {
+    <span class="hljs-comment">// &#x63D2;&#x5165;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#xFF0C;&#x5173;&#x952E;&#x5B57;&#x7B49;&#x4E8E;word&#xFF0C;&#x503C;&#x4E3A;1</span>
+    <span class="hljs-comment">// &#x82E5;word&#x5DF2;&#x5728;word_count&#x4E2D;&#xFF0C;insert&#x4EC0;&#x4E48;&#x4E5F;&#x4E0D;&#x505A;</span>
+    <span class="hljs-keyword">auto</span> ret = word_count.insert({word, <span class="hljs-number">1</span>});
+    <span class="hljs-keyword">if</span> (!ret.second) <span class="hljs-comment">// word &#x5DF2;&#x5728; word_count &#x4E2D;</span>
+        ++ret.first-&gt;second; <span class="hljs-comment">// &#x9012;&#x589E;&#x8BA1;&#x6570;&#x5668;</span>
+}
+</code></pre>
+<p><strong>&#x5411;multiset&#x6216;multimap&#x4E2D;&#x6DFB;&#x52A0;&#x5143;&#x7D20;</strong>
+&#x73B0;&#x5728;&#xFF1A;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x60F3;&#x5EFA;&#x7ACB;&#x4F5C;&#x8005;&#x5230;&#x4ED6;&#x6240;&#x8457;&#x4E66;&#x7C4D;&#x9898;&#x76EE;&#x7684;&#x6620;&#x5C04;&#xFF0C;&#x5728;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x6BCF;&#x4E2A;&#x4F5C;&#x8005;&#x53EF;&#x80FD;&#x6709;&#x591A;&#x4E2A;&#x6761;&#x76EE;&#xFF0C;&#x56E0;&#x6B64;&#x6211;&#x4EEC;&#x5E94;&#x8BE5;&#x4F7F;&#x7528;<code>multimap</code>&#x800C;&#x4E0D;&#x662F;<code>map</code>&#x3002;</p>
+<pre><code class="lang-cpp"><span class="hljs-built_in">multimap</span>&lt;<span class="hljs-built_in">string</span>, <span class="hljs-built_in">string</span>&gt; authors;
+<span class="hljs-comment">// &#x63D2;&#x5165;&#x7B2C;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#xFF0C;key&#x662F; Barth, John</span>
+authors.insert({<span class="hljs-string">&quot;Barth, John&quot;</span>, <span class="hljs-string">&quot;Sot-Weed Factor&quot;</span>});
+<span class="hljs-comment">// ok: &#x6DFB;&#x52A0;&#x7B2C;&#x4E8C;&#x4E2A;&#x5143;&#x7D20;&#xFF0C;&#x5173;&#x952E;&#x5B57;&#x662F; Barth, John</span>
+authors.insert({<span class="hljs-string">&quot;Barth, John&quot;</span>, <span class="hljs-string">&quot;Lost in the Funhouse&quot;</span>});
+</code></pre>
+<p>&#x5BF9;&#x5141;&#x8BB8;&#x91CD;&#x590D;&#x5173;&#x952E;&#x5B57;&#x7684;&#x5BB9;&#x5668;&#x4E2D;&#x63D2;&#x5165;&#x5143;&#x7D20;&#xFF0C;insert&#x64CD;&#x4F5C;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x6307;&#x5411;&#x65B0;&#x5143;&#x7D20;&#x7684;&#x8FED;&#x4EE3;&#x5668;&#x3002;&#x8FD9;&#x91CC;&#x4E0D;&#x4F1A;&#x8FD4;&#x56DE;bool&#x503C;&#xFF0C;&#x56E0;&#x4E3A;insert&#x603B;&#x662F;&#x6210;&#x529F;&#x7684;&#x3002;</p>
+<h4 id="&#x5220;&#x9664;&#x5143;&#x7D20;">&#x5220;&#x9664;&#x5143;&#x7D20;</h4>
+<p>&#x548C;&#x5173;&#x8054;&#x5BB9;&#x5668;&#x7C7B;&#x4F3C;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;<code>erase</code>&#xFF0C;&#x53C2;&#x6570;&#x662F;&#x4E00;&#x4E2A;&#x8FED;&#x4EE3;&#x5668;&#xFF0C;&#x5220;&#x9664;&#x4E00;&#x4E2A;&#x5143;&#x7D20; &#x6216;&#x8005;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#x8303;&#x56F4;&#x3002;</p>
+<p>&#x6CE8;&#x610F;&#xFF1A;&#x8FD9;&#x91CC;&#x7684;&#x5220;&#x9664;&#x4F1A;&#x5C06;&#x6240;&#x6709;&#x5339;&#x914D;&#x7ED9;&#x5B9A;&#x5173;&#x952E;&#x5B57;&#x7684;&#x5143;&#x7D20;&#x5220;&#x9664;&#xFF0C;&#x8FD4;&#x56DE;&#x5B9E;&#x9645;&#x5220;&#x9664;&#x7684;&#x5143;&#x7D20;&#x7684;&#x6570;&#x91CF;&#x3002;</p>
+<pre><code class="lang-cpp"><span class="hljs-comment">// erase &#x4E00;&#x4E2A;&#x5173;&#x952E;&#x5B57;&#xFF0C;&#x8FD4;&#x56DE;&#x5220;&#x9664;&#x7684;&#x5143;&#x7D20;&#x6570;&#x91CF;</span>
+<span class="hljs-keyword">if</span> (word_count.erase(removal_word))
+    <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">&quot;ok: &quot;</span> &lt;&lt; removal_word &lt;&lt; <span class="hljs-string">&quot; removed\n&quot;</span>;
+<span class="hljs-keyword">else</span> <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">&quot;oops: &quot;</span> &lt;&lt; removal_word &lt;&lt; <span class="hljs-string">&quot; not found!\n&quot;</span>;
+</code></pre>
+<p><img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/99BE5D88-C7B7-457B-996C-197ECE31AB49.png" alt="76305861e45f7c8c57542b4f6663ad64"></p>
+<h4 id="map&#x7684;&#x4E0B;&#x6807;&#x64CD;&#x4F5C;">map&#x7684;&#x4E0B;&#x6807;&#x64CD;&#x4F5C;</h4>
+<p>&#x6CE8;&#x610F;&#xFF1A;<mark style="color:red;"><strong>&#x603B;&#x4F53;&#x6765;&#x8BF4;&#xFF0C;&#x5BF9;map&#x5C3D;&#x91CF;&#x4E0D;&#x8981;&#x7528;&#x4E0B;&#x6807;&#x64CD;&#x4F5C;&#x6BD4;&#x8F83;&#x597D;&#x3002;&#x4F7F;&#x7528;&#x4E5F;&#x4EC5;&#x5728;&#x63D2;&#x5165;&#x65B0;&#x5143;&#x7D20;&#x65F6;&#x4F7F;&#x7528;&#x3002;</strong></mark></p>
+<ul>
+<li>&#x540C;&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x4E0D;&#x80FD;&#x5BF9;&#x4E00;&#x4E2A;<code>multimap</code>&#x6216;&#x4E00;&#x4E2A;<code>unordered_multimap</code>&#x8FDB;&#x884C;&#x4E0B;&#x6807;&#x64CD;&#x4F5C;&#xFF0C;&#x56E0;&#x4E3A;&#x8FD9;&#x4E9B;&#x5BB9;&#x5668;&#x4E2D;&#x53EF;&#x80FD;&#x6709;&#x591A;&#x4E2A;&#x503C;&#x4E0E;&#x5173;&#x952E;&#x5B57;&#x76F8;&#x5173;&#x8054;&#x3002;</li>
+<li><mark style="color:red;"><strong>map&#x5982;&#x679C;&#x8FDB;&#x884C;&#x4E0B;&#x6807;&#x64CD;&#x4F5C;&#xFF0C;&#x5982;&#x679C;&#x5173;&#x952E;&#x5B57;&#x4E0D;&#x5728;map&#x4E2D;&#xFF0C;&#x5219;&#x4F1A;&#x4E3A;&#x4ED6;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x5143;&#x7D20;&#x5E76;&#x63D2;&#x5165;&#x5230;map&#x4E2D;&#x3002;&#x5173;&#x8054;&#x503C;&#x5C06;&#x8FDB;&#x884C;&#x503C;&#x521D;&#x59CB;&#x5316;</strong></mark>&#x3002;(&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x5947;&#x8469;&#x7684;&#x8BBE;&#x8BA1;)<pre><code class="lang-cpp"><span class="hljs-built_in">map</span> &lt;<span class="hljs-built_in">string</span>, <span class="hljs-keyword">size_t</span>&gt; word_count; <span class="hljs-comment">// empty map</span>
+<span class="hljs-comment">// &#x63D2;&#x5165;&#x4E00;&#x4E2A;&#x5173;&#x952E;&#x5B57;&#x4E3A;Anna&#x7684;&#x5143;&#x7D20;&#xFF0C;&#x5173;&#x8054;&#x503C;&#x8FDB;&#x884C;&#x503C;&#x521D;&#x59CB;&#x5316;&#xFF0C;&#x5E76;&#x5C06;1&#x8D4B;&#x4E88;&#x5B83;</span>
+word_count[<span class="hljs-string">&quot;Anna&quot;</span>] = <span class="hljs-number">1</span>;
+</code></pre>
+<img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/BD1E7C17-7776-459B-A1A1-DD44E8AB2FAB.png" alt="48645dcfdf4bb0c86cdacbef20826bae"></li>
+</ul>
+<p><strong>&#x4F7F;&#x7528;&#x4E0B;&#x6807;&#x64CD;&#x4F5C;&#x7684;&#x8FD4;&#x56DE;&#x503C;</strong>
+&#x5F53;&#x5BF9;&#x4E00;&#x4E2A;map&#x8FDB;&#x884C;&#x4E0B;&#x6807;&#x64CD;&#x4F5C;&#x65F6;&#xFF0C;&#x4F1A;&#x83B7;&#x5F97;&#x4E00;&#x4E2A;<code>mapped_type</code>&#x5BF9;&#x8C61;&#xFF1B;
+&#x5F53;&#x89E3;&#x5F15;&#x7528;&#x4E00;&#x4E2A;map&#x8FED;&#x4EE3;&#x5668;&#x65F6;&#xFF0C;&#x4F1A;&#x5F97;&#x5230;&#x4E00;&#x4E2A;<code>value_type</code>&#x5BF9;&#x8C61;&#x3002;</p>
+<pre><code class="lang-cpp"><span class="hljs-built_in">cout</span> &lt;&lt; word_count[<span class="hljs-string">&quot;Anna&quot;</span>]; <span class="hljs-comment">// &#x4F7F;&#x7528;Anna&#x4F5C;&#x4E3A;&#x4E0B;&#x6807;&#x63D0;&#x53D6;&#x5143;&#x7D20;&#xFF0C;&#x4F1A;&#x6253;&#x5370;&#x51FA;1</span>
+++word_count[<span class="hljs-string">&quot;Anna&quot;</span>]; <span class="hljs-comment">// &#x63D0;&#x53D6;&#x5143;&#x7D20;&#xFF0C;&#x5C06;&#x5176;&#x589E;1</span>
+<span class="hljs-built_in">cout</span> &lt;&lt; word_count[<span class="hljs-string">&quot;Anna&quot;</span>]; <span class="hljs-comment">// &#x63D0;&#x53D6;&#x5143;&#x7D20;&#x5E76;&#x6253;&#x5370;&#x5B83;&#xFF1B;&#x4F1A;&#x6253;&#x5370;&#x51FA;2</span>
+</code></pre>
+<h4 id="&#x8BBF;&#x95EE;&#x5143;&#x7D20;">&#x8BBF;&#x95EE;&#x5143;&#x7D20;</h4>
+<pre><code class="lang-cpp"><span class="hljs-built_in">set</span>&lt;<span class="hljs-keyword">int</span>&gt; iset = {<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>,<span class="hljs-number">7</span>,<span class="hljs-number">8</span>,<span class="hljs-number">9</span>};
+iset.find(<span class="hljs-number">1</span>); <span class="hljs-comment">// &#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x8FED;&#x4EE3;&#x5668;&#xFF0C;&#x6307;&#x5411; key ==1 &#x7684;&#x5143;&#x7D20;</span>
+iset.find(<span class="hljs-number">11</span>); <span class="hljs-comment">// &#x5355;&#x53F7;&#x4E00;&#x4E2A;&#x8FED;&#x4EE3;&#x5668;&#xFF0C;&#x5176;&#x503C;&#x7B49;&#x4E8E;iset.end()</span>
+iset.count(<span class="hljs-number">1</span>); <span class="hljs-comment">// returns 1</span>
+iset.count(<span class="hljs-number">11</span>); <span class="hljs-comment">// returns 0</span>
+</code></pre>
+<p><img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/11B6E178-8729-4FBC-9BC6-0B24A915E5CF.png" alt="de28598d73698b1fd5944ad3ea87c2ea"></p>
+<ul>
+<li>&#x5BF9;map&#x4F7F;&#x7528;find&#x4EE3;&#x66FF;&#x4E0B;&#x6807;&#x64CD;&#x4F5C;&#xFF1B;</li>
+</ul>
+<p><strong>&#x5728;multimap&#x6216;multiset&#x4E2D;&#x67E5;&#x627E;&#x5143;&#x7D20;</strong>
+&#x5982;&#x679C;&#x4E00;&#x4E2A;<code>multimap</code>&#x6216;<code>multiset</code>&#x4E2D;&#x6709;&#x591A;&#x4E2A;&#x5143;&#x7D20;&#x5177;&#x6709;&#x7ED9;&#x5B9A;&#x5173;&#x952E;&#x5B57;&#xFF0C;&#x5219;&#x8FD9;&#x4E9B;&#x5143;&#x7D20;&#x5728;&#x5BB9;&#x5668;&#x4E2D;&#x4F1A;<strong>&#x76F8;&#x90BB;&#x5B58;&#x50A8;</strong>&#x3002;</p>
+<p>&#x95EE;&#x9898;&#xFF1A;&#x7ED9;&#x4E00;&#x4E2A;&#x4ECE;&#x4F5C;&#x8005;&#x5230;&#x8457;&#x4F5C;&#x9898;&#x76EE;&#x7684;&#x6620;&#x5C04;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x80FD;&#x60F3;&#x6253;&#x5370;&#x4E00;&#x4E2A;&#x7279;&#x5B9A;&#x4F5C;&#x8005;&#x7684;&#x6240;&#x6709;&#x62D9;&#x4F5C;&#x3002;&#x4E0B;&#x9762;&#x6709;&#x662F;&#x90A3;&#x79CD;&#x65B9;&#x6848;&#x6765;&#x89E3;&#x51B3;&#x8BE5;&#x95EE;&#x9898;:</p>
+<ul>
+<li>&#x65B9;&#x6848;&#x4E00;:<code>find</code> + <code>count</code><pre><code class="lang-c++"><span class="hljs-function"><span class="hljs-built_in">string</span> <span class="hljs-title">search_item</span><span class="hljs-params">(<span class="hljs-string">&quot;Alain de Botton&quot;</span>)</span></span>; <span class="hljs-comment">// &#x8981;&#x67E5;&#x627E;&#x7684;&#x4F5C;&#x8005;</span>
+<span class="hljs-keyword">auto</span> entries = authors.count(search_item); <span class="hljs-comment">// &#x5143;&#x7D20;&#x7684;&#x6570;&#x91CF;</span>
+<span class="hljs-keyword">auto</span> iter = authors.find(search_item); <span class="hljs-comment">// &#x6B64;&#x4F5C;&#x8005;&#x7684;&#x7B2C;&#x4E00;&#x672C;&#x4E66;</span>
+<span class="hljs-comment">// &#x7528;&#x4E00;&#x4E2A;&#x5FAA;&#x73AF;&#x67E5;&#x627E;&#x6B64;&#x4F5C;&#x8005;&#x7684;&#x6240;&#x6709;&#x8457;&#x4F5C;</span>
+<span class="hljs-keyword">while</span>(entries) {
+  <span class="hljs-built_in">cout</span> &lt;&lt; iter-&gt;second &lt;&lt; <span class="hljs-built_in">endl</span>; <span class="hljs-comment">// &#x6253;&#x5370;&#x6BCF;&#x4E2A;&#x9898;&#x76EE;</span>
+  ++iter; <span class="hljs-comment">// &#x524D;&#x8FDB;&#x5230;&#x4E0B;&#x4E00;&#x672C;&#x4E66;</span>
+  --entries; <span class="hljs-comment">// &#x8BB0;&#x5F55;&#x5DF2;&#x7ECF;&#x6253;&#x5370;&#x4E86;&#x591A;&#x5C11;&#x672C;&#x4E66;</span>
+}
+</code></pre>
+</li>
+<li>&#x65B9;&#x6848;&#x4E8C;: &#x8FED;&#x4EE3;&#x5668;&#x89E3;&#x51B3;&#x601D;&#x8DEF;
+a. &#x5982;&#x679C;&#x5173;&#x952E;&#x5B57;&#x5728;&#x5BB9;&#x5668;&#x4E2D;&#xFF0C;<code>lower_bound</code>&#x8FD4;&#x56DE;&#x7684;&#x8FED;&#x4EE3;&#x5668;&#x5C06;&#x6307;&#x5411;&#x7B2C;&#x4E00;&#x4E2A;&#x5177;&#x6709;&#x7ED9;&#x5B9A;&#x5173;&#x952E;&#x5B57;&#x7684;&#x5143;&#x7D20;&#xFF1B;
+b. <code>upper_bound</code>&#x8FD4;&#x56DE;&#x7684;&#x8FED;&#x4EE3;&#x5668;&#x5219;&#x6307;&#x5411;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x5339;&#x914D;&#x7ED9;&#x5B9A;&#x5173;&#x952E;&#x5B57;&#x5143;&#x7D20;&#x4E4B;&#x540E;&#x7684;&#x4F4D;&#x7F6E;&#x3002;
+c. &#x5982;&#x679C;&#x5143;&#x7D20;&#x4E0D;&#x5728;<code>multimap</code>&#x4E2D;&#xFF0C;&#x5219;<code>lower_bound</code>&#x548C;<code>upper_bound</code>&#x4F1A;&#x8FD4;&#x56DE;&#x76F8;&#x7B49;&#x7684;&#x8FED;&#x4EE3;&#x5668;&#x2014;&#x2014;&#x6307;&#x5411;&#x4E00;&#x4E2A;&#x4E0D;&#x5F71;&#x54CD;&#x6392;&#x5E8F;&#x7684;&#x5173;&#x952E;&#x5B57;&#x63D2;&#x5165;&#x4F4D;&#x7F6E;&#x3002;
+d. &#x6B64;&#x65F6;<code>lower_bound</code>&#x548C;<code>upper_bound</code>&#x4F1A;&#x5F97;&#x5230;&#x4E00;&#x4E2A;&#x8FED;&#x4EE3;&#x5668;&#x8303;&#x56F4;&#x3002;<pre><code class="lang-c++"><span class="hljs-comment">// authors &#x548C; search_item&#x7684;&#x5B9A;&#x4E49;&#xFF0C;&#x4E0E;&#x524D;&#x9762;&#x7684;&#x7A0B;&#x5E8F;&#x4E00;&#x6837;</span>
+<span class="hljs-comment">// beg and end &#x8868;&#x793A;&#x5BF9;&#x4E8E;&#x6B64;&#x4F5C;&#x8005;&#x7684;&#x5143;&#x7D20;&#x7684;&#x8303;&#x56F4;</span>
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> beg = authors.lower_bound(search_item),
+      end = authors.upper_bound(search_item);
+      beg != end; ++beg)
+<span class="hljs-built_in">cout</span> &lt;&lt; beg-&gt;second &lt;&lt; <span class="hljs-built_in">endl</span>; <span class="hljs-comment">// print each title</span>
+</code></pre>
+</li>
+<li>&#x65B9;&#x6848;&#x4E09;: <code>equal_range</code>&#x51FD;&#x6570;
+<code>equal_range</code>&#x63A5;&#x53D7;&#x4E00;&#x4E2A;&#x5173;&#x952E;&#x5B57;&#xFF0C;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x8FED;&#x4EE3;&#x5668;<code>pair</code>&#x3002;
+&#x5982;&#x679C;&#x5173;&#x952E;&#x5B57;&#x5B58;&#x5728;&#xFF0C;&#x5219;&#x7B2C;&#x4E00;&#x4E2A;&#x8FED;&#x4EE3;&#x5668;&#x6307;&#x5411;&#x7B2C;&#x4E00;&#x4E2A;&#x4E0E;&#x5173;&#x952E;&#x5B57;&#x5339;&#x914D;&#x7684;&#x7684;&#x5143;&#x7D20;&#xFF1B;&#x7B2C;&#x4E8C;&#x4E2A;&#x8FED;&#x4EE3;&#x5668;&#x6307;&#x5411; &#x6700;&#x540E;&#x4E00;&#x4E2A;&#x5339;&#x914D;&#x5143;&#x7D20;&#x4E4B;&#x540E;&#x7684;&#x4F4D;&#x7F6E;&#xFF1B;
+&#x5982;&#x679C;&#x672A;&#x627E;&#x5230;&#x5339;&#x914D;&#x5143;&#x7D20;&#xFF0C;&#x5219;&#x4E24;&#x4E2A;&#x8FED;&#x4EE3;&#x5668;&#x90FD;&#x6307;&#x5411;&#x5173;&#x952E;&#x5B57;&#x53EF;&#x4EE5;&#x63D2;&#x5165;&#x7684;&#x4F4D;&#x7F6E;&#x3002;<pre><code class="lang-c++"><span class="hljs-comment">// authors &#x548C; search_item &#x7684;&#x5B9A;&#x4E49;&#xFF0C;&#x4E0E;&#x524D;&#x9762;&#x7684;&#x7A0B;&#x5E8F;&#x4E00;&#x6837;</span>
+<span class="hljs-comment">// pos &#x4FDD;&#x5B58;&#x8FED;&#x4EE3;&#x5668;&#x5BF9;&#xFF0C;&#x8868;&#x793A;&#x4E0E;&#x5173;&#x952E;&#x5B57;&#x5339;&#x914D;&#x7684;&#x5143;&#x7D20;&#x8303;&#x56F4;</span>
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> pos = authors.equal_range(search_item);
+      pos.first != pos.second; ++pos.first)
+  <span class="hljs-built_in">cout</span> &lt;&lt; pos.first-&gt;second &lt;&lt; <span class="hljs-built_in">endl</span>; <span class="hljs-comment">// print each title</span>
+</code></pre>
+</li>
+</ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="C++Primer标准库-泛型算法.html" class="navigation navigation-prev " aria-label="Previous page: C++ Primer 标准库: 泛型算法">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="C++Primer标准库-动态内存.html" class="navigation navigation-next " aria-label="Next page: C++ Primer 标准库: 动态内存">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"C++ Primer 标准库: 关联容器","level":"1.5.8","depth":2,"next":{"title":"C++ Primer 标准库: 动态内存","level":"1.5.9","depth":2,"path":"c++学习笔记/C++Primer标准库-动态内存.md","ref":"c++学习笔记/C++Primer标准库-动态内存.md","articles":[]},"previous":{"title":"C++ Primer 标准库: 泛型算法","level":"1.5.7","depth":2,"path":"c++学习笔记/C++Primer标准库-泛型算法.md","ref":"c++学习笔记/C++Primer标准库-泛型算法.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"c++学习笔记/C++Primer标准库-关联容器.md","mtime":"2021-11-29T16:30:27.781Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-11-30T08:32:27.547Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

@@ -1,0 +1,724 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>C++ Primer 类设计: 基类、派生类、虚函数 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="C++Primer类设计-模板与泛型编程.html" />
+    
+    
+    <link rel="prev" href="C++Primer类设计-拷贝控制.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    README
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../redis-xue-xi/">
+            
+                <a href="../redis-xue-xi/">
+            
+                    
+                    Redis学习
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../redis学习/Redis备份.html">
+            
+                <a href="../redis学习/Redis备份.html">
+            
+                    
+                    Redis备份
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../redis学习/Redis复制.html">
+            
+                <a href="../redis学习/Redis复制.html">
+            
+                    
+                    Redis复制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../redis学习/Redis集群.html">
+            
+                <a href="../redis学习/Redis集群.html">
+            
+                    
+                    Redis集群
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../rocksdb-xue-xi/">
+            
+                <a href="../rocksdb-xue-xi/">
+            
+                    
+                    RocksDB学习
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../rocksdb学习/RocksDB基础概念.html">
+            
+                <a href="../rocksdb学习/RocksDB基础概念.html">
+            
+                    
+                    RocksDB基础概念
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../rocksdb学习/RocksDB基础操作-C语言.html">
+            
+                <a href="../rocksdb学习/RocksDB基础操作-C语言.html">
+            
+                    
+                    RocksDB基础操作-C语言
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../c语言笔记/">
+            
+                <a href="../c语言笔记/">
+            
+                    
+                    C语言笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../c语言笔记/C语言补充笔记一.html">
+            
+                <a href="../c语言笔记/C语言补充笔记一.html">
+            
+                    
+                    C语言补充笔记一
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    C++学习笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="C++Primer基础-引用指针const.html">
+            
+                <a href="C++Primer基础-引用指针const.html">
+            
+                    
+                    C++Primer基础:引用、指针、const、auto
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="C++Primer基础-stringvector数组.html">
+            
+                <a href="C++Primer基础-stringvector数组.html">
+            
+                    
+                    C++Primer基础: string、vector、数组
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="C++Primer基础-函数重载函数指针.html">
+            
+                <a href="C++Primer基础-函数重载函数指针.html">
+            
+                    
+                    C++Primer基础:函数、重载、函数指针
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="C++Primer基础-类.html">
+            
+                <a href="C++Primer基础-类.html">
+            
+                    
+                    C++ Primer 基础: 类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="C++Primer标准库-IO库.html">
+            
+                <a href="C++Primer标准库-IO库.html">
+            
+                    
+                    C++ Primer 标准库: IO库
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="C++Primer标准库-顺序容器.html">
+            
+                <a href="C++Primer标准库-顺序容器.html">
+            
+                    
+                    C++ Primer 标准库: 顺序容器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" data-path="C++Primer标准库-泛型算法.html">
+            
+                <a href="C++Primer标准库-泛型算法.html">
+            
+                    
+                    C++ Primer 标准库: 泛型算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8" data-path="C++Primer标准库-关联容器.html">
+            
+                <a href="C++Primer标准库-关联容器.html">
+            
+                    
+                    C++ Primer 标准库: 关联容器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.9" data-path="C++Primer标准库-动态内存.html">
+            
+                <a href="C++Primer标准库-动态内存.html">
+            
+                    
+                    C++ Primer 标准库: 动态内存
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.10" data-path="C++Primer类设计-拷贝控制.html">
+            
+                <a href="C++Primer类设计-拷贝控制.html">
+            
+                    
+                    C++ Primer 类设计: 拷贝控制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.5.11" data-path="C++Primer类设计-基类派生类虚函数.html">
+            
+                <a href="C++Primer类设计-基类派生类虚函数.html">
+            
+                    
+                    C++ Primer 类设计: 基类、派生类、虚函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.12" data-path="C++Primer类设计-模板与泛型编程.html">
+            
+                <a href="C++Primer类设计-模板与泛型编程.html">
+            
+                    
+                    C++ Primer 类设计:模板与泛型编程
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../工具使用/">
+            
+                <a href="../工具使用/">
+            
+                    
+                    工具使用
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../工具使用/VSCode使用小技巧.html">
+            
+                <a href="../工具使用/VSCode使用小技巧.html">
+            
+                    
+                    VS Code使用小技巧
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >C++ Primer 类设计: 基类、派生类、虚函数</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="c-primer-&#x7C7B;&#x8BBE;&#x8BA1;-&#x57FA;&#x7C7B;&#x3001;&#x6D3E;&#x751F;&#x7C7B;&#x3001;&#x865A;&#x51FD;&#x6570;">C++ Primer &#x7C7B;&#x8BBE;&#x8BA1;: &#x57FA;&#x7C7B;&#x3001;&#x6D3E;&#x751F;&#x7C7B;&#x3001;&#x865A;&#x51FD;&#x6570;</h2>
+<ul>
+<li><code>Quote</code>&#x57FA;&#x7C7B;&#xFF0C;&#x8868;&#x793A;&#x6309;&#x7167;&#x539F;&#x4EF7;&#x9500;&#x552E;&#x4E66;&#x7C4D;;</li>
+<li><code>Bulk_quote</code>&#xFF0C;&#x8868;&#x793A;&#x6253;&#x6298;&#x9500;&#x552E;&#x4E66;&#x7C4D;;</li>
+<li>&#x5982;&#x679C;&#x67D0;&#x4E9B;&#x51FD;&#x6570;&#xFF0C;&#x57FA;&#x7C7B;&#x5E0C;&#x671B;&#x5B83;&#x7684;&#x6D3E;&#x751F;&#x7C7B;&#x5404;&#x81EA;&#x5B9A;&#x4E49;&#x5408;&#x9002;&#x81EA;&#x8EAB;&#x7684;&#x7248;&#x672C;&#xFF0C;&#x6B64;&#x65F6;&#x57FA;&#x7C7B;&#x5C31;&#x5C06;&#x8FD9;&#x4E9B;&#x51FD;&#x6570;&#x58F0;&#x660E;&#x6210;<strong>&#x865A;&#x51FD;&#x6570;(virtual function)</strong>;</li>
+<li>&#x6D3E;&#x751F;&#x7C7B;&#x5FC5;&#x987B;&#x5728;&#x5176;&#x5185;&#x90E8;<strong>&#x5BF9;&#x6240;&#x6709;&#x91CD;&#x65B0;&#x5B9A;&#x4E49;&#x7684;&#x865A;&#x51FD;&#x6570;&#x8FDB;&#x884C;&#x58F0;&#x660E;</strong>&#xFF0C;&#x6D3E;&#x751F;&#x7C7B;&#x53EF;&#x4EE5;&#x5728;&#x8FD9;&#x6837;&#x7684;&#x51FD;&#x6570;&#x4E4B;&#x524D;&#x52A0;&#x4E0A;<code>virtual</code>&#x5173;&#x952E;&#x5B57;&#xFF0C;&#x4E0D;&#x8FC7;&#x8FD9;&#x4E0D;&#x662F;&#x5FC5;&#x987B;&#x7684;&#xFF1B;(&#x6D3E;&#x751F;&#x7C7B;&#x4E0D;&#x4E00;&#x5B9A;&#x8981;&#x91CD;&#x5199; &#x865A;&#x51FD;&#x6570;&#x54E6;&#xFF0C;&#x53EA;&#x662F;&#x8BF4; &#x91CD;&#x5199;&#x65F6;&#x9700;&#x8981;&#x91CD;&#x65B0;&#x58F0;&#x660E;)</li>
+<li>C++11&#x65B0;&#x6807;&#x51C6;&#x5141;&#x8BB8;&#x6D3E;&#x751F;&#x7C7B;&#x663E;&#x5F0F;&#x5730;&#x6CE8;&#x660E;&#x5B83;&#x5C06;&#x4F7F;&#x7528;&#x54EA;&#x4E2A;&#x6210;&#x5458;&#x51FD;&#x6570;&#x6539;&#x5199;&#x57FA;&#x7C7B;&#x7684;&#x865A;&#x51FD;&#x6570;&#xFF0C;&#x5728;&#x8BE5;&#x51FD;&#x6570;&#x7684;&#x5F62;&#x53C2;&#x5217;&#x8868;&#x540E;&#x589E;&#x52A0;<code>override</code>&#x5173;&#x952E;&#x5B57;&#x5373;&#x53EF;&#x3002;</li>
+<li>&#x7EE7;&#x627F;&#x5173;&#x7CFB;&#x4E2D;&#xFF0C;&#x6839;&#x8282;&#x70B9;&#x7684;&#x7C7B;&#x901A;&#x5E38;&#x90FD;&#x4F1A;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x865A;&#x6790;&#x6784;&#x51FD;&#x6570;(&#x4E5F;&#x5C31;&#x662F; &#x6790;&#x6784;&#x51FD;&#x6570; &#x4E5F;&#x5B9A;&#x4E49;&#x4E3A; &#x865A;&#x51FD;&#x6570;);</li>
+</ul>
+<p><strong>&#x6210;&#x5458;&#x51FD;&#x6570;&#x548C;&#x7EE7;&#x627F;</strong></p>
+<ul>
+<li>&#x6D3E;&#x751F;&#x7C7B;&#x53EF;&#x4EE5;&#x7EE7;&#x627F;&#x57FA;&#x7C7B;&#x7684;&#x6210;&#x5458;&#xFF0C;&#x7136;&#x800C;&#x5F53;&#x9047;&#x5230;<code>net_price</code>&#x8FD9;&#x6837;&#x7684;&#x7C7B;&#x578B;&#x76F8;&#x5173;&#x7684;&#x64CD;&#x4F5C;&#x65F6;&#xFF0C;&#x6D3E;&#x751F;&#x7C7B;&#x5FC5;&#x987B;&#x5BF9;&#x5176;&#x91CD;&#x65B0;&#x5B9A;&#x4E49;;</li>
+<li>&#x5173;&#x952E;&#x5B57;<code>virtual</code>&#x53EA;&#x80FD;&#x51FA;&#x73B0;&#x5728; &#x7C7B;&#x5185;&#x90E8;&#x7684;&#x58F0;&#x660E;&#x8BED;&#x53E5;&#x4E4B;&#x524D; &#x800C;&#x4E0D;&#x80FD;&#x7528;&#x4E8E; &#x7C7B;&#x5916;&#x90E8;&#x7684;&#x51FD;&#x6570;&#x5B9A;&#x4E49;;</li>
+<li>&#x5982;&#x679C;&#x57FA;&#x7C7B;&#x628A;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x58F0;&#x660E;&#x4E3A;&#x865A;&#x51FD;&#x6570;&#xFF0C;&#x5219;&#x8BE5;&#x51FD;&#x6570;&#x5728;&#x6D3E;&#x751F;&#x7C7B;&#x4E2D; &#x9690;&#x5F0F;&#x5730;&#x4E5F;&#x662F;&#x865A;&#x51FD;&#x6570;&#xFF1B;</li>
+<li>&#x6210;&#x5458;&#x51FD;&#x6570;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x88AB;&#x58F0;&#x660E;&#x4E3A; &#x865A;&#x51FD;&#x6570;&#xFF0C;&#x5219;&#x5176;&#x89E3;&#x6790;&#x8FC7;&#x7A0B;&#x53D1;&#x751F;&#x5728; &#x7F16;&#x8BD1;&#x65F6; &#x800C;&#x4E0D;&#x662F;&#x8FD0;&#x884C;&#x65F6;&#xFF1B;</li>
+</ul>
+<p><strong>&#x8BBF;&#x95EE;&#x63A7;&#x5236;&#x4E0E;&#x7EE7;&#x627F;</strong></p>
+<ul>
+<li>&#x6D3E;&#x751F;&#x7C7B;&#x80FD;&#x8BBF;&#x95EE;&#x57FA;&#x7C7B;&#x7684;<code>public</code>&#x3001;<code>protected</code>&#x7684;&#x6210;&#x5458;&#xFF1B;&#x4E0D;&#x80FD;&#x8BBF;&#x95EE;<code>private</code>&#x6210;&#x5458;;</li>
+</ul>
+<h4 id="&#x5B9A;&#x4E49;&#x6D3E;&#x751F;&#x7C7B;">&#x5B9A;&#x4E49;&#x6D3E;&#x751F;&#x7C7B;</h4>
+<p>&#x6D3E;&#x751F;&#x7C7B;&#x5217;&#x8868;: &#x9996;&#x5148;&#x662F;&#x4E00;&#x4E2A;&#x5192;&#x53F7;&#xFF0C;&#x7136;&#x540E;&#x7D27;&#x8DDF;&#x4EE5;&#x9017;&#x53F7;&#x5206;&#x9694;&#x7684;&#x57FA;&#x7C7B;&#x5217;&#x8868;&#xFF0C;&#x5176;&#x4E2D;&#x6BCF;&#x4E2A;&#x57FA;&#x7C7B;&#x524D;&#x9762;&#x53EF;&#x4EE5;&#x6709;&#x8BBF;&#x95EE;&#x8BF4;&#x660E;&#x7B26;:<code>public</code>&#x3001;<code>protected</code>&#x3001;<code>private</code>&#x3002;
+&#x8FD9;&#x91CC;&#x7684;&#x8BBF;&#x95EE;&#x8BF4;&#x660E;&#x7B26;&#x4F5C;&#x7528;&#x662F;&#xFF1A; &#x63A7;&#x5236;&#x6D3E;&#x751F;&#x7C7B;&#x4ECE;&#x57FA;&#x7C7B;&#x7EE7;&#x627F;&#x800C;&#x6765;&#x7684;&#x6210;&#x5458;&#x662F;&#x5426;&#x5BF9;&#x6D3E;&#x751F;&#x7C7B;&#x7684;&#x7528;&#x6237;&#x53EF;&#x89C1;&#x3002;
+&#x5982;&#x679C;&#x4E00;&#x4E2A;&#x6D3E;&#x751F;&#x662F;<code>public</code>&#x7684;&#xFF0C;&#x5219;&#x57FA;&#x7C7B;&#x7684;&#x516C;&#x6709;&#x6210;&#x5458;&#x4E5F;&#x662F;&#x6D3E;&#x751F;&#x7C7B;&#x63A5;&#x53E3;&#x7684;&#x7EC4;&#x6210;&#x90E8;&#x5206;&#x3002;&#x6B64;&#x5916;&#xFF0C;&#x6211;&#x4EEC;&#x80FD;&#x5C06;&#x516C;&#x6709;&#x6D3E;&#x751F;&#x7C7B;&#x578B;&#x7684;&#x5BF9;&#x8C61;&#x7ED1;&#x5B9A;&#x5230;&#x57FA;&#x7C7B;&#x7684;&#x5F15;&#x7528; &#x548C;&#x6307;&#x9488;&#x4E0A;&#x3002;
+(&#x5927;&#x90E8;&#x5206;&#x5E94;&#x8BE5;&#x90FD;&#x7528;<code>public</code>&#x6D3E;&#x751F;)
+&#x5982;:<code>class Bulk_quote: public Quote</code></p>
+<p><strong>&#x6D3E;&#x751F;&#x7C7B;&#x4E2D;&#x7684;&#x865A;&#x51FD;&#x6570;</strong></p>
+<ul>
+<li><strong>&#x6D3E;&#x751F;&#x7C7B;&#x7ECF;&#x5E38;(&#x4F46;&#x5E76;&#x4E0D;&#x603B;&#x662F;)&#x8986;&#x76D6;&#x5B83;&#x7EE7;&#x627F;&#x7684;&#x865A;&#x51FD;&#x6570;&#x3002;&#x5982;&#x679C;&#x6D3E;&#x751F;&#x7C7B;&#x6CA1;&#x6709;&#x8986;&#x76D6;&#x57FA;&#x7C7B;&#x4E2D;&#x7684;&#x67D0;&#x4E2A;&#x865A;&#x51FD;&#x6570;&#xFF0C;&#x5219;&#x8BE5;&#x865A;&#x51FD;&#x6570;&#x7684;&#x884C;&#x4E3A;&#x7C7B;&#x4F3C;&#x5176;&#x4ED6;&#x666E;&#x901A;&#x51FD;&#x6570;&#xFF0C;&#x6D3E;&#x751F;&#x7C7B;&#x4F1A;&#x76F4;&#x63A5;&#x7EE7;&#x627F;&#x5176;&#x5728;&#x57FA;&#x7C7B;&#x4E2D;&#x7684;&#x7248;&#x672C;</strong>;</li>
+<li>&#x6D3E;&#x751F;&#x7C7B;&#x53EF;&#x4EE5;&#x5728;&#x8986;&#x76D6;&#x51FD;&#x6570;&#x65F6;&#x4F7F;&#x7528;<code>virtual</code>&#x5173;&#x952E;&#x5B57;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x4E0D;&#x7528;;</li>
+<li>&#x6D3E;&#x751F;&#x7C7B;&#x8986;&#x76D6;&#x57FA;&#x7C7B;&#x67D0;&#x51FD;&#x6570;&#x65F6;&#xFF0C;&#x5EFA;&#x8BAE;&#x52A0;&#x4E0A;<code>override</code>&#x5173;&#x952E;&#x5B57;;</li>
+</ul>
+<p><strong>&#x6D3E;&#x751F;&#x7C7B;&#x6784;&#x9020;&#x51FD;&#x6570;</strong></p>
+<ul>
+<li>&#x5C3D;&#x7BA1;&#x6D3E;&#x751F;&#x7C7B;&#x5BF9;&#x8C61;&#x4E2D;&#x542B;&#x6709;&#x4ECE;&#x57FA;&#x7C7B;&#x7EE7;&#x627F;&#x800C;&#x6765;&#x7684;&#x6210;&#x5458;&#xFF0C;&#x4F46;&#x662F;&#x6D3E;&#x751F;&#x7C7B;&#x5E76;&#x4E0D;&#x80FD;&#x76F4;&#x63A5;&#x521D;&#x59CB;&#x5316;&#x8FD9;&#x4E9B;&#x6210;&#x5458;;</li>
+<li>&#x548C;&#x5176;&#x4ED6;&#x521B;&#x5EFA;&#x57FA;&#x7C7B;&#x5BF9;&#x8C61;&#x7684;&#x4EE3;&#x7801;&#x4E00;&#x6837;&#xFF0C;&#x6D3E;&#x751F;&#x7C7B;&#x4E5F;&#x5FC5;&#x987B; <strong>&#x4F7F;&#x7528;&#x57FA;&#x7C7B;&#x7684;&#x6784;&#x9020;&#x51FD;&#x6570;&#x6765;&#x521D;&#x59CB;&#x5316;&#x5B83;&#x7684;&#x57FA;&#x7C7B;&#x90E8;&#x5206;</strong><pre><code class="lang-cpp">Bulk_quote(<span class="hljs-keyword">const</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> &amp;book,<span class="hljs-keyword">double</span> p,<span class="hljs-built_in">std</span>::<span class="hljs-keyword">size_t</span> qty,<span class="hljs-keyword">double</span> disc):
+Quote(book,p),min_qty(qty),discount(disc)
+{
+}
+</code></pre>
+</li>
+</ul>
+<p><strong>&#x6D3E;&#x751F;&#x7C7B;&#x4F7F;&#x7528;&#x57FA;&#x7C7B;&#x6210;&#x5458;</strong>
+&#x6D3E;&#x751F;&#x7C7B;&#x53EF;&#x4EE5;&#x8BBF;&#x95EE;&#x57FA;&#x7C7B;&#x7684;<code>public</code>&#x548C;<code>protected</code>&#x6210;&#x5458;:</p>
+<pre><code class="lang-cpp"><span class="hljs-comment">// price&#x662F;&#x7236;&#x7C7B;&#x6210;&#x5458;</span>
+<span class="hljs-keyword">double</span> Bulk_quote::net_price(<span class="hljs-built_in">std</span>::<span class="hljs-keyword">size_t</span> cnt) <span class="hljs-keyword">const</span>{
+    <span class="hljs-keyword">if</span>(cnt &gt; min_qty){
+        <span class="hljs-keyword">return</span> cnt * (<span class="hljs-number">1</span> - discount) * price;
+    }<span class="hljs-keyword">else</span>{
+        <span class="hljs-keyword">return</span> cnt * price;
+    }
+}
+</code></pre>
+<p><strong>&#x7EE7;&#x627F;&#x4E0E;&#x9759;&#x6001;&#x6210;&#x5458;</strong>
+&#x5982;&#x679C;&#x57FA;&#x7C7B;&#x5B9A;&#x4E49;&#x4E86;&#x4E00;&#x4E2A;&#x9759;&#x6001;&#x6210;&#x5458;&#xFF0C;&#x5219;&#x5728;&#x6574;&#x4E2A;&#x7EE7;&#x627F;&#x4F53;&#x7CFB;&#x4E2D;&#x53EA;&#x5B58;&#x5728;&#x8BE5;&#x6210;&#x5458;&#x7684;&#x552F;&#x4E00;&#x5B9A;&#x4E49;&#x3002;
+&#x4E0D;&#x8BBA;&#x4ECE;&#x57FA;&#x7C7B;&#x4E2D;&#x6D3E;&#x751F;&#x51FA;&#x591A;&#x5C11;&#x4E2A;&#x6D3E;&#x751F;&#x7C7B;&#xFF0C;&#x5BF9;&#x4E8E;&#x6BCF;&#x4E2A;&#x9759;&#x6001;&#x6210;&#x5458;&#x6765;&#x8BF4;&#x90FD;&#x53EA;&#x5B58;&#x5728;&#x552F;&#x4E00;&#x5B9E;&#x4F8B;&#x3002;</p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">class</span> Base {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">statmem</span><span class="hljs-params">()</span></span>;
+};
+<span class="hljs-keyword">class</span> Derived : <span class="hljs-keyword">public</span> Base {
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">f</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Derived&amp;)</span></span>;
+};
+<span class="hljs-keyword">void</span> Derived::f(<span class="hljs-keyword">const</span> Derived &amp;derived_obj)
+{
+    Base::statmem(); <span class="hljs-comment">// ok: Base&#x5B9A;&#x4E49;&#x4E86; statemem</span>
+    Derived::statmem(); <span class="hljs-comment">// ok: Derived &#x7EE7;&#x627F;&#x4E86; statmem</span>
+    <span class="hljs-comment">// ok: &#x6D3E;&#x751F;&#x7C7B;&#x7684;&#x5BF9;&#x8C61;&#x80FD;&#x8BBF;&#x95EE;&#x57FA;&#x7C7B;&#x7684;&#x9759;&#x6001;&#x6210;&#x5458;</span>
+    derived_obj.statmem(); <span class="hljs-comment">// &#x901A;&#x8FC7; Derived &#x5BF9;&#x8C61;&#x8BBF;&#x95EE;</span>
+    statmem(); <span class="hljs-comment">// &#x901A;&#x8FC7;this&#x5BF9;&#x8C61;&#x8BBF;&#x95EE;</span>
+}
+</code></pre>
+<p><strong>&#x6D3E;&#x751F;&#x7C7B;&#x7684;&#x58F0;&#x660E;</strong>
+&#x6D3E;&#x751F;&#x7C7B;&#x7684;&#x58F0;&#x660E;&#x4E0E;&#x5176;&#x4ED6;&#x7C7B;&#x58F0;&#x660E;&#x4E00;&#x6837;&#xFF0C;<strong>&#x58F0;&#x660E;&#x4E2D;&#x5305;&#x542B;&#x7C7B;&#x540D;&#x4F46;&#x662F;&#x4E0D;&#x5305;&#x542B;&#x5B83;&#x7684;&#x6D3E;&#x751F;&#x5217;&#x8868;</strong>:</p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">class</span> Bulk_quote : <span class="hljs-keyword">public</span> Quote; <span class="hljs-comment">// &#x9519;&#x8BEF;: &#x6D3E;&#x751F;&#x5217;&#x8868;&#x4E0D;&#x80FD;&#x51FA;&#x73B0;&#x5728;&#x8FD9;&#x91CC;</span>
+<span class="hljs-keyword">class</span> Bulk_quote; <span class="hljs-comment">// &#x6B63;&#x786E;: &#x58F0;&#x660E;&#x6D3E;&#x751F;&#x7C7B;&#x7684;&#x6B63;&#x786E;&#x65B9;&#x5F0F;</span>
+</code></pre>
+<p><strong>&#x88AB;&#x7528;&#x4F5C;&#x57FA;&#x7C7B;&#x7684;&#x7C7B;</strong>
+&#x5982;&#x679C;&#x6211;&#x4EEC;&#x60F3;&#x5C06;&#x67D0;&#x4E2A;&#x7C7B;&#x7528;&#x4F5C;&#x57FA;&#x7C7B;&#xFF0C;&#x5219;<strong>&#x8BE5;&#x7C7B;&#x5FC5;&#x987B;&#x5DF2;&#x7ECF;&#x5B9A;&#x4E49;&#x800C;&#x975E;&#x4EC5;&#x4EC5;&#x58F0;&#x660E;</strong></p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">class</span> Quote; <span class="hljs-comment">//&#x58F0;&#x660E;&#x4F46;&#x672A;&#x5B9A;&#x4E49;</span>
+<span class="hljs-comment">// &#x9519;&#x8BEF;: Quote&#x5FC5;&#x987B;&#x88AB;&#x5B9A;&#x4E49;</span>
+<span class="hljs-keyword">class</span> Bulk_quote: <span class="hljs-keyword">public</span> Quote {...};
+</code></pre>
+<p>&#x8FD9;&#x4E00;&#x89C4;&#x5B9A;&#x7684;&#x539F;&#x56E0;&#x5F88;&#x660E;&#x663E;&#xFF1A;&#x6D3E;&#x751F;&#x7C7B;&#x4E2D;&#x5305;&#x542B;&#x5E76;&#x4E14;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x5B83;&#x4ECE;&#x57FA;&#x7C7B;&#x7EE7;&#x627F;&#x800C;&#x6765;&#x7684;&#x6210;&#x5458;&#xFF0C;&#x4E3A;&#x4E86;&#x4F7F;&#x7528;&#x8FD9;&#x4E9B;&#x6210;&#x5458;&#xFF0C;&#x6D3E;&#x751F;&#x7C7B;&#x5F53;&#x7136;&#x8981;&#x77E5;&#x9053;&#x5B83;&#x4EEC;&#x662F;&#x4EC0;&#x4E48;&#x3002;</p>
+<p><strong>&#x9632;&#x6B62;&#x7EE7;&#x627F;&#x7684;&#x53D1;&#x751F;</strong>
+&#x5982;&#x679C;&#x6211;&#x4EEC;&#x4E0D;&#x60F3;&#x5176;&#x4ED6;&#x7C7B;&#x7EE7;&#x627F;&#x67D0;&#x4E2A;&#x7C7B;&#xFF0C;<code>C++11</code>&#x65B0;&#x6807;&#x51C6;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x79CD;&#x9632;&#x6B62;&#x7EE7;&#x627F;&#x53D1;&#x751F;&#x7684;&#x65B9;&#x6CD5;: &#x5728;&#x7C7B;&#x540D;&#x8DDF;&#x4E00;&#x4E2A;&#x5173;&#x952E;&#x5B57;<code>final</code></p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">class</span> NoDerived final { <span class="hljs-comment">/* */</span> }; <span class="hljs-comment">// NoDerived &#x4E0D;&#x80FD;&#x4F5C;&#x4E3A;&#x57FA;&#x7C7B;</span>
+<span class="hljs-keyword">class</span> Base { <span class="hljs-comment">/* */</span> };
+<span class="hljs-comment">// Last &#x662F;final, &#x6211;&#x4EEC;&#x4E0D;&#x80FD;&#x7EE7;&#x627F;Last</span>
+<span class="hljs-keyword">class</span> Last final : Base { <span class="hljs-comment">/* */</span> }; <span class="hljs-comment">// Last &#x4E0D;&#x80FD;&#x4F5C;&#x4E3A;&#x57FA;&#x7C7B;</span>
+<span class="hljs-keyword">class</span> Bad : NoDerived { <span class="hljs-comment">/* */</span> }; <span class="hljs-comment">// error: NoDerived is final</span>
+<span class="hljs-keyword">class</span> Bad2 : Last { <span class="hljs-comment">/* */</span> }; <span class="hljs-comment">// error: Last is final</span>
+</code></pre>
+<p>&#x6CE8;&#x610F;: <strong>&#x548C;&#x5185;&#x7F6E;&#x6307;&#x9488;&#x4E00;&#x6837;&#xFF0C;&#x667A;&#x80FD;&#x6307;&#x9488;&#x7C7B;&#x4E5F;&#x652F;&#x6301;&#x6D3E;&#x751F;&#x7C7B;&#x5411;&#x57FA;&#x7C7B;&#x7C7B;&#x578B;&#x7684;&#x8F6C;&#x6362;&#xFF0C;&#x610F;&#x5473;&#x7740;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5C06;&#x4E00;&#x4E2A;&#x6D3E;&#x751F;&#x7C7B;&#x5BF9;&#x8C61;&#x7684;&#x6307;&#x9488;&#x5B58;&#x50A8;&#x5728;&#x57FA;&#x7C7B;&#x7684;&#x667A;&#x80FD;&#x6307;&#x9488;&#x5185;<mark style="color:red;">&#x667A;&#x80FD;&#x6307;&#x9488;&#x4E5F;&#x652F;&#x6301;&#x591A;&#x6001;</mark></strong>&#x3002;</p>
+<p><strong>&#x4E0D;&#x5B58;&#x5728;&#x4ECE;&#x57FA;&#x7C7B;&#x5411;&#x6D3E;&#x751F;&#x7C7B;&#x7684;&#x9690;&#x5F0F;&#x7C7B;&#x578B;&#x8F6C;&#x6362;.....</strong></p>
+<pre><code class="lang-cpp">Quote base;
+Bulk_quote* bulkP = &amp;base; <span class="hljs-comment">// &#x9519;&#x8BEF;: &#x4E0D;&#x80FD;&#x5C06;&#x57FA;&#x7C7B;&#x8F6C;&#x6362;&#x6210;&#x6D3E;&#x751F;&#x7C7B;</span>
+Bulk_quote&amp; bulkRef = base; <span class="hljs-comment">//&#x9519;&#x8BEF;: &#x4E0D;&#x80FD;&#x5C06;&#x57FA;&#x7C7B;&#x8F6C;&#x6362;&#x6210;&#x6D3E;&#x751F;&#x7C7B;</span>
+</code></pre>
+<p><strong>&#x5373;&#x4F7F;&#x57FA;&#x7C7B;&#x6307;&#x9488; &#x6216; &#x5F15;&#x7528;&#x7ED1;&#x5B9A;&#x5728;&#x4E00;&#x4E2A;&#x6D3E;&#x751F;&#x7C7B;&#x5BF9;&#x8C61;&#x4E0A;&#xFF0C;&#x6211;&#x4EEC;&#x4E5F;&#x4E0D;&#x80FD;&#x6267;&#x884C;&#x4ECE;&#x57FA;&#x7C7B;&#x5411;&#x6D3E;&#x751F;&#x7C7B;&#x7684;&#x8F6C;&#x6362;</strong></p>
+<pre><code class="lang-cpp">Bulk_quote bulk;
+Quote *itemP = &amp;bulk; <span class="hljs-comment">// &#x6B63;&#x786E;: &#x52A8;&#x6001;&#x7C7B;&#x578B;&#x662F;Bulk_quote</span>
+Bulk_quote *bulkP = itemP; <span class="hljs-comment">//&#x9519;&#x8BEF;: &#x4E0D;&#x80FD;&#x5C06;&#x57FA;&#x7C7B;&#x8F6C;&#x6362;&#x6210;&#x6D3E;&#x751F;&#x7C7B;</span>
+</code></pre>
+<ul>
+<li>&#x5982;&#x679C;&#x5728;&#x57FA;&#x7C7B;&#x4E2D;&#x6709;&#x4E00;&#x4E2A; &#x6216; &#x591A;&#x4E2A;&#x865A;&#x51FD;&#x6570;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;<code>dynamic_cast</code>&#x8BF7;&#x6C42;&#x4E00;&#x4E2A;&#x7C7B;&#x578B;&#x8F6C;&#x6362;&#xFF0C;<strong>&#x8BE5;&#x7C7B;&#x578B;&#x8F6C;&#x6362;&#x7684;&#x5B89;&#x5168;&#x68C0;&#x67E5;&#x5C06;&#x5728;&#x8FD0;&#x884C;&#x65F6;&#x6267;&#x884C;</strong>;
+<code>dynamic_cast1</code>&#x53EF;&#x4EE5;&#x83B7;&#x53D6;&#x76EE;&#x6807;&#x5BF9;&#x8C61;&#x7684;&#x5F15;&#x7528;&#x6216;&#x6307;&#x9488;&#xFF1A;<pre><code class="lang-cpp">T1 obj;
+T2* pObj = <span class="hljs-keyword">dynamic_cast</span>&lt;T2*&gt;(&amp;obj);<span class="hljs-comment">//&#x8F6C;&#x6362;&#x4E3A;T2&#x6307;&#x9488;&#xFF0C;&#x5931;&#x8D25;&#x8FD4;&#x56DE;NULL</span>
+T2&amp; refObj = <span class="hljs-keyword">dynamic_cast</span>&lt;T2&amp;&gt;(obj);<span class="hljs-comment">//&#x8F6C;&#x6362;&#x4E3A;T2&#x5F15;&#x7528;&#xFF0C;&#x5931;&#x8D25;&#x629B;&#x51FA;bad_cast&#x5F02;&#x5E38;</span>
+</code></pre>
+</li>
+<li>&#x5982;&#x679C;&#x6211;&#x4EEC;&#x5DF2;&#x77E5;&#x67D0;&#x4E2A;&#x57FA;&#x7C7B;&#x5411;&#x6D3E;&#x751F;&#x7C7B;&#x7684;&#x8F6C;&#x6362;&#x662F;&#x5B89;&#x5168;&#x7684;&#xFF0C;&#x5219;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;<code>static_cast</code>&#x6765;&#x5F3A;&#x5236;&#x8986;&#x76D6;&#x6389;&#x7F16;&#x8BD1;&#x5668;&#x7684;&#x68C0;&#x67E5;&#x5DE5;&#x4F5C;;
+<a href="https://www.cnblogs.com/QG-whz/p/4509710.html" target="_blank">https://www.cnblogs.com/QG-whz/p/4509710.html</a></li>
+</ul>
+<h3 id="&#x865A;&#x51FD;&#x6570;">&#x865A;&#x51FD;&#x6570;</h3>
+<p>&#x5728;C++&#x8BED;&#x8A00;&#x4E2D;&#xFF0C;&#x5F53;&#x6211;&#x4EEC;&#x4F7F;&#x7528;&#x57FA;&#x7C7B;&#x7684;&#x5F15;&#x7528; &#x6216; &#x6307;&#x9488;&#x8C03;&#x7528;&#x865A;&#x6210;&#x5458;&#x51FD;&#x6570;&#x65F6;&#x4F1A;&#x6267;&#x884C;&#x52A8;&#x6001;&#x7ED1;&#x5B9A;&#x3002;
+&#x52A8;&#x6001;&#x7ED1;&#x5B9A;&#x5FC5;&#x987B;&#x6EE1;&#x8DB3;&#x4E24;&#x4E2A;&#x6761;&#x4EF6;:</p>
+<ul>
+<li><strong><mark style="color:red;">&#x53EA;&#x6709;&#x865A;&#x51FD;&#x6570;&#x624D;&#x80FD;&#x8FDB;&#x884C;&#x52A8;&#x6001;&#x7ED1;&#x5B9A;&#xFF0C;&#x975E;&#x865A;&#x51FD;&#x6570;&#x4E0D;&#x8FDB;&#x884C;&#x52A8;&#x6001;&#x7ED1;&#x5B9A;</mark></strong>&#xFF1B;</li>
+<li><strong><mark style="color:red;">&#x5FC5;&#x987B;&#x901A;&#x8FC7;&#x57FA;&#x7C7B;&#x7C7B;&#x578B;&#x7684;&#x5F15;&#x7528;&#x6216;&#x6307;&#x9488;&#x8FDB;&#x884C;&#x51FD;&#x6570;&#x8C03;&#x7528;</mark></strong>;</li>
+</ul>
+<p><strong>final&#x548C;override&#x8BF4;&#x660E;&#x7B26;</strong>
+&#x6D3E;&#x751F;&#x7C7B;&#x5982;&#x679C;&#x5B9A;&#x4E49;&#x4E86;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x4E0E;&#x57FA;&#x7C7B;&#x4E2D;&#x865A;&#x51FD;&#x6570;&#x7684;&#x540D;&#x5B57;&#x76F8;&#x540C;&#xFF0C;&#x4F46;&#x662F;&#x5F62;&#x53C2;&#x5217;&#x8868;&#x4E0D;&#x540C;&#xFF0C;&#x8FD9;&#x4ECD;&#x7136;&#x662F;&#x5408;&#x6CD5;&#x7684;&#x884C;&#x4E3A;&#x3002;
+&#x7F16;&#x8BD1;&#x5668;&#x8BA4;&#x4E3A;&#x65B0;&#x5B9A;&#x4E49;&#x7684;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x4E0E;&#x57FA;&#x7C7B;&#x4E2D;&#x539F;&#x6709;&#x7684;&#x51FD;&#x6570;&#x662F; <strong>&#x76F8;&#x4E92;&#x72EC;&#x7ACB;&#x7684;</strong>&#x3002;&#x8FD9;&#x65F6;&#x6D3E;&#x751F;&#x7C7B;&#x7684;&#x51FD;&#x6570;&#x5E76;&#x6CA1;&#x6709;&#x8986;&#x76D6;&#x6389;&#x57FA;&#x7C7B;&#x4E2D;&#x7684;&#x7248;&#x672C;&#xFF0C;&#x8FD9;&#x79CD;&#x662F;&#x5F88;&#x53EF;&#x80FD;&#x53D1;&#x751F;&#x7684;&#x9519;&#x8BEF;&#x3002;</p>
+<p>&#x9488;&#x5BF9;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#xFF0C;&#x65B0;&#x6807;&#x51C6;&#x4E2D;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;<code>override</code>&#x5173;&#x952E;&#x5B57;&#x8BF4;&#x660E;&#x6D3E;&#x751F;&#x7C7B;&#x4E2D;&#x7684;&#x865A;&#x51FD;&#x6570;&#x3002;
+<strong>&#x5982;&#x679C;<code>override</code>&#x6807;&#x8BB0;&#x4E86;&#x67D0;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x4F46;&#x8BE5;&#x51FD;&#x6570;&#x5E76;&#x6CA1;&#x6709;&#x8986;&#x76D6;&#x5DF2;&#x5B58;&#x5728;&#x7684;&#x51FD;&#x6570;&#xFF0C;&#x6B64;&#x65F6;&#x7F16;&#x8BD1;&#x5668;&#x5C06;&#x62A5;&#x9519;</strong>:</p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">struct</span> B {
+    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">f1</span><span class="hljs-params">(<span class="hljs-keyword">int</span>)</span> <span class="hljs-keyword">const</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">f2</span><span class="hljs-params">()</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">f3</span><span class="hljs-params">()</span></span>;
+};
+<span class="hljs-keyword">struct</span> D1 : B {
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">f1</span><span class="hljs-params">(<span class="hljs-keyword">int</span>)</span> <span class="hljs-keyword">const</span> override</span>; <span class="hljs-comment">// ok: f1 &#x4E0E; &#x57FA;&#x7C7B;&#x4E2D; f1&#x5339;&#x914D;</span>
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">f2</span><span class="hljs-params">(<span class="hljs-keyword">int</span>)</span> override</span>; <span class="hljs-comment">// error: B&#x6CA1;&#x6709;&#x5F62;&#x5982; f2(int)&#x7684;&#x51FD;&#x6570;</span>
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">f3</span><span class="hljs-params">()</span> override</span>; <span class="hljs-comment">// error: f3 &#x4E0D;&#x662F;&#x865A;&#x51FD;&#x6570;</span>
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">f4</span><span class="hljs-params">()</span> override</span>; <span class="hljs-comment">// error: B &#x6CA1;&#x6709;&#x540D;&#x4E3A;f4&#x7684;&#x51FD;&#x6570;</span>
+};
+</code></pre>
+<p>&#x6211;&#x4EEC;&#x8FD8;&#x80FD;&#x628A;&#x67D0;&#x4E2A;&#x51FD;&#x6570;&#x6307;&#x5B9A;&#x4E3A;<code>final</code>,&#x5982;&#x679C;&#x6211;&#x4EEC;&#x5DF2;&#x7ECF;&#x628A;&#x51FD;&#x6570;&#x5B9A;&#x4E49;&#x6210;<code>final</code>&#x3002;&#x5219;&#x4E4B;&#x540E;&#x4EFB;&#x4F55;&#x5C1D;&#x8BD5;&#x8986;&#x76D6;&#x8BE5;&#x51FD;&#x6570;&#x7684;&#x64CD;&#x4F5C;&#x90FD;&#x5C06;&#x5F15;&#x53D1;&#x9519;&#x8BEF;:</p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">struct</span> D2 : B {
+    <span class="hljs-comment">// &#x4ECE;B&#x7EE7;&#x627F; f2() and f3() from B&#xFF0C;&#x8986;&#x76D6;f1(int)</span>
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">f1</span><span class="hljs-params">(<span class="hljs-keyword">int</span>)</span> <span class="hljs-keyword">const</span> final</span>; <span class="hljs-comment">// &#x4E0D;&#x5141;&#x8BB8;&#x540E;&#x7EED;&#x7684;&#x5176;&#x4ED6;&#x7C7B;&#x8986;&#x76D6; f1(int)</span>
+};
+<span class="hljs-keyword">struct</span> D3 : D2 {
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">f2</span><span class="hljs-params">()</span></span>; <span class="hljs-comment">// ok: &#x8986;&#x76D6;&#x4ECE;&#x95F4;&#x63A5;&#x57FA;&#x7C7B;B&#x7EE7;&#x627F;&#x800C;&#x6765;&#x7684; f2</span>
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">f1</span><span class="hljs-params">(<span class="hljs-keyword">int</span>)</span> <span class="hljs-keyword">const</span></span>; <span class="hljs-comment">// error: D2&#x5DF2;&#x7ECF;&#x5C06;f2&#x58F0;&#x660E;&#x6210;final</span>
+};
+</code></pre>
+<p><strong>&#x865A;&#x51FD;&#x6570;&#x4E0E;&#x9ED8;&#x8BA4;&#x5B9E;&#x53C2;</strong>
+&#x5982;&#x679C;&#x865A;&#x51FD;&#x6570;&#x4F7F;&#x7528;&#x9ED8;&#x8BA4;&#x5B9E;&#x53C2;&#xFF0C;&#x5219;&#x57FA;&#x7C7B;&#x548C;&#x6D3E;&#x751F;&#x7C7B;&#x4E2D;&#x5B9A;&#x4E49;&#x7684;&#x9ED8;&#x8BA4;&#x5B9E;&#x53C2;&#x6700;&#x597D;&#x4E00;&#x81F4;&#x3002;</p>
+<p><strong>&#x56DE;&#x907F;&#x865A;&#x51FD;&#x6570;&#x7684;&#x673A;&#x5236;</strong></p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">double</span> undiscounted = baseP-&gt;Quote::net_price(<span class="hljs-number">42</span>);
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="C++Primer类设计-拷贝控制.html" class="navigation navigation-prev " aria-label="Previous page: C++ Primer 类设计: 拷贝控制">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="C++Primer类设计-模板与泛型编程.html" class="navigation navigation-next " aria-label="Next page: C++ Primer 类设计:模板与泛型编程">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"C++ Primer 类设计: 基类、派生类、虚函数","level":"1.5.11","depth":2,"next":{"title":"C++ Primer 类设计:模板与泛型编程","level":"1.5.12","depth":2,"path":"c++学习笔记/C++Primer类设计-模板与泛型编程.md","ref":"c++学习笔记/C++Primer类设计-模板与泛型编程.md","articles":[]},"previous":{"title":"C++ Primer 类设计: 拷贝控制","level":"1.5.10","depth":2,"path":"c++学习笔记/C++Primer类设计-拷贝控制.md","ref":"c++学习笔记/C++Primer类设计-拷贝控制.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"c++学习笔记/C++Primer类设计-基类派生类虚函数.md","mtime":"2021-11-30T07:14:37.133Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-11-30T08:32:27.547Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

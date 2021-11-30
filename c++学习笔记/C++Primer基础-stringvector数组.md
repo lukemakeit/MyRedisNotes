@@ -95,7 +95,7 @@ return 0;
     vector<int> v2; //空的vector对象
     for (int i=0;i!=100;++i)
         v2.push_back(i);
-
+    
     示例二:
     string word;
     vector<string> text;

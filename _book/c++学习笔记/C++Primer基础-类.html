@@ -1,0 +1,848 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>C++ Primer 基础: 类 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="C++Primer标准库-IO库.html" />
+    
+    
+    <link rel="prev" href="C++Primer基础-函数重载函数指针.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    README
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../redis-xue-xi/">
+            
+                <a href="../redis-xue-xi/">
+            
+                    
+                    Redis学习
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../redis学习/Redis备份.html">
+            
+                <a href="../redis学习/Redis备份.html">
+            
+                    
+                    Redis备份
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../redis学习/Redis复制.html">
+            
+                <a href="../redis学习/Redis复制.html">
+            
+                    
+                    Redis复制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../redis学习/Redis集群.html">
+            
+                <a href="../redis学习/Redis集群.html">
+            
+                    
+                    Redis集群
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../rocksdb-xue-xi/">
+            
+                <a href="../rocksdb-xue-xi/">
+            
+                    
+                    RocksDB学习
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../rocksdb学习/RocksDB基础概念.html">
+            
+                <a href="../rocksdb学习/RocksDB基础概念.html">
+            
+                    
+                    RocksDB基础概念
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../rocksdb学习/RocksDB基础操作-C语言.html">
+            
+                <a href="../rocksdb学习/RocksDB基础操作-C语言.html">
+            
+                    
+                    RocksDB基础操作-C语言
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../c语言笔记/">
+            
+                <a href="../c语言笔记/">
+            
+                    
+                    C语言笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../c语言笔记/C语言补充笔记一.html">
+            
+                <a href="../c语言笔记/C语言补充笔记一.html">
+            
+                    
+                    C语言补充笔记一
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    C++学习笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="C++Primer基础-引用指针const.html">
+            
+                <a href="C++Primer基础-引用指针const.html">
+            
+                    
+                    C++Primer基础:引用、指针、const、auto
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="C++Primer基础-stringvector数组.html">
+            
+                <a href="C++Primer基础-stringvector数组.html">
+            
+                    
+                    C++Primer基础: string、vector、数组
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="C++Primer基础-函数重载函数指针.html">
+            
+                <a href="C++Primer基础-函数重载函数指针.html">
+            
+                    
+                    C++Primer基础:函数、重载、函数指针
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.5.4" data-path="C++Primer基础-类.html">
+            
+                <a href="C++Primer基础-类.html">
+            
+                    
+                    C++ Primer 基础: 类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="C++Primer标准库-IO库.html">
+            
+                <a href="C++Primer标准库-IO库.html">
+            
+                    
+                    C++ Primer 标准库: IO库
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="C++Primer标准库-顺序容器.html">
+            
+                <a href="C++Primer标准库-顺序容器.html">
+            
+                    
+                    C++ Primer 标准库: 顺序容器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" data-path="C++Primer标准库-泛型算法.html">
+            
+                <a href="C++Primer标准库-泛型算法.html">
+            
+                    
+                    C++ Primer 标准库: 泛型算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8" data-path="C++Primer标准库-关联容器.html">
+            
+                <a href="C++Primer标准库-关联容器.html">
+            
+                    
+                    C++ Primer 标准库: 关联容器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.9" data-path="C++Primer标准库-动态内存.html">
+            
+                <a href="C++Primer标准库-动态内存.html">
+            
+                    
+                    C++ Primer 标准库: 动态内存
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.10" data-path="C++Primer类设计-拷贝控制.html">
+            
+                <a href="C++Primer类设计-拷贝控制.html">
+            
+                    
+                    C++ Primer 类设计: 拷贝控制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.11" data-path="C++Primer类设计-基类派生类虚函数.html">
+            
+                <a href="C++Primer类设计-基类派生类虚函数.html">
+            
+                    
+                    C++ Primer 类设计: 基类、派生类、虚函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.12" data-path="C++Primer类设计-模板与泛型编程.html">
+            
+                <a href="C++Primer类设计-模板与泛型编程.html">
+            
+                    
+                    C++ Primer 类设计:模板与泛型编程
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../工具使用/">
+            
+                <a href="../工具使用/">
+            
+                    
+                    工具使用
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../工具使用/VSCode使用小技巧.html">
+            
+                <a href="../工具使用/VSCode使用小技巧.html">
+            
+                    
+                    VS Code使用小技巧
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >C++ Primer 基础: 类</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="cprimer&#x57FA;&#x7840;-&#x7C7B;">C++Primer&#x57FA;&#x7840;: &#x7C7B;</h2>
+<ul>
+<li><p>&#x7C7B;&#x53EF;&#x4EE5;&#x5305;&#x542B;&#x591A;&#x4E2A;&#x6784;&#x9020;&#x51FD;&#x6570;&#xFF0C;&#x548C;&#x5176;&#x4ED6;&#x91CD;&#x6784;&#x51FD;&#x6570;&#x7C7B;&#x4F3C;&#x3002;&#x4E0D;&#x540C;&#x6784;&#x9020;&#x51FD;&#x6570;&#x4E4B;&#x95F4;&#x5FC5;&#x987B;&#x5728;&#x53C2;&#x6570;&#x6570;&#x91CF;&#x6216;&#x53C2;&#x6570;&#x7C7B;&#x578B;&#x4E0A;&#x6709;&#x6240;&#x533A;&#x522B;;</p>
+</li>
+<li><p>&#x5408;&#x6210;&#x7684;&#x9ED8;&#x8BA4;&#x6784;&#x9020;&#x51FD;&#x6570;</p>
+<p>&#x9ED8;&#x8BA4;&#x6784;&#x9020;&#x51FD;&#x6570;&#x6CA1;&#x6709;&#x4EFB;&#x4F55;&#x5B9E;&#x53C2;&#xFF0C;&#x7531;&#x7F16;&#x8BD1;&#x5668;&#x521B;&#x5EFA;:</p>
+<ul>
+<li><p>&#x5982;&#x679C;&#x5B58;&#x5728;&#x7C7B;&#x5185;&#x7684;&#x521D;&#x59CB;&#x503C;&#xFF0C;&#x7528;&#x5B83;&#x6765;&#x521D;&#x59CB;&#x5316;&#x6210;&#x5458;;</p>
+</li>
+<li><p>&#x5426;&#x5219;&#xFF0C;&#x9ED8;&#x8BA4;&#x521D;&#x59CB;&#x5316;&#x8BE5;&#x6210;&#x5458;;</p>
+</li>
+<li><p>&#x67D0;&#x4E9B;&#x7C7B;&#x4E0D;&#x80FD;&#x4F9D;&#x8D56;&#x4E8E;&#x5408;&#x6210;&#x7684;&#x9ED8;&#x8BA4;&#x6784;&#x9020;&#x51FD;&#x6570;:</p>
+<ul>
+<li><p>&#x4E00;&#x65E6;&#x6211;&#x4EEC;&#x5B9A;&#x4E49;&#x4E86;&#x5176;&#x4ED6;&#x6784;&#x9020;&#x51FD;&#x6570;&#xFF0C;&#x90A3;&#x4E48;&#x9664;&#x975E;&#x6211;&#x4EEC;&#x518D;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x9ED8;&#x8BA4;&#x7684;&#x6784;&#x9020;&#x51FD;&#x6570;&#xFF0C;&#x5426;&#x5219;&#x7C7B;&#x5C06;&#x6CA1;&#x6709;&#x9ED8;&#x8BA4;&#x6784;&#x9020;&#x51FD;&#x6570;&#xFF1B;</p>
+</li>
+<li><p>&#x5BF9;&#x4E8E;&#x67D0;&#x4E9B;&#x7C7B;&#x6765;&#x8BF4;&#xFF0C;&#x5408;&#x6210;&#x7684;&#x9ED8;&#x8BA4;&#x6784;&#x9020;&#x51FD;&#x6570;&#x53EF;&#x80FD;&#x6267;&#x884C;&#x51FA;&#x9519;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x5B9A;&#x4E49;&#x5728;&#x5757;&#x4E2D;&#x7684;&#x5185;&#x7F6E;&#x7C7B;&#x578B;&#x6216;&#x590D;&#x5408;&#x7C7B;&#x578B;(&#x6BD4;&#x5982;&#x6570;&#x7EC4;&#x548C;&#x6307;&#x9488;)&#x7684;&#x5BF9;&#x8C61;&#x88AB;&#x9ED8;&#x8BA4;&#x521D;&#x59CB;&#x5316;&#xFF0C;&#x5219;&#x5B83;&#x4EEC;&#x7684;&#x503C;&#x5C06;&#x662F;&#x672A;&#x5B9A;&#x4E49;&#x7684;&#x3002;</p>
+</li>
+<li><p>&#x6709;&#x65F6;&#x5019;&#x7F16;&#x8BD1;&#x5668;&#x4E0D;&#x80FD;&#x4E3A;&#x67D0;&#x4E9B;&#x7C7B;&#x5408;&#x6210;&#x9ED8;&#x8BA4;&#x6784;&#x9020;&#x51FD;&#x6570;&#xFF0C;&#x5982;&#xFF0C;&#x5982;&#x679C;&#x7C7B;&#x4E2D;&#x5305;&#x542B;&#x4E00;&#x4E2A;&#x5176;&#x4ED6;&#x7C7B;&#x7C7B;&#x578B;&#x7684;&#x6210;&#x5458;&#x4E14;&#x548C;&#x6210;&#x5458;&#x7684;&#x7C7B;&#x578B;&#x6CA1;&#x6709;&#x9ED8;&#x8BA4;&#x6784;&#x9020;&#x51FD;&#x6570;&#xFF0C;&#x90A3;&#x4E48;&#x7F16;&#x8BD1;&#x5668;&#x5C06;&#x65E0;&#x6CD5;&#x521D;&#x59CB;&#x5316;&#x8BE5;&#x6210;&#x5458;&#x3002;</p>
+<p>&#x5BF9;&#x4E8E;&#x8FD9;&#x79CD;&#x7C7B;&#x6765;&#x8BF4;&#xFF0C;&#x6211;&#x4EEC;&#x5FC5;&#x987B;&#x81EA;&#x5B9A;&#x4E49;&#x9ED8;&#x8BA4;&#x6784;&#x9020;&#x51FD;&#x6570;&#xFF0C;&#x5426;&#x5219;&#x8BE5;&#x7C7B;&#x6CA1;&#x6709;&#x53EF;&#x7528;&#x7684;&#x9ED8;&#x8BA4;&#x6784;&#x9020;&#x51FD;&#x6570;&#x3002;</p>
+<pre><code class="lang-cpp">Sales_data() = <span class="hljs-keyword">default</span>;
+Sales_data(<span class="hljs-keyword">const</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> &amp;s): bookNo(s) {}
+Sales_data(<span class="hljs-keyword">const</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> &amp;s,<span class="hljs-keyword">unsigned</span> cnt,<span class="hljs-keyword">double</span> price):bookNo(s),units_sold(cnt),revenue(cnt*price){}
+Sales_data(<span class="hljs-built_in">std</span>::istream &amp;);
+</code></pre>
+</li>
+<li><p><code>=default</code>&#x7684;&#x542B;&#x4E49;</p>
+<p>&#x901A;&#x8FC7;<code>Sales_data() = default</code>&#x6211;&#x4EEC;&#x624B;&#x52A8;&#x4E3A;<code>Sales_data</code>&#x7C7B;&#x751F;&#x6210;&#x4E86;&#x9ED8;&#x8BA4;&#x6784;&#x9020;&#x51FD;&#x6570;&#x3002;</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="&#x53CB;&#x5143;">&#x53CB;&#x5143;</h4>
+<p>&#x7C7B;&#x53EF;&#x4EE5;&#x5141;&#x8BB8;&#x5176;&#x4ED6;&#x7C7B; &#x6216; &#x51FD;&#x6570;&#x8BBF;&#x95EE;&#x5B83;&#x7684;&#x975E;public&#x6210;&#x5458;&#xFF0C;&#x65B9;&#x6CD5;&#x662F;&#x4EE4;&#x5176;&#x4ED6;&#x7C7B;&#x6216;&#x8005;&#x51FD;&#x6570;&#x6210;&#x4E3A;&#x4ED6;&#x7684;<strong>&#x53CB;&#x5143;(friend)</strong>&#x3002;</p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">class</span> Sales_data {
+<span class="hljs-function"><span class="hljs-keyword">friend</span> Sales_data <span class="hljs-title">add</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Sales_data &amp;,<span class="hljs-keyword">const</span> Sales_data &amp;)</span></span>;
+<span class="hljs-keyword">friend</span> <span class="hljs-built_in">std</span>::<span class="hljs-function">ostream &amp;<span class="hljs-title">print</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;,<span class="hljs-keyword">const</span> Sales_data &amp;)</span></span>;
+<span class="hljs-keyword">friend</span> <span class="hljs-built_in">std</span>::<span class="hljs-function">istream &amp;<span class="hljs-title">read</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::istream &amp;,Sales_data &amp;)</span></span>;
+...
+}
+
+<span class="hljs-function">Sales_data <span class="hljs-title">add</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Sales_data &amp;,<span class="hljs-keyword">const</span> Sales_data &amp;)</span></span>;
+<span class="hljs-built_in">std</span>::<span class="hljs-function">ostream &amp;<span class="hljs-title">print</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::ostream &amp;,<span class="hljs-keyword">const</span> Sales_data &amp;)</span></span>;
+<span class="hljs-built_in">std</span>::<span class="hljs-function">istream &amp;<span class="hljs-title">read</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::istream &amp;,Sales_data &amp;)</span></span>;
+</code></pre>
+<ul>
+<li><p>&#x53CB;&#x5143;&#x58F0;&#x660E;&#x53EA;&#x80FD;&#x51FA;&#x73B0;&#x5728;&#x7C7B;&#x5B9A;&#x4E49;&#x7684;&#x5185;&#x90E8;&#xFF0C;&#x4F46;&#x662F;&#x5728;&#x7C7B;&#x5185;&#x51FA;&#x73B0;&#x7684;&#x5177;&#x4F53;&#x4F4D;&#x7F6E;&#x4E0D;&#x9650;;</p>
+</li>
+<li><p>&#x53CB;&#x5143;&#x7684;&#x58F0;&#x660E;&#x4EC5;&#x4EC5;&#x6307;&#x5B9A;&#x4E86;&#x8BBF;&#x95EE;&#x7684;&#x6743;&#x9650;&#xFF0C;&#x800C;&#x975E;&#x4E00;&#x4E2A;&#x901A;&#x5E38;&#x610F;&#x4E49;&#x4E0A;&#x7684;&#x51FD;&#x6570;&#x58F0;&#x660E;&#x3002;</p>
+<p>&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x5FC5;&#x987B;&#x5728;&#x53CB;&#x5143;&#x58F0;&#x660E;&#x4E4B;&#x5916;&#x518D;&#x4E13;&#x95E8;&#x5BF9;&#x51FD;&#x6570;&#x8FDB;&#x884C;&#x4E00;&#x6B21;&#x58F0;&#x660E;&#x3002;</p>
+</li>
+<li><p>&#x901A;&#x5E38;&#x60C5;&#x51B5;&#xFF0C;&#x53CB;&#x5143;&#x7684;&#x58F0;&#x660E; &#x548C; &#x7C7B;&#x672C;&#x8EAB;&#x653E;&#x7F6E;&#x5728;&#x4E00;&#x4E2A;&#x6295;&#x6587;&#x4EF6;&#x4E2D;&#xFF1B;</p>
+</li>
+</ul>
+<h4 id="&#x7C7B;&#x7684;&#x5176;&#x4ED6;&#x7279;&#x6027;">&#x7C7B;&#x7684;&#x5176;&#x4ED6;&#x7279;&#x6027;</h4>
+<ul>
+<li><p>&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x7C7B;&#x578B;&#x6210;&#x5458;</p>
+<p>Screen&#x8868;&#x793A;&#x663E;&#x793A;&#x5668;&#x4E2D;&#x4E00;&#x4E2A;&#x7A97;&#x53E3;&#x3002;&#x6BCF;&#x4E2A;Screen&#x5305;&#x542B;&#x4E00;&#x4E2A;&#x7528;&#x4E8E;&#x4FDD;&#x5B58;Screen&#x5185;&#x5BB9;&#x7684;string&#x6210;&#x5458;&#x548C;<code>cursor</code>&#x3001;<code>height</code>&#x3001;<code>width</code>&#x4E09;&#x4E2A;&#x6210;&#x5458;&#xFF0C;&#x5206;&#x522B;&#x8868;&#x793A;&#x5149;&#x6807;&#x4F4D;&#x7F6E;&#x4EE5;&#x53CA;&#x5C4F;&#x5E55;&#x7684;&#x9AD8;&#x548C;&#x5BBD;&#x3002;</p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">class</span> Screen {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-keyword">typedef</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span>::size_type pos;
+    &#x6216;&#x8005;
+    <span class="hljs-keyword">using</span> pos = <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span>::size_type;
+
+    Screen() = <span class="hljs-keyword">default</span>; <span class="hljs-comment">// &#x56E0;&#x4E3A;Screen&#x6709;&#x5176;&#x4ED6;&#x6784;&#x9020;&#x51FD;&#x6570;&#xFF0C;&#x6240;&#x4EE5;&#x672C;&#x51FD;&#x6570;&#x662F;&#x5FC5;&#x9700;&#x7684;</span>
+    <span class="hljs-comment">// cursor &#x88AB;&#x5176;&#x7C7B;&#x5185;&#x521D;&#x59CB;&#x503C;&#x521D;&#x59CB;&#x5316;&#x4E3A;0</span>
+    Screen(pos ht, pos wd, <span class="hljs-keyword">char</span> c): height(ht), width(wd),
+    contents(ht * wd, c) { }
+    <span class="hljs-function"><span class="hljs-keyword">char</span> <span class="hljs-title">get</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> <span class="hljs-comment">// &#x8BFB;&#x53D6;&#x5149;&#x6807;&#x5904;&#x7684;&#x5B57;&#x7B26;</span>
+    </span>{ <span class="hljs-keyword">return</span> contents[cursor]; } <span class="hljs-comment">// &#x9690;&#x58EB;&#x5185;&#x8054;</span>
+    <span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">char</span> <span class="hljs-title">get</span><span class="hljs-params">(pos ht, pos wd)</span> <span class="hljs-keyword">const</span></span>; <span class="hljs-comment">// &#x663E;&#x793A;&#x5185;&#x8054;</span>
+    <span class="hljs-function">Screen &amp;<span class="hljs-title">move</span><span class="hljs-params">(pos r, pos c)</span></span>; <span class="hljs-comment">// &#x4E4B;&#x540E;&#x518D;&#x5185;&#x8054;</span>
+<span class="hljs-keyword">private</span>:
+    pos cursor = <span class="hljs-number">0</span>;
+    pos height = <span class="hljs-number">0</span>, width = <span class="hljs-number">0</span>;
+    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> contents;
+};
+</code></pre>
+</li>
+<li><p>&#x53EF;&#x53D8;&#x6570;&#x636E;&#x6210;&#x5458;:<code>mutable</code></p>
+<p>&#x4E00;&#x4E2A;&#x53EF;&#x53D8;&#x6570;&#x636E;&#x6210;&#x5458;(mutable data number)&#x6C38;&#x8FDC;&#x4E0D;&#x4F1A;&#x662F;const&#xFF0C;&#x5373;&#x4F7F;&#x5B83;&#x662F;const&#x5BF9;&#x8C61;&#x7684;&#x6210;&#x5458;&#x3002;</p>
+<p>&#x5982;&#x4E0B;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;&#x7ED9;Screen&#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x540D;&#x4E3A;<code>access_ctr</code>&#x7684;&#x53EF;&#x53D8;&#x6210;&#x5458;&#xFF0C;&#x901A;&#x8FC7;&#x5B83;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x8FFD;&#x8E2A;&#x6BCF;&#x4E2A;Screen&#x6210;&#x5458;&#x51FD;&#x6570;&#x88AB;&#x8C03;&#x7528;&#x8FC7;&#x591A;&#x5C11;&#x6B21;&#x3002;</p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">class</span> Screen {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">some_member</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+<span class="hljs-keyword">private</span>:
+    <span class="hljs-keyword">mutable</span> <span class="hljs-keyword">size_t</span> access_ctr; <span class="hljs-comment">// &#x5373;&#x4F7F;&#x5728;&#x4E00;&#x4E2A;const&#x5BF9;&#x8C61;&#x5185;&#x4E5F;&#x53EF;&#x4EE5;&#x88AB;&#x4FEE;&#x6539;</span>
+    <span class="hljs-comment">// other members as before</span>
+};
+<span class="hljs-keyword">void</span> Screen::some_member() <span class="hljs-keyword">const</span>
+{
+    ++access_ctr; <span class="hljs-comment">// &#x4FDD;&#x5B58;&#x4E00;&#x4E2A;&#x8BA1;&#x6570;&#x503C;&#xFF0C;&#x7528;&#x4E8E;&#x8BB0;&#x5F55;&#x6210;&#x5458;&#x51FD;&#x6570;&#x88AB;&#x8C03;&#x7528;&#x7684;&#x6B21;&#x6570;</span>
+    <span class="hljs-comment">// whatever other work this member needs to do</span>
+}
+</code></pre>
+</li>
+<li><p>&#x7C7B;&#x6570;&#x636E;&#x6210;&#x5458;&#x7684;&#x521D;&#x59CB;&#x503C;</p>
+<p>&#x6211;&#x4EEC;&#x7EE7;&#x7EED;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x7A97;&#x53E3;&#x7BA1;&#x7406;&#x7C7B;&#x5E76;&#x7528;&#x5B83;&#x8868;&#x793A;&#x663E;&#x793A;&#x5668;&#x4E0A;&#x7684;&#x4E00;&#x7EC4;Screen&#x3002;</p>
+<p>&#x540C;&#x65F6;&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x6211;&#x4EEC;&#x5E0C;&#x671B;<code>Window_mgr</code>&#x7C7B;&#x5F00;&#x59CB;&#x65F6;&#x603B;&#x662F;&#x6709;&#x9ED8;&#x8BA4;&#x521D;&#x59CB;&#x5316;&#x7684;Screen&#x3002;</p>
+<p>&#x5728;C++11&#x65B0;&#x6807;&#x51C6;&#x4E2D;&#xFF0C;&#x6700;&#x597D;&#x7684;&#x65B9;&#x5F0F;&#x5C31;&#x662F;&#x628A;&#x8FD9;&#x4E2A;&#x9ED8;&#x8BA4;&#x503C;&#x58F0;&#x660E;&#x6210;&#x4E00;&#x4E2A;&#x7C7B;&#x5185;&#x521D;&#x59CB;&#x503C;&#x3002;</p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">class</span> Window_mgr {
+<span class="hljs-keyword">private</span>:
+    <span class="hljs-comment">// Screens this Window_mgr is tracking</span>
+    <span class="hljs-comment">// by default, a Window_mgr has one standard sized blank Screen</span>
+    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;Screen&gt; screens{Screen(<span class="hljs-number">24</span>, <span class="hljs-number">80</span>, <span class="hljs-string">&apos; &apos;</span>) };
+};
+</code></pre>
+</li>
+<li><p>&#x8FD4;&#x56DE;<code>*this</code>&#x7684;&#x6210;&#x5458;&#x51FD;&#x6570;</p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">class</span> Screen {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function">Screen &amp;<span class="hljs-title">set</span><span class="hljs-params">(<span class="hljs-keyword">char</span>)</span></span>;
+    <span class="hljs-function">Screen &amp;<span class="hljs-title">set</span><span class="hljs-params">(pos, pos, <span class="hljs-keyword">char</span>)</span></span>;
+    <span class="hljs-comment">// other members as before</span>
+};
+<span class="hljs-keyword">inline</span> Screen &amp;Screen::<span class="hljs-built_in">set</span>(<span class="hljs-keyword">char</span> c)
+{
+    contents[cursor] = c; <span class="hljs-comment">// set the new value at the current cursor location</span>
+    <span class="hljs-keyword">return</span> *<span class="hljs-keyword">this</span>; <span class="hljs-comment">// return this object as an lvalue</span>
+}
+<span class="hljs-keyword">inline</span> Screen &amp;Screen::<span class="hljs-built_in">set</span>(pos r, pos col, <span class="hljs-keyword">char</span> ch)
+{
+    contents[r*width + col] = ch; <span class="hljs-comment">// set specified location to given value</span>
+    <span class="hljs-keyword">return</span> *<span class="hljs-keyword">this</span>; <span class="hljs-comment">// return this object as an lvalue</span>
+}
+</code></pre>
+<p>&#x5982;&#x4E0A;&#x6211;&#x4EEC;&#x5C31;&#x53EF;&#x4EE5;&#x50CF;&#x4E0B;&#x9762;&#x65B9;&#x6CD5;&#x64CD;&#x4F5C;&#x5C4F;&#x5E55;&#x5185;&#x5BB9;:</p>
+<pre><code class="lang-cpp"><span class="hljs-comment">// move the cursor to a given position, and set that character</span>
+myScreen.move(<span class="hljs-number">4</span>,<span class="hljs-number">0</span>).<span class="hljs-built_in">set</span>(<span class="hljs-string">&apos;#&apos;</span>);
+</code></pre>
+</li>
+</ul>
+<h4 id="&#x53CB;&#x5143;&#x518D;&#x63A2;">&#x53CB;&#x5143;&#x518D;&#x63A2;</h4>
+<h4 id="&#x7C7B;&#x4E4B;&#x95F4;&#x7684;&#x53CB;&#x5143;&#x5173;&#x7CFB;">&#x7C7B;&#x4E4B;&#x95F4;&#x7684;&#x53CB;&#x5143;&#x5173;&#x7CFB;</h4>
+<p>&#x5982;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x4E3A;<code>Window_mgr</code>&#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x540D;&#x4E3A;<code>clear</code>&#x7684;&#x6210;&#x5458;&#xFF0C;&#x5B83;&#x8D1F;&#x8D23;&#x628A;&#x4E00;&#x4E2A;&#x6307;&#x5B9A;&#x7684;Screen&#x7684;&#x5185;&#x5BB9;&#x90FD;&#x8BBE;&#x4E3A;&#x7A7A;&#x767D;&#x3002;</p>
+<p>&#x4E3A;&#x4E86;&#x5B8C;&#x6210;&#x8FD9;&#x4E00;&#x4EFB;&#x52A1;&#xFF0C;clear&#x9700;&#x8981;&#x8BBF;&#x95EE;Screen&#x7684;&#x79C1;&#x6709;&#x6210;&#x5458;&#x3002;&#x56E0;&#x6B64;Screen&#x5FC5;&#x987B;&#x628A;Window_mgr&#x6307;&#x5B9A;&#x4E3A;&#x5B83;&#x7684;&#x53CB;&#x5143;</p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">class</span> Screen {
+    <span class="hljs-comment">// Window_mgr members can access the private parts of class Screen</span>
+    <span class="hljs-keyword">friend</span> <span class="hljs-keyword">class</span> Window_mgr;
+    <span class="hljs-comment">// ... rest of the Screen class</span>
+};
+
+<span class="hljs-keyword">class</span> Window_mgr {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-comment">// location ID for each screen on the window</span>
+    <span class="hljs-keyword">using</span> ScreenIndex = <span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;Screen&gt;::size_type;
+    <span class="hljs-comment">// reset the Screen at the given position to all blanks</span>
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">clear</span><span class="hljs-params">(ScreenIndex)</span></span>;
+<span class="hljs-keyword">private</span>:
+    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;Screen&gt; screens{Screen(<span class="hljs-number">24</span>, <span class="hljs-number">80</span>, <span class="hljs-string">&apos; &apos;</span>)};
+};
+<span class="hljs-keyword">void</span> Window_mgr::clear(ScreenIndex i)
+{
+    <span class="hljs-comment">// s is a reference to the Screen we want to clear</span>
+    Screen &amp;s = screens[i];
+    <span class="hljs-comment">// reset the contents of that Screen to all blanks</span>
+    s.contents = <span class="hljs-built_in">string</span>(s.height * s.width, <span class="hljs-string">&apos; &apos;</span>);
+}
+</code></pre>
+<ul>
+<li><p>&#x5982;&#x679C;&#x4E00;&#x4E2A;&#x7C7B;&#x6307;&#x5B9A;&#x4E86;&#x53CB;&#x5143;&#x7C7B;&#xFF0C;&#x5219;&#x53CB;&#x5143;&#x7C7B;&#x7684;&#x6210;&#x5458;&#x51FD;&#x6570;&#x53EF;&#x4EE5;&#x8BBF;&#x95EE;&#x6B64;&#x7C7B;&#x5305;&#x62EC;&#x975E;&#x516C;&#x6709;&#x6210;&#x5458;&#x5728;&#x5185;&#x7684;&#x6240;&#x6709;&#x6210;&#x5458;&#x3002;</p>
+</li>
+<li><p>&#x53CB;&#x5143;&#x4E0D;&#x5B58;&#x5728;&#x4F20;&#x9012;&#x6027;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;<code>Window_mgr</code>&#x6709;&#x5B83;&#x81EA;&#x5DF1;&#x7684;&#x53CB;&#x5143;&#xFF0C;&#x5219;&#x8FD9;&#x4E9B;&#x53CB;&#x5143;&#x5E76;&#x4E0D;&#x80FD;&#x7406;&#x6240;&#x5F53;&#x7136;&#x5730;&#x5177;&#x6709;&#x8BBF;&#x95EE;Screen&#x7684;&#x7279;&#x6743;&#x3002;&#x6BCF;&#x4E2A;&#x7C7B;&#x8D1F;&#x8D23;&#x63A7;&#x5236;&#x81EA;&#x5DF1;&#x7684;&#x53CB;&#x5143;&#x7C7B;&#x6216;&#x8005;&#x53CB;&#x5143;&#x51FD;&#x6570;&#x3002;</p>
+</li>
+</ul>
+<h4 id="&#x4EE4;&#x6210;&#x5458;&#x51FD;&#x6570;&#x4F5C;&#x4E3A;&#x53CB;&#x5143;">&#x4EE4;&#x6210;&#x5458;&#x51FD;&#x6570;&#x4F5C;&#x4E3A;&#x53CB;&#x5143;</h4>
+<pre><code class="lang-cpp"><span class="hljs-keyword">class</span> Screen {
+    <span class="hljs-comment">// Window_mgr::clear must have been declared before class Screen</span>
+    <span class="hljs-keyword">friend</span> <span class="hljs-keyword">void</span> Window_mgr::clear(ScreenIndex);
+    <span class="hljs-comment">// ... rest of the Screen class</span>
+};
+</code></pre>
+<p>&#x5982;&#x679C;&#x60F3;&#x4EE4;&#x67D0;&#x4E2A;&#x6210;&#x5458;&#x51FD;&#x6570;&#x4F5C;&#x4E3A;&#x53CB;&#x5143;&#xFF0C;&#x6211;&#x4EEC;&#x5FC5;&#x987B;&#x4ED4;&#x7EC6;&#x7EC4;&#x7EC7;&#x7A0B;&#x5E8F;&#x7ED3;&#x6784;&#x4EE5;&#x6EE1;&#x8DB3;&#x58F0;&#x660E; &#x5B9A;&#x4E49;&#x7684;&#x5F7C;&#x6B64;&#x4F9D;&#x8D56;&#x5173;&#x7CFB;:</p>
+<ul>
+<li><p>&#x9996;&#x5148;&#x5B9A;&#x4E49;<code>Window_mgr</code>&#x7C7B;&#xFF0C;&#x5176;&#x4E2D;&#x58F0;&#x660E;clear&#x51FD;&#x6570;&#xFF0C;&#x4F46;&#x4E0D;&#x80FD;&#x5B9A;&#x4E49;&#x5B83;&#x3002;&#x5728;clear&#x4F7F;&#x7528;Screen&#x7684;&#x6210;&#x5458;&#x4E4B;&#x524D;&#x5FC5;&#x987B;&#x5148;&#x58F0;&#x660E;Screen;</p>
+</li>
+<li><p>&#x63A5;&#x4E0B;&#x6765;&#x5B9A;&#x4E49;Screen&#xFF0C;&#x5305;&#x62EC;&#x5BF9;&#x4E8E;clear&#x7684;&#x53CB;&#x5143;&#x58F0;&#x660E;&#xFF1B;</p>
+</li>
+<li><p>&#x6700;&#x540E;&#x5B9A;&#x4E49;clear&#xFF0C;&#x6B64;&#x65F6;&#x5B83;&#x624D;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;Screen&#x7684;&#x6210;&#x5458;&#x3002;</p>
+</li>
+</ul>
+<h4 id="&#x7C7B;&#x7684;&#x4F5C;&#x7528;&#x57DF;">&#x7C7B;&#x7684;&#x4F5C;&#x7528;&#x57DF;</h4>
+<ul>
+<li><p>&#x4F5C;&#x7528;&#x57DF;&#x548C;&#x5B9A;&#x4E49;&#x5728;&#x7C7B;&#x5916;&#x90E8;&#x7684;&#x6210;&#x5458;</p>
+<p>&#x4E00;&#x65E6;&#x9047;&#x5230;&#x7C7B;&#x540D;&#xFF0C;&#x5B9A;&#x4E49;&#x7684;&#x5269;&#x4F59;&#x90E8;&#x95E8;&#x5C31;&#x662F;&#x5728;&#x7C7B;&#x7684;&#x4F5C;&#x7528;&#x57DF;&#x4E2D;&#x4E86;&#x3002;&#x8FD9;&#x91CC;&#x7684;&#x5269;&#x4F59;&#x90E8;&#x5206;&#x5305;&#x62EC;&#x53C2;&#x6570;&#x5217;&#x8868;&#x548C;&#x51FD;&#x6570;&#x4F53;&#x3002;</p>
+<p><img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20211128213322443.png" alt="image-20211128213322443"></p>
+</li>
+<li><p>&#x53E6;&#x4E00;&#x65B9;&#x9762;&#xFF0C;&#x51FD;&#x6570;&#x7684;&#x8FD4;&#x56DE;&#x7C7B;&#x578B;&#x901A;&#x5E38;&#x51FA;&#x73B0;&#x5728;&#x51FD;&#x6570;&#x540D;&#x4E4B;&#x524D;&#x3002;</p>
+<p>&#x56E0;&#x6B64;&#x5F53;&#x6210;&#x5458;&#x51FD;&#x6570;&#x5B9A;&#x4E49;&#x5728;&#x7C7B;&#x7684;&#x5916;&#x90E8;&#x65F6;&#xFF0C;&#x8FD4;&#x56DE;&#x7C7B;&#x578B;&#x4E2D;&#x4F7F;&#x7528;&#x7684;&#x540D;&#x5B57;&#x90FD;&#x4F4D;&#x4E8E;&#x7C7B;&#x7684;&#x4F5C;&#x7528;&#x57DF;&#x4E4B;&#x5916;&#x3002;</p>
+<p>&#x56E0;&#x6B64;&#x8FD4;&#x56DE;&#x7C7B;&#x578B;&#x5FC5;&#x987B;&#x6307;&#x660E;&#x5B83;&#x662F;&#x54EA;&#x4E2A;&#x7C7B;&#x7684;&#x6210;&#x5458;:</p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">class</span> Window_mgr {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-comment">// add a Screen to the window and returns its index</span>
+    <span class="hljs-function">ScreenIndex <span class="hljs-title">addScreen</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Screen&amp;)</span></span>;
+    <span class="hljs-comment">// other members as before</span>
+};
+
+<span class="hljs-comment">// return type is seen before we&apos;re in the scope of Window_mgr</span>
+Window_mgr::ScreenIndex
+Window_mgr::addScreen(<span class="hljs-keyword">const</span> Screen &amp;s)
+{
+    screens.push_back(s);
+    <span class="hljs-keyword">return</span> screens.size() - <span class="hljs-number">1</span>;
+}
+</code></pre>
+<p><img src="../Users/lukexwang/Library/Application Support/typora-user-images/image-20211128213544067.png" alt="image-20211128213544067"></p>
+</li>
+</ul>
+<h3 id="&#x6784;&#x9020;&#x51FD;&#x6570;&#x518D;&#x63A2;">&#x6784;&#x9020;&#x51FD;&#x6570;&#x518D;&#x63A2;</h3>
+<ul>
+<li><p>&#x6784;&#x9020;&#x51FD;&#x6570;&#x521D;&#x59CB;&#x503C;&#x5217;&#x8868;</p>
+<p>&#x4E0B;&#x9762;&#x8FD9;&#x79CD;&#x5199;&#x6CD5;&#x5E76;&#x4E0D;&#x597D;&#xFF0C;&#x5148;&#x521D;&#x59CB;&#x5316;&#x518D;&#x8D4B;&#x503C;:</p>
+<pre><code class="lang-cpp"><span class="hljs-comment">// legal but sloppier way to write the Sales_data constructor: no constructor initializers</span>
+Sales_data::Sales_data(<span class="hljs-keyword">const</span> <span class="hljs-built_in">string</span> &amp;s,
+    <span class="hljs-keyword">unsigned</span> cnt, <span class="hljs-keyword">double</span> price)
+{
+    bookNo = s;
+    units_sold = cnt;
+    revenue = cnt * price;
+}
+</code></pre>
+</li>
+<li><p>&#x6784;&#x9020;&#x51FD;&#x6570;&#x548C;&#x521D;&#x59CB;&#x503C;&#x6709;&#x65F6;&#x5FC5;&#x4E0D;&#x53EF;&#x5C11;</p>
+<ul>
+<li><p>&#x6709;&#x65F6;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5FFD;&#x7565;&#x6570;&#x636E;&#x6210;&#x5458;&#x521D;&#x59CB;&#x5316;&#x548C;&#x8D4B;&#x503C;&#x4E4B;&#x95F4;&#x7684;&#x5DEE;&#x5F02;&#xFF0C;&#x4F46;&#x5E76;&#x975E;&#x603B;&#x80FD;&#x8FD9;&#x6837;&#xFF1B;</p>
+</li>
+<li><p><strong>&#x5982;&#x679C;&#x6210;&#x5458;&#x662F;const&#x6216;&#x8005;&#x5F15;&#x7528;&#x7684;&#x8BDD;&#xFF0C;&#x5FC5;&#x987B;&#x5C06;&#x5176;&#x521D;&#x59CB;&#x5316;&#xFF1B;</strong></p>
+</li>
+<li><p><strong>&#x5982;&#x679C;&#x6210;&#x5458;&#x662F;&#x67D0;&#x79CD;&#x7C7B;&#x578B;&#x4E14;&#x6CA1;&#x6709;&#x9ED8;&#x8BA4;&#x6784;&#x9020;&#x51FD;&#x6570;&#x65F6;&#xFF0C;&#x4E5F;&#x5FC5;&#x987B;&#x5C06;&#x8FD9;&#x4E2A;&#x6210;&#x5458;&#x521D;&#x59CB;&#x5316;</strong>;</p>
+<pre><code class="lang-cpp">&#x793A;&#x4F8B;&#x4E00;:
+<span class="hljs-keyword">class</span> ConstRef {
+<span class="hljs-keyword">public</span>:
+    ConstRef(<span class="hljs-keyword">int</span> ii);
+<span class="hljs-keyword">private</span>:
+    <span class="hljs-keyword">int</span> i;
+    <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> ci;
+    <span class="hljs-keyword">int</span> &amp;ri;
+};
+&#x4E0B;&#x9762;&#x8FD9;&#x79CD;&#x5199;&#x6CD5;&#x5C31;&#x662F;&#x9519;&#x8BEF;&#x7684;: ci&#x3001;ri&#x5FC5;&#x987B;&#x521D;&#x59CB;&#x5316;
+ConstRef::ConstRef(<span class="hljs-keyword">int</span> ii)
+{ <span class="hljs-comment">// assignments:</span>
+    i = ii; <span class="hljs-comment">// ok</span>
+    ci = ii; <span class="hljs-comment">// error: cannot assign to a const</span>
+    ri = i; <span class="hljs-comment">// error: ri was never initialized</span>
+}
+&#x6B63;&#x786E;&#x7684;&#x5199;&#x6CD5;:
+ConstRef::ConstRef(<span class="hljs-keyword">int</span> ii): i(ii), ci(ii), ri(i) { }
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p>&#x6210;&#x5458;&#x521D;&#x59CB;&#x5316;&#x7684;&#x987A;&#x5E8F;</p>
+<ul>
+<li><p>&#x6210;&#x5458;&#x521D;&#x59CB;&#x5316;&#x7684;&#x987A;&#x5E8F;&#x4E0E;&#x4ED6;&#x4EEC;&#x5728;&#x7C7B;&#x4E2D;&#x5B9A;&#x4E49;&#x51FA;&#x73B0;&#x987A;&#x5E8F;&#x4E00;&#x81F4;&#xFF1B;</p>
+</li>
+<li><p>&#x7B2C;&#x4E00;&#x4E2A;&#x6210;&#x5458;&#x5148;&#x88AB;&#x521D;&#x59CB;&#x5316;&#xFF0C;&#x7136;&#x800C;&#x7B2C;&#x4E8C;&#x4E2A;&#xFF1B;</p>
+</li>
+<li><p>&#x6784;&#x9020;&#x51FD;&#x6570;&#x521D;&#x59CB;&#x503C;&#x5217;&#x8868;&#x4E2D;&#x521D;&#x59CB;&#x503C;&#x7684;&#x524D;&#x540E;&#x4F4D;&#x7F6E;&#x5173;&#x7CFB;&#x4E0D;&#x4F1A;&#x5F71;&#x54CD;&#x5B9E;&#x9645;&#x7684;&#x521D;&#x59CB;&#x5316;&#x987A;&#x5E8F;&#x3002;</p>
+</li>
+<li><p>&#x4E00;&#x822C;&#x6765;&#x8BF4;&#xFF0C;&#x521D;&#x59CB;&#x5316;&#x987A;&#x5E8F;&#x8BBE;&#x8BA1;&#x6CA1;&#x4EC0;&#x4E48;&#x7279;&#x522B;&#x8981;&#x6C42;&#x3002;&#x4E0D;&#x8FC7;&#x5982;&#x679C;&#x4E00;&#x4E2A;&#x6210;&#x5458;&#x662F;&#x7528;&#x53E6;&#x4E00;&#x4E2A;&#x6210;&#x5458;&#x6765;&#x521D;&#x59CB;&#x5316;&#xFF0C;&#x5219;&#x4E24;&#x4E2A;&#x6210;&#x5458;&#x7684;&#x521D;&#x59CB;&#x5316;&#x987A;&#x5E8F;&#x5F88;&#x5173;&#x952E;&#x3002;</p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">class</span> X {
+    <span class="hljs-keyword">int</span> i;
+    <span class="hljs-keyword">int</span> j;
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-comment">// undefined: i is initialized before j</span>
+    X(<span class="hljs-keyword">int</span> val): j(val), i(j) { }
+};
+</code></pre>
+<p>&#x8FD9;&#x4E2A;&#x4F8B;&#x5B50;&#x4E2D;&#xFF0C;&#x4ECE;&#x6784;&#x9020;&#x51FD;&#x6570;&#x521D;&#x59CB;&#x503C;&#x5F62;&#x5F0F;&#x6765;&#x770B;&#x4EFF;&#x4F5B;&#x5148;&#x7528;val&#x521D;&#x59CB;&#x5316;j&#xFF0C;&#x7136;&#x540E;&#x7528;j&#x521D;&#x59CB;&#x5316;i&#x3002;&#x5B9E;&#x9645;&#x4E0A;&#xFF0C;i&#x5148;&#x521D;&#x59CB;&#x5316;&#xFF0C;&#x6B64;&#x65F6;j&#x662F;&#x672A;&#x5B9A;&#x4E49;&#x7684;0&#x503C;&#x3002;&#x66FF;&#x6362;&#x5199;&#x6CD5;:</p>
+<pre><code class="lang-cpp">X(<span class="hljs-keyword">int</span> val): i(val), j(val) { }
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="C++Primer基础-函数重载函数指针.html" class="navigation navigation-prev " aria-label="Previous page: C++Primer基础:函数、重载、函数指针">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="C++Primer标准库-IO库.html" class="navigation navigation-next " aria-label="Next page: C++ Primer 标准库: IO库">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"C++ Primer 基础: 类","level":"1.5.4","depth":2,"next":{"title":"C++ Primer 标准库: IO库","level":"1.5.5","depth":2,"path":"c++学习笔记/C++Primer标准库-IO库.md","ref":"c++学习笔记/C++Primer标准库-IO库.md","articles":[]},"previous":{"title":"C++Primer基础:函数、重载、函数指针","level":"1.5.3","depth":2,"path":"c++学习笔记/C++Primer基础-函数重载函数指针.md","ref":"c++学习笔记/C++Primer基础-函数重载函数指针.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"c++学习笔记/C++Primer基础-类.md","mtime":"2021-11-28T14:58:52.956Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-11-30T08:32:27.547Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
