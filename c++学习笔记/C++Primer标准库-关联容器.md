@@ -251,7 +251,7 @@ cout << word_count["Anna"]; // 提取元素并打印它；会打印出2
 ```cpp
 set<int> iset = {0,1,2,3,4,5,6,7,8,9};
 iset.find(1); // 返回一个迭代器，指向 key ==1 的元素
-iset.find(11); // 单号一个迭代器，其值等于iset.end()
+iset.find(11); // 返回一个迭代器，其值等于iset.end()
 iset.count(1); // returns 1
 iset.count(11); // returns 0
 ```

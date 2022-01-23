@@ -1,4 +1,4 @@
-## C++Primer基础:引用、指针、const
+## C++Primer基础:引用、指针、const、auto/decltype
 
 ### **引用**
 
@@ -216,17 +216,39 @@ typedef wages base,*p; //base是一个double同义词，p是double *的同义词
 using SI=Sales_item; //SI是Sables_item的同义词
 ```
 
-**auto类型说明符**
+**auto**
+
+原文文档:[一文吃透C++11中auto和decltype知识点](https://mp.weixin.qq.com/s/3BQ2JlVQsE0sm6eDNa5AdA)
 
 ```cpp
 auto item=val1+val2;// 有编译器根据val1 和 val2相加的结果自动推断出item的类型
 auto i=0,*p=&i; //正确: i是整数，p是整数指针
+auto c[10] = a; // error，auto不能定义数组，可以定义指针
 auto sz=0, pi=3.14; //错误，sz 和 pi的类型不一致
+auto e; //错误,使用auto必须马上初始化,否则无法推导类型
+
+const auto d = i; // d是const int
+auto e = d; // e是int, 注意不包含 const
+
+const auto& f = e; // f是const int&
+auto &g = f; // g是const int&
 ```
 
-**decltype类型指示符**
+注意: 
 
-这种情况下使用: **希望从表达式的类型推断出要定的变量的类型，但不想用该表达式的值初始化变量。**
+- 在不声明为引用或指针时，auto会忽略等号右边的引用类型和cost/volatile限定;
+- 在声明为引用或者指针时，auto会保留等号右边的引用和const/volatile属性;
+
+**decltype**
+
+原文文档:[一文吃透C++11中auto和decltype知识点](https://mp.weixin.qq.com/s/3BQ2JlVQsE0sm6eDNa5AdA)
+
+对于decltype(exp)有
+
+- exp是表达式，decltype(exp)和exp类型相同;
+- exp是函数调用，decltype(exp)和函数返回值类型相同;
+- 其它情况，若exp是左值，decltype(exp)是exp类型的左值引用
+- 注意：decltype不会像auto一样忽略引用和cv属性，decltype会保留表达式的引用和cv属性
 
 ```cpp
 decltype(f()) sum=x; //sum的类型就是函数f的返回值类型
@@ -239,4 +261,43 @@ const int ci=0,&cj=ci;
 decltype(ci) x=0; //x的类型是const int
 decltype(cj) y=x; //y的类型是const int &,y绑定到变量x
 decltype(cj) z; //错误: z是一个引用，必须初始化
+
+int a = 0, b = 0;
+decltype(a + b) c = 0; // c是int，因为(a+b)返回一个右值
+decltype(a += b) d = c;// d是int&，因为(a+=b)返回一个左值
+d = 20;
+cout << "c " << c << endl; // 输出c 20
 ```
+
+**auto和decltype的配合使用**
+
+auto和decltype一般配合使用在推导函数返回值的类型问题上。
+
+下面这段代码
+
+```cpp
+template<typename T, typename U>
+return_value add(T t, U u) { // t和v类型不确定，无法推导出return_value类型
+    return t + u;
+}
+```
+
+上面代码由于t和u类型不确定，那如何推导出返回值类型呢，我们可能会想到这种
+
+```cpp
+template<typename T, typename U>
+decltype(t + u) add(T t, U u) { // t和u尚未定义
+    return t + u;
+}
+```
+
+这段代码在C++11上是编译不过的，因为在decltype(t +u)推导时，t和u尚未定义，就会编译出错，所以有了下面的叫做返回类型后置的配合使用方法：
+
+```cpp
+template<typename T, typename U>
+auto add(T t, U u) -> decltype(t + u) {
+    return t + u;
+}
+```
+
+<mark style="color:red">**返回值后置类型语法就是为了解决函数返回值类型依赖于参数但却难以确定返回值类型的问题**</mark>。

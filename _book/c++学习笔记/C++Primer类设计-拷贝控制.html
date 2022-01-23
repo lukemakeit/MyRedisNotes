@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>C++ Primer 类设计: 拷贝控制 · GitBook</title>
+        <title>C++ Primer 类设计: 拷贝控制、explicit · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -102,9 +102,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2" data-path="../redis-xue-xi/">
+        <li class="chapter " data-level="1.2" data-path="../redis学习/">
             
-                <a href="../redis-xue-xi/">
+                <a href="../redis学习/">
             
                     
                     Redis学习
@@ -160,9 +160,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3" data-path="../rocksdb-xue-xi/">
+        <li class="chapter " data-level="1.3" data-path="../rocksdb-xue-xi/README.md">
             
-                <a href="../rocksdb-xue-xi/">
+                <span>
             
                     
                     RocksDB学习
@@ -251,12 +251,12 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.5.1" data-path="C++Primer基础-引用指针const.html">
+        <li class="chapter " data-level="1.5.1" data-path="C++Primer基础-01引用指针const.html">
             
-                <a href="C++Primer基础-引用指针const.html">
+                <a href="C++Primer基础-01引用指针const.html">
             
                     
-                    C++Primer基础:引用、指针、const、auto
+                    C++Primer基础:引用、指针、const、auto/decltype
             
                 </a>
             
@@ -264,9 +264,22 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.2" data-path="C++Primer基础-stringvector数组.html">
+        <li class="chapter " data-level="1.5.2" data-path="C++Primer基础-02volatile与using.html">
             
-                <a href="C++Primer基础-stringvector数组.html">
+                <a href="C++Primer基础-02volatile与using.html">
+            
+                    
+                    C++Primer基础:volatile、using
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="C++Primer基础-03stringvector数组.html">
+            
+                <a href="C++Primer基础-03stringvector数组.html">
             
                     
                     C++Primer基础: string、vector、数组
@@ -277,9 +290,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.3" data-path="C++Primer基础-函数重载函数指针.html">
+        <li class="chapter " data-level="1.5.4" data-path="C++Primer基础-04函数重载函数指针.html">
             
-                <a href="C++Primer基础-函数重载函数指针.html">
+                <a href="C++Primer基础-04函数重载函数指针.html">
             
                     
                     C++Primer基础:函数、重载、函数指针
@@ -290,12 +303,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.4" data-path="C++Primer基础-类.html">
+        <li class="chapter " data-level="1.5.5" data-path="C++Primer基础-05function与bind与forward.html">
             
-                <a href="C++Primer基础-类.html">
+                <a href="C++Primer基础-05function与bind与forward.html">
             
                     
-                    C++ Primer 基础: 类
+                    C++Primer基础:std::function、std::bind、std::forward
             
                 </a>
             
@@ -303,7 +316,33 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.5" data-path="C++Primer标准库-IO库.html">
+        <li class="chapter " data-level="1.5.6" data-path="C++Primer基础-06-lambda.html">
+            
+                <a href="C++Primer基础-06-lambda.html">
+            
+                    
+                    C++Primer基础:lambda
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" data-path="C++Primer基础-07类基础.html">
+            
+                <a href="C++Primer基础-07类基础.html">
+            
+                    
+                    C++ Primer基础: 类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8" data-path="C++Primer标准库-IO库.html">
             
                 <a href="C++Primer标准库-IO库.html">
             
@@ -316,7 +355,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.6" data-path="C++Primer标准库-顺序容器.html">
+        <li class="chapter " data-level="1.5.9" data-path="C++Primer标准库-顺序容器.html">
             
                 <a href="C++Primer标准库-顺序容器.html">
             
@@ -329,7 +368,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.7" data-path="C++Primer标准库-泛型算法.html">
+        <li class="chapter " data-level="1.5.10" data-path="C++Primer标准库-泛型算法.html">
             
                 <a href="C++Primer标准库-泛型算法.html">
             
@@ -342,7 +381,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.8" data-path="C++Primer标准库-关联容器.html">
+        <li class="chapter " data-level="1.5.11" data-path="C++Primer标准库-关联容器.html">
             
                 <a href="C++Primer标准库-关联容器.html">
             
@@ -355,7 +394,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.9" data-path="C++Primer标准库-动态内存.html">
+        <li class="chapter " data-level="1.5.12" data-path="C++Primer标准库-动态内存.html">
             
                 <a href="C++Primer标准库-动态内存.html">
             
@@ -368,12 +407,12 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.5.10" data-path="C++Primer类设计-拷贝控制.html">
+        <li class="chapter active" data-level="1.5.13" data-path="C++Primer类设计-拷贝控制.html">
             
                 <a href="C++Primer类设计-拷贝控制.html">
             
                     
-                    C++ Primer 类设计: 拷贝控制
+                    C++ Primer 类设计: 拷贝控制、explicit
             
                 </a>
             
@@ -381,7 +420,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.11" data-path="C++Primer类设计-基类派生类虚函数.html">
+        <li class="chapter " data-level="1.5.14" data-path="C++Primer类设计-基类派生类虚函数.html">
             
                 <a href="C++Primer类设计-基类派生类虚函数.html">
             
@@ -394,12 +433,77 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.12" data-path="C++Primer类设计-模板与泛型编程.html">
+        <li class="chapter " data-level="1.5.15" data-path="C++Primer类设计-模板与泛型编程.html">
             
                 <a href="C++Primer类设计-模板与泛型编程.html">
             
                     
                     C++ Primer 类设计:模板与泛型编程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.16" data-path="C++并发编程实战-01基础使用Join传参.html">
+            
+                <a href="C++并发编程实战-01基础使用Join传参.html">
+            
+                    
+                    C++并发编程实战一:基础使用、Join、传参、线程所有权转移
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.17" data-path="C++并发编程实战-02mutexlock.html">
+            
+                <a href="C++并发编程实战-02mutexlock.html">
+            
+                    
+                    C++并发编程实战: mutex、lock、unique_lock、call_once、shared_lock
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.18" data-path="C++并发编程实战-03条件变量.html">
+            
+                <a href="C++并发编程实战-03条件变量.html">
+            
+                    
+                    C++并发编程实战三: 条件变量
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.19" data-path="C++并发编程实战-04原子操作和类型.html">
+            
+                <a href="C++并发编程实战-04原子操作和类型.html">
+            
+                    
+                    C++并发编程实战四: 原子操作和类型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.20" data-path="C++并发编程实战-05内存模型.html">
+            
+                <a href="C++并发编程实战-05内存模型.html">
+            
+                    
+                    C++并发编程实战五: 内存模型
             
                 </a>
             
@@ -474,7 +578,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >C++ Primer 类设计: 拷贝控制</a>
+        <a href=".." >C++ Primer 类设计: 拷贝控制、explicit</a>
     </h1>
 </div>
 
@@ -924,6 +1028,51 @@ Foo y(x); // &#x62F7;&#x8D1D;&#x6784;&#x9020;&#x51FD;&#x6570;&#xFF1B;x&#x662F;&#
 Foo z(std::move(x)); // &#x62F7;&#x8D1D;&#x6784;&#x9020;&#x51FD;&#x6570;&#xFF0C;&#x56E0;&#x4E3A;&#x672A;&#x5B9A;&#x4E49;&#x79FB;&#x52A8;&#x6784;&#x9020;&#x51FD;&#x6570;
 </code></pre>
 <p>&#x5728;&#x5BF9;<code>z</code>&#x8FDB;&#x884C;&#x521D;&#x59CB;&#x5316;&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x8C03;&#x7528;<code>move(x)</code>&#xFF0C;&#x5B83;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x7ED1;&#x5B9A;x&#x7684;<code>Foo&amp;&amp;</code>&#x3002;<code>Foo</code>&#x7684;&#x62F7;&#x8D1D;&#x6784;&#x9020;&#x51FD;&#x6570;&#x662F;&#x53EF;&#x884C;&#x7684;&#xFF0C;&#x56E0;&#x4E3A;&#x6211;&#x4EEC;&#x5C06;&#x4E00;&#x4E2A;<code>Foo&amp;&amp;</code>&#x8F6C;&#x6362;&#x4E3A;&#x4E00;&#x4E2A;<code>const Foo&amp;</code>&#x3002;</p>
+<h3 id="explicit">explicit</h3>
+<p>&#x6587;&#x6863;&#x539F;&#x6587;: <a href="https://github.com/Light-City/CPlusPlusThings/tree/master/basic_content/explicit" target="_blank">https://github.com/Light-City/CPlusPlusThings/tree/master/basic_content/explicit</a></p>
+<ul>
+<li><code>explicit</code> &#x4FEE;&#x9970;&#x6784;&#x9020;&#x51FD;&#x6570;&#x65F6;&#xFF0C;&#x53EF;&#x4EE5;&#x9632;&#x6B62;&#x9690;&#x5F0F;&#x8F6C;&#x6362;&#x548C;&#x590D;&#x5236;&#x521D;&#x59CB;&#x5316;;</li>
+<li><code>explicit</code> &#x4FEE;&#x9970;&#x8F6C;&#x6362;&#x51FD;&#x6570;&#x65F6;&#xFF0C;&#x53EF;&#x4EE5;&#x9632;&#x6B62;&#x9690;&#x5F0F;&#x8F6C;&#x6362;&#xFF0C;&#x4F46;&#x6309;&#x8BED;&#x5883;&#x8F6C;&#x6362;&#x9664;&#x5916;;</li>
+</ul>
+<pre><code class="lang-cpp"><span class="hljs-keyword">struct</span> A
+{
+    A(<span class="hljs-keyword">int</span>) { }
+    <span class="hljs-function"><span class="hljs-keyword">operator</span> <span class="hljs-title">bool</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>; }
+};
+<span class="hljs-keyword">struct</span> B
+{
+    <span class="hljs-function"><span class="hljs-keyword">explicit</span> <span class="hljs-title">B</span><span class="hljs-params">(<span class="hljs-keyword">int</span>)</span> </span>{}
+    <span class="hljs-function"><span class="hljs-keyword">explicit</span> <span class="hljs-keyword">operator</span> <span class="hljs-title">bool</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>; }
+};
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">doA</span><span class="hljs-params">(A a)</span> </span>{}
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">doB</span><span class="hljs-params">(B b)</span> </span>{}
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-function">A <span class="hljs-title">a1</span><span class="hljs-params">(<span class="hljs-number">1</span>)</span></span>;        <span class="hljs-comment">// OK&#xFF1A;&#x76F4;&#x63A5;&#x521D;&#x59CB;&#x5316;</span>
+    A a2 = <span class="hljs-number">1</span>;        <span class="hljs-comment">// OK&#xFF1A;&#x590D;&#x5236;&#x521D;&#x59CB;&#x5316;</span>
+    A a3{ <span class="hljs-number">1</span> };        <span class="hljs-comment">// OK&#xFF1A;&#x76F4;&#x63A5;&#x5217;&#x8868;&#x521D;&#x59CB;&#x5316;</span>
+    A a4 = { <span class="hljs-number">1</span> };        <span class="hljs-comment">// OK&#xFF1A;&#x590D;&#x5236;&#x5217;&#x8868;&#x521D;&#x59CB;&#x5316;</span>
+    A a5 = (A)<span class="hljs-number">1</span>;        <span class="hljs-comment">// OK&#xFF1A;&#x5141;&#x8BB8; static_cast &#x7684;&#x663E;&#x5F0F;&#x8F6C;&#x6362; </span>
+    doA(<span class="hljs-number">1</span>);            <span class="hljs-comment">// OK&#xFF1A;&#x5141;&#x8BB8;&#x4ECE; int &#x5230; A &#x7684;&#x9690;&#x5F0F;&#x8F6C;&#x6362;</span>
+    <span class="hljs-keyword">if</span> (a1);        <span class="hljs-comment">// OK&#xFF1A;&#x4F7F;&#x7528;&#x8F6C;&#x6362;&#x51FD;&#x6570; A::operator bool() &#x7684;&#x4ECE; A &#x5230; bool &#x7684;&#x9690;&#x5F0F;&#x8F6C;&#x6362;</span>
+    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">a6</span><span class="hljs-params">(a1)</span></span>;        <span class="hljs-comment">// OK&#xFF1A;&#x4F7F;&#x7528;&#x8F6C;&#x6362;&#x51FD;&#x6570; A::operator bool() &#x7684;&#x4ECE; A &#x5230; bool &#x7684;&#x9690;&#x5F0F;&#x8F6C;&#x6362;</span>
+    <span class="hljs-keyword">bool</span> a7 = a1;        <span class="hljs-comment">// OK&#xFF1A;&#x4F7F;&#x7528;&#x8F6C;&#x6362;&#x51FD;&#x6570; A::operator bool() &#x7684;&#x4ECE; A &#x5230; bool &#x7684;&#x9690;&#x5F0F;&#x8F6C;&#x6362;</span>
+    <span class="hljs-keyword">bool</span> a8 = <span class="hljs-keyword">static_cast</span>&lt;<span class="hljs-keyword">bool</span>&gt;(a1);  <span class="hljs-comment">// OK &#xFF1A;static_cast &#x8FDB;&#x884C;&#x76F4;&#x63A5;&#x521D;&#x59CB;&#x5316;</span>
+
+    <span class="hljs-function">B <span class="hljs-title">b1</span><span class="hljs-params">(<span class="hljs-number">1</span>)</span></span>;        <span class="hljs-comment">// OK&#xFF1A;&#x76F4;&#x63A5;&#x521D;&#x59CB;&#x5316;</span>
+<span class="hljs-comment">//    B b2 = 1;        // &#x9519;&#x8BEF;&#xFF1A;&#x88AB; explicit &#x4FEE;&#x9970;&#x6784;&#x9020;&#x51FD;&#x6570;&#x7684;&#x5BF9;&#x8C61;&#x4E0D;&#x53EF;&#x4EE5;&#x590D;&#x5236;&#x521D;&#x59CB;&#x5316;</span>
+    B b3{ <span class="hljs-number">1</span> };        <span class="hljs-comment">// OK&#xFF1A;&#x76F4;&#x63A5;&#x5217;&#x8868;&#x521D;&#x59CB;&#x5316;</span>
+<span class="hljs-comment">//    B b4 = { 1 };        // &#x9519;&#x8BEF;&#xFF1A;&#x88AB; explicit &#x4FEE;&#x9970;&#x6784;&#x9020;&#x51FD;&#x6570;&#x7684;&#x5BF9;&#x8C61;&#x4E0D;&#x53EF;&#x4EE5;&#x590D;&#x5236;&#x5217;&#x8868;&#x521D;&#x59CB;&#x5316;</span>
+    B b5 = (B)<span class="hljs-number">1</span>;        <span class="hljs-comment">// OK&#xFF1A;&#x5141;&#x8BB8; static_cast &#x7684;&#x663E;&#x5F0F;&#x8F6C;&#x6362;</span>
+<span class="hljs-comment">//    doB(1);            // &#x9519;&#x8BEF;&#xFF1A;&#x88AB; explicit &#x4FEE;&#x9970;&#x6784;&#x9020;&#x51FD;&#x6570;&#x7684;&#x5BF9;&#x8C61;&#x4E0D;&#x53EF;&#x4EE5;&#x4ECE; int &#x5230; B &#x7684;&#x9690;&#x5F0F;&#x8F6C;&#x6362;</span>
+    <span class="hljs-keyword">if</span> (b1);        <span class="hljs-comment">// OK&#xFF1A;&#x88AB; explicit &#x4FEE;&#x9970;&#x8F6C;&#x6362;&#x51FD;&#x6570; B::operator bool() &#x7684;&#x5BF9;&#x8C61;&#x53EF;&#x4EE5;&#x4ECE; B &#x5230; bool &#x7684;&#x6309;&#x8BED;&#x5883;&#x8F6C;&#x6362;</span>
+    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">b6</span><span class="hljs-params">(b1)</span></span>;        <span class="hljs-comment">// OK&#xFF1A;&#x88AB; explicit &#x4FEE;&#x9970;&#x8F6C;&#x6362;&#x51FD;&#x6570; B::operator bool() &#x7684;&#x5BF9;&#x8C61;&#x53EF;&#x4EE5;&#x4ECE; B &#x5230; bool &#x7684;&#x6309;&#x8BED;&#x5883;&#x8F6C;&#x6362;</span>
+<span class="hljs-comment">//    bool b7 = b1;        // &#x9519;&#x8BEF;&#xFF1A;&#x88AB; explicit &#x4FEE;&#x9970;&#x8F6C;&#x6362;&#x51FD;&#x6570; B::operator bool() &#x7684;&#x5BF9;&#x8C61;&#x4E0D;&#x53EF;&#x4EE5;&#x9690;&#x5F0F;&#x8F6C;&#x6362;</span>
+    <span class="hljs-keyword">bool</span> b8 = <span class="hljs-keyword">static_cast</span>&lt;<span class="hljs-keyword">bool</span>&gt;(b1);  <span class="hljs-comment">// OK&#xFF1A;static_cast &#x8FDB;&#x884C;&#x76F4;&#x63A5;&#x521D;&#x59CB;&#x5316;</span>
+
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
 
                                 
                                 </section>
@@ -967,7 +1116,7 @@ Foo z(std::move(x)); // &#x62F7;&#x8D1D;&#x6784;&#x9020;&#x51FD;&#x6570;&#xFF0C;
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"C++ Primer 类设计: 拷贝控制","level":"1.5.10","depth":2,"next":{"title":"C++ Primer 类设计: 基类、派生类、虚函数","level":"1.5.11","depth":2,"path":"c++学习笔记/C++Primer类设计-基类派生类虚函数.md","ref":"c++学习笔记/C++Primer类设计-基类派生类虚函数.md","articles":[]},"previous":{"title":"C++ Primer 标准库: 动态内存","level":"1.5.9","depth":2,"path":"c++学习笔记/C++Primer标准库-动态内存.md","ref":"c++学习笔记/C++Primer标准库-动态内存.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"c++学习笔记/C++Primer类设计-拷贝控制.md","mtime":"2021-11-30T06:56:01.218Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-11-30T08:32:27.547Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"C++ Primer 类设计: 拷贝控制、explicit","level":"1.5.13","depth":2,"next":{"title":"C++ Primer 类设计: 基类、派生类、虚函数","level":"1.5.14","depth":2,"path":"c++学习笔记/C++Primer类设计-基类派生类虚函数.md","ref":"c++学习笔记/C++Primer类设计-基类派生类虚函数.md","articles":[]},"previous":{"title":"C++ Primer 标准库: 动态内存","level":"1.5.12","depth":2,"path":"c++学习笔记/C++Primer标准库-动态内存.md","ref":"c++学习笔记/C++Primer标准库-动态内存.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"c++学习笔记/C++Primer类设计-拷贝控制.md","mtime":"2022-01-04T16:15:23.348Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-01-23T03:25:17.334Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

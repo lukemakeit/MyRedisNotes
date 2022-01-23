@@ -198,7 +198,37 @@ void f(destination &d /* other parameters */)
 }
 ```
 
+#### 关于`shared_ptr`几点注意事项
+
+1. 不要用裸指针初始化多个`shared_ptr`,会出现`double_free`导致程序崩溃;如:
+
+   ```cpp
+   int *iptr = new int(10);
+   std::shared_ptr<int> sptr01(iptr);
+   std::shared_ptr<int> sptr02(iptr); //错误
+   ```
+
+2. <mark style="color:red;">通过`shared_from_this`返回this指针</mark>，不能把this指针作为`shared_ptr`直接返回，因为this指针本质就是裸指针，通过this返回可能导致重复析构，不能把`this`指针交给智能指针管理:
+
+   ```cpp
+   class A {
+       shared_ptr<A> GetSelf() {
+          return shared_from_this();
+          // return shared_ptr<A>(this); 错误，会导致double free
+       }  
+   };
+   ```
+
+3. 尽量使用`make_shared`，少用`new`;
+
+4. 不要`delete get()`返回的裸指针;
+
+5. 不是new处理的空间要自定义删除器；
+
+6. 要避免循环引用，循环应用导致内存永远不会被释放，造成内存泄露。
+
 ### `unique_ptr`
+
 - `unique_ptr`是独占似的，某个时刻只能有一个`unique_ptr`指向一个给定对象，当`unique_ptr`被销毁时，它所指向的对象也会被销毁。
 - `unique_ptr`没有类似`make_shared`的标准库函数。
 - **当我们定义一个`unique_ptr`时，需要将其绑定到一个`new`返回的指针上**。

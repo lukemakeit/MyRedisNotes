@@ -1,0 +1,1033 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>C++并发编程实战一:基础使用、Join、传参、线程所有权转移 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="C++并发编程实战-02mutexlock.html" />
+    
+    
+    <link rel="prev" href="C++Primer类设计-模板与泛型编程.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    README
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../redis学习/">
+            
+                <a href="../redis学习/">
+            
+                    
+                    Redis学习
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../redis学习/Redis备份.html">
+            
+                <a href="../redis学习/Redis备份.html">
+            
+                    
+                    Redis备份
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../redis学习/Redis复制.html">
+            
+                <a href="../redis学习/Redis复制.html">
+            
+                    
+                    Redis复制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../redis学习/Redis集群.html">
+            
+                <a href="../redis学习/Redis集群.html">
+            
+                    
+                    Redis集群
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../rocksdb-xue-xi/README.md">
+            
+                <span>
+            
+                    
+                    RocksDB学习
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../rocksdb学习/RocksDB基础概念.html">
+            
+                <a href="../rocksdb学习/RocksDB基础概念.html">
+            
+                    
+                    RocksDB基础概念
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../rocksdb学习/RocksDB基础操作-C语言.html">
+            
+                <a href="../rocksdb学习/RocksDB基础操作-C语言.html">
+            
+                    
+                    RocksDB基础操作-C语言
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../c语言笔记/">
+            
+                <a href="../c语言笔记/">
+            
+                    
+                    C语言笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../c语言笔记/C语言补充笔记一.html">
+            
+                <a href="../c语言笔记/C语言补充笔记一.html">
+            
+                    
+                    C语言补充笔记一
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    C++学习笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="C++Primer基础-01引用指针const.html">
+            
+                <a href="C++Primer基础-01引用指针const.html">
+            
+                    
+                    C++Primer基础:引用、指针、const、auto/decltype
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="C++Primer基础-02volatile与using.html">
+            
+                <a href="C++Primer基础-02volatile与using.html">
+            
+                    
+                    C++Primer基础:volatile、using
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="C++Primer基础-03stringvector数组.html">
+            
+                <a href="C++Primer基础-03stringvector数组.html">
+            
+                    
+                    C++Primer基础: string、vector、数组
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="C++Primer基础-04函数重载函数指针.html">
+            
+                <a href="C++Primer基础-04函数重载函数指针.html">
+            
+                    
+                    C++Primer基础:函数、重载、函数指针
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="C++Primer基础-05function与bind与forward.html">
+            
+                <a href="C++Primer基础-05function与bind与forward.html">
+            
+                    
+                    C++Primer基础:std::function、std::bind、std::forward
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="C++Primer基础-06-lambda.html">
+            
+                <a href="C++Primer基础-06-lambda.html">
+            
+                    
+                    C++Primer基础:lambda
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" data-path="C++Primer基础-07类基础.html">
+            
+                <a href="C++Primer基础-07类基础.html">
+            
+                    
+                    C++ Primer基础: 类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8" data-path="C++Primer标准库-IO库.html">
+            
+                <a href="C++Primer标准库-IO库.html">
+            
+                    
+                    C++ Primer 标准库: IO库
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.9" data-path="C++Primer标准库-顺序容器.html">
+            
+                <a href="C++Primer标准库-顺序容器.html">
+            
+                    
+                    C++ Primer 标准库: 顺序容器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.10" data-path="C++Primer标准库-泛型算法.html">
+            
+                <a href="C++Primer标准库-泛型算法.html">
+            
+                    
+                    C++ Primer 标准库: 泛型算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.11" data-path="C++Primer标准库-关联容器.html">
+            
+                <a href="C++Primer标准库-关联容器.html">
+            
+                    
+                    C++ Primer 标准库: 关联容器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.12" data-path="C++Primer标准库-动态内存.html">
+            
+                <a href="C++Primer标准库-动态内存.html">
+            
+                    
+                    C++ Primer 标准库: 动态内存
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.13" data-path="C++Primer类设计-拷贝控制.html">
+            
+                <a href="C++Primer类设计-拷贝控制.html">
+            
+                    
+                    C++ Primer 类设计: 拷贝控制、explicit
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.14" data-path="C++Primer类设计-基类派生类虚函数.html">
+            
+                <a href="C++Primer类设计-基类派生类虚函数.html">
+            
+                    
+                    C++ Primer 类设计: 基类、派生类、虚函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.15" data-path="C++Primer类设计-模板与泛型编程.html">
+            
+                <a href="C++Primer类设计-模板与泛型编程.html">
+            
+                    
+                    C++ Primer 类设计:模板与泛型编程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.5.16" data-path="C++并发编程实战-01基础使用Join传参.html">
+            
+                <a href="C++并发编程实战-01基础使用Join传参.html">
+            
+                    
+                    C++并发编程实战一:基础使用、Join、传参、线程所有权转移
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.17" data-path="C++并发编程实战-02mutexlock.html">
+            
+                <a href="C++并发编程实战-02mutexlock.html">
+            
+                    
+                    C++并发编程实战: mutex、lock、unique_lock、call_once、shared_lock
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.18" data-path="C++并发编程实战-03条件变量.html">
+            
+                <a href="C++并发编程实战-03条件变量.html">
+            
+                    
+                    C++并发编程实战三: 条件变量
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.19" data-path="C++并发编程实战-04原子操作和类型.html">
+            
+                <a href="C++并发编程实战-04原子操作和类型.html">
+            
+                    
+                    C++并发编程实战四: 原子操作和类型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.20" data-path="C++并发编程实战-05内存模型.html">
+            
+                <a href="C++并发编程实战-05内存模型.html">
+            
+                    
+                    C++并发编程实战五: 内存模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../工具使用/">
+            
+                <a href="../工具使用/">
+            
+                    
+                    工具使用
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../工具使用/VSCode使用小技巧.html">
+            
+                <a href="../工具使用/VSCode使用小技巧.html">
+            
+                    
+                    VS Code使用小技巧
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >C++并发编程实战一:基础使用、Join、传参、线程所有权转移</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="c&#x5E76;&#x53D1;&#x7F16;&#x7A0B;&#x5B9E;&#x6218;&#x4E00;&#x57FA;&#x7840;&#x4F7F;&#x7528;&#x3001;join&#x3001;&#x4F20;&#x53C2;&#x3001;&#x7EBF;&#x7A0B;&#x6240;&#x6709;&#x6743;&#x8F6C;&#x79FB;">C++&#x5E76;&#x53D1;&#x7F16;&#x7A0B;&#x5B9E;&#x6218;&#x4E00;:&#x57FA;&#x7840;&#x4F7F;&#x7528;&#x3001;Join&#x3001;&#x4F20;&#x53C2;&#x3001;&#x7EBF;&#x7A0B;&#x6240;&#x6709;&#x6743;&#x8F6C;&#x79FB;</h2>
+<p>&#x53C2;&#x8003;&#x8D44;&#x6599;:</p>
+<p><a href="https://www.zhihu.com/column/c_1307735602880331776" target="_blank">C++&#x5E76;&#x53D1;&#x7F16;&#x7A0B;</a></p>
+<p><a href="https://github.com/xiaoweiChen/CPP-Concurrency-In-Action-2ed-2019/releases" target="_blank">xiaoweiChen/CPP-Concurrency-In-Action-2ed-2019</a></p>
+<ul>
+<li><p>&#x5934;&#x6587;&#x4EF6;: <code>#include &lt;thread&gt;</code></p>
+</li>
+<li><p>&#x6700;&#x7B80;&#x5355;&#x7684;&#x7EBF;&#x7A0B;&#x542F;&#x52A8;:</p>
+<pre><code class="lang-cpp"><span class="hljs-meta"># &#x542F;&#x52A8;&#x4E00;:</span>
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">do_some_work</span><span class="hljs-params">()</span></span>;
+<span class="hljs-built_in">std</span>::<span class="hljs-function">thread <span class="hljs-title">my_thread</span><span class="hljs-params">(do_some_work)</span></span>;
+</code></pre>
+<pre><code class="lang-cpp"><span class="hljs-meta"># &#x542F;&#x52A8;&#x4E8C;:</span>
+<span class="hljs-meta"># &#x91CD;&#x8F7D;&#x4E86;()&#x64CD;&#x4F5C;&#x7B26;&#x7684;&#x7C7B;</span>
+<span class="hljs-keyword">class</span> background_task
+{
+<span class="hljs-keyword">public</span>:
+ <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">operator</span><span class="hljs-params">()</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span>
+ </span>{
+   do_something();
+   do_something_else();
+ }
+};
+
+background_task f;
+<span class="hljs-built_in">std</span>::<span class="hljs-function">thread <span class="hljs-title">my_thread</span><span class="hljs-params">(f)</span></span>;
+</code></pre>
+</li>
+<li><p>&#x542F;&#x52A8;&#x7EBF;&#x7A0B;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x660E;&#x786E;&#x662F;&#x7B49;&#x5F85;&#x7EBF;&#x7A0B;&#x7ED3;&#x675F;(join) &#x8FD8;&#x662F; &#x8BA9;&#x5B83;&#x81EA;&#x4E3B;&#x8FD0;&#x884C;(detach)&#xFF1B;</p>
+</li>
+<li><p><strong>&#x5982;&#x679C;<code>std::thread</code>&#x5BF9;&#x8C61;&#x9500;&#x6BC1;&#x524D;&#x8FD8;&#x6CA1;&#x786E;&#x5B9A;&#x662F; join &#x8FD8;&#x662F; detach&#xFF0C;&#x90A3;&#x4E48;&#x7EBF;&#x7A0B;&#x5C31;&#x4F1A;&#x7EC8;&#x6B62;&#x3002;<code>std::thread</code>&#x7684;&#x6790;&#x6784;&#x51FD;&#x6570;&#x4F1A;&#x8C03;&#x7528;<code>std::terminate()</code></strong>&#x3002;</p>
+</li>
+<li><p>&#x5982;&#x679C;&#x6211;&#x4EEC;&#x9700;&#x8981;detach&#x7EBF;&#x7A0B;&#xFF0C;&#x90A3;&#x4E48;&#x6211;&#x4EEC;<strong><mark style="color:red;">&#x5FC5;&#x987B;&#x786E;&#x4FDD;&#x7EBF;&#x7A0B;&#x8BBF;&#x95EE;&#x7684;&#x6570;&#x636E;&#x76F4;&#x5230;&#x7EBF;&#x7A0B;&#x7ED3;&#x675F;&#x4E4B;&#x524D;&#x90FD;&#x662F;&#x6709;&#x6548;&#x7684;&#x3002;</mark></strong></p>
+<p>&#x4E0B;&#x9762;&#x662F;&#x7EBF;&#x7A0B;&#x51FD;&#x6570;&#x8BBF;&#x95EE;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#x6307;&#x9488; &#x6216; &#x5F15;&#x7528;&#xFF0C;&#x5E76;&#x5728;&#x51FD;&#x6570;&#x9000;&#x51FA;&#x540E;&#x7EBF;&#x7A0B;&#x8FD8;&#x6CA1;&#x7ED3;&#x675F;&#x7684;&#x53CD;&#x4F8B;</p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">struct</span> func
+{
+  <span class="hljs-keyword">int</span>&amp; i;
+  func(<span class="hljs-keyword">int</span>&amp; i_) : i(i_) {}
+  <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">operator</span><span class="hljs-params">()</span> <span class="hljs-params">()</span>
+  </span>{
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">unsigned</span> j=<span class="hljs-number">0</span> ; j&lt;<span class="hljs-number">1000000</span> ; ++j)
+    {
+      do_something(i);           <span class="hljs-comment">// 1 &#x6F5C;&#x5728;&#x8BBF;&#x95EE;&#x9690;&#x60A3;&#xFF1A;&#x60AC;&#x7A7A;&#x5F15;&#x7528;</span>
+    }
+  }
+};
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">oops</span><span class="hljs-params">()</span>
+</span>{
+  <span class="hljs-keyword">int</span> some_local_state=<span class="hljs-number">0</span>;
+  <span class="hljs-function">func <span class="hljs-title">my_func</span><span class="hljs-params">(some_local_state)</span></span>;
+  <span class="hljs-built_in">std</span>::<span class="hljs-function">thread <span class="hljs-title">my_thread</span><span class="hljs-params">(my_func)</span></span>;
+  my_thread.detach();          <span class="hljs-comment">// 2 &#x4E0D;&#x7B49;&#x5F85;&#x7EBF;&#x7A0B;&#x7ED3;&#x675F;</span>
+}                              <span class="hljs-comment">// 3 &#x65B0;&#x7EBF;&#x7A0B;&#x53EF;&#x80FD;&#x8FD8;&#x5728;&#x8FD0;&#x884C;</span>
+</code></pre>
+</li>
+<li><p>&#x5728;&#x51FD;&#x6570;&#x5185;&#x521B;&#x5EFA;&#x7EBF;&#x7A0B;&#xFF0C;&#x5E76;&#x4E14;&#x9700;&#x8981;&#x8BBF;&#x95EE;&#x51FD;&#x6570;&#x7684;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#xFF0C;&#x90A3;&#x4E48;&#x5C3D;&#x91CF;&#x901A;&#x8FC7;join&#x786E;&#x4FDD;&#x7EBF;&#x7A0B;&#x5728;&#x51FD;&#x6570;&#x9000;&#x51FA;&#x524D;&#x5B8C;&#x6210;&#xFF1B;</p>
+</li>
+<li><p>&#x8C03;&#x7528;<code>join()</code>,&#x4F1A;&#x6E05;&#x7406;&#x7EBF;&#x7A0B;&#x76F8;&#x5173;&#x7684;&#x5B58;&#x50A8;,&#x8FD9;&#x6837;<code>std::thread</code>&#x5BF9;&#x8C61;&#x5C06;&#x4E0D;&#x518D;&#x4E0E;&#x5DF2;&#x7ECF;&#x7ED3;&#x675F;&#x7684;&#x7EBF;&#x7A0B;&#x6709;&#x4EFB;&#x4F55;&#x5173;&#x8054;&#x3002;&#x8FD9;&#x610F;&#x5473;&#x7740;&#xFF0C;<strong>&#x5BF9;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x53EA;&#x80FD;&#x8C03;&#x7528;&#x4E00;&#x6B21;<code>join()</code></strong>&#xFF1B;&#x4E00;&#x65E6;&#x5DF2;&#x7ECF;&#x8C03;&#x7528;&#x8FC7;<code>join()</code>&#xFF0C;<code>std::thread</code>&#x5BF9;&#x8C61;&#x5C31;&#x4E0D;&#x80FD;&#x518D;&#x6B21;&#x8FDE;&#x63A5;&#xFF0C;&#x540C;&#x65F6; <code>joinable()</code>&#x5C06;&#x8FD4;&#x56DE;<code>false</code>&#x3002;</p>
+</li>
+<li><p><strong>&#x5982;&#x4F55;&#x786E;&#x4FDD;&#x5F02;&#x5E38;&#x573A;&#x666F;&#x4E0B; &#x7EBF;&#x7A0B;&#x7684;&#x6B63;&#x786E;join?</strong></p>
+<p>&#x65B9;&#x6CD5;&#x4E00;&#xFF1A;&#x5F02;&#x5E38;&#x5206;&#x652F;&#x903B;&#x8F91;&#x3001;&#x6B63;&#x5E38;&#x5206;&#x652F;&#x903B;&#x8F91;&#x90FD;&#x8C03;&#x7528;join&#x3002;(&#x786E;&#x4FDD;&#x8986;&#x76D6;&#x6240;&#x6709;&#x53EF;&#x80FD;&#x7684;&#x8DEF;&#x5F84;&#x975E;&#x5E38;&#x75DB;&#x82E6;)</p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">struct</span> func; <span class="hljs-comment">// &#x5B9A;&#x4E49;&#x5728;&#x6E05;&#x5355;2.1&#x4E2D;</span>
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">f</span><span class="hljs-params">()</span>
+</span>{
+  <span class="hljs-keyword">int</span> some_local_state=<span class="hljs-number">0</span>;
+  <span class="hljs-function">func <span class="hljs-title">my_func</span><span class="hljs-params">(some_local_state)</span></span>;
+  <span class="hljs-built_in">std</span>::<span class="hljs-function">thread <span class="hljs-title">t</span><span class="hljs-params">(my_func)</span></span>;
+  <span class="hljs-keyword">try</span>
+  {
+    do_something_in_current_thread();
+  }
+  <span class="hljs-keyword">catch</span>(...)
+  {
+    t.join();  <span class="hljs-comment">// 1</span>
+    <span class="hljs-keyword">throw</span>;
+  }
+  t.join();  <span class="hljs-comment">// 2</span>
+}
+</code></pre>
+<p>&#x65B9;&#x6CD5;&#x4E8C;: <strong><mark style="color:red;">&#x201C;&#x8D44;&#x6E90;&#x83B7;&#x53D6;&#x5373;&#x521D;&#x59CB;&#x5316;&#x201D;(RAII, Resource Acquisition Is Initialization)&#xFF0C;&#x5E76;&#x4E14;&#x63D0;&#x4F9B;&#x4E00;&#x4E2A;&#x7C7B;&#xFF0C;&#x5728;&#x6790;&#x6784;&#x51FD;&#x6570;&#x4E2D;<code>join</code></mark></strong></p>
+<pre><code class="lang-cpp">class thread_guard
+{
+  std::thread&amp; t;
+public:
+  explicit thread_guard(std::thread&amp; t_):
+    t(t_)
+  {}
+  ~thread_guard()
+  {
+    if(t.joinable()) // 1
+    {
+      t.join();      // 2
+    }
+  }
+  thread_guard(thread_guard const&amp;)=delete;   // 3
+  thread_guard&amp; operator=(thread_guard const&amp;)=delete;
+};
+struct func; // &#x5B9A;&#x4E49;&#x5728;&#x6E05;&#x5355;2.1&#x4E2D;
+void f()
+{
+  int some_local_state=0;
+  func my_func(some_local_state);
+  std::thread t(my_func);
+  thread_guard g(t);
+  do_something_in_current_thread();
+}    // 4
+</code></pre>
+<ul>
+<li>&#x51FD;&#x6570;f()&#x8FD4;&#x56DE;&#xFF0C;&#x5C40;&#x90E8;&#x5BF9;&#x8C61;&#x9006;&#x5E8F;&#x9500;&#x6BC1;&#x3002;<code>thread_guard</code>&#x5BF9;&#x8C61;g&#x662F;&#x7B2C;&#x4E00;&#x4E2A;&#x88AB;&#x9500;&#x6BC1;&#x7684;&#xFF0C;&#x6B64;&#x65F6;&#x7EBF;&#x7A0B;<code>std::thread &amp;t</code>&#x5728;&#x6790;&#x6784;&#x51FD;&#x6570;&#x4E2D;&#x88AB;join&#x3002;&#x5373;&#x4F7F;<code>do_something_in_current_thread()</code>&#x629B;&#x51FA;&#x5F02;&#x5E38;&#xFF0C;&#x8FD9;&#x4E2A;&#x9500;&#x6BC1;&#x4F9D;&#x7136;&#x4F1A;&#x53D1;&#x751F;&#x3002;</li>
+<li>&#x6CE8;&#x610F;<code>t.joinable()</code>&#x5F88;&#x91CD;&#x8981;&#xFF1B;</li>
+<li>&#x62F7;&#x8D1D;&#x6784;&#x9020;&#x51FD;&#x6570;&#x548C;&#x62F7;&#x8D1D;&#x8D4B;&#x503C;&#x64CD;&#x4F5C;&#x88AB;&#x6807;&#x8BB0;&#x4E3A;=delete&#xFF0C;&#x662F;&#x4E3A;&#x4E86;&#x4E0D;&#x8BA9;&#x7F16;&#x8BD1;&#x5668;&#x81EA;&#x52A8;&#x751F;&#x6210;&#x5B83;&#x4EEC;;</li>
+</ul>
+</li>
+<li><p>&#x5728;&#x540E;&#x53F0;&#x8FD0;&#x884C;&#x7684;&#x7EBF;&#x7A0B;</p>
+<p>&#x8C03;&#x7528;<code>detach</code>&#x540E;&#x8BA9;&#x7EBF;&#x7A0B;&#x5728;&#x540E;&#x53F0;&#x8FD0;&#x884C;&#xFF0C;&#x6B64;&#x65F6;&#x518D;&#x4E5F;&#x6CA1;&#x76F4;&#x63A5;&#x7684;&#x65B9;&#x6CD5;&#x4E0E;&#x5176;&#x901A;&#x4FE1;&#x4E86;&#x3002;&#x4E5F;&#x6CA1;&#x6CD5;&#x7B49;&#x5F85;&#x7EBF;&#x7A0B;&#x7ED3;&#x675F;&#x3002;</p>
+<p>detach&#x7684;&#x7EBF;&#x7A0B;&#x7ECF;&#x5E38;&#x53EB;&#x505A;&#x5B88;&#x62A4;&#x7EBF;&#x7A0B;(daemon threads)&#x3002;</p>
+</li>
+</ul>
+<h3 id="&#x53C2;&#x6570;&#x4F20;&#x9012;">&#x53C2;&#x6570;&#x4F20;&#x9012;</h3>
+<pre><code class="lang-cpp"><span class="hljs-meta"># &#x5B57;&#x7B26;&#x4E32;&#x5B57;&#x9762;&#x503C;&#x4F5C;&#x4E3A;char const *&#x7C7B;&#x578B;&#x4F20;&#x9012;&#xFF0C;&#x65B0;&#x7EBF;&#x7A0B;&#x7684;&#x4E0A;&#x4E0B;&#x6587;&#x5C06;&#x5176;&#x8F6C;&#x6362;&#x4E3A;&#x4E00;&#x4E2A;std::string&#x5BF9;&#x8C61;</span>
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">f</span><span class="hljs-params">(<span class="hljs-keyword">int</span> i, <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> <span class="hljs-keyword">const</span>&amp; s)</span></span>;
+<span class="hljs-built_in">std</span>::<span class="hljs-function">thread <span class="hljs-title">t</span><span class="hljs-params">(f, <span class="hljs-number">3</span>, <span class="hljs-string">&quot;hello&quot;</span>)</span></span>;
+</code></pre>
+<ul>
+<li><strong>&#x9519;&#x8BEF;&#x6848;&#x4F8B;&#x4E00;</strong></li>
+</ul>
+<pre><code class="lang-cpp"><span class="hljs-meta">#buffer&#x662F;&#x4E00;&#x4E2A;&#x6307;&#x9488;&#x53D8;&#x91CF;&#xFF0C;&#x6307;&#x5411;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#xFF0C;&#x7136;&#x540E;&#x4F20;&#x9012;&#x5230;&#x65B0;&#x7EBF;&#x7A0B;&#x4E2D;&#x3002;&#x51FD;&#x6570; oops&#x9000;&#x51FA;&#x540E;&#xFF0C;buffer&#x5C31;&#x88AB;&#x91CA;&#x653E;&#x4E86;&#xFF0C;&#x5BFC;&#x81F4;&#x672A;&#x5B9A;&#x4E49;&#x884C;&#x4E3A;</span>
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">f</span><span class="hljs-params">(<span class="hljs-keyword">int</span> i,<span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> <span class="hljs-keyword">const</span>&amp; s)</span></span>;
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">oops</span><span class="hljs-params">(<span class="hljs-keyword">int</span> some_param)</span>
+</span>{
+  <span class="hljs-keyword">char</span> buffer[<span class="hljs-number">1024</span>];
+  <span class="hljs-built_in">sprintf</span>(buffer, <span class="hljs-string">&quot;%i&quot;</span>,some_param);
+  <span class="hljs-built_in">std</span>::<span class="hljs-function">thread <span class="hljs-title">t</span><span class="hljs-params">(f,<span class="hljs-number">3</span>,buffer)</span></span>;
+  t.detach();
+}
+</code></pre>
+<p>&#x89E3;&#x51B3;&#x65B9;&#x6848;:</p>
+<pre><code class="lang-cpp">void f(int i,std::string const&amp; s);
+void not_oops(int some_param)
+{
+  char buffer[1024];
+  sprintf(buffer,&quot;%i&quot;,some_param);
+  std::thread t(f,3,std::string(buffer));  // &#x4F7F;&#x7528;std::string&#xFF0C;&#x907F;&#x514D;&#x60AC;&#x7A7A;&#x6307;&#x9488;
+  t.detach();
+}
+</code></pre>
+<ul>
+<li><p>&#x9519;&#x8BEF;&#x6848;&#x4F8B;&#x4E8C;: <strong><mark style="color:red;">&#x4F20;&#x9012;&#x7ED9;&#x7EBF;&#x7A0B;&#x6784;&#x9020;&#x51FD;&#x6570;&#x7684;&#x53C2;&#x6570;&#xFF0C;&#x4F1A;&#x88AB;&#x591A;&#x62F7;&#x8D1D;&#x4E00;&#x6B21;&#x3002;&#x76EE;&#x6807;&#x51FD;&#x6570;&#x63A5;&#x6536;&#x5F15;&#x7528;&#x65F6;&#x7279;&#x522B;&#x6CE8;&#x610F;</mark></strong></p>
+<pre><code class="lang-cpp"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">update_data_for_widget</span><span class="hljs-params">(widget_id w,widget_data &amp;data)</span></span>; <span class="hljs-comment">//1</span>
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">oops_again</span><span class="hljs-params">(widget_id w)</span>
+</span>{
+    widget_data data;
+    <span class="hljs-built_in">std</span>::<span class="hljs-function">thread <span class="hljs-title">t</span><span class="hljs-params">(update_data_for_widget,w,data)</span></span>; <span class="hljs-comment">// 2</span>
+    display_status();
+    t.join();
+    process_widget_data(data); <span class="hljs-comment">// 3</span>
+}
+</code></pre>
+<ul>
+<li><p>&#x867D;&#x7136;<code>update_data_for_widget</code>(1)&#x7684;&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;&#x671F;&#x5F85;&#x4F20;&#x5165;&#x4E00;&#x4E2A;&#x5F15;&#x7528;&#xFF0C;&#x4F46;&#x662F;<code>std::thread</code>&#x7684;&#x6784;&#x9020;&#x51FD;&#x6570;(2)&#x5E76;&#x4E0D;&#x77E5;&#x6653;;</p>
+<p><mark style="color:red"><code>std::thread</code>&#x7684;&#x6784;&#x9020;&#x51FD;&#x6570;&#x65E0;&#x89C6;<code>update_data_for_widget</code>&#x51FD;&#x6570;&#x671F;&#x5F85;&#x7684;&#x53C2;&#x6570;&#x7C7B;&#x578B;&#xFF0C;&#x5E76;&#x76F2;&#x76EE;&#x7684;&#x62F7;&#x8D1D;&#x5DF2;&#x63D0;&#x4F9B;&#x7684;&#x53D8;&#x91CF;data</mark>;</p>
+</li>
+<li><p>&#x4E3A;&#x4E86;&#x7167;&#x987E;&#x90A3;&#x4E9B;&#x53EA;&#x80FD;&#x8FDB;&#x884C;&#x79FB;&#x52A8;&#x7684;&#x7C7B;&#x578B;&#xFF0C;<strong>&#x8FD9;&#x91CC;&#x662F;&#x4EE5;&#x53F3;&#x503C;&#x7684;&#x65B9;&#x5F0F;&#x8FDB;&#x884C;&#x62F7;&#x8D1D;&#x4F20;&#x9012;</strong>&#xFF1B;</p>
+</li>
+<li><p>&#x800C;&#x540E;&#x4EE5;&#x53F3;&#x503C;&#x4E3A;&#x5B9E;&#x53C2;&#xFF0C;&#x8C03;&#x7528; <code>update_data_for_widget()</code>&#x51FD;&#x6570;;</p>
+</li>
+<li><p>&#x800C;<code>update_data_for_widget()</code>&#x671F;&#x5F85;&#x7684;&#x662F;&#x4E00;&#x4E2A;&#x975E;&#x5E38;&#x91CF;&#x5F15;&#x7528;&#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#xFF0C;&#x800C;&#x975E; &#x53F3;&#x503C;&#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#xFF0C;&#x6240;&#x4EE5;&#x7F16;&#x8BD1;&#x51FA;&#x9519;**&#x3002;</p>
+<p>&#x5982;&#x679C;<code>update_data_for_widget()</code>&#x671F;&#x5F85;&#x7684;&#x662F;&#x4E00;&#x4E2A;&#x5E38;&#x91CF;&#x5F15;&#x7528;<code>widget_data const &amp;data</code>&#x3002;&#x90A3;&#x5C31;&#x4E0D;&#x4F1A;&#x7F16;&#x8BD1;&#x51FA;&#x9519;&#x3002;</p>
+<p>&#x4E0D;&#x8FC7;<code>process_widget_data(data)</code>&#x5F97;&#x5230;&#x7684;&#x4F9D;&#x7136;&#x662F;&#x65E7;&#x6570;&#x636E;&#xFF1B;</p>
+</li>
+<li><p>&#x5BF9;&#x4E8E;<code>std::bind</code>&#x7684;&#x5F00;&#x53D1;&#x8005;&#x6765;&#x8BF4;&#xFF0C;&#x95EE;&#x9898;&#x7684;&#x89E3;&#x51B3;&#x65B9;&#x6CD5;&#x663E;&#x800C;&#x6613;&#x89C1;&#xFF1A;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;<code>std::ref</code>&#x5C06;&#x53C2;&#x6570;&#x4EBA;&#x4E3A;&#x8F6C;&#x6362;&#x4E3A;&#x5F15;&#x7528;&#x7684;&#x5F62;&#x5F0F;&#xFF0C;&#x4ECE;&#x800C;&#x5C06;&#x7EBF;&#x7A0B;&#x7684;&#x8C03;&#x7528;&#x6539;&#x4E3A;&#x4EE5;&#x4E0B;&#x5F62;&#x5F0F;:</p>
+<pre><code class="lang-cpp">std::thread t(update_data_for_widget,w,std::ref(data));
+</code></pre>
+<p><strong>&#x6B64;&#x65F6;<code>std::thread</code>&#x6784;&#x9020;&#x51FD;&#x6570;&#x62F7;&#x8D1D;&#x7684;&#x662F;&#x4E00;&#x4E2A;data&#x7684;&#x5F15;&#x7528;</strong>&#xFF0C;<code>update_data_for_widget</code>&#x63A5;&#x6536;&#x5230;&#x7684;&#x4E5F;&#x662F;<code>data</code>&#x53D8;&#x91CF;&#x7684;&#x5F15;&#x7528;&#xFF0C;&#x800C;&#x975E;&#x4E00;&#x4E2A;<code>data</code>&#x53D8;&#x91CF;&#x62F7;&#x8D1D;&#x7684;&#x5F15;&#x7528;&#x3002;</p>
+</li>
+</ul>
+</li>
+<li><p><strong><mark style="color:red;">&#x7EBF;&#x7A0B;&#x4E2D;&#x6267;&#x884C; &#x7C7B;&#x6210;&#x5458;&#x51FD;&#x6570;</mark></strong></p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">class</span> X
+{ 
+    <span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">do_lengthy_work</span><span class="hljs-params">()</span></span>;
+};
+X my_x;
+<span class="hljs-built_in">std</span>::<span class="hljs-function">thread <span class="hljs-title">t</span><span class="hljs-params">(&amp;X::do_lengthy_work,&amp;my_x)</span></span>; <span class="hljs-comment">// 1</span>
+</code></pre>
+<p>&#x4E0A;&#x9762;&#x8FD9;&#x6BB5;&#x4EE3;&#x7801;&#x4E2D;&#xFF0C;&#x65B0;&#x7EBF;&#x7A0B;&#x5C06;<code>my_x.do_lengthmy_work()</code>&#x4F5C;&#x4E3A;&#x7EBF;&#x7A0B;&#x51FD;&#x6570;;</p>
+<p><code>my_x</code>&#x7684;&#x5730;&#x5740;(1)&#x4F5C;&#x4E3A;&#x6307;&#x9488;&#x5BF9;&#x8C61;&#x63D0;&#x4F9B;&#x7ED9;&#x51FD;&#x6570;&#x3002;</p>
+<p><strong>&#x7EBF;&#x7A0B;&#x4E2D;&#x5982;&#x4F55;&#x4E3A;&#x7C7B;&#x7684;&#x6210;&#x5458;&#x51FD;&#x6570; &#x63D0;&#x4F9B;&#x53C2;&#x6570;&#x5462;&#xFF1F;</strong></p>
+<p>&#x5176;&#x5B9E;&#x5F88;&#x7B80;&#x5355;&#xFF0C;<code>std::thread</code>&#x6784;&#x9020;&#x51FD;&#x6570;&#x7684;&#x7B2C;&#x4E09;&#x4E2A;&#x53C2;&#x6570;&#x5C31;&#x662F;&#x7C7B;&#x6210;&#x5458;&#x51FD;&#x6570;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#xFF0C;&#x4EE5;&#x6B64;&#x7C7B;&#x63A8;&#x3002;</p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">class</span> X
+{ 
+<span class="hljs-keyword">public</span>:
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">do_lengthy_work</span><span class="hljs-params">(<span class="hljs-keyword">int</span>)</span></span>;
+};
+X my_x;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">num</span><span class="hljs-params">(<span class="hljs-number">0</span>)</span></span>;
+<span class="hljs-built_in">std</span>::<span class="hljs-function">thread <span class="hljs-title">t</span><span class="hljs-params">(&amp;X::do_lengthy_work, &amp;my_x, num)</span></span>;
+</code></pre>
+<p>&#x4E0A;&#x9762;&#x8FD9;&#x6BB5;&#x4EE3;&#x7801;&#x4E2D;&#xFF0C;&#x65B0;&#x7EBF;&#x7A0B;&#x5C06;<code>my_x.do_lengthy_work(num)</code> &#x4F5C;&#x4E3A;&#x7EBF;&#x7A0B;&#x51FD;&#x6570;&#x3002;</p>
+</li>
+<li><p><strong><mark style="color:red;">&#x6709;&#x4E00;&#x79CD;&#x60C5;&#x51B5;&#xFF0C;&#x63D0;&#x4F9B;&#x7684;&#x7EBF;&#x7A0B;&#x7684;&#x53C2;&#x6570;&#x53EA;&#x80FD;&#x79FB;&#x52A8;&#xFF0C;&#x4E0D;&#x80FD;&#x62F7;&#x8D1D;&#x3002;&#x5982;<code>std::unique_ptr</code></mark></strong></p>
+<p>&#x540C;&#x4E00;&#x65F6;&#x95F4;&#x5185;&#xFF0C;&#x53EA;&#x5141;&#x8BB8;&#x4E00;&#x4E2A;<code>std::unique_ptr</code>&#x5B9E;&#x4F8B;&#x6307;&#x5411;&#x4E00;&#x4E2A;&#x7ED9;&#x5B9A;&#x5BF9;&#x8C61;&#xFF0C;&#x5E76;&#x4E14;&#x5F53;&#x8FD9;&#x4E2A;&#x5B9E;&#x4F8B;&#x9500;&#x6BC1;&#x65F6;&#xFF0C;&#x6307;&#x5411;&#x7684;&#x5BF9;&#x8C61;&#x4E5F;&#x5C06;&#x88AB;&#x5220;&#x9664;&#x3002;</p>
+<p>&#x5F53;&#x539F;&#x5BF9;&#x8C61;&#x662F;&#x4E00;&#x4E2A;&#x4E34;&#x65F6;&#x503C;&#x65F6;&#xFF0C;&#x79FB;&#x52A8;&#x81EA;&#x52A8;&#x5B8C;&#x6210;&#xFF0C;&#x4F46;&#x5F53;&#x539F;&#x5BF9;&#x8C61;&#x662F;&#x4E00;&#x4E2A;&#x547D;&#x540D;&#x53D8;&#x91CF;&#xFF0C;&#x90A3;&#x4E48;&#x9700;&#x8981;&#x8C03;&#x7528;<code>std::move()</code>&#x6765;&#x8BF7;&#x6C42;&#x8F6C;&#x79FB;&#x3002;</p>
+<pre><code class="lang-cpp">void process_big_object(std::unique_ptr&lt;big_object&gt;);
+std::unique_ptr&lt;big_object&gt; p(new big_object);
+p-&gt;prepare_data(42);
+std::thread t(process_big_object,std::move(p));
+
+#&#x540E;&#x7EED;&#x4E0D;&#x80FD;&#x518D;&#x76F4;&#x63A5;&#x8C03;&#x7528; p;
+</code></pre>
+</li>
+</ul>
+<h3 id="&#x8F6C;&#x79FB;&#x7EBF;&#x7A0B;&#x6240;&#x6709;&#x6743;">&#x8F6C;&#x79FB;&#x7EBF;&#x7A0B;&#x6240;&#x6709;&#x6743;</h3>
+<p>&#x60F3;&#x60F3;&#x4E24;&#x4E2A;&#x573A;&#x666F;:</p>
+<p>a. &#x51FD;&#x6570;A&#xFF0C;&#x51FD;&#x6570;A&#x4E2D;&#x4F1A;&#x751F;&#x6210;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x5728;&#x540E;&#x53F0;&#x8FD0;&#x884C;&#xFF0C;&#x7EBF;&#x7A0B;&#x540E;&#x53F0;&#x8FD0;&#x884C;&#x540E;&#xFF0C;&#x51FD;&#x6570;A&#x5C06;&#x7EBF;&#x7A0B;&#x7684;&#x6240;&#x6709;&#x6743;&#x8FD4;&#x56DE;&#x7ED9; &#x81EA;&#x5DF1;&#x7684;&#x8C03;&#x7528;&#x8005;&#xFF1B;</p>
+<p>b. &#x6216;&#x8005;&#x6211;&#x4EEC;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#xFF0C;&#x7136;&#x540E;&#x5C06;&#x7EBF;&#x7A0B;&#x6240;&#x6709;&#x6743; &#x4F20;&#x9012;&#x7ED9; &#x4E00;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x7531;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x6765;&#x7B49;&#x5F85;&#x7EBF;&#x7A0B;&#x7ED3;&#x675F;(&#x5BF9;&#x7EBF;&#x7A0B;&#x8FDB;&#x884C;join)&#x3002;</p>
+<p>&#x4E24;&#x79CD;&#x573A;&#x666F;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x90FD;&#x9700;&#x8981;&#x5C06; &#x7EBF;&#x7A0B;&#x7684;&#x6240;&#x6709;&#x6743;&#x4ECE;&#x4E00;&#x4E2A;&#x5730;&#x65B9;&#x8F6C;&#x79FB;&#x5230;&#x53E6;&#x4E00;&#x4E2A;&#x5730;&#x65B9;&#x3002;</p>
+<p>C++&#x4E2D;&#x6709;&#x5F88;&#x591A;&#x8D44;&#x6E90;&#x5360;&#x6709;(resource-owning)&#x7C7B;&#x578B;&#xFF0C;&#x5982;<code>std::ifstream</code>&#x3001;<code>std::unique_ptr</code>&#x3001;<code>std::thread</code>&#x7B49;&#xFF0C;&#x90FD;&#x662F;&#x53EA;&#x53EF;&#x79FB;&#x52A8;&#xFF0C;&#x4E0D;&#x53EF;&#x62F7;&#x8D1D;&#x7684;&#x3002;&#x6240;&#x4EE5;<code>std::thread</code>&#x7684;&#x6240;&#x6709;&#x6743;&#x5728;&#x51FD;&#x6570;&#x4E2D;&#x79FB;&#x52A8;&#xFF0C;&#x9700;&#x8981;&#x7528;<code>std::move()</code>&#x3002;</p>
+<pre><code class="lang-cpp"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">some_function</span><span class="hljs-params">()</span></span>;
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">some_other_function</span><span class="hljs-params">()</span></span>;
+<span class="hljs-built_in">std</span>::<span class="hljs-function">thread <span class="hljs-title">t1</span><span class="hljs-params">(some_function)</span></span>;            <span class="hljs-comment">// 1</span>
+<span class="hljs-built_in">std</span>::thread t2=<span class="hljs-built_in">std</span>::move(t1);            <span class="hljs-comment">// 2</span>
+t1=<span class="hljs-built_in">std</span>::thread(some_other_function);    <span class="hljs-comment">// 3</span>
+<span class="hljs-built_in">std</span>::thread t3;                            <span class="hljs-comment">// 4</span>
+t3=<span class="hljs-built_in">std</span>::move(t2);                        <span class="hljs-comment">// 5</span>
+t1=<span class="hljs-built_in">std</span>::move(t3);                        <span class="hljs-comment">// 6 &#x8D4B;&#x503C;&#x64CD;&#x4F5C;&#x5C06;&#x4F7F;&#x7A0B;&#x5E8F;&#x5D29;&#x6E83;</span>
+</code></pre>
+<ul>
+<li><p>(1) &#x4E00;&#x4E2A;&#x65B0;&#x7EBF;&#x7A0B;&#x542F;&#x52A8;&#x5E76;&#x4E0E;t1&#x5173;&#x8054;;</p>
+</li>
+<li><p>(2) t2&#x83B7;&#x5F97; t1&#x7EBF;&#x7A0B;&#x7684;&#x6240;&#x6709;&#x6743; &#xFF0C;&#x53D8;&#x91CF;t1&#x548C;&#x7EBF;&#x7A0B;&#x5DF2;&#x7ECF;&#x6CA1;&#x4EFB;&#x4F55;&#x5173;&#x8054;&#xFF0C;&#x6B64;&#x65F6;&#x53D8;&#x91CF;t2 &#x62E5;&#x6709;&#x6267;&#x884C;<code>some_function()</code>&#x51FD;&#x6570;&#x7684;&#x7EBF;&#x7A0B;&#x7684;&#x6240;&#x6709;&#x6743;;</p>
+</li>
+<li><p>(3) &#x4E00;&#x4E2A;&#x4E34;&#x65F6;<code>std::thread</code>&#x5BF9;&#x8C61;&#x76F8;&#x5173;&#x7684;&#x7EBF;&#x7A0B;&#x542F;&#x52A8;&#x4E86;&#x3002;&#x968F;&#x540E;&#x6240;&#x6709;&#x6743;&#x8F6C;&#x79FB;&#x5230;t1&#x3002;&#x65E0;&#x9700;&#x8C03;&#x7528;<code>std::move</code>;</p>
+</li>
+<li><p>(4) t3&#x662F;&#x9ED8;&#x8BA4;&#x6784;&#x9020;&#x7684;&#xFF0C;&#x4E0E;&#x4EFB;&#x4F55;&#x6267;&#x884C;&#x7EBF;&#x7A0B;&#x90FD;&#x6CA1;&#x6709;&#x5173;&#x8054;;</p>
+</li>
+<li><p>(5) &#x663E;&#x5F0F;&#x8C03;&#x7528;<code>std::move()</code>&#x5C06;&#x4E0E;t2&#x5173;&#x8054;&#x7EBF;&#x7A0B;&#x7684;&#x6240;&#x6709;&#x6743;&#x8F6C;&#x79FB;&#x5230;t3&#x4E2D;&#x3002;&#x56E0;&#x4E3A;t2&#x662F;&#x4E00;&#x4E2A;&#x547D;&#x540D;&#x5BF9;&#x8C61;&#x3002;&#x8FD9;&#x4E9B;&#x79FB;&#x52A8;&#x64CD;&#x4F5C;&#x5B8C;&#x6210;&#x540E;:</p>
+<p>t1&#x4E0E;&#x6267;&#x884C;<code>some_other_function</code>&#x7684;&#x7EBF;&#x7A0B;&#x76F8;&#x5173;&#x8054;;</p>
+<p>t2&#x6CA1;&#x6709;&#x5173;&#x8054;&#x4EFB;&#x4F55;&#x7EBF;&#x7A0B;;</p>
+<p>t3&#x4E0E;&#x6267;&#x884C;<code>some_function</code>&#x7684;&#x7EBF;&#x7A0B;&#x76F8;&#x5173;&#x8054;;</p>
+</li>
+<li><p>(6) &#x6700;&#x540E;&#x4E00;&#x4E2A;&#x79FB;&#x52A8;&#x64CD;&#x4F5C;&#xFF0C;&#x5C06;<code>some_function</code>&#x7EBF;&#x7A0B;&#x7684;&#x6240;&#x6709;&#x6743;&#x8F6C;&#x79FB;&#x7ED9;t1;</p>
+<p><strong>t1&#x5DF2;&#x7ECF;&#x6709;&#x4E86;&#x4E00;&#x4E2A;&#x5173;&#x8054;&#x7684;&#x7EBF;&#x7A0B;(&#x8FD0;&#x884C;<code>some_other_function</code>&#x7684;&#x7EBF;&#x7A0B;)&#xFF0C;&#x6240;&#x4EE5;&#x8FD9;&#x91CC;&#x7CFB;&#x7EDF;&#x76F4;&#x63A5;&#x8C03;&#x7528;<code>std::terminate()</code>&#x7EC8;&#x6B62;&#x7A0B;&#x5E8F;&#x8FD0;&#x884C;</strong>&#x3002;</p>
+</li>
+</ul>
+<p><strong>&#x7EBF;&#x7A0B;&#x6240;&#x6709;&#x6743;&#x5411;&#x51FD;&#x6570;&#x5916;&#x8F6C;&#x79FB;</strong></p>
+<pre><code class="lang-cpp"><span class="hljs-built_in">std</span>::<span class="hljs-function">thread <span class="hljs-title">f</span><span class="hljs-params">()</span>
+</span>{
+  <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">some_function</span><span class="hljs-params">()</span></span>;
+  <span class="hljs-keyword">return</span> <span class="hljs-built_in">std</span>::thread(some_function);
+}
+<span class="hljs-built_in">std</span>::<span class="hljs-function">thread <span class="hljs-title">g</span><span class="hljs-params">()</span>
+</span>{
+  <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">some_other_function</span><span class="hljs-params">(<span class="hljs-keyword">int</span>)</span></span>;
+  <span class="hljs-built_in">std</span>::<span class="hljs-function">thread <span class="hljs-title">t</span><span class="hljs-params">(some_other_function,<span class="hljs-number">42</span>)</span></span>;
+  <span class="hljs-keyword">return</span> t;
+}
+</code></pre>
+<p><strong>&#x7EBF;&#x7A0B;&#x6240;&#x6709;&#x6743;&#x8F6C;&#x79FB;&#x5230;&#x51FD;&#x6570;&#x4E2D;&#x3002;&#x51FD;&#x6570;&#x63A5;&#x53D7;&#x4E00;&#x4E2A;&#x503C;&#x4F20;&#x9012;&#x7684;<code>std::thread</code>&#x5B9E;&#x4F8B;&#x5373;&#x53EF;</strong></p>
+<pre><code class="lang-cpp"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">f</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::thread t)</span></span>;
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">g</span><span class="hljs-params">()</span>
+</span>{
+  <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">some_function</span><span class="hljs-params">()</span></span>;
+  f(<span class="hljs-built_in">std</span>::thread(some_function));
+  <span class="hljs-built_in">std</span>::<span class="hljs-function">thread <span class="hljs-title">t</span><span class="hljs-params">(some_function)</span></span>;
+  f(<span class="hljs-built_in">std</span>::move(t));
+}
+</code></pre>
+<p><strong><code>std::thread</code>&#x652F;&#x6301;&#x79FB;&#x52A8;&#xFF0C;&#x5982;&#x679C;&#x5BB9;&#x5668;&#x662F;&#x79FB;&#x52A8;&#x611F;&#x77E5;(move-aware)&#x7684;(&#x6BD4;&#x5982;&#x6700;&#x65B0;&#x7684;<code>std::vector&lt;&gt;</code>)&#xFF0C;&#x4E5F;&#x5141;&#x8BB8;<code>std::thread</code>&#x5BF9;&#x8C61;&#x7684;&#x5BB9;&#x5668;</strong></p>
+<p>&#x4E0B;&#x9762;&#x4EE3;&#x7801;&#x6279;&#x91CF;&#x521B;&#x5EFA;threads&#x5E76;&#x7B49;&#x5F85;&#x4ED6;&#x4EEC;&#x7ED3;&#x675F;:</p>
+<pre><code class="lang-cpp"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">do_work</span><span class="hljs-params">(<span class="hljs-keyword">unsigned</span> id)</span></span>;
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">f</span><span class="hljs-params">()</span>
+</span>{
+  <span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">std</span>::thread&gt; threads;
+  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">unsigned</span> i=<span class="hljs-number">0</span>; i &lt; <span class="hljs-number">20</span>; ++i)
+  {
+    threads.push_back(<span class="hljs-built_in">std</span>::thread(do_work,i)); <span class="hljs-comment">// &#x4EA7;&#x751F;&#x7EBF;&#x7A0B;</span>
+  } 
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> &amp;entry:threads) <span class="hljs-comment">//&#x6BCF;&#x4E2A;&#x7EBF;&#x7A0B;&#x8C03;&#x7528;join()</span>
+    entry.join();
+}
+</code></pre>
+<h3 id="&#x8FD0;&#x884C;&#x65F6;&#x9009;&#x62E9;&#x7EBF;&#x7A0B;&#x6570;&#x91CF;">&#x8FD0;&#x884C;&#x65F6;&#x9009;&#x62E9;&#x7EBF;&#x7A0B;&#x6570;&#x91CF;</h3>
+<ul>
+<li><p><code>std::thread::hardware_concurrency()</code> &#x8FD4;&#x56DE;CPU&#x6838;&#x6570;&#xFF0C;&#x5F53;&#x7CFB;&#x7EDF;&#x4FE1;&#x606F;&#x65E0;&#x6CD5;&#x83B7;&#x53D6;&#x65F6;&#xFF0C;&#x51FD;&#x6570;&#x8FD4;&#x56DE;0&#xFF1B;</p>
+</li>
+<li><p>&#x4E0B;&#x9762;&#x662F;&#x4E00;&#x4E2A;&#x5E76;&#x53D1;&#x6C42;&#x548C;&#x7684;&#x793A;&#x4F8B;:</p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> Iterator, <span class="hljs-keyword">typename</span> T&gt;
+<span class="hljs-keyword">struct</span> accumulate_block01
+{
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">operator</span><span class="hljs-params">()</span><span class="hljs-params">(Iterator first, Iterator last, T &amp;result)</span>
+    </span>{
+        result = <span class="hljs-built_in">std</span>::accumulate(first, last, result);
+    }
+};
+
+<span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> Iterator, <span class="hljs-keyword">typename</span> T&gt;
+<span class="hljs-function">T <span class="hljs-title">parallel_accumulate001</span><span class="hljs-params">(Iterator first, Iterator last, T init)</span>
+</span>{
+    <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> length = <span class="hljs-built_in">std</span>::distance(first, last);
+    <span class="hljs-keyword">if</span> (length == <span class="hljs-number">0</span>)
+    {
+        <span class="hljs-keyword">return</span> init;
+    }
+    <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">long</span> <span class="hljs-keyword">const</span> min_per_thread = <span class="hljs-number">5</span>;
+    <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">long</span> <span class="hljs-keyword">const</span> max_threads = (length + min_per_thread - <span class="hljs-number">1</span>) / min_per_thread;
+    <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">long</span> <span class="hljs-keyword">const</span> hardware_threads = <span class="hljs-built_in">std</span>::thread::hardware_concurrency();
+    <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">long</span> <span class="hljs-keyword">const</span> num_threads = <span class="hljs-built_in">std</span>::min(hardware_threads != <span class="hljs-number">0</span> ? hardware_threads : <span class="hljs-number">2</span>, max_threads);
+    <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">long</span> <span class="hljs-keyword">const</span> block_size = length / num_threads;
+
+    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;T&gt; results(num_threads);
+    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">std</span>::thread&gt; threads(num_threads - <span class="hljs-number">1</span>); <span class="hljs-comment">//&#x4F5C;&#x4E3A;main &#x7EBF;&#x7A0B;&#x81EA;&#x5DF1;&#x4E5F;&#x7B97;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;</span>
+
+    Iterator block_start = first;
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">long</span> i = <span class="hljs-number">0</span>; i &lt; num_threads - <span class="hljs-number">1</span>; i++)
+    {
+        Iterator block_end = block_start;
+        <span class="hljs-built_in">std</span>::advance(block_end, i * block_size);
+        threads[i] = <span class="hljs-built_in">std</span>::thread(
+            accumulate_block01&lt;Iterator, T&gt;(),
+            block_start, block_end,
+            <span class="hljs-built_in">std</span>::ref(results[i]));
+        block_start = block_end;
+    }
+    accumulate_block01&lt;Iterator, T&gt;()(block_start, last, results[num_threads - <span class="hljs-number">1</span>]); <span class="hljs-comment">//main&#x51FD;&#x6570;&#x4E5F;&#x8BA1;&#x7B97;&#x4E00;&#x90E8;&#x5206;</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> &amp;entry : threads)
+        entry.join();
+
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">std</span>::accumulate(results.begin(), results.end(), init);
+}
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; vi;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">10</span>;++i)
+    {
+        vi.push_back(<span class="hljs-number">10</span>);
+    }
+    <span class="hljs-keyword">int</span> sum=parallel_accumulate001(vi.begin(),vi.end(),<span class="hljs-number">5</span>);
+    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">&quot;sum=&quot;</span>&lt;&lt;sum&lt;&lt;<span class="hljs-built_in">std</span>::<span class="hljs-built_in">endl</span>;
+}
+</code></pre>
+</li>
+</ul>
+<h4 id="&#x6807;&#x8BC6;&#x7EBF;&#x7A0B;">&#x6807;&#x8BC6;&#x7EBF;&#x7A0B;</h4>
+<ul>
+<li>&#x7EBF;&#x7A0B;&#x6807;&#x8BC6;&#x7C7B;&#x578B;&#x4E3A;:<code>std::thread::id</code>;</li>
+<li>&#x901A;&#x8FC7;&#x4E24;&#x79CD;&#x65B9;&#x5F0F;&#x68C0;&#x7D22;:<ul>
+<li>&#x7B2C;&#x4E00;&#x79CD;, &#x901A;&#x8FC7;&#x8C03;&#x7528;<code>std::thread</code>&#x5BF9;&#x8C61;&#x7684;&#x6210;&#x5458;&#x51FD;&#x6570;<code>get_id()</code>&#x6765;&#x83B7;&#x53D6;&#x3002;&#x5982;&#x679C;<code>std::thread</code>&#x5BF9;&#x8C61;&#x6CA1;&#x6709;&#x4E0E;&#x4EFB;&#x4F55;&#x6267;&#x884C;&#x7EBF;&#x7A0B;&#x5173;&#x8054;&#xFF0C;<code>get_id()</code>&#x5C06;&#x8FD4;&#x56DE;&#x9ED8;&#x8BA4;&#x6784;&#x9020;&#x7684;<code>std::thread::id</code>&#x5BF9;&#x8C61;&#x3002;&#x6807;&#x8BC6;&#x6CA1;&#x6709;&#x4EFB;&#x4F55;&#x7EBF;&#x7A0B;(not any thread)&#xFF1B;</li>
+<li>&#x7B2C;&#x4E8C;&#x79CD;,&#x8C03;&#x7528;<code>std::this_thread::get_id()</code>&#x4E5F;&#x53EF;&#x4EE5;&#x83B7;&#x5F97;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x7684;&#x6807;&#x8BC6;&#xFF0C;&#x8BE5;&#x51FD;&#x6570;&#x5728;<code>&lt;thread&gt;</code>&#x5934;&#x6587;&#x4EF6;&#x4E2D;;</li>
+</ul>
+</li>
+<li><code>std::thread::id</code>&#x7C7B;&#x578B;&#x7684;&#x5BF9;&#x8C61;<strong>&#x53EF;&#x968F;&#x610F;&#x62F7;&#x8D1D; &#x4E0E; &#x6BD4;&#x8F83;</strong>&#x3002;&#x5982;&#x679C;&#x4E24;&#x4E2A;<code>std::thread::id</code>&#x7C7B;&#x578B;&#x7684;&#x5BF9;&#x8C61;&#x76F8;&#x7B49;&#xFF0C;&#x5219;&#x4EE3;&#x8868;&#x540C;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#xFF1B;<ul>
+<li><code>std::thread::id</code>&#x7C7B;&#x578B; &#x53EF;&#x4EE5;&#x505A; &#x5BB9;&#x5668;&#x7684;&#x952E;&#x3001;&#x53EF;&#x4EE5;&#x7528;&#x4E8E;&#x6392;&#x5E8F; &#x7B49;&#x7B49;&#x3002;</li>
+</ul>
+</li>
+</ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="C++Primer类设计-模板与泛型编程.html" class="navigation navigation-prev " aria-label="Previous page: C++ Primer 类设计:模板与泛型编程">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="C++并发编程实战-02mutexlock.html" class="navigation navigation-next " aria-label="Next page: C++并发编程实战: mutex、lock、unique_lock、call_once、shared_lock">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"C++并发编程实战一:基础使用、Join、传参、线程所有权转移","level":"1.5.16","depth":2,"next":{"title":"C++并发编程实战: mutex、lock、unique_lock、call_once、shared_lock","level":"1.5.17","depth":2,"path":"c++学习笔记/C++并发编程实战-02mutexlock.md","ref":"c++学习笔记/C++并发编程实战-02mutexlock.md","articles":[]},"previous":{"title":"C++ Primer 类设计:模板与泛型编程","level":"1.5.15","depth":2,"path":"c++学习笔记/C++Primer类设计-模板与泛型编程.md","ref":"c++学习笔记/C++Primer类设计-模板与泛型编程.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"c++学习笔记/C++并发编程实战-01基础使用Join传参.md","mtime":"2022-01-05T04:00:33.439Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-01-23T03:25:17.334Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

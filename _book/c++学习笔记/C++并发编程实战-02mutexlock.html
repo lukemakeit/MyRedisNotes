@@ -1,0 +1,838 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>C++并发编程实战: mutex、lock、unique_lock、call_once、shared_lock · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="C++并发编程实战-03条件变量.html" />
+    
+    
+    <link rel="prev" href="C++并发编程实战-01基础使用Join传参.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    README
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../redis学习/">
+            
+                <a href="../redis学习/">
+            
+                    
+                    Redis学习
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../redis学习/Redis备份.html">
+            
+                <a href="../redis学习/Redis备份.html">
+            
+                    
+                    Redis备份
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../redis学习/Redis复制.html">
+            
+                <a href="../redis学习/Redis复制.html">
+            
+                    
+                    Redis复制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../redis学习/Redis集群.html">
+            
+                <a href="../redis学习/Redis集群.html">
+            
+                    
+                    Redis集群
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../rocksdb-xue-xi/README.md">
+            
+                <span>
+            
+                    
+                    RocksDB学习
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../rocksdb学习/RocksDB基础概念.html">
+            
+                <a href="../rocksdb学习/RocksDB基础概念.html">
+            
+                    
+                    RocksDB基础概念
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../rocksdb学习/RocksDB基础操作-C语言.html">
+            
+                <a href="../rocksdb学习/RocksDB基础操作-C语言.html">
+            
+                    
+                    RocksDB基础操作-C语言
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../c语言笔记/">
+            
+                <a href="../c语言笔记/">
+            
+                    
+                    C语言笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../c语言笔记/C语言补充笔记一.html">
+            
+                <a href="../c语言笔记/C语言补充笔记一.html">
+            
+                    
+                    C语言补充笔记一
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    C++学习笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="C++Primer基础-01引用指针const.html">
+            
+                <a href="C++Primer基础-01引用指针const.html">
+            
+                    
+                    C++Primer基础:引用、指针、const、auto/decltype
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="C++Primer基础-02volatile与using.html">
+            
+                <a href="C++Primer基础-02volatile与using.html">
+            
+                    
+                    C++Primer基础:volatile、using
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="C++Primer基础-03stringvector数组.html">
+            
+                <a href="C++Primer基础-03stringvector数组.html">
+            
+                    
+                    C++Primer基础: string、vector、数组
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="C++Primer基础-04函数重载函数指针.html">
+            
+                <a href="C++Primer基础-04函数重载函数指针.html">
+            
+                    
+                    C++Primer基础:函数、重载、函数指针
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="C++Primer基础-05function与bind与forward.html">
+            
+                <a href="C++Primer基础-05function与bind与forward.html">
+            
+                    
+                    C++Primer基础:std::function、std::bind、std::forward
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="C++Primer基础-06-lambda.html">
+            
+                <a href="C++Primer基础-06-lambda.html">
+            
+                    
+                    C++Primer基础:lambda
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" data-path="C++Primer基础-07类基础.html">
+            
+                <a href="C++Primer基础-07类基础.html">
+            
+                    
+                    C++ Primer基础: 类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8" data-path="C++Primer标准库-IO库.html">
+            
+                <a href="C++Primer标准库-IO库.html">
+            
+                    
+                    C++ Primer 标准库: IO库
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.9" data-path="C++Primer标准库-顺序容器.html">
+            
+                <a href="C++Primer标准库-顺序容器.html">
+            
+                    
+                    C++ Primer 标准库: 顺序容器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.10" data-path="C++Primer标准库-泛型算法.html">
+            
+                <a href="C++Primer标准库-泛型算法.html">
+            
+                    
+                    C++ Primer 标准库: 泛型算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.11" data-path="C++Primer标准库-关联容器.html">
+            
+                <a href="C++Primer标准库-关联容器.html">
+            
+                    
+                    C++ Primer 标准库: 关联容器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.12" data-path="C++Primer标准库-动态内存.html">
+            
+                <a href="C++Primer标准库-动态内存.html">
+            
+                    
+                    C++ Primer 标准库: 动态内存
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.13" data-path="C++Primer类设计-拷贝控制.html">
+            
+                <a href="C++Primer类设计-拷贝控制.html">
+            
+                    
+                    C++ Primer 类设计: 拷贝控制、explicit
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.14" data-path="C++Primer类设计-基类派生类虚函数.html">
+            
+                <a href="C++Primer类设计-基类派生类虚函数.html">
+            
+                    
+                    C++ Primer 类设计: 基类、派生类、虚函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.15" data-path="C++Primer类设计-模板与泛型编程.html">
+            
+                <a href="C++Primer类设计-模板与泛型编程.html">
+            
+                    
+                    C++ Primer 类设计:模板与泛型编程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.16" data-path="C++并发编程实战-01基础使用Join传参.html">
+            
+                <a href="C++并发编程实战-01基础使用Join传参.html">
+            
+                    
+                    C++并发编程实战一:基础使用、Join、传参、线程所有权转移
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.5.17" data-path="C++并发编程实战-02mutexlock.html">
+            
+                <a href="C++并发编程实战-02mutexlock.html">
+            
+                    
+                    C++并发编程实战: mutex、lock、unique_lock、call_once、shared_lock
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.18" data-path="C++并发编程实战-03条件变量.html">
+            
+                <a href="C++并发编程实战-03条件变量.html">
+            
+                    
+                    C++并发编程实战三: 条件变量
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.19" data-path="C++并发编程实战-04原子操作和类型.html">
+            
+                <a href="C++并发编程实战-04原子操作和类型.html">
+            
+                    
+                    C++并发编程实战四: 原子操作和类型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.20" data-path="C++并发编程实战-05内存模型.html">
+            
+                <a href="C++并发编程实战-05内存模型.html">
+            
+                    
+                    C++并发编程实战五: 内存模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../工具使用/">
+            
+                <a href="../工具使用/">
+            
+                    
+                    工具使用
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../工具使用/VSCode使用小技巧.html">
+            
+                <a href="../工具使用/VSCode使用小技巧.html">
+            
+                    
+                    VS Code使用小技巧
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >C++并发编程实战: mutex、lock、unique_lock、call_once、shared_lock</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="c&#x5E76;&#x53D1;&#x7F16;&#x7A0B;&#x5B9E;&#x6218;-mutex&#x3001;lock&#x3001;uniquelock&#x3001;callonce&#x3001;sharedlock">C++&#x5E76;&#x53D1;&#x7F16;&#x7A0B;&#x5B9E;&#x6218;: mutex&#x3001;lock&#x3001;unique_lock&#x3001;call_once&#x3001;shared_lock</h2>
+<h4 id="&#x4F7F;&#x7528;&#x4E92;&#x65A5;&#x9501;stdmutex">&#x4F7F;&#x7528;&#x4E92;&#x65A5;&#x9501;<code>std::mutex</code></h4>
+<p>&#x901A;&#x8FC7;&#x6784;&#x5EFA;&#x4E00;&#x4E2A;<code>std::mutex</code>&#x5B9E;&#x4F8B;&#x521B;&#x5EFA;&#x4E92;&#x65A5;&#x9501;&#xFF0C;&#x901A;&#x8FC7;&#x6210;&#x5458;&#x51FD;&#x6570;<code>lock</code>&#x5BF9;&#x4E92;&#x65A5;&#x9501;&#x4E0A;&#x9501;&#xFF0C;<code>unlock</code>&#x8FDB;&#x884C;&#x89E3;&#x9501;&#x3002;</p>
+<p><strong>C++&#x6807;&#x51C6;&#x5E93;&#x4E3A;&#x4E92;&#x65A5;&#x9501;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E2A;RAII&#x8BED;&#x6CD5;<code>std::lock_guard</code>&#x7C7B;&#x6A21;&#x5757;&#xFF0C;&#x6784;&#x9020;&#x65F6;&#x63D0;&#x4F9B;lock&#x4F4F;&#x4E92;&#x65A5;&#x9501;&#xFF0C;&#x6790;&#x6784;&#x65F6;&#x8FDB;&#x884C;unlock</strong>&#x3002;</p>
+<pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;list&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;mutex&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;algorithm&gt;</span></span>
+
+<span class="hljs-built_in">std</span>::<span class="hljs-built_in">list</span>&lt;<span class="hljs-keyword">int</span>&gt; some_list;    <span class="hljs-comment">// 1</span>
+<span class="hljs-built_in">std</span>::mutex some_mutex;    <span class="hljs-comment">// 2</span>
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">add_to_list</span><span class="hljs-params">(<span class="hljs-keyword">int</span> new_value)</span>
+</span>{
+ <span class="hljs-built_in">std</span>::lock_guard&lt;<span class="hljs-built_in">std</span>::mutex&gt; guard(some_mutex);    <span class="hljs-comment">// 3</span>
+ some_list.push_back(new_value);
+}
+
+<span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">list_contains</span><span class="hljs-params">(<span class="hljs-keyword">int</span> value_to_find)</span>
+</span>{
+ <span class="hljs-built_in">std</span>::lock_guard&lt;<span class="hljs-built_in">std</span>::mutex&gt; guard(some_mutex);    <span class="hljs-comment">// 4</span>
+ <span class="hljs-keyword">return</span> <span class="hljs-built_in">std</span>::find(some_list.begin(),some_list.end(),value_to_find) != some_list.end();
+}
+</code></pre>
+<h4 id="&#x6B7B;&#x9501;">&#x6B7B;&#x9501;</h4>
+<p>&#x6B7B;&#x9501;&#x7684;&#x89E3;&#x51B3;&#x65B9;&#x5F0F; &#x4E00;&#x822C;&#x662F; &#x8BA9;&#x4E24;&#x4E2A;&#x4E92;&#x65A5;&#x9501;&#x603B;&#x662F;&#x4EE5;&#x76F8;&#x540C;&#x7684;&#x987A;&#x5E8F;&#x4E0A;&#x9501;&#x6765;&#x907F;&#x514D;&#x3002;</p>
+<p>&#x4E0D;&#x8FC7;&#x6211;&#x4EEC;&#x8003;&#x8651;&#x4E00;&#x79CD;&#x573A;&#x666F;&#xFF1A; &#x4E00;&#x4E2A;&#x64CD;&#x4F5C;&#x5BF9;&#x540C;&#x4E00;&#x4E2A;&#x7C7B;&#x7684;&#x4E24;&#x4E2A;&#x4E0D;&#x540C;&#x5B9E;&#x4F8B;&#x8FDB;&#x884C;&#x6570;&#x636E;&#x7684;swap&#xFF0C;&#x4E3A;&#x4E86;&#x4FDD;&#x8BC1;&#x6570;&#x636E;&#x88AB;&#x6B63;&#x786E;&#x7684;swap&#xFF0C;&#x5C31;&#x8981;&#x907F;&#x514D;&#x6570;&#x636E;&#x88AB;&#x5E76;&#x53D1;&#x4FEE;&#x6539;&#xFF0C;&#x6BCF;&#x4E2A;&#x5B9E;&#x4F8B;&#x4E0A;&#x7684;&#x4E92;&#x65A5;&#x9501;&#x90FD;&#x5FC5;&#x987B;&#x9501;&#x4F4F;&#x3002;&#x4F46;&#x662F;&#xFF0C;&#x5982;&#x679C;&#x9009;&#x62E9;&#x4E00;&#x4E2A;&#x56FA;&#x5B9A;&#x7684;&#x987A;&#x5E8F;(&#x4F8B;&#x5982;&#xFF0C;&#x5148;&#x662F;&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x5BF9;&#x5E94;&#x7684;&#x4E92;&#x65A5;&#x9501;&#xFF0C;&#x7136;&#x540E;&#x662F;&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;&#x7684;&#x4E92;&#x65A5;&#x9501;)&#xFF0C;&#x8FD9;&#x53EF;&#x80FD;&#x4F1A;&#x9002;&#x5F97;&#x5176;&#x53CD;&#xFF1A;&#x53EA;&#x8981;&#x4EA4;&#x6362;&#x4E00;&#x4E0B;&#x53C2;&#x6570;&#x7684;&#x4F4D;&#x7F6E;&#xFF0C;&#x4E24;&#x4E2A;&#x7EBF;&#x7A0B;&#x8BD5;&#x56FE;&#x5728;&#x76F8;&#x540C;&#x7684;&#x4E24;&#x4E2A;&#x5B9E;&#x4F8B;&#x95F4;&#x4EA4;&#x6362;&#x6570;&#x636E;&#xFF0C;&#x5C31;&#x4F1A;&#x53D1;&#x751F;&#x6B7B;&#x9501;&#xFF01;</p>
+<p><strong><mark style="color:red;">C++&#x6807;&#x51C6;&#x5E93;&#x65B9;&#x6CD5;: <code>std::lock</code>&#xFF0C;&#x8BE5;&#x51FD;&#x6570;&#x53EF;&#x4EE5;&#x4E00;&#x6B21;&#x6027;&#x9501;&#x4F4F;&#x4E24;&#x4E2A; or &#x66F4;&#x591A;&#x7684;&#x4E92;&#x65A5;&#x9501;&#xFF0C;&#x4E14;&#x6CA1;&#x6709;&#x6B7B;&#x9501;&#x7684;&#x98CE;&#x9669;</mark></strong></p>
+<pre><code class="lang-cpp"><span class="hljs-comment">// &#x8FD9;&#x91CC;&#x7684;std::lock()&#x9700;&#x8981;&#x5305;&#x542B;&lt;mutex&gt;&#x5934;&#x6587;&#x4EF6;</span>
+<span class="hljs-keyword">class</span> some_big_object;
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">swap</span><span class="hljs-params">(some_big_object&amp; lhs,some_big_object&amp; rhs)</span></span>;
+<span class="hljs-keyword">class</span> X
+{
+<span class="hljs-keyword">private</span>:
+  some_big_object some_detail;
+  <span class="hljs-built_in">std</span>::mutex m;
+<span class="hljs-keyword">public</span>:
+  X(some_big_object <span class="hljs-keyword">const</span>&amp; sd):some_detail(sd){}
+  <span class="hljs-function"><span class="hljs-keyword">friend</span> <span class="hljs-keyword">void</span> <span class="hljs-title">swap</span><span class="hljs-params">(X&amp; lhs, X&amp; rhs)</span>
+  </span>{
+    <span class="hljs-keyword">if</span>(&amp;lhs==&amp;rhs)
+      <span class="hljs-keyword">return</span>;
+    <span class="hljs-built_in">std</span>::lock(lhs.m,rhs.m); <span class="hljs-comment">// 1</span>
+    <span class="hljs-built_in">std</span>::lock_guard&lt;<span class="hljs-built_in">std</span>::mutex&gt; lock_a(lhs.m,<span class="hljs-built_in">std</span>::adopt_lock); <span class="hljs-comment">// 2</span>
+    <span class="hljs-built_in">std</span>::lock_guard&lt;<span class="hljs-built_in">std</span>::mutex&gt; lock_b(rhs.m,<span class="hljs-built_in">std</span>::adopt_lock); <span class="hljs-comment">// 3</span>
+    swap(lhs.some_detail,rhs.some_detail);
+  }
+};
+</code></pre>
+<ul>
+<li>&#x9996;&#x5148;&#x68C0;&#x67E5;&#x53C2;&#x6570;&#x662F;&#x4E0D;&#x662F;&#x4E0D;&#x540C;&#x7684;&#x5B9E;&#x4F8B;&#xFF1B;</li>
+<li>&#x8C03;&#x7528;<code>std::lock</code>&#x9501;&#x4F4F;&#x4E24;&#x4E2A;&#x4E92;&#x65A5;&#x9501;;</li>
+<li>&#x521B;&#x5EFA;&#x4E24;&#x4E2A;<code>std::lock_guard</code>&#x5B9E;&#x4F8B;&#xFF0C;&#x989D;&#x5916;&#x63D0;&#x4F9B;&#x7684;<code>std::adopt_lock</code>&#x53C2;&#x6570;&#x544A;&#x8BC9;<code>std::lock_guard</code>&#x4E92;&#x65A5;&#x9501;&#x5DF2;&#x7ECF;&#x4E0A;&#x9501;&#x4E86;&#xFF0C;&#x63A5;&#x8FC7;&#x4E92;&#x65A5;&#x9501;&#x7684;&#x6240;&#x6709;&#x6743;&#x5373;&#x53EF;&#xFF0C;&#x4E0D;&#x7528;&#x5728;<code>std::lock_guard</code>&#x7684;&#x6784;&#x9020;&#x51FD;&#x6570;&#x91CC;&#x4E0A;&#x9501;&#x3002;</li>
+<li>&#x4F7F;&#x7528;<code>std::lock</code>&#x53BB;&#x9501;&#x4F4F;<code>lhs.m</code>&#x6216;<code>rhs.m</code>&#x65F6;&#xFF0C;&#x53EF;&#x80FD;&#x4F1A;&#x629B;&#x51FA;&#x5F02;&#x5E38;&#xFF1B;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x5F02;&#x5E38;&#x4F1A;&#x4F20;&#x64AD;&#x5230;<code>std::lock</code>&#x4E4B;&#x5916;;</li>
+<li>&#x5F53;<code>std::lock</code>&#x6210;&#x529F;&#x7684;&#x83B7;&#x53D6;&#x4E86;&#x4E00;&#x4E2A;&#x4E92;&#x65A5;&#x9501;&#x4E0A;&#x7684;&#x9501;&#xFF0C;&#x5E76;&#x4E14;&#x5F53;&#x5176;&#x5C1D;&#x8BD5;&#x4ECE;&#x53E6;&#x4E00;&#x4E2A;&#x4E92;&#x65A5;&#x9501;&#x4E0A;&#x518D;&#x83B7;&#x53D6;&#x9501;&#x65F6;&#xFF0C;&#x5982;&#x679C;&#x6709;&#x5F02;&#x5E38;&#x629B;&#x51FA;&#xFF0C;&#x7B2C;&#x4E00;&#x4E2A;&#x9501;&#x4F1A;&#x81EA;&#x52A8;&#x91CA;&#x653E;:<code>std::lock</code>&#x7ED9;&#x4E92;&#x65A5;&#x9501;&#x4E0A;&#x9501;&#x7684;&#x65F6;&#x5019;&#x63D0;&#x4F9B;&#x4E86;&#x8981;&#x4E48;&#x5168;&#x505A;&#x8981;&#x4E48;&#x4E0D;&#x505A;&#x7684;&#x8BED;&#x4E49;(all-or-nonthing)</li>
+</ul>
+<p>C++17&#x5BF9;&#x4E0A;&#x9762;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x63D0;&#x4F9B;&#x6D41;&#x91CF;&#x652F;&#x6301;&#xFF0C;<code>std::scoped_lock</code>&#xFF0C;<strong>&#x5B83;&#x63A5;&#x53D7;&#x4E00;&#x4E2A;&#x4E92;&#x65A5;&#x9501;&#x7C7B;&#x578B;&#x7684;&#x5217;&#x8868;&#x4F5C;&#x4E3A;&#x6A21;&#x677F;&#x53C2;&#x6570;</strong>&#xFF0C;&#x529F;&#x80FD;&#x4E0A;&#x7B49;&#x540C;&#x4E8E;<code>std::lock</code>+<code>std::lock_guard</code>&#x3002;&#x5982;:</p>
+<pre><code class="lang-cpp"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">swap</span><span class="hljs-params">(X&amp; lhs, X&amp; rhs)</span>
+</span>{
+ <span class="hljs-keyword">if</span>(&amp;lhs==&amp;rhs)
+ <span class="hljs-keyword">return</span>;
+ <span class="hljs-built_in">std</span>::<span class="hljs-function">scoped_lock <span class="hljs-title">guard</span><span class="hljs-params">(lhs.m,rhs.m)</span></span>; <span class="hljs-comment">// 1</span>
+ swap(lhs.some_detail,rhs.some_detail);
+}
+</code></pre>
+<p>C++17&#x53E6;&#x4E00;&#x4E2A;&#x7279;&#x6027;&#xFF1A;&#x7C7B;&#x6A21;&#x677F;&#x53C2;&#x6570;&#x81EA;&#x52A8;&#x63A8;&#x5BFC;&#x3002;&#x4E0A;&#x9762;<code>std::scoped_lock</code>&#x5C31;&#x81EA;&#x52A8;&#x63A8;&#x5BFC;&#x4E86;&#x53C2;&#x6570;&#x7C7B;&#x578B;&#x3002;</p>
+<pre><code class="lang-cpp"><span class="hljs-built_in">std</span>::<span class="hljs-function">scoped_lock <span class="hljs-title">guard</span><span class="hljs-params">(lhs.m,rhs.m)</span></span>;
+&#x7B49;&#x540C;&#x4E8E;
+<span class="hljs-built_in">std</span>::scoped_lock&lt;<span class="hljs-built_in">std</span>::mutex,<span class="hljs-built_in">std</span>::mutex&gt; guard(lhs.m,rhs.m);
+</code></pre>
+<h4 id="&#x4EBA;&#x4E3A;&#x4E3B;&#x52A8;&#x91CA;&#x653E;&#x9501;&#x63A7;&#x5236;&#x9501;&#x7C92;&#x5EA6;stduniquelock">&#x4EBA;&#x4E3A;&#x4E3B;&#x52A8;&#x91CA;&#x653E;&#x9501;(&#x63A7;&#x5236;&#x9501;&#x7C92;&#x5EA6;):<code>std::unique_lock</code></h4>
+<p>&#x6BD4;&#x5982;&#x67D0;&#x4E2A;&#x7EBF;&#x7A0B;&#x6301;&#x6709;&#x9501;&#xFF0C;&#x800C;&#x540E;&#x53BB;&#x6267;&#x884C;&#x6587;&#x4EF6;I/O&#xFF0C;&#x5C06;&#x6781;&#x5927;&#x964D;&#x4F4E;&#x5E76;&#x53D1;&#x6027;&#x80FD;&#x3002;</p>
+<pre><code class="lang-cpp"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">get_and_process_data</span><span class="hljs-params">()</span>
+</span>{
+  <span class="hljs-built_in">std</span>::unique_lock&lt;<span class="hljs-built_in">std</span>::mutex&gt; my_lock(the_mutex);
+  some_class data_to_process=get_next_data_chunk();
+  my_lock.unlock();  <span class="hljs-comment">// 1 &#x4E0D;&#x8981;&#x8BA9;&#x9501;&#x4F4F;&#x7684;&#x4E92;&#x65A5;&#x91CF;&#x8D8A;&#x8FC7;process()&#x51FD;&#x6570;&#x7684;&#x8C03;&#x7528;</span>
+  result_type result=process(data_to_process);
+  my_lock.lock(); <span class="hljs-comment">// 2 &#x4E3A;&#x4E86;&#x5199;&#x5165;&#x6570;&#x636E;&#xFF0C;&#x5BF9;&#x4E92;&#x65A5;&#x91CF;&#x518D;&#x6B21;&#x4E0A;&#x9501;</span>
+  write_result(data_to_process,result);
+}
+</code></pre>
+<h3 id="&#x4FDD;&#x62A4;&#x5171;&#x4EAB;&#x6570;&#x636E;">&#x4FDD;&#x62A4;&#x5171;&#x4EAB;&#x6570;&#x636E;</h3>
+<h4 id="&#x521D;&#x59CB;&#x5316;&#x671F;&#x95F4;&#x4FDD;&#x62A4;&#x6570;&#x636E;stdonceflag&#x548C;stdcallonce">&#x521D;&#x59CB;&#x5316;&#x671F;&#x95F4;&#x4FDD;&#x62A4;&#x6570;&#x636E;:<code>std::once_flag</code>&#x548C;<code>std::call_once</code></h4>
+<p>&#x6570;&#x636E;&#x521D;&#x59CB;&#x5316;&#x65F6;&#x9700;&#x8981;&#x5199;&#xFF0C;&#x521D;&#x59CB;&#x5316;&#x5B8C;&#x6210;&#x540E;&#xFF0C;&#x53EA;&#x9700;&#x8BFB;&#x5373;&#x53EF;&#x3002;</p>
+<pre><code class="lang-cpp"><span class="hljs-built_in">std</span>::<span class="hljs-built_in">shared_ptr</span>&lt;some_resource&gt; resource_ptr;
+<span class="hljs-built_in">std</span>::once_flag resource_flag;  <span class="hljs-comment">// 1</span>
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">init_resource</span><span class="hljs-params">()</span>
+</span>{
+  resource_ptr.reset(<span class="hljs-keyword">new</span> some_resource);
+}
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">foo</span><span class="hljs-params">()</span>
+</span>{
+  <span class="hljs-built_in">std</span>::call_once(resource_flag,init_resource);  <span class="hljs-comment">// &#x53EF;&#x4EE5;&#x5B8C;&#x6574;&#x7684;&#x8FDB;&#x884C;&#x4E00;&#x6B21;&#x521D;&#x59CB;&#x5316;</span>
+  resource_ptr-&gt;do_something();
+}
+</code></pre>
+<p>&#x518D;&#x6BD4;&#x5982;&#x5728;class&#x4E2D;:</p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">class</span> X
+{
+<span class="hljs-keyword">private</span>:
+  connection_info connection_details;
+  connection_handle connection;
+  <span class="hljs-built_in">std</span>::once_flag connection_init_flag;
+  <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">open_connection</span><span class="hljs-params">()</span>
+  </span>{
+    connection=connection_manager.open(connection_details);
+  }
+<span class="hljs-keyword">public</span>:
+  X(connection_info <span class="hljs-keyword">const</span>&amp; connection_details_):
+      connection_details(connection_details_)
+  {}
+  <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">send_data</span><span class="hljs-params">(data_packet <span class="hljs-keyword">const</span>&amp; data)</span>  <span class="hljs-comment">// 1</span>
+  </span>{
+    <span class="hljs-built_in">std</span>::call_once(connection_init_flag,&amp;X::open_connection,<span class="hljs-keyword">this</span>);  <span class="hljs-comment">// 2</span>
+    connection.send_data(data);
+  }
+  <span class="hljs-function">data_packet <span class="hljs-title">receive_data</span><span class="hljs-params">()</span>  <span class="hljs-comment">// 3</span>
+  </span>{
+    <span class="hljs-built_in">std</span>::call_once(connection_init_flag,&amp;X::open_connection,<span class="hljs-keyword">this</span>);  <span class="hljs-comment">// 2</span>
+    <span class="hljs-keyword">return</span> connection.receive_data();
+  }
+};
+</code></pre>
+<p>&#x7B2C;&#x4E00;&#x6B21;&#x8C03;&#x7528;<code>send_data()</code>&#x6216;<code>receive_data()</code>&#x7684;&#x7EBF;&#x7A0B;&#x5B8C;&#x6210;&#x521D;&#x59CB;&#x5316;&#x8FC7;&#x7A0B;&#x3002;</p>
+<p>&#x4F7F;&#x7528;&#x6210;&#x5458;&#x51FD;&#x6570;<code>open_connection()</code>&#x5B8C;&#x6210;&#x521D;&#x59CB;&#x5316;&#x6570;&#x636E;&#xFF1B;</p>
+<p>&#x548C;&#x5176;&#x4ED6;&#x6807;&#x51C6;&#x5E93;&#x4E00;&#x6837;&#xFF0C;<code>std::call_once()</code>&#x8C03;&#x7528;<code>open_connection()</code>&#x51FD;&#x6570;&#xFF0C;&#x9700;&#x8981;&#x4F20;&#x5165;this&#x53C2;&#x6570;&#x3002;</p>
+<p>&#x6CE8;&#x610F;: <code>std::mutex</code>&#x548C;<code>std::once_flag</code>&#x662F;&#x4E0D;&#x80FD;&#x62F7;&#x8D1D;&#x548C;&#x79FB;&#x52A8;&#x7684;&#xFF0C;&#x9700;&#x8981;&#x663E;&#x793A;&#x5B9A;&#x4E49;&#x76F8;&#x5173;&#x6210;&#x5458;&#x51FD;&#x6570;&#xFF0C;&#x5BF9;&#x8FD9;&#x7C7B;&#x6210;&#x5458;&#x8FDB;&#x884C;&#x64CD;&#x4F5C;&#x3002;</p>
+<h4 id="&#x5305;&#x542B;&#x4E0D;&#x5E38;&#x66F4;&#x65B0;&#x7684;&#x6570;&#x636E;&#x7ED3;&#x6784;-&#x8BFB;&#x5199;&#x9501;stdsharedmutex">&#x5305;&#x542B;&#x4E0D;&#x5E38;&#x66F4;&#x65B0;&#x7684;&#x6570;&#x636E;&#x7ED3;&#x6784;: &#x8BFB;&#x5199;&#x9501;,<code>std::shared_mutex</code></h4>
+<p>&#x5982;DNS&#x8868;&#xFF0C;&#x66F4;&#x65B0;&#x5F88;&#x5C11;&#xFF0C;&#x5927;&#x90E8;&#x5206;&#x662F;&#x8BFB;&#x53D6;&#x3002;&#x4F46;&#x662F;&#x66F4;&#x65B0;&#x662F;&#x6709;&#x7684;&#x3002;</p>
+<p>&#x6B64;&#x65F6;&#x4F7F;&#x7528;<code>std::mutex</code>&#x6765;&#x4FDD;&#x62A4;&#x6570;&#x636E;&#x7ED3;&#x6784;&#xFF0C;&#x663E;&#x5F97;&#x975E;&#x5E38;&#x53CD;&#x5E94;&#x8FC7;&#x5EA6;&#x3002;&#x6B64;&#x65F6;&#x6211;&#x4EEC;&#x66F4;&#x9700;&#x8981;&#x4E00;&#x79CD;&quot;&#x8BFB;-&#x5199;&#x9501;&quot;&#x3002;</p>
+<p>C++17&#x6807;&#x51C6;&#x5E93;&#x63D0;&#x4F9B;&#x7684;&#x4E92;&#x65A5;&#x91CF;:<code>std::shared_mutex</code>&#x548C;<code>std::shared_timed_mutex</code>;</p>
+<p>C++14&#x6807;&#x51C6;&#x5E93;&#x63D0;&#x4F9B;&#x7684;&#x4E92;&#x65A5;&#x91CF;<code>std::shard_timed_mutex</code>&#x3002;</p>
+<p>&#x5BF9;&#x4E8E;&#x66F4;&#x65B0;&#x64CD;&#x4F5C;&#xFF0C;&#x4F7F;&#x7528;<code>std::lock_guard&lt;std::shared_mutex&gt;</code>&#x548C;<code>std::unique_lock&lt;std::shard_mutex&gt;</code>&#x4E0A;&#x9501;&#xFF1B;</p>
+<p>&#x5BF9;&#x4E8E;&#x8BFB;&#x53D6;&#x64CD;&#x4F5C;&#xFF0C;&#x4F7F;&#x7528;<code>std::shared_lock&lt;std::shared_mutex&gt;</code>&#x83B7;&#x53D6;&#x8BBF;&#x95EE;&#x6743;&#x9650;&#x3002;</p>
+<pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;map&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;string&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;mutex&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;shared_mutex&gt;</span></span>
+<span class="hljs-keyword">class</span> dns_entry;
+<span class="hljs-keyword">class</span> dns_cache
+{
+  <span class="hljs-built_in">std</span>::<span class="hljs-built_in">map</span>&lt;<span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span>,dns_entry&gt; entries;
+  <span class="hljs-keyword">mutable</span> <span class="hljs-built_in">std</span>::shared_mutex entry_mutex;
+<span class="hljs-keyword">public</span>:
+  <span class="hljs-function">dns_entry <span class="hljs-title">find_entry</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> <span class="hljs-keyword">const</span>&amp; domain)</span> <span class="hljs-keyword">const</span>
+  </span>{
+    <span class="hljs-built_in">std</span>::shared_lock&lt;<span class="hljs-built_in">std</span>::shared_mutex&gt; lk(entry_mutex);  <span class="hljs-comment">// 1</span>
+    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">map</span>&lt;<span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span>,dns_entry&gt;::const_iterator <span class="hljs-keyword">const</span> it=
+       entries.find(domain);
+    <span class="hljs-keyword">return</span> (it==entries.end())?dns_entry():it-&gt;second;
+  }
+  <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">update_or_add_entry</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> <span class="hljs-keyword">const</span>&amp; domain,
+                           dns_entry <span class="hljs-keyword">const</span>&amp; dns_details)</span>
+  </span>{
+    <span class="hljs-built_in">std</span>::lock_guard&lt;<span class="hljs-built_in">std</span>::shared_mutex&gt; lk(entry_mutex);  <span class="hljs-comment">// 2</span>
+    entries[domain]=dns_details;
+  }
+};
+</code></pre>
+<h3 id="&#x5D4C;&#x5957;&#x9501;stdrecursivemutex">&#x5D4C;&#x5957;&#x9501;:<code>std::recursive_mutex</code></h3>
+<p>&#x5F53;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x5DF2;&#x7ECF;&#x83B7;&#x53D6;&#x4E00;&#x4E2A;<code>std::mutex</code>&#x65F6;(&#x5DF2;&#x7ECF;&#x4E0A;&#x9501;)&#xFF0C;&#x5E76;&#x5BF9;&#x5176;&#x518D;&#x6B21;&#x4E0A;&#x9501;&#xFF0C;&#x8FD9;&#x4E2A;&#x64CD;&#x4F5C;&#x5C31;&#x662F;&#x9519;&#x8BEF;&#x7684;&#xFF0C;&#x5E76;&#x4E14;&#x7EE7;&#x7EED;&#x5C1D;&#x8BD5;&#x8FD9;&#x6837;&#x505A;&#x7684;&#x8BDD;&#xFF0C;&#x5C31;&#x4F1A;&#x4EA7;&#x751F;&#x672A;&#x5B9A;&#x4E49;&#x884C;&#x4E3A;&#x3002;&#x7136;&#x800C;&#xFF0C;&#x5728;&#x67D0;&#x4E9B;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x5C1D;&#x8BD5;&#x83B7;&#x53D6;&#x540C;&#x4E00;&#x4E2A;&#x4E92;&#x65A5;&#x91CF;&#x591A;&#x6B21;&#xFF0C;&#x800C;&#x6CA1;&#x6709;&#x5BF9;&#x5176;&#x8FDB;&#x884C;&#x4E00;&#x6B21;&#x91CA;&#x653E;&#x662F;&#x53EF;&#x4EE5;&#x7684;&#x3002;</p>
+<p>&#x4E92;&#x65A5;&#x91CF;&#x9501;&#x4F4F;&#x5176;&#x4ED6;&#x7EBF;&#x7A0B;&#x524D;&#xFF0C;&#x5FC5;&#x987B;&#x91CA;&#x653E;&#x62E5;&#x6709;&#x7684;&#x6240;&#x6709;&#x9501;&#xFF0C;&#x6240;&#x4EE5;&#x5F53;&#x8C03;&#x7528;lock()&#x4E09;&#x6B21;&#x540E;&#xFF0C;&#x4E5F;&#x5FC5;&#x987B;&#x8C03;&#x7528;unlock()&#x4E09;&#x6B21;&#x3002;</p>
+<p>&#x6B63;&#x786E;&#x4F7F;&#x7528;<code>std::lock_guard&lt;std::recursive_mutex&gt;</code>&#x548C;<code>std::unique_lock&lt;std::recursive_mutex&gt;</code>&#x53EF;&#x4EE5;&#x5E2E;&#x4F60;&#x5904;&#x7406;&#x8FD9;&#x4E9B;&#x95EE;&#x9898;&#x3002;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="C++并发编程实战-01基础使用Join传参.html" class="navigation navigation-prev " aria-label="Previous page: C++并发编程实战一:基础使用、Join、传参、线程所有权转移">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="C++并发编程实战-03条件变量.html" class="navigation navigation-next " aria-label="Next page: C++并发编程实战三: 条件变量">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"C++并发编程实战: mutex、lock、unique_lock、call_once、shared_lock","level":"1.5.17","depth":2,"next":{"title":"C++并发编程实战三: 条件变量","level":"1.5.18","depth":2,"path":"c++学习笔记/C++并发编程实战-03条件变量.md","ref":"c++学习笔记/C++并发编程实战-03条件变量.md","articles":[]},"previous":{"title":"C++并发编程实战一:基础使用、Join、传参、线程所有权转移","level":"1.5.16","depth":2,"path":"c++学习笔记/C++并发编程实战-01基础使用Join传参.md","ref":"c++学习笔记/C++并发编程实战-01基础使用Join传参.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"c++学习笔记/C++并发编程实战-02mutexlock.md","mtime":"2022-01-05T04:01:10.146Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-01-23T03:25:17.334Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

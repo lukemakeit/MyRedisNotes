@@ -1,0 +1,909 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>C++Primer基础:lambda · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="C++Primer基础-07类基础.html" />
+    
+    
+    <link rel="prev" href="C++Primer基础-05function与bind与forward.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    README
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../redis学习/">
+            
+                <a href="../redis学习/">
+            
+                    
+                    Redis学习
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../redis学习/Redis备份.html">
+            
+                <a href="../redis学习/Redis备份.html">
+            
+                    
+                    Redis备份
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../redis学习/Redis复制.html">
+            
+                <a href="../redis学习/Redis复制.html">
+            
+                    
+                    Redis复制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../redis学习/Redis集群.html">
+            
+                <a href="../redis学习/Redis集群.html">
+            
+                    
+                    Redis集群
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../rocksdb-xue-xi/README.md">
+            
+                <span>
+            
+                    
+                    RocksDB学习
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../rocksdb学习/RocksDB基础概念.html">
+            
+                <a href="../rocksdb学习/RocksDB基础概念.html">
+            
+                    
+                    RocksDB基础概念
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../rocksdb学习/RocksDB基础操作-C语言.html">
+            
+                <a href="../rocksdb学习/RocksDB基础操作-C语言.html">
+            
+                    
+                    RocksDB基础操作-C语言
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../c语言笔记/">
+            
+                <a href="../c语言笔记/">
+            
+                    
+                    C语言笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../c语言笔记/C语言补充笔记一.html">
+            
+                <a href="../c语言笔记/C语言补充笔记一.html">
+            
+                    
+                    C语言补充笔记一
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    C++学习笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="C++Primer基础-01引用指针const.html">
+            
+                <a href="C++Primer基础-01引用指针const.html">
+            
+                    
+                    C++Primer基础:引用、指针、const、auto/decltype
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="C++Primer基础-02volatile与using.html">
+            
+                <a href="C++Primer基础-02volatile与using.html">
+            
+                    
+                    C++Primer基础:volatile、using
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="C++Primer基础-03stringvector数组.html">
+            
+                <a href="C++Primer基础-03stringvector数组.html">
+            
+                    
+                    C++Primer基础: string、vector、数组
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="C++Primer基础-04函数重载函数指针.html">
+            
+                <a href="C++Primer基础-04函数重载函数指针.html">
+            
+                    
+                    C++Primer基础:函数、重载、函数指针
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="C++Primer基础-05function与bind与forward.html">
+            
+                <a href="C++Primer基础-05function与bind与forward.html">
+            
+                    
+                    C++Primer基础:std::function、std::bind、std::forward
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.5.6" data-path="C++Primer基础-06-lambda.html">
+            
+                <a href="C++Primer基础-06-lambda.html">
+            
+                    
+                    C++Primer基础:lambda
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" data-path="C++Primer基础-07类基础.html">
+            
+                <a href="C++Primer基础-07类基础.html">
+            
+                    
+                    C++ Primer基础: 类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8" data-path="C++Primer标准库-IO库.html">
+            
+                <a href="C++Primer标准库-IO库.html">
+            
+                    
+                    C++ Primer 标准库: IO库
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.9" data-path="C++Primer标准库-顺序容器.html">
+            
+                <a href="C++Primer标准库-顺序容器.html">
+            
+                    
+                    C++ Primer 标准库: 顺序容器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.10" data-path="C++Primer标准库-泛型算法.html">
+            
+                <a href="C++Primer标准库-泛型算法.html">
+            
+                    
+                    C++ Primer 标准库: 泛型算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.11" data-path="C++Primer标准库-关联容器.html">
+            
+                <a href="C++Primer标准库-关联容器.html">
+            
+                    
+                    C++ Primer 标准库: 关联容器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.12" data-path="C++Primer标准库-动态内存.html">
+            
+                <a href="C++Primer标准库-动态内存.html">
+            
+                    
+                    C++ Primer 标准库: 动态内存
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.13" data-path="C++Primer类设计-拷贝控制.html">
+            
+                <a href="C++Primer类设计-拷贝控制.html">
+            
+                    
+                    C++ Primer 类设计: 拷贝控制、explicit
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.14" data-path="C++Primer类设计-基类派生类虚函数.html">
+            
+                <a href="C++Primer类设计-基类派生类虚函数.html">
+            
+                    
+                    C++ Primer 类设计: 基类、派生类、虚函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.15" data-path="C++Primer类设计-模板与泛型编程.html">
+            
+                <a href="C++Primer类设计-模板与泛型编程.html">
+            
+                    
+                    C++ Primer 类设计:模板与泛型编程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.16" data-path="C++并发编程实战-01基础使用Join传参.html">
+            
+                <a href="C++并发编程实战-01基础使用Join传参.html">
+            
+                    
+                    C++并发编程实战一:基础使用、Join、传参、线程所有权转移
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.17" data-path="C++并发编程实战-02mutexlock.html">
+            
+                <a href="C++并发编程实战-02mutexlock.html">
+            
+                    
+                    C++并发编程实战: mutex、lock、unique_lock、call_once、shared_lock
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.18" data-path="C++并发编程实战-03条件变量.html">
+            
+                <a href="C++并发编程实战-03条件变量.html">
+            
+                    
+                    C++并发编程实战三: 条件变量
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.19" data-path="C++并发编程实战-04原子操作和类型.html">
+            
+                <a href="C++并发编程实战-04原子操作和类型.html">
+            
+                    
+                    C++并发编程实战四: 原子操作和类型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.20" data-path="C++并发编程实战-05内存模型.html">
+            
+                <a href="C++并发编程实战-05内存模型.html">
+            
+                    
+                    C++并发编程实战五: 内存模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../工具使用/">
+            
+                <a href="../工具使用/">
+            
+                    
+                    工具使用
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../工具使用/VSCode使用小技巧.html">
+            
+                <a href="../工具使用/VSCode使用小技巧.html">
+            
+                    
+                    VS Code使用小技巧
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >C++Primer基础:lambda</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h3 id="lambda">lambda</h3>
+<p><code>lambda</code>&#x8868;&#x793A;&#x4E00;&#x4E2A;&#x53EF;&#x8C03;&#x7528;&#x7684;&#x4EE3;&#x7801;&#x5355;&#x5143;&#x3002;&#x6211;&#x4EEC;&#x53EF;&#x5C06;&#x5176;&#x7406;&#x89E3;&#x4E3A;&#x4E00;&#x4E2A;&#x672A;&#x547D;&#x540D;&#x7684;&#x5185;&#x8054;&#x51FD;&#x6570;&#x3002;
+lambda&#x548C;&#x5176;&#x4ED6;&#x4EFB;&#x4F55;&#x51FD;&#x6570;&#x7C7B;&#x4F3C;&#xFF0C;&#x4E00;&#x4E2A;lambda&#x5177;&#x6709;&#x4E00;&#x4E2A;&#x8FD4;&#x56DE;&#x7C7B;&#x578B;&#x3001;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x5217;&#x8868;&#x548C;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x4F53;&#x3002;</p>
+<pre><code class="lang-cpp">[capture <span class="hljs-built_in">list</span>] (parameter <span class="hljs-built_in">list</span>) -&gt; <span class="hljs-keyword">return</span> type { function body }
+</code></pre>
+<ul>
+<li><code>capture_list(&#x6355;&#x83B7;&#x5217;&#x8868;)</code>&#x662F;&#x4E00;&#x4E2A;lambda&#x6240;&#x5728;&#x51FD;&#x6570;&#x4E2D;&#x5B9A;&#x4E49;&#x7684;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#x7684;&#x5217;&#x8868;(&#x901A;&#x5E38;&#x4E3A;&#x7A7A;);</li>
+<li><code>return type</code>&#x3001;<code>parameter list</code>&#x548C;<code>function body</code>&#x4E0E;&#x4EFB;&#x4F55;&#x666E;&#x901A;&#x51FD;&#x6570;&#x4E00;&#x6837;&#x3002;</li>
+<li>&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5FFD;&#x7565;&#x53C2;&#x6570;&#x5217;&#x8868;&#x548C;&#x8FD4;&#x56DE;&#x7C7B;&#x578B;&#xFF0C;&#x4F46;&#x5FC5;&#x987B;&#x6C38;&#x8FDC;&#x5305;&#x542B;&#x6355;&#x83B7;&#x5217;&#x8868;&#x548C;&#x51FD;&#x6570;&#x4F53;:
+<code>auto f = [] {return 42};</code></li>
+</ul>
+<h4 id="&#x5411;lambda&#x4F20;&#x9012;&#x53C2;&#x6570;">&#x5411;lambda&#x4F20;&#x9012;&#x53C2;&#x6570;</h4>
+<ul>
+<li><code>lambda</code>&#x4E0D;&#x80FD;&#x6709;&#x9ED8;&#x8BA4;&#x53C2;&#x6570;;</li>
+</ul>
+<p>&#x4E0B;&#x9762;&#x662F;&#x4E00;&#x4E2A;&#x4E0E;<code>isShorter</code>&#x51FD;&#x6570;&#x5B8C;&#x6210;&#x540C;&#x6837;&#x529F;&#x80FD;&#x7684;<code>lambda</code>:</p>
+<pre><code class="lang-cpp">[](<span class="hljs-keyword">const</span> <span class="hljs-built_in">string</span> &amp;a, <span class="hljs-keyword">const</span> <span class="hljs-built_in">string</span> &amp;b) -&gt; <span class="hljs-keyword">bool</span>
+{ <span class="hljs-keyword">return</span> a.size() &lt; b.size();}
+
+&#x6216;&#x8005;
+
+[](<span class="hljs-keyword">const</span> <span class="hljs-built_in">string</span> &amp;a, <span class="hljs-keyword">const</span> <span class="hljs-built_in">string</span> &amp;b)
+{ <span class="hljs-keyword">return</span> a.size() &lt; b.size();}
+</code></pre>
+<p>&#x6B64;&#x65F6;&#x6211;&#x4EEC;&#x4E0A;&#x9762;&#x7684;<code>stable_sort</code>&#x65E2;&#x53EF;&#x4EE5;&#x5199;&#x6210;:</p>
+<pre><code class="lang-cpp"><span class="hljs-comment">// &#x6309;&#x957F;&#x5EA6;&#x6392;&#x5E8F;&#xFF0C;&#x957F;&#x5EA6;&#x76F8;&#x540C;&#x7684;&#x5355;&#x8BCD;&#x7EF4;&#x6301;&#x5B57;&#x5178;&#x5E8F;</span>
+stable_sort(words.begin(), words.end(),
+    [](<span class="hljs-keyword">const</span> <span class="hljs-built_in">string</span> &amp;a, <span class="hljs-keyword">const</span> <span class="hljs-built_in">string</span> &amp;b)
+    { <span class="hljs-keyword">return</span> a.size() &lt; b.size();});
+</code></pre>
+<p><strong>&#x4F7F;&#x7528;&#x6355;&#x83B7;&#x5217;&#x8868;</strong>
+&#x867D;&#x7136;&#x4E00;&#x4E2A;<code>lambda</code>&#x53EF;&#x4EE5;&#x51FA;&#x73B0;&#x5728;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x4E2D;&#xFF0C;&#x4F7F;&#x7528;&#x5176;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#xFF0C;&#x4F46;&#x662F;&#x5B83;&#x53EA;&#x80FD;&#x4F7F;&#x7528;&#x90A3;&#x4E9B;&#x660E;&#x786E;&#x6307;&#x660E;&#x7684;&#x53D8;&#x91CF;&#x3002;
+&#x6355;&#x83B7;&#x5217;&#x8868; &#x6307;&#x5F15;<code>lambda</code>&#x5728;&#x5176;&#x5185;&#x90E8;&#x5305;&#x542B;&#x8BBF;&#x95EE;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#x6240;&#x9700;&#x7684;&#x4FE1;&#x606F;&#x3002;</p>
+<p>&#x7279;&#x522B;&#x6CE8;&#x610F;:<code>lambda</code>&#x6355;&#x83B7;&#x5217;&#x8868;&#x53EA;&#x7528;&#x4E8E;&#x5C40;&#x90E8;&#x975E;<code>static</code>&#x53D8;&#x91CF;&#xFF0C;<code>lambda</code>&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x4F7F;&#x7528;&#x5C40;&#x90E8;<code>static</code>&#x53D8;&#x91CF;&#x548C;&#x5728;&#x5B83;&#x6240;&#x5728;&#x51FD;&#x6570;&#x4E4B;&#x5916;&#x58F0;&#x660E;&#x7684;&#x540D;&#x5B57;&#x3002;</p>
+<p>&#x95EE;&#x9898;: &#x7F16;&#x5199;&#x4E00;&#x4E2A;&#x53EF;&#x4EE5;&#x4F20;&#x9012;&#x7ED9; find_if &#x7684;&#x53EF;&#x8C03;&#x7528;&#x8868;&#x8FBE;&#x5F0F;&#xFF0C;&#x6211;&#x4EEC;&#x5E0C;&#x671B;&#x8FD9;&#x4E2A;&#x8868;&#x8FBE;&#x5F0F;&#x80FD;&#x5C06;&#x8F93;&#x5165;&#x5E8F;&#x5217;&#x4E2D;&#x6BCF;&#x4E2A;string&#x7684;&#x957F;&#x5EA6;&#x4E0E;sz&#x53C2;&#x6570;&#x7684;&#x503C;&#x8FDB;&#x884C;&#x6BD4;&#x8F83;&#x3002;</p>
+<pre><code class="lang-cpp"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">lambdaTest01</span><span class="hljs-params">()</span></span>{
+    <span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">string</span>&gt; v1{<span class="hljs-string">&quot;hello&quot;</span>,<span class="hljs-string">&quot;zan&quot;</span>,<span class="hljs-string">&quot;a&quot;</span>,<span class="hljs-string">&quot;cao&quot;</span>,<span class="hljs-string">&quot;ab&quot;</span>,<span class="hljs-string">&quot;bbga&quot;</span>,<span class="hljs-string">&quot;good&quot;</span>};
+    <span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">string</span>&gt;::size_type sz=<span class="hljs-number">3</span>;
+    <span class="hljs-keyword">auto</span> wc= find_if(v1.begin(),v1.end(),[sz] (<span class="hljs-keyword">const</span> <span class="hljs-built_in">string</span> &amp;a){
+        <span class="hljs-keyword">return</span> a.size() &gt; sz;
+    });
+    <span class="hljs-keyword">if</span> (wc != v1.end()){
+        <span class="hljs-built_in">cout</span> &lt;&lt;<span class="hljs-string">&quot;Yes,there exists item that the size larger than &quot;</span>&lt;&lt; sz&lt;&lt; <span class="hljs-built_in">endl</span>;
+    }<span class="hljs-keyword">else</span>{
+        <span class="hljs-built_in">cout</span> &lt;&lt;<span class="hljs-string">&quot;Yes,there no exists item that the size larger than &quot;</span>&lt;&lt; sz&lt;&lt; <span class="hljs-built_in">endl</span>;
+    }
+}
+</code></pre>
+<p><code>find_if</code>&#x7684;&#x8C03;&#x7528;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x8FED;&#x4EE3;&#x5668;&#xFF0C;&#x6307;&#x5411;&#x7B2C;&#x4E00;&#x4E2A;&#x957F;&#x5EA6;&#x4E0D;&#x5C0F;&#x4E8E;&#x6355;&#x83B7;&#x53C2;&#x6570;<code>sz</code>&#x7684;&#x5143;&#x7D20;&#x3002;&#x5982;&#x679C;&#x8FD9;&#x6837;&#x7684;&#x5143;&#x7D20;&#x4E0D;&#x5B58;&#x5728;&#xFF0C;&#x5219;&#x8FD4;&#x56DE;<code>v1.end()</code>&#x7684;&#x4E00;&#x4E2A;&#x62F7;&#x8D1D;&#x3002;</p>
+<p><code>count_if</code>&#x51FD;&#x6570;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x8BA1;&#x6570;&#x503C;&#xFF0C;&#x8868;&#x793A;&#x8C13;&#x8BCD;&#x6709;&#x591A;&#x5C11;&#x6B21;&#x4E3A;&#x771F;&#x3002;</p>
+<h3 id="lambda&#x6355;&#x83B7;&#x4E0E;&#x8FD4;&#x56DE;">lambda&#x6355;&#x83B7;&#x4E0E;&#x8FD4;&#x56DE;</h3>
+<p><strong>&#x503C;&#x6355;&#x83B7;</strong>
+&#x7C7B;&#x4F3C;&#x4E8E;&#x53C2;&#x6570;&#x4F20;&#x9012;&#xFF0C;&#x53D8;&#x91CF;&#x7684;&#x6355;&#x83B7;&#x65B9;&#x5F0F;&#x4E5F;&#x53EF;&#x4EE5;&#x662F;&#x503C;&#x6216;&#x8005;&#x5F15;&#x7528;&#x3002;
+&#x4E0D;&#x8FC7;&#x4E0E;&#x53C2;&#x6570;&#x4E0D;&#x540C;&#xFF0C;&#x88AB;&#x6355;&#x83B7;&#x7684;&#x53D8;&#x91CF;&#x7684;&#x503C;&#x5728;lambda&#x521B;&#x5EFA;&#x65F6;&#x62F7;&#x8D1D;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x8C03;&#x7528;&#x65F6;&#x62F7;&#x8D1D;:</p>
+<pre><code class="lang-cpp"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">fcn1</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">size_t</span> v1 = <span class="hljs-number">42</span>; <span class="hljs-comment">// &#x5C40;&#x90E8;&#x53D8;&#x91CF;</span>
+    <span class="hljs-comment">// &#x5C06;v1&#x62F7;&#x8D1D;&#x5230;&#x540D;&#x4E3A;f&#x7684;&#x53EF;&#x8C03;&#x7528;&#x5BF9;&#x8C61;</span>
+    <span class="hljs-keyword">auto</span> f = [v1] { <span class="hljs-keyword">return</span> v1; };
+    v1 = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">auto</span> j = f(); <span class="hljs-comment">// &#x6B64;&#x65F6;j&#x4E3A;42&#xFF0C;&#x800C;&#x4E0D;&#x662F;0&#x3002;f&#x4FDD;&#x5B58;&#x4E86;&#x6211;&#x4EEC;&#x521B;&#x5EFA;&#x5B83;&#x65F6;v1&#x7684;&#x62F7;&#x8D1D;</span>
+}
+</code></pre>
+<p><strong>&#x5F15;&#x7528;&#x6355;&#x83B7;</strong></p>
+<pre><code class="lang-cpp"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">fcn2</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">size_t</span> v1 = <span class="hljs-number">42</span>; <span class="hljs-comment">// local variable</span>
+    <span class="hljs-comment">// f2&#x5BF9;&#x8C61;&#x4E2D;&#x5305;&#x542B;v1&#x7684;&#x5F15;&#x7528;</span>
+    <span class="hljs-keyword">auto</span> f2 = [&amp;v1] { <span class="hljs-keyword">return</span> v1; };
+    v1 = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">auto</span> j = f2(); <span class="hljs-comment">// j&#x6B64;&#x65F6;&#x662F;0&#xFF0C;f2 &#x4FDD;&#x5B58;v1&#x7684;&#x5F15;&#x7528;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x62F7;&#x8D1D;</span>
+}
+</code></pre>
+<p>&#x5F53;&#x7136;&#x6211;&#x4EEC;&#x4E5F;&#x53EF;&#x4EE5;&#x4ECE;&#x51FD;&#x6570;&#x4E2D;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;lambda&#x3002;&#x51FD;&#x6570;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x53EF;&#x8C03;&#x7528;&#x5BF9;&#x8C61;&#xFF0C;&#x6216;&#x8005;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x7C7B;&#x5BF9;&#x8C61;&#xFF0C;&#x8BE5;&#x7C7B;&#x542B;&#x6709;&#x53EF;&#x8C03;&#x7528;&#x5BF9;&#x8C61;&#x7684;&#x6570;&#x636E;&#x6210;&#x5458;&#x3002;
+&#x5982;&#x679C;&#x51FD;&#x6570;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;<code>lambda</code>&#xFF0C;&#x5219;&#x4E0E;&#x51FD;&#x6570;&#x4E0D;&#x80FD;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#x7684;&#x5F15;&#x7528;&#x7C7B;&#x4F3C;&#xFF0C;&#x6B64;lambda&#x4E5F;&#x4E0D;&#x80FD;&#x5305;&#x542B;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#x7684;&#x7684;&#x5F15;&#x7528;&#x6355;&#x83B7;&#x3002;
+<strong>&#x53EF;&#x4EE5;&#x7684;&#x8BDD;&#xFF0C;&#x5C3D;&#x91CF;&#x907F;&#x514D;&#x6355;&#x83B7;&#x6307;&#x9488;&#x6216;&#x5F15;&#x7528;&#xFF0C;&#x5426;&#x5219;&#x7A0B;&#x5E8F;&#x5458;&#x5E94;&#x8BE5;&#x5C3D;&#x53EF;&#x80FD;&#x4FDD;&#x8BC1; &#x5F15;&#x7528;&#x3001;&#x6307;&#x9488;&#x5728;&#x8C03;&#x7528;&#x65F6;&#x662F;&#x6709;&#x6548;&#x7684;</strong>&#x3002;</p>
+<pre><code class="lang-cpp"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">biggies</span><span class="hljs-params">(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">string</span>&gt; &amp;words,
+    <span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">string</span>&gt;::size_type sz,
+    ostream &amp;os = <span class="hljs-built_in">cout</span>, <span class="hljs-keyword">char</span> c = <span class="hljs-string">&apos; &apos;</span>)</span>
+</span>{
+    <span class="hljs-comment">// &#x4E0E;&#x4E4B;&#x524D;&#x7684;&#x4F8B;&#x5B50;&#x4E00;&#x6837;&#x7684;&#x91CD;&#x6392;words&#x7684;&#x4EE3;&#x7801;</span>
+    <span class="hljs-comment">// &#x6253;&#x5370;count&#x7684;&#x8BED;&#x53E5;&#x6539;&#x4E3A;&#x6253;&#x5370;&#x5230;os</span>
+    for_each(words.begin(), words.end(),
+        [&amp;os, c](<span class="hljs-keyword">const</span> <span class="hljs-built_in">string</span> &amp;s) { os &lt;&lt; s &lt;&lt; c; });
+}
+</code></pre>
+<p>&#x8FD9;&#x91CC;&#x4E0D;&#x80FD;&#x62F7;&#x8D1D;<code>ostream</code>&#x5BF9;&#x8C61;&#xFF0C;&#x56E0;&#x6B64;&#x6355;&#x83B7;os&#x7684;&#x552F;&#x4E00;&#x65B9;&#x6CD5;&#x5C31;&#x662F;&#x6355;&#x83B7;&#x5176;&#x5F15;&#x7528;&#x3002;</p>
+<p><strong>&#x9690;&#x5F0F;&#x6355;&#x83B7;</strong>
+&#x9664;&#x4E86;&#x663E;&#x793A;&#x5217;&#x51FA;&#x6211;&#x4EEC;&#x5E0C;&#x671B;&#x4F7F;&#x7528;&#x7684;&#x6765;&#x81EA;&#x6240;&#x5728;&#x51FD;&#x6570;&#x7684;&#x53D8;&#x91CF;&#x5916;&#xFF0C;&#x8FD8;&#x53EF;&#x4EE5;&#x8BA9;&#x7F16;&#x8BD1;&#x5668;&#x6839;&#x636E;<code>lambda</code>&#x4F53;&#x4E2D;&#x4EE3;&#x7801;&#x6765;&#x63A8;&#x65AD;&#x6211;&#x4EEC;&#x8981;&#x4F7F;&#x7528;&#x54EA;&#x4E9B;&#x53D8;&#x91CF;&#x3002;
+&#x4E3A;&#x4E86;&#x6307;&#x793A;&#x7F16;&#x8BD1;&#x5668;&#x63A8;&#x65AD;&#x6355;&#x83B7;&#x5217;&#x8868;&#xFF0C;&#x5E94;&#x8BE5;&#x5728;&#x6355;&#x83B7;&#x5217;&#x8868;&#x4E2D;&#x5199;&#x4E00;&#x4E2A;<code>&amp;</code>&#x6216;<code>=</code>:</p>
+<ul>
+<li><code>&amp;</code>: &#x544A;&#x8BC9;&#x7F16;&#x8BD1;&#x5668;&#x91C7;&#x7528;&#x6355;&#x83B7;&#x5F15;&#x7528;&#x7684;&#x65B9;&#x5F0F;;</li>
+<li><code>=</code>: &#x5219;&#x8868;&#x793A;&#x91C7;&#x7528;&#x503C;&#x6355;&#x83B7;&#x7684;&#x65B9;&#x5F0F;&#x3002;</li>
+</ul>
+<pre><code class="lang-cpp"><span class="hljs-comment">// sz &#x4E3A;&#x9690;&#x5F0F;&#x6355;&#x83B7;&#xFF0C;&#x503C;&#x6355;&#x83B7;&#x65B9;&#x5F0F;</span>
+wc = find_if(words.begin(), words.end(),
+    [=](<span class="hljs-keyword">const</span> <span class="hljs-built_in">string</span> &amp;s)
+        { <span class="hljs-keyword">return</span> s.size() &gt;= sz; });
+</code></pre>
+<p>&#x90E8;&#x5206;&#x6BD4;&#x90A3;&#x91CC;&#x91C7;&#x7528;&#x503C;&#x6355;&#x83B7;&#xFF0C;&#x5176;&#x4ED6;&#x53D8;&#x91CF;&#x91C7;&#x7528;&#x5F15;&#x7528;&#x6355;&#x83B7;&#xFF0C;&#x53EF;&#x4EE5;&#x91C7;&#x7528;&#x6DF7;&#x5408;&#x4F7F;&#x7528;&#x7684;&#x65B9;&#x5F0F;:</p>
+<pre><code class="lang-cpp"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">biggies</span><span class="hljs-params">(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">string</span>&gt; &amp;words,
+    <span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">string</span>&gt;::size_type sz,
+    ostream &amp;os = <span class="hljs-built_in">cout</span>, <span class="hljs-keyword">char</span> c = <span class="hljs-string">&apos; &apos;</span>)</span>
+</span>{
+    <span class="hljs-comment">// &#x5176;&#x4ED6;&#x5904;&#x7406;&#x4E0E;&#x524D;&#x4F8B;&#x4E00;&#x6837;</span>
+    <span class="hljs-comment">// os &#x9690;&#x5F0F;&#x6355;&#x83B7; &#xFF0C;&#x5F15;&#x7528;&#x6355;&#x83B7;&#x65B9;&#x5F0F;&#xFF1B;c &#x663E;&#x5F0F;&#x6355;&#x83B7;&#xFF0C;&#x503C;&#x6355;&#x83B7;&#x65B9;&#x5F0F;</span>
+    for_each(words.begin(), words.end(),
+        [&amp;, c](<span class="hljs-keyword">const</span> <span class="hljs-built_in">string</span> &amp;s) { os &lt;&lt; s &lt;&lt; c; });
+    <span class="hljs-comment">// os &#x663E;&#x5F0F;&#x6355;&#x83B7;&#xFF0C;&#x5F15;&#x7528;&#x6355;&#x83B7;&#x65B9;&#x5F0F;&#xFF1B;c &#x9690;&#x5F0F;&#x6355;&#x83B7;&#xFF0C;&#x503C;&#x6355;&#x83B7;&#x65B9;&#x5F0F;</span>
+    for_each(words.begin(), words.end(),
+        [=, &amp;os](<span class="hljs-keyword">const</span> <span class="hljs-built_in">string</span> &amp;s) { os &lt;&lt; s &lt;&lt; c; });
+}
+</code></pre>
+<p>&#x6DF7;&#x5408;&#x4F7F;&#x7528; &#x9690;&#x5F0F;&#x6355;&#x83B7; &#x548C; &#x663E;&#x5F0F;&#x6355;&#x83B7;&#x65F6;&#xFF0C;&#x6355;&#x83B7;&#x5217;&#x8868;&#x4E2D;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#x5FC5;&#x987B;&#x662F;<code>&amp;</code>&#x6216;<code>=</code>&#x3002;&#x6B64;&#x7B26;&#x53F7;&#x6307;&#x5B9A;&#x4E86;&#x9ED8;&#x8BA4;&#x6355;&#x83B7;&#x65B9;&#x5F0F;&#x3002;
+<img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/1D226DB6-4D39-4D01-8F85-19DAE61D8D62.png" alt="30101bdbaed28588428e87dfe0e519da"></p>
+<h4 id="mutable-lambda">mutable lambda</h4>
+<p><strong>&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x5BF9;&#x4E8E;&#x4E00;&#x4E2A;&#x503C;&#x88AB;&#x62F7;&#x8D1D;&#x7684;&#x53D8;&#x91CF;&#xFF0C;lambda&#x4E0D;&#x4F1A;&#x6539;&#x53D8;&#x5176;&#x503C;</strong>&#x3002;</p>
+<p><strong><mark style="color:red;">&#x5982;&#x679C;&#x6211;&#x4EEC;&#x5E0C;&#x671B;&#x80FD;&#x6539;&#x53D8;&#x4E00;&#x4E2A;&#x88AB;&#x6355;&#x83B7;&#x7684;&#x53D8;&#x91CF;&#x7684;&#x503C;&#xFF0C;&#x5C31;&#x5FC5;&#x987B;&#x5728;&#x53C2;&#x6570;&#x9996;&#x52A0;&#x4E0A;&#x5173;&#x952E;&#x5B57;<code>mutable</code></mark></strong>&#x3002;</p>
+<pre><code class="lang-cpp"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">fcn3</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">size_t</span> v1 = <span class="hljs-number">42</span>; <span class="hljs-comment">// local variable</span>
+    <span class="hljs-comment">// f can change the value of the variables it captures</span>
+    <span class="hljs-keyword">auto</span> f = [v1] () <span class="hljs-keyword">mutable</span> { <span class="hljs-keyword">return</span> ++v1; };
+    v1 = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">auto</span> j = f(); <span class="hljs-comment">// j is 43</span>
+}
+</code></pre>
+<p><strong>&#x4E00;&#x4E2A; &#x5F15;&#x7528;&#x6355;&#x83B7; &#x7684;&#x53D8;&#x91CF;&#x662F;&#x5426;&#x53EF;&#x4EE5;&#x4FEE;&#x6539;&#x4F9D;&#x8D56;&#x4E8E;&#x5F15;&#x7528;&#x6307;&#x5411;&#x7684;&#x662F;&#x4E00;&#x4E2A;const&#x7C7B;&#x578B;&#x8FD8;&#x662F;&#x4E00;&#x4E2A;&#x975E;const&#x7C7B;&#x578B;</strong>:</p>
+<pre><code class="lang-cpp"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">fcn4</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">size_t</span> v1 = <span class="hljs-number">42</span>; <span class="hljs-comment">// local variable</span>
+    <span class="hljs-comment">// v1 &#x662F;&#x4E00;&#x4E2A;&#x975E;const&#x53D8;&#x91CF;&#x7684;&#x5F15;&#x7528;</span>
+    <span class="hljs-comment">// &#x53EF;&#x4EE5;&#x901A;&#x8FC7;f2&#x4E2D;&#x7684;&#x5F15;&#x7528;&#x6765;&#x6539;&#x53D8;&#x5B83;</span>
+    <span class="hljs-keyword">auto</span> f2 = [&amp;v1] { <span class="hljs-keyword">return</span> ++v1; };
+    v1 = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">auto</span> j = f2(); <span class="hljs-comment">// j is 1</span>
+}
+</code></pre>
+<h4 id="&#x6307;&#x5B9A;lambda&#x8FD4;&#x56DE;&#x7C7B;&#x578B;">&#x6307;&#x5B9A;lambda&#x8FD4;&#x56DE;&#x7C7B;&#x578B;</h4>
+<p>&#x622A;&#x81F3;&#x76EE;&#x524D;&#xFF0C;&#x6211;&#x4EEC;&#x6240;&#x7F16;&#x5199;&#x7684;<code>lambda</code>&#x90FD;&#x53EA;&#x5305;&#x542B;&#x5355;&#x4E00;&#x7684;return&#x8BED;&#x53E5;&#x3002;
+&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;<strong>&#x5982;&#x679C;&#x4E00;&#x4E2A;lambda&#x4F53;&#x5305;&#x542B;return&#x4E4B;&#x5916;&#x7684;&#x4EFB;&#x4F55;&#x8BED;&#x53E5;&#xFF0C;&#x5219;&#x7F16;&#x8BD1;&#x5668;&#x5047;&#x5B9A;&#x6B21;lambda&#x8FD4;&#x56DE;void&#x3002;</strong>
+&#x4E0E;&#x5176;&#x4ED6;&#x8FD4;&#x56DE;void&#x7684;&#x51FD;&#x6570;&#x7C7B;&#x4F3C;&#xFF0C;&#x88AB;&#x63A8;&#x65AD;&#x8FD4;&#x56DE; void&#x7684;lambda&#x4E0D;&#x80FD;&#x8FD4;&#x56DE;&#x503C;&#x3002;</p>
+<pre><code class="lang-cpp">transform(vi.begin(), vi.end(), vi.begin(),
+    [](<span class="hljs-keyword">int</span> i) { <span class="hljs-keyword">return</span> i &lt; <span class="hljs-number">0</span> ? -i : i; })
+</code></pre>
+<p>&#x51FD;&#x6570;<code>transform</code>&#x63A5;&#x53D7;&#x4E09;&#x4E2A;&#x8FED;&#x4EE3;&#x5668;&#x548C;&#x4E00;&#x4E2A;&#x53EF;&#x8C03;&#x7528;&#x5BF9;&#x8C61;&#xFF0C;&#x524D;&#x4E24;&#x4E2A;&#x8FED;&#x4EE3;&#x5668;&#x8868;&#x793A;&#x8F93;&#x5165;&#x5E8F;&#x5217;&#xFF0C;&#x7B2C;&#x4E09;&#x4E2A;&#x8FED;&#x4EE3;&#x5668;&#x8868;&#x793A;&#x76EE;&#x7684;&#x4F4D;&#x7F6E;&#x3002;
+&#x7B97;&#x6CD5;&#x5BF9;&#x8F93;&#x5165;&#x5E8F;&#x5217;&#x4E2D;&#x6BCF;&#x4E2A;&#x5143;&#x7D20;&#x6267;&#x884C;&#x53EF;&#x8C03;&#x7528;&#x5BF9;&#x8C61;&#xFF0C;&#x5E76;&#x5C06;&#x7ED3;&#x679C;&#x5199;&#x5230;&#x76EE;&#x7684;&#x4F4D;&#x7F6E;&#x3002;<code>tramsform</code>&#x53EF;&#x4EE5;&#x7528;&#x4E8E;&#x5199;js&#x4E2D;&#x7684;&#x6570;&#x7EC4;&#x7684;<code>map</code>&#x65B9;&#x6CD5;&#x54E6;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x6211;&#x4EEC;&#x5C06;&#x4E0A;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x6539;&#x5199;&#x6210;&#x4E0B;&#x9762;&#x7C7B;&#x4F3C;&#x7B49;&#x4EF7;&#x7684;<code>if</code>&#x8BED;&#x53E5;&#xFF0C;&#x5219;&#x4F1A;&#x4EA7;&#x751F;&#x7F16;&#x8BD1;&#x9519;&#x8BEF;:</p>
+<pre><code class="lang-cpp">transform(vi.begin(), vi.end(), vi.begin(),
+    [](<span class="hljs-keyword">int</span> i) { <span class="hljs-keyword">if</span>(i&lt;<span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> -i;<span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> i; })
+</code></pre>
+<p>&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#xFF0C;&#x600E;&#x4E48;&#x6539;&#x5462;&#xFF1F;&#x5F53;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x4E3A;&#x4E00;&#x4E2A;<code>lambda</code>&#x5B9A;&#x4E49;&#x8FD4;&#x56DE;&#x7C7B;&#x578B;&#x65F6;&#xFF0C;&#x5FC5;&#x987B;&#x4F7F;&#x7528;<strong>&#x5C3E;&#x7F6E;&#x8FD4;&#x56DE;&#x7C7B;&#x578B;</strong>&#x3002;</p>
+<pre><code class="lang-cpp">transform(vi.begin(), vi.end(), vi.begin(),
+    [](<span class="hljs-keyword">int</span> i) -&gt; <span class="hljs-keyword">int</span>
+    { <span class="hljs-keyword">if</span>(i&lt;<span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> -i;<span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> i; })
+</code></pre>
+<h4 id="this&#x6307;&#x9488;class&#x4E2D;&#x7684;lambda">this&#x6307;&#x9488;(class&#x4E2D;&#x7684;lambda)</h4>
+<pre><code class="lang-cpp">#include &lt;algorithm&gt;
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+
+using namespace std;
+class Scale
+{
+public:
+    // The constructor.
+    explicit Scale(int scale) : _scale(scale) {}
+    // Prints the product of each element in a vector object
+    // and the scale value to the console.
+    void ApplyScale(const vector&lt;int&gt;&amp; v) const
+    {
+        for_each(v.begin(), v.end(), [=](int n) { cout &lt;&lt; n * _scale &lt;&lt; endl; });
+    }
+private:
+    int _scale;
+};
+
+int main()
+{
+    vector&lt;int&gt; values;
+    values.push_back(1);
+    values.push_back(2);
+    values.push_back(3);
+    values.push_back(4);
+
+    // Create a Scale object that scales elements by 3 and apply
+    // it to the vector object. Does not modify the vector.
+    Scale s(3);
+    s.ApplyScale(values); // 3 6 9 12
+}
+</code></pre>
+<p>&#x5728;&#x51FD;&#x6570;&#x4E2D;&#x4F7F;&#x7528;lambda&#x8868;&#x8FBE;&#x5F0F;&#xFF0C; &#x53EF;&#x4EE5;&#x7528;&#x663E;&#x5F0F;&#x7684;this&#x6307;&#x9488;:</p>
+<pre><code class="lang-cpp"><span class="hljs-comment">// capture &quot;this&quot; by reference</span>
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">ApplyScale</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; v)</span> <span class="hljs-keyword">const</span>
+</span>{
+   for_each(v.begin(), v.end(),
+      [<span class="hljs-keyword">this</span>](<span class="hljs-keyword">int</span> n) { <span class="hljs-built_in">cout</span> &lt;&lt; n * _scale &lt;&lt; <span class="hljs-built_in">endl</span>; });
+}
+
+<span class="hljs-comment">// capture &quot;this&quot; by value (Visual Studio 2017 version 15.3 and later) c++17</span>
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">ApplyScale2</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; v)</span> <span class="hljs-keyword">const</span>
+</span>{
+   for_each(v.begin(), v.end(),
+      [*<span class="hljs-keyword">this</span>](<span class="hljs-keyword">int</span> n) { <span class="hljs-built_in">cout</span> &lt;&lt; n * _scale &lt;&lt; <span class="hljs-built_in">endl</span>; });
+}
+</code></pre>
+<p>&#x4E5F;&#x53EF;&#x4EE5;&#x7528;&#x9690;&#x5F0F;&#x7684;this&#x6307;&#x9488;:</p>
+<pre><code class="lang-cpp"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">ApplyScale</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; v)</span> <span class="hljs-keyword">const</span>
+</span>{
+   for_each(v.begin(), v.end(),
+      [=](<span class="hljs-keyword">int</span> n) { <span class="hljs-built_in">cout</span> &lt;&lt; n * _scale &lt;&lt; <span class="hljs-built_in">endl</span>; });
+}
+</code></pre>
+<p>&#x8FD9;&#x4E2A;Scale&#x7C7B;&#x4E2D;&#x6709;&#x4E00;&#x4E2A;&#x6210;&#x5458;&#x65B9;&#x6CD5;<code>ApplyScale</code>&#xFF0C;&#x4F7F;&#x7528;&#x4E00;&#x4E2A;lambda&#x8868;&#x8FBE;&#x5F0F;&#xFF0C;&#x8FD9;&#x4E2A;&#x8868;&#x8FBE;&#x5F0F;&#x4F7F;&#x7528;&#x4E86;&#x7C7B;&#x7684;&#x6570;&#x636E;&#x6210;&#x5458;<code>_scale</code>&#x3002;
+&#x91C7;&#x7528;&#x9ED8;&#x8BA4;&#x503C;&#x65B9;&#x5F0F;<code>[=]</code>&#x6355;&#x6349;&#x53D8;&#x91CF;&#x3002;
+<strong>&#x4F60;&#x53EF;&#x80FD;&#x8BA4;&#x4E3A;&#x8FD9;&#x4E2A;lambda&#x8868;&#x8FBE;&#x5F0F;&#x4E5F;&#x6355;&#x6349;&#x4E86;<code>_scale</code>&#x7684;&#x4E00;&#x4EFD;&#x526F;&#x672C;&#xFF0C;&#x7B54;&#x6848;&#x662F;&#x9519;&#x7684;&#x3002;&#x56E0;&#x4E3A;&#x6570;&#x636E;&#x6210;&#x5458;<code>_scale</code>&#x5BF9;lambda&#x8868;&#x8FBE;&#x5F0F;&#x5E76;&#x4E0D;&#x53EF;&#x89C1;&#xFF0C;&#x53EF;&#x4EE5;&#x7528;&#x4E0B;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x9A8C;&#x8BC1;</strong>:</p>
+<pre><code class="lang-cpp"><span class="hljs-comment">//&#x65E0;&#x6CD5;&#x7F16;&#x8BD1;&#xFF0C;&#x56E0;&#x4E3A;_scale&#x5E76;&#x4E0D;&#x5728;lambda&#x6355;&#x6349;&#x7684;&#x8303;&#x56F4;</span>
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">ApplyScale</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; v)</span> <span class="hljs-keyword">const</span>
+</span>{
+   for_each(v.begin(), v.end(),
+      [_scale](<span class="hljs-keyword">int</span> n) { <span class="hljs-built_in">cout</span> &lt;&lt; n * _scale &lt;&lt; <span class="hljs-built_in">endl</span>; });
+}
+</code></pre>
+<p>&#x539F;&#x6765;&#x7684;&#x4EE3;&#x7801;&#x4E2D;&#xFF0C;&#x6BCF;&#x4E2A;&#x975E;&#x9759;&#x6001;&#x65B9;&#x6CD5;&#x90FD;&#x6709;&#x4E00;&#x4E2A;<code>this</code>&#x6307;&#x9488;&#x53D8;&#x91CF;,&#x5229;&#x7528;&#x9690;&#x5F0F;&#x7684;<code>this</code>&#x6307;&#x9488;&#xFF0C;&#x53EF;&#x4EE5;&#x63A5;&#x8FD1;&#x4EFB;&#x4F55;&#x6210;&#x5458;&#x53D8;&#x91CF;&#xFF0C;&#x6240;&#x4EE5;lambda&#x8868;&#x8FBE;&#x5F0F;&#x5B9E;&#x9645;&#x4E0A;&#x6355;&#x6349;&#x7684;&#x662F;this&#x6307;&#x9488;&#x7684;&#x526F;&#x672C;&#xFF0C;&#x6240;&#x4EE5;&#x539F;&#x6765;&#x7684;&#x4EE3;&#x7801;&#x7B49;&#x4EF7;&#x4E8E;:</p>
+<pre><code class="lang-cpp"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">ApplyScale</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; v)</span> <span class="hljs-keyword">const</span>
+</span>{
+   for_each(v.begin(), v.end(),
+      [<span class="hljs-keyword">this</span>](<span class="hljs-keyword">int</span> n) { <span class="hljs-built_in">cout</span> &lt;&lt; n * <span class="hljs-keyword">this</span>-&gt;_scale &lt;&lt; <span class="hljs-built_in">endl</span>; });
+}
+</code></pre>
+<h4 id="&#x989D;&#x5916;&#x9605;&#x8BFB;">&#x989D;&#x5916;&#x9605;&#x8BFB;</h4>
+<ul>
+<li><a href="https://zhuanlan.zhihu.com/p/143884880" target="_blank">&#x57FA;&#x7840;&#x7BC7;&#xFF1A;Lambda &#x8868;&#x8FBE;&#x5F0F;&#x548C;&#x51FD;&#x6570;&#x5BF9;&#x8C61;</a></li>
+</ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="C++Primer基础-05function与bind与forward.html" class="navigation navigation-prev " aria-label="Previous page: C++Primer基础:std::function、std::bind、std::forward">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="C++Primer基础-07类基础.html" class="navigation navigation-next " aria-label="Next page: C++ Primer基础: 类">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"C++Primer基础:lambda","level":"1.5.6","depth":2,"next":{"title":"C++ Primer基础: 类","level":"1.5.7","depth":2,"path":"c++学习笔记/C++Primer基础-07类基础.md","ref":"c++学习笔记/C++Primer基础-07类基础.md","articles":[]},"previous":{"title":"C++Primer基础:std::function、std::bind、std::forward","level":"1.5.5","depth":2,"path":"c++学习笔记/C++Primer基础-05function与bind与forward.md","ref":"c++学习笔记/C++Primer基础-05function与bind与forward.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"c++学习笔记/C++Primer基础-06-lambda.md","mtime":"2022-01-13T17:10:22.319Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-01-23T03:25:17.334Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

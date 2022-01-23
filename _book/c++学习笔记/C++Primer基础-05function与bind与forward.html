@@ -1,0 +1,830 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>C++Primer基础:std::function、std::bind、std::forward · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="C++Primer基础-06-lambda.html" />
+    
+    
+    <link rel="prev" href="C++Primer基础-04函数重载函数指针.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    README
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../redis学习/">
+            
+                <a href="../redis学习/">
+            
+                    
+                    Redis学习
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../redis学习/Redis备份.html">
+            
+                <a href="../redis学习/Redis备份.html">
+            
+                    
+                    Redis备份
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../redis学习/Redis复制.html">
+            
+                <a href="../redis学习/Redis复制.html">
+            
+                    
+                    Redis复制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../redis学习/Redis集群.html">
+            
+                <a href="../redis学习/Redis集群.html">
+            
+                    
+                    Redis集群
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../rocksdb-xue-xi/README.md">
+            
+                <span>
+            
+                    
+                    RocksDB学习
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../rocksdb学习/RocksDB基础概念.html">
+            
+                <a href="../rocksdb学习/RocksDB基础概念.html">
+            
+                    
+                    RocksDB基础概念
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../rocksdb学习/RocksDB基础操作-C语言.html">
+            
+                <a href="../rocksdb学习/RocksDB基础操作-C语言.html">
+            
+                    
+                    RocksDB基础操作-C语言
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../c语言笔记/">
+            
+                <a href="../c语言笔记/">
+            
+                    
+                    C语言笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../c语言笔记/C语言补充笔记一.html">
+            
+                <a href="../c语言笔记/C语言补充笔记一.html">
+            
+                    
+                    C语言补充笔记一
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    C++学习笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="C++Primer基础-01引用指针const.html">
+            
+                <a href="C++Primer基础-01引用指针const.html">
+            
+                    
+                    C++Primer基础:引用、指针、const、auto/decltype
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="C++Primer基础-02volatile与using.html">
+            
+                <a href="C++Primer基础-02volatile与using.html">
+            
+                    
+                    C++Primer基础:volatile、using
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="C++Primer基础-03stringvector数组.html">
+            
+                <a href="C++Primer基础-03stringvector数组.html">
+            
+                    
+                    C++Primer基础: string、vector、数组
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="C++Primer基础-04函数重载函数指针.html">
+            
+                <a href="C++Primer基础-04函数重载函数指针.html">
+            
+                    
+                    C++Primer基础:函数、重载、函数指针
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.5.5" data-path="C++Primer基础-05function与bind与forward.html">
+            
+                <a href="C++Primer基础-05function与bind与forward.html">
+            
+                    
+                    C++Primer基础:std::function、std::bind、std::forward
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="C++Primer基础-06-lambda.html">
+            
+                <a href="C++Primer基础-06-lambda.html">
+            
+                    
+                    C++Primer基础:lambda
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" data-path="C++Primer基础-07类基础.html">
+            
+                <a href="C++Primer基础-07类基础.html">
+            
+                    
+                    C++ Primer基础: 类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8" data-path="C++Primer标准库-IO库.html">
+            
+                <a href="C++Primer标准库-IO库.html">
+            
+                    
+                    C++ Primer 标准库: IO库
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.9" data-path="C++Primer标准库-顺序容器.html">
+            
+                <a href="C++Primer标准库-顺序容器.html">
+            
+                    
+                    C++ Primer 标准库: 顺序容器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.10" data-path="C++Primer标准库-泛型算法.html">
+            
+                <a href="C++Primer标准库-泛型算法.html">
+            
+                    
+                    C++ Primer 标准库: 泛型算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.11" data-path="C++Primer标准库-关联容器.html">
+            
+                <a href="C++Primer标准库-关联容器.html">
+            
+                    
+                    C++ Primer 标准库: 关联容器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.12" data-path="C++Primer标准库-动态内存.html">
+            
+                <a href="C++Primer标准库-动态内存.html">
+            
+                    
+                    C++ Primer 标准库: 动态内存
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.13" data-path="C++Primer类设计-拷贝控制.html">
+            
+                <a href="C++Primer类设计-拷贝控制.html">
+            
+                    
+                    C++ Primer 类设计: 拷贝控制、explicit
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.14" data-path="C++Primer类设计-基类派生类虚函数.html">
+            
+                <a href="C++Primer类设计-基类派生类虚函数.html">
+            
+                    
+                    C++ Primer 类设计: 基类、派生类、虚函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.15" data-path="C++Primer类设计-模板与泛型编程.html">
+            
+                <a href="C++Primer类设计-模板与泛型编程.html">
+            
+                    
+                    C++ Primer 类设计:模板与泛型编程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.16" data-path="C++并发编程实战-01基础使用Join传参.html">
+            
+                <a href="C++并发编程实战-01基础使用Join传参.html">
+            
+                    
+                    C++并发编程实战一:基础使用、Join、传参、线程所有权转移
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.17" data-path="C++并发编程实战-02mutexlock.html">
+            
+                <a href="C++并发编程实战-02mutexlock.html">
+            
+                    
+                    C++并发编程实战: mutex、lock、unique_lock、call_once、shared_lock
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.18" data-path="C++并发编程实战-03条件变量.html">
+            
+                <a href="C++并发编程实战-03条件变量.html">
+            
+                    
+                    C++并发编程实战三: 条件变量
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.19" data-path="C++并发编程实战-04原子操作和类型.html">
+            
+                <a href="C++并发编程实战-04原子操作和类型.html">
+            
+                    
+                    C++并发编程实战四: 原子操作和类型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.20" data-path="C++并发编程实战-05内存模型.html">
+            
+                <a href="C++并发编程实战-05内存模型.html">
+            
+                    
+                    C++并发编程实战五: 内存模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../工具使用/">
+            
+                <a href="../工具使用/">
+            
+                    
+                    工具使用
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../工具使用/VSCode使用小技巧.html">
+            
+                <a href="../工具使用/VSCode使用小技巧.html">
+            
+                    
+                    VS Code使用小技巧
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >C++Primer基础:std::function、std::bind、std::forward</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="cprimer&#x57FA;&#x7840;stdfunction&#x3001;stdbind&#x3001;stdforward">C++Primer&#x57FA;&#x7840;:std::function&#x3001;std::bind&#x3001;std::forward</h2>
+<p>&#x539F;&#x6587;: <a href="https://mp.weixin.qq.com/s/6zzF8GEgpMsNrdoBLi5csA" target="_blank">&#x641E;&#x5B9A;c++11&#x65B0;&#x7279;&#x6027;std::function&#x548C;lambda&#x8868;&#x8FBE;&#x5F0F;</a></p>
+<h4 id="stdfunction">std::function</h4>
+<p>&#x6EE1;&#x8DB3;&#x4E00;&#x4E0B;&#x6761;&#x4EF6;&#x4E4B;&#x4E00;&#x5C31;&#x53EF;&#x79F0;&#x4E3A; <strong>&#x53EF;&#x8C03;&#x7528;&#x5BF9;&#x8C61;</strong>&#xFF1F;</p>
+<ul>
+<li>&#x662F;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x6307;&#x9488;;</li>
+<li>&#x662F;&#x4E00;&#x4E2A;<strong>&#x5177;&#x6709;<code>operator()</code>&#x6210;&#x5458;&#x51FD;&#x6570;&#x7684;&#x7C7B;&#x5BF9;&#x8C61;</strong>;</li>
+<li>&#x662F;&#x4E00;&#x4E2A;<code>lambda</code>&#x8868;&#x8FBE;&#x5F0F;;</li>
+<li>&#x662F;&#x4E00;&#x4E2A; <strong>&#x53EF;&#x88AB;&#x8F6C;&#x6362;&#x4E3A;&#x51FD;&#x6570;&#x6307;&#x9488;</strong> &#x7684;&#x7C7B;&#x5BF9;&#x8C61;;</li>
+<li>&#x662F;&#x4E00;&#x4E2A;<strong>&#x7C7B;&#x6210;&#x5458;&#x51FD;&#x6570;&#x6307;&#x9488;</strong>;</li>
+<li>bind&#x8868;&#x8FBE;&#x5F0F; &#x6216; &#x5176;&#x4ED6;&#x51FD;&#x6570;&#x5BF9;&#x8C61;;</li>
+</ul>
+<p><code>std::function</code>&#x5C31;&#x662F;&#x4E0A;&#x9762;&#x8FD9;&#x4E2A;&#x53EF;&#x8C03;&#x7528;&#x5BF9;&#x8C61;&#x7684;&#x5C01;&#x88C5;&#x5668;&#xFF0C;&#x53EF;&#x4EE5;&#x628A;<code>std::function</code>&#x770B;&#x505A;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x5BF9;&#x8C61;&#x3002;<code>std::function</code>&#x5B9E;&#x4F8B;&#x53EF;&#x4EE5;&#x5B58;&#x50A8;&#x3001;&#x590D;&#x5236;&#x8D6B;&#x5C14;&#x8C03;&#x7528;&#x4EFB;&#x4F55;&#x53EF;&#x8C03;&#x7528;&#x5BF9;&#x8C61;&#xFF0C;&#x5B58;&#x50A8;&#x7684;&#x53EF;&#x8C03;&#x7528;&#x5BF9;&#x8C61;&#x79F0;&#x4E3A;<code>std::function</code>&#x7684;&#x76EE;&#x6807;&#xFF0C;&#x82E5;<code>std::function</code>&#x4E0D;&#x542B;&#x76EE;&#x6807;&#xFF0C;&#x5219;&#x79F0;&#x5B83;&#x4E3A;&#x7A7A;&#xFF0C;&#x8C03;&#x7528;&#x7A7A;&#x7684;<code>std::function</code>&#x4F1A;&#x629B;&#x51FA;<code>std::bad_function_call</code>&#x5F02;&#x5E38;&#x3002;</p>
+<p>&#x53C2;&#x8003;&#x5982;&#x4E0B;&#x5B9E;&#x4F8B;&#x4EE3;&#x7801;:</p>
+<pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;functional&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
+
+<span class="hljs-keyword">struct</span> Foo {
+   Foo(<span class="hljs-keyword">int</span> num) : num_(num) {}
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">print_add</span><span class="hljs-params">(<span class="hljs-keyword">int</span> i)</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; num_ + i &lt;&lt; <span class="hljs-string">&apos;\n&apos;</span>; }
+   <span class="hljs-keyword">int</span> num_;
+};
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">print_num</span><span class="hljs-params">(<span class="hljs-keyword">int</span> i)</span> </span>{ <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; i &lt;&lt; <span class="hljs-string">&apos;\n&apos;</span>; }
+
+<span class="hljs-keyword">struct</span> PrintNum {
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">operator</span><span class="hljs-params">()</span><span class="hljs-params">(<span class="hljs-keyword">int</span> i)</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; i &lt;&lt; <span class="hljs-string">&apos;\n&apos;</span>; }
+};
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+   <span class="hljs-comment">// &#x5B58;&#x50A8;&#x81EA;&#x7531;&#x51FD;&#x6570;</span>
+   <span class="hljs-built_in">std</span>::function&lt;<span class="hljs-keyword">void</span>(<span class="hljs-keyword">int</span>)&gt; f_display = print_num;
+   f_display(<span class="hljs-number">-9</span>);
+
+   <span class="hljs-comment">// &#x5B58;&#x50A8; lambda</span>
+   <span class="hljs-built_in">std</span>::function&lt;<span class="hljs-keyword">void</span>()&gt; f_display_42 = []() { print_num(<span class="hljs-number">42</span>); };
+   f_display_42();
+
+   <span class="hljs-comment">// &#x5B58;&#x50A8;&#x5230; std::bind &#x8C03;&#x7528;&#x7684;&#x7ED3;&#x679C;</span>
+   <span class="hljs-built_in">std</span>::function&lt;<span class="hljs-keyword">void</span>()&gt; f_display_31337 = <span class="hljs-built_in">std</span>::bind(print_num, <span class="hljs-number">31337</span>);
+   f_display_31337();
+
+   <span class="hljs-comment">// &#x5B58;&#x50A8;&#x5230;&#x6210;&#x5458;&#x51FD;&#x6570;&#x7684;&#x8C03;&#x7528;</span>
+   <span class="hljs-built_in">std</span>::function&lt;<span class="hljs-keyword">void</span>(<span class="hljs-keyword">const</span> Foo&amp;, <span class="hljs-keyword">int</span>)&gt; f_add_display = &amp;Foo::print_add;
+   <span class="hljs-function"><span class="hljs-keyword">const</span> Foo <span class="hljs-title">foo</span><span class="hljs-params">(<span class="hljs-number">314159</span>)</span></span>;
+   f_add_display(foo, <span class="hljs-number">1</span>);
+   f_add_display(<span class="hljs-number">314159</span>, <span class="hljs-number">1</span>);
+
+   <span class="hljs-comment">// &#x5B58;&#x50A8;&#x5230;&#x6570;&#x636E;&#x6210;&#x5458;&#x8BBF;&#x95EE;&#x5668;&#x7684;&#x8C03;&#x7528;</span>
+   <span class="hljs-built_in">std</span>::function&lt;<span class="hljs-keyword">int</span>(Foo <span class="hljs-keyword">const</span>&amp;)&gt; f_num = &amp;Foo::num_;
+   <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">&quot;num_: &quot;</span> &lt;&lt; f_num(foo) &lt;&lt; <span class="hljs-string">&apos;\n&apos;</span>;
+
+   <span class="hljs-comment">// &#x5B58;&#x50A8;&#x5230;&#x6210;&#x5458;&#x51FD;&#x6570;&#x53CA;&#x5BF9;&#x8C61;&#x7684;&#x8C03;&#x7528;</span>
+   <span class="hljs-keyword">using</span> <span class="hljs-built_in">std</span>::placeholders::_1;
+   <span class="hljs-built_in">std</span>::function&lt;<span class="hljs-keyword">void</span>(<span class="hljs-keyword">int</span>)&gt; f_add_display2 = <span class="hljs-built_in">std</span>::bind(&amp;Foo::print_add, foo, _1);
+   f_add_display2(<span class="hljs-number">2</span>);
+
+   <span class="hljs-comment">// &#x5B58;&#x50A8;&#x5230;&#x6210;&#x5458;&#x51FD;&#x6570;&#x548C;&#x5BF9;&#x8C61;&#x6307;&#x9488;&#x7684;&#x8C03;&#x7528;</span>
+   <span class="hljs-built_in">std</span>::function&lt;<span class="hljs-keyword">void</span>(<span class="hljs-keyword">int</span>)&gt; f_add_display3 = <span class="hljs-built_in">std</span>::bind(&amp;Foo::print_add, &amp;foo, _1);
+   f_add_display3(<span class="hljs-number">3</span>);
+
+   <span class="hljs-comment">// &#x5B58;&#x50A8;&#x5230;&#x51FD;&#x6570;&#x5BF9;&#x8C61;&#x7684;&#x8C03;&#x7528;</span>
+   <span class="hljs-built_in">std</span>::function&lt;<span class="hljs-keyword">void</span>(<span class="hljs-keyword">int</span>)&gt; f_display_obj = PrintNum();
+   f_display_obj(<span class="hljs-number">18</span>);
+}
+</code></pre>
+<p>&#x5F53;&#x7ED9;std::function&#x586B;&#x5165;&#x5408;&#x9002;&#x7684;&#x53C2;&#x6570;&#x8868;&#x548C;&#x8FD4;&#x56DE;&#x503C;&#x540E;&#xFF0C;&#x5B83;&#x5C31;&#x53D8;&#x6210;&#x4E86;&#x53EF;&#x4EE5;&#x5BB9;&#x7EB3;&#x6240;&#x6709;&#x8FD9;&#x4E00;&#x7C7B;&#x8C03;&#x7528;&#x65B9;&#x5F0F;&#x7684;&#x51FD;&#x6570;&#x5C01;&#x88C5;&#x5668;&#x3002;</p>
+<p>std::function&#x8FD8;&#x53EF;&#x4EE5;&#x7528;&#x4F5C;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#xFF0C;&#x6216;&#x8005;&#x5728;C++&#x91CC;&#x5982;&#x679C;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x56DE;&#x8C03;&#x90A3;&#x5C31;&#x4E00;&#x5B9A;&#x8981;&#x4F7F;&#x7528;std::function&#xFF0C;&#x7279;&#x522B;&#x65B9;&#x4FBF;&#xFF0C;&#x8FD9;&#x65B9;&#x9762;&#x7684;&#x4F7F;&#x7528;&#x65B9;&#x5F0F;&#x5927;&#x5BB6;&#x53EF;&#x4EE5;&#x8BFB;&#x4E0B;&#x6211;&#x4E4B;&#x524D;&#x5199;&#x7684;&#x5173;&#x4E8E;&#x7EBF;&#x7A0B;&#x6C60;&#x548C;&#x5B9A;&#x65F6;&#x5668;&#x76F8;&#x5173;&#x7684;&#x6587;&#x7AE0;&#x3002;</p>
+<h5 id="stdbind">std::bind</h5>
+<p>&#x4F7F;&#x7528;std::bind&#x53EF;&#x4EE5;&#x5C06;&#x53EF;&#x8C03;&#x7528;&#x5BF9;&#x8C61;&#x548C;&#x53C2;&#x6570;&#x4E00;&#x8D77;&#x7ED1;&#x5B9A;&#xFF0C;&#x7ED1;&#x5B9A;&#x540E;&#x7684;&#x7ED3;&#x679C;&#x4F7F;&#x7528;std::function&#x8FDB;&#x884C;&#x4FDD;&#x5B58;&#xFF0C;&#x5E76;&#x5EF6;&#x8FDF;&#x8C03;&#x7528;&#x5230;&#x4EFB;&#x4F55;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x7684;&#x65F6;&#x5019;&#x3002;</p>
+<p>std::bind&#x901A;&#x5E38;&#x6709;&#x4E24;&#x5927;&#x4F5C;&#x7528;&#xFF1A;</p>
+<ul>
+<li><strong>&#x5C06;&#x53EF;&#x8C03;&#x7528;&#x5BF9;&#x8C61;&#x4E0E;&#x53C2;&#x6570;&#x4E00;&#x8D77;&#x7ED1;&#x5B9A;&#x4E3A;&#x53E6;&#x4E00;&#x4E2A;std::function&#x4F9B;&#x8C03;&#x7528;</strong>;</li>
+<li><strong>&#x5C06;n&#x5143;&#x53EF;&#x8C03;&#x7528;&#x5BF9;&#x8C61;&#x8F6C;&#x6210;m(m &lt; n)&#x5143;&#x53EF;&#x8C03;&#x7528;&#x5BF9;&#x8C61;&#xFF0C;&#x7ED1;&#x5B9A;&#x4E00;&#x90E8;&#x5206;&#x53C2;&#x6570;&#xFF0C;&#x8FD9;&#x91CC;&#x9700;&#x8981;&#x4F7F;&#x7528;std::placeholders</strong></li>
+</ul>
+<p>&#x793A;&#x4F8B;:</p>
+<pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;functional&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;memory&gt;</span></span>
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">f</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n1, <span class="hljs-keyword">int</span> n2, <span class="hljs-keyword">int</span> n3, <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span>&amp; n4, <span class="hljs-keyword">int</span> n5)</span> </span>{
+   <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; n1 &lt;&lt; <span class="hljs-string">&apos; &apos;</span> &lt;&lt; n2 &lt;&lt; <span class="hljs-string">&apos; &apos;</span> &lt;&lt; n3 &lt;&lt; <span class="hljs-string">&apos; &apos;</span> &lt;&lt; n4 &lt;&lt; <span class="hljs-string">&apos; &apos;</span> &lt;&lt; n5 &lt;&lt; <span class="hljs-built_in">std</span>::<span class="hljs-built_in">endl</span>;
+}
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">g</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n1)</span> </span>{ <span class="hljs-keyword">return</span> n1; }
+
+<span class="hljs-keyword">struct</span> Foo {
+   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">print_sum</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n1, <span class="hljs-keyword">int</span> n2)</span> </span>{ <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; n1 + n2 &lt;&lt; <span class="hljs-built_in">std</span>::<span class="hljs-built_in">endl</span>; }
+   <span class="hljs-keyword">int</span> data = <span class="hljs-number">10</span>;
+};
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+   <span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>::placeholders;  <span class="hljs-comment">// &#x9488;&#x5BF9; _1, _2, _3...</span>
+
+   <span class="hljs-comment">// &#x6F14;&#x793A;&#x53C2;&#x6570;&#x91CD;&#x6392;&#x5E8F;&#x548C;&#x6309;&#x5F15;&#x7528;&#x4F20;&#x9012;</span>
+   <span class="hljs-keyword">int</span> n = <span class="hljs-number">7</span>;
+   <span class="hljs-comment">// &#xFF08; _1 &#x4E0E; _2 &#x6765;&#x81EA; std::placeholders &#xFF0C;&#x5E76;&#x8868;&#x793A;&#x5C06;&#x6765;&#x4F1A;&#x4F20;&#x9012;&#x7ED9; f1 &#x7684;&#x53C2;&#x6570;&#xFF09;</span>
+   <span class="hljs-keyword">auto</span> f1 = <span class="hljs-built_in">std</span>::bind(f, _2, <span class="hljs-number">42</span>, _1, <span class="hljs-built_in">std</span>::cref(n), n);
+   n = <span class="hljs-number">10</span>;
+   f1(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">1001</span>);  <span class="hljs-comment">// 1 &#x4E3A; _1 &#x6240;&#x7ED1;&#x5B9A;&#xFF0C; 2 &#x4E3A; _2 &#x6240;&#x7ED1;&#x5B9A;&#xFF0C;&#x4E0D;&#x4F7F;&#x7528; 1001</span>
+                    <span class="hljs-comment">// &#x8FDB;&#x884C;&#x5230; f(2, 42, 1, n, 7) &#x7684;&#x8C03;&#x7528;</span>
+
+   <span class="hljs-comment">// &#x5D4C;&#x5957; bind &#x5B50;&#x8868;&#x8FBE;&#x5F0F;&#x5171;&#x4EAB;&#x5360;&#x4F4D;&#x7B26;</span>
+   <span class="hljs-keyword">auto</span> f2 = <span class="hljs-built_in">std</span>::bind(f, _3, <span class="hljs-built_in">std</span>::bind(g, _3), _3, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>);
+   f2(<span class="hljs-number">10</span>, <span class="hljs-number">11</span>, <span class="hljs-number">12</span>);  <span class="hljs-comment">// &#x8FDB;&#x884C;&#x5230; f(12, g(12), 12, 4, 5); &#x7684;&#x8C03;&#x7528;</span>
+
+   <span class="hljs-comment">// &#x7ED1;&#x5B9A;&#x6307;&#x5411;&#x6210;&#x5458;&#x51FD;&#x6570;&#x6307;&#x9488;</span>
+   Foo foo;
+   <span class="hljs-keyword">auto</span> f3 = <span class="hljs-built_in">std</span>::bind(&amp;Foo::print_sum, &amp;foo, <span class="hljs-number">95</span>, _1);
+   f3(<span class="hljs-number">5</span>); <span class="hljs-comment">//foo-&gt;print_sum(95,5);</span>
+
+   <span class="hljs-comment">// &#x7ED1;&#x5B9A;&#x6307;&#x5411;&#x6570;&#x636E;&#x6210;&#x5458;&#x6307;&#x9488;</span>
+   <span class="hljs-keyword">auto</span> f4 = <span class="hljs-built_in">std</span>::bind(&amp;Foo::data, _1);
+   <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; f4(foo) &lt;&lt; <span class="hljs-built_in">std</span>::<span class="hljs-built_in">endl</span>;
+
+   <span class="hljs-comment">// &#x667A;&#x80FD;&#x6307;&#x9488;&#x4EA6;&#x80FD;&#x7528;&#x4E8E;&#x8C03;&#x7528;&#x88AB;&#x5F15;&#x7528;&#x5BF9;&#x8C61;&#x7684;&#x6210;&#x5458;</span>
+   <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; f4(<span class="hljs-built_in">std</span>::make_shared&lt;Foo&gt;(foo)) &lt;&lt; <span class="hljs-built_in">std</span>::<span class="hljs-built_in">endl</span>;
+}
+</code></pre>
+<h4 id="stdforward">std::forward</h4>
+<p><code>std::forward</code>&#x901A;&#x5E38;&#x662F;&#x7528;&#x4E8E;&#x5B8C;&#x7F8E;&#x8F6C;&#x53D1;&#x7684;&#xFF0C;&#x5B83;&#x4F1A;&#x5C06;&#x8F93;&#x5165;&#x7684;&#x53C2;&#x6570;&#x539F;&#x5C01;&#x4E0D;&#x52A8;&#x5730;&#x4F20;&#x9012;&#x5230;&#x4E0B;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x4E2D;&#xFF0C;&#x8FD9;&#x4E2A;&#x201C;&#x539F;&#x5C01;&#x4E0D;&#x52A8;&#x201D;&#x6307;&#x7684;&#x662F;&#xFF0C;&#x5982;&#x679C;&#x8F93;&#x5165;&#x7684;&#x53C2;&#x6570;&#x662F;&#x5DE6;&#x503C;&#xFF0C;&#x90A3;&#x4E48;&#x4F20;&#x9012;&#x7ED9;&#x4E0B;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x7684;&#x53C2;&#x6570;&#x7684;&#x4E5F;&#x662F;&#x5DE6;&#x503C;&#xFF1B;&#x5982;&#x679C;&#x8F93;&#x5165;&#x7684;&#x53C2;&#x6570;&#x662F;&#x53F3;&#x503C;&#xFF0C;&#x90A3;&#x4E48;&#x4F20;&#x9012;&#x7ED9;&#x4E0B;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x7684;&#x53C2;&#x6570;&#x7684;&#x4E5F;&#x662F;&#x53F3;&#x503C;&#x3002;&#x4E00;&#x4E2A;&#x7ECF;&#x5178;&#x7684;&#x5B8C;&#x7F8E;&#x8F6C;&#x53D1;&#x7684;&#x573A;&#x666F;&#x662F;:</p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span>... Args&gt;
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">forward</span><span class="hljs-params">(Args&amp;&amp;... args)</span> </span>{
+    f(<span class="hljs-built_in">std</span>::forward&lt;Args&gt;(args)...);
+}
+</code></pre>
+<ol>
+<li>&#x7531;&#x4E8E;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x4FDD;&#x7559;&#x8F93;&#x5165;&#x53C2;&#x6570;&#x7684;&#x53F3;&#x503C;&#x5C5E;&#x6027;, &#x56E0;&#x6B64;<code>Args</code>&#x540E;&#x9762;&#x9700;&#x8981;&#x8DDF;&#x4E0A;<code>&amp;&amp;</code>;</li>
+<li><code>std::forward</code>&#x7684;&#x6A21;&#x677F;&#x53C2;&#x6570;&#x5FC5;&#x987B;&#x662F;<code>&lt;Args&gt;</code>&#xFF0C;&#x800C;&#x4E0D;&#x80FD;&#x662F;<code>&lt;Args...&gt;</code>&#xFF0C;&#x8FD9;&#x662F;&#x7531;&#x4E8E;&#x6211;&#x4EEC;&#x4E0D;&#x80FD;&#x5BF9;Args&#x8FDB;&#x884C;&#x89E3;&#x5305;&#x4E4B;&#x540E;&#x4F20;&#x9012;&#x7ED9;<code>std::forward</code>,&#x800C;&#x89E3;&#x5305;&#x7684;&#x8FC7;&#x7A0B;&#x5FC5;&#x987B;&#x5728;&#x8C03;&#x7528;std::forward&#x4E4B;&#x540E;;</li>
+</ol>
+<p>&#x4E0B;&#x9762;&#x662F;&#x7EBF;&#x7A0B;&#x6C60;&#x4E2D;&#x63D0;&#x4EA4;&#x4EFB;&#x52A1;&#x5230;&#x7EBF;&#x7A0B;&#x6C60;&#x7684;&#x4E00;&#x6BB5;&#x4EE3;&#x7801;</p>
+<pre><code class="lang-cpp">template &lt;typename F, typename... Args&gt;
+auto submit(F &amp;&amp;f, Args &amp;&amp;...args) -&gt; std::future&lt;decltype(f(args...))&gt;
+{
+    // Create a function with bounded parameters ready to execute
+    std::function&lt;decltype(f(args...))()&gt; func = std::bind(std::forward&lt;F&gt;(f), std::forward&lt;Args&gt;(args)...);
+
+    // &#x5F02;&#x6B65;&#x6267;&#x884C;,&#x83B7;&#x53D6;&#x7ED3;&#x679C;&#x7684;&#x57FA;&#x7840;
+    auto task_ptr = std::make_shared&lt;std::packaged_task&lt;decltype(f(args...))()&gt;&gt;(func);
+
+    //&#x5C06;packaged task &#x5C01;&#x88C5;&#x5230;&#x4E00;&#x4E2A;void &#x51FD;&#x6570;&#x4E2D;
+    std::function&lt;void()&gt; wrapper_func = [task_ptr]()
+    {
+        (*task_ptr)();
+    };
+    //&#x51FD;&#x6570;&#x538B;&#x5165;&#x5B89;&#x5168;&#x961F;&#x5217;
+    m_queue.push(wrapper_func);
+
+    //&#x5524;&#x9192;&#x4E00;&#x4E2A;&#x7B49;&#x5F85;&#x4E2D;&#x7684;&#x7EBF;&#x7A0B;
+    m_conditional_lock.notify_one();
+
+    //&#x8FD4;&#x56DE;&#x5148;&#x524D;&#x6CE8;&#x518C;&#x7684;&#x4EFB;&#x52A1;&#x7684;future&#x6307;&#x9488;
+    return task_ptr-&gt;get_future();
+}
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="C++Primer基础-04函数重载函数指针.html" class="navigation navigation-prev " aria-label="Previous page: C++Primer基础:函数、重载、函数指针">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="C++Primer基础-06-lambda.html" class="navigation navigation-next " aria-label="Next page: C++Primer基础:lambda">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"C++Primer基础:std::function、std::bind、std::forward","level":"1.5.5","depth":2,"next":{"title":"C++Primer基础:lambda","level":"1.5.6","depth":2,"path":"c++学习笔记/C++Primer基础-06-lambda.md","ref":"c++学习笔记/C++Primer基础-06-lambda.md","articles":[]},"previous":{"title":"C++Primer基础:函数、重载、函数指针","level":"1.5.4","depth":2,"path":"c++学习笔记/C++Primer基础-04函数重载函数指针.md","ref":"c++学习笔记/C++Primer基础-04函数重载函数指针.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"c++学习笔记/C++Primer基础-05function与bind与forward.md","mtime":"2022-01-09T15:31:01.013Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-01-23T03:25:17.334Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
