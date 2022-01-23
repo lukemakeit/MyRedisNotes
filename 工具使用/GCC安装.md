@@ -2,7 +2,7 @@
 
 1. 用国内镜像地址下载:
 
-   ```shell
+   ```sh
    wget https://mirrors.ustc.edu.cn/gnu/gcc/gcc-7.5.0/gcc-7.5.0.tar.gz
    tar -zxf gcc-7.5.0.tar.gz
    cd gcc-7.5.0
@@ -10,7 +10,7 @@
 
 2. 下载依赖:
 
-   ```shell
+   ```sh
    wget https://mirrors.ustc.edu.cn/gnu/gmp/gmp-6.1.0.tar.bz2
    wget https://mirrors.ustc.edu.cn/gnu/mpc/mpc-1.0.3.tar.gz
    wget https://mirrors.ustc.edu.cn/gnu/mpfr/mpfr-3.1.4.tar.bz2

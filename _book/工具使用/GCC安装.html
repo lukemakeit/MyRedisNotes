@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>RocksDB基础操作-C语言 · GitBook</title>
+        <title>GCC安装 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="../c语言笔记/" />
+    <link rel="next" href="CMake学习与使用.html" />
     
     
-    <link rel="prev" href="RocksDB基础概念.html" />
+    <link rel="prev" href="VSCode使用小技巧.html" />
     
 
     </head>
@@ -174,9 +174,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.3.1" data-path="RocksDB基础概念.html">
+        <li class="chapter " data-level="1.3.1" data-path="../rocksdb学习/RocksDB基础概念.html">
             
-                <a href="RocksDB基础概念.html">
+                <a href="../rocksdb学习/RocksDB基础概念.html">
             
                     
                     RocksDB基础概念
@@ -187,9 +187,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.3.2" data-path="RocksDB基础操作-C语言.html">
+        <li class="chapter " data-level="1.3.2" data-path="../rocksdb学习/RocksDB基础操作-C语言.html">
             
-                <a href="RocksDB基础操作-C语言.html">
+                <a href="../rocksdb学习/RocksDB基础操作-C语言.html">
             
                     
                     RocksDB基础操作-C语言
@@ -516,9 +516,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6" data-path="../工具使用/">
+        <li class="chapter " data-level="1.6" data-path="./">
             
-                <a href="../工具使用/">
+                <a href="./">
             
                     
                     工具使用
@@ -530,9 +530,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.6.1" data-path="../工具使用/VSCode使用小技巧.html">
+        <li class="chapter " data-level="1.6.1" data-path="VSCode使用小技巧.html">
             
-                <a href="../工具使用/VSCode使用小技巧.html">
+                <a href="VSCode使用小技巧.html">
             
                     
                     VS Code使用小技巧
@@ -543,9 +543,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.2" data-path="../工具使用/GCC安装.html">
+        <li class="chapter active" data-level="1.6.2" data-path="GCC安装.html">
             
-                <a href="../工具使用/GCC安装.html">
+                <a href="GCC安装.html">
             
                     
                     GCC安装
@@ -556,9 +556,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.3" data-path="../工具使用/CMake学习与使用.html">
+        <li class="chapter " data-level="1.6.3" data-path="CMake学习与使用.html">
             
-                <a href="../工具使用/CMake学习与使用.html">
+                <a href="CMake学习与使用.html">
             
                     
                     CMake学习与使用
@@ -604,7 +604,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >RocksDB基础操作-C语言</a>
+        <a href=".." >GCC安装</a>
     </h1>
 </div>
 
@@ -619,190 +619,62 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="rocksdb&#x57FA;&#x7840;&#x64CD;&#x4F5C;&#x2014;&#x2014;c&#x8BED;&#x8A00;">RocksDB&#x57FA;&#x7840;&#x64CD;&#x4F5C;&#x2014;&#x2014;C&#x8BED;&#x8A00;</h2>
-<h4 id="open&#x4E00;&#x4E2A;db">Open&#x4E00;&#x4E2A;DB</h4>
-<pre><code class="lang-c"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-string">&quot;rocksdb/c.h&quot;</span></span>
-<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;assert.h&gt;</span></span>
-<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span></span>
-<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdlib.h&gt;</span></span>
-<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;string.h&gt;</span></span>
-<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;unistd.h&gt;</span></span>
-
-<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> DBPath[] = <span class="hljs-string">&quot;./data/c_simple_example&quot;</span>;
-<span class="hljs-keyword">rocksdb_t</span> *db;
-<span class="hljs-keyword">rocksdb_options_t</span> *options = rocksdb_options_create();
-<span class="hljs-comment">//&#x8BBE;&#x7F6E;&#x5E76;&#x53D1;&#x5EA6;</span>
-<span class="hljs-keyword">long</span> cpus = sysconf(_SC_NPROCESSORS_ONLN);
-rocksdb_options_increase_parallelism(options, cpus);
-rocksdb_options_optimize_level_style_compaction(options, <span class="hljs-number">0</span>);
-<span class="hljs-comment">//&#x5982;&#x679C;DB&#x4E0D;&#x5B58;&#x5728;,&#x5219;&#x521B;&#x5EFA;</span>
-rocksdb_options_set_create_if_missing(options, <span class="hljs-number">1</span>);
-
-<span class="hljs-keyword">char</span> *err = <span class="hljs-literal">NULL</span>;
-db = rocksdb_open(options, DBPath, &amp;err);
-<span class="hljs-keyword">if</span> (err)
-{
-    perror(err);
-    <span class="hljs-built_in">exit</span>(<span class="hljs-number">-1</span>);
-}
-rocksdb_options_destroy(options);
-rocksdb_close(db);
+                                <h2 id="gcc-750&#x5B89;&#x88C5;">GCC 7.5.0&#x5B89;&#x88C5;</h2>
+<ol>
+<li><p>&#x7528;&#x56FD;&#x5185;&#x955C;&#x50CF;&#x5730;&#x5740;&#x4E0B;&#x8F7D;:</p>
+<pre><code class="lang-sh">wget https://mirrors.ustc.edu.cn/gnu/gcc/gcc-7.5.0/gcc-7.5.0.tar.gz
+tar -zxf gcc-7.5.0.tar.gz
+<span class="hljs-built_in">cd</span> gcc-7.5.0
 </code></pre>
-<h4 id="&#x5199;&#x5165;kv">&#x5199;&#x5165;k/v</h4>
-<pre><code class="lang-c"><span class="hljs-keyword">char</span> *err = <span class="hljs-literal">NULL</span>;
-<span class="hljs-comment">//put key-value</span>
-<span class="hljs-keyword">rocksdb_writeoptions_t</span> *writeopt = rocksdb_writeoptions_create();
-<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> key[] = <span class="hljs-string">&quot;hello&quot;</span>;
-<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *val = <span class="hljs-string">&quot;world&quot;</span>;
-rocksdb_put(db, writeopt, key, <span class="hljs-built_in">strlen</span>(key), val, <span class="hljs-built_in">strlen</span>(val), &amp;err);
-<span class="hljs-keyword">if</span> (err)
-{
-    perror(err);
-    <span class="hljs-built_in">exit</span>(<span class="hljs-number">-1</span>);
-}
-rocksdb_writeoptions_destroy(writeopt);
+</li>
+<li><p>&#x4E0B;&#x8F7D;&#x4F9D;&#x8D56;:</p>
+<pre><code class="lang-sh">wget https://mirrors.ustc.edu.cn/gnu/gmp/gmp-6.1.0.tar.bz2
+wget https://mirrors.ustc.edu.cn/gnu/mpc/mpc-1.0.3.tar.gz
+wget https://mirrors.ustc.edu.cn/gnu/mpfr/mpfr-3.1.4.tar.bz2
+wget http://ftp.ntua.gr/mirror/gnu/gcc/infrastructure/isl-0.16.1.tar.bz2 //&#x8FD9;&#x4E2A;&#x53EF;&#x80FD;&#x6BD4;&#x8F83;&#x6162;
 </code></pre>
-<h4 id="&#x8BFB;&#x53D6;kv">&#x8BFB;&#x53D6;k/v</h4>
-<pre><code class="lang-c"><span class="hljs-comment">//get value</span>
-<span class="hljs-keyword">rocksdb_readoptions_t</span> *readopt = rocksdb_readoptions_create();
-<span class="hljs-keyword">size_t</span> len;
-<span class="hljs-keyword">char</span> *ret_val = rocksdb_get(db, readopt, key, <span class="hljs-built_in">strlen</span>(key), &amp;len, &amp;err);
-assert(!err);
-assert(<span class="hljs-built_in">strncmp</span>(ret_val, val, len) == <span class="hljs-number">0</span>);
-<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;ret_val=&gt;%.*s val_len=&gt;%d\n&quot;</span>, len, ret_val, len);
-<span class="hljs-built_in">free</span>(ret_val);
-rocksdb_readoptions_destroy(readopt);
+</li>
+<li><p>&#x5B89;&#x88C5;<code>gmp</code>&#x3001;<code>mpc</code>&#x3001;<code>mpfr</code>&#x3001;<code>isl</code></p>
+<pre><code class="lang-shell">tar -xjf gmp-6.1.0.tar.bz2
+cd gmp-6.1.0/
+mkdir /usr/local/gmp-6.1.0/
+./configure --prefix=/usr/local/gmp-6.1.0/
+make
+make install
+
+tar -xjf mpfr-3.1.4.tar.bz2
+mkdir /usr/local/mpfr-3.1.4
+cd mpfr-3.1.4/
+./configure --prefix=/usr/local/mpfr-3.1.4/ --with-gmp=/usr/local/gmp-6.1.0/
+make
+make install
+
+tar -zxf mpc-1.0.3.tar.gz
+cd mpc-1.0.3/
+mkdir /usr/local/mpc-1.0.3/
+./configure --prefix=/usr/local/mpc-1.0.3/ --with-gmp=/usr/local/gmp-6.1.0/ --with-mpfr=/usr/local/mpfr-3.1.4/
+make
+make install
+
+tar -xjf isl-0.16.1.tar.bz2
+cd isl-0.16.1
+mkdir /usr/local/isl-0.16.1
+./configure --prefix=/usr/local/isl-0.16.1/ --with-gmp-prefix=/usr/local/gmp-6.1.0/ --with-mpfr=/usr/local/mpfr-3.1.4/ --with-mpc=/usr/local/mpc-1.0.3/
+make
+make install
 </code></pre>
-<h4 id="&#x4F7F;&#x7528;pinnableslice-&#x8FDB;&#x884C;&#x8BFB;&#x53D6;&#xFF0C;&#x53EF;&#x51CF;&#x5C11;&#x4E00;&#x6B21;&#x5185;&#x5B58;&#x62F7;&#x8D1D;">&#x4F7F;&#x7528;pinnableslice &#x8FDB;&#x884C;&#x8BFB;&#x53D6;&#xFF0C;&#x53EF;&#x51CF;&#x5C11;&#x4E00;&#x6B21;&#x5185;&#x5B58;&#x62F7;&#x8D1D;</h4>
-<pre><code class="lang-c"><span class="hljs-keyword">rocksdb_readoptions_t</span> *readopt = rocksdb_readoptions_create();
-<span class="hljs-keyword">size_t</span> len;
-<span class="hljs-keyword">char</span> *err = <span class="hljs-literal">NULL</span>;
-<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> key[] = <span class="hljs-string">&quot;hello&quot;</span>;
-<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *val = <span class="hljs-string">&quot;world&quot;</span>;
-<span class="hljs-keyword">rocksdb_pinnableslice_t</span> *pinVal = rocksdb_get_pinned(db, readopt, key, <span class="hljs-built_in">strlen</span>(key), &amp;err);
-<span class="hljs-keyword">if</span> (err)
-{
-    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;rocksdb_get_pinned fail,err:%s\n&quot;</span>, err);
-    <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;
-}
-<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *pConstVal = rocksdb_pinnableslice_value(pinVal, &amp;len); <span class="hljs-comment">//&#x4ECE;pinnableslice&#x4E2D;&#x8BFB;&#x53D6;&#x503C;</span>
-assert(<span class="hljs-built_in">strncmp</span>(pConstVal, val, len) == <span class="hljs-number">0</span>);
-<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;pConstVal=&gt;%.*s pConstValLen=&gt;%d\n&quot;</span>, len, pConstVal, len);
+</li>
+<li><p>&#x5B89;&#x88C5;gcc-7.5.0</p>
+<pre><code class="lang-shell">cd gcc-7.5.0 &amp;&amp; mkdir gcc-Builder-7.5.0 &amp;&amp; cd gcc-Builder-7.5.0
+export LD_LIBRARY_PATH=/usr/local/isl-0.16.1/lib:/usr/local/gmp-6.1.0/lib:/usr/local/mpfr-3.1.4/lib:/usr/local/mpc-1.0.3/lib:$LD_LIBRARY_PATH
 
-rocksdb_pinnableslice_destroy(pinVal);
+../configure --prefix=/usr/local/gcc-7.5.0/ --enable-checking=release --enable-languages=c,c++ --disable-multilib --with-gmp=/usr/local/gmp-6.1.0/ --with-mpfr=/usr/local/mpfr-3.1.4/ --with-mpc=/usr/local/mpc-1.0.3/ --with-isl=/usr/local/isl-0.16.1/
+
+nohup make -j 24 &gt;&gt; gcc.log 2&gt;&amp;1 &amp; //&#x53EF;&#x80FD;&#x9700;&#x8981;&#x6267;&#x884C;&#x5F88;&#x4E45;
+make install
 </code></pre>
-<h4 id="&#x4FDD;&#x5B58;&#x4E8C;&#x8FDB;&#x5236;key-&#x540C;&#x65F6;-&#x6839;&#x636E;&#x524D;&#x7F00;&#x904D;&#x5386;">&#x4FDD;&#x5B58;&#x4E8C;&#x8FDB;&#x5236;key &#x540C;&#x65F6; &#x6839;&#x636E;&#x524D;&#x7F00;&#x904D;&#x5386;</h4>
-<pre><code class="lang-c"><span class="hljs-keyword">char</span> *k01 = (<span class="hljs-keyword">char</span> *)<span class="hljs-built_in">malloc</span>(<span class="hljs-number">20</span>);
-<span class="hljs-keyword">char</span> name[<span class="hljs-number">20</span>] = {<span class="hljs-number">0</span>};
-<span class="hljs-keyword">char</span> delimiter = <span class="hljs-string">&apos;:&apos;</span>;
-<span class="hljs-keyword">size_t</span> l01 = <span class="hljs-number">0</span>;
-<span class="hljs-keyword">size_t</span> prefixLen = <span class="hljs-number">0</span>;
-<span class="hljs-keyword">int</span> serverID = <span class="hljs-number">666666</span>; <span class="hljs-comment">//&#x5982;&#x679C;&#x5C06;666666&#x4FDD;&#x5B58;&#x4E3A;&#x5B57;&#x7B26;&#x4E32;&#x9700;&#x8981;6&#x4E2A;&#x5B57;&#x8282;,&#x4FDD;&#x5B58;&#x4E3A;int&#x5219;&#x53EA;&#x9700;&#x8981;4&#x4E2A;&#x5B57;&#x8282;</span>
-<span class="hljs-built_in">memcpy</span>(k01 + l01, (<span class="hljs-keyword">char</span> *)&amp;serverID, <span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">int</span>)); <span class="hljs-comment">//4&#x4E2A;&#x5B57;&#x8282;&#x4FDD;&#x5B58;int</span>
-l01 += <span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">int</span>);
-<span class="hljs-built_in">memcpy</span>(k01 + l01, &amp;delimiter, <span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">char</span>));
-l01 += <span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">char</span>);
-prefixLen = l01;
-
-<span class="hljs-built_in">strcpy</span>(name, <span class="hljs-string">&quot;zhangsan&quot;</span>);
-<span class="hljs-built_in">memcpy</span>(k01 + l01, name, <span class="hljs-built_in">strlen</span>(name));
-l01 += <span class="hljs-built_in">strlen</span>(name);
-rocksdb_put(db, writeopt, k01, l01, val, <span class="hljs-built_in">strlen</span>(val), &amp;err);
-<span class="hljs-keyword">if</span> (err)
-{
-    perror(err);
-    <span class="hljs-built_in">exit</span>(<span class="hljs-number">-1</span>);
-}
-
-l01 = prefixLen;
-<span class="hljs-built_in">strcpy</span>(name, <span class="hljs-string">&quot;lisi&quot;</span>);
-<span class="hljs-built_in">memcpy</span>(k01 + l01, name, <span class="hljs-built_in">strlen</span>(name));
-l01 += <span class="hljs-built_in">strlen</span>(name);
-rocksdb_put(db, writeopt, k01, l01, val, <span class="hljs-built_in">strlen</span>(val), &amp;err);
-<span class="hljs-keyword">if</span> (err)
-{
-    perror(err);
-    <span class="hljs-built_in">exit</span>(<span class="hljs-number">-1</span>);
-}
-
-l01 = prefixLen;
-<span class="hljs-built_in">strcpy</span>(name, <span class="hljs-string">&quot;wangwu&quot;</span>);
-<span class="hljs-built_in">memcpy</span>(k01 + l01, name, <span class="hljs-built_in">strlen</span>(name));
-l01 += <span class="hljs-built_in">strlen</span>(name);
-rocksdb_put(db, writeopt, k01, l01, val, <span class="hljs-built_in">strlen</span>(val), &amp;err);
-<span class="hljs-keyword">if</span> (err)
-{
-    perror(err);
-    <span class="hljs-built_in">exit</span>(<span class="hljs-number">-1</span>);
-}
-
-<span class="hljs-comment">//&#x51C6;&#x5907;&#x904D;&#x5386;</span>
-<span class="hljs-keyword">rocksdb_iterator_t</span> *iter = rocksdb_create_iterator(db, readopt);
-<span class="hljs-keyword">if</span> (iter == <span class="hljs-literal">NULL</span>)
-{
-    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;create iterator fail\n&quot;</span>);
-    <span class="hljs-keyword">return</span>;
-}
-rocksdb_iter_seek(iter, (<span class="hljs-keyword">char</span> *)&amp;serverID, <span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">int</span>));
-rocksdb_iter_get_error(iter, &amp;err);
-<span class="hljs-keyword">if</span> (err != <span class="hljs-literal">NULL</span>)
-{
-    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;rocksdb iterator failed...%s\n&quot;</span>, err);
-    <span class="hljs-keyword">return</span>;
-}
-<span class="hljs-keyword">while</span> (rocksdb_iter_valid(iter))
-{
-    <span class="hljs-keyword">size_t</span> keyLen = <span class="hljs-number">0</span>;
-    <span class="hljs-keyword">size_t</span> valLen = <span class="hljs-number">0</span>;
-    <span class="hljs-keyword">char</span> *keyData = rocksdb_iter_key(iter, &amp;keyLen);
-    rocksdb_iter_get_error(iter, &amp;err);
-    <span class="hljs-keyword">if</span> (err != <span class="hljs-literal">NULL</span>)
-    {
-        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;rocksdb iterator key failed...%s\n&quot;</span>, err);
-        <span class="hljs-keyword">return</span>;
-    }
-    <span class="hljs-keyword">char</span> *valData = rocksdb_iter_value(iter, &amp;valLen);
-    rocksdb_iter_get_error(iter, &amp;err);
-    <span class="hljs-keyword">if</span> (err != <span class="hljs-literal">NULL</span>)
-    {
-        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;rocksdb iterator value failed...%s\n&quot;</span>, err);
-        <span class="hljs-keyword">return</span>;
-    }
-
-    <span class="hljs-comment">//&#x89E3;&#x6790;key&#x4E2D;&#x7684;serverID</span>
-    <span class="hljs-keyword">int</span> keySerID = *(<span class="hljs-keyword">int</span> *)(keyData);
-    <span class="hljs-keyword">char</span> keyBuf[<span class="hljs-number">40</span>] = {<span class="hljs-number">0</span>};
-    <span class="hljs-built_in">sprintf</span>(keyBuf, <span class="hljs-string">&quot;key=&gt;%d&quot;</span>, keySerID);
-    <span class="hljs-comment">//&#x83B7;&#x53D6;key&#x4E2D;&#x7684;&#x5269;&#x4F59;&#x90E8;&#x5206;</span>
-    <span class="hljs-built_in">memcpy</span>(keyBuf + <span class="hljs-built_in">strlen</span>(keyBuf), keyData + <span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">int</span>), keyLen - <span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">int</span>));
-
-    <span class="hljs-comment">//&#x83B7;&#x53D6;value</span>
-    <span class="hljs-built_in">sprintf</span>(keyBuf, <span class="hljs-string">&quot;%s value=&gt;&quot;</span>, keyBuf);
-    <span class="hljs-built_in">memcpy</span>(keyBuf + <span class="hljs-built_in">strlen</span>(keyBuf), valData, valLen);
-
-    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;[iter] %s\n&quot;</span>, keyBuf);
-    rocksdb_iter_next(iter);
-    rocksdb_iter_get_error(iter, &amp;err);
-    <span class="hljs-keyword">if</span> (err != <span class="hljs-literal">NULL</span>)
-    {
-        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;rocksdb iterator next failed...%s\n&quot;</span>, err);
-        <span class="hljs-keyword">return</span>;
-    }
-}
-
-rocksdb_iter_destroy(iter);
-<span class="hljs-built_in">free</span>(k01);
-rocksdb_writeoptions_destroy(writeopt);
-rocksdb_readoptions_destroy(readopt);
-rocksdb_options_destroy(options);
-rocksdb_backup_engine_close(be);
-rocksdb_close(db);
-
-&#x7ED3;&#x679C;:
-[iter] key=&gt;<span class="hljs-number">666666</span>:lisi value=&gt;world
-[iter] key=&gt;<span class="hljs-number">666666</span>:wangwu value=&gt;world
-[iter] key=&gt;<span class="hljs-number">666666</span>:zhangsan value=&gt;world
-</code></pre>
+</li>
+</ol>
 
                                 
                                 </section>
@@ -830,12 +702,12 @@ rocksdb_close(db);
 
             
                 
-                <a href="RocksDB基础概念.html" class="navigation navigation-prev " aria-label="Previous page: RocksDB基础概念">
+                <a href="VSCode使用小技巧.html" class="navigation navigation-prev " aria-label="Previous page: VS Code使用小技巧">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="../c语言笔记/" class="navigation navigation-next " aria-label="Next page: C语言笔记">
+                <a href="CMake学习与使用.html" class="navigation navigation-next " aria-label="Next page: CMake学习与使用">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -846,7 +718,7 @@ rocksdb_close(db);
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"RocksDB基础操作-C语言","level":"1.3.2","depth":2,"next":{"title":"C语言笔记","level":"1.4","depth":1,"path":"c语言笔记/README.md","ref":"c语言笔记/README.md","articles":[{"title":"C语言补充笔记一","level":"1.4.1","depth":2,"path":"c语言笔记/C语言补充笔记一.md","ref":"c语言笔记/C语言补充笔记一.md","articles":[]}]},"previous":{"title":"RocksDB基础概念","level":"1.3.1","depth":2,"path":"rocksdb学习/RocksDB基础概念.md","ref":"rocksdb学习/RocksDB基础概念.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"rocksdb学习/RocksDB基础操作-C语言.md","mtime":"2021-11-23T15:30:51.321Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-01-23T03:32:52.808Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"GCC安装","level":"1.6.2","depth":2,"next":{"title":"CMake学习与使用","level":"1.6.3","depth":2,"path":"工具使用/CMake学习与使用.md","ref":"工具使用/CMake学习与使用.md","articles":[]},"previous":{"title":"VS Code使用小技巧","level":"1.6.1","depth":2,"path":"工具使用/VSCode使用小技巧.md","ref":"工具使用/VSCode使用小技巧.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"工具使用/GCC安装.md","mtime":"2022-01-23T03:32:54.036Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-01-23T03:32:52.808Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

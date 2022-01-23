@@ -1,0 +1,1375 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>CMake学习与使用 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="GCC安装.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    README
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../redis学习/">
+            
+                <a href="../redis学习/">
+            
+                    
+                    Redis学习
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../redis学习/Redis备份.html">
+            
+                <a href="../redis学习/Redis备份.html">
+            
+                    
+                    Redis备份
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../redis学习/Redis复制.html">
+            
+                <a href="../redis学习/Redis复制.html">
+            
+                    
+                    Redis复制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../redis学习/Redis集群.html">
+            
+                <a href="../redis学习/Redis集群.html">
+            
+                    
+                    Redis集群
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../rocksdb-xue-xi/README.md">
+            
+                <span>
+            
+                    
+                    RocksDB学习
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../rocksdb学习/RocksDB基础概念.html">
+            
+                <a href="../rocksdb学习/RocksDB基础概念.html">
+            
+                    
+                    RocksDB基础概念
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../rocksdb学习/RocksDB基础操作-C语言.html">
+            
+                <a href="../rocksdb学习/RocksDB基础操作-C语言.html">
+            
+                    
+                    RocksDB基础操作-C语言
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../c语言笔记/">
+            
+                <a href="../c语言笔记/">
+            
+                    
+                    C语言笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../c语言笔记/C语言补充笔记一.html">
+            
+                <a href="../c语言笔记/C语言补充笔记一.html">
+            
+                    
+                    C语言补充笔记一
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../c++学习笔记/">
+            
+                <a href="../c++学习笔记/">
+            
+                    
+                    C++学习笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../c++学习笔记/C++Primer基础-01引用指针const.html">
+            
+                <a href="../c++学习笔记/C++Primer基础-01引用指针const.html">
+            
+                    
+                    C++Primer基础:引用、指针、const、auto/decltype
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../c++学习笔记/C++Primer基础-02volatile与using.html">
+            
+                <a href="../c++学习笔记/C++Primer基础-02volatile与using.html">
+            
+                    
+                    C++Primer基础:volatile、using
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../c++学习笔记/C++Primer基础-03stringvector数组.html">
+            
+                <a href="../c++学习笔记/C++Primer基础-03stringvector数组.html">
+            
+                    
+                    C++Primer基础: string、vector、数组
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../c++学习笔记/C++Primer基础-04函数重载函数指针.html">
+            
+                <a href="../c++学习笔记/C++Primer基础-04函数重载函数指针.html">
+            
+                    
+                    C++Primer基础:函数、重载、函数指针
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="../c++学习笔记/C++Primer基础-05function与bind与forward.html">
+            
+                <a href="../c++学习笔记/C++Primer基础-05function与bind与forward.html">
+            
+                    
+                    C++Primer基础:std::function、std::bind、std::forward
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="../c++学习笔记/C++Primer基础-06-lambda.html">
+            
+                <a href="../c++学习笔记/C++Primer基础-06-lambda.html">
+            
+                    
+                    C++Primer基础:lambda
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" data-path="../c++学习笔记/C++Primer基础-07类基础.html">
+            
+                <a href="../c++学习笔记/C++Primer基础-07类基础.html">
+            
+                    
+                    C++ Primer基础: 类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8" data-path="../c++学习笔记/C++Primer标准库-IO库.html">
+            
+                <a href="../c++学习笔记/C++Primer标准库-IO库.html">
+            
+                    
+                    C++ Primer 标准库: IO库
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.9" data-path="../c++学习笔记/C++Primer标准库-顺序容器.html">
+            
+                <a href="../c++学习笔记/C++Primer标准库-顺序容器.html">
+            
+                    
+                    C++ Primer 标准库: 顺序容器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.10" data-path="../c++学习笔记/C++Primer标准库-泛型算法.html">
+            
+                <a href="../c++学习笔记/C++Primer标准库-泛型算法.html">
+            
+                    
+                    C++ Primer 标准库: 泛型算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.11" data-path="../c++学习笔记/C++Primer标准库-关联容器.html">
+            
+                <a href="../c++学习笔记/C++Primer标准库-关联容器.html">
+            
+                    
+                    C++ Primer 标准库: 关联容器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.12" data-path="../c++学习笔记/C++Primer标准库-动态内存.html">
+            
+                <a href="../c++学习笔记/C++Primer标准库-动态内存.html">
+            
+                    
+                    C++ Primer 标准库: 动态内存
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.13" data-path="../c++学习笔记/C++Primer类设计-拷贝控制.html">
+            
+                <a href="../c++学习笔记/C++Primer类设计-拷贝控制.html">
+            
+                    
+                    C++ Primer 类设计: 拷贝控制、explicit
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.14" data-path="../c++学习笔记/C++Primer类设计-基类派生类虚函数.html">
+            
+                <a href="../c++学习笔记/C++Primer类设计-基类派生类虚函数.html">
+            
+                    
+                    C++ Primer 类设计: 基类、派生类、虚函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.15" data-path="../c++学习笔记/C++Primer类设计-模板与泛型编程.html">
+            
+                <a href="../c++学习笔记/C++Primer类设计-模板与泛型编程.html">
+            
+                    
+                    C++ Primer 类设计:模板与泛型编程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.16" data-path="../c++学习笔记/C++并发编程实战-01基础使用Join传参.html">
+            
+                <a href="../c++学习笔记/C++并发编程实战-01基础使用Join传参.html">
+            
+                    
+                    C++并发编程实战一:基础使用、Join、传参、线程所有权转移
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.17" data-path="../c++学习笔记/C++并发编程实战-02mutexlock.html">
+            
+                <a href="../c++学习笔记/C++并发编程实战-02mutexlock.html">
+            
+                    
+                    C++并发编程实战: mutex、lock、unique_lock、call_once、shared_lock
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.18" data-path="../c++学习笔记/C++并发编程实战-03条件变量.html">
+            
+                <a href="../c++学习笔记/C++并发编程实战-03条件变量.html">
+            
+                    
+                    C++并发编程实战三: 条件变量
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.19" data-path="../c++学习笔记/C++并发编程实战-04原子操作和类型.html">
+            
+                <a href="../c++学习笔记/C++并发编程实战-04原子操作和类型.html">
+            
+                    
+                    C++并发编程实战四: 原子操作和类型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.20" data-path="../c++学习笔记/C++并发编程实战-05内存模型.html">
+            
+                <a href="../c++学习笔记/C++并发编程实战-05内存模型.html">
+            
+                    
+                    C++并发编程实战五: 内存模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    工具使用
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="VSCode使用小技巧.html">
+            
+                <a href="VSCode使用小技巧.html">
+            
+                    
+                    VS Code使用小技巧
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="GCC安装.html">
+            
+                <a href="GCC安装.html">
+            
+                    
+                    GCC安装
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.6.3" data-path="CMake学习与使用.html">
+            
+                <a href="CMake学习与使用.html">
+            
+                    
+                    CMake学习与使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >CMake学习与使用</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="cmake-&#x5B66;&#x4E60;&#x4E0E;&#x4F7F;&#x7528;">CMake &#x5B66;&#x4E60;&#x4E0E;&#x4F7F;&#x7528;</h2>
+<h4 id="&#x5B89;&#x88C5;">&#x5B89;&#x88C5;</h4>
+<ul>
+<li><p><code>open-ssl</code>&#x5B89;&#x88C5;</p>
+<p>&#x4E0B;&#x8F7D;&#x5730;&#x5740;: <a href="https://github.com/openssl/openssl/tags" target="_blank">https://github.com/openssl/openssl/tags</a></p>
+<pre><code class="lang-shell">tar -zxf openssl-openssl-3.0.1.tar.gz
+cd openssl-openssl-3.0.1
+mkdir /usr/local/openssl-3.0.1/
+./Configure --prefix=/usr/local/openssl-3.0.1
+make
+make install
+export OPENSSL_ROOT_DIR=/usr/local/openssl-3.0.1
+</code></pre>
+</li>
+<li><p>&#x6E90;&#x7801;&#x4E0B;&#x8F7D;: <a href="https://cmake.org/download/" target="_blank">https://cmake.org/download/</a></p>
+<pre><code class="lang-shell">cd cmake-3.22.1
+mkdir /usr/local/cmake
+./bootstrap --prefix=/usr/local/cmake
+make -j 6
+make install
+</code></pre>
+<p>&#x6DFB;&#x52A0;&#x547D;&#x4EE4;<code>export PATH=/usr/local/cmake/bin:$PATH</code></p>
+</li>
+</ul>
+<h3 id="&#x6700;&#x5E38;&#x7528;&#x7684;&#x547D;&#x4EE4;&#x4E0E;&#x793A;&#x4F8B;">&#x6700;&#x5E38;&#x7528;&#x7684;&#x547D;&#x4EE4;&#x4E0E;&#x793A;&#x4F8B;</h3>
+<ul>
+<li><p><code>cmake_mininum_required</code></p>
+<p>&#x5B9A;&#x4E49;cmake&#x7684;&#x6700;&#x4F4E;&#x517C;&#x5BB9;&#x7248;&#x672C;&#xFF0C;&#x5982;<code>CMAKE_MINIMUM_REQUIRED(VERSION 2.5 FATAL_ERROR)</code>&#x3002;
+&#x5982;&#x679C;&#x7248;&#x672C;&#x4F4E;&#x4E8E;2.5,&#x5219;&#x51FA;&#x73B0;&#x4E25;&#x91CD;&#x9519;&#x8BEF;&#xFF0C;&#x6574;&#x4E2A;&#x8FC7;&#x7A0B;&#x7EC8;&#x6B62;&#x3002;</p>
+</li>
+<li><p><code>project</code></p>
+<p>&#x9879;&#x76EE;&#x540D;&#x79F0;</p>
+<pre><code class="lang-cmake"><span class="hljs-comment"># cmake &#x6700;&#x4F4E;&#x7248;&#x672C;&#x8981;&#x6C42;</span>
+cmake_mininum_required(VERSION <span class="hljs-number">3.13</span>)
+<span class="hljs-comment">#&#x9879;&#x76EE;&#x540D;&#x79F0;</span>
+<span class="hljs-keyword">project</span>(cmake_study)
+<span class="hljs-comment">#&#x8BBE;&#x7F6E;</span>
+<span class="hljs-keyword">set</span>(CMAKE_CXX_STANDARD <span class="hljs-number">11</span>)
+<span class="hljs-comment">#&#x7F16;&#x8BD1;&#x6E90;&#x7801;&#x751F;&#x6210;&#x76EE;&#x6807;</span>
+<span class="hljs-keyword">add_executable</span>(cmake_study src/main.cc)
+</code></pre>
+</li>
+<li><p><code>set</code></p>
+<ul>
+<li><strong>&#x7ED9;&#x4E00;&#x822C;&#x53D8;&#x91CF;&#x8D4B;&#x503C;,&#x8BED;&#x6CD5;:<code>set(&lt;variable&gt; &lt;value&gt;... [PARENT_SCOPE])</code></strong></li>
+</ul>
+<p><strong>&#x6BCF;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x76EE;&#x5F55;&#x6216;&#x8005;&#x51FD;&#x6570;&#x90FD;&#x4F1A;&#x521B;&#x5EFA;&#x65B0;&#x7684;&#x4F5C;&#x7528;&#x57DF;</strong>&#x3002;</p>
+<p>&#x5F53;&#x5728;&#x65B0;&#x7684;&#x4F5C;&#x7528;&#x57DF;&#x521B;&#x5EFA;&#x4E00;&#x822C;&#x53D8;&#x91CF;&#x4E14;&#x540E;&#x9762;&#x52A0;&#x4E0A;PARENT_SCOPE&#xFF0C;&#x8BE5;&#x53D8;&#x91CF;&#x53EF;&#x4EE5;&#x5728;&#x7236;&#x76EE;&#x5F55;&#x6216;&#x8005;&#x8C03;&#x7528;&#x65B0;&#x51FD;&#x6570;&#x7684;&#x51FD;&#x6570;&#x4E0A;&#x8D77;&#x4F5C;&#x7528;&#x3002;</p>
+<p>&#x793A;&#x4F8B;:<code>set(src_list main.c other.c)</code> &#x540E;&#x7EED;&#x5C31;&#x80FD;&#x7528;<code>${src_list}</code>&#x4EE3;&#x66FF;<code>main.c other.c</code></p>
+<pre><code class="lang-cmake"><span class="hljs-keyword">set</span>(FOO <span class="hljs-string">&quot;x&quot;</span>) //FOO&#x4F5C;&#x7528;&#x57DF;&#x4E3A;&#x5F53;&#x524D;&#x4F5C;&#x7528;&#x57DF;
+<span class="hljs-keyword">set</span>(FOO <span class="hljs-string">&quot;x&quot;</span> PARENT_SCOPE) //FOO&#x4F5C;&#x7528;&#x57DF;&#x8DF3;&#x4E0A;&#x4E00;&#x7EA7;
+</code></pre>
+<ul>
+<li><p><strong>&#x7ED9;&#x7F13;&#x5B58;&#x53D8;&#x91CF;&#x8D4B;&#x503C;(cache variables)</strong></p>
+<p>&#x7F13;&#x5B58;&#x53D8;&#x91CF;&#x53EF;&#x4EE5;&#x7406;&#x89E3;&#x4E3A;&#x5F53;&#x7B2C;&#x4E00;&#x6B21;&#x8FD0;&#x884C;cmake&#x65F6;&#xFF0C;&#x8FD9;&#x4E9B;&#x53D8;&#x91CF;&#x7F13;&#x5B58;&#x5230;&#x4E00;&#x4EFD;&#x6587;&#x4EF6;&#x4E2D;(&#x5373;&#x7F16;&#x8BD1;&#x76EE;&#x5F55;&#x4E0B;&#x7684;CMakeCache.txt)&#x3002;</p>
+<p>&#x5F53;&#x518D;&#x6B21;&#x8FD0;&#x884C;cmake&#x65F6;&#xFF0C;&#x8FD9;&#x4E9B;&#x53D8;&#x91CF;&#x4F1A;&#x76F4;&#x63A5;&#x4F7F;&#x7528;&#x7F13;&#x5B58;&#x503C;&#xFF0C;&#x53EF;&#x4EE5;&#x5229;&#x7528;ccmake&#x6216;&#x8005;cmake-gui&#x7B49;&#x5DE5;&#x5177;&#x6765;&#x91CD;&#x65B0;&#x8D4B;&#x503C;&#x3002;</p>
+<p>&#x7F13;&#x5B58;&#x53D8;&#x91CF;&#x5728;&#x6574;&#x4E2A;cmake&#x8FD0;&#x884C;&#x8FC7;&#x7A0B;&#x4E2D;&#x90FD;&#x53EF;&#x4EE5;&#x8D77;&#x4F5C;&#x7528;&#x3002;</p>
+<p>&#x8BED;&#x6CD5;: <code>set(&lt;variable&gt; &lt;value&gt;... CACHE &lt;type&gt; &lt;docstring&gt; [FORCE])</code></p>
+<ul>
+<li>variable: &#x53D8;&#x91CF;&#x540D;</li>
+<li>value:  &#x53EF;&#x4EE5;&#x662F;0&#x4E2A;&#xFF0C;1&#x4E2A;&#x6216;&#x591A;&#x4E2A;&#xFF0C;&#x5F53;value&#x503C;&#x4E3A;&#x7A7A;&#x65F6;&#xFF0C;&#x65B9;&#x6CD5;&#x540C;unset&#xFF0C;&#x7528;&#x4E8E;&#x53D6;&#x6D88;&#x8BBE;&#x7F6E;&#x7684;&#x503C;;</li>
+<li>CACHE: &#x5173;&#x952E;&#x5B57;&#xFF0C;&#x8BF4;&#x660E;&#x662F;&#x7F13;&#x5B58;&#x53D8;&#x91CF;&#x8BBE;&#x7F6E;;</li>
+<li>type&#x7C7B;&#x578B;&#xFF0C;&#x5FC5;&#x987B;&#x4E3A;&#x4E0B;&#x5217;&#x4E2D;&#x7684;&#x4E00;&#x79CD;:<ul>
+<li>BOOL: &#x6709;ON/OFF, &#x4E24;&#x79CD;&#x503C;;</li>
+<li>FILEPATH: &#x6587;&#x4EF6;&#x7684;&#x5168;&#x8DEF;&#x5F84;</li>
+<li>PATH: &#x76EE;&#x5F55;&#x8DEF;&#x5F84;</li>
+<li>STRING: &#x5B57;&#x7B26;&#x4E32;</li>
+<li>INTERENAL: &#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x5C06;&#x53D8;&#x91CF;&#x53D8;&#x4E3A;&#x5185;&#x90E8;&#x53D8;&#x91CF;&#xFF0C;&#x5373;<code>cmake-gui</code>&#x4E0D;&#x4F1A;&#x5411;&#x7528;&#x6237;&#x663E;&#x5F0F;&#x8FD9;&#x7C7B;&#x53D8;&#x91CF;&#x3002;</li>
+</ul>
+</li>
+<li>Docstring: &#x5E2E;&#x52A9;&#x6027;&#x6587;&#x5B57;(&#x5B57;&#x7B26;&#x4E32;)</li>
+<li><code>[FORCE]</code>: &#x5F53;&#x4F7F;&#x7528;CACHE&#x65F6;&#xFF0C;&#x4E14;&#x7F13;&#x5B58;(cache)&#x4E2D;&#x6CA1;&#x6709;&#x8BE5;&#x53D8;&#x91CF;&#x65F6;&#xFF0C;&#x53D8;&#x91CF;&#x88AB;&#x521B;&#x5EFA;&#x5E76;&#x5B58;&#x5165;&#x7F13;&#x5B58;(cache)&#x4E2D;&#xFF0C;&#x5982;&#x679C;&#x539F;&#x7F13;&#x5B58;(cache)&#x4E2D;&#x6709;&#x8BE5;&#x53D8;&#x91CF;&#xFF0C;&#x4E5F;&#x4E0D;&#x4F1A;&#x6539;&#x53D8;&#x539F;&#x7F13;&#x5B58;&#x4E2D;&#x8BE5;&#x53D8;&#x91CF;&#x7684;&#x503C;&#xFF0C;&#x9664;&#x975E;&#x540E;&#x9762;&#x4F7F;&#x7528;FORCE&#x3002;</li>
+</ul>
+<p>&#x793A;&#x4F8B;:</p>
+<pre><code class="lang-cmake"><span class="hljs-comment">#&#x539F;&#x7F13;&#x5B58;&#x4E2D;&#x6CA1;&#x6709;FOO&#x5219;&#x5C06;FOO&#x8D4B;&#x503C;&#x4E3A;x&#x4E14;&#x5B58;&#x5165;cache&#x4E2D;;</span>
+<span class="hljs-comment">#&#x539F;&#x7F13;&#x5B58;&#x4E2D;&#x6709;FOO&#x5219;&#x4E0D;&#x505A;&#x4EFB;&#x4F55;&#x6539;&#x53D8;&#xFF0C;&#x5373;&#x4FBF;&#x539F;cache&#x4E2D;FOO&#x5B58;&#x7684;&#x4E0D;&#x662F;x</span>
+<span class="hljs-keyword">set</span>(FOO, <span class="hljs-string">&quot;x&quot;</span> CACHE <span class="hljs-keyword">STRING</span>) 
+
+<span class="hljs-comment">#&#x5373;&#x4FBF;&#x539F;cache&#x4E2D;&#x5B58;&#x5728;FOO&#x4E5F;&#x4F1A;&#x521B;&#x5EFA;&#x53E6;&#x4E00;&#x4E2A;FOO</span>
+<span class="hljs-keyword">set</span>(FOO, <span class="hljs-string">&quot;x&quot;</span> CACHE <span class="hljs-keyword">STRING</span> <span class="hljs-string">&quot;&quot;</span> FORCE)
+</code></pre>
+<p><mark style="color:red"><strong>&#x4E00;&#x4E2A;&#x5DE5;&#x7A0B;&#x5229;&#x7528;<code>ADD_SUBDIRECTORY()</code>&#x6DFB;&#x52A0;&#x5B50;&#x5DE5;&#x7A0B;&#xFF0C;&#x5B50;&#x5DE5;&#x7A0B;&#x6709;&#x81EA;&#x5DF1;&#x7684;CMakeList.txt&#x3002;&#x6B64;&#x65F6;&#x5373;&#x53EF;&#x5229;&#x7528;<code>SET( CACHE &lt;type&gt; &lt;docstring&gt; [FORCE])</code>&#x6765;&#x5B8C;&#x6210;&#x5BF9;&#x5B50;&#x5DE5;&#x7A0B;&#x7684;&#x4F20;&#x503C;&#x3002;</strong></mark></p>
+<p>&#x53C2;&#x8003;&#x95EE;&#x9898;: <a href="https://stackoverflow.com/questions/3766740/overriding-a-default-option-value-in-cmake-from-a-parent-cmakelists-txt" target="_blank">Overriding a default option(...) value in CMake from a parent CMakeLists.txt</a></p>
+<pre><code class="lang-cmake"><span class="hljs-keyword">SET</span>(FOO_BUILD_SHARED <span class="hljs-keyword">OFF</span> CACHE BOOL <span class="hljs-string">&quot;Build libfoo shared library&quot;</span>)
+<span class="hljs-keyword">add_subdirectory</span>(extern/foo)
+</code></pre>
+<p>&#x6211;&#x81EA;&#x5DF1;&#x5728;&#x4F7F;&#x7528;<a href="https://github.com/sewenew/redis-plus-plus#installation" target="_blank">redis-plus-plus</a>&#x65F6;&#x4E5F;&#x9047;&#x5230;&#x7C7B;&#x4F3C;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x8BBE;&#x7F6E;hiredis&#x7684;&#x8DEF;&#x5F84;:</p>
+<pre><code class="lang-cmake"><span class="hljs-keyword">SET</span>(CMAKE_PREFIX_PATH /usr/local/hiredis CACHE BOOL <span class="hljs-string">&quot;&quot;</span> FORCE)
+<span class="hljs-keyword">SET</span>(REDIS_PLUS_PLUS_BUILD_TEST <span class="hljs-keyword">OFF</span> CACHE BOOL <span class="hljs-string">&quot;&quot;</span> FORCE)
+<span class="hljs-keyword">add_subdirectory</span>(src/thirdparty/redis-plus-plus redis++ EXCLUDE_FROM_ALL)
+</code></pre>
+<p>&#x7406;&#x8BBA;&#x4E0A;&#x6765;&#x8BF4;&#x4E0B;&#x9762;&#x65B9;&#x6CD5;&#x4E5F;&#x662F;&#x53EF;&#x4EE5;&#x7684;&#xFF0C;&#x4F46;&#x662F;&#x6211;&#x8BD5;&#x8FC7;&#x5F88;&#x591A;&#x6B21;&#x5C31;&#x662F;&#x4E0D;&#x884C;&#xFF0C;&#x4E0D;&#x77E5;&#x9053;&#x4E3A;&#x5565;:</p>
+<pre><code class="lang-cmake"><span class="hljs-keyword">add_subdirectory</span>(src/thirdparty/redis-plus-plus redis++ EXCLUDE_FROM_ALL)
+target_compile_definitions( redis++
+                            PRIVATE  
+                            -DCMAKE_PREFIX_PATH=/usr/local/hiredis 
+                            -DREDIS_PLUS_PLUS_BUILD_TEST=<span class="hljs-keyword">OFF</span>
+                        )
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p><code>message</code></p>
+<p>&#x6253;&#x5370;&#x65E5;&#x5FD7;</p>
+<p>&#x5982;: <code>message(&quot;CMAKE_BINARY_DIR=&gt;${CMAKE_BINARY_DIR}&quot;)</code></p>
+</li>
+<li><p><code>FILE</code></p>
+<p>&#x6587;&#x4EF6;&#x64CD;&#x4F5C;&#x6307;&#x4EE4;&#x3002;&#x5982;</p>
+<p><code>file(GLOB SOURCE &quot;src/*.cpp&quot;)</code>&#xFF0C;&#x5C06;<code>src/main.c src/other.c</code>&#x5B58;&#x5165;&#x5230;&#x53D8;&#x91CF;<code>SOURCE</code>&#x4E2D;&#x3002;</p>
+</li>
+<li><p><code>AUX_SOURCE_DIRECTORY</code></p>
+<p>&#x793A;&#x4F8B;: <code>aux_source_directory(./src hello_src)</code></p>
+<p>&#x4F5C;&#x7528;: &#x628A;&#x5F53;&#x524D;&#x8DEF;&#x5F84;&#x4E0B;src&#x76EE;&#x5F55;&#x4E0B;&#x7684;&#x6240;&#x6709;&#x539F;&#x6587;&#x4EF6;&#x4EF6;&#x653E;&#x5230;<code>hello_src</code>&#x53D8;&#x91CF;&#x4E2D;</p>
+<p>&#x6CE8;&#x610F;:</p>
+<ul>
+<li><p><code>aux_source_directory</code>&#x4E0D;&#x4F1A;&#x9012;&#x5F52;&#x5305;&#x542B;&#x5B50;&#x76EE;&#x5F55;&#xFF0C;&#x4EC5;&#x5305;&#x542B;&#x6307;&#x5B9A;&#x7684;dir&#x76EE;&#x5F55;;</p>
+</li>
+<li><p>&#x6211;&#x4EEC;&#x4E5F;&#x53EF;&#x4EE5;&#x5199;&#x6210;:<code>aux_source_directory(${CMAKE_CURRENT_LIST_DIR}/src ${hello_src})</code></p>
+</li>
+</ul>
+</li>
+<li><p><code>add_definitions</code></p>
+<p>&#x4E3A;&#x6E90;&#x6587;&#x4EF6;&#x6DFB;&#x52A0;&#x7531;<code>-D</code>&#x5F15;&#x5165;&#x7684;&#x5B8F;&#x5B9A;&#x4E49;;</p>
+<p>&#x547D;&#x4EE4;&#x683C;&#x5F0F;&#x662F;:<code>add_definitions(-DFOO -DBAR ...)</code></p>
+<p>&#x4F8B;&#x5982;: <code>add_definitions(-DWIN32)</code></p>
+<p><img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20220110235250871.png" alt="image-20220110235250871"></p>
+</li>
+<li><p><code>target_compile_definitions</code></p>
+<p>&#x4E3A;&#x76EE;&#x6807;&#x8BBE;&#x7F6E;&#x7F16;&#x8BD1;&#x6807;&#x5FD7;&#x3002;</p>
+<pre><code class="lang-cmake">target_compile_definitions(aa PRIVATE EX3)
+</code></pre>
+<p>&#x4E0A;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x5728;&#x7F16;&#x8BD1;&#x76EE;&#x6807;<code>aa</code>&#x65F6;&#x5019;&#xFF0C;&#x4F1A;&#x4E3A;&#x7F16;&#x8BD1;&#x5668;&#x6DFB;&#x52A0;<code>-DEX3</code>&#x6807;&#x8BC6;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x76EE;&#x6807;&#x662F;<code>aa</code>&#x662F;&#x4E00;&#x4E2A;library,&#x540C;&#x65F6;scope&#x662F;<code>PUBLIC</code> &#x6216; <code>INTERFACE</code>&#x800C;&#x4E0D;&#x662F;<code>PRIVATE</code>&#xFF0C;&#x90A3;&#x4E48;&#x6240;&#x6709;&#x8FDE;&#x63A5;<code>aa</code>&#x7684;&#x76EE;&#x6807;&#x90FD;&#x4F1A;&#x5305;&#x542B;&#x5B9A;&#x4E49;<code>-DEX3</code>;</p>
+<p>&#x66F4;&#x591A;:<a href="https://cmake.org/cmake/help/v3.0/command/target_compile_options.html" target="_blank">target_compile_options()</a></p>
+</li>
+<li><p><code>add_lbrary</code></p>
+<p><code>add_library()</code><strong>&#x7528;&#x4E8E;&#x4ECE;&#x6E90;&#x6587;&#x4EF6;&#x4E2D;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x9759;&#x6001;/&#x5171;&#x4EAB;&#x5E93;</strong>&#x3002;&#x5982;:</p>
+<pre><code class="lang-cmake"><span class="hljs-keyword">add_library</span>(hello_library STATIC src/Hello.cpp)
+</code></pre>
+<p>&#x8BE5;&#x547D;&#x4EE4;&#x53EF;&#x4EE5;&#x7528;&#x4E8E;&#x4ECE;<code>add_library</code>&#x51FD;&#x6570;&#x8C03;&#x7528;&#x7684; &#x6E90;&#x6587;&#x4EF6;&#x4E2D;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x540D;&#x4E3A;<code>libhello_library.a</code>&#x7684;&#x9759;&#x6001;&#x5E93;(static library)&#x3002;</p>
+<p>&#x4E0B;&#x9762;&#x547D;&#x4EE4;&#x5C06;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x540D;&#x4E3A;<code>libhello_library.so</code>&#x7684;&#x5171;&#x4EAB;&#x5E93;:</p>
+<pre><code class="lang-cmake"><span class="hljs-keyword">add_library</span>(hello_library SHARED src/Hello.cpp)
+</code></pre>
+<p><code>add_library</code>&#x8FD8;&#x53EF;&#x4EE5;&#x7528;&#x6765;&#x4E3A;library&#x521B;&#x5EFA;&#x522B;&#x540D;(<code>alias target</code>)&#x3002;&#x522B;&#x540D;&#x76EE;&#x6807; &#x53EA;&#x662F;&#x4E3A;&#x4E86; &#x5728;&#x8BFB;&#x53D6;&#x4E0A;&#x4E0B;&#x6587;&#x4E2D;&#x53EF;&#x4EE5;&#x4EE3;&#x66FF;&#x771F;&#x5B9E;&#x76EE;&#x6807;&#x540D;&#x79F0;&#x3002;</p>
+<pre><code class="lang-cpp">add_library(hello_library SHARED src/Hello.cpp)
+
+add_library(hello::library ALIAS hello_library) <span class="hljs-meta">#&#x521B;&#x5EFA;&#x522B;&#x540D;</span>
+
+add_executable(hello_binary src/main.cpp )
+
+target_link_libraries( hello_binary PRIVATE hello::library)
+</code></pre>
+<p><mark style="color:red"><strong>&#x5BFC;&#x5165;&#x4E00;&#x4E2A;&#x5DF2;&#x7ECF;&#x5B58;&#x5728;&#x7684;&#x5E93;&#xFF0C;&#x4E00;&#x822C;&#x914D;&#x5408;<code>set_target_properties</code>&#x4F7F;&#x7528;&#x3002;<code>set_target_properties</code>&#x7528;&#x4E8E;&#x6307;&#x5B9A;&#x5BFC;&#x5165;&#x5E93;&#x7684;&#x8DEF;&#x5F84;:</strong></mark></p>
+<pre><code class="lang-cmake"><span class="hljs-keyword">add_library</span>(test STATIC IMPORTED)
+<span class="hljs-keyword">set_target_properties</span>(  test <span class="hljs-comment">#&#x6307;&#x5B9A;&#x76EE;&#x6807;&#x5E93;&#x540D;&#x79F0;</span>
+                       PROPERTIES IMPORTED_LOCATION <span class="hljs-comment">#&#x6307;&#x660E;&#x8981;&#x8BBE;&#x7F6E;&#x7684;&#x53C2;&#x6570;</span>
+                       <span class="hljs-variable">${CMAKE_CURRENT_LIST_DIR}</span>/lib/libtest.a <span class="hljs-comment">#&#x8BBE;&#x5B9A;&#x5BFC;&#x5165;&#x5E93;&#x7684;&#x8DEF;&#x5F84;)</span>
+</code></pre>
+<pre><code class="lang-cmake"><span class="hljs-comment">#&#x5BFC;&#x5165;&#x9759;&#x6001;&#x5E93;</span>
+<span class="hljs-keyword">add_library</span>(jemalloc STATIC IMPORTED)
+<span class="hljs-keyword">set_target_properties</span>(  jemalloc 
+                       PROPERTIES IMPORTED_LOCATION
+                       <span class="hljs-string">&quot;${JEMALLOC_ROOT_DIR}/lib/libjemalloc_pic.a&quot;</span>)
+<span class="hljs-comment">#&#x5BFC;&#x5165;&#x5171;&#x4EAB;&#x5E93;</span>
+<span class="hljs-keyword">add_library</span>(jemalloc_SHARED SHARED IMPORTED)
+<span class="hljs-keyword">set_target_properties</span>(  jemalloc_SHARED 
+                       PROPERTIES IMPORTED_LOCATION 
+                       <span class="hljs-string">&quot;${JEMALLOC_ROOT_DIR}/lib/libjemalloc.so&quot;</span>)
+
+<span class="hljs-keyword">add_executable</span>(main main.cpp)
+<span class="hljs-keyword">target_link_libraries</span>(main jemalloc)
+
+&#x8FD8;&#x53EF;&#x4EE5;&#x5199;&#x6210;&#x8FD9;&#x6837;:
+<span class="hljs-keyword">add_executable</span>(main main.cpp)
+<span class="hljs-keyword">target_link_libraries</span>(main <span class="hljs-variable">${JEMALLOC_ROOT_DIR}</span>/lib/libjemalloc_pic.a)
+</code></pre>
+</li>
+<li><p><code>include_directories</code></p>
+<p>&#x5982;:<code>include_directories(./include)</code></p>
+<p>&#x4F5C;&#x7528;: &#x5F53;&#x524D;&#x76EE;&#x5F55;(&#x4E5F;&#x5C31;&#x662F;<code>CMakeLists.txt</code>&#x6240;&#x5728;&#x76EE;&#x5F55;)&#x4E0B;&#x7684;include&#x6587;&#x4EF6;&#x5939;&#x52A0;&#x5165;&#x5230;<code>include</code>&#x8DEF;&#x5F84;&#x4E2D;&#x3002;</p>
+<p>&#x4E00;&#x822C;&#x4F1A;&#x5199;&#x6210;:<code>include_directories(${CMAKE_LIST_DIR}/include)</code></p>
+<p>&#x8BED;&#x6CD5;: <code>INCLUDE_DIRECTORIES([AFTER|BEFORE] [SYSTEM] dir1 [dir2 ...])</code></p>
+<p>&#x4F5C;&#x7528;:</p>
+<ul>
+<li><p>&#x628A;<code>dir1</code>, <code>[dir2 &#x2026;]</code>&#x8FD9;&#xFF08;&#x4E9B;&#xFF09;&#x4E2A;&#x8DEF;&#x5F84;&#x6DFB;&#x52A0;&#x5230;&#x5F53;&#x524D;CMakeLists&#x53CA;&#x5176;&#x5B50;CMakeLists&#x7684;&#x5934;&#x6587;&#x4EF6;&#x5305;&#x542B;&#x8DEF;&#x5F84;&#x4E2D;;</p>
+</li>
+<li><p>AFTER &#x6216;&#x8005; BEFORE &#x6307;&#x5B9A;&#x4E86;&#x8981;&#x6DFB;&#x52A0;&#x7684;&#x8DEF;&#x5F84;&#x662F;&#x6DFB;&#x52A0;&#x5230;&#x539F;&#x6709;&#x5305;&#x542B;&#x5217;&#x8868;&#x4E4B;&#x524D;&#x6216;&#x4E4B;&#x540E;;</p>
+</li>
+<li><p>&#x82E5;&#x6307;&#x5B9A; SYSTEM &#x53C2;&#x6570;&#xFF0C;&#x5219;&#x628A;&#x88AB;&#x5305;&#x542B;&#x7684;&#x8DEF;&#x5F84;&#x5F53;&#x505A;&#x7CFB;&#x7EDF;&#x5305;&#x542B;&#x8DEF;&#x5F84;&#x6765;&#x5904;&#x7406;;</p>
+</li>
+</ul>
+</li>
+<li><p><code>target_include_directories</code></p>
+<p>&#x5F53;&#x7F16;&#x8BD1;&#x67D0;&#x4E2A;&#x76EE;&#x6807;&#x9700;&#x8981;<code>include</code>&#x4E0D;&#x540C;&#x7684;&#x76EE;&#x5F55;&#x65F6;&#xFF0C;&#x80FD;&#x901A;&#x8FC7;<code>target_include_directories()</code>&#x8BA9;&#x7F16;&#x8BD1;&#x5668;&#x77E5;&#x9053;&#x3002;</p>
+<p>&#x5F53;&#x7F16;&#x8BD1;&#x8BE5;&#x76EE;&#x6807;&#x5DE5;&#x7A0B;&#x65F6;&#xFF0C;&#x7F16;&#x8BD1;&#x5668;&#x4F1A;&#x6DFB;&#x52A0;<code>-I</code>&#x6807;&#x8BC6;(&#x5982;<code>-I/directory/path</code>)</p>
+<p>&#x5982;:</p>
+<pre><code class="lang-cmake">target_include_directories(target PRIVATE  <span class="hljs-variable">${PROJECT_SOURCE_DIR}</span>/<span class="hljs-keyword">include</span>
+</code></pre>
+</li>
+<li><p><code>link_directories</code></p>
+<p>&#x5982;:<code>link_directories(${CMAKE_CURRENT_LIST_DIR}/lib)</code></p>
+<p>&#x6307;&#x5B9A;&#x53EF;&#x4EE5;&#x53BB;<code>${CMAKE_CURRENT_LIST_DIR}/lib</code><strong>&#x8FD9;&#x4E2A;&#x76EE;&#x5F55;&#x4E0B;&#x5BFB;&#x627E; &#x9759;&#x6001;&#x5E93;/&#x5171;&#x4EAB;&#x5E93;</strong>&#x3002;</p>
+</li>
+<li><p><code>target_link_libraries</code></p>
+<p>&#x5F53;&#x76EE;&#x6807;&#x9700;&#x8981;&#x548C;&#x67D0;&#x4E2A; &#x9759;&#x6001;&#x5E93;/&#x5171;&#x4EAB;&#x5E93; &#x94FE;&#x63A5;&#x624D;&#x80FD;&#x5B8C;&#x6210;&#x65F6;&#x3002;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;<code>target_link_libraries</code>&#x6765;&#x5B8C;&#x6210;&#x8BE5;&#x884C;&#x4E3A;&#x3002;</p>
+<pre><code class="lang-cmake"><span class="hljs-keyword">target_link_libraries</span>(hello_binary PRIVATE  hello_library)
+</code></pre>
+</li>
+<li><p><code>set_property</code> &#x4E0D;&#x662F;&#x5F88;&#x61C2;&#xFF0C;&#x5E72;&#x561B;&#x7684;?</p>
+<p>&#x6BCF;&#x4E2A;&#x57DF;&#x7684;&#x5BF9;&#x8C61;&#x90FD;&#x80FD;&#x8BBE;&#x7F6E;&#x82E5;&#x5E72;&#x5C5E;&#x6027;&#xFF0C;&#x6BD4;&#x5982;&#x6709;&#x5982;&#x4E0B;&#x51E0;&#x4E2A;&#x57DF;: <code>GLOBAL</code>    &#x3001;<code>DIRECTORY</code>&#x3001;<code>TARGET</code></p>
+<p>&#x8BED;&#x6CD5;:</p>
+<pre><code class="lang-cpp">set_property(&lt;GLOBAL | 
+            DIRECTORY [dir] | 
+            TARGET [target ...] | 
+            SOURCE [src1 ...] | 
+            TEST [test1 ...] | 
+            CACHE [entry1 ...]&gt;
+             [APPEND] 
+             PROPERTY &lt;name&gt; [value ...])
+</code></pre>
+<p>&#x6BD4;&#x5982;&#x547D;&#x4EE4;:</p>
+<pre><code class="lang-cpp">add_executable(a ...)
+set_property(
+    TARGET a
+    APPEND PROPERTY
+        INCLUDE_DIRECTORIES <span class="hljs-string">&quot;${CMAKE_CURRENT_SOURCE_DIR}&quot;</span>
+)
+&#x4E0A;&#x9762;&#x7684;set_property&#x7B49;&#x4EF7;&#x4E8E;:
+target_include_directories(a PRIVATE  ${CMAKE_CURRENT_SOURCE_DIR})
+</code></pre>
+</li>
+<li><p><code>set_target_properties</code></p>
+</li>
+<li><p><strong><code>CMAKE_BUILD_TYPE</code></strong></p>
+<p>Cmake&#x6709;&#x5F88;&#x591A;&#x5185;&#x7F6E;&#x7684;build&#x914D;&#x7F6E;&#xFF0C;&#x53EF;&#x7528;&#x4E8E;&#x7F16;&#x8BD1;&#x9879;&#x76EE;&#x3002;&#x8FD9;&#x4E9B;&#x914D;&#x7F6E;&#x6307;&#x5B9A;&#x4E86;&#x4F18;&#x5148;&#x7EA7;&#x522B;&#x4EE5;&#x53CA;&#x8C03;&#x8BD5;&#x4FE1;&#x606F;&#x662F;&#x5426;&#x5305;&#x542B;&#x5728;&#x6700;&#x7EC8;&#x4E8C;&#x8FDB;&#x5236;&#x6587;&#x4EF6;&#x4E2D;&#x3002;</p>
+<ul>
+<li><code>Release</code> - &#x7F16;&#x8BD1;&#x65F6;&#x5019;&#x6DFB;&#x52A0;<code>-03 -DNDEBUG</code> &#x6807;&#x5FD7;(flags);</li>
+<li><code>Debug</code> - &#x7F16;&#x8BD1;&#x65F6;&#x6DFB;&#x52A0;<code>-g</code>&#x6807;&#x5FD7;(flags);</li>
+<li><code>MinSizeRel</code> - &#x7F16;&#x8BD1;&#x65F6;&#x6DFB;&#x52A0;<code>-0s -DNDEBUG</code>&#x6807;&#x5FD7;(flags);</li>
+<li><code>RelWithDebInfo</code> - &#x7F16;&#x8BD1;&#x65F6;&#x6DFB;&#x52A0;<code>-O2 -g -DNDEBUG</code>&#x6807;&#x5FD7;(flags);</li>
+</ul>
+<p>&#x6BD4;&#x5982;&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x53D1;&#x73B0;cmake&#x7F16;&#x8BD1;&#x51FA;&#x7684;&#x4E8C;&#x8FDB;&#x5236;&#x65E0;&#x6CD5;&#x8C03;&#x8BD5;&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x4E0B;&#x9762;&#x547D;&#x4EE4;&#x7528;Debug&#x6A21;&#x5F0F;&#x7F16;&#x8BD1;&#x3002;</p>
+<pre><code class="lang-cmake"><span class="hljs-keyword">set</span>(CMAKE_BUILD_TYPE Debug)
+</code></pre>
+<p>&#x53C2;&#x8003;&#x95EE;&#x9898;:<a href="https://stackoverflow.com/questions/7990844/creating-symbol-table-for-gdb-using-cmake" target="_blank">Creating symbol table for gdb using cmake</a></p>
+</li>
+<li><p><strong>&#x8BBE;&#x7F6E;&#x9ED8;&#x8BA4;C++ &#x7F16;&#x8BD1;&#x6807;&#x5FD7;</strong></p>
+<p>&#x9ED8;&#x8BA4;<code>CMAKE_CXX_FLAGS</code>&#x4E3A;&#x7A7A; &#x6216;&#x8005;&#x6839;&#x636E;<code>CMAKE_BUILD_TYPE</code>&#x9009;&#x62E9;&#x5408;&#x9002;&#x7684;&#x6807;&#x5FD7;&#x3002;</p>
+<p>&#x4E3A;&#x4E86;&#x8BBE;&#x7F6E;&#x989D;&#x5916;&#x9ED8;&#x8BA4;&#x7684;&#x7F16;&#x8BD1;&#x6807;&#x5FD7;&#xFF0C;&#x4F60;&#x80FD;&#x5728;top level <code>CMakeLists.txt</code>&#x4E2D;&#x6DFB;&#x52A0;&#x4E0B;&#x9762;&#x7684;&#x547D;&#x4EE4;:</p>
+<pre><code class="lang-cmake"><span class="hljs-keyword">set</span> (CMAKE_CXX_FLAGS <span class="hljs-string">&quot;${CMAKE_CXX_FLAGS} -DEX2&quot;</span> CACHE <span class="hljs-keyword">STRING</span> <span class="hljs-string">&quot;Set C++ Compiler Flags&quot;</span> FORCE)
+</code></pre>
+<p>&#x6CE8;&#x610F;: &#x4E0A;&#x9762;&#x547D;&#x4EE4;&#x4E2D;<code>CACHE STRING &quot;Set C++ Compiler Flags&quot; FORCE</code>&#x4F1A;&#x5F3A;&#x5236;&#x5728;<code>CMakeCache.txt</code>&#x8BBE;&#x7F6E;&#x4E0A;&#x8BE5;&#x53D8;&#x91CF;&#x3002;</p>
+<p>&#x7C7B;&#x4F3C;&#x4E0A;&#x9762;&#x8BBE;&#x7F6E;<code>CMAKE_CXX_FLAGS</code>&#xFF0C;&#x6211;&#x4EEC;&#x8FD8;&#x53EF;&#x4EE5;&#x8BBE;&#x7F6E;&#x66F4;&#x591A;&#x9009;&#x9879;:</p>
+<ul>
+<li><p>&#x901A;&#x8FC7;<code>CMAKE_C_FLAGS</code>&#x8BBE;&#x7F6E;C&#x7F16;&#x8BD1;&#x5668;&#x6807;&#x5FD7;;</p>
+</li>
+<li><p>&#x901A;&#x8FC7;<code>CMAKE_LINKER_FLAGS</code>&#x8BBE;&#x7F6E;&#x8FDE;&#x63A5;&#x6807;&#x5FD7;;</p>
+</li>
+</ul>
+<p>&#x4E00;&#x65E6;<code>CMAKE_CXX_FLAGS</code>&#x548C;<code>CMAKE_C_FLAGS</code>&#x8BBE;&#x7F6E;&#x540E;&#xFF0C;&#x6240;&#x6709;&#x76EE;&#x5F55; &#x5B50;&#x76EE;&#x5F55;&#x4E2D;&#x7684;&#x76EE;&#x6807;&#x90FD;&#x4F1A;&#x90FD;&#x4F1A;&#x5E26;&#x4E0A;&#x8FD9;&#x4E24;&#x4E2A;&#x6807;&#x5FD7;&#x7F16;&#x8BD1;&#x3002;</p>
+</li>
+<li><p><code>add_subdirectory</code></p>
+<p>&#x539F;&#x6587;&#x6587;&#x6863;: <a href="https://www.jianshu.com/p/07acea4e86a3" target="_blank">Cmake&#x547D;&#x4EE4;&#x4E4B;add_subdirectory&#x4ECB;&#x7ECD;</a></p>
+<p>&#x547D;&#x4EE4;&#x8BED;&#x6CD5;: </p>
+<pre><code class="lang-cmake"><span class="hljs-keyword">add_subdirectory</span> (source_dir [binary_dir] [EXCLUDE_FROM_ALL])
+&#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x5B50;&#x76EE;&#x5F55;&#x5E76;&#x6784;&#x5EFA;&#x8BE5;&#x5B50;&#x76EE;&#x5F55;&#x3002;
+</code></pre>
+<ul>
+<li><code>source_dir</code> :<strong>&#x5FC5;&#x9009;&#x53C2;&#x6570;</strong>,&#x8BE5;&#x53C2;&#x6570;&#x6307;&#x5B9A;&#x4E00;&#x4E2A;&#x5B50;&#x76EE;&#x5F55;&#xFF0C;&#x5B50;&#x76EE;&#x5F55;&#x4E0B;&#x5E94;&#x8BE5;&#x5305;&#x542B;<code>CMakeLists.txt</code>&#x6587;&#x4EF6;&#x548C;&#x6E90;&#x4EE3;&#x7801;&#x6587;&#x4EF6;&#x3002;&#x5B50;&#x76EE;&#x5F55;&#x53EF;&#x4EE5;&#x662F;&#x76F8;&#x5BF9;&#x8DEF;&#x5F84;&#x4E5F;&#x53EF;&#x662F;&#x662F;&#x7EDD;&#x5BF9;&#x8DEF;&#x5F84;&#xFF0C;&#x5982;&#x679C;&#x662F;&#x76F8;&#x5BF9;&#x8DEF;&#x5F84;&#xFF0C;&#x5219;&#x662F;&#x76F8;&#x5BF9;&#x5F53;&#x524D;&#x76EE;&#x5F55;&#x7684;&#x4E00;&#x4E2A;&#x76F8;&#x5BF9;&#x8DEF;&#x5F84;&#xFF1B;</li>
+<li><code>binary_dir</code>:<strong>&#x53EF;&#x9009;&#x53C2;&#x6570;</strong>, &#x8BE5;&#x53C2;&#x6570;&#x6307;&#x5B9A;&#x4E00;&#x4E2A;&#x76EE;&#x5F55;&#xFF0C;&#x7528;&#x4E8E;&#x5B58;&#x653E;&#x8F93;&#x51FA;&#x6587;&#x4EF6;&#x3002;&#x4E5F;&#x53EF;&#x4EE5;&#x662F;&#x76F8;&#x5BF9;&#x8DEF;&#x5F84;&#xFF0C;&#x4E5F;&#x53EF;&#x662F;&#x662F;&#x7EDD;&#x5BF9;&#x8DEF;&#x5F84;&#xFF0C;&#x5982;&#x679C;&#x6CA1;&#x6307;&#x5B9A;&#x5219;&#x9ED8;&#x8BA4;&#x7684;&#x8F93;&#x51FA;&#x76EE;&#x5F55;&#x662F;<code>source_dir</code>;</li>
+<li><code>EXCLUDE_FROM_ALL</code>:<strong>&#x53EF;&#x9009;&#x53C2;&#x6570;</strong>&#x3002;&#x6307;&#x5B9A;&#x8BE5;&#x53C2;&#x6570;&#xFF0C;&#x5219;&#x5B50;&#x76EE;&#x5F55;&#x4E0B;&#x7684;&#x76EE;&#x6807;&#x4E0D;&#x4F1A;&#x88AB;&#x7236;&#x76EE;&#x5F55;&#x4E0B;&#x7684;&#x76EE;&#x6807;&#x6587;&#x4EF6;&#x5305;&#x542B;&#x8FDB;&#x53BB;&#xFF0C;&#x7236;&#x76EE;&#x5F55;&#x7684;<code>CMakeLists.txt</code>&#x4E0D;&#x4F1A;&#x6784;&#x5EFA;&#x5B50;&#x76EE;&#x5F55;&#x7684;&#x76EE;&#x6807;&#x6587;&#x4EF6;&#xFF0C;&#x5FC5;&#x987B;&#x5728;&#x5B50;&#x76EE;&#x5F55;&#x4E0B;&#x663E;&#x793A;&#x6784;&#x5EFA;&#x3002;&#x4F8B;&#x5916;&#x60C5;&#x51B5;: <strong>&#x5F53;&#x7236;&#x76EE;&#x5F55;&#x7684;&#x76EE;&#x6807;&#x4F9D;&#x8D56;&#x4E8E;&#x5B50;&#x76EE;&#x5F55;&#x7684;&#x76EE;&#x6807;&#xFF0C;&#x5219;&#x5B50;&#x76EE;&#x5F55;&#x7684;&#x76EE;&#x6807;&#x4ECD;&#x7136;&#x4F1A;&#x88AB;&#x6784;&#x5EFA;&#x51FA;&#x6765;&#x4EE5;&#x6EE1;&#x8DB3;&#x4F9D;&#x8D56;&#x5173;&#x7CFB;(&#x4F8B;&#x5982;&#x4F7F;&#x7528;&#x4E86;target_link_libraries)</strong></li>
+</ul>
+<p>&#x4E3E;&#x4F8B;&#x8BF4;&#x660E;:</p>
+<pre><code class="lang-cmake">&#x251C;&#x2500;&#x2500; CMakeLists.txt&#x2003;&#x2003;&#x2003;&#x2003;<span class="hljs-comment">#&#x7236;&#x76EE;&#x5F55;&#x7684;CMakeList.txt</span>
+&#x251C;&#x2500;&#x2500; main.cpp&#x2003;&#x2003;&#x2003;&#x2003;<span class="hljs-comment">#&#x6E90;&#x6587;&#x4EF6;&#xFF0C;&#x5305;&#x542B;main&#x51FD;&#x6570;</span>
+&#x251C;&#x2500;&#x2500; sub&#x2003;&#x2003;&#x2003;&#x2003;<span class="hljs-comment">#&#x5B50;&#x76EE;&#x5F55;</span>
+&#x2003;&#x2514;&#x2500;&#x2500; CMakeLists.txt&#x2003;&#x2003;&#x2003;&#x2003;<span class="hljs-comment">#&#x5B50;&#x76EE;&#x5F55;&#x7684;CMakeLists.txt</span>
+&#x2003;&#x2514;&#x2500;&#x2500; test.h&#x2003;&#x2003;&#x2003;&#x2003;<span class="hljs-comment">#&#x5B50;&#x76EE;&#x5F55;&#x5934;&#x6587;&#x4EF6;</span>
+&#x2003;&#x2514;&#x2500;&#x2500; test.cpp&#x2003;&#x2003;&#x2003;&#x2003;<span class="hljs-comment">#&#x5B50;&#x76EE;&#x5F55;&#x6E90;&#x6587;&#x4EF6;</span>
+</code></pre>
+<pre><code class="lang-cpp"><span class="hljs-comment">//  sub/test.cpp  </span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-string">&quot;test.h&quot;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">test</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> str)</span>
+</span>{
+    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; str &lt;&lt; <span class="hljs-built_in">std</span>::<span class="hljs-built_in">endl</span>;
+}
+</code></pre>
+<pre><code class="lang-cmake">//  sub/test.h
+<span class="hljs-comment">#include &lt;string&gt;</span>
+
+void test(std::<span class="hljs-keyword">string</span> str);
+</code></pre>
+<pre><code class="lang-cmake"><span class="hljs-comment"># sub/CMakeLists.txt</span>
+<span class="hljs-keyword">cmake_minimum_required</span>(VERSION <span class="hljs-number">3.10</span>.<span class="hljs-number">2</span>)
+<span class="hljs-keyword">project</span>(sub)
+<span class="hljs-keyword">add_library</span>(sub test.cpp)
+</code></pre>
+<ul>
+<li><p><strong>&#x573A;&#x666F;1: &#x7236;&#x76EE;&#x5F55;<code>CMakeLists.txt</code>&#x7684;<code>add_subdirectory</code>&#x53EA;&#x6307;&#x5B9A;&#x4E86;<code>source_dir</code></strong></p>
+<pre><code class="lang-cmake"><span class="hljs-comment"># &#x7236;&#x76EE;&#x5F55;&#x4E0B;&#x7684;CMakeLists.txt</span>
+<span class="hljs-keyword">cmake_minimum_required</span>(VERSION <span class="hljs-number">3.10</span>.<span class="hljs-number">2</span>)
+<span class="hljs-keyword">project</span>(test)
+
+<span class="hljs-keyword">add_subdirectory</span>(sub)
+</code></pre>
+<p>&#x5728;&#x7236;&#x76EE;&#x5F55;&#x4E0B;&#x8C03;&#x7528;<code>cmake .</code>&#x6784;&#x5EFA;&#x4E4B;&#x540E;&#xFF0C;&#x5728;sub&#x76EE;&#x5F55;&#x4E0B;&#x4F1A;&#x51FA;&#x73B0;<code>libsub.a</code>&#x5E93;&#xFF0C;&#x8BF4;&#x660E;&#x5F53;&#x4E0D;&#x6307;&#x5B9A;<code>binary_dir</code>&#xFF0C;&#x8F93;&#x51FA;&#x76EE;&#x6807;&#x6587;&#x4EF6;&#x5C31;&#x4F1A;&#x653E;&#x5230;<code>source_dir</code>&#x76EE;&#x5F55;&#x4E0B;&#x3002;</p>
+</li>
+<li><p><strong>&#x573A;&#x666F;2: &#x7236;&#x76EE;&#x5F55;<code>CMakeLists.txt</code>&#x7684;<code>add_subdirectory</code>&#x6307;&#x5B9A;&#x4E86;<code>source_dir</code>&#x548C;<code>binary_dir</code></strong></p>
+<pre><code class="lang-cmake"><span class="hljs-comment"># &#x7236;&#x76EE;&#x5F55;&#x4E0B;&#x7684;CMakeLists.txt</span>
+<span class="hljs-keyword">cmake_minimum_required</span>(VERSION <span class="hljs-number">3.10</span>.<span class="hljs-number">2</span>)
+<span class="hljs-keyword">project</span>(test)
+
+<span class="hljs-keyword">add_subdirectory</span>(sub output)
+</code></pre>
+<p>&#x5728;&#x7236;&#x76EE;&#x5F55;&#x4E0B;&#x8C03;&#x7528;<code>cmake .</code>&#x6784;&#x5EFA;&#x4E4B;&#x540E;&#xFF0C;&#x5728;<code>output</code>&#x76EE;&#x5F55;&#x4E0B;&#x4F1A;&#x51FA;&#x73B0;<code>libsub.a</code>&#x5E93;&#xFF0C;<code>sub</code>&#x76EE;&#x5F55;&#x4E0B;&#x5219;&#x6CA1;&#x6709;<code>libsub.a</code>&#x3002;&#x8BF4;&#x660E;&#x5F53;&#x6307;&#x5B9A;<code>binary_dir</code>&#xFF0C;&#x8F93;&#x51FA;&#x76EE;&#x6807;&#x6587;&#x4EF6;&#x5C31;&#x4F1A;&#x653E;&#x5230;<code>binary_dir</code>&#x76EE;&#x5F55;&#x4E0B;&#x3002;</p>
+</li>
+<li><p><strong>&#x573A;&#x666F;3:&#x7236;&#x76EE;&#x5F55;<code>CMakeLists.txt</code>&#x7684;<code>add_subdirectory</code> &#x6307;&#x5B9A;&#x4E86;<code>EXCLUDE_FROM_ALL</code>&#x9009;&#x9879;</strong></p>
+<pre><code class="lang-cmake"><span class="hljs-comment"># &#x7236;&#x76EE;&#x5F55;&#x4E0B;&#x7684;CMakeLists.txt</span>
+<span class="hljs-keyword">cmake_minimum_required</span>(VERSION <span class="hljs-number">3.10</span>.<span class="hljs-number">2</span>)
+<span class="hljs-keyword">project</span>(test)
+
+<span class="hljs-keyword">add_subdirectory</span>(sub output EXCLUDE_FROM_ALL) 
+<span class="hljs-keyword">add_executable</span>(test main.cpp)
+</code></pre>
+<p>&#x5728;&#x7236;&#x76EE;&#x5F55;&#x4E0B;&#x8C03;&#x7528;<code>cmake .</code>&#x6784;&#x5EFA;&#x4E4B;&#x540E;&#xFF0C;&#x5728;<code>output</code>&#x76EE;&#x5F55;&#x6216;<code>sub</code>&#x76EE;&#x5F55;&#x4E0B;<code>&#x4E0D;&#x4F1A;</code>&#x51FA;&#x73B0;<code>libsub.a</code>&#x5E93;&#xFF0C;&#x8BF4;&#x660E;&#x5F53;&#x6307;&#x5B9A;<code>EXCLUDE_FROM_ALL</code>&#x9009;&#x9879;&#xFF0C;&#x5B50;&#x76EE;&#x5F55;&#x7684;&#x76EE;&#x6807;&#x6587;&#x4EF6;&#x4E0D;&#x4F1A;&#x751F;&#x6210;&#x3002;</p>
+</li>
+<li><p><strong>&#x573A;&#x666F;4: &#x7236;&#x76EE;&#x5F55;<code>CMakeLists.txt</code>&#x7684;<code>add_subdirectory</code> &#x6307;&#x5B9A;&#x4E86;<code>EXCLUDE_FROM_ALL</code>&#x9009;&#x9879;&#xFF0C;&#x4E14;&#x7236;&#x76EE;&#x5F55;&#x7684;&#x76EE;&#x6807;&#x6587;&#x4EF6;&#x4F9D;&#x8D56;&#x5B50;&#x76EE;&#x5F55;&#x7684;&#x76EE;&#x6807;&#x6587;&#x4EF6;</strong></p>
+<pre><code class="lang-cmake"><span class="hljs-comment"># &#x7236;&#x76EE;&#x5F55;&#x4E0B;&#x7684;CMakeLists.txt</span>
+<span class="hljs-keyword">cmake_minimum_required</span>(VERSION <span class="hljs-number">3.10</span>.<span class="hljs-number">2</span>)
+<span class="hljs-keyword">project</span>(test)
+
+<span class="hljs-keyword">add_subdirectory</span>(sub output EXCLUDE_FROM_ALL) 
+<span class="hljs-keyword">add_executable</span>(test main.cpp)
+<span class="hljs-keyword">target_link_libraries</span>(test sub)
+</code></pre>
+<p>&#x5728;&#x7236;&#x76EE;&#x5F55;&#x4E0B;&#x8C03;&#x7528;<code>cmake .</code>&#x6784;&#x5EFA;&#x4E4B;&#x540E;&#xFF0C;&#x5728;<code>output</code>&#x76EE;&#x5F55;&#x4F1A;&#x51FA;&#x73B0;<code>libsub.a</code>&#x5E93;&#xFF0C;&#x8BF4;&#x660E;&#x5373;&#x4F7F;&#x6307;&#x5B9A;<code>EXCLUDE_FROM_ALL</code>&#x9009;&#x9879;&#xFF0C;&#x5F53;&#x7236;&#x76EE;&#x5F55;&#x76EE;&#x6807;&#x6587;&#x4EF6;&#x5BF9;&#x5B50;&#x76EE;&#x5F55;&#x76EE;&#x6807;&#x6587;&#x4EF6;&#x5B58;&#x5728;&#x4F9D;&#x8D56;&#x5173;&#x7CFB;&#x65F6;&#xFF0C;&#x5B50;&#x76EE;&#x5F55;&#x7684;&#x76EE;&#x6807;&#x6587;&#x4EF6;&#x4ECD;&#x7136;&#x4F1A;&#x751F;&#x6210;&#x4EE5;&#x6EE1;&#x8DB3;&#x4F9D;&#x8D56;&#x5173;&#x7CFB;&#x3002;</p>
+</li>
+</ul>
+</li>
+<li><p><code>find_path</code> </p>
+<p>&#x7B80;&#x77ED;&#x6A21;&#x5F0F;: <code>find_path(&lt;VAR&gt; name1 [path1 path2 ...])</code></p>
+<p>&#x641C;&#x7D22;&#x5305;&#x542B;&#x67D0;&#x4E2A;&#x6587;&#x4EF6;&#x7684;&#x8DEF;&#x5F84;&#xFF0C;&#x7ED3;&#x679C;&#x4FDD;&#x5B58;&#x5728;<code>&lt;VAR&gt;</code>&#x4E2D;&#xFF0C;<strong>&#x7ED3;&#x679C;&#x9ED8;&#x8BA4;&#x4F1A;&#x521B;&#x5EFA;Cache&#x6761;&#x76EE;</strong>&#xFF1B;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x627E;&#x5230;<code>&lt;VAR&gt;-NOTFOUND</code>&#x5C31;&#x4F1A;&#x88AB;&#x8BBE;&#x7F6E;&#xFF0C;&#x5728;&#x4E0B;&#x6B21;&#x4EE5;&#x76F8;&#x540C;&#x7684;&#x53D8;&#x91CF;&#x540D;&#x518D;&#x6B21;&#x8C03;&#x7528;<code>find_path()</code>&#x65F6;&#xFF0C;&#x8BE5;&#x547D;&#x4EE4;&#x4F1A;&#x518D;&#x6B21;&#x5C1D;&#x8BD5;&#x641C;&#x7D22;&#x8BE5;&#x6587;&#x4EF6;&#x3002;</p>
+<pre><code class="lang-cpp">FIND_PATH(
+  LIBDB_CXX_INCLUDE_DIR
+  db_cxx.h 
+  /usr/include/ 
+  /usr/local/include/ 
+)
+</code></pre>
+<p>&#x793A;&#x4F8B;:</p>
+<p><img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20220112011716559.png" alt="image-20220112011716559"></p>
+<pre><code class="lang-cmake"><span class="hljs-keyword">find_path</span>(HIREDIS_HEADER 
+  hiredis
+     HINTS src/thirdparty
+)
+target_include_directories(myapp PUBLIC <span class="hljs-variable">${HIREDIS_HEADER}</span>)
+&#x540E;&#x7EED;myapp&#x7684;&#x51FD;&#x6570;&#x4E2D;&#x5C31;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; <span class="hljs-keyword">include</span> <span class="hljs-string">&quot;hiredis/hiredis.h&quot;</span>
+</code></pre>
+<p>&#x989D;&#x5916;&#x7684;&#x641C;&#x7D22;&#x8DEF;&#x5F84;&#x8FD8;&#x5305;&#x62EC;:</p>
+<ol>
+<li><p>&#x5728;&#x65B0;&#x7248;&#x672C; 3.12&#x4E2D;&#xFF0C;<code>find_package(&lt;PackageName&gt;)</code>&#x7684;&#x9ED8;&#x8BA4;&#x641C;&#x7D22;&#x8DEF;&#x5F84;&#x5305;&#x62EC; &#x672C;&#x5730;&#x53D8;&#x91CF;<code>&lt;PackageName&gt;_ROOT</code>&#x548C;&#x73AF;&#x5883;&#x53D8;&#x91CF;<code>&lt;PackageName&gt;_ROOT</code>&#x4EE3;&#x8868;&#x7684;&#x8DEF;&#x5F84;&#x3002;</p>
+<p>&#x8FD8;&#x5305;&#x62EC;<code>${CMAKE_LIBRARY_ARCHITECTURE}/include/&lt;arch&gt;</code></p>
+</li>
+<li><p><code>find_path</code>&#x7684;&#x641C;&#x7D22;&#x8DEF;&#x5F84;:</p>
+<p><code>${CMAKE_LIBRARY_ARCHITECTURE}/include/&lt;arch&gt;</code></p>
+<p><code>${CMAKE_PREFIX_PATH}/include</code></p>
+<p><code>${CMAKE_INCLUDE_PATH}</code></p>
+<p><code>${CMAKE_FRAMEWORK_PATH}</code></p>
+</li>
+</ol>
+</li>
+<li><p><code>find_library</code></p>
+<p>&#x7B80;&#x77ED;&#x6A21;&#x5F0F;: <code>find_library(&lt;VAR&gt; names [path1 path2 ...] DOC REQUIRED)</code></p>
+<p>&#x7528;&#x4E8E;&#x5728;&#x6307;&#x5B9A;&#x8DEF;&#x5F84;&#x4E0B;&#x67E5;&#x627E;&#x5E93;&#x3002;&#x5982;&#x679C;&#x627E;&#x5230;&#x5219;&#x5C06;&#x7ED3;&#x679C;&#x4FDD;&#x5B58;&#x5728;<code>&lt;VAR&gt;</code>&#x4E2D;&#xFF0C;&#x540C;&#x65F6;&#x4E3A;&#x7ED3;&#x679C;&#x521B;&#x5EFA;Cache&#x6761;&#x76EE;&#x3002;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x627E;&#x5230;<code>&lt;VAR&gt;-NOTFOUND</code>&#x5C31;&#x4F1A;&#x88AB;&#x8BBE;&#x7F6E;&#xFF0C;&#x5728;&#x4E0B;&#x6B21;&#x4EE5;&#x76F8;&#x540C;&#x7684;&#x53D8;&#x91CF;&#x540D;&#x518D;&#x6B21;&#x8C03;&#x7528;<code>find_library()</code>&#x65F6;&#xFF0C;&#x8BE5;&#x547D;&#x4EE4;&#x4F1A;&#x518D;&#x6B21;&#x5C1D;&#x8BD5;&#x641C;&#x7D22;&#x8BE5;&#x5E93;&#x3002;</p>
+<p><code>NAMES</code>&#x6307;&#x5B9A;&#x9700;&#x8981;&#x641C;&#x7D22;&#x7684;&#x4E00;&#x4E2A;&#x6216;&#x591A;&#x4E2A;&#x5E93;&#x540D;&#x79F0;;</p>
+<p><code>PATHS</code>&#x9664;&#x4E86;&#x9ED8;&#x8BA4;&#x4F4D;&#x7F6E;&#x5916;&#xFF0C;&#x8FD8;&#x9700;&#x8981;&#x641C;&#x7D22;&#x7684;&#x76EE;&#x5F55;&#x3002;</p>
+<p><code>DOC</code>&#x4FDD;&#x5B58;&#x4E00;&#x4E9B;&#x5E2E;&#x52A9;&#x4FE1;&#x606F;;</p>
+<p><code>REQUIRED</code>&#x5982;&#x679C;&#x672A;&#x627E;&#x5230;&#x4EFB;&#x4F55;&#x5185;&#x5BB9;&#xFF0C;&#x5219;&#x505C;&#x6B62;&#x5904;&#x7406;&#x5E76;&#x663E;&#x793A;&#x9519;&#x8BEF;&#x6D88;&#x606F;;</p>
+<pre><code class="lang-cmake"><span class="hljs-keyword">find_library</span>(CURL_LIBRARY
+    NAMES curl curllib libcurl_imp curllib_static
+    HINTS <span class="hljs-string">&quot;${CMAKE_PREFIX_PATH}/curl/lib&quot;</span>
+)
+</code></pre>
+<p>&#x9ED8;&#x8BA4;&#x7684;&#x641C;&#x7D22;&#x8DEF;&#x5F84;&#x8FD8;&#x5305;&#x62EC;</p>
+<p><code>${CMAKE_LIBRARY_ARCHITECTURE}/lib/&lt;arch&gt;</code></p>
+<p><code>${CMAKE_PREFIX_PATH}/lib</code></p>
+<p><code>${CMAKE_INCLUDE_PATH}</code></p>
+<p><code>${CMAKE_FRAMEWORK_PATH}</code></p>
+</li>
+<li><p><strong>add_custom_command</strong></p>
+<p>&#x539F;&#x6587;&#x94FE;&#x63A5;: <a href="https://zhuanlan.zhihu.com/p/95771200" target="_blank">cmake&#xFF1A;&#x6DFB;&#x52A0;&#x81EA;&#x5B9A;&#x4E49;&#x64CD;&#x4F5C;</a></p>
+<p>&#x8BE5;&#x6307;&#x4EE4;&#x7528;&#x4E8E;&#x6DFB;&#x52A0;&#x81EA;&#x5B9A;&#x4E49;&#x547D;&#x4EE4;&#xFF0C;&#x5B9E;&#x73B0;&#x67D0;&#x4E9B;&#x64CD;&#x4F5C;&#x3002;&#x6BD4;&#x5982;&#xFF0C;&#x7F16;&#x8BD1;&#x4E4B;&#x524D;&#x8FDB;&#x884C;&#x4E00;&#x4E9B;&#x6587;&#x4EF6;&#x62F7;&#x8D1D;&#x64CD;&#x4F5C;&#x7B49;&#x3002;</p>
+<p>&#x4E24;&#x79CD;&#x4F7F;&#x7528;&#x65B9;&#x5F0F;:</p>
+<ul>
+<li><p><strong>&#x65B9;&#x5F0F;&#x4E00;: &#x914D;&#x5408; <code>add_custom_target</code> &#x4F7F;&#x7528;&#xFF0C;&#x8BE5;&#x547D;&#x4EE4;&#x751F;&#x6210; <code>add_custom_target</code> &#x7684;&#x4F9D;&#x8D56;</strong></p>
+<pre><code class="lang-cmake"><span class="hljs-keyword">add_custom_command</span>(OUTPUT output1 [output2 ...]
+                    COMMAND command1 [ARGS] [args1...]
+                    [COMMAND command2 [ARGS] [args2...] ...]
+                    [MAIN_DEPENDENCY depend]
+                    [DEPENDS [depends...]]
+                    [BYPRODUCTS [files...]]
+                    [IMPLICIT_DEPENDS &lt;lang1&gt; depend1
+                                     [&lt;lang2&gt; depend2] ...]
+                    [WORKING_DIRECTORY dir]
+                    [COMMENT comment]
+                    [DEPFILE depfile]
+                    [JOB_POOL job_pool]
+                    [VERBATIM] [APPEND] [USES_TERMINAL]
+                    [COMMAND_EXPAND_LISTS])
+</code></pre>
+<ul>
+<li><strong><code>OUTPUT</code>: &#x76EE;&#x6807;&#x6587;&#x4EF6;&#x540D;&#x79F0;&#xFF0C;&#x4EE3;&#x8868;&#x4E0B;&#x9762;&#x7684;COMMAND</strong></li>
+<li><strong><code>COMMAND</code>: &#x9700;&#x6267;&#x884C;&#x7684;&#x547D;&#x4EE4;</strong></li>
+<li><strong><code>DEPENDS</code>: &#x6267;&#x884C;&#x547D;&#x4EE4;&#x65F6;&#x9700;&#x8981;&#x7684;&#x4F9D;&#x8D56;</strong></li>
+</ul>
+<p>&#x793A;&#x4F8B;:</p>
+<pre><code class="lang-cmake"><span class="hljs-keyword">cmake_minimum_required</span>(VERSION <span class="hljs-number">3.5</span>)
+<span class="hljs-keyword">project</span>(test)
+<span class="hljs-keyword">add_executable</span>(<span class="hljs-variable">${PROJECT_NAME}</span> main.c)
+<span class="hljs-keyword">add_custom_command</span>(OUTPUT printout 
+                   COMMAND <span class="hljs-variable">${CMAKE_COMMAND}</span> -E echo compile finish
+                   VERBATIM
+                  )
+<span class="hljs-keyword">add_custom_target</span>(finish
+                  DEPENDS printout
+                  )
+</code></pre>
+<p><code>add_custom_command</code>&#x751F;&#x6210;&#x4E00;&#x4E2A;&#x540D;&#x53EB;printout&#x7684;&quot;&#x6587;&#x4EF6;&quot;(&#x5E76;&#x975E;&#x771F;&#x662F;&#x751F;&#x6210;),&#x5176;&#x4EE3;&#x8868;&#x4E0B;&#x65B9;&#x7684; <code>COMMAND ${CMAKE_COMMAND} -E echo compile finish</code> &#x547D;&#x4EE4;;</p>
+<p><code>add_custom_target</code>&quot;&#x751F;&#x6210;&quot;&#x76EE;&#x6807;<code>finish</code>&#xFF0C;&#x5176;&#x4F9D;&#x8D56;&#x4E0A;&#x65B9;&#x7684;<code>printout</code>&#x3002;</p>
+<p>&#x901A;&#x8FC7;<code>--target finish</code>&#x5C31;&#x4F1A;&#x53BB;&#x751F;&#x6210;<code>target finish</code>&#xFF0C;&#x8FDB;&#x800C;&#x6267;&#x884C;&#x4F9D;&#x8D56;<code>printout</code>&#x4EE3;&#x8868;&#x7684;&#x547D;&#x4EE4;&#x3002;</p>
+<p><img src="../Users/lukexwang/Library/Application Support/typora-user-images/image-20220111203641759.png" alt="image-20220111203641759" style="zoom:67%;"></p>
+<p>&#x66F4;&#x52A0;&#x5B9E;&#x9645;&#x7684;&#x4E00;&#x4E2A;&#x793A;&#x4F8B;:</p>
+<p>&#x5728;&#x7F16;&#x8BD1;<a href="https://github.com/Tencent/Tendis/blob/dev-2.2/CMakeLists.txt" target="_blank">Tendis</a>&#x65F6;&#xFF0C;&#x9700;&#x8981;&#x5148;&#x786E;&#x4FDD;<code>jemalloc</code>&#x7F16;&#x8BD1;&#x5B8C;&#x6210;&#xFF0C;<code>jemalloc</code>&#x53EA;&#x652F;&#x6301;&#x901A;&#x8FC7;<code>make</code>&#x7F16;&#x8BD1;&#xFF0C;&#x6240;&#x4EE5;&#x4E0D;&#x80FD;&#x901A;&#x8FC7;<code>add_subdirectory()</code>&#x6765;&#x5B8C;&#x6210;&#x3002;</p>
+<p>&#x6B63;&#x786E;&#x7684;&#x505A;&#x6CD5;:</p>
+<pre><code class="lang-cmake"><span class="hljs-comment">#tendisplus/CMakeLists.txt</span>
+<span class="hljs-comment">#&#x6DFB;&#x52A0;&#x81EA;&#x5B9A;&#x4E49;&#x76EE;&#x6807;,&#x7528;&#x4E8E;&#x5B9E;&#x9645;&#x6267;&#x884C;jemalloc&#x7F16;&#x8BD1;&#x547D;&#x4EE4;</span>
+<span class="hljs-keyword">add_custom_command</span>(OUTPUT 
+<span class="hljs-string">&quot;${JEMALLOC_ROOT_DIR}/lib/libjemalloc.a&quot;</span>
+<span class="hljs-string">&quot;${JEMALLOC_ROOT_DIR}/lib/libjemalloc.so&quot;</span>
+                COMMAND <span class="hljs-variable">${CMAKE_MAKE_PROGRAM}</span> <span class="hljs-comment">#&#x5176;&#x5B9E;&#x5C31;&#x662F;make&#x547D;&#x4EE4;</span>
+                DEPENDS <span class="hljs-string">&quot;${JEMALLOC_ROOT_DIR}/include/jemalloc/jemalloc.h&quot;</span>
+                WORKING_DIRECTORY <span class="hljs-variable">${JEMALLOC_ROOT_DIR}</span>
+                COMMENT <span class="hljs-string">&quot;Making external library jemalloc&quot;</span>)
+<span class="hljs-keyword">add_custom_target</span>(build_jemalloc
+                DEPENDS <span class="hljs-string">&quot;${JEMALLOC_ROOT_DIR}/lib/libjemalloc.a&quot;</span>)
+
+<span class="hljs-comment">#&#x624B;&#x52A8;&#x8BBE;&#x7F6E; jemalloc&#x7684; &#x5171;&#x4EAB;/&#x9759;&#x6001;&#x5E93;</span>
+<span class="hljs-keyword">add_library</span>(jemalloc_SHARED SHARED IMPORTED)
+<span class="hljs-keyword">add_library</span>(jemalloc STATIC IMPORTED)
+<span class="hljs-keyword">set_target_properties</span>(jemalloc PROPERTIES IMPORTED_LOCATION <span class="hljs-string">&quot;${JEMALLOC_ROOT_DIR}/lib/libjemalloc_pic.a&quot;</span>)
+<span class="hljs-keyword">set_target_properties</span>(jemalloc_SHARED PROPERTIES IMPORTED_LOCATION <span class="hljs-string">&quot;${JEMALLOC_ROOT_DIR}/lib/libjemalloc.so&quot;</span>)
+
+<span class="hljs-comment">#&#x6DFB;&#x52A0; jemalloc&#x7684; &#x5171;&#x4EAB;/&#x9759;&#x6001;&#x5E93; &#x5BF9; target:build_jemalloc&#x7684;&#x4F9D;&#x8D56;</span>
+<span class="hljs-keyword">add_dependencies</span>(jemalloc build_jemalloc)
+<span class="hljs-keyword">add_dependencies</span>(jemalloc_SHARED build_jemalloc)
+
+<span class="hljs-comment">#&#x5C06; jemalloc &#x6DFB;&#x52A0;&#x5230; SYS_LIBS &#x4E2D;</span>
+list(APPEND SYS_LIBS jemalloc)
+
+<span class="hljs-comment">#tendisplus/src/tendisplus/server/CMakeLists.txt</span>
+<span class="hljs-comment">#&#x7F16;&#x8BD1;tendisplus server&#x65F6;&#xFF0C;&#x8FDE;&#x63A5;SYS_LIBS</span>
+<span class="hljs-keyword">add_executable</span>(tendisplus main.cpp)
+<span class="hljs-keyword">target_link_libraries</span>(tendisplus server_params server <span class="hljs-variable">${SYS_LIBS}</span>)
+</code></pre>
+</li>
+<li><p><strong>&#x65B9;&#x5F0F;&#x4E8C;: &#x5355;&#x72EC;&#x4F7F;&#x7528;&#x3002;&#x5728;&#x751F;&#x6210;&#x76EE;&#x6807;&#x6587;&#x4EF6;(&#x4F7F;&#x7528;<code>add_executable()</code>&#x6216;<code>add_library()</code>&#x751F;&#x6210;&#x7684;&#x6587;&#x4EF6;)&#x65F6;&#x81EA;&#x52A8;&#x6267;&#x884C;<code>add_custom_command</code>&#x6307;&#x5B9A;&#x7684;&#x547D;&#x4EE4;</strong></p>
+<pre><code class="lang-cmake"><span class="hljs-keyword">add_custom_command</span>(TARGET &lt;target&gt;
+                    PRE_BUILD | PRE_LINK | POST_BUILD
+                    COMMAND command1 [ARGS] [args1...]
+                    [COMMAND command2 [ARGS] [args2...] ...]
+                    [BYPRODUCTS [files...]]
+                    [WORKING_DIRECTORY dir]
+                    [COMMENT comment]
+                    [VERBATIM] [USES_TERMINAL]
+                    [COMMAND_EXPAND_LISTS])
+</code></pre>
+<p><code>TARGET</code>&#xFF1A;&#x7531; <code>add_executable()</code> &#x6216; <code>add_library()</code> &#x751F;&#x6210;&#x7684;&#x76EE;&#x6807;&#x6587;&#x4EF6;&#x540D;&#x79F0;&#xFF1B;
+<code>PRE_BUILD|PRE_LINK|POST_BUILD</code>:&#x5206;&#x522B;&#x8868;&#x793A;&#x7F16;&#x8BD1;&#x4E4B;&#x524D;&#x6267;&#x884C;&#x547D;&#x4EE4;,&#x94FE;&#x63A5;&#x4E4B;&#x524D;&#x6267;&#x884C;&#x547D;&#x4EE4;,&#x751F;&#x6210;&#x76EE;&#x6807;&#x6587;&#x4EF6;&#x540E;&#x6267;&#x884C;&#x547D;&#x4EE4;&#xFF1B;</p>
+<pre><code class="lang-cmake"><span class="hljs-keyword">cmake_minimum_required</span>(VERSION <span class="hljs-number">3.5</span>)
+<span class="hljs-keyword">project</span>(test)
+<span class="hljs-keyword">add_executable</span>(<span class="hljs-variable">${PROJECT_NAME}</span> main.c)
+<span class="hljs-keyword">add_custom_command</span>(TARGET <span class="hljs-variable">${PROJECT_NAME}</span> <span class="hljs-comment">#&#x751F;&#x6210;&#x76EE;&#x6807;&#x6587;&#x4EF6;&#x4E4B;&#x524D;/&#x4E4B;&#x540E; &#x6267;&#x884C;&#x67D0;&#x4E2A;&#x547D;&#x4EE4;</span>
+                   POST_BUILD <span class="hljs-comment"># &#x751F;&#x6210;&#x76EE;&#x6807;&#x6587;&#x4EF6;&#x540E;&#x6267;&#x884C;&#x547D;&#x4EE4;</span>
+                   COMMAND <span class="hljs-variable">${CMAKE_COMMAND}</span> -E echo compile finish
+                   VERBATIM
+                  )
+</code></pre>
+<p><img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20220111205717325.png" alt="image-20220111205717325"></p>
+</li>
+</ul>
+</li>
+<li><p><strong>add_custom_target</strong></p>
+<p>cmake&#x672C;&#x8EAB;&#x652F;&#x6301;&#x4E24;&#x79CD;&#x76EE;&#x6807;&#x6587;&#x4EF6;:&#x53EF;&#x6267;&#x884C;&#x7A0B;&#x5E8F;(&#x7531;<code>add_executable</code>&#x751F;&#x6210;&#xFF09;&#x548C;&#x5E93;&#x6587;&#x4EF6;(&#x7531;<code>add_library</code>&#x751F;&#x6210;)&#x3002;
+&#x4F7F;&#x7528;<code>add_custom_target</code>&#x53EF;&#x6DFB;&#x52A0;&#x81EA;&#x5B9A;&#x4E49;&#x76EE;&#x6807;&#x6587;&#x4EF6;&#xFF0C;&#x7528;&#x4E8E;&#x6267;&#x884C;&#x67D0;&#x4E9B;&#x6307;&#x4EE4;&#x3002;</p>
+<pre><code class="lang-cmake"><span class="hljs-keyword">add_custom_target</span>(Name [ALL] [command1 [args1...]]
+                   [COMMAND command2 [args2...] ...]
+                   [DEPENDS depend depend depend ... ]
+                   [BYPRODUCTS [files...]]
+                   [WORKING_DIRECTORY dir]
+                   [COMMENT comment]
+                   [JOB_POOL job_pool]
+                   [VERBATIM] [USES_TERMINAL]
+                   [COMMAND_EXPAND_LISTS]
+                   [SOURCES src1 [src2...]])
+</code></pre>
+<ul>
+<li><code>NAME</code>: &#x76EE;&#x6807;&#x540D;&#x79F0;;</li>
+<li><code>ALL</code>: &#x6211;&#x4EEC;&#x9ED8;&#x8BA4;&#x4F7F;&#x7528;<code>cmake .. &amp;&amp; make</code>&#x5E76;&#x4E0D;&#x4F1A;&#x6267;&#x884C;<code>add_custom_target</code>&#x4E2D;&#x7684;&#x5185;&#x5BB9;&#xFF0C;&#x9700;&#x8981;&#x4F7F;&#x7528;<code>cmake --target &lt;Name&gt;</code>&#x624D;&#x4F1A;&#x6267;&#x884C;&#x3002;&#x4F46;&#x662F;&#x5982;&#x679C;&#x6307;&#x5B9A;&#x4E86;&#x53C2;&#x6570;<code>ALL</code>,&#x90A3;&#x4E48;<code>cmake .. &amp;&amp; make</code>&#x4E5F;&#x4F1A;&#x6267;&#x884C;<code>add_custom_target</code>&#x4E2D;&#x7684;&#x5185;&#x5BB9;&#xFF1B;</li>
+<li><code>COMMAND</code>&#xFF1A;&#x9700;&#x8981;&#x6267;&#x884C;&#x7684;&#x547D;&#x4EE4;;</li>
+<li><code>DEPENDS</code>:&#x6267;&#x884C;&#x547D;&#x4EE4;&#x65F6;&#x9700;&#x8981;&#x7684;&#x4F9D;&#x8D56;;</li>
+<li><code>COMMENT</code>&#xFF1A;&#x5728;&#x6784;&#x5EFA;&#x65F6;&#x6267;&#x884C;&#x547D;&#x4EE4;&#x4E4B;&#x524D;&#x663E;&#x793A;&#x7ED9;&#x5B9A;&#x6D88;&#x606F;;</li>
+<li><code>WORKING_DIRECTORY</code>&#xFF1A;&#x4F7F;&#x7528;&#x7ED9;&#x5B9A;&#x7684;&#x5F53;&#x524D;&#x5DE5;&#x4F5C;&#x76EE;&#x5F55;&#x6267;&#x884C;&#x547D;&#x4EE4;&#x3002;&#x5982;&#x679C;&#x5B83;&#x662F;&#x76F8;&#x5BF9;&#x8DEF;&#x5F84;&#xFF0C;&#x5B83;&#x5C06;&#x76F8;&#x5BF9;&#x4E8E;&#x5BF9;&#x5E94;&#x4E8E;&#x5F53;&#x524D;&#x6E90;&#x76EE;&#x5F55;&#x7684;&#x6784;&#x5EFA;&#x6811;&#x76EE;&#x5F55;;</li>
+</ul>
+<p><strong>add_custom_target</strong>&#x7684;&#x529F;&#x80FD;&#x770B;&#x8D77;&#x6765;&#x5F88;&#x50CF;<code>Makefile</code>&#x4E2D;&#x7684;&#x7ED3;&#x6784;:</p>
+<pre><code class="lang-makefile">target ... : prerequisites ...  
+    command
+</code></pre>
+<p>&#x4F8B;&#x5982;:</p>
+<pre><code class="lang-makefile"><span class="hljs-section">clean:</span>
+        -rm ./$(SRV_NAME)
+build:clean
+        CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build  -o $(SRV_NAME) -v ./cmd/tendisk8s
+</code></pre>
+<p>&#x4E0B;&#x9762;&#x662F;<code>add_custom_target</code>&#x7684;&#x793A;&#x4F8B;:</p>
+<pre><code class="lang-cmake"><span class="hljs-keyword">cmake_minimum_required</span>(VERSION <span class="hljs-number">3.0</span>)
+<span class="hljs-keyword">project</span>(test)
+
+<span class="hljs-comment">#&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x4E00;&#x4E2A;target</span>
+<span class="hljs-keyword">add_custom_target</span>(myTask
+  COMMAND <span class="hljs-variable">${CMAKE_COMMAND}</span> -E echo myTask donee
+)
+
+<span class="hljs-comment">#finish&#x4F9D;&#x8D56;myTask&#x5148;&#x5B8C;&#x6210;</span>
+<span class="hljs-keyword">add_custom_target</span>(finish 
+  DEPENDS myTask
+  COMMAND <span class="hljs-variable">${CMAKE_COMMAND}</span> -E echo compile finish 
+)
+</code></pre>
+<p><img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20220111211644853.png" alt="image-20220111211644853"></p>
+</li>
+<li><p><code>execute_process</code></p>
+<pre><code class="lang-cmake"><span class="hljs-keyword">execute_process</span>(COMMAND &lt;cmd1&gt; [args1...]]
+                [COMMAND &lt;cmd2&gt; [args2...] [...]]
+                [WORKING_DIRECTORY &lt;directory&gt;]
+                [TIMEOUT &lt;seconds&gt;]
+                [RESULT_VARIABLE &lt;variable&gt;]
+                [OUTPUT_VARIABLE &lt;variable&gt;]
+                [ERROR_VARIABLE &lt;variable&gt;]
+                [INPUT_FILE &lt;file&gt;]
+                [OUTPUT_FILE &lt;file&gt;]
+                [ERROR_FILE &lt;file&gt;]
+                [OUTPUT_QUIET]
+                [ERROR_QUIET]
+                [OUTPUT_STRIP_TRAILING_WHITESPACE]
+                [ERROR_STRIP_TRAILING_WHITESPACE])
+</code></pre>
+<p>&#x6267;&#x884C;&#x547D;&#x4EE4;&#xFF0C;&#x5C06;&#x7ED3;&#x679C;&#x4FDD;&#x5B58;&#x5230;cmake&#x53D8;&#x91CF; or &#x6587;&#x4EF6;&#x4E2D;&#x3002;&#x6BD4;&#x5982;&#x4F60;&#x60F3;&#x901A;&#x8FC7;git&#x547D;&#x4EE4;&#x8BFB;&#x53D6;&#x7248;&#x672C;&#x53F7;&#xFF0C;&#x5728;&#x4EE3;&#x7801;&#x4E2D;&#x4F7F;&#x7528;&#x3002;</p>
+<p>&#x6CE8;&#x610F;: &#x6BCF;&#x4E2A;&#x8FDB;&#x7A0B;&#x7684;&#x6807;&#x51C6;&#x8F93;&#x51FA;&#x6D41;&#x5411; &#x4E0B;&#x4E00;&#x4E2A;&#x8FDB;&#x7A0B;&#x7684;&#x6807;&#x51C6;&#x8F93;&#x5165;&#x3002;&#x6240;&#x6709;&#x7684;&#x6D41;&#x7A0B;&#x4F7F;&#x7528;&#x4E00;&#x4E2A;&#x5355;&#x72EC;&#x7684;stderr&#x9519;&#x8BEF;&#x7BA1;&#x9053;&#x3002;</p>
+<ul>
+<li><p><code>COMMAND</code>: &#x9700;&#x8981;&#x6267;&#x884C;&#x7684;&#x547D;&#x4EE4;&#xFF0C;&#x542F;&#x52A8;&#x5B50;&#x8FDB;&#x7A0B;&#x6765;&#x6267;&#x884C;&#x3002;&#x6CE8;&#x610F;<code>&gt;</code>(&#x8F93;&#x51FA;&#x91CD;&#x5B9A;&#x5411;)&#x8FD9;&#x6837;&#x7684;&#x811A;&#x672C;&#x64CD;&#x4F5C;&#x7B26;&#x4E5F;&#x4F1A;&#x88AB;&#x5F53;&#x505A;&#x666E;&#x901A;&#x53C2;&#x6570;&#x5904;&#x7406;&#x3002;</p>
+<p>&#x540C;&#x65F6;&#x4F7F;&#x7528;<code>INPUT_</code>&#x3001;<code>OUTPUT_</code>&#x3001;<code>ERROR_</code>&#x6765;&#x91CD;&#x5B9A;&#x5411;<code>stdin</code>&#x3001;<code>stdout</code>&#x3001;<code>stderr</code>&#x3002;</p>
+</li>
+<li><p><code>WORKING_DIRECTORY</code>:  &#x5DE5;&#x4F5C;&#x76EE;&#x5F55;&#x3002;&#x5982;&#x679C;&#x5B83;&#x662F;&#x76F8;&#x5BF9;&#x8DEF;&#x5F84;&#xFF0C;&#x5B83;&#x5C06;&#x76F8;&#x5BF9;&#x4E8E;&#x5BF9;&#x5E94;&#x4E8E;&#x5F53;&#x524D;&#x6E90;&#x76EE;&#x5F55;&#x7684;&#x6784;&#x5EFA;&#x6811;&#x76EE;&#x5F55;;</p>
+</li>
+<li><p><code>TIMEOUT</code>: &#x8D85;&#x65F6;&#x65F6;&#x95F4;&#xFF0C;&#x5355;&#x4F4D;&#x79D2;;</p>
+</li>
+<li><p><code>RESULT_VARIABLE</code>: &#x7ED3;&#x679C;&#x53D8;&#x91CF;&#xFF0C;&#x53D8;&#x91CF;&#x88AB;&#x8BBE;&#x7F6E;&#x4E3A;&#x5305;&#x542B;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x5B50;&#x8FDB;&#x7A0B;&#x7684;&#x8FD4;&#x56DE;&#x7801;(return code) &#x6216;&#x5F53;&#x9519;&#x8BEF;&#x53D1;&#x751F;&#x65F6;&#xFF0C;&#x63CF;&#x8FF0;&#x9519;&#x8BEF;&#x72B6;&#x6001;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x3002;</p>
+</li>
+<li><p><code>OUTPUT_VARIABLE</code>&#x3001;<code>ERROR_VARIABLE</code>:  <code>OUTPUT_VARIABLE</code>&#x4FDD;&#x5B58;&#x7684;&#x662F;stdout&#x7684;&#x8F93;&#x51FA;&#x5185;&#x5BB9;&#xFF0C;<code>ERROR_VARIABLE</code>&#x4FDD;&#x5B58;&#x7684;&#x662F;stderr&#x7684;&#x8F93;&#x51FA;&#x5185;&#x5BB9;&#x3002;&#x5982;&#x679C;&#x4E3A;2&#x4E2A;&#x7BA1;&#x9053;&#x547D;&#x540D;&#x4E86;&#x76F8;&#x540C;&#x7684;&#x540D;&#x5B57;&#xFF0C;&#x4ED6;&#x4EEC;&#x7684;&#x8F93;&#x51FA;&#x5C06;&#x6309;&#x7167;&#x4EA7;&#x751F;&#x987A;&#x5E8F;&#x88AB;&#x5408;&#x5E76;&#x3002;</p>
+</li>
+<li><p><code>INPUT_FILE</code>,<code>OUTPUT_FILE</code>, <code>ERROR_FILE</code>: &#x8F93;&#x5165;&#x6587;&#x4EF6;&#xFF0C;&#x8F93;&#x51FA;&#x6587;&#x4EF6;&#xFF0C;&#x9519;&#x8BEF;&#x6587;&#x4EF6;&#x3002;&#x547D;&#x540D;&#x7684;&#x6587;&#x4EF6;&#x5C06;&#x5206;&#x522B;&#x4E0E;&#x7B2C;&#x4E00;&#x4E2A;&#x5B50;&#x8FDB;&#x7A0B;&#x7684;stdin&#xFF0C;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x5B50;&#x8FDB;&#x7A0B;&#x7684;stdout&#xFF0C;&#x6240;&#x6709;&#x8FDB;&#x7A0B;&#x7684;stderr&#x76F8;&#x5173;&#x8054;&#x3002;</p>
+</li>
+<li><p><code>OUTPUT_QUIET</code>,<code>ERROR_QUIET</code>: &#x6807;&#x51C6;&#x8F93;&#x51FA;&#x548C;&#x6807;&#x51C6;&#x9519;&#x8BEF;&#x7684;&#x7ED3;&#x679C;&#x5C06;&#x88AB;&#x9759;&#x9ED8;&#x5730;&#x5FFD;&#x7565;&#x3002;</p>
+</li>
+</ul>
+<p>&#x793A;&#x4F8B;:</p>
+<pre><code class="lang-cpp">execute_process(COMMAND touch aaa.jpg
+                COMMAND touch bbb.png
+                COMMAND ls
+                COMMAND grep -E <span class="hljs-string">&quot;png|jpg&quot;</span>
+                OUTPUT_FILE pics)
+
+execute_process(
+        COMMAND sh -c <span class="hljs-string">&quot;echo ${ARG_TO_PASS}&quot;</span>
+        OUTPUT_VARIABLE _RES
+        ERROR_QUIET
+)
+</code></pre>
+<p>&#x5173;&#x4E8E;<code>execute_process</code>&#x4F20;&#x53C2;&#x7684;&#x6CE8;&#x610F;&#x4E8B;&#x9879;&#xFF0C;&#x53EF;&#x53C2;&#x8003;&#x95EE;&#x9898;: <a href="https://stackoverflow.com/questions/43684051/cmake-execute-process-command" target="_blank">cmake execute_process COMMAND</a></p>
+<p>&#x9519;&#x8BEF;&#x793A;&#x8303;:</p>
+<pre><code class="lang-cmake"><span class="hljs-comment">#&#x4E0D;&#x80FD;&#x8FD9;&#x4E48;&#x4F20;&#x53C2;&#xFF0C;&#x76F4;&#x63A5;&#x628A;$MAKE_CMD&#x4E2D;&#x7684;&#x5B8C;&#x6574;&#x5185;&#x5BB9;&#x5F53;&#x6210;&#x4E00;&#x4E2A;&#x53EF;&#x6267;&#x884C;&#x6587;&#x4EF6;&#x4E86;</span>
+<span class="hljs-keyword">set</span>(MAKE_CMD <span class="hljs-string">&quot;${CMAKE_CURRENT_SOURCE_DIR}/makeHeaders.sh ${CMAKE_CURRENT_SOURCE_DIR} ${INC_DIR}&quot;</span>)
+<span class="hljs-keyword">MESSAGE</span>(<span class="hljs-string">&quot;COMMAND: ${MAKE_CMD}&quot;</span>)
+<span class="hljs-keyword">execute_process</span>(COMMAND <span class="hljs-string">&quot;${MAKE_CMD}&quot;</span>   
+   RESULT_VARIABLE CMD_ERROR
+   OUTPUT_FILE CMD_OUTPUT)
+</code></pre>
+<p>&#x6B63;&#x786E;&#x793A;&#x4F8B;:</p>
+<pre><code class="lang-cmake"><span class="hljs-keyword">set</span>(MAKE_CMD <span class="hljs-string">&quot;${CMAKE_CURRENT_SOURCE_DIR}/makeHeaders.sh&quot;</span>)
+<span class="hljs-keyword">MESSAGE</span>(<span class="hljs-string">&quot;COMMAND: ${MAKE_CMD} ${CMAKE_CURRENT_SOURCE_DIR} ${INC_DIR}&quot;</span>)
+<span class="hljs-keyword">execute_process</span>(COMMAND <span class="hljs-variable">${MAKE_CMD}</span> <span class="hljs-variable">${CMAKE_CURRENT_SOURCE_DIR}</span> <span class="hljs-variable">${INC_DIR}</span>
+   RESULT_VARIABLE CMD_ERROR
+   OUTPUT_FILE CMD_OUTPUT
+)
+
+<span class="hljs-keyword">set</span>(MAKE_CMD <span class="hljs-string">&quot;${CMAKE_CURRENT_SOURCE_DIR}/makeHeaders.sh&quot;</span>)
+list(APPEND MAKE_CMD <span class="hljs-variable">${CMAKE_CURRENT_SOURCE_DIR}</span>)
+list(APPEND MAKE_CMD <span class="hljs-variable">${INC_DIR}</span>)
+<span class="hljs-keyword">execute_process</span>(COMMAND <span class="hljs-variable">${MAKE_CMD}</span>
+   RESULT_VARIABLE CMD_ERROR
+   OUTPUT_FILE CMD_OUTPUT
+)
+</code></pre>
+</li>
+</ul>
+<h3 id="&#x5E38;&#x89C1;&#x95EE;&#x9898;">&#x5E38;&#x89C1;&#x95EE;&#x9898;</h3>
+<ol>
+<li><p>&#x5982;&#x4F55;&#x8BBE;&#x7F6E;&#x4F7F;&#x7528;C++ 11 or C++17?</p>
+<p>&#x53C2;&#x8003;&#x95EE;&#x9898;: <a href="https://stackoverflow.com/questions/10851247/how-do-i-activate-c-11-in-cmake" target="_blank">How do I activate C++ 11 in CMake?</a>&#x3001;<a href="https://stackoverflow.com/questions/48026483/setting-cmake-cxx-standard-to-various-values" target="_blank">Setting CMAKE_CXX_STANDARD to various values</a></p>
+<p>&#x5BF9;&#x4E8E;CMake&#x2265;3.1,<code>set(CMAKE_CXX_STANDARD 17)</code>&#x662F;&#x6700;&#x4F73;&#x65B9;&#x6CD5;&#x3002;</p>
+<p>&#x4E3A;&#x4E86;&#x517C;&#x5BB9;&#x8001;&#x7248;&#x672C;&#xFF0C;&#x53EF;&#x4EE5;&#x8FD9;&#x4E48;&#x5199;:</p>
+<pre><code class="lang-cmake"><span class="hljs-keyword">macro</span>(use_cxx11)
+  <span class="hljs-keyword">if</span> (CMAKE_VERSION VERSION_LESS <span class="hljs-string">&quot;3.1&quot;</span>)
+    <span class="hljs-keyword">if</span> (CMAKE_CXX_COMPILER_ID <span class="hljs-keyword">STREQUAL</span> <span class="hljs-string">&quot;GNU&quot;</span>)
+      <span class="hljs-keyword">set</span> (CMAKE_CXX_FLAGS<span class="hljs-string">&quot;${CMAKE_CXX_FLAGS} -std=gnu++11&quot;</span>)
+    <span class="hljs-keyword">endif</span> ()
+  <span class="hljs-keyword">else</span> ()
+    <span class="hljs-keyword">set</span> (CMAKE_CXX_STANDARD <span class="hljs-number">11</span>)
+  <span class="hljs-keyword">endif</span> ()
+<span class="hljs-keyword">endmacro</span>(use_cxx11)
+
+use_cxx11()
+</code></pre>
+<p>&#x6211;&#x4EEC;&#x672A;&#x4E86;&#x8BA9;&#x7528;&#x6237;&#x80FD;&#x81EA;&#x5B9A;&#x4E49;&#xFF0C;&#x53EF;&#x4EE5;&#x8FD9;&#x4E48;&#x5199;:</p>
+<pre><code class="lang-cpp">option(Barry_CXX_STANDARD <span class="hljs-string">&quot;C++ standard&quot;</span> <span class="hljs-number">11</span>)
+<span class="hljs-built_in">set</span>(CMAKE_CXX_STANDARD Barry_CXX_STANDARD)
+
+&#x7528;&#x6237;&#x5C31;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; cmake -DBarry_CXX_STANDARD=<span class="hljs-number">17</span> &#x6765;&#x4F7F;&#x7528; c++<span class="hljs-number">17</span>&#x7248;&#x672C;&#x4E86;&#x3002;
+</code></pre>
+</li>
+<li><p>&#x786E;&#x5B9A;&#x662F;&#x54EA;&#x79CD;&#x7F16;&#x8BD1;&#x5668;&#xFF1F;&#x662F;gcc &#x8FD8;&#x662F; &#x5176;&#x4ED6;&#x7684;&#xFF1F;</p>
+<pre><code class="lang-cmake"><span class="hljs-keyword">if</span>(CMAKE_COMPILER_IS_GNUCC)
+</code></pre>
+<p>&#x8FD8;&#x53EF;&#x4EE5;&#x7528;<code>CMAKE_&lt;LANG&gt;_COMPILER_ID</code>&#xFF0C;&#x53C2;&#x8003;&#x6587;&#x6863;:<a href="https://cmake.org/cmake/help/latest/variable/CMAKE_LANG_COMPILER_ID.html#variable:CMAKE_%3CLANG%3E_COMPILER_ID" target="_blank">CMAKE_<lang>_COMPILER_ID</lang></a></p>
+</li>
+<li><p>cmake&#x5DF2;&#x7ECF;&#x4E3A;&#x4E86;&#x5B9A;&#x4E49;&#x4E86;&#x5F88;&#x591A;&#x53D8;&#x91CF;&#xFF0C;&#x67E5;&#x8BE2;&#x5730;&#x5740;: <a href="https://gitlab.kitware.com/cmake/community/-/wikis/doc/cmake/Useful-Variables" target="_blank">cmake Useful Variables</a></p>
+<p>| &#x53D8;&#x91CF;&#x540D;                   | &#x5927;&#x81F4;&#x542B;&#x4E49;                                                     |
+| ------------------------ | ------------------------------------------------------------ |
+| PROJECT_SOURCE_DIR       | &#x9879;&#x76EE;&#x7684;&#x6839;&#x76EE;&#x5F55;&#xFF0C;&#x5373;&#x5305;&#x542B; PROJECT() &#x547D;&#x4EE4;&#x7684;CMakeLists.txt &#x6700;&#x8FD1;&#x7684;&#x76EE;&#x5F55; |
+| CMAKE_SOURCE_DIR         | &#x5305;&#x542B;&#x6700;&#x9876;&#x5C42;CMakeLists.txt&#x7684;&#x76EE;&#x5F55;                               |
+| CMAKE_CURRENT_SOURCE_DIR | &#x5F53;&#x524D;&#x6B63;&#x5728;&#x5904;&#x7406;&#x7684;CMakeLists.txt&#x6240;&#x5728;&#x7684;&#x76EE;&#x5F55;                       |
+| CMAKE_VERSION            | cmake&#x7684;&#x7248;&#x672C;&#x53F7;                                                |
+| CMAKE_COMMAND            | &#x5C31;&#x662F;cmake&#x547D;&#x4EE4;&#xFF0C;&#x6BD4;&#x5982;&#x5728;add_custom_command&#x4E2D;&#x6267;&#x884C;cmake&#x547D;&#x4EE4;<br>&#x5C31;&#x9700;&#x8981;&#x7528;${CMAKE_COMMAND} |
+|                          |                                                              |</p>
+</li>
+<li><p>C++&#x4E2D;&#x5982;&#x4F55;&#x4F7F;&#x7528;<code>threads</code>?</p>
+<p>&#x53C2;&#x8003;&#x95EE;&#x9898;: <a href="https://stackoverflow.com/questions/1620918/cmake-and-libpthread" target="_blank">cmake and libpthread</a></p>
+<p>CMake 3.1.0+</p>
+<pre><code class="lang-cmake"><span class="hljs-keyword">set</span>(THREADS_PREFER_PTHREAD_FLAG <span class="hljs-keyword">ON</span>)
+<span class="hljs-keyword">find_package</span>(Threads REQUIRED)
+<span class="hljs-keyword">target_link_libraries</span>(my_app PRIVATE Threads::Threads)
+</code></pre>
+<p>CMake 2.8.12+</p>
+<pre><code class="lang-cpp">find_package(Threads REQUIRED)
+<span class="hljs-keyword">if</span>(THREADS_HAVE_PTHREAD_ARG)
+  set_property(TARGET my_app PROPERTY COMPILE_OPTIONS <span class="hljs-string">&quot;-pthread&quot;</span>)
+  set_property(TARGET my_app PROPERTY INTERFACE_COMPILE_OPTIONS <span class="hljs-string">&quot;-pthread&quot;</span>)
+endif()
+<span class="hljs-keyword">if</span>(CMAKE_THREAD_LIBS_INIT)
+  target_link_libraries(my_app <span class="hljs-string">&quot;${CMAKE_THREAD_LIBS_INIT}&quot;</span>)
+endif()
+</code></pre>
+</li>
+</ol>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="GCC安装.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: GCC安装">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"CMake学习与使用","level":"1.6.3","depth":2,"previous":{"title":"GCC安装","level":"1.6.2","depth":2,"path":"工具使用/GCC安装.md","ref":"工具使用/GCC安装.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"工具使用/CMake学习与使用.md","mtime":"2022-01-22T15:21:02.813Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-01-23T03:32:52.808Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
