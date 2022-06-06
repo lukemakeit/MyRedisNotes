@@ -32,8 +32,7 @@ void mapTest(){
 ```cpp
 // 统计输出中每个单词出现的此时，这些单词不包含 The But等
 map<string, size_t> word_count; // empty map from string to size_t
-set<string> exclude = {"The", "But", "And", "Or", "An", "A",
-"the", "but", "and", "or", "an", "a"};
+set<string> exclude = {"The", "But", "And", "Or", "An", "A","the", "but", "and", "or", "an", "a"};
 string word;
 while (cin >> word)
     // count only words that are not in exclude
@@ -43,8 +42,8 @@ while (cin >> word)
 
 问题: 上面的程序，如果我们需要忽略大小写和标点，例如，"example."、"example,"和"Example"。应该怎么处理:
 ```cpp
-str.erease(remove_if(str.begin(),str.end(),ispunct),str.end());
-remote_if的作用是将所有满足条件的元素移动到容器的最左边，str.erease用来做清理
+str.erase(std::remove_if(str.begin(), str.end(),[](unsigned char c) { return std::ispunct(c); }),str.end());
+remove_if的作用是将所有满足条件的元素移动到容器的最左边，str.erease用来做清理
 ```
 
 **定义关联容器**
@@ -153,6 +152,10 @@ if (set_it != iset.end()) {
     cout << *set_it << endl; // ok: 可以读取关键字
 }
 ```
+那如何修改set中的元素呢?
+
+可以先删除`erease()`、而后在插入`insert`。
+
 **遍历关联容器**
 
 ```cpp
@@ -182,6 +185,10 @@ word_count.insert({word, 1});
 word_count.insert(make_pair(word, 1));
 word_count.insert(pair<string, size_t>(word, 1));
 word_count.insert(map<string, size_t>::value_type(word, 1));
+
+#使用emplace()插入时,从返回值很方便判断插入成功还是失败
+pair<map<string,size_t>::iterator, bool> ret =word_count.emplace("hello",4);
+cout << "1、ret.iter = <{" << ret.first->first << ", " << ret.first->second << "}, " << ret.second << ">" << endl;
 ```
 ![3a885bdf012d16d04b73466ef8722336](https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/E79A2F32-4171-4E2E-AA93-C7005295D766.png)
 
@@ -211,6 +218,10 @@ multimap<string, string> authors;
 authors.insert({"Barth, John", "Sot-Weed Factor"});
 // ok: 添加第二个元素，关键字是 Barth, John
 authors.insert({"Barth, John", "Lost in the Funhouse"});
+// or
+authors.insert(pair<string,string>{"Barth, John", "Lost in the Funhouse"});
+// or
+authors.emplace("Barth, John", "Lost in the Funhouse");
 ```
 对允许重复关键字的容器中插入元素，insert操作返回一个指向新元素的迭代器。这里不会返回bool值，因为insert总是成功的。
 
@@ -257,6 +268,8 @@ iset.count(11); // returns 0
 ```
 ![de28598d73698b1fd5944ad3ea87c2ea](https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/11B6E178-8729-4FBC-9BC6-0B24A915E5CF.png)
 
+`lower_bound()`、`upper_bound()`一般用在`multimap`、`multiset`中。一个是大于等于、一个是大于，刚好组成一个 左闭右开 区间`[)`
+
 - 对map使用find代替下标操作；
 
 **在multimap或multiset中查找元素**
@@ -299,3 +312,29 @@ for (auto pos = authors.equal_range(search_item);
         pos.first != pos.second; ++pos.first)
     cout << pos.first->second << endl; // print each title
 ```
+
+<mark style="color:red">**multimap还可以定义第三个参数:key比较方法**</mark>
+
+```cpp
+std::multimap<std::string, int, std::less<std::string>> _mm01;
+// std::multimap<std::string, int, std::greater<std::string>> _mm01;
+_mm01.emplace("bb", 22);
+_mm01.emplace("aa", 11);
+_mm01.emplace("dd", 44);
+_mm01.emplace("cc", 33);
+for (auto &item : _mm01)
+  std::cout << "[" << item.first << "," << item.second << "]" << std::endl;
+
+#自定义key比较方法
+struct myCmp {
+  bool operator()(const std::string &a, const std::string &b) const {
+    return a < b;
+  }
+};
+std::multimap<std::string, int, myCmp> _mm01;
+_mm01.emplace("bb", 22);
+_mm01.emplace("aa", 11);
+_mm01.emplace("dd", 44);
+_mm01.emplace("cc", 33);
+```
+

@@ -190,4 +190,60 @@ Redis定长消息用在执行BGSAVE时，child进程 通过pipeline 不断向 pa
   strcpy(ptr2,ptr1);
   ```
 
+- 为了节省内存，C/C++中常量字符串放到一个单独的内存区域。
+
+  **当几个指针赋予了相同的常量字符串时，它实际上会指向相同的内存地址**
+
+  **但用常量字符串初始化数组时，则不是相同的地址**
+
+  ```cpp
+  char str1[]="hello world";
+  char str2[]="hello world";
+  
+  char* str3="hello world"; # 指向同一块不可变的内存区域
+  char* str4="hello world";
+  
+  if(str1 == str2)
+    printf("str1 and str2 are same.\n");
+  else
+    printf("str1 and str2 are not same.\n");
+  
+  if(str3 == str4)
+    printf("str3 and str4 are same.\n");
+  else
+    printf("str3 and str4 are not same.\n");
+  
+  最后结果:
+  str1 and str2 are not same.
+  str3 and str4 are same.
+  ```
+
+- 数组和指针的区别: 
+
+  当我们声明一个数组时，数组的名字也是一个指针，该指针指向数组的第一个元素。
+
+  我们可以用指针来访问数组。不过需要注意的是：C/C++中没有记录数组的大小，因此指针访问数组元素时，需确保数组没有越界。
+
+  如:
+
+  ```cpp
+  #数组作为函数的参数进行传递时,数组会自动退化为同类型的指针
+  #尽管该函数的形参data被声明为数组
+  int GetSize(int data[]) { return sizeof(data); }
+  
+  int _tmain(int argc, char *argv[]) {
+    int data1[] = {1, 2, 3, 4, 5};
+    int size1 = sizeof(data1); #求数组的大小,数组中包含5个整数,每个整数4个字节
+  
+    int *data2 = data1;
+    int size2 = sizeof(data2); #尽管指向一个数组,但本质还是指针
+  
+    int size3 = GetSize(data1); #数组作为函数的参数进行传递时,数组会自动退化为同类型的指针
+  
+    printf("%d, %d, %d", size1, size2, size3);
+  }
+  最后结果:
+  20,4,4
+  ```
+
   

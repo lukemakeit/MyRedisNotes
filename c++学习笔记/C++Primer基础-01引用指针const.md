@@ -38,6 +38,18 @@ int &refVal5=dval; //错误: 引用类型初始值必须是int型对象
   int &refVal3=refVal; //refVal3绑定到 refVal绑定的队形上，也就是ival上
   int i=refVal; // i被初始化为ival的值
   ```
+  
+- **<mark style="color:red">注意:下面的代码不是将引用指向另一个变量,而是变成了赋值行为</mark>**
+  
+  ```cpp
+  int a=10,b=5;
+  int &min=a,&max=5;
+  if(a>b){
+  	min=b; //此时a=5
+  	max=a; //max=5
+  }
+  这么执行就完了
+  ```
 
 ### **指针**
 

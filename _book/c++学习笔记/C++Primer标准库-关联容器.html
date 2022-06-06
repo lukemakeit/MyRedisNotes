@@ -645,8 +645,7 @@
 <p><strong>&#x4F7F;&#x7528;set</strong></p>
 <pre><code class="lang-cpp"><span class="hljs-comment">// &#x7EDF;&#x8BA1;&#x8F93;&#x51FA;&#x4E2D;&#x6BCF;&#x4E2A;&#x5355;&#x8BCD;&#x51FA;&#x73B0;&#x7684;&#x6B64;&#x65F6;&#xFF0C;&#x8FD9;&#x4E9B;&#x5355;&#x8BCD;&#x4E0D;&#x5305;&#x542B; The But&#x7B49;</span>
 <span class="hljs-built_in">map</span>&lt;<span class="hljs-built_in">string</span>, <span class="hljs-keyword">size_t</span>&gt; word_count; <span class="hljs-comment">// empty map from string to size_t</span>
-<span class="hljs-built_in">set</span>&lt;<span class="hljs-built_in">string</span>&gt; exclude = {<span class="hljs-string">&quot;The&quot;</span>, <span class="hljs-string">&quot;But&quot;</span>, <span class="hljs-string">&quot;And&quot;</span>, <span class="hljs-string">&quot;Or&quot;</span>, <span class="hljs-string">&quot;An&quot;</span>, <span class="hljs-string">&quot;A&quot;</span>,
-<span class="hljs-string">&quot;the&quot;</span>, <span class="hljs-string">&quot;but&quot;</span>, <span class="hljs-string">&quot;and&quot;</span>, <span class="hljs-string">&quot;or&quot;</span>, <span class="hljs-string">&quot;an&quot;</span>, <span class="hljs-string">&quot;a&quot;</span>};
+<span class="hljs-built_in">set</span>&lt;<span class="hljs-built_in">string</span>&gt; exclude = {<span class="hljs-string">&quot;The&quot;</span>, <span class="hljs-string">&quot;But&quot;</span>, <span class="hljs-string">&quot;And&quot;</span>, <span class="hljs-string">&quot;Or&quot;</span>, <span class="hljs-string">&quot;An&quot;</span>, <span class="hljs-string">&quot;A&quot;</span>,<span class="hljs-string">&quot;the&quot;</span>, <span class="hljs-string">&quot;but&quot;</span>, <span class="hljs-string">&quot;and&quot;</span>, <span class="hljs-string">&quot;or&quot;</span>, <span class="hljs-string">&quot;an&quot;</span>, <span class="hljs-string">&quot;a&quot;</span>};
 <span class="hljs-built_in">string</span> word;
 <span class="hljs-keyword">while</span> (<span class="hljs-built_in">cin</span> &gt;&gt; word)
     <span class="hljs-comment">// count only words that are not in exclude</span>
@@ -654,8 +653,8 @@
         ++word_count[word]; <span class="hljs-comment">// fetch and increment the counter for word</span>
 </code></pre>
 <p>&#x95EE;&#x9898;: &#x4E0A;&#x9762;&#x7684;&#x7A0B;&#x5E8F;&#xFF0C;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x5FFD;&#x7565;&#x5927;&#x5C0F;&#x5199;&#x548C;&#x6807;&#x70B9;&#xFF0C;&#x4F8B;&#x5982;&#xFF0C;&quot;example.&quot;&#x3001;&quot;example,&quot;&#x548C;&quot;Example&quot;&#x3002;&#x5E94;&#x8BE5;&#x600E;&#x4E48;&#x5904;&#x7406;:</p>
-<pre><code class="lang-cpp">str.erease(remove_if(str.begin(),str.end(),<span class="hljs-built_in">ispunct</span>),str.end());
-remote_if&#x7684;&#x4F5C;&#x7528;&#x662F;&#x5C06;&#x6240;&#x6709;&#x6EE1;&#x8DB3;&#x6761;&#x4EF6;&#x7684;&#x5143;&#x7D20;&#x79FB;&#x52A8;&#x5230;&#x5BB9;&#x5668;&#x7684;&#x6700;&#x5DE6;&#x8FB9;&#xFF0C;str.erease&#x7528;&#x6765;&#x505A;&#x6E05;&#x7406;
+<pre><code class="lang-cpp">str.erase(<span class="hljs-built_in">std</span>::remove_if(str.begin(), str.end(),[](<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">char</span> c) { <span class="hljs-keyword">return</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">ispunct</span>(c); }),str.end());
+remove_if&#x7684;&#x4F5C;&#x7528;&#x662F;&#x5C06;&#x6240;&#x6709;&#x6EE1;&#x8DB3;&#x6761;&#x4EF6;&#x7684;&#x5143;&#x7D20;&#x79FB;&#x52A8;&#x5230;&#x5BB9;&#x5668;&#x7684;&#x6700;&#x5DE6;&#x8FB9;&#xFF0C;str.erease&#x7528;&#x6765;&#x505A;&#x6E05;&#x7406;
 </code></pre>
 <p><strong>&#x5B9A;&#x4E49;&#x5173;&#x8054;&#x5BB9;&#x5668;</strong></p>
 <pre><code class="lang-cpp"><span class="hljs-built_in">map</span>&lt;<span class="hljs-built_in">string</span>, <span class="hljs-keyword">size_t</span>&gt; word_count; <span class="hljs-comment">// &#x7A7A;&#x5BB9;&#x5668;</span>
@@ -745,6 +744,8 @@ map_it-&gt;first = <span class="hljs-string">&quot;new key&quot;</span>; <span c
     <span class="hljs-built_in">cout</span> &lt;&lt; *set_it &lt;&lt; <span class="hljs-built_in">endl</span>; <span class="hljs-comment">// ok: &#x53EF;&#x4EE5;&#x8BFB;&#x53D6;&#x5173;&#x952E;&#x5B57;</span>
 }
 </code></pre>
+<p>&#x90A3;&#x5982;&#x4F55;&#x4FEE;&#x6539;set&#x4E2D;&#x7684;&#x5143;&#x7D20;&#x5462;?</p>
+<p>&#x53EF;&#x4EE5;&#x5148;&#x5220;&#x9664;<code>erease()</code>&#x3001;&#x800C;&#x540E;&#x5728;&#x63D2;&#x5165;<code>insert</code>&#x3002;</p>
 <p><strong>&#x904D;&#x5386;&#x5173;&#x8054;&#x5BB9;&#x5668;</strong></p>
 <pre><code class="lang-cpp"><span class="hljs-comment">// &#x83B7;&#x53D6;&#x6307;&#x5411;&#x9996;&#x5143;&#x7D20;&#x7684;&#x8FED;&#x4EE3;&#x5668;</span>
 <span class="hljs-keyword">auto</span> map_it = word_count.cbegin();
@@ -768,6 +769,10 @@ set2.insert({<span class="hljs-number">1</span>,<span class="hljs-number">3</spa
 word_count.insert(make_pair(word, <span class="hljs-number">1</span>));
 word_count.insert(pair&lt;<span class="hljs-built_in">string</span>, <span class="hljs-keyword">size_t</span>&gt;(word, <span class="hljs-number">1</span>));
 word_count.insert(<span class="hljs-built_in">map</span>&lt;<span class="hljs-built_in">string</span>, <span class="hljs-keyword">size_t</span>&gt;::value_type(word, <span class="hljs-number">1</span>));
+
+<span class="hljs-meta">#&#x4F7F;&#x7528;emplace()&#x63D2;&#x5165;&#x65F6;,&#x4ECE;&#x8FD4;&#x56DE;&#x503C;&#x5F88;&#x65B9;&#x4FBF;&#x5224;&#x65AD;&#x63D2;&#x5165;&#x6210;&#x529F;&#x8FD8;&#x662F;&#x5931;&#x8D25;</span>
+pair&lt;<span class="hljs-built_in">map</span>&lt;<span class="hljs-built_in">string</span>,<span class="hljs-keyword">size_t</span>&gt;::iterator, <span class="hljs-keyword">bool</span>&gt; ret =word_count.emplace(<span class="hljs-string">&quot;hello&quot;</span>,<span class="hljs-number">4</span>);
+<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">&quot;1&#x3001;ret.iter = &lt;{&quot;</span> &lt;&lt; ret.first-&gt;first &lt;&lt; <span class="hljs-string">&quot;, &quot;</span> &lt;&lt; ret.first-&gt;second &lt;&lt; <span class="hljs-string">&quot;}, &quot;</span> &lt;&lt; ret.second &lt;&lt; <span class="hljs-string">&quot;&gt;&quot;</span> &lt;&lt; <span class="hljs-built_in">endl</span>;
 </code></pre>
 <p><img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/E79A2F32-4171-4E2E-AA93-C7005295D766.png" alt="3a885bdf012d16d04b73466ef8722336"></p>
 <p><strong>&#x68C0;&#x6D4B;insert&#x7684;&#x8FD4;&#x56DE;&#x503C;</strong>
@@ -791,6 +796,10 @@ word_count.insert(<span class="hljs-built_in">map</span>&lt;<span class="hljs-bu
 authors.insert({<span class="hljs-string">&quot;Barth, John&quot;</span>, <span class="hljs-string">&quot;Sot-Weed Factor&quot;</span>});
 <span class="hljs-comment">// ok: &#x6DFB;&#x52A0;&#x7B2C;&#x4E8C;&#x4E2A;&#x5143;&#x7D20;&#xFF0C;&#x5173;&#x952E;&#x5B57;&#x662F; Barth, John</span>
 authors.insert({<span class="hljs-string">&quot;Barth, John&quot;</span>, <span class="hljs-string">&quot;Lost in the Funhouse&quot;</span>});
+<span class="hljs-comment">// or</span>
+authors.insert(pair&lt;<span class="hljs-built_in">string</span>,<span class="hljs-built_in">string</span>&gt;{<span class="hljs-string">&quot;Barth, John&quot;</span>, <span class="hljs-string">&quot;Lost in the Funhouse&quot;</span>});
+<span class="hljs-comment">// or</span>
+authors.emplace(<span class="hljs-string">&quot;Barth, John&quot;</span>, <span class="hljs-string">&quot;Lost in the Funhouse&quot;</span>);
 </code></pre>
 <p>&#x5BF9;&#x5141;&#x8BB8;&#x91CD;&#x590D;&#x5173;&#x952E;&#x5B57;&#x7684;&#x5BB9;&#x5668;&#x4E2D;&#x63D2;&#x5165;&#x5143;&#x7D20;&#xFF0C;insert&#x64CD;&#x4F5C;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x6307;&#x5411;&#x65B0;&#x5143;&#x7D20;&#x7684;&#x8FED;&#x4EE3;&#x5668;&#x3002;&#x8FD9;&#x91CC;&#x4E0D;&#x4F1A;&#x8FD4;&#x56DE;bool&#x503C;&#xFF0C;&#x56E0;&#x4E3A;insert&#x603B;&#x662F;&#x6210;&#x529F;&#x7684;&#x3002;</p>
 <h4 id="&#x5220;&#x9664;&#x5143;&#x7D20;">&#x5220;&#x9664;&#x5143;&#x7D20;</h4>
@@ -827,6 +836,7 @@ iset.count(<span class="hljs-number">1</span>); <span class="hljs-comment">// re
 iset.count(<span class="hljs-number">11</span>); <span class="hljs-comment">// returns 0</span>
 </code></pre>
 <p><img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/11B6E178-8729-4FBC-9BC6-0B24A915E5CF.png" alt="de28598d73698b1fd5944ad3ea87c2ea"></p>
+<p><code>lower_bound()</code>&#x3001;<code>upper_bound()</code>&#x4E00;&#x822C;&#x7528;&#x5728;<code>multimap</code>&#x3001;<code>multiset</code>&#x4E2D;&#x3002;&#x4E00;&#x4E2A;&#x662F;&#x5927;&#x4E8E;&#x7B49;&#x4E8E;&#x3001;&#x4E00;&#x4E2A;&#x662F;&#x5927;&#x4E8E;&#xFF0C;&#x521A;&#x597D;&#x7EC4;&#x6210;&#x4E00;&#x4E2A; &#x5DE6;&#x95ED;&#x53F3;&#x5F00; &#x533A;&#x95F4;<code>[)</code></p>
 <ul>
 <li>&#x5BF9;map&#x4F7F;&#x7528;find&#x4EE3;&#x66FF;&#x4E0B;&#x6807;&#x64CD;&#x4F5C;&#xFF1B;</li>
 </ul>
@@ -868,6 +878,28 @@ d. &#x6B64;&#x65F6;<code>lower_bound</code>&#x548C;<code>upper_bound</code>&#x4F
 </code></pre>
 </li>
 </ul>
+<p><mark style="color:red"><strong>multimap&#x8FD8;&#x53EF;&#x4EE5;&#x5B9A;&#x4E49;&#x7B2C;&#x4E09;&#x4E2A;&#x53C2;&#x6570;:key&#x6BD4;&#x8F83;&#x65B9;&#x6CD5;</strong></mark></p>
+<pre><code class="lang-cpp"><span class="hljs-built_in">std</span>::<span class="hljs-built_in">multimap</span>&lt;<span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span>, <span class="hljs-keyword">int</span>, <span class="hljs-built_in">std</span>::less&lt;<span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span>&gt;&gt; _mm01;
+<span class="hljs-comment">// std::multimap&lt;std::string, int, std::greater&lt;std::string&gt;&gt; _mm01;</span>
+_mm01.emplace(<span class="hljs-string">&quot;bb&quot;</span>, <span class="hljs-number">22</span>);
+_mm01.emplace(<span class="hljs-string">&quot;aa&quot;</span>, <span class="hljs-number">11</span>);
+_mm01.emplace(<span class="hljs-string">&quot;dd&quot;</span>, <span class="hljs-number">44</span>);
+_mm01.emplace(<span class="hljs-string">&quot;cc&quot;</span>, <span class="hljs-number">33</span>);
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> &amp;item : _mm01)
+  <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">&quot;[&quot;</span> &lt;&lt; item.first &lt;&lt; <span class="hljs-string">&quot;,&quot;</span> &lt;&lt; item.second &lt;&lt; <span class="hljs-string">&quot;]&quot;</span> &lt;&lt; <span class="hljs-built_in">std</span>::<span class="hljs-built_in">endl</span>;
+
+<span class="hljs-meta">#&#x81EA;&#x5B9A;&#x4E49;key&#x6BD4;&#x8F83;&#x65B9;&#x6CD5;</span>
+<span class="hljs-keyword">struct</span> myCmp {
+  <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">operator</span><span class="hljs-params">()</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> &amp;a, <span class="hljs-keyword">const</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> &amp;b)</span> <span class="hljs-keyword">const</span> </span>{
+    <span class="hljs-keyword">return</span> a &lt; b;
+  }
+};
+<span class="hljs-built_in">std</span>::<span class="hljs-built_in">multimap</span>&lt;<span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span>, <span class="hljs-keyword">int</span>, myCmp&gt; _mm01;
+_mm01.emplace(<span class="hljs-string">&quot;bb&quot;</span>, <span class="hljs-number">22</span>);
+_mm01.emplace(<span class="hljs-string">&quot;aa&quot;</span>, <span class="hljs-number">11</span>);
+_mm01.emplace(<span class="hljs-string">&quot;dd&quot;</span>, <span class="hljs-number">44</span>);
+_mm01.emplace(<span class="hljs-string">&quot;cc&quot;</span>, <span class="hljs-number">33</span>);
+</code></pre>
 
                                 
                                 </section>
@@ -911,7 +943,7 @@ d. &#x6B64;&#x65F6;<code>lower_bound</code>&#x548C;<code>upper_bound</code>&#x4F
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"C++ Primer 标准库: 关联容器","level":"1.5.11","depth":2,"next":{"title":"C++ Primer 标准库: 动态内存","level":"1.5.12","depth":2,"path":"c++学习笔记/C++Primer标准库-动态内存.md","ref":"c++学习笔记/C++Primer标准库-动态内存.md","articles":[]},"previous":{"title":"C++ Primer 标准库: 泛型算法","level":"1.5.10","depth":2,"path":"c++学习笔记/C++Primer标准库-泛型算法.md","ref":"c++学习笔记/C++Primer标准库-泛型算法.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"c++学习笔记/C++Primer标准库-关联容器.md","mtime":"2022-01-12T13:52:41.113Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-01-23T03:32:52.808Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"C++ Primer 标准库: 关联容器","level":"1.5.11","depth":2,"next":{"title":"C++ Primer 标准库: 动态内存","level":"1.5.12","depth":2,"path":"c++学习笔记/C++Primer标准库-动态内存.md","ref":"c++学习笔记/C++Primer标准库-动态内存.md","articles":[]},"previous":{"title":"C++ Primer 标准库: 泛型算法","level":"1.5.10","depth":2,"path":"c++学习笔记/C++Primer标准库-泛型算法.md","ref":"c++学习笔记/C++Primer标准库-泛型算法.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"c++学习笔记/C++Primer标准库-关联容器.md","mtime":"2022-04-05T14:53:18.495Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-06-06T23:25:07.193Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -919,10 +951,6 @@ d. &#x6B64;&#x65F6;<code>lower_bound</code>&#x548C;<code>upper_bound</code>&#x4F
         
     <script src="../gitbook/gitbook.js"></script>
     <script src="../gitbook/theme.js"></script>
-    
-        
-        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
-        
     
         
         <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>

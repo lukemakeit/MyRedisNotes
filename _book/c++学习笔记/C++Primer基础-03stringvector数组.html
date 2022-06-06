@@ -620,7 +620,6 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="cprimer&#x57FA;&#x7840;-string&#x3001;vector&#x3001;&#x6570;&#x7EC4;">C++Primer&#x57FA;&#x7840;: string&#x3001;vector&#x3001;&#x6570;&#x7EC4;</h1>
-<h3 id="cprimer&#x57FA;&#x7840;string&#x3001;vector&#x3001;&#x6570;&#x7EC4;">C++Primer&#x57FA;&#x7840;:string&#x3001;vector&#x3001;&#x6570;&#x7EC4;</h3>
 <h3 id="string">string</h3>
 <pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;string&gt;</span></span>
 <span class="hljs-keyword">using</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span>;
@@ -635,7 +634,8 @@
 <span class="hljs-built_in">string</span> s2=s1; <span class="hljs-comment">// &#x7B49;&#x4EF7;&#x4E8E;s2(s1);</span>
 <span class="hljs-function"><span class="hljs-built_in">string</span> <span class="hljs-title">s3</span><span class="hljs-params">(<span class="hljs-string">&quot;value&quot;</span>)</span></span>; <span class="hljs-comment">//s3&#x662F;&#x5B57;&#x9762;&#x503C;&quot;value&quot;&#x7684;&#x526F;&#x672C;,&#x9664;&#x4E86;&#x5B57;&#x9762;&#x503C;&#x6700;&#x540E;&#x7684;&#x90A3;&#x4E2A;&#x7A7A;&#x5B57;&#x7B26;&#x4E32;&#x5916;</span>
 <span class="hljs-built_in">string</span> s3=<span class="hljs-string">&quot;value&quot;</span>; <span class="hljs-comment">// &#x7B49;&#x4EF7;&#x4E8E;s3(&quot;value&quot;)</span>
-<span class="hljs-function"><span class="hljs-built_in">string</span> <span class="hljs-title">s4</span><span class="hljs-params">(n,<span class="hljs-string">&apos;c&apos;</span>)</span></span>; <span class="hljs-comment">//s4&#x521D;&#x59CB;&#x5316;&#x4E3A;&#x8FDE;&#x7EED;n&#x4E2A;&#x5B57;&#x7B26;c&#x7EC4;&#x6210;&#x7684;&#x5B57;&#x7B26;&#x4E32;</span>
+<span class="hljs-function"><span class="hljs-built_in">string</span> <span class="hljs-title">s3</span><span class="hljs-params">(<span class="hljs-number">4</span>, <span class="hljs-string">&apos;K&apos;</span>)</span></span>;  <span class="hljs-comment">// s3 = &quot;KKKK&quot;</span>
+<span class="hljs-function"><span class="hljs-built_in">string</span> <span class="hljs-title">s4</span><span class="hljs-params">(<span class="hljs-string">&quot;12345&quot;</span>, <span class="hljs-number">1</span>, <span class="hljs-number">3</span>)</span></span>;  <span class="hljs-comment">//s4 = &quot;234&quot;&#xFF0C;&#x5373; &quot;12345&quot; &#x7684;&#x4ECE;&#x4E0B;&#x6807; 1 &#x5F00;&#x59CB;&#xFF0C;&#x957F;&#x5EA6;&#x4E3A; 3 &#x7684;&#x5B50;&#x4E32;</span>
 </code></pre>
 <ul>
 <li><code>cin &gt;&gt; s</code>,&#x5982;&#x679C;&#x8F93;&#x5165;&#x7684;&#x662F;&quot; Hello World! &quot;,&#x5219;&#x8BFB;&#x53D6;&#x5B57;&#x7B26;&#x4E32;s&#x4E2D;&#x7684;&#x5185;&#x5BB9;&#x662F;&quot;Hello&quot; &#x6CA1;&#x6709;&#x4EFB;&#x4F55;&#x7A7A;&#x683C;&#x3002;</li>
@@ -670,13 +670,38 @@ s6=tmp + <span class="hljs-string">&quot;world&quot;</span>;  &#x6B63;&#x786E;
 <p>&#x800C;<code>string s7=&quot;hello&quot; + &quot;,&quot; + s2;</code>&#x4E2D;<code>(&quot;hello&quot; + &quot;, &quot;) + s2</code> &#x62EC;&#x53F7;&#x4E2D;&#x5185;&#x5BB9;&#x975E;&#x6CD5;&#x3002;</p>
 <p>&#x7279;&#x522B;&#x6CE8;&#x610F;: &#x56E0;&#x4E3A;&#x67D0;&#x4E9B;&#x5386;&#x53F2;&#x539F;&#x56E0;&#xFF0C;&#x4E5F;&#x4E3A;&#x4E86;&#x548C;C&#x517C;&#x5BB9;&#xFF0C;&#x6240;&#x4EE5;C++&#x8BED;&#x8A00;&#x4E2D;&#x5B57;&#x7B26;&#x4E32;&#x5B57;&#x9762;&#x503C;&#x5E76;&#x4E0D;&#x662F;string&#x7C7B;&#x578B;&#x7684;&#x5BF9;&#x8C61;&#x3002;&#x5207;&#x8BB0;&#xFF0C;<strong>&#x5B57;&#x7B26;&#x4E32;&#x5B57;&#x9762;&#x503C;&#x4E0E;string&#x662F;&#x4E0D;&#x540C;&#x7684;&#x7C7B;&#x578B;&#x3002;</strong></p>
 </li>
-<li><p>&#x904D;&#x5386;&#x5B57;&#x7B26;&#x4E32;&#x4E2D;&#x6BCF;&#x4E2A;&#x5B57;&#x7B26;:</p>
+<li><p><strong>string&#x5BF9;&#x8C61;&#x8FD8;&#x53EF;&#x4EE5;&#x7528;<code>append</code>&#x8FDB;&#x884C;&#x62FC;&#x63A5;</strong></p>
+<pre><code class="lang-cpp">string s1(&quot;123&quot;), s2(&quot;abc&quot;);
+s1.append(s2);  // s1 = &quot;123abc&quot;
+s1.append(s2, 1, 2);  // s1 = &quot;123abcbc&quot;
+s1.append(3, &apos;K&apos;);  // s1 = &quot;123abcbcKKK&quot;
+s1.append(&quot;ABCDE&quot;, 2, 3);  // s1 = &quot;123abcbcKKKCDE&quot;&#xFF0C;&#x6DFB;&#x52A0; &quot;ABCDE&quot; &#x7684;&#x5B50;&#x4E32;(2, 3)
+</code></pre>
+</li>
+<li><p><strong>string&#x5BF9;&#x8C61;&#x7684;&#x6BD4;&#x8F83;</strong></p>
+<p>&#x53EF;&#x4EE5;&#x7528;<code>&lt;&#x3001;&lt;=&#x3001;==&#x3001;!=&#x3001;&gt;=&#x3001;&gt;</code>&#x8FD0;&#x7B97;&#x7B26;&#x6BD4;&#x8F83;string&#x5BF9;&#x8C61;&#x3002;&#x9664;&#x6B64;&#x4E4B;&#x5916;&#xFF0C;string&#x5BF9;&#x8C61;&#x8FD8;&#x53EF;&#x4EE5;&#x7528;<code>compare</code>&#x51FD;&#x6570;&#x6BD4;&#x8F83;&#x3002;</p>
+<ul>
+<li><p>&#x5C0F;&#x4E8E;0&#x8868;&#x793A;&#x5F53;&#x524D;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x5C0F;;</p>
+</li>
+<li><p>&#x7B49;&#x4E8E;0&#x8868;&#x793A;&#x4E24;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#x76F8;&#x7B49;;</p>
+</li>
+<li><p>&#x5927;&#x4E8E;0&#x8868;&#x793A;&#x5F53;&#x524D;&#x5B57;&#x7B26;&#x4E32;&#x5927;;</p>
+<pre><code class="lang-cpp">string s1(&quot;hello&quot;), s2(&quot;hello, world&quot;);
+int n = s1.compare(s2);
+n = s1.compare(1, 2, s2, 0, 3);  //&#x6BD4;&#x8F83;s1&#x7684;&#x5B50;&#x4E32; (1,2) &#x548C;s2&#x7684;&#x5B50;&#x4E32; (0,3)
+n = s1.compare(0, 2, s2);  // &#x6BD4;&#x8F83;s1&#x7684;&#x5B50;&#x4E32; (0,2) &#x548C; s2
+n = s1.compare(&quot;Hello&quot;);
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p><strong>&#x904D;&#x5386;&#x5B57;&#x7B26;&#x4E32;&#x4E2D;&#x6BCF;&#x4E2A;&#x5B57;&#x7B26;</strong></p>
 <pre><code class="lang-cpp"><span class="hljs-function"><span class="hljs-built_in">string</span> <span class="hljs-title">str</span><span class="hljs-params">(<span class="hljs-string">&quot;Some string&quot;</span>)</span></span>;
 <span class="hljs-keyword">for</span>(<span class="hljs-keyword">auto</span> c:str):
     <span class="hljs-built_in">cout</span>&lt;&lt;c&lt;&lt;<span class="hljs-built_in">endl</span>;
 </code></pre>
 </li>
-<li><p>&#x4F7F;&#x7528;for&#x8BED;&#x53E5;&#x6539;&#x53D8;&#x5B57;&#x7B26;&#x4E32;&#x4E2D;&#x7684;&#x5B57;&#x7B26;:</p>
+<li><p><strong>&#x4F7F;&#x7528;for&#x8BED;&#x53E5;&#x6539;&#x53D8;&#x5B57;&#x7B26;&#x4E32;&#x4E2D;&#x7684;&#x5B57;&#x7B26;</strong></p>
 <pre><code class="lang-cpp"><span class="hljs-function"><span class="hljs-built_in">string</span> <span class="hljs-title">s</span><span class="hljs-params">(<span class="hljs-string">&quot;Hello world!!!&quot;</span>)</span></span>;
 <span class="hljs-keyword">for</span>(<span class="hljs-keyword">auto</span> &amp;c:s)
     c=touuper(c);
@@ -685,11 +710,178 @@ count &lt;&lt; s &lt;&lt; <span class="hljs-built_in">endl</span>;
 </li>
 </ul>
 <p><img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20211127230618752.png" alt=""></p>
+<ul>
+<li><p><strong>&#x6C42;string&#x5BF9;&#x8C61;&#x7684;&#x5B50;&#x4E32;:<code>substr</code>,n&#x8868;&#x793A;&#x8D77;&#x59CB;&#x4F4D;&#x7F6E;,m&#x8868;&#x793A;&#x5B50;&#x4E32;&#x7684;&#x957F;&#x5EA6;</strong></p>
+<pre><code class="lang-cpp"><span class="hljs-function"><span class="hljs-built_in">string</span> <span class="hljs-title">substr</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n = <span class="hljs-number">0</span>, <span class="hljs-keyword">int</span> m = <span class="hljs-built_in">string</span>::npos)</span> <span class="hljs-keyword">const</span></span>;
+</code></pre>
+<p>&#x8C03;&#x7528;&#x65F6;&#xFF0C;&#x5982;&#x679C;&#x7701;&#x7565; m &#x6216; m &#x8D85;&#x8FC7;&#x4E86;&#x5B57;&#x7B26;&#x4E32;&#x7684;&#x957F;&#x5EA6;&#xFF0C;&#x5219;&#x6C42;&#x51FA;&#x6765;&#x7684;&#x5B50;&#x4E32;&#x5C31;&#x662F;&#x4ECE;&#x4E0B;&#x6807; n &#x5F00;&#x59CB;&#x4E00;&#x76F4;&#x5230;&#x5B57;&#x7B26;&#x4E32;&#x7ED3;&#x675F;&#x7684;&#x90E8;&#x5206;&#x3002;&#x4F8B;&#x5982;&#xFF1A;</p>
+<pre><code class="lang-cpp"><span class="hljs-built_in">string</span> s1 = <span class="hljs-string">&quot;this is ok&quot;</span>;
+<span class="hljs-built_in">string</span> s2 = s1.substr(<span class="hljs-number">2</span>, <span class="hljs-number">4</span>);  <span class="hljs-comment">// s2 = &quot;is i&quot;</span>
+s2 = s1.substr(<span class="hljs-number">2</span>);  <span class="hljs-comment">// s2 = &quot;is is ok&quot;</span>
+</code></pre>
+</li>
+<li><p><strong>&#x4EA4;&#x6362;&#x4E24;&#x4E2A;string&#x5BF9;&#x8C61;&#x7684;&#x5185;&#x5BB9;</strong></p>
+<pre><code class="lang-cpp">string s1(&quot;West&#x201D;), s2(&quot;East&quot;);
+s1.swap(s2);  // s1 = &quot;East&quot;&#xFF0C;s2 = &quot;West&quot;
+</code></pre>
+</li>
+<li><p><strong>&#x67E5;&#x627E;&#x5B50;&#x4E32;&#x548C;&#x5B57;&#x7B26;</strong></p>
+<p>string &#x7C7B;&#x6709;&#x4E00;&#x4E9B;&#x67E5;&#x627E;&#x5B50;&#x4E32;&#x548C;&#x5B57;&#x7B26;&#x7684;&#x6210;&#x5458;&#x51FD;&#x6570;&#xFF0C;&#x5B83;&#x4EEC;&#x7684;&#x8FD4;&#x56DE;&#x503C;&#x90FD;&#x662F;&#x5B50;&#x4E32;&#x6216;&#x5B57;&#x7B26;&#x5728; string &#x5BF9;&#x8C61;&#x5B57;&#x7B26;&#x4E32;&#x4E2D;&#x7684;&#x4F4D;&#x7F6E;&#xFF08;&#x5373;&#x4E0B;&#x6807;&#xFF09;&#x3002;&#x5982;&#x679C;&#x67E5;&#x4E0D;&#x5230;&#xFF0C;&#x5219;&#x8FD4;&#x56DE;<code>string::npos</code>&#x3002;<code>string: :npos</code>&#x662F;&#x5728; string &#x7C7B;&#x4E2D;&#x5B9A;&#x4E49;&#x7684;&#x4E00;&#x4E2A;&#x9759;&#x6001;&#x5E38;&#x91CF;&#x3002;&#x8FD9;&#x4E9B;&#x51FD;&#x6570;&#x5982;&#x4E0B;&#xFF1A;</p>
+<ul>
+<li><p><code>find</code>: &#x4ECE;&#x524D;&#x5F80;&#x540E;&#x67E5;&#x627E;&#x5B50;&#x4E32;&#x6216;&#x5B57;&#x7B26;&#x51FA;&#x73B0;&#x7684;&#x4F4D;&#x7F6E;&#x3002;</p>
+</li>
+<li><p><code>rfind</code>: &#x4ECE;&#x540E;&#x5F80;&#x524D;&#x67E5;&#x627E;&#x5B50;&#x4E32;&#x6216;&#x5B57;&#x7B26;&#x51FA;&#x73B0;&#x7684;&#x4F4D;&#x7F6E;&#x3002;</p>
+</li>
+<li><p><code>find_first_of</code>: &#x4ECE;&#x524D;&#x5F80;&#x540E;&#x67E5;&#x627E;&#x4F55;&#x5904;&#x51FA;&#x73B0;&#x53E6;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#x4E2D;&#x5305;&#x542B;&#x7684;&#x5B57;&#x7B26;&#x3002;&#x4F8B;&#x5982;&#xFF1A;<code>s1.find_first_of(&quot;abc&quot;);</code><mark style="color:blue"><strong>//&#x67E5;&#x627E;s1&#x4E2D;&#x7B2C;&#x4E00;&#x6B21;&#x51FA;&#x73B0;&quot;abc&quot;&#x4E2D;&#x4EFB;&#x4E00;&#x5B57;&#x7B26;&#x7684;&#x4F4D;&#x7F6E;</strong></mark></p>
+</li>
+<li><p><code>find_last_of</code>:&#x4ECE;&#x540E;&#x5F80;&#x524D;&#x67E5;&#x627E;&#x4F55;&#x5904;&#x51FA;&#x73B0;&#x53E6;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#x4E2D;&#x5305;&#x542B;&#x7684;&#x5B57;&#x7B26;&#x3002;</p>
+</li>
+<li><p><code>find_first_not_of</code>:&#x4ECE;&#x524D;&#x5F80;&#x540E;&#x67E5;&#x627E;&#x4F55;&#x5904;&#x51FA;&#x73B0;&#x53E6;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#x4E2D;&#x6CA1;&#x6709;&#x5305;&#x542B;&#x7684;&#x5B57;&#x7B26;;</p>
+</li>
+<li><p><code>find_last_not_of</code>:&#x4ECE;&#x540E;&#x5F80;&#x524D;&#x67E5;&#x627E;&#x4F55;&#x5904;&#x51FA;&#x73B0;&#x53E6;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#x4E2D;&#x6CA1;&#x6709;&#x5305;&#x542B;&#x7684;&#x5B57;&#x7B26;;</p>
+<pre><code class="lang-cpp"><span class="hljs-function"><span class="hljs-built_in">string</span> <span class="hljs-title">s1</span><span class="hljs-params">(<span class="hljs-string">&quot;Source Code&quot;</span>)</span></span>;
+<span class="hljs-keyword">int</span> n;
+<span class="hljs-keyword">if</span> ((n = s1.find(<span class="hljs-string">&apos;u&apos;</span>)) != <span class="hljs-built_in">string</span>::npos) <span class="hljs-comment">//&#x67E5;&#x627E; u &#x51FA;&#x73B0;&#x7684;&#x4F4D;&#x7F6E;</span>
+    <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">&quot;1) &quot;</span> &lt;&lt; n &lt;&lt; <span class="hljs-string">&quot;,&quot;</span> &lt;&lt; s1.substr(n) &lt;&lt; <span class="hljs-built_in">endl</span>; <span class="hljs-comment">//&#x8F93;&#x51FA; l)2,urce Code</span>
+<span class="hljs-keyword">if</span> ((n = s1.find(<span class="hljs-string">&quot;Source&quot;</span>, <span class="hljs-number">3</span>)) == <span class="hljs-built_in">string</span>::npos) <span class="hljs-comment">//&#x4ECE;&#x4E0B;&#x6807;3&#x5F00;&#x59CB;&#x67E5;&#x627E;&quot;Source&quot;&#xFF0C;&#x627E;&#x4E0D;&#x5230;</span>
+    <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">&quot;2) &quot;</span> &lt;&lt; <span class="hljs-string">&quot;Not Found&quot;</span> &lt;&lt; <span class="hljs-built_in">endl</span>;  <span class="hljs-comment">//&#x8F93;&#x51FA; 2) Not Found</span>
+<span class="hljs-keyword">if</span> ((n = s1.find(<span class="hljs-string">&quot;Co&quot;</span>)) != <span class="hljs-built_in">string</span>::npos) <span class="hljs-comment">//&#x67E5;&#x627E;&#x5B50;&#x4E32;&quot;Co&quot;&#x3002;&#x80FD;&#x627E;&#x5230;&#xFF0C;&#x8FD4;&#x56DE;&quot;Co&quot;&#x7684;&#x4F4D;&#x7F6E;</span>
+    <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">&quot;3) &quot;</span> &lt;&lt; n &lt;&lt; <span class="hljs-string">&quot;, &quot;</span> &lt;&lt; s1.substr(n) &lt;&lt; <span class="hljs-built_in">endl</span>; <span class="hljs-comment">//&#x8F93;&#x51FA; 3) 7, Code</span>
+<span class="hljs-keyword">if</span> ((n = s1.find_first_of(<span class="hljs-string">&quot;ceo&quot;</span>)) != <span class="hljs-built_in">string</span>::npos) <span class="hljs-comment">//&#x67E5;&#x627E;&#x7B2C;&#x4E00;&#x6B21;&#x51FA;&#x73B0;&#x6216; &apos;c&apos;&#x3001;&apos;e&apos;&#x6216;&apos;o&apos;&#x7684;&#x4F4D;&#x7F6E;</span>
+    <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">&quot;4) &quot;</span> &lt;&lt; n &lt;&lt; <span class="hljs-string">&quot;, &quot;</span> &lt;&lt; s1.substr(n) &lt;&lt; <span class="hljs-built_in">endl</span>; <span class="hljs-comment">//&#x8F93;&#x51FA; 4) l, ource Code</span>
+<span class="hljs-keyword">if</span> ((n = s1.find_last_of(<span class="hljs-string">&apos;e&apos;</span>)) != <span class="hljs-built_in">string</span>::npos) <span class="hljs-comment">//&#x67E5;&#x627E;&#x6700;&#x540E;&#x4E00;&#x4E2A; &apos;e&apos; &#x7684;&#x4F4D;&#x7F6E;</span>
+    <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">&quot;5) &quot;</span> &lt;&lt; n &lt;&lt; <span class="hljs-string">&quot;, &quot;</span> &lt;&lt; s1.substr(n) &lt;&lt; <span class="hljs-built_in">endl</span>;  <span class="hljs-comment">//&#x8F93;&#x51FA; 5) 10, e</span>
+<span class="hljs-keyword">if</span> ((n = s1.find_first_not_of(<span class="hljs-string">&quot;eou&quot;</span>, <span class="hljs-number">1</span>)) != <span class="hljs-built_in">string</span>::npos)<span class="hljs-comment">//&#x4ECE;&#x4E0B;&#x6807;1&#x5F00;&#x59CB;&#x67E5;&#x627E;&#x7B2C;&#x4E00;&#x6B21;&#x51FA;&#x73B0;&#x975E; &apos;e&apos;&#x3001;&apos;o&apos; &#x6216; &apos;u&apos; &#x5B57;&#x7B26;&#x7684;&#x4F4D;&#x7F6E;</span>
+    <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">&quot;6) &quot;</span> &lt;&lt; n &lt;&lt; <span class="hljs-string">&quot;, &quot;</span> &lt;&lt; s1.substr(n) &lt;&lt; <span class="hljs-built_in">endl</span>; <span class="hljs-comment">//&#x8F93;&#x51FA; 6) 3, rce Code</span>
+
+<span class="hljs-meta">#&#x6700;&#x7B80;&#x5355;&#x7684;&#x53BB;&#x9664;&#x9996;&#x5C3E;&#x7A7A;&#x683C;&#x7684;&#x65B9;&#x6CD5;</span>
+<span class="hljs-built_in">std</span>::<span class="hljs-function"><span class="hljs-built_in">string</span> <span class="hljs-title">str01</span><span class="hljs-params">(<span class="hljs-string">&quot;  no empty space   &quot;</span>)</span></span>;
+str01.erase(<span class="hljs-number">0</span>, str01.find_first_not_of(<span class="hljs-string">&apos; &apos;</span>));
+str01.erase(str01.find_last_not_of(<span class="hljs-string">&apos; &apos;</span>) + <span class="hljs-number">1</span>); <span class="hljs-comment">//&#x4E0D;&#x662F;&#x5F88;&#x4E25;&#x8C28;</span>
+
+<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p><strong>&#x66FF;&#x6362;&#x5B50;&#x4E32;:replace,&#x4E00;&#x822C;&#x9700;&#x8981;&#x548C;find&#x7ED3;&#x5408;&#x4F7F;&#x7528;</strong></p>
+<pre><code class="lang-cpp"><span class="hljs-function"><span class="hljs-built_in">string</span> <span class="hljs-title">s1</span><span class="hljs-params">(<span class="hljs-string">&quot;Real Steel&quot;</span>)</span></span>;
+s1.replace(<span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-string">&quot;123456&quot;</span>, <span class="hljs-number">2</span>, <span class="hljs-number">4</span>);  <span class="hljs-comment">//&#x7528; &quot;123456&quot; &#x7684;&#x5B50;&#x4E32;(2,4) &#x66FF;&#x6362; s1 &#x7684;&#x5B50;&#x4E32;(1,3)</span>
+<span class="hljs-built_in">cout</span> &lt;&lt; s1 &lt;&lt; <span class="hljs-built_in">endl</span>;  <span class="hljs-comment">//&#x8F93;&#x51FA; R3456 Steel</span>
+
+<span class="hljs-function"><span class="hljs-built_in">string</span> <span class="hljs-title">s2</span><span class="hljs-params">(<span class="hljs-string">&quot;Harry Potter&quot;</span>)</span></span>;
+s2.replace(<span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">5</span>, <span class="hljs-string">&apos;0&apos;</span>);  <span class="hljs-comment">//&#x7528; 5 &#x4E2A; &apos;0&apos; &#x66FF;&#x6362;&#x5B50;&#x4E32;(2,3)</span>
+<span class="hljs-built_in">cout</span> &lt;&lt; s2 &lt;&lt; <span class="hljs-built_in">endl</span>;  <span class="hljs-comment">//&#x8F93;&#x51FA; Ha0000 Potter</span>
+
+<span class="hljs-keyword">int</span> n = s2.find(<span class="hljs-string">&quot;00000&quot;</span>);  <span class="hljs-comment">//&#x67E5;&#x627E;&#x5B50;&#x4E32; &quot;00000&quot; &#x7684;&#x4F4D;&#x7F6E;&#xFF0C;n=2</span>
+s2.replace(n, <span class="hljs-built_in">strlen</span>(<span class="hljs-string">&quot;00000&quot;</span>), <span class="hljs-string">&quot;XXX&quot;</span>);  <span class="hljs-comment">//&#x5C06;&#x5B50;&#x4E32;(n,5)&#x66FF;&#x6362;&#x4E3A;&quot;XXX&quot;</span>
+<span class="hljs-built_in">cout</span> &lt;&lt; s2 &lt; &lt; <span class="hljs-built_in">endl</span>;  <span class="hljs-comment">//&#x8F93;&#x51FA; HaXXX Potter</span>
+</code></pre>
+</li>
+<li><p><strong>&#x5220;&#x9664;&#x5B50;&#x4E32;:erease,&#x4E00;&#x822C;&#x9700;&#x8981;&#x548C;find&#x7ED3;&#x5408;&#x4F7F;&#x7528;</strong></p>
+<pre><code class="lang-cpp"><span class="hljs-function"><span class="hljs-built_in">string</span> <span class="hljs-title">s1</span><span class="hljs-params">(<span class="hljs-string">&quot;Real Steel&quot;</span>)</span></span>;
+s1.erase(<span class="hljs-number">1</span>, <span class="hljs-number">3</span>);  <span class="hljs-comment">//&#x5220;&#x9664;&#x5B50;&#x4E32;,&#x4F4D;&#x7F6E;1&#x5F00;&#x59CB;&#x4EE5;&#x53CA;&#x540E;&#x9762;&#x7684;&#x4E09;&#x4E2A;&#x5B57;&#x7B26;&#xFF0C;&#x6B64;&#x540E; s1 = &quot;R Steel&quot;</span>
+s1.erase(<span class="hljs-number">5</span>);  <span class="hljs-comment">//&#x5220;&#x9664;&#x4E0B;&#x6807;5&#x53CA;&#x5176;&#x540E;&#x9762;&#x7684;&#x6240;&#x6709;&#x5B57;&#x7B26;&#xFF0C;&#x6B64;&#x540E; s1 = &quot;R Ste&quot;</span>
+
+<span class="hljs-meta">#&#x6700;&#x7B80;&#x5355;&#x7684;&#x53BB;&#x9664;&#x5DE6;&#x8FB9;&#x7A7A;&#x683C;&#x7684;&#x65B9;&#x6CD5;</span>
+<span class="hljs-built_in">std</span>::<span class="hljs-function"><span class="hljs-built_in">string</span> <span class="hljs-title">str01</span><span class="hljs-params">(<span class="hljs-string">&quot;  no empty space&quot;</span>)</span></span>;
+str01.erase(<span class="hljs-number">0</span>, str01.find_first_not_of(<span class="hljs-string">&apos; &apos;</span>)<span class="hljs-number">-0</span>);
+
+<span class="hljs-meta">#&#x548C;std::remove_if&#x7ED3;&#x5408;&#x4F7F;&#x7528;</span>
+<span class="hljs-built_in">std</span>::<span class="hljs-function"><span class="hljs-built_in">string</span> <span class="hljs-title">str</span><span class="hljs-params">(<span class="hljs-string">&quot;example.!,&quot;</span>)</span></span>;
+str.erase(<span class="hljs-built_in">std</span>::remove_if(str.begin(), str.end(),[](<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">char</span> c) { <span class="hljs-keyword">return</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">ispunct</span>(c); }),str.end());
+<span class="hljs-comment">//&#x6700;&#x540E;str&#x4E2D;&#x4FDD;&#x5B58;example</span>
+</code></pre>
+</li>
+<li><p><strong>&#x63D2;&#x5165;&#x5B57;&#x7B26;&#x4E32;:insert</strong></p>
+<pre><code class="lang-cpp">string s1(&quot;Limitless&quot;), s2(&quot;00&quot;);
+s1.insert(2, &quot;123&quot;);  //&#x5728;&#x4E0B;&#x6807; 2 &#x5904;&#x63D2;&#x5165;&#x5B57;&#x7B26;&#x4E32;&quot;123&quot;&#xFF0C;s1 = &quot;Li123mitless&quot;
+s1.insert(3, s2);  //&#x5728;&#x4E0B;&#x6807; 2 &#x5904;&#x63D2;&#x5165; s2 , s1 = &quot;Li10023mitless&quot;
+s1.insert(3, 5, &apos;X&apos;);  //&#x5728;&#x4E0B;&#x6807; 3 &#x5904;&#x63D2;&#x5165; 5 &#x4E2A; &apos;X&apos;&#xFF0C;s1 = &quot;Li1XXXXX0023mitless&quot;
+
+&#x7528;erease + insert &#x5B9E;&#x73B0;replace&#x3002;&#x5C06;hello &#x66FF;&#x6362;&#x6210; hi
+std::string str01 = &quot;&#x4F60;&#x597D;,hello luke&quot;;
+auto start = str01.find(&quot;hello&quot;);
+str01.erase(start, strlen(&quot;hello&quot;));
+str01.insert(start, &quot;hi&quot;);
+std::cout &lt;&lt; &quot;str01==&quot; &lt;&lt; str01 &lt;&lt; std::endl;
+</code></pre>
+</li>
+<li><p><strong>&#x5C06;string&#x4F5C;&#x4E3A;&#x6D41;&#x5904;&#x7406;</strong></p>
+<pre><code class="lang-cpp"><span class="hljs-function"><span class="hljs-built_in">string</span> <span class="hljs-title">src</span><span class="hljs-params">(<span class="hljs-string">&quot;Avatar 123 5.2 Titanic K&quot;</span>)</span></span>;
+<span class="hljs-function"><span class="hljs-built_in">istringstream</span> <span class="hljs-title">istrStream</span><span class="hljs-params">(src)</span></span>; <span class="hljs-comment">//&#x5EFA;&#x7ACB;src&#x5230;istrStream&#x7684;&#x8054;&#x7CFB;</span>
+<span class="hljs-built_in">string</span> s1, s2;
+<span class="hljs-keyword">int</span> n;  <span class="hljs-keyword">double</span> d;  <span class="hljs-keyword">char</span> c;
+istrStream &gt;&gt; s1 &gt;&gt; n &gt;&gt; d &gt;&gt; s2 &gt;&gt; c; <span class="hljs-comment">//&#x628A;src&#x7684;&#x5185;&#x5BB9;&#x5F53;&#x505A;&#x8F93;&#x5165;&#x6D41;&#x8FDB;&#x884C;&#x8BFB;&#x53D6;</span>
+
+<span class="hljs-built_in">ostringstream</span> ostrStream;
+ostrStream &lt;&lt; s1 &lt;&lt; <span class="hljs-built_in">endl</span> &lt;&lt; s2 &lt;&lt; <span class="hljs-built_in">endl</span> &lt;&lt; n &lt;&lt; <span class="hljs-built_in">endl</span> &lt;&lt; d &lt;&lt; <span class="hljs-built_in">endl</span> &lt;&lt; c &lt;&lt;<span class="hljs-built_in">endl</span>;
+<span class="hljs-built_in">cout</span> &lt;&lt; ostrStream.str();
+&#x8F93;&#x51FA;:
+Avatar
+Titanic
+<span class="hljs-number">123</span>
+<span class="hljs-number">5.2</span>
+K
+
+<span class="hljs-meta">#&#x6309;&#x7167;&#x7A7A;&#x683C;&#x5207;&#x5272;&#x5B57;&#x7B26;&#x4E32;</span>
+<span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> _str01(<span class="hljs-string">&quot;zhangsna lisi wangwu tinghao&quot;</span>);
+<span class="hljs-built_in">std</span>::<span class="hljs-built_in">stringstream</span> _ss(_str01);
+<span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span>&gt; _v01;
+<span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> word;
+<span class="hljs-keyword">while</span> (_ss &gt;&gt; word) {
+  _v01.push_back(word);
+}
+
+<span class="hljs-meta">#&#x6309;&#x7167;&#x67D0;&#x4E2A;&#x5B57;&#x7B26;&#x5207;&#x5272;&#x5B57;&#x7B26;&#x4E32;</span>
+<span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span>&gt; stringSplit(<span class="hljs-keyword">const</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> &amp;s, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> ch) {
+  <span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span>&gt; ret;
+  <span class="hljs-built_in">std</span>::<span class="hljs-function"><span class="hljs-built_in">stringstream</span> <span class="hljs-title">ss</span><span class="hljs-params">(s)</span></span>;
+  <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> segment;
+  <span class="hljs-keyword">while</span> (<span class="hljs-built_in">std</span>::getline(ss, segment, ch)) {
+    ret.push_back(segment);
+  }
+  <span class="hljs-keyword">return</span> ret;
+}
+</code></pre>
+</li>
+<li><p>&#x7528;<code>STL</code>&#x7B97;&#x6CD5;&#x64CD;&#x4F5C;string&#x5BF9;&#x8C61;</p>
+<pre><code class="lang-cpp"><span class="hljs-built_in">std</span>::<span class="hljs-function"><span class="hljs-built_in">string</span> <span class="hljs-title">s</span><span class="hljs-params">(<span class="hljs-string">&quot;afgcbed&quot;</span>)</span></span>;
+<span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span>::iterator p = <span class="hljs-built_in">std</span>::find(s.begin(), s.end(), <span class="hljs-string">&apos;c&apos;</span>);
+<span class="hljs-keyword">if</span> (p!= s.end())
+    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; p - s.begin() &lt;&lt; <span class="hljs-built_in">std</span>::<span class="hljs-built_in">endl</span>;  <span class="hljs-comment">//&#x8F93;&#x51FA; 3</span>
+<span class="hljs-built_in">std</span>::sort(s.begin(), s.end());
+<span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; s &lt;&lt; <span class="hljs-built_in">std</span>::<span class="hljs-built_in">endl</span>;  <span class="hljs-comment">//&#x8F93;&#x51FA; abcdefg</span>
+
+<span class="hljs-meta">#&#x66F4;&#x5408;&#x9002;&#x7684;&#x53BB;&#x9664;&#x5DE6;&#x8FB9;&#x7A7A;&#x683C;&#x7684;&#x65B9;&#x6CD5;</span>
+<span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">ltrimSpace</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> &amp;s)</span> </span>{
+  s.erase(s.begin(), <span class="hljs-built_in">std</span>::find_if_not(s.begin(), s.end(), [](<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">char</span> ch) {
+            <span class="hljs-keyword">return</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">isspace</span>(ch);
+          }));
+}
+</code></pre>
+</li>
+</ul>
 <h3 id="vector">vector</h3>
 <ul>
-<li>vector&#x80FD;&#x5BB9;&#x7EB3;&#x5927;&#x591A;&#x6570;&#x7C7B;&#x578B;&#x7684;&#x5BF9;&#x8C61;&#x4F5C;&#x4E3A;&#x5143;&#x7D20;&#xFF0C;&#x4F46;&#x56E0;&#x4E3A;&#x5F15;&#x7528;&#x4E0D;&#x662F;&#x5BF9;&#x8C61;&#x3002;&#x56E0;&#x6B64;<strong>&#x4E0D;&#x5B58;&#x5728;&#x5305;&#x542B; &#x5F15;&#x7528;&#x7684;vector</strong>;</li>
+<li><p>vector&#x80FD;&#x5BB9;&#x7EB3;&#x5927;&#x591A;&#x6570;&#x7C7B;&#x578B;&#x7684;&#x5BF9;&#x8C61;&#x4F5C;&#x4E3A;&#x5143;&#x7D20;&#xFF0C;&#x4F46;&#x56E0;&#x4E3A;&#x5F15;&#x7528;&#x4E0D;&#x662F;&#x5BF9;&#x8C61;&#x3002;&#x56E0;&#x6B64;<strong>&#x4E0D;&#x5B58;&#x5728;&#x5305;&#x542B; &#x5F15;&#x7528;&#x7684;vector</strong>;</p>
+</li>
 <li><p>vector&#x521D;&#x59CB;&#x5316;</p>
 <p><img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20211127231245230.png" alt="image-20211127231245230"></p>
+<pre><code class="lang-cpp"><span class="hljs-meta">#&#x9519;&#x8BEF; </span>
+<span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span>&gt; _v01(<span class="hljs-number">5</span>); <span class="hljs-meta">#&#x4E00;&#x5F00;&#x59CB;&#x5C31;&#x63D2;&#x5165;&#x4E86;5&#x4E2A;&#x5143;&#x7D20;</span>
+_v01.push_back(<span class="hljs-string">&quot;a&quot;</span>);
+_v01.push_back(<span class="hljs-string">&quot;b&quot;</span>);
+&#x7ED3;&#x679C;: [,,,,,a,b]
+
+<span class="hljs-meta">#&#x6B63;&#x786E;,&#x4E00;&#x5F00;&#x59CB;&#x5C31;&#x77E5;&#x9053;&#x8981;&#x63D2;&#x5165;&#x591A;&#x5C11;&#x4E2A;&#x5143;&#x7D20;&#x7684;&#x8BDD;.&#x53EF;&#x4EE5;&#x907F;&#x514D;&#x591A;&#x6B21;&#x5185;&#x5B58;&#x5206;&#x914D;</span>
+<span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span>&gt; _v01(<span class="hljs-number">5</span>);
+_v01[<span class="hljs-number">0</span>] = <span class="hljs-string">&quot;a&quot;</span>;
+_v01[<span class="hljs-number">1</span>] = <span class="hljs-string">&quot;b&quot;</span>;
+_v01[<span class="hljs-number">2</span>] = <span class="hljs-string">&quot;c&quot;</span>;
+_v01[<span class="hljs-number">3</span>] = <span class="hljs-string">&quot;d&quot;</span>;
+_v01[<span class="hljs-number">4</span>] = <span class="hljs-string">&quot;e&quot;</span>;
+</code></pre>
 </li>
 <li><p>&#x6DFB;&#x52A0;&#x5143;&#x7D20;<code>push_back()</code>:</p>
 <pre><code class="lang-cpp">&#x793A;&#x4F8B;&#x4E00;:
@@ -705,7 +897,8 @@ count &lt;&lt; s &lt;&lt; <span class="hljs-built_in">endl</span>;
 }
 </code></pre>
 </li>
-<li>&#x5982;&#x679C;&#x5FAA;&#x73AF;&#x4E2D;&#x6709;&#x542B;&#x6709;&#x5411;vector&#x5BF9;&#x8C61;&#x6DFB;&#x52A0;&#x5143;&#x7D20;&#x7684;&#x8BED;&#x53E5;&#xFF0C;&#x5219;&#x4E0D;&#x80FD;&#x4F7F;&#x7528;&#x8303;&#x56F4;for&#x5FAA;&#x73AF;&#x3002;&#x4E5F;&#x5C31;&#x662F;&#x8BF4; <strong>&#x8303;&#x56F4;for&#x8BED;&#x53E5;&#x4E2D;&#x4E0D;&#x5E94;&#x8BE5;&#x6539;&#x53D8;&#x5176;&#x6240;&#x904D;&#x5386;&#x5E8F;&#x5217;&#x7684;&#x5927;&#x5C0F;</strong></li>
+<li><p>&#x5982;&#x679C;&#x5FAA;&#x73AF;&#x4E2D;&#x6709;&#x542B;&#x6709;&#x5411;vector&#x5BF9;&#x8C61;&#x6DFB;&#x52A0;&#x5143;&#x7D20;&#x7684;&#x8BED;&#x53E5;&#xFF0C;&#x5219;&#x4E0D;&#x80FD;&#x4F7F;&#x7528;&#x8303;&#x56F4;for&#x5FAA;&#x73AF;&#x3002;&#x4E5F;&#x5C31;&#x662F;&#x8BF4; <strong>&#x8303;&#x56F4;for&#x8BED;&#x53E5;&#x4E2D;&#x4E0D;&#x5E94;&#x8BE5;&#x6539;&#x53D8;&#x5176;&#x6240;&#x904D;&#x5386;&#x5E8F;&#x5217;&#x7684;&#x5927;&#x5C0F;</strong></p>
+</li>
 <li><p>vector&#x4E00;&#x4E9B;&#x5176;&#x4ED6;&#x64CD;&#x4F5C;</p>
 <p><img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20211127231359883.png" alt="image-20211127231359883"></p>
 </li>
@@ -724,6 +917,104 @@ count &lt;&lt; s &lt;&lt; <span class="hljs-built_in">endl</span>;
     ivec[ix] = ix; <span class="hljs-comment">//&#x4E25;&#x91CD;&#x9519;&#x8BEF;: ivec&#x4E0D;&#x5305;&#x542B;&#x4EFB;&#x4F55;&#x5143;&#x7D20;</span>
 </code></pre>
 </li>
+<li><p><strong>&#x6307;&#x5B9A;&#x4F4D;&#x7F6E;&#x63D2;&#x5165;&#x4E00;&#x4E2A; or &#x591A;&#x4E2A;&#x5143;&#x7D20;<code>insert()</code>(&#x6027;&#x80FD;&#x4E0D;&#x597D;&#xFF0C;&#x4E2D;&#x95F4;&#x63D2;&#x5165;&#x5C3D;&#x91CF;&#x7528;list)</strong></p>
+<ul>
+<li><p><code>iterator insert(pos,elem)</code> &#x5728;&#x8FED;&#x4EE3;&#x5668;pos&#x6307;&#x5B9A;&#x7684;&#x4F4D;&#x7F6E;&#x4E4B;&#x524D;&#x63D2;&#x5165;&#x4E00;&#x4E2A;&#x65B0;&#x5143;&#x7D20;elem,&#x5E76;&#x8FD4;&#x56DE;&#x8868;&#x793A;&#x65B0;&#x63D2;&#x5165;&#x5143;&#x7D20;&#x4F4D;&#x7F6E;&#x7684;&#x8FED;&#x4EE3;&#x5668;;</p>
+</li>
+<li><p><code>iterator insert(pos,n,elem)</code> &#x5728;&#x8FED;&#x4EE3;&#x5668;pos&#x6307;&#x5B9A;&#x7684;&#x4F4D;&#x7F6E;&#x4E4B;&#x524D;&#x63D2;&#x5165;n&#x4E2A;&#x65B0;&#x5143;&#x7D20;elem,&#x5E76;&#x8FD4;&#x56DE;&#x8868;&#x793A;&#x7B2C;&#x4E00;&#x4E2A;&#x65B0;&#x63D2;&#x5165;&#x5143;&#x7D20;&#x4F4D;&#x7F6E;&#x7684;&#x8FED;&#x4EE3;&#x5668;;</p>
+</li>
+<li><p><code>iterator insert(pos,first,last)</code> &#x5728;&#x8FED;&#x4EE3;&#x5668;pos&#x6307;&#x5B9A;&#x7684;&#x4F4D;&#x7F6E;&#x4E4B;&#x524D;,&#x63D2;&#x5165;&#x5176;&#x4ED6;&#x5BB9;&#x5668;&#x4E2D;&#x4F4D;&#x4E8E;<code>[first,last)</code>&#x533A;&#x57DF;&#x7684;&#x6240;&#x6709;&#x5143;&#x7D20;,&#x5E76;&#x8FD4;&#x56DE;&#x8868;&#x793A;&#x7B2C;&#x4E00;&#x4E2A;&#x65B0;&#x63D2;&#x5165;&#x5143;&#x7D20;&#x4F4D;&#x7F6E;&#x7684;&#x8FED;&#x4EE3;&#x5668;;</p>
+</li>
+<li><p><code>iterator insert(pos,initlist)</code> &#x5728;&#x8FED;&#x4EE3;&#x5668;pos&#x6307;&#x5B9A;&#x7684;&#x4F4D;&#x7F6E;&#x4E4B;&#x524D;,&#x63D2;&#x5165;&#x521D;&#x59CB;&#x5316;&#x5217;&#x8868;(&#x7528;&#x5927;&#x62EC;&#x53F7;<code>{}</code>&#x62EC;&#x8D77;&#x6765;&#x7684;&#x591A;&#x5143;&#x7D20;&#xFF0C;&#x4E2D;&#x95F4;&#x9017;&#x53F7;&#x9694;&#x5F00;),&#x5E76;&#x8FD4;&#x56DE;&#x8868;&#x793A;&#x7B2C;&#x4E00;&#x4E2A;&#x65B0;&#x63D2;&#x5165;&#x5143;&#x7D20;&#x4F4D;&#x7F6E;&#x7684;&#x8FED;&#x4EE3;&#x5668;;</p>
+<pre><code class="lang-cpp"><span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; demo{<span class="hljs-number">1</span>,<span class="hljs-number">2</span>};
+<span class="hljs-comment">//&#x7B2C;&#x4E00;&#x79CD;&#x683C;&#x5F0F;&#x7528;&#x6CD5;</span>
+demo.insert(demo.begin() + <span class="hljs-number">1</span>, <span class="hljs-number">3</span>);<span class="hljs-comment">//{1,3,2}</span>
+
+<span class="hljs-comment">//&#x7B2C;&#x4E8C;&#x79CD;&#x683C;&#x5F0F;&#x7528;&#x6CD5;</span>
+demo.insert(demo.end(), <span class="hljs-number">2</span>, <span class="hljs-number">5</span>);<span class="hljs-comment">//{1,3,2,5,5}</span>
+
+<span class="hljs-comment">//&#x7B2C;&#x4E09;&#x79CD;&#x683C;&#x5F0F;&#x7528;&#x6CD5;</span>
+<span class="hljs-built_in">std</span>::<span class="hljs-built_in">array</span>&lt;<span class="hljs-keyword">int</span>,3&gt;test{ <span class="hljs-number">7</span>,<span class="hljs-number">8</span>,<span class="hljs-number">9</span> };
+demo.insert(demo.end(), test.begin(), test.end());<span class="hljs-comment">//{1,3,2,5,5,7,8,9}</span>
+
+<span class="hljs-comment">//&#x7B2C;&#x56DB;&#x79CD;&#x683C;&#x5F0F;&#x7528;&#x6CD5;</span>
+demo.insert(demo.end(), { <span class="hljs-number">10</span>,<span class="hljs-number">11</span> });<span class="hljs-comment">//{1,3,2,5,5,7,8,9,10,11}</span>
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p><strong>&#x5220;&#x9664;&#x5143;&#x7D20;&#x7684;&#x51E0;&#x79CD;&#x65B9;&#x5F0F;</strong></p>
+<ul>
+<li><p><code>pop_back()</code>:&#x5220;&#x9664;vector&#x5BB9;&#x5668;&#x4E2D;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#xFF0C;&#x8BE5;&#x5BB9;&#x5668;&#x7684;size&#x4F1A;&#x51CF;1&#xFF0C;&#x4F46;capacity&#x4E0D;&#x4F1A;&#x6539;&#x53D8;&#x3002;<strong>&#x8BE5;&#x51FD;&#x6570;&#x4E0D;&#x4F1A;&#x8FD4;&#x56DE;&#x4EC0;&#x4E48;,&#x5982;&#x679C;&#x6700;&#x540E;&#x7684;&#x5143;&#x7D20;&#x9700;&#x8981;&#x7684;&#x8BDD;&#xFF0C;&#x6700;&#x597D;&#x5229;&#x7528;<code>back()</code>&#x63D0;&#x524D;&#x53D6;&#x8D70;</strong></p>
+<pre><code class="lang-cpp"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;demo{ <span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span> };
+demo.pop_back(); <span class="hljs-comment">// 1 2 3 4</span>
+</code></pre>
+</li>
+<li><p><code>erease(pos)</code>:&#x5220;&#x9664;vector&#x5BB9;&#x5668;&#x4E2D;pos&#x8FED;&#x4EE3;&#x5668;&#x6307;&#x5B9A;&#x4F4D;&#x7F6E;&#x5904;&#x7684;&#x5143;&#x7D20;&#xFF0C;&#x5E76;&#x8FD4;&#x56DE;&#x6307;&#x5411;&#x88AB;&#x5220;&#x9664;&#x5143;&#x7D20;&#x4E0B;&#x4E00;&#x4E2A;&#x4F4D;&#x7F6E;&#x5143;&#x7D20;&#x7684;&#x8FED;&#x4EE3;&#x5668;&#x3002;&#x8BE5;&#x5BB9;&#x5668;&#x5927;&#x5C0F;size-1&#xFF0C;capacity&#x4E0D;&#x4F1A;&#x53D1;&#x751F;&#x6539;&#x53D8;;</p>
+<pre><code class="lang-cpp"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;demo{ <span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span> };
+<span class="hljs-keyword">auto</span> iter = demo.erase(demo.begin() + <span class="hljs-number">1</span>);<span class="hljs-comment">//&#x5220;&#x9664;&#x5143;&#x7D20; 2,&#x6B64;&#x65F6;demo&#x4E2D;&#x8FD8;&#x5269; 1 3 4 5</span>
+<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-built_in">endl</span> &lt;&lt; *iter &lt;&lt; <span class="hljs-built_in">endl</span>; <span class="hljs-comment">//&#x6B64;&#x65F6;iter&#x6307;&#x5411;3</span>
+</code></pre>
+</li>
+<li><p><code>erease(beg,end)</code>: &#x5220;&#x9664;vector&#x5BB9;&#x5668;&#x4E2D;&#x4F4D;&#x4E8E;&#x8FED;&#x4EE3;&#x5668;<code>[beg,end)</code>&#x6307;&#x5B9A;&#x533A;&#x57DF;&#x5185;&#x7684;&#x6240;&#x6709;&#x5143;&#x7D20;&#xFF0C;&#x5E76;&#x8FD4;&#x56DE;&#x6307;&#x5411;&#x5220;&#x9664;&#x533A;&#x57DF;&#x4E0B;&#x4E00;&#x4E2A;&#x4F4D;&#x7F6E;&#x5143;&#x7D20;&#x7684;&#x8FED;&#x4EE3;&#x5668;&#x3002;&#x8BE5;&#x5BB9;&#x5668;&#x5927;&#x5C0F;size&#x4F1A;&#x51CF;&#x5C11;&#xFF0C;capacity&#x4E0D;&#x4F1A;&#x53D8;;</p>
+<pre><code class="lang-cpp"><span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; demo{ <span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span> };
+<span class="hljs-comment">//&#x5220;&#x9664; 2&#x3001;3</span>
+<span class="hljs-keyword">auto</span> iter = demo.erase(demo.begin()+<span class="hljs-number">1</span>, demo.end() - <span class="hljs-number">2</span>); <span class="hljs-comment">//&#x6B64;&#x65F6;demo&#x4E2D;&#x4FDD;&#x5B58;&#x7684;&#x6570;&#x636E; 1 4 5</span>
+</code></pre>
+</li>
+<li><p><code>std::remove(beg,end,ele)</code>:&#x5220;&#x9664;&#x5BB9;&#x5668;&#x4E2D;&#x6240;&#x6709;&#x548C;&#x6307;&#x5B9A;&#x5143;&#x7D20;&#x76F8;&#x7B49;&#x7684;&#x5143;&#x7D20;&#xFF0C;&#x5E76;&#x8FD4;&#x56DE;&#x6307;&#x5411;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#x4E0B;&#x4E00;&#x4E2A;&#x4F4D;&#x7F6E;&#x7684;&#x8FED;&#x4EE3;&#x5668;&#x3002;<strong>&#x8C03;&#x7528;&#x8BE5;&#x51FD;&#x6570;&#x4E0D;&#x4F1A;&#x6539;&#x53D8;&#x5BB9;&#x5668;&#x7684;&#x5927;&#x5C0F;&#x548C;&#x5BB9;&#x91CF;</strong></p>
+<pre><code class="lang-cpp"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;demo{ <span class="hljs-number">1</span>,<span class="hljs-number">3</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">3</span>,<span class="hljs-number">5</span> };
+<span class="hljs-keyword">auto</span> iter = <span class="hljs-built_in">std</span>::remove(demo.begin(), demo.end(), <span class="hljs-number">3</span>); <span class="hljs-comment">//&#x6B64;&#x65F6;demo&#x4E2D;&#x6570;&#x636E;&#x4E3A;1 4 5 4 3 5</span>
+<span class="hljs-comment">//&#x8F93;&#x51FA;&#x7ED3;&#x679C;&#x4E3A; 1 4 5,&#x6CE8;&#x610F;&#x7528;iter</span>
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> first = demo.begin(); first &lt; iter;++first) {
+    <span class="hljs-built_in">cout</span> &lt;&lt; *first &lt;&lt; <span class="hljs-string">&quot; &quot;</span>;
+}
+</code></pre>
+<p><strong><mark style="color:red">&#x6CE8;&#x610F;&#xFF0C;&#x5BF9;&#x5BB9;&#x5668;&#x6267;&#x884C;&#x5B8C;remve()&#x51FD;&#x6570;&#x4E4B;&#x540E;&#xFF0C;&#x8BE5;&#x51FD;&#x6570;&#x5E76;&#x6CA1;&#x6709;&#x6539;&#x53D8;&#x5BB9;&#x5668;&#x539F;&#x6765;&#x7684;&#x5927;&#x5C0F;&#x548C;&#x5BB9;&#x91CF;&#xFF0C;&#x56E0;&#x6B64;&#x65E0;&#x6CD5;&#x4F7F;&#x7528;&#x4E4B;&#x524D;&#x7684;&#x65B9;&#x6CD5;&#x904D;&#x5386;&#x5BB9;&#x5668;&#xFF0C;&#x9700;&#x8981;&#x50CF;&#x4E0B;&#x9762;&#x7A0B;&#x5E8F;&#x4E2D;&#x90A3;&#x6837;&#xFF0C;&#x501F;&#x52A9;remove()&#x8FD4;&#x56DE;&#x7684;&#x8FED;&#x4EE3;&#x5668;&#x5B8C;&#x6210;&#x6B63;&#x786E;&#x7684;&#x904D;&#x5386;&#x3002;</mark></strong></p>
+<blockquote>
+<p>remove() &#x7684;&#x5B9E;&#x73B0;&#x539F;&#x7406;&#x662F;&#xFF0C;&#x5728;&#x904D;&#x5386;&#x5BB9;&#x5668;&#x4E2D;&#x7684;&#x5143;&#x7D20;&#x65F6;&#xFF0C;&#x4E00;&#x65E6;&#x9047;&#x5230;&#x76EE;&#x6807;&#x5143;&#x7D20;&#xFF0C;&#x5C31;&#x505A;&#x4E0A;&#x6807;&#x8BB0;&#xFF0C;&#x7136;&#x540E;&#x7EE7;&#x7EED;&#x904D;&#x5386;&#xFF0C;&#x76F4;&#x5230;&#x627E;&#x5230;&#x4E00;&#x4E2A;&#x975E;&#x76EE;&#x6807;&#x5143;&#x7D20;&#xFF0C;&#x5373;&#x7528;&#x6B64;&#x5143;&#x7D20;&#x5C06;&#x6700;&#x5148;&#x505A;&#x6807;&#x8BB0;&#x7684;&#x4F4D;&#x7F6E;&#x8986;&#x76D6;&#x6389;&#xFF0C;&#x540C;&#x65F6;&#x5C06;&#x6B64;&#x975E;&#x76EE;&#x6807;&#x5143;&#x7D20;&#x6240;&#x5728;&#x7684;&#x4F4D;&#x7F6E;&#x4E5F;&#x505A;&#x4E0A;&#x6807;&#x8BB0;&#xFF0C;&#x7B49;&#x5F85;&#x627E;&#x5230;&#x65B0;&#x7684;&#x975E;&#x76EE;&#x6807;&#x5143;&#x7D20;&#x5C06;&#x5176;&#x8986;&#x76D6;&#x3002;&#x56E0;&#x6B64;&#xFF0C;&#x5982;&#x679C;&#x5C06;&#x4E0A;&#x9762;&#x7A0B;&#x5E8F;&#x4E2D; demo &#x5BB9;&#x5668;&#x7684;&#x5143;&#x7D20;&#x5168;&#x90E8;&#x8F93;&#x51FA;&#xFF0C;&#x5F97;&#x5230;&#x7684;&#x7ED3;&#x679C;&#x4E3A;<code>1 4 5 4 3 5</code>&#x3002;</p>
+</blockquote>
+<p><strong>&#x65E2;&#x7136;&#x901A;&#x8FC7; remove() &#x51FD;&#x6570;&#x5220;&#x9664;&#x6389; demo &#x5BB9;&#x5668;&#x4E2D;&#x7684;&#x591A;&#x4E2A;&#x6307;&#x5B9A;&#x5143;&#x7D20;&#xFF0C;&#x8BE5;&#x5BB9;&#x5668;&#x7684;&#x5927;&#x5C0F;&#x548C;&#x5BB9;&#x91CF;&#x90FD;&#x6CA1;&#x6709;&#x6539;&#x53D8;&#xFF0C;&#x5176;&#x5269;&#x4F59;&#x4F4D;&#x7F6E;&#x8FD8;&#x4FDD;&#x7559;&#x4E86;&#x4E4B;&#x524D;&#x5B58;&#x50A8;&#x7684;&#x5143;&#x7D20;&#x3002;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; erase() &#x6210;&#x5458;&#x51FD;&#x6570;&#x5220;&#x6389;&#x8FD9;&#x4E9B; &quot;&#x65E0;&#x7528;&quot; &#x7684;&#x5143;&#x7D20;&#x3002;</strong></p>
+<pre><code class="lang-cpp"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;demo{ <span class="hljs-number">1</span>,<span class="hljs-number">3</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">3</span>,<span class="hljs-number">5</span> };
+<span class="hljs-keyword">auto</span> iter = <span class="hljs-built_in">std</span>::remove(demo.begin(), demo.end(), <span class="hljs-number">3</span>); <span class="hljs-comment">//&#x6B64;&#x65F6;demo&#x4E2D;&#x6570;&#x636E;&#x4E3A;1 4 5 4 3 5</span>
+demo.erase(iter, demo.end()); <span class="hljs-comment">//&#x6B64;&#x65F6;demo&#x4E2D;&#x6570;&#x636E;&#x4E3A;1 4 5</span>
+</code></pre>
+</li>
+<li><p><code>std::remove_if()</code></p>
+<pre><code class="lang-cpp"><span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; _v01={<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>};
+_v01.erase(<span class="hljs-built_in">std</span>::remove_if(_v01.begin(), _v01.end(),[](<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> &amp;a) { <span class="hljs-keyword">return</span> a &gt; <span class="hljs-number">3</span>; }),_v01.end()); <span class="hljs-comment">//_v01&#x4E2D;&#x6570;&#x636E; 1 2 3</span>
+</code></pre>
+</li>
+<li><p><code>clear()</code>:&#x5220;&#x9664;vector&#x4E2D;&#x6240;&#x6709;&#x5143;&#x7D20;&#xFF0C;&#x4F7F;&#x5176;&#x53D8;&#x6210;&#x4E00;&#x4E2A;&#x7A7A;&#x7684;vector&#x3002;&#x8BE5;&#x51FD;&#x6570;&#x4F1A;&#x6539;&#x53D8;vector&#x7684;&#x5927;&#x5C0F;&#xFF0C;&#x4F46;&#x4E0D;&#x4F1A;&#x6539;&#x53D8;&#x5176;&#x5BB9;&#x91CF;&#x3002;</p>
+</li>
+</ul>
+</li>
+<li><p><strong>&#x5982;&#x4F55;&#x907F;&#x514D;vector&#x8FDB;&#x884C;&#x4E0D;&#x5FC5;&#x8981;&#x7684;&#x6269;&#x5BB9;?</strong></p>
+<pre><code class="lang-cpp"><span class="hljs-comment">// &#x53CD;&#x4F8B;</span>
+<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;myvector;
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= <span class="hljs-number">1000</span>; i++) <span class="hljs-comment">//&#x9700;&#x8981;2^n &gt; 1000  n&#x6B21;&#x6269;&#x5BB9;</span>
+{
+    myvector.push_back(i);
+}
+
+<span class="hljs-comment">//&#x6B63;&#x4F8B;</span>
+<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;myvector;
+myvector.reserve(<span class="hljs-number">1000</span>);  <span class="hljs-comment">//&#x4E00;&#x6B21;&#x6269;&#x5BB9;</span>
+<span class="hljs-built_in">cout</span> &lt;&lt; myvector.capacity();
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= <span class="hljs-number">1000</span>; i++)  <span class="hljs-comment">//&#x65E0;&#x9700;&#x6269;&#x5BB9;</span>
+{
+    myvector.push_back(i);
+}
+</code></pre>
+</li>
+<li><p><strong>&#x4E0D;&#x8981;&#x4F7F;&#x7528;<code>vector&lt;bool&gt;</code>&#xFF0C;&#x5C3D;&#x91CF;&#x4F7F;&#x7528;<code>bitset</code></strong></p>
+<p>&#x539F;&#x56E0;: <a href="https://blog.csdn.net/haolexiao/article/details/56837445" target="_blank">&#x8C08;vector<bool>&#x7684;&#x7279;&#x6B8A;&#x6027;&#x2014;&#x2014;&#x4E3A;&#x4EC0;&#x4E48;&#x5B83;&#x4E0D;&#x662F;STL&#x5BB9;&#x5668;</bool></a></p>
+</li>
+</ul>
+<h3 id="deque">deque</h3>
+<ul>
+<li>deque&#x64C5;&#x957F;&#x4ECE;&#x5E8F;&#x5217;&#x7684;&#x5934;&#x90E8;&#x3001;&#x5C3E;&#x90E8;&#x5220;&#x9664;&#x5143;&#x7D20;&#xFF0C;&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x90FD;&#x662F;<code>O(1)</code>&#x3002;<strong>&#x4E0D;&#x64C5;&#x957F;&#x5728;&#x5E8F;&#x5217;&#x4E2D;&#x6DFB;&#x52A0; &#x6216; &#x5220;&#x9664;&#x5143;&#x7D20;</strong></li>
+<li><strong>&#x6CE8;&#x610F;:deque&#x5BB9;&#x5668;&#x4E2D;&#x5B58;&#x50A8;&#x5143;&#x7D20;&#x5E76;&#x4E0D;&#x80FD;&#x4FDD;&#x8BC1;&#x6240;&#x6709;&#x5143;&#x7D20;&#x90FD;&#x5728;&#x8FDE;&#x7EED;&#x7684;&#x5185;&#x5B58;&#x7A7A;&#x95F4;&#x4E2D;&#x3002;&#x4F46;&#x8FD8;&#x662F;&#x53EF;&#x4EE5;&#x7528;&#x4E0B;&#x6807;&#x8BBF;&#x95EE;&#xFF0C;&#x5982;<code>que[0]=5&#x3001;que.at(0)=5</code>;</strong></li>
 </ul>
 
                                 
@@ -768,7 +1059,7 @@ count &lt;&lt; s &lt;&lt; <span class="hljs-built_in">endl</span>;
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"C++Primer基础: string、vector、数组","level":"1.5.3","depth":2,"next":{"title":"C++Primer基础:函数、重载、函数指针","level":"1.5.4","depth":2,"path":"c++学习笔记/C++Primer基础-04函数重载函数指针.md","ref":"c++学习笔记/C++Primer基础-04函数重载函数指针.md","articles":[]},"previous":{"title":"C++Primer基础:volatile、using","level":"1.5.2","depth":2,"path":"c++学习笔记/C++Primer基础-02volatile与using.md","ref":"c++学习笔记/C++Primer基础-02volatile与using.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"c++学习笔记/C++Primer基础-03stringvector数组.md","mtime":"2022-01-09T15:30:01.584Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-01-23T03:32:52.808Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"C++Primer基础: string、vector、数组","level":"1.5.3","depth":2,"next":{"title":"C++Primer基础:函数、重载、函数指针","level":"1.5.4","depth":2,"path":"c++学习笔记/C++Primer基础-04函数重载函数指针.md","ref":"c++学习笔记/C++Primer基础-04函数重载函数指针.md","articles":[]},"previous":{"title":"C++Primer基础:volatile、using","level":"1.5.2","depth":2,"path":"c++学习笔记/C++Primer基础-02volatile与using.md","ref":"c++学习笔记/C++Primer基础-02volatile与using.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"c++学习笔记/C++Primer基础-03stringvector数组.md","mtime":"2022-04-05T13:16:49.793Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-06-06T23:25:07.193Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -776,10 +1067,6 @@ count &lt;&lt; s &lt;&lt; <span class="hljs-built_in">endl</span>;
         
     <script src="../gitbook/gitbook.js"></script>
     <script src="../gitbook/theme.js"></script>
-    
-        
-        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
-        
     
         
         <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>

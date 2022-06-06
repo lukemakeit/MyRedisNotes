@@ -87,7 +87,8 @@ inline template <typename T> T min(const T&, const T&);
 因此，模板的头文件通常包括 声明 也包括 定义。
 
 ### 类模板
-与函数模板不同的是，编译器不能为 类模板 推断模板参数类型。所以我们必须在模板名后的尖括号中提供额外的信息 —— 用来代替模板参数的模板实参列表。
+**与函数模板不同的是，编译器不能为 类模板 推断模板参数类型。所以我们必须在模板名后的尖括号中提供额外的信息** —— 用来代替模板参数的模板实参列表。
+
 ```cpp
 #ifndef BLOB_H
 #define BLOB_H
@@ -186,6 +187,7 @@ Blob<T>::Blob(std::initializer_list<T> il):data(std::make_shared<std::vector<T>>
 **类模板成员函数的实例化**
 如果一个成员函数没有被使用，则它不会被实例化。成员函**只有在被用到时才进行实例化**
 下面这段代码实例化了`Blob<int>`类和它的三个成员函数:`operator[]`、`size`、接受`initializer_list<int>`的构造函数。
+
 ```cpp
 Blob<int> squares = {0,1,2,3,4,5};
 for(size_t i=0; i!=squares.size(); ++i)
@@ -194,6 +196,7 @@ for(size_t i=0; i!=squares.size(); ++i)
 
 **类代码内简化模板类名的使用**
 在类模板自己的作用域中，我们可以直接使用模板名而不提供实参:
+
 ```cpp
 template <typename T> 
 class BlobPtr {
@@ -265,3 +268,103 @@ b. 但`ca`(`Blob<char>`) 对`ia`(`Blob<int>`) 或 Blob的任何其他实例都�
 
 **通用和特定的模板友好关系**
 一个类也可以将另一个模板的每个实例都声明为自己的友元，或限制特定的实例为友元。
+
+### 补充
+
+#### 模板参数可变: 
+
+- **参数个数(variable number): 利用参数个数逐一递减的特性, 实现递归函数调用。使用function template完成**;
+
+- **参数类型(different type): 利用参数个数逐一递减 导致 参数类型也逐一递减的特性，实现递归继承和递归复合。使用class template完成**
+
+- 一般形式:
+
+  ```cpp
+  void func() { /*...*/}
+  
+  template<typename T,typename... Types>
+  void func(const T& firstArgs,const Types&... args) //点点点在前头
+  {
+  	处理 firstArg
+  	func(args...); //点点点在后头
+  }
+  ```
+
+  <mark style="color:red">**使用`sizeof...(args)`获得参数的个数**</mark>
+
+- 示例一
+
+  ```cpp
+  **如果有一个或多个参数传入，则使用函数模板，并持续递归。如果没有参数传入，则调用`printX()`普通函数。**
+  
+  void printX() {}
+  
+  template <typename T,typename... Types>
+  void printX(const T& firstArg, const Types&... args){
+    cout<< firstArgs<<endl;
+    printX(args...);
+  }
+  
+  示例: printX(7.5,"hello",bitset<16>(377),42);
+  输出:
+  7.5
+  hello
+  00000000000011011110001
+  42
+  ```
+
+  **如果有一个或多个参数传入，则使用函数模板，并持续递归。如果没有参数传入，则调用`printX()`普通函数。**
+
+- 示例二
+
+  参考问题: [https://stackoverflow.com/questions/3634379/variadic-templates](https://stackoverflow.com/questions/3634379/variadic-templates)
+
+  ```cpp
+  void printf(const char *s)
+  {
+    while (*s)
+    {
+      if (*s == '%' && *(++s) != '%')
+        throw std::runtime_error("invalid format string: missing arguments");
+      std::cout << *s++;
+    }
+  }
+  
+  template<typename T, typename... Args>
+  void printf(const char* s, T value, Args... args)
+  {
+    while (*s)
+    {
+      if (*s == '%' && *(++s) != '%') //不会管%d、%s这些控制符号,反正值都是朝 std::cout里面丢
+      {
+        std::cout << value;
+        printf(++s, args...); // call even when *s == 0 to detect extra arguments
+        return;
+      }
+      std::cout << *s++;
+    }
+    throw std::logic_error("extra arguments provided to printf");
+  }
+  ```
+
+- 示例三:
+
+  ```cpp
+  int maximum(int n)
+  {
+      return n;
+  }
+  
+  template<typename... Args>
+  int maximum(int n, Args... args)
+  {
+      return std::max(n, maximum(args...));
+  }
+  调用方式: std::cout<<max(57,48,60,100,20)<<std::endl;
+  
+  如果类型相同，其实用 std::initializer_list<>更合适
+  如: std::cout<<std::max({57,48,60,100,20})<<std::endl; 就是用的是 std::initializer_list
+  ```
+
+  
+

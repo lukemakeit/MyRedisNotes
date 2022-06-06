@@ -695,7 +695,7 @@ int compare(const char (&amp;p1)[N], const char (&amp;p2)[M]){
 &#x4E3A;&#x4E86;&#x751F;&#x6210;&#x4E00;&#x4E2A;&#x5B9E;&#x4F8B;&#x5316;&#x7248;&#x672C;&#xFF0C;&#x7F16;&#x8BD1;&#x5668;&#x9700;&#x8981;&#x638C;&#x63E1;&#x51FD;&#x6570;&#x6A21;&#x677F; &#x6216; &#x7C7B;&#x6A21;&#x677F;&#x6210;&#x5458;&#x51FD;&#x6570;&#x7684;&#x5B9A;&#x4E49;&#x3002;
 &#x56E0;&#x6B64;&#xFF0C;&#x6A21;&#x677F;&#x7684;&#x5934;&#x6587;&#x4EF6;&#x901A;&#x5E38;&#x5305;&#x62EC; &#x58F0;&#x660E; &#x4E5F;&#x5305;&#x62EC; &#x5B9A;&#x4E49;&#x3002;</p>
 <h3 id="&#x7C7B;&#x6A21;&#x677F;">&#x7C7B;&#x6A21;&#x677F;</h3>
-<p>&#x4E0E;&#x51FD;&#x6570;&#x6A21;&#x677F;&#x4E0D;&#x540C;&#x7684;&#x662F;&#xFF0C;&#x7F16;&#x8BD1;&#x5668;&#x4E0D;&#x80FD;&#x4E3A; &#x7C7B;&#x6A21;&#x677F; &#x63A8;&#x65AD;&#x6A21;&#x677F;&#x53C2;&#x6570;&#x7C7B;&#x578B;&#x3002;&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x5FC5;&#x987B;&#x5728;&#x6A21;&#x677F;&#x540D;&#x540E;&#x7684;&#x5C16;&#x62EC;&#x53F7;&#x4E2D;&#x63D0;&#x4F9B;&#x989D;&#x5916;&#x7684;&#x4FE1;&#x606F; &#x2014;&#x2014; &#x7528;&#x6765;&#x4EE3;&#x66FF;&#x6A21;&#x677F;&#x53C2;&#x6570;&#x7684;&#x6A21;&#x677F;&#x5B9E;&#x53C2;&#x5217;&#x8868;&#x3002;</p>
+<p><strong>&#x4E0E;&#x51FD;&#x6570;&#x6A21;&#x677F;&#x4E0D;&#x540C;&#x7684;&#x662F;&#xFF0C;&#x7F16;&#x8BD1;&#x5668;&#x4E0D;&#x80FD;&#x4E3A; &#x7C7B;&#x6A21;&#x677F; &#x63A8;&#x65AD;&#x6A21;&#x677F;&#x53C2;&#x6570;&#x7C7B;&#x578B;&#x3002;&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x5FC5;&#x987B;&#x5728;&#x6A21;&#x677F;&#x540D;&#x540E;&#x7684;&#x5C16;&#x62EC;&#x53F7;&#x4E2D;&#x63D0;&#x4F9B;&#x989D;&#x5916;&#x7684;&#x4FE1;&#x606F;</strong> &#x2014;&#x2014; &#x7528;&#x6765;&#x4EE3;&#x66FF;&#x6A21;&#x677F;&#x53C2;&#x6570;&#x7684;&#x6A21;&#x677F;&#x5B9E;&#x53C2;&#x5217;&#x8868;&#x3002;</p>
 <pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">ifndef</span> BLOB_H</span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> BLOB_H</span>
 <span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> T&gt;
@@ -854,6 +854,92 @@ Blob&lt;<span class="hljs-keyword">int</span>&gt; ia; <span class="hljs-comment"
 b. &#x4F46;<code>ca</code>(<code>Blob&lt;char&gt;</code>) &#x5BF9;<code>ia</code>(<code>Blob&lt;int&gt;</code>) &#x6216; Blob&#x7684;&#x4EFB;&#x4F55;&#x5176;&#x4ED6;&#x5B9E;&#x4F8B;&#x90FD;&#x6CA1;&#x6709;&#x7279;&#x6B8A;&#x8BBF;&#x95EE;&#x6743;&#x9650;;</p>
 <p><strong>&#x901A;&#x7528;&#x548C;&#x7279;&#x5B9A;&#x7684;&#x6A21;&#x677F;&#x53CB;&#x597D;&#x5173;&#x7CFB;</strong>
 &#x4E00;&#x4E2A;&#x7C7B;&#x4E5F;&#x53EF;&#x4EE5;&#x5C06;&#x53E6;&#x4E00;&#x4E2A;&#x6A21;&#x677F;&#x7684;&#x6BCF;&#x4E2A;&#x5B9E;&#x4F8B;&#x90FD;&#x58F0;&#x660E;&#x4E3A;&#x81EA;&#x5DF1;&#x7684;&#x53CB;&#x5143;&#xFF0C;&#x6216;&#x9650;&#x5236;&#x7279;&#x5B9A;&#x7684;&#x5B9E;&#x4F8B;&#x4E3A;&#x53CB;&#x5143;&#x3002;</p>
+<h3 id="&#x8865;&#x5145;">&#x8865;&#x5145;</h3>
+<h4 id="&#x6A21;&#x677F;&#x53C2;&#x6570;&#x53EF;&#x53D8;">&#x6A21;&#x677F;&#x53C2;&#x6570;&#x53EF;&#x53D8;:</h4>
+<ul>
+<li><p><strong>&#x53C2;&#x6570;&#x4E2A;&#x6570;(variable number): &#x5229;&#x7528;&#x53C2;&#x6570;&#x4E2A;&#x6570;&#x9010;&#x4E00;&#x9012;&#x51CF;&#x7684;&#x7279;&#x6027;, &#x5B9E;&#x73B0;&#x9012;&#x5F52;&#x51FD;&#x6570;&#x8C03;&#x7528;&#x3002;&#x4F7F;&#x7528;function template&#x5B8C;&#x6210;</strong>;</p>
+</li>
+<li><p><strong>&#x53C2;&#x6570;&#x7C7B;&#x578B;(different type): &#x5229;&#x7528;&#x53C2;&#x6570;&#x4E2A;&#x6570;&#x9010;&#x4E00;&#x9012;&#x51CF; &#x5BFC;&#x81F4; &#x53C2;&#x6570;&#x7C7B;&#x578B;&#x4E5F;&#x9010;&#x4E00;&#x9012;&#x51CF;&#x7684;&#x7279;&#x6027;&#xFF0C;&#x5B9E;&#x73B0;&#x9012;&#x5F52;&#x7EE7;&#x627F;&#x548C;&#x9012;&#x5F52;&#x590D;&#x5408;&#x3002;&#x4F7F;&#x7528;class template&#x5B8C;&#x6210;</strong></p>
+</li>
+<li><p>&#x4E00;&#x822C;&#x5F62;&#x5F0F;:</p>
+<pre><code class="lang-cpp"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">func</span><span class="hljs-params">()</span> </span>{ <span class="hljs-comment">/*...*/</span>}
+
+<span class="hljs-keyword">template</span>&lt;<span class="hljs-keyword">typename</span> T,<span class="hljs-keyword">typename</span>... Types&gt;
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">func</span><span class="hljs-params">(<span class="hljs-keyword">const</span> T&amp; firstArgs,<span class="hljs-keyword">const</span> Types&amp;... args)</span> <span class="hljs-comment">//&#x70B9;&#x70B9;&#x70B9;&#x5728;&#x524D;&#x5934;</span>
+</span>{
+    &#x5904;&#x7406; <span class="hljs-function">firstArg
+    <span class="hljs-title">func</span><span class="hljs-params">(args...)</span></span>; <span class="hljs-comment">//&#x70B9;&#x70B9;&#x70B9;&#x5728;&#x540E;&#x5934;</span>
+}
+</code></pre>
+<p><mark style="color:red"><strong>&#x4F7F;&#x7528;<code>sizeof...(args)</code>&#x83B7;&#x5F97;&#x53C2;&#x6570;&#x7684;&#x4E2A;&#x6570;</strong></mark></p>
+</li>
+<li><p>&#x793A;&#x4F8B;&#x4E00;</p>
+<pre><code class="lang-cpp">**&#x5982;&#x679C;&#x6709;&#x4E00;&#x4E2A;&#x6216;&#x591A;&#x4E2A;&#x53C2;&#x6570;&#x4F20;&#x5165;&#xFF0C;&#x5219;&#x4F7F;&#x7528;&#x51FD;&#x6570;&#x6A21;&#x677F;&#xFF0C;&#x5E76;&#x6301;&#x7EED;&#x9012;&#x5F52;&#x3002;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x53C2;&#x6570;&#x4F20;&#x5165;&#xFF0C;&#x5219;&#x8C03;&#x7528;`printX()`&#x666E;&#x901A;&#x51FD;&#x6570;&#x3002;**
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">printX</span><span class="hljs-params">()</span> </span>{}
+
+<span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> T,<span class="hljs-keyword">typename</span>... Types&gt;
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">printX</span><span class="hljs-params">(<span class="hljs-keyword">const</span> T&amp; firstArg, <span class="hljs-keyword">const</span> Types&amp;... args)</span></span>{
+  <span class="hljs-built_in">cout</span>&lt;&lt; firstArgs&lt;&lt;<span class="hljs-built_in">endl</span>;
+  printX(args...);
+}
+
+&#x793A;&#x4F8B;: printX(<span class="hljs-number">7.5</span>,<span class="hljs-string">&quot;hello&quot;</span>,<span class="hljs-built_in">bitset</span>&lt;16&gt;(<span class="hljs-number">377</span>),<span class="hljs-number">42</span>);
+&#x8F93;&#x51FA;:
+<span class="hljs-number">7.5</span>
+hello
+<span class="hljs-number">00000000000011011110001</span>
+<span class="hljs-number">42</span>
+</code></pre>
+<p><strong>&#x5982;&#x679C;&#x6709;&#x4E00;&#x4E2A;&#x6216;&#x591A;&#x4E2A;&#x53C2;&#x6570;&#x4F20;&#x5165;&#xFF0C;&#x5219;&#x4F7F;&#x7528;&#x51FD;&#x6570;&#x6A21;&#x677F;&#xFF0C;&#x5E76;&#x6301;&#x7EED;&#x9012;&#x5F52;&#x3002;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x53C2;&#x6570;&#x4F20;&#x5165;&#xFF0C;&#x5219;&#x8C03;&#x7528;<code>printX()</code>&#x666E;&#x901A;&#x51FD;&#x6570;&#x3002;</strong></p>
+</li>
+<li><p>&#x793A;&#x4F8B;&#x4E8C;</p>
+<p>&#x53C2;&#x8003;&#x95EE;&#x9898;: <a href="https://stackoverflow.com/questions/3634379/variadic-templates" target="_blank">https://stackoverflow.com/questions/3634379/variadic-templates</a></p>
+<pre><code class="lang-cpp"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">printf</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *s)</span>
+</span>{
+  <span class="hljs-keyword">while</span> (*s)
+  {
+    <span class="hljs-keyword">if</span> (*s == <span class="hljs-string">&apos;%&apos;</span> &amp;&amp; *(++s) != <span class="hljs-string">&apos;%&apos;</span>)
+      <span class="hljs-keyword">throw</span> <span class="hljs-built_in">std</span>::runtime_error(<span class="hljs-string">&quot;invalid format string: missing arguments&quot;</span>);
+    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; *s++;
+  }
+}
+
+<span class="hljs-keyword">template</span>&lt;<span class="hljs-keyword">typename</span> T, <span class="hljs-keyword">typename</span>... Args&gt;
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">printf</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* s, T value, Args... args)</span>
+</span>{
+  <span class="hljs-keyword">while</span> (*s)
+  {
+    <span class="hljs-keyword">if</span> (*s == <span class="hljs-string">&apos;%&apos;</span> &amp;&amp; *(++s) != <span class="hljs-string">&apos;%&apos;</span>) <span class="hljs-comment">//&#x4E0D;&#x4F1A;&#x7BA1;%d&#x3001;%s&#x8FD9;&#x4E9B;&#x63A7;&#x5236;&#x7B26;&#x53F7;,&#x53CD;&#x6B63;&#x503C;&#x90FD;&#x662F;&#x671D; std::cout&#x91CC;&#x9762;&#x4E22;</span>
+    {
+      <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; value;
+      <span class="hljs-built_in">printf</span>(++s, args...); <span class="hljs-comment">// call even when *s == 0 to detect extra arguments</span>
+      <span class="hljs-keyword">return</span>;
+    }
+    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; *s++;
+  }
+  <span class="hljs-keyword">throw</span> <span class="hljs-built_in">std</span>::logic_error(<span class="hljs-string">&quot;extra arguments provided to printf&quot;</span>);
+}
+</code></pre>
+</li>
+<li><p>&#x793A;&#x4F8B;&#x4E09;:</p>
+<pre><code class="lang-cpp"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">maximum</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span>
+</span>{
+    <span class="hljs-keyword">return</span> n;
+}
+
+<span class="hljs-keyword">template</span>&lt;<span class="hljs-keyword">typename</span>... Args&gt;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">maximum</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n, Args... args)</span>
+</span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">std</span>::max(n, maximum(args...));
+}
+&#x8C03;&#x7528;&#x65B9;&#x5F0F;: <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span>&lt;&lt;max(<span class="hljs-number">57</span>,<span class="hljs-number">48</span>,<span class="hljs-number">60</span>,<span class="hljs-number">100</span>,<span class="hljs-number">20</span>)&lt;&lt;<span class="hljs-built_in">std</span>::<span class="hljs-built_in">endl</span>;
+
+&#x5982;&#x679C;&#x7C7B;&#x578B;&#x76F8;&#x540C;&#xFF0C;&#x5176;&#x5B9E;&#x7528; <span class="hljs-built_in">std</span>::<span class="hljs-built_in">initializer_list</span>&lt;&gt;&#x66F4;&#x5408;&#x9002;
+&#x5982;: <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-built_in">std</span>::max({<span class="hljs-number">57</span>,<span class="hljs-number">48</span>,<span class="hljs-number">60</span>,<span class="hljs-number">100</span>,<span class="hljs-number">20</span>})&lt;&lt;<span class="hljs-built_in">std</span>::<span class="hljs-built_in">endl</span>; &#x5C31;&#x662F;&#x7528;&#x7684;&#x662F; <span class="hljs-built_in">std</span>::<span class="hljs-built_in">initializer_list</span>
+</code></pre>
+</li>
+</ul>
 
                                 
                                 </section>
@@ -897,7 +983,7 @@ b. &#x4F46;<code>ca</code>(<code>Blob&lt;char&gt;</code>) &#x5BF9;<code>ia</code
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"C++ Primer 类设计:模板与泛型编程","level":"1.5.15","depth":2,"next":{"title":"C++并发编程实战一:基础使用、Join、传参、线程所有权转移","level":"1.5.16","depth":2,"path":"c++学习笔记/C++并发编程实战-01基础使用Join传参.md","ref":"c++学习笔记/C++并发编程实战-01基础使用Join传参.md","articles":[]},"previous":{"title":"C++ Primer 类设计: 基类、派生类、虚函数","level":"1.5.14","depth":2,"path":"c++学习笔记/C++Primer类设计-基类派生类虚函数.md","ref":"c++学习笔记/C++Primer类设计-基类派生类虚函数.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"c++学习笔记/C++Primer类设计-模板与泛型编程.md","mtime":"2021-12-02T11:16:37.832Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-01-23T03:32:52.808Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"C++ Primer 类设计:模板与泛型编程","level":"1.5.15","depth":2,"next":{"title":"C++并发编程实战一:基础使用、Join、传参、线程所有权转移","level":"1.5.16","depth":2,"path":"c++学习笔记/C++并发编程实战-01基础使用Join传参.md","ref":"c++学习笔记/C++并发编程实战-01基础使用Join传参.md","articles":[]},"previous":{"title":"C++ Primer 类设计: 基类、派生类、虚函数","level":"1.5.14","depth":2,"path":"c++学习笔记/C++Primer类设计-基类派生类虚函数.md","ref":"c++学习笔记/C++Primer类设计-基类派生类虚函数.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"c++学习笔记/C++Primer类设计-模板与泛型编程.md","mtime":"2022-04-04T14:35:08.273Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-06-06T23:25:07.193Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -905,10 +991,6 @@ b. &#x4F46;<code>ca</code>(<code>Blob&lt;char&gt;</code>) &#x5BF9;<code>ia</code
         
     <script src="../gitbook/gitbook.js"></script>
     <script src="../gitbook/theme.js"></script>
-    
-        
-        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
-        
     
         
         <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
