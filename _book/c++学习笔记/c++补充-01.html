@@ -1,0 +1,1234 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>c++补充-01 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="c++补充-02EffectiveSTL有用使用经验.html" />
+    
+    
+    <link rel="prev" href="C++并发编程实战-05内存模型.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    README
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../redis学习/">
+            
+                <a href="../redis学习/">
+            
+                    
+                    Redis学习
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../redis学习/Redis备份.html">
+            
+                <a href="../redis学习/Redis备份.html">
+            
+                    
+                    Redis备份
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../redis学习/Redis复制.html">
+            
+                <a href="../redis学习/Redis复制.html">
+            
+                    
+                    Redis复制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../redis学习/Redis集群.html">
+            
+                <a href="../redis学习/Redis集群.html">
+            
+                    
+                    Redis集群
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../redis学习/缓存与数据库一致性.html">
+            
+                <a href="../redis学习/缓存与数据库一致性.html">
+            
+                    
+                    缓存与数据库一致性
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../redis学习/Redis消息队列Stream.html">
+            
+                <a href="../redis学习/Redis消息队列Stream.html">
+            
+                    
+                    Redis消息队列
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../rocksdb-xue-xi/README.md">
+            
+                <span>
+            
+                    
+                    RocksDB学习
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../rocksdb学习/RocksDB基础概念.html">
+            
+                <a href="../rocksdb学习/RocksDB基础概念.html">
+            
+                    
+                    RocksDB基础概念
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../rocksdb学习/RocksDB基础操作-C语言.html">
+            
+                <a href="../rocksdb学习/RocksDB基础操作-C语言.html">
+            
+                    
+                    RocksDB基础操作-C语言
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../c语言笔记/">
+            
+                <a href="../c语言笔记/">
+            
+                    
+                    C语言笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../c语言笔记/C语言补充笔记一.html">
+            
+                <a href="../c语言笔记/C语言补充笔记一.html">
+            
+                    
+                    C语言补充笔记一
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    C++学习笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="C++Primer基础-01引用指针const.html">
+            
+                <a href="C++Primer基础-01引用指针const.html">
+            
+                    
+                    C++Primer基础:引用、指针、const、auto/decltype
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="C++Primer基础-02volatile与using.html">
+            
+                <a href="C++Primer基础-02volatile与using.html">
+            
+                    
+                    C++Primer基础:volatile、using
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="C++Primer基础-03stringvector数组.html">
+            
+                <a href="C++Primer基础-03stringvector数组.html">
+            
+                    
+                    C++Primer基础: string、vector、数组
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="C++Primer基础-04函数重载函数指针.html">
+            
+                <a href="C++Primer基础-04函数重载函数指针.html">
+            
+                    
+                    C++Primer基础:函数、重载、函数指针
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="C++Primer基础-05function与bind与forward.html">
+            
+                <a href="C++Primer基础-05function与bind与forward.html">
+            
+                    
+                    C++Primer基础:std::function、std::bind、std::forward
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="C++Primer基础-06-lambda.html">
+            
+                <a href="C++Primer基础-06-lambda.html">
+            
+                    
+                    C++Primer基础:lambda
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" data-path="C++Primer基础-07类基础.html">
+            
+                <a href="C++Primer基础-07类基础.html">
+            
+                    
+                    C++ Primer基础: 类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8" data-path="C++Primer标准库-IO库.html">
+            
+                <a href="C++Primer标准库-IO库.html">
+            
+                    
+                    C++ Primer 标准库: IO库
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.9" data-path="C++Primer标准库-顺序容器.html">
+            
+                <a href="C++Primer标准库-顺序容器.html">
+            
+                    
+                    C++ Primer 标准库: 顺序容器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.10" data-path="C++Primer标准库-泛型算法.html">
+            
+                <a href="C++Primer标准库-泛型算法.html">
+            
+                    
+                    C++ Primer 标准库: 泛型算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.11" data-path="C++Primer标准库-关联容器.html">
+            
+                <a href="C++Primer标准库-关联容器.html">
+            
+                    
+                    C++ Primer 标准库: 关联容器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.12" data-path="C++Primer标准库-动态内存.html">
+            
+                <a href="C++Primer标准库-动态内存.html">
+            
+                    
+                    C++ Primer 标准库: 动态内存
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.13" data-path="C++Primer类设计-拷贝控制.html">
+            
+                <a href="C++Primer类设计-拷贝控制.html">
+            
+                    
+                    C++ Primer 类设计: 拷贝控制、explicit
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.14" data-path="C++Primer类设计-基类派生类虚函数.html">
+            
+                <a href="C++Primer类设计-基类派生类虚函数.html">
+            
+                    
+                    C++ Primer 类设计: 基类、派生类、虚函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.15" data-path="C++Primer类设计-模板与泛型编程.html">
+            
+                <a href="C++Primer类设计-模板与泛型编程.html">
+            
+                    
+                    C++ Primer 类设计:模板与泛型编程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.16" data-path="C++并发编程实战-01基础使用Join传参.html">
+            
+                <a href="C++并发编程实战-01基础使用Join传参.html">
+            
+                    
+                    C++并发编程实战一:基础使用、Join、传参、线程所有权转移
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.17" data-path="C++并发编程实战-02mutexlock.html">
+            
+                <a href="C++并发编程实战-02mutexlock.html">
+            
+                    
+                    C++并发编程实战: mutex、lock、unique_lock、call_once、shared_lock
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.18" data-path="C++并发编程实战-03条件变量.html">
+            
+                <a href="C++并发编程实战-03条件变量.html">
+            
+                    
+                    C++并发编程实战三: 条件变量
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.19" data-path="C++并发编程实战-04原子操作和类型.html">
+            
+                <a href="C++并发编程实战-04原子操作和类型.html">
+            
+                    
+                    C++并发编程实战四: 原子操作和类型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.20" data-path="C++并发编程实战-05内存模型.html">
+            
+                <a href="C++并发编程实战-05内存模型.html">
+            
+                    
+                    C++并发编程实战五: 内存模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.5.21" data-path="c++补充-01.html">
+            
+                <a href="c++补充-01.html">
+            
+                    
+                    c++补充-01
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.22" data-path="c++补充-02EffectiveSTL有用使用经验.html">
+            
+                <a href="c++补充-02EffectiveSTL有用使用经验.html">
+            
+                    
+                    C++补充02: Effective STL使用经验
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.23" data-path="Glog使用.html">
+            
+                <a href="Glog使用.html">
+            
+                    
+                    Glog使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../golang学习笔记/">
+            
+                <a href="../golang学习笔记/">
+            
+                    
+                    Golang学习笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../golang学习笔记/Go常见错误集锦.html">
+            
+                <a href="../golang学习笔记/Go常见错误集锦.html">
+            
+                    
+                    Go常见错误集锦
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../golang学习笔记/Go高性能的一些技巧.html">
+            
+                <a href="../golang学习笔记/Go高性能的一些技巧.html">
+            
+                    
+                    Go常见高性能技巧
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../golang学习笔记/Golang反射.html">
+            
+                <a href="../golang学习笔记/Golang反射.html">
+            
+                    
+                    Golang反射
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../golang学习笔记/内存逃逸.html">
+            
+                <a href="../golang学习笔记/内存逃逸.html">
+            
+                    
+                    内存逃逸
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="../golang学习笔记/调度器GMP.html">
+            
+                <a href="../golang学习笔记/调度器GMP.html">
+            
+                    
+                    调度器GMP
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6" data-path="../golang学习笔记/GC垃圾回收.html">
+            
+                <a href="../golang学习笔记/GC垃圾回收.html">
+            
+                    
+                    GC垃圾回收
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../工具使用/">
+            
+                <a href="../工具使用/">
+            
+                    
+                    工具使用
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../工具使用/VSCode使用小技巧.html">
+            
+                <a href="../工具使用/VSCode使用小技巧.html">
+            
+                    
+                    VS Code使用小技巧
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../工具使用/GCC安装.html">
+            
+                <a href="../工具使用/GCC安装.html">
+            
+                    
+                    GCC安装
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../工具使用/CMake学习与使用.html">
+            
+                <a href="../工具使用/CMake学习与使用.html">
+            
+                    
+                    CMake学习与使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >c++补充-01</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h3 id="&#x5F3A;&#x5236;&#x7C7B;&#x578B;&#x8F6C;&#x6362;">&#x5F3A;&#x5236;&#x7C7B;&#x578B;&#x8F6C;&#x6362;</h3>
+<h4 id="staticcast"><code>static_cast</code></h4>
+<ul>
+<li>&#x7528;&#x4E8E;&#x975E;&#x591A;&#x6001;&#x7C7B;&#x578B;&#x7684;&#x8F6C;&#x6362;</li>
+<li>&#x4E0D;&#x6267;&#x884C;&#x8FD0;&#x884C;&#x65F6;&#x7C7B;&#x578B;&#x68C0;&#x67E5;&#xFF08;&#x8F6C;&#x6362;&#x5B89;&#x5168;&#x6027;&#x4E0D;&#x5982; dynamic_cast&#xFF09;</li>
+<li>&#x901A;&#x5E38;&#x7528;&#x4E8E;&#x8F6C;&#x6362;&#x57FA;&#x672C;&#x6570;&#x636E;&#x7C7B;&#x578B;&#xFF08;&#x5982; float -&gt; int&#xFF09;</li>
+<li>&#x53EF;&#x4EE5;&#x5728;&#x6574;&#x4E2A;&#x7C7B;&#x5C42;&#x6B21;&#x7ED3;&#x6784;&#x4E2D;&#x79FB;&#x52A8;&#x6307;&#x9488;&#xFF0C;&#x5B50;&#x7C7B;&#x8F6C;&#x5316;&#x4E3A;&#x7236;&#x7C7B;&#x5B89;&#x5168;&#xFF08;&#x5411;&#x4E0A;&#x8F6C;&#x6362;&#xFF09;&#xFF0C;&#x7236;&#x7C7B;&#x8F6C;&#x5316;&#x4E3A;&#x5B50;&#x7C7B;&#x4E0D;&#x5B89;&#x5168;<br>&#xFF08;&#x56E0;&#x4E3A;&#x5B50;&#x7C7B;&#x53EF;&#x80FD;&#x6709;&#x4E0D;&#x5728;&#x7236;&#x7C7B;&#x7684;&#x5B57;&#x6BB5;&#x6216;&#x65B9;&#x6CD5;&#xFF09;</li>
+</ul>
+<h4 id="dynamiccast"><code>dynamic_cast</code></h4>
+<ul>
+<li>&#x7528;&#x4E8E;&#x591A;&#x6001;&#x7C7B;&#x578B;&#x7684;&#x8F6C;&#x6362;</li>
+<li>&#x6267;&#x884C;&#x8FD0;&#x884C;&#x65F6;&#x7C7B;&#x578B;&#x68C0;&#x67E5;</li>
+<li>&#x53EA;&#x9002;&#x7528;&#x4E8E;&#x6307;&#x9488;&#x6216;&#x5F15;&#x7528;</li>
+<li>&#x5BF9;&#x4E0D;&#x660E;&#x786E;&#x7684;&#x6307;&#x9488;&#x7684;&#x8F6C;&#x6362;&#x5C06;&#x5931;&#x8D25;&#xFF08;&#x8FD4;&#x56DE; nullptr&#xFF09;&#xFF0C;&#x4F46;&#x4E0D;&#x5F15;&#x53D1;&#x5F02;&#x5E38;</li>
+<li>&#x53EF;&#x4EE5;&#x5728;&#x6574;&#x4E2A;&#x7C7B;&#x5C42;&#x6B21;&#x7ED3;&#x6784;&#x4E2D;&#x79FB;&#x52A8;&#x6307;&#x9488;&#xFF0C;&#x5305;&#x62EC;&#x5411;&#x4E0A;&#x8F6C;&#x6362;&#x3001;&#x5411;&#x4E0B;&#x8F6C;&#x6362;</li>
+</ul>
+<h4 id="constcast"><code>const_cast</code></h4>
+<ul>
+<li>&#x7528;&#x4E8E;&#x5220;&#x9664; <code>const</code>&#x3001;<code>volatile</code> &#x548C; <code>__unaligned</code> &#x7279;&#x6027;&#xFF08;&#x5982;&#x5C06; <code>const int</code> &#x7C7B;&#x578B;&#x8F6C;&#x6362;&#x4E3A; <code>int</code> &#x7C7B;&#x578B; &#xFF09;</li>
+</ul>
+<h4 id="reinterpretcast"><code>reinterpret_cast</code></h4>
+<ul>
+<li>&#x7528;&#x4E8E;&#x4F4D;&#x7684;&#x7B80;&#x5355;&#x91CD;&#x65B0;&#x89E3;&#x91CA;</li>
+<li>&#x6EE5;&#x7528; reinterpret_cast &#x8FD0;&#x7B97;&#x7B26;&#x53EF;&#x80FD;&#x5F88;&#x5BB9;&#x6613;&#x5E26;&#x6765;&#x98CE;&#x9669;&#x3002;&#x9664;&#x975E;&#x6240;&#x9700;&#x8F6C;&#x6362;&#x672C;&#x8EAB;&#x662F;&#x4F4E;&#x7EA7;&#x522B;&#x7684;&#xFF0C;&#x5426;&#x5219;&#x5E94;&#x4F7F;&#x7528;&#x5176;&#x4ED6;&#x5F3A;&#x5236;&#x8F6C;&#x6362;&#x8FD0;&#x7B97;&#x7B26;&#x4E4B;&#x4E00;&#x3002;</li>
+<li>&#x5141;&#x8BB8;&#x5C06;&#x4EFB;&#x4F55;&#x6307;&#x9488;&#x8F6C;&#x6362;&#x4E3A;&#x4EFB;&#x4F55;&#x5176;&#x4ED6;&#x6307;&#x9488;&#x7C7B;&#x578B;&#xFF08;&#x5982; <code>char*</code> &#x5230; <code>int*</code> &#x6216; <code>One_class*</code> &#x5230; <code>Unrelated_class*</code> &#x4E4B;&#x7C7B;&#x7684;&#x8F6C;&#x6362;&#xFF0C;&#x4F46;&#x5176;&#x672C;&#x8EAB;&#x5E76;&#x4E0D;&#x5B89;&#x5168;&#xFF09;</li>
+<li>&#x4E5F;&#x5141;&#x8BB8;&#x5C06;&#x4EFB;&#x4F55;&#x6574;&#x6570;&#x7C7B;&#x578B;&#x8F6C;&#x6362;&#x4E3A;&#x4EFB;&#x4F55;&#x6307;&#x9488;&#x7C7B;&#x578B;&#x4EE5;&#x53CA;&#x53CD;&#x5411;&#x8F6C;&#x6362;</li>
+<li>reinterpret_cast &#x8FD0;&#x7B97;&#x7B26;&#x4E0D;&#x80FD;&#x4E22;&#x6389; const&#x3001;volatile &#x6216; __unaligned &#x7279;&#x6027;</li>
+<li>reinterpret_cast &#x7684;&#x4E00;&#x4E2A;&#x5B9E;&#x9645;&#x7528;&#x9014;&#x662F;&#x5728;&#x54C8;&#x5E0C;&#x51FD;&#x6570;&#x4E2D;&#xFF0C;&#x5373;&#xFF0C;&#x901A;&#x8FC7;&#x8BA9;&#x4E24;&#x4E2A;&#x4E0D;&#x540C;&#x7684;&#x503C;&#x51E0;&#x4E4E;&#x4E0D;&#x4EE5;&#x76F8;&#x540C;&#x7684;&#x7D22;&#x5F15;&#x7ED3;&#x5C3E;&#x7684;&#x65B9;&#x5F0F;&#x5C06;&#x503C;&#x6620;&#x5C04;&#x5230;&#x7D22;&#x5F15;&#x3002;</li>
+</ul>
+<p>&#x5982;&#x5C06;<code>const char*</code>&#x8F6C;&#x6362;&#x4E3A;<code>struct</code>:</p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">const</span> <span class="hljs-keyword">struct</span> tcphdr* tcpHeader;
+tcpHeader = <span class="hljs-keyword">reinterpret_cast</span>&lt;<span class="hljs-keyword">const</span> <span class="hljs-keyword">struct</span> tcphdr*&gt;(packet + <span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">struct</span> ether_header) + <span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">struct</span> ip));
+</code></pre>
+<h4 id="badcast"><code>bad_cast</code></h4>
+<ul>
+<li>&#x7531;&#x4E8E;&#x5F3A;&#x5236;&#x8F6C;&#x6362;&#x4E3A;&#x5F15;&#x7528;&#x7C7B;&#x578B;&#x5931;&#x8D25;&#xFF0C;dynamic_cast &#x8FD0;&#x7B97;&#x7B26;&#x5F15;&#x53D1; bad_cast &#x5F02;&#x5E38;</li>
+</ul>
+<p><code>bad_cast</code>&#x7684;&#x4F7F;&#x7528;</p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">try</span> {  
+    Circle&amp; ref_circle = <span class="hljs-keyword">dynamic_cast</span>&lt;Circle&amp;&gt;(ref_shape);   
+}  
+<span class="hljs-keyword">catch</span> (bad_cast b) {  
+    <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">&quot;Caught: &quot;</span> &lt;&lt; b.what();  
+}
+</code></pre>
+<h3 id="cpp&#x4E2D;set&#x3001;map&#x90FD;&#x662F;&#x7EA2;&#x9ED1;&#x6811;&#x5B9E;&#x73B0;&#x7684;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x7528;set&#x7528;&#x6765;&#x4FDD;&#x5B58;&#x4E00;&#x4E2A;&#x6709;&#x5E8F;&#x7684;&#x5217;&#x8868;">cpp&#x4E2D;<code>set</code>&#x3001;<code>map</code>&#x90FD;&#x662F;&#x7EA2;&#x9ED1;&#x6811;&#x5B9E;&#x73B0;&#x7684;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x7528;<code>set</code>&#x7528;&#x6765;&#x4FDD;&#x5B58;&#x4E00;&#x4E2A;&#x6709;&#x5E8F;&#x7684;&#x5217;&#x8868;</h3>
+<p>&#x5728;&#x63D2;&#x5165;&#x65F6;&#x5C31;&#x4FDD;&#x6301;&#x6709;&#x5E8F;&#x3002;&#x53EF;&#x53C2;&#x8003;&#x95EE;&#x9898;: <a href="https://stackoverflow.com/questions/2620862/using-custom-stdset-comparator" target="_blank">Using custom std::set comparator</a></p>
+<h4 id="&#x5B9A;&#x4E49;operator">&#x5B9A;&#x4E49;<code>operator&lt;()</code></h4>
+<pre><code class="lang-cpp"><span class="hljs-keyword">struct</span> LFUNode01 {
+  <span class="hljs-keyword">int</span> _key, _value;
+  <span class="hljs-keyword">int</span> _cnt;
+  <span class="hljs-built_in">std</span>::<span class="hljs-keyword">time_t</span> _time;
+  LFUNode01(<span class="hljs-keyword">int</span> k, <span class="hljs-keyword">int</span> v) : _key(k), _value(v), _time(<span class="hljs-built_in">std</span>::time(<span class="hljs-number">0</span>)), _cnt(<span class="hljs-number">1</span>) {}
+  <span class="hljs-keyword">bool</span> <span class="hljs-keyword">operator</span>&lt;(<span class="hljs-keyword">const</span> LFUNode01 &amp;node) <span class="hljs-keyword">const</span> {
+    <span class="hljs-keyword">return</span> _key &lt; node._key;
+  }
+};
+
+<span class="hljs-built_in">std</span>::<span class="hljs-built_in">multiset</span>&lt;LFUNode01&gt; setNums;
+setNums.emplace(<span class="hljs-number">10</span>, <span class="hljs-number">100</span>);
+setNums.emplace(<span class="hljs-number">5</span>, <span class="hljs-number">25</span>);
+setNums.emplace(<span class="hljs-number">6</span>, <span class="hljs-number">36</span>);
+setNums.emplace(<span class="hljs-number">2</span>, <span class="hljs-number">4</span>);
+setNums.emplace(<span class="hljs-number">2</span>, <span class="hljs-number">4</span>);
+setNums.emplace(<span class="hljs-number">1</span>, <span class="hljs-number">1</span>);
+setNums.emplace(<span class="hljs-number">11</span>, <span class="hljs-number">121</span>);
+<span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">&quot;multiset test results:&quot;</span>;
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> &amp;item : setNums) {
+  <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; item._key &lt;&lt; <span class="hljs-string">&quot;(&quot;</span> &lt;&lt; item._value &lt;&lt; <span class="hljs-string">&quot;),&quot;</span>;
+}
+<span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-built_in">std</span>::<span class="hljs-built_in">endl</span>;
+
+&#x7ED3;&#x679C;:
+<span class="hljs-built_in">multiset</span> test results:<span class="hljs-number">1</span>(<span class="hljs-number">1</span>),<span class="hljs-number">2</span>(<span class="hljs-number">4</span>),<span class="hljs-number">2</span>(<span class="hljs-number">4</span>),<span class="hljs-number">5</span>(<span class="hljs-number">25</span>),<span class="hljs-number">6</span>(<span class="hljs-number">36</span>),<span class="hljs-number">10</span>(<span class="hljs-number">100</span>),<span class="hljs-number">11</span>(<span class="hljs-number">121</span>),
+</code></pre>
+<h4 id="&#x81EA;&#x5B9A;&#x4E49;cmp&#x51FD;&#x6570;">&#x81EA;&#x5B9A;&#x4E49;cmp&#x51FD;&#x6570;</h4>
+<p><mark style="color:red"><strong>&#x5982;&#x679C;<code>std::set</code>&#x4E2D;&#x4FDD;&#x5B58;&#x7684;&#x662F;<code>std::shared_ptr</code>&#x5C31;&#x7279;&#x522B;&#x7279;&#x522B;&#x91CD;&#x8981;&#x3002;&#x56E0;&#x4E3A;<code>operator&lt;()</code>&#x5DF2;&#x7ECF;&#x4E0D;&#x7BA1;&#x7528;&#x4E86;</strong></mark></p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">struct</span> LFUNode01 {
+  <span class="hljs-keyword">int</span> _key, _value;
+  <span class="hljs-keyword">int</span> _cnt;
+  <span class="hljs-built_in">std</span>::<span class="hljs-keyword">time_t</span> _time;
+  LFUNode01(<span class="hljs-keyword">int</span> k, <span class="hljs-keyword">int</span> v) : _key(k), _value(v), _time(<span class="hljs-built_in">std</span>::time(<span class="hljs-number">0</span>)), _cnt(<span class="hljs-number">1</span>) {}
+  LFUNode01(<span class="hljs-keyword">int</span> k, <span class="hljs-keyword">int</span> v, <span class="hljs-keyword">int</span> cnt, <span class="hljs-keyword">int</span> time)
+      : _key(k), _value(v), _time(<span class="hljs-built_in">std</span>::time(<span class="hljs-number">0</span>)), _cnt(cnt) {}
+  <span class="hljs-keyword">bool</span> <span class="hljs-keyword">operator</span>&lt;(<span class="hljs-keyword">const</span> LFUNode01 &amp;node) <span class="hljs-keyword">const</span> {
+    <span class="hljs-keyword">return</span> _cnt == node._cnt ? _time &lt; node._time : _cnt &lt; node._cnt;
+  }
+};
+<span class="hljs-keyword">auto</span> cmp = [](<span class="hljs-keyword">const</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">shared_ptr</span>&lt;LFUNode01&gt; a,
+              <span class="hljs-keyword">const</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">shared_ptr</span>&lt;LFUNode01&gt; b) {
+  <span class="hljs-keyword">return</span> a-&gt;_cnt == b-&gt;_cnt ? a-&gt;_time &lt; b-&gt;_time : a-&gt;_cnt &lt; b-&gt;_cnt;
+};
+<span class="hljs-built_in">std</span>::<span class="hljs-built_in">set</span>&lt;<span class="hljs-built_in">std</span>::<span class="hljs-built_in">shared_ptr</span>&lt;LFUNode01&gt;, <span class="hljs-keyword">decltype</span>(cmp)&gt; set01(cmp);
+&#x6216;&#x8005;
+
+<span class="hljs-keyword">struct</span> comp01 {
+  <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">operator</span><span class="hljs-params">()</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">shared_ptr</span>&lt;LFUNode01&gt; &amp;a,
+                  <span class="hljs-keyword">const</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">shared_ptr</span>&lt;LFUNode01&gt; &amp;b)</span> </span>{
+    <span class="hljs-keyword">return</span> a-&gt;_cnt == b-&gt;_cnt ? a-&gt;_time &lt; b-&gt;_time : a-&gt;_cnt &lt; b-&gt;_cnt;
+  }
+};
+<span class="hljs-built_in">std</span>::<span class="hljs-built_in">set</span>&lt;<span class="hljs-built_in">std</span>::<span class="hljs-built_in">shared_ptr</span>&lt;LFUNode01&gt;, comp01&gt; set01;
+</code></pre>
+<h3 id="static&#x6210;&#x5458;&#x7684;&#x521D;&#x59CB;&#x5316;&#x548C;&#x7279;&#x70B9;">static&#x6210;&#x5458;&#x7684;&#x521D;&#x59CB;&#x5316;&#x548C;&#x7279;&#x70B9;</h3>
+<pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;
+
+<span class="hljs-keyword">class</span> Test
+{
+<span class="hljs-keyword">public</span>:
+    Test() : y(<span class="hljs-number">1</span>), r(y), d(<span class="hljs-number">3</span>){} <span class="hljs-comment">//&#x5BF9;&#x4E8E;&#x5E38;&#x91CF;&#x578B;&#x6210;&#x5458;&#x53D8;&#x91CF;&#x548C;&#x5F15;&#x7528;&#x578B;&#x6210;&#x5458;&#x53D8;&#x91CF;&#xFF0C;&#x5FC5;&#x987B;&#x901A;&#x8FC7;&#x53C2;&#x6570;&#x5316;&#x5217;&#x8868;&#x7684;&#x65B9;&#x5F0F;&#x8FDB;&#x884C;&#x521D;&#x59CB;&#x5316;&#x3002;</span>
+    ~Test(){}
+
+    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testStaticFun</span><span class="hljs-params">()</span>
+    </span>{
+      <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">&quot;y = &quot;</span> &lt;&lt; y &lt;&lt; <span class="hljs-built_in">endl</span>; <span class="hljs-comment">//Error:&#x9759;&#x6001;&#x6210;&#x5458;&#x51FD;&#x6570;&#x4E0D;&#x80FD;&#x8BBF;&#x95EE;&#x975E;&#x9759;&#x6001;&#x6210;&#x5458;</span>
+    }
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">testFun</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">&quot;x = &quot;</span> &lt;&lt; x &lt;&lt; <span class="hljs-built_in">endl</span>; 
+    }
+
+    <span class="hljs-keyword">int</span> y;      <span class="hljs-comment">//&#x666E;&#x901A;&#x53D8;&#x91CF;&#x6210;&#x5458;</span>
+    <span class="hljs-keyword">int</span> &amp;r;     <span class="hljs-comment">//&#x5F15;&#x7528;&#x6210;&#x5458;&#x53D8;&#x91CF;</span>
+    <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> d;    <span class="hljs-comment">//&#x5E38;&#x91CF;&#x6210;&#x5458;&#x53D8;&#x91CF;</span>
+    <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> c;   <span class="hljs-comment">//&#x9759;&#x6001;&#x6210;&#x5458;&#x53D8;&#x91CF;</span>
+      <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> e=<span class="hljs-number">100</span>; <span class="hljs-comment">//Error:&#x9759;&#x6001;&#x6210;&#x5458;&#x53D8;&#x91CF;&#x5FC5;&#x987B;&#x5728;&#x7C7B;&#x5916;&#x521D;&#x59CB;&#x5316;</span>
+
+    <span class="hljs-keyword">static</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> x = <span class="hljs-number">2.1</span>;   <span class="hljs-comment">//&#x9759;&#x6001;&#x5E38;&#x91CF;&#x6574;&#x578B;&#x6210;&#x5458;&#x53D8;&#x91CF;</span>
+    <span class="hljs-keyword">static</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> xx;        <span class="hljs-comment">//&#x9759;&#x6001;&#x5E38;&#x91CF;&#x6574;&#x578B;&#x6210;&#x5458;&#x53D8;&#x91CF;&#x58F0;&#x660E;</span>
+    <span class="hljs-keyword">static</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">double</span> z;  <span class="hljs-comment">//&#x9759;&#x6001;&#x5E38;&#x91CF;&#x975E;&#x6574;&#x578B;&#x6210;&#x5458;&#x53D8;&#x91CF;&#x58F0;&#x660E;</span>
+    <span class="hljs-keyword">static</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">float</span> zz = <span class="hljs-number">6.6</span>;    <span class="hljs-comment">//&#x9759;&#x6001;&#x5E38;&#x91CF;&#x975E;&#x6574;&#x578B;&#x6210;&#x5458;&#x53D8;&#x91CF;</span>
+};
+
+<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> Test::xx = <span class="hljs-number">4</span>; <span class="hljs-comment">//&#x9759;&#x6001;&#x5E38;&#x91CF;&#x6574;&#x578B;&#x6210;&#x5458;&#x53D8;&#x91CF;&#x5B9A;&#x4E49;</span>
+<span class="hljs-keyword">const</span> <span class="hljs-keyword">double</span> Test::z = <span class="hljs-number">5.1</span>; <span class="hljs-comment">////&#x9759;&#x6001;&#x5E38;&#x91CF;&#x975E;&#x6574;&#x578B;&#x6210;&#x5458;&#x53D8;&#x91CF;&#x5B9A;&#x4E49;</span>
+<span class="hljs-keyword">int</span> Test::c = <span class="hljs-number">2</span>;
+</code></pre>
+<ul>
+<li><strong><mark style="color:red">&#x6210;&#x5458;&#x53D8;&#x91CF;&#x662F; &#x5F15;&#x7528;&#x548C;&#x5E38;&#x91CF;&#xFF0C;&#x5219;&#x6210;&#x5458;&#x53D8;&#x91CF;&#x5FC5;&#x987B;&#x901A;&#x8FC7;&#x6784;&#x9020;&#x51FD;&#x6570;&#x53C2;&#x6570;&#x5217;&#x8868;&#x7684;&#x65B9;&#x5F0F;&#x521D;&#x59CB;&#x5316;</mark>&#x3002;&#x5982;&#x4E0A;&#x9762;&#x7A0B;&#x5E8F;&#x4E2D;&#x7684;r&#x548C;d&#x53D8;&#x91CF;&#x7684;&#x521D;&#x59CB;&#x5316;</strong>;</li>
+<li><mark style="color:red"><strong>&#x6210;&#x5458;&#x53D8;&#x91CF;&#x662F;static&#x6210;&#x5458;&#x9700;&#x8981;&#x5728;&#x7C7B;&#x5B9A;&#x4E49;&#x4F53;&#x5916;&#x521D;&#x59CB;&#x5316;</strong></mark>&#x3002;static&#x6570;&#x636E;&#x6210;&#x5458;&#x72EC;&#x7ACB;&#x8BE5;&#x7C7B;&#x7684;&#x4EFB;&#x610F;&#x5BF9;&#x8C61;&#x5B58;&#x5728;;</li>
+<li><mark style="color:red"><strong>static const&#x6210;&#x5458;&#x53D8;&#x91CF; &#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x5728;&#x7C7B;&#x4E2D;&#x521D;&#x59CB;&#x5316;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x5728;&#x7C7B;&#x5B9A;&#x4E49;&#x5916;&#x8FDB;&#x884C;&#x521D;&#x59CB;&#x5316;&#x3002;</strong></mark>&#x5982;&#x4E0A;&#x9762;&#x7684;<code>z</code>&#x548C;<code>zz</code>&#x53D8;&#x91CF;;</li>
+</ul>
+<p><strong>&#x9759;&#x6001;&#x6210;&#x5458;&#x5C5E;&#x4E8E;&#x7C7B;&#x4F5C;&#x7528;&#x57DF;&#xFF0C;&#x4F46;&#x4E0D;&#x5C5E;&#x4E8E;&#x7C7B;&#x5BF9;&#x8C61;&#xFF0C;&#x5B83;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x548C;&#x666E;&#x901A;&#x7684;&#x9759;&#x6001;&#x53D8;&#x91CF;&#x4E00;&#x6837;&#xFF0C;&#x7A0B;&#x5E8F;&#x8FD0;&#x884C;&#x65F6;&#x8FDB;&#x884C;&#x5206;&#x914D;&#x5185;&#x5B58;&#x548C;&#x521D;&#x59CB;&#x5316;&#xFF0C;&#x7A0B;&#x5E8F;&#x7ED3;&#x675F;&#x65F6;&#x5219;&#x88AB;&#x91CA;&#x653E;&#x3002;&#x6240;&#x4EE5;&#x4E0D;&#x80FD;&#x5728;&#x7C7B;&#x7684;&#x6784;&#x9020;&#x51FD;&#x6570;&#x4E2D;&#x8FDB;&#x884C;&#x521D;&#x59CB;&#x5316;&#x3002;</strong></p>
+<p><strong>static&#x6210;&#x5458;&#x51FD;&#x6570;&#x7684;&#x7279;&#x70B9;:</strong></p>
+<ul>
+<li><strong><mark style="color:red">&#x56E0;&#x4E3A;static&#x6210;&#x5458;&#x51FD;&#x6570;&#x6CA1;&#x6709;this&#x6307;&#x9488;&#xFF0C;&#x6240;&#x4EE5;&#x9759;&#x6001;&#x6210;&#x5458;&#x51FD;&#x6570;&#x4E0D;&#x53EF;&#x4EE5;&#x8BBF;&#x95EE;&#x975E;&#x9759;&#x6001;&#x6210;&#x5458;</mark></strong>;</li>
+<li><strong><mark style="color:red">&#x975E;&#x9759;&#x6001;&#x6210;&#x5458;&#x51FD;&#x6570;&#x53EF;&#x4EE5;&#x8BBF;&#x95EE;&#x9759;&#x6001;&#x6210;&#x5458;</mark></strong>;</li>
+<li><strong><mark style="color:red">&#x9759;&#x6001;&#x6570;&#x636E;&#x6210;&#x5458;&#x4E0E;&#x7C7B;&#x7684;&#x5927;&#x5C0F;&#x65E0;&#x5173;</mark></strong>&#xFF0C;&#x56E0;&#x4E3A;&#x9759;&#x6001;&#x6210;&#x5458;&#x53EA;&#x662F;&#x4F5C;&#x7528;&#x5728;&#x7C7B;&#x7684;&#x8303;&#x56F4;&#x800C;&#x5DF2;;</li>
+</ul>
+<p><strong>static&#x7528;&#x6CD5;&#x603B;&#x7ED3;:</strong></p>
+<ul>
+<li><p>C&#x8BED;&#x8A00;&#x4E2D;:</p>
+<ul>
+<li><p><strong>&#x7528;&#x4E8E;&#x51FD;&#x6570;&#x5185;&#x90E8;&#x4FEE;&#x9970;&#x53D8;&#x91CF;&#xFF0C;&#x5373;&#x51FD;&#x6570;&#x5185;&#x7684;&#x9759;&#x6001;&#x53D8;&#x91CF;</strong>&#x3002;&#x8FD9;&#x79CD;&#x53D8;&#x91CF;&#x7684;&#x751F;&#x5B58;&#x671F;&#x957F;&#x4E8E;&#x8BE5;&#x51FD;&#x6570;&#xFF0C;&#x4F7F;&#x5F97;&#x51FD;&#x6570;&#x5177;&#x6709;&#x4E00;&#x5B9A;&#x7684;&#x201C;&#x72B6;&#x6001;&#x201D;&#x3002;&#x4F7F;&#x7528;&#x9759;&#x6001;&#x53D8;&#x91CF;&#x7684;&#x51FD;&#x6570;&#x4E00;&#x822C;&#x662F;&#x4E0D;&#x53EF;&#x91CD;&#x5165;&#x7684;&#xFF0C;&#x4E5F;&#x4E0D;&#x662F;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#x7684;&#xFF0C;&#x6BD4;&#x5982;strtok(3);</p>
+</li>
+<li><p><strong>&#x7528;&#x5728;&#x6587;&#x4EF6;&#x7EA7;&#x522B;&#xFF08;&#x51FD;&#x6570;&#x4F53;&#x4E4B;&#x5916;&#xFF09;&#xFF0C;&#x4FEE;&#x9970;&#x53D8;&#x91CF;&#x6216;&#x51FD;&#x6570;&#xFF0C;&#x8868;&#x793A;&#x8BE5;&#x53D8;&#x91CF;&#x6216;&#x51FD;&#x6570;&#x53EA;&#x5728;&#x672C;&#x6587;&#x4EF6;&#x53EF;&#x89C1;</strong>&#xFF0C;&#x5176;&#x4ED6;&#x6587;&#x4EF6;&#x770B;&#x4E0D;&#x5230;&#x4E5F;&#x8BBF;&#x95EE;&#x4E0D;&#x5230;&#x8BE5;&#x53D8;&#x91CF;&#x6216;&#x51FD;&#x6570;&#x3002;&#x4E13;&#x4E1A;&#x7684;&#x8BF4;&#x6CD5;&#x53EB;&quot;&#x5177;&#x6709;internal linkage&quot;;</p>
+</li>
+</ul>
+</li>
+<li><p>c++&#x8BED;&#x8A00;&#x4E2D;</p>
+<ul>
+<li><strong>&#x7528;&#x4E8E;&#x4FEE;&#x9970;&#x7C7B;&#x7684;&#x6570;&#x636E;&#x6210;&#x5458;&#xFF0C;&#x5373;&#x6240;&#x8C13;&#x201C;&#x9759;&#x6001;&#x6210;&#x5458;&#x201D;</strong>&#x3002;&#x8FD9;&#x79CD;&#x6570;&#x636E;&#x6210;&#x5458;&#x7684;&#x751F;&#x5B58;&#x671F;&#x5927;&#x4E8E;class&#x7684;&#x5BF9;&#x8C61;&#xFF08;&#x5B9E;&#x4F8B;/instance&#xFF09;&#x3002;&#x9759;&#x6001;&#x6570;&#x636E;&#x6210;&#x5458;&#x662F;&#x6BCF;&#x4E2A;class&#x6709;&#x4E00;&#x4EFD;&#xFF0C;&#x666E;&#x901A;&#x6570;&#x636E;&#x6210;&#x5458;&#x662F;&#x6BCF;&#x4E2A;instance &#x6709;&#x4E00;&#x4EFD;;</li>
+<li><strong>&#x7528;&#x4E8E;&#x4FEE;&#x9970;class&#x7684;&#x6210;&#x5458;&#x51FD;&#x6570;&#xFF0C;&#x5373;&#x6240;&#x8C13;&#x201C;&#x9759;&#x6001;&#x6210;&#x5458;&#x51FD;&#x6570;&#x201D;</strong>&#x3002;&#x8FD9;&#x79CD;&#x6210;&#x5458;&#x51FD;&#x6570;&#x53EA;&#x80FD;&#x8BBF;&#x95EE;&#x9759;&#x6001;&#x6210;&#x5458;&#x548C;&#x5176;&#x4ED6;&#x9759;&#x6001;&#x7A0B;&#x5458;&#x51FD;&#x6570;&#xFF0C;&#x4E0D;&#x80FD;&#x8BBF;&#x95EE;&#x975E;&#x9759;&#x6001;&#x6210;&#x5458;&#x548C;&#x975E;&#x9759;&#x6001;&#x6210;&#x5458;&#x51FD;&#x6570;;</li>
+</ul>
+</li>
+</ul>
+<h3 id="c&#x5B9E;&#x73B0;golang&#x7684;defer&#x529F;&#x80FD;">C++&#x5B9E;&#x73B0;golang&#x7684;<code>defer</code>&#x529F;&#x80FD;</h3>
+<p>&#x53C2;&#x8003;&#x6587;&#x7AE0;: <a href="https://zhuanlan.zhihu.com/p/35191739" target="_blank">&#x4F7F;&#x7528; C/C++ &#x6A21;&#x62DF; defer &#x5173;&#x952E;&#x5B57;</a></p>
+<p>&#x81EA;&#x5DF1;&#x5B9E;&#x73B0;:</p>
+<pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;chrono&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;ctime&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;thread&gt;</span></span>
+<span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> F&gt;
+<span class="hljs-keyword">class</span> ScopeGuardImpl {
+ <span class="hljs-keyword">public</span>:
+  ScopeGuardImpl(F func) <span class="hljs-keyword">throw</span>() : fun_(func), dismissed_(<span class="hljs-literal">false</span>) {}
+  <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Dismiss</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> <span class="hljs-title">throw</span><span class="hljs-params">()</span> </span>{ dismissed_ = <span class="hljs-literal">true</span>; }
+
+  ~ScopeGuardImpl() <span class="hljs-keyword">throw</span>() {
+    <span class="hljs-keyword">if</span> (!dismissed_) {
+      <span class="hljs-keyword">try</span> {
+        fun_();
+      } <span class="hljs-keyword">catch</span> (...) {
+      }
+    }
+  }
+ <span class="hljs-keyword">private</span>:
+  <span class="hljs-keyword">mutable</span> <span class="hljs-keyword">bool</span> dismissed_;
+  F fun_;
+};
+
+<span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> F&gt;
+ScopeGuardImpl&lt;F&gt; deferer(F func) {
+  <span class="hljs-keyword">return</span> ScopeGuardImpl&lt;F&gt;(func);
+}
+<span class="hljs-keyword">class</span> DbConn01 {
+ <span class="hljs-keyword">public</span>:
+  <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">open</span><span class="hljs-params">()</span> </span>{ <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">&quot;open a db connection&quot;</span> &lt;&lt; <span class="hljs-built_in">std</span>::<span class="hljs-built_in">endl</span>; }
+  <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">close</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-built_in">std</span>::this_thread::sleep_for(<span class="hljs-built_in">std</span>::chrono::seconds(<span class="hljs-number">2</span>));
+    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">&quot;close a db connection&quot;</span> &lt;&lt; <span class="hljs-built_in">std</span>::<span class="hljs-built_in">endl</span>;
+  }
+};
+<span class="hljs-keyword">uint32_t</span> sinceEpoch() {
+  <span class="hljs-keyword">using</span> S = <span class="hljs-built_in">std</span>::chrono::seconds;
+  <span class="hljs-keyword">uint64_t</span> count = <span class="hljs-built_in">std</span>::chrono::duration_cast&lt;S&gt;(
+                       <span class="hljs-built_in">std</span>::chrono::system_clock::now().time_since_epoch())
+                       .count();
+  <span class="hljs-comment">// we all know seconds since epoch fits in uint32_t</span>
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">static_cast</span>&lt;<span class="hljs-keyword">uint32_t</span>&gt;(count);
+}
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">myGuardTest</span><span class="hljs-params">()</span> </span>{
+  DbConn01 con;
+  con.open();
+  <span class="hljs-keyword">auto</span> start = sinceEpoch();
+  <span class="hljs-keyword">auto</span> guard = deferer([&amp;con, &amp;start] {
+    con.close();
+    <span class="hljs-keyword">auto</span> end = sinceEpoch();
+    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">&quot;cost &quot;</span> &lt;&lt; end - start &lt;&lt; <span class="hljs-string">&quot; seconds&quot;</span> &lt;&lt; <span class="hljs-built_in">std</span>::<span class="hljs-built_in">endl</span>;
+  });
+}
+&#x7ED3;&#x679C;:
+open a db connection
+close a db connection
+cost <span class="hljs-number">2</span> seconds
+</code></pre>
+<h3 id="c-&#x5982;&#x679C;&#x67D0;&#x4E2A;&#x51FD;&#x6570;&#x4E2D;&#x67D0;&#x4E2A;&#x53D8;&#x91CF;&#x6307;&#x5411;&#x6267;&#x884C;&#x4E00;&#x6B21;&#x521D;&#x59CB;&#x5316;&#xFF0C;&#x540E;&#x9762;&#x4E00;&#x76F4;&#x7528;&#x3002;&#x6B64;&#x65F6;&#x53EF;&#x4EE5;&#x8003;&#x8651;&#x7528;local-static">C++ &#x5982;&#x679C;&#x67D0;&#x4E2A;&#x51FD;&#x6570;&#x4E2D;&#x67D0;&#x4E2A;&#x53D8;&#x91CF;&#x6307;&#x5411;&#x6267;&#x884C;&#x4E00;&#x6B21;&#x521D;&#x59CB;&#x5316;&#xFF0C;&#x540E;&#x9762;&#x4E00;&#x76F4;&#x7528;&#x3002;&#x6B64;&#x65F6;&#x53EF;&#x4EE5;&#x8003;&#x8651;&#x7528;<code>local static</code></h3>
+<pre><code class="lang-cpp"><span class="hljs-meta"># &#x793A;&#x4F8B;&#x4E00;</span>
+<span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">isAdminCmd</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> &amp;cmd)</span> </span>{
+  <span class="hljs-keyword">static</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">auto</span> sAdmin = []() {
+    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">unordered_set</span>&lt;<span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span>&gt; tmp;
+    tmp.emplace(<span class="hljs-string">&quot;shutdown&quot;</span>);
+    tmp.emplace(<span class="hljs-string">&quot;slowlog&quot;</span>);
+    tmp.emplace(<span class="hljs-string">&quot;info&quot;</span>);
+    tmp.emplace(<span class="hljs-string">&quot;client&quot;</span>);
+    <span class="hljs-keyword">return</span> tmp;
+  }();
+  <span class="hljs-keyword">return</span> sAdmin.count(<span class="hljs-string">&quot;info&quot;</span>);
+}
+
+<span class="hljs-meta"># &#x793A;&#x4F8B;&#x4E8C;</span>
+<span class="hljs-keyword">class</span> mySingleTon02 {
+ <span class="hljs-keyword">private</span>:
+  mySingleTon02() {
+    _data.insert(<span class="hljs-built_in">std</span>::make_pair(<span class="hljs-number">1</span>, <span class="hljs-string">&quot;a&quot;</span>));
+    _data.insert(<span class="hljs-built_in">std</span>::make_pair(<span class="hljs-number">2</span>, <span class="hljs-string">&quot;b&quot;</span>));
+  }
+  mySingleTon02(<span class="hljs-keyword">const</span> mySingleTon02&amp;);
+  mySingleTon02&amp; <span class="hljs-keyword">operator</span>=(<span class="hljs-keyword">const</span> mySingleTon02&amp;);
+
+ <span class="hljs-keyword">private</span>:
+  <span class="hljs-built_in">std</span>::<span class="hljs-built_in">unordered_map</span>&lt;<span class="hljs-keyword">int</span>, <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span>&gt; _data;
+
+ <span class="hljs-keyword">public</span>:
+  <span class="hljs-function"><span class="hljs-keyword">static</span> mySingleTon02&amp; <span class="hljs-title">getInstance</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-comment">//&#x4F7F;&#x7528;&#x51FD;&#x6570;&#x4E2D;&#x7684;local</span>
+    <span class="hljs-comment">//static&#x5BF9;&#x8C61;,&#x53EA;&#x6709;&#x5F53;&#x7B2C;&#x4E00;&#x6B21;&#x8BBF;&#x95EE;getInstance()&#x65B9;&#x6CD5;&#x65F6;&#x624D;&#x521B;&#x5EFA;&#x5B9E;&#x4F8B;. C++11&#x89C4;&#x5B9A;&#x4E86;local</span>
+    <span class="hljs-comment">// static&#x5728;&#x591A;&#x7EBF;&#x7A0B;&#x6761;&#x4EF6;&#x4E0B;&#x7684;&#x521D;&#x59CB;&#x5316;&#x884C;&#x4E3A;,&#x8981;&#x6C42;&#x7F16;&#x8BD1;&#x5668;&#x4FDD;&#x8BC1;&#x5185;&#x90E8;&#x9759;&#x6001;&#x53D8;&#x91CF;&#x7684;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#x6027;</span>
+    <span class="hljs-comment">//&#x8FD9;&#x79CD;&#x65B9;&#x6CD5;&#x4E5F;&#x79F0;&#x4E3A; Meyer&apos; Singleton</span>
+    <span class="hljs-keyword">static</span> mySingleTon02 instance;
+    <span class="hljs-keyword">return</span> instance;
+  }
+  <span class="hljs-built_in">std</span>::<span class="hljs-function"><span class="hljs-built_in">string</span> <span class="hljs-title">getVal</span><span class="hljs-params">(<span class="hljs-keyword">int</span> i)</span> <span class="hljs-keyword">const</span> </span>{
+    <span class="hljs-keyword">auto</span> it = _data.find(i);
+    <span class="hljs-keyword">if</span> (it == _data.end()) <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&quot;</span>;
+    <span class="hljs-keyword">return</span> it-&gt;second;
+  }
+};
+</code></pre>
+<h4 id="list&#x662F;&#x65E0;&#x6CD5;&#x7528;&#x6807;&#x51C6;&#x5E93;&#x4E2D;&#x7684;stdsort&#xFF0C;&#x56E0;&#x4E3A;&#x5176;&#x65E0;&#x6CD5;&#x652F;&#x6301;&#x4E0B;&#x6807;&#x5FEB;&#x901F;&#x8BBF;&#x95EE;-list&#x6709;&#x81EA;&#x5DF1;&#x7684;sort&#x65B9;&#x6CD5;&#x7528;&#x4E8E;&#x6392;&#x5E8F;">list&#x662F;&#x65E0;&#x6CD5;&#x7528;&#x6807;&#x51C6;&#x5E93;&#x4E2D;&#x7684;<code>std::sort()</code>&#xFF0C;&#x56E0;&#x4E3A;&#x5176;&#x65E0;&#x6CD5;&#x652F;&#x6301;&#x4E0B;&#x6807;&#x5FEB;&#x901F;&#x8BBF;&#x95EE;, list&#x6709;&#x81EA;&#x5DF1;&#x7684;<code>sort()</code>&#x65B9;&#x6CD5;&#x7528;&#x4E8E;&#x6392;&#x5E8F;</h4>
+<h4 id="stdvectorchar-&#x4EE3;&#x66FF;-char--&#x7528;&#x4E8E;&#x4FDD;&#x5B58;&#x8BFB;&#x53D6;&#x7684;&#x6570;&#x636E;"><code>std::vector&lt;char&gt;</code> &#x4EE3;&#x66FF; <code>char []</code> &#x7528;&#x4E8E;&#x4FDD;&#x5B58;&#x8BFB;&#x53D6;&#x7684;&#x6570;&#x636E;</h4>
+<pre><code class="lang-cpp">  <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> _playload(<span class="hljs-string">&quot;hello0 world&quot;</span>);
+  <span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">char</span>&gt; cVec01(<span class="hljs-number">6</span>, <span class="hljs-number">0</span>);
+  <span class="hljs-built_in">std</span>::<span class="hljs-function"><span class="hljs-built_in">istringstream</span> <span class="hljs-title">ss</span><span class="hljs-params">(_playload)</span></span>;
+  ss.readsome(&amp;cVec01.front(), <span class="hljs-number">6</span>); <span class="hljs-comment">//&#x8BFB;&#x53D6;6&#x4E2A;&#x5B57;&#x8282;</span>
+  <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">&quot;cVec01=&quot;</span> &lt;&lt; &amp;cVec01.front() &lt;&lt; <span class="hljs-built_in">std</span>::<span class="hljs-built_in">endl</span>;
+</code></pre>
+<h4 id="stdvectorchar-&#x548C;-stdstring&#x7684;&#x8F6C;&#x6362;"><code>std::vector&lt;char&gt;</code> &#x548C; <code>std::string</code>&#x7684;&#x8F6C;&#x6362;</h4>
+<pre><code class="lang-cpp"><span class="hljs-comment">// string to std::vector&lt;char&gt;</span>
+<span class="hljs-comment">// &#x65B9;&#x6848;&#x4E00;</span>
+<span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> s = <span class="hljs-string">&quot;Hello World!&quot;</span>;
+<span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">char</span>&gt; v(s.begin(), s.end());
+
+<span class="hljs-comment">//&#x65B9;&#x6848;&#x4E8C; &#x5229;&#x7528; std::back_inserter &#x8C03;&#x7528; std::push_back</span>
+<span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> s = <span class="hljs-string">&quot;Hello World!&quot;</span>;
+<span class="hljs-built_in">std</span>::copy(s.begin(), s.end(), <span class="hljs-built_in">std</span>::back_inserter(v));
+
+<span class="hljs-comment">//&#x65B9;&#x6848;&#x4E09; &#x5C06;&#x5185;&#x5B58;&#x63D0;&#x524D;&#x7533;&#x8BF7;&#x597D;,&#x7136;&#x540E;&#x5229;&#x7528;std::copy&#x62F7;&#x8D1D;&#x5143;&#x7D20;</span>
+<span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> s = <span class="hljs-string">&quot;Hello World!&quot;</span>;
+<span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">char</span>&gt; v(s.length());
+<span class="hljs-built_in">std</span>::copy(s.begin(), s.end(), v.begin());
+
+<span class="hljs-comment">//vector to stringstream</span>
+<span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span>&gt; setence;
+setence.push_back(<span class="hljs-string">&quot;aa&quot;</span>)
+setence.push_back(<span class="hljs-string">&quot;ab&quot;</span>)
+
+<span class="hljs-built_in">std</span>::<span class="hljs-built_in">stringstream</span> ss;
+<span class="hljs-built_in">std</span>::copy(setence.begin(),setence.end(),<span class="hljs-built_in">std</span>::ostream_iterator&lt;<span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span>&gt;(ss,<span class="hljs-string">&quot;\n&quot;</span>));
+<span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span>&lt;&lt; ss.str() &lt;&lt;<span class="hljs-built_in">std</span>::<span class="hljs-built_in">endl</span>;
+</code></pre>
+<h4 id="cc&#x4E2D;132&#x8FD9;&#x4E2A;&#x8868;&#x8FBE;&#x5F0F;&#x56E0;&#x4E3A;1&#x662F;int&#x7C7B;&#x578B;&#x7684;&#x6240;&#x4EE5;132&#x5F97;&#x5230;&#x7684;&#x4F1A;&#x662F;0">c/c++&#x4E2D;<code>1&lt;&lt;32</code>&#x8FD9;&#x4E2A;&#x8868;&#x8FBE;&#x5F0F;,&#x56E0;&#x4E3A;1&#x662F;int&#x7C7B;&#x578B;&#x7684;,&#x6240;&#x4EE5;<code>1&lt;&lt;32</code>&#x5F97;&#x5230;&#x7684;&#x4F1A;&#x662F;0</h4>
+<p>&#x6240;&#x4EE5;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x5982;&#x679C;&#x60F3;&#x4FDD;&#x5B58;&#x771F;&#x6B63;<code>1&lt;&lt;32</code>&#x7684;&#x503C;,&#x5F97;&#x5148;&#x628A;1&#x8F6C;&#x6362;&#x4E3A;<code>long long</code> or <code>int64_t</code>&#x7C7B;&#x578B;</p>
+<pre><code class="lang-cpp">  <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">&quot;-1&lt;&lt;31==&quot;</span> &lt;&lt; -(<span class="hljs-number">1</span> &lt;&lt; <span class="hljs-number">31</span>) &lt;&lt; <span class="hljs-built_in">std</span>::<span class="hljs-built_in">endl</span>; <span class="hljs-comment">//&#x8F93;&#x51FA;: -2147483648</span>
+  <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">&quot;1&lt;&lt;32-1==&quot;</span> &lt;&lt; (<span class="hljs-number">1</span> &lt;&lt; <span class="hljs-number">31</span>) - <span class="hljs-number">1</span> &lt;&lt; <span class="hljs-built_in">std</span>::<span class="hljs-built_in">endl</span>; <span class="hljs-comment">//&#x8F93;&#x51FA;: 2147483647</span>
+  <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">&quot;1&lt;&lt;32==&quot;</span> &lt;&lt; (<span class="hljs-number">1</span> &lt;&lt; <span class="hljs-number">32</span>) &lt;&lt; <span class="hljs-built_in">std</span>::<span class="hljs-built_in">endl</span>; <span class="hljs-comment">// &#x8F93;&#x51FA;: 0</span>
+  <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">&quot;static_cast&lt;int64_t&gt;(1)&lt;&lt;32==&quot;</span>
+            &lt;&lt; (<span class="hljs-keyword">static_cast</span>&lt;<span class="hljs-keyword">int64_t</span>&gt;(<span class="hljs-number">1</span>) &lt;&lt; <span class="hljs-number">32</span>) &lt;&lt; <span class="hljs-built_in">std</span>::<span class="hljs-built_in">endl</span>; <span class="hljs-comment">//&#x8F93;&#x51FA;: 4294967296</span>
+</code></pre>
+<h4 id="c&#x4E2D;&#x7528;&#x66F4;&#x5C11;&#x7684;&#x5185;&#x5B58;&#x4FDD;&#x5B58;&#x6570;&#x5B57;&#x4E3A;&#x5B57;&#x7B26;">c++&#x4E2D;&#x7528;&#x66F4;&#x5C11;&#x7684;&#x5185;&#x5B58;&#x4FDD;&#x5B58;&#x6570;&#x5B57;&#x4E3A;&#x5B57;&#x7B26;</h4>
+<pre><code class="lang-cpp"><span class="hljs-comment">//&#x82B1;&#x5C3D;&#x91CF;&#x5C11;&#x7684;&#x5185;&#x5B58;,&#x4FDD;&#x5B58;&#x4E86;&#x6570;&#x5B57;</span>
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">encodeInteger</span><span class="hljs-params">(int64_t value, <span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">char</span>&gt; *enc)</span> </span>{
+  <span class="hljs-keyword">if</span> (value &gt;= -(<span class="hljs-number">1</span> &lt;&lt; <span class="hljs-number">7</span>) &amp;&amp; value &lt;= (<span class="hljs-number">1</span> &lt;&lt; <span class="hljs-number">7</span>) - <span class="hljs-number">1</span>) {
+    enc-&gt;reserve(<span class="hljs-number">1</span>);
+    enc-&gt;push_back(value &amp; <span class="hljs-number">0xFF</span>);
+    <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
+  } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (value &gt;= -(<span class="hljs-number">1</span> &lt;&lt; <span class="hljs-number">15</span>) &amp;&amp; value &lt;= (<span class="hljs-number">1</span> &lt;&lt; <span class="hljs-number">15</span>) - <span class="hljs-number">1</span>) {
+    enc-&gt;reserve(<span class="hljs-number">2</span>);
+    enc-&gt;push_back(value &amp; <span class="hljs-number">0xFF</span>);
+    enc-&gt;push_back((value &gt;&gt; <span class="hljs-number">8</span>) &amp; <span class="hljs-number">0xFF</span>);
+    <span class="hljs-keyword">return</span> <span class="hljs-number">2</span>;
+  } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (value &gt;=
+                 -(<span class="hljs-keyword">static_cast</span>&lt;<span class="hljs-keyword">int64_t</span>&gt;(<span class="hljs-number">1</span>) &lt;&lt; <span class="hljs-number">31</span>) &amp;&amp;  <span class="hljs-comment">//&#x5148;&#x8981;&#x628A;1&#x53D8;&#x6210;int64_t&#x7C7B;&#x578B;</span>
+             value &lt;= (<span class="hljs-keyword">static_cast</span>&lt;<span class="hljs-keyword">int64_t</span>&gt;(<span class="hljs-number">1</span>) &lt;&lt; <span class="hljs-number">31</span>) - <span class="hljs-number">1</span>) {
+    enc-&gt;reserve(<span class="hljs-number">4</span>);
+    enc-&gt;push_back(value &amp; <span class="hljs-number">0xFF</span>);
+    enc-&gt;push_back((value &gt;&gt; <span class="hljs-number">8</span>) &amp; <span class="hljs-number">0xFF</span>);
+    enc-&gt;push_back((value &gt;&gt; <span class="hljs-number">16</span>) &amp; <span class="hljs-number">0xFF</span>);
+    enc-&gt;push_back((value &gt;&gt; <span class="hljs-number">24</span>) &amp; <span class="hljs-number">0xFF</span>);
+    <span class="hljs-keyword">return</span> <span class="hljs-number">4</span>;
+  }
+  <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+
+<span class="hljs-keyword">int64_t</span> decodeInteger(<span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">char</span>&gt; *enc) {
+  <span class="hljs-keyword">int64_t</span> ret;
+  <span class="hljs-keyword">if</span> (enc-&gt;size() == <span class="hljs-number">1</span>) {
+    ret = enc-&gt;data()[<span class="hljs-number">0</span>];
+  } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (enc-&gt;size() == <span class="hljs-number">2</span>) {
+    ret = enc-&gt;data()[<span class="hljs-number">0</span>] | (enc-&gt;data()[<span class="hljs-number">1</span>] &lt;&lt; <span class="hljs-number">8</span>);
+  } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (enc-&gt;size() == <span class="hljs-number">4</span>) {
+    ret = enc-&gt;data()[<span class="hljs-number">0</span>] | (enc-&gt;data()[<span class="hljs-number">1</span>] &lt;&lt; <span class="hljs-number">8</span>) | (enc-&gt;data()[<span class="hljs-number">2</span>] &lt;&lt; <span class="hljs-number">16</span>) |
+          (enc-&gt;data()[<span class="hljs-number">3</span>] &lt;&lt; <span class="hljs-number">24</span>);
+  }
+  <span class="hljs-keyword">return</span> ret;
+}
+
+<span class="hljs-comment">//&#x5982;&#x679C;&#x7528;&#x5B57;&#x7B26;&#x4E32;&#x4FDD;&#x5B58;,&#x5219;&#x9700;&#x8981;8&#x4E2A;&#x5B57;&#x8282;(&#x4E0D;&#x5305;&#x62EC;\0),&#x7528;&#x4E0B;&#x9762;&#x65B9;&#x5F0F;&#x4FDD;&#x5B58;,&#x5219;&#x53EA;&#x7528;4&#x5B57;&#x8282;</span>
+<span class="hljs-keyword">int64_t</span> num01 = <span class="hljs-number">99922222</span>;
+<span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">char</span>&gt; encVec;
+encodeInteger(num01, &amp;encVec);
+<span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">&quot;encVec length=&quot;</span> &lt;&lt; encVec.size() &lt;&lt; <span class="hljs-built_in">std</span>::<span class="hljs-built_in">endl</span>; <span class="hljs-comment">//&#x8F93;&#x51FA;: 4</span>
+<span class="hljs-keyword">int64_t</span> num02 = decodeInteger(&amp;encVec);
+<span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">&quot;num02=&quot;</span> &lt;&lt; num02 &lt;&lt; <span class="hljs-built_in">std</span>::<span class="hljs-built_in">endl</span>;
+</code></pre>
+<p>&#x5728;c&#x8BED;&#x8A00;&#x4E2D;&#x597D;&#x50CF;&#x8FD9;&#x6837;&#x66F4;&#x65B9;&#x4FBF;:</p>
+<pre><code class="lang-c"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;string.h&gt;</span></span>
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">int64ToChar</span><span class="hljs-params">(<span class="hljs-keyword">char</span> a[], int64_t n)</span> </span>{
+  <span class="hljs-built_in">memcpy</span>(a, &amp;n, <span class="hljs-number">8</span>);
+}
+
+<span class="hljs-keyword">int64_t</span> charTo64bitNum(<span class="hljs-keyword">char</span> a[]) {
+  <span class="hljs-keyword">int64_t</span> n = <span class="hljs-number">0</span>;
+  <span class="hljs-built_in">memcpy</span>(&amp;n, a, <span class="hljs-number">8</span>);
+  <span class="hljs-keyword">return</span> n;
+}
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="C++并发编程实战-05内存模型.html" class="navigation navigation-prev " aria-label="Previous page: C++并发编程实战五: 内存模型">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="c++补充-02EffectiveSTL有用使用经验.html" class="navigation navigation-next " aria-label="Next page: C++补充02: Effective STL使用经验">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"c++补充-01","level":"1.5.21","depth":2,"next":{"title":"C++补充02: Effective STL使用经验","level":"1.5.22","depth":2,"path":"c++学习笔记/c++补充-02EffectiveSTL有用使用经验.md","ref":"c++学习笔记/c++补充-02EffectiveSTL有用使用经验.md","articles":[]},"previous":{"title":"C++并发编程实战五: 内存模型","level":"1.5.20","depth":2,"path":"c++学习笔记/C++并发编程实战-05内存模型.md","ref":"c++学习笔记/C++并发编程实战-05内存模型.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"c++学习笔记/c++补充-01.md","mtime":"2022-06-08T01:50:33.087Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-06-08T02:17:02.923Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

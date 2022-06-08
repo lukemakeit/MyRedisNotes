@@ -1,0 +1,915 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Glog使用 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../golang学习笔记/" />
+    
+    
+    <link rel="prev" href="c++补充-02EffectiveSTL有用使用经验.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    README
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../redis学习/">
+            
+                <a href="../redis学习/">
+            
+                    
+                    Redis学习
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../redis学习/Redis备份.html">
+            
+                <a href="../redis学习/Redis备份.html">
+            
+                    
+                    Redis备份
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../redis学习/Redis复制.html">
+            
+                <a href="../redis学习/Redis复制.html">
+            
+                    
+                    Redis复制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../redis学习/Redis集群.html">
+            
+                <a href="../redis学习/Redis集群.html">
+            
+                    
+                    Redis集群
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../redis学习/缓存与数据库一致性.html">
+            
+                <a href="../redis学习/缓存与数据库一致性.html">
+            
+                    
+                    缓存与数据库一致性
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../redis学习/Redis消息队列Stream.html">
+            
+                <a href="../redis学习/Redis消息队列Stream.html">
+            
+                    
+                    Redis消息队列
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../rocksdb-xue-xi/README.md">
+            
+                <span>
+            
+                    
+                    RocksDB学习
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../rocksdb学习/RocksDB基础概念.html">
+            
+                <a href="../rocksdb学习/RocksDB基础概念.html">
+            
+                    
+                    RocksDB基础概念
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../rocksdb学习/RocksDB基础操作-C语言.html">
+            
+                <a href="../rocksdb学习/RocksDB基础操作-C语言.html">
+            
+                    
+                    RocksDB基础操作-C语言
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../c语言笔记/">
+            
+                <a href="../c语言笔记/">
+            
+                    
+                    C语言笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../c语言笔记/C语言补充笔记一.html">
+            
+                <a href="../c语言笔记/C语言补充笔记一.html">
+            
+                    
+                    C语言补充笔记一
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    C++学习笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="C++Primer基础-01引用指针const.html">
+            
+                <a href="C++Primer基础-01引用指针const.html">
+            
+                    
+                    C++Primer基础:引用、指针、const、auto/decltype
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="C++Primer基础-02volatile与using.html">
+            
+                <a href="C++Primer基础-02volatile与using.html">
+            
+                    
+                    C++Primer基础:volatile、using
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="C++Primer基础-03stringvector数组.html">
+            
+                <a href="C++Primer基础-03stringvector数组.html">
+            
+                    
+                    C++Primer基础: string、vector、数组
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="C++Primer基础-04函数重载函数指针.html">
+            
+                <a href="C++Primer基础-04函数重载函数指针.html">
+            
+                    
+                    C++Primer基础:函数、重载、函数指针
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="C++Primer基础-05function与bind与forward.html">
+            
+                <a href="C++Primer基础-05function与bind与forward.html">
+            
+                    
+                    C++Primer基础:std::function、std::bind、std::forward
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="C++Primer基础-06-lambda.html">
+            
+                <a href="C++Primer基础-06-lambda.html">
+            
+                    
+                    C++Primer基础:lambda
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" data-path="C++Primer基础-07类基础.html">
+            
+                <a href="C++Primer基础-07类基础.html">
+            
+                    
+                    C++ Primer基础: 类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8" data-path="C++Primer标准库-IO库.html">
+            
+                <a href="C++Primer标准库-IO库.html">
+            
+                    
+                    C++ Primer 标准库: IO库
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.9" data-path="C++Primer标准库-顺序容器.html">
+            
+                <a href="C++Primer标准库-顺序容器.html">
+            
+                    
+                    C++ Primer 标准库: 顺序容器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.10" data-path="C++Primer标准库-泛型算法.html">
+            
+                <a href="C++Primer标准库-泛型算法.html">
+            
+                    
+                    C++ Primer 标准库: 泛型算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.11" data-path="C++Primer标准库-关联容器.html">
+            
+                <a href="C++Primer标准库-关联容器.html">
+            
+                    
+                    C++ Primer 标准库: 关联容器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.12" data-path="C++Primer标准库-动态内存.html">
+            
+                <a href="C++Primer标准库-动态内存.html">
+            
+                    
+                    C++ Primer 标准库: 动态内存
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.13" data-path="C++Primer类设计-拷贝控制.html">
+            
+                <a href="C++Primer类设计-拷贝控制.html">
+            
+                    
+                    C++ Primer 类设计: 拷贝控制、explicit
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.14" data-path="C++Primer类设计-基类派生类虚函数.html">
+            
+                <a href="C++Primer类设计-基类派生类虚函数.html">
+            
+                    
+                    C++ Primer 类设计: 基类、派生类、虚函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.15" data-path="C++Primer类设计-模板与泛型编程.html">
+            
+                <a href="C++Primer类设计-模板与泛型编程.html">
+            
+                    
+                    C++ Primer 类设计:模板与泛型编程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.16" data-path="C++并发编程实战-01基础使用Join传参.html">
+            
+                <a href="C++并发编程实战-01基础使用Join传参.html">
+            
+                    
+                    C++并发编程实战一:基础使用、Join、传参、线程所有权转移
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.17" data-path="C++并发编程实战-02mutexlock.html">
+            
+                <a href="C++并发编程实战-02mutexlock.html">
+            
+                    
+                    C++并发编程实战: mutex、lock、unique_lock、call_once、shared_lock
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.18" data-path="C++并发编程实战-03条件变量.html">
+            
+                <a href="C++并发编程实战-03条件变量.html">
+            
+                    
+                    C++并发编程实战三: 条件变量
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.19" data-path="C++并发编程实战-04原子操作和类型.html">
+            
+                <a href="C++并发编程实战-04原子操作和类型.html">
+            
+                    
+                    C++并发编程实战四: 原子操作和类型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.20" data-path="C++并发编程实战-05内存模型.html">
+            
+                <a href="C++并发编程实战-05内存模型.html">
+            
+                    
+                    C++并发编程实战五: 内存模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.21" data-path="c++补充-01.html">
+            
+                <a href="c++补充-01.html">
+            
+                    
+                    c++补充-01
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.22" data-path="c++补充-02EffectiveSTL有用使用经验.html">
+            
+                <a href="c++补充-02EffectiveSTL有用使用经验.html">
+            
+                    
+                    C++补充02: Effective STL使用经验
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.5.23" data-path="Glog使用.html">
+            
+                <a href="Glog使用.html">
+            
+                    
+                    Glog使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../golang学习笔记/">
+            
+                <a href="../golang学习笔记/">
+            
+                    
+                    Golang学习笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../golang学习笔记/Go常见错误集锦.html">
+            
+                <a href="../golang学习笔记/Go常见错误集锦.html">
+            
+                    
+                    Go常见错误集锦
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../golang学习笔记/Go高性能的一些技巧.html">
+            
+                <a href="../golang学习笔记/Go高性能的一些技巧.html">
+            
+                    
+                    Go常见高性能技巧
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../golang学习笔记/Golang反射.html">
+            
+                <a href="../golang学习笔记/Golang反射.html">
+            
+                    
+                    Golang反射
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../golang学习笔记/内存逃逸.html">
+            
+                <a href="../golang学习笔记/内存逃逸.html">
+            
+                    
+                    内存逃逸
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="../golang学习笔记/调度器GMP.html">
+            
+                <a href="../golang学习笔记/调度器GMP.html">
+            
+                    
+                    调度器GMP
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6" data-path="../golang学习笔记/GC垃圾回收.html">
+            
+                <a href="../golang学习笔记/GC垃圾回收.html">
+            
+                    
+                    GC垃圾回收
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../工具使用/">
+            
+                <a href="../工具使用/">
+            
+                    
+                    工具使用
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../工具使用/VSCode使用小技巧.html">
+            
+                <a href="../工具使用/VSCode使用小技巧.html">
+            
+                    
+                    VS Code使用小技巧
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../工具使用/GCC安装.html">
+            
+                <a href="../工具使用/GCC安装.html">
+            
+                    
+                    GCC安装
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../工具使用/CMake学习与使用.html">
+            
+                <a href="../工具使用/CMake学习与使用.html">
+            
+                    
+                    CMake学习与使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Glog使用</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h3 id="glog-&#x4F7F;&#x7528;">GLOG &#x4F7F;&#x7528;</h3>
+<h3 id="&#x5B89;&#x88C5;">&#x5B89;&#x88C5;</h3>
+<ul>
+<li><p>&#x5B89;&#x88C5;<code>gflags</code>: <a href="https://github.com/gflags/gflags/releases" target="_blank">https://github.com/gflags/gflags/releases</a></p>
+<pre><code class="lang-shell">cd gflags-2.2.2
+mkdir /usr/local/gflags-2.2.2
+
+# &#x5171;&#x4EAB;&#x5E93;
+cmake -DCMAKE_INSTALL_PREFIX=/usr/local/gflags-2.2.2 -DBUILD_SHARED_LIBS=on ..
+make &amp;&amp; make install
+
+# &#x9759;&#x6001;&#x5E93;
+cmake -DCMAKE_INSTALL_PREFIX=/usr/local/gflags-2.2.2 ..
+make &amp;&amp; make install
+</code></pre>
+</li>
+<li><p>glog</p>
+<p>&#x4E0B;&#x8F7D;&#x5730;&#x5740;: <a href="https://github.com/google/glog/releases" target="_blank">https://github.com/google/glog/releases</a></p>
+<p>&#x7F16;&#x8BD1;&#x94FE;&#x63A5;&#x65B9;&#x6CD5;&#x65B9;&#x6CD5;&#x4E00;:</p>
+<pre><code class="lang-cmake"><span class="hljs-keyword">find_path</span>(GLOG_HEADER glog
+    HINTS src/thirdparty/glog/src
+)
+<span class="hljs-keyword">message</span>(<span class="hljs-string">&quot;GLOG_HEADER = ${GLOG_HEADER}&quot;</span>)
+<span class="hljs-keyword">SET</span>(BUILD_SHARED_LIBS <span class="hljs-keyword">OFF</span> CACHE BOOL <span class="hljs-string">&quot;&quot;</span> FORCE)
+<span class="hljs-keyword">add_subdirectory</span>(src/thirdparty/glog glog EXCLUDE_FROM_ALL)
+
+file(GLOB SOURCE <span class="hljs-string">&quot;src/capture/*.cpp&quot;</span>)
+
+<span class="hljs-keyword">add_executable</span>(myRedisCapture <span class="hljs-variable">${SOURCE}</span>)
+<span class="hljs-keyword">set_target_properties</span>(myRedisCapture PROPERTIES LINK_FLAGS <span class="hljs-string">&quot;-static-libgcc -static-libstdc++&quot;</span>)
+target_include_directories(myRedisCapture PUBLIC <span class="hljs-variable">${GLOG_HEADER}</span>)
+<span class="hljs-keyword">target_link_libraries</span>(myRedisCapture glog)
+</code></pre>
+<p>&#x7F16;&#x8BD1;&#x94FE;&#x63A5;&#x65B9;&#x6CD5;&#x65B9;&#x6CD5;&#x4E8C;:</p>
+<pre><code class="lang-cmake"><span class="hljs-comment">#&#x7F16;&#x8BD1;</span>
+cd src/thirdparty/glog
+cmake -DBUILD_SHARED_LIBS=<span class="hljs-keyword">off</span>  -S . -B build -G <span class="hljs-string">&quot;Unix Makefiles&quot;</span>
+cd build &amp;&amp; make
+
+<span class="hljs-comment">#&#x9879;&#x76EE;&#x4E2D;&#x94FE;&#x63A5;</span>
+<span class="hljs-keyword">set</span>(GLOG_ROOT_DIR <span class="hljs-string">&quot;${PROJECT_SOURCE_DIR}/src/thirdparty/glog&quot;</span>)
+<span class="hljs-keyword">include_directories</span>(<span class="hljs-string">&quot;${GLOG_ROOT_DIR}/src&quot;</span>)
+<span class="hljs-keyword">include_directories</span>(<span class="hljs-string">&quot;${GLOG_ROOT_DIR}/build&quot;</span>)
+<span class="hljs-keyword">add_library</span>(glog_static STATIC IMPORTED)
+<span class="hljs-keyword">set_target_properties</span>(glog_static 
+                        PROPERTIES IMPORTED_LOCATION
+                        <span class="hljs-string">&quot;${GLOG_ROOT_DIR}/build/libglog.a&quot;</span>)
+<span class="hljs-keyword">add_executable</span>(myRedisCapture src/capture/main.cpp)
+<span class="hljs-keyword">target_link_libraries</span>(myRedisCapture PRIVATE glog_static)
+</code></pre>
+</li>
+</ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="c++补充-02EffectiveSTL有用使用经验.html" class="navigation navigation-prev " aria-label="Previous page: C++补充02: Effective STL使用经验">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../golang学习笔记/" class="navigation navigation-next " aria-label="Next page: Golang学习笔记">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Glog使用","level":"1.5.23","depth":2,"next":{"title":"Golang学习笔记","level":"1.6","depth":1,"path":"golang学习笔记/README.md","ref":"golang学习笔记/README.md","articles":[{"title":"Go常见错误集锦","level":"1.6.1","depth":2,"path":"golang学习笔记/Go常见错误集锦.md","ref":"golang学习笔记/Go常见错误集锦.md","articles":[]},{"title":"Go常见高性能技巧","level":"1.6.2","depth":2,"path":"golang学习笔记/Go高性能的一些技巧.md","ref":"golang学习笔记/Go高性能的一些技巧.md","articles":[]},{"title":"Golang反射","level":"1.6.3","depth":2,"path":"golang学习笔记/Golang反射.md","ref":"golang学习笔记/Golang反射.md","articles":[]},{"title":"内存逃逸","level":"1.6.4","depth":2,"path":"golang学习笔记/内存逃逸.md","ref":"golang学习笔记/内存逃逸.md","articles":[]},{"title":"调度器GMP","level":"1.6.5","depth":2,"path":"golang学习笔记/调度器GMP.md","ref":"golang学习笔记/调度器GMP.md","articles":[]},{"title":"GC垃圾回收","level":"1.6.6","depth":2,"path":"golang学习笔记/GC垃圾回收.md","ref":"golang学习笔记/GC垃圾回收.md","articles":[]}]},"previous":{"title":"C++补充02: Effective STL使用经验","level":"1.5.22","depth":2,"path":"c++学习笔记/c++补充-02EffectiveSTL有用使用经验.md","ref":"c++学习笔记/c++补充-02EffectiveSTL有用使用经验.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"c++学习笔记/Glog使用.md","mtime":"2022-06-08T01:42:24.423Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-06-08T02:17:02.923Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

@@ -1,0 +1,1113 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Golang反射 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="内存逃逸.html" />
+    
+    
+    <link rel="prev" href="Go高性能的一些技巧.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    README
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../redis学习/">
+            
+                <a href="../redis学习/">
+            
+                    
+                    Redis学习
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../redis学习/Redis备份.html">
+            
+                <a href="../redis学习/Redis备份.html">
+            
+                    
+                    Redis备份
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../redis学习/Redis复制.html">
+            
+                <a href="../redis学习/Redis复制.html">
+            
+                    
+                    Redis复制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../redis学习/Redis集群.html">
+            
+                <a href="../redis学习/Redis集群.html">
+            
+                    
+                    Redis集群
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../redis学习/缓存与数据库一致性.html">
+            
+                <a href="../redis学习/缓存与数据库一致性.html">
+            
+                    
+                    缓存与数据库一致性
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../redis学习/Redis消息队列Stream.html">
+            
+                <a href="../redis学习/Redis消息队列Stream.html">
+            
+                    
+                    Redis消息队列
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../rocksdb-xue-xi/README.md">
+            
+                <span>
+            
+                    
+                    RocksDB学习
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../rocksdb学习/RocksDB基础概念.html">
+            
+                <a href="../rocksdb学习/RocksDB基础概念.html">
+            
+                    
+                    RocksDB基础概念
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../rocksdb学习/RocksDB基础操作-C语言.html">
+            
+                <a href="../rocksdb学习/RocksDB基础操作-C语言.html">
+            
+                    
+                    RocksDB基础操作-C语言
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../c语言笔记/">
+            
+                <a href="../c语言笔记/">
+            
+                    
+                    C语言笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../c语言笔记/C语言补充笔记一.html">
+            
+                <a href="../c语言笔记/C语言补充笔记一.html">
+            
+                    
+                    C语言补充笔记一
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../c++学习笔记/">
+            
+                <a href="../c++学习笔记/">
+            
+                    
+                    C++学习笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../c++学习笔记/C++Primer基础-01引用指针const.html">
+            
+                <a href="../c++学习笔记/C++Primer基础-01引用指针const.html">
+            
+                    
+                    C++Primer基础:引用、指针、const、auto/decltype
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../c++学习笔记/C++Primer基础-02volatile与using.html">
+            
+                <a href="../c++学习笔记/C++Primer基础-02volatile与using.html">
+            
+                    
+                    C++Primer基础:volatile、using
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../c++学习笔记/C++Primer基础-03stringvector数组.html">
+            
+                <a href="../c++学习笔记/C++Primer基础-03stringvector数组.html">
+            
+                    
+                    C++Primer基础: string、vector、数组
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../c++学习笔记/C++Primer基础-04函数重载函数指针.html">
+            
+                <a href="../c++学习笔记/C++Primer基础-04函数重载函数指针.html">
+            
+                    
+                    C++Primer基础:函数、重载、函数指针
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="../c++学习笔记/C++Primer基础-05function与bind与forward.html">
+            
+                <a href="../c++学习笔记/C++Primer基础-05function与bind与forward.html">
+            
+                    
+                    C++Primer基础:std::function、std::bind、std::forward
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="../c++学习笔记/C++Primer基础-06-lambda.html">
+            
+                <a href="../c++学习笔记/C++Primer基础-06-lambda.html">
+            
+                    
+                    C++Primer基础:lambda
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" data-path="../c++学习笔记/C++Primer基础-07类基础.html">
+            
+                <a href="../c++学习笔记/C++Primer基础-07类基础.html">
+            
+                    
+                    C++ Primer基础: 类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8" data-path="../c++学习笔记/C++Primer标准库-IO库.html">
+            
+                <a href="../c++学习笔记/C++Primer标准库-IO库.html">
+            
+                    
+                    C++ Primer 标准库: IO库
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.9" data-path="../c++学习笔记/C++Primer标准库-顺序容器.html">
+            
+                <a href="../c++学习笔记/C++Primer标准库-顺序容器.html">
+            
+                    
+                    C++ Primer 标准库: 顺序容器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.10" data-path="../c++学习笔记/C++Primer标准库-泛型算法.html">
+            
+                <a href="../c++学习笔记/C++Primer标准库-泛型算法.html">
+            
+                    
+                    C++ Primer 标准库: 泛型算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.11" data-path="../c++学习笔记/C++Primer标准库-关联容器.html">
+            
+                <a href="../c++学习笔记/C++Primer标准库-关联容器.html">
+            
+                    
+                    C++ Primer 标准库: 关联容器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.12" data-path="../c++学习笔记/C++Primer标准库-动态内存.html">
+            
+                <a href="../c++学习笔记/C++Primer标准库-动态内存.html">
+            
+                    
+                    C++ Primer 标准库: 动态内存
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.13" data-path="../c++学习笔记/C++Primer类设计-拷贝控制.html">
+            
+                <a href="../c++学习笔记/C++Primer类设计-拷贝控制.html">
+            
+                    
+                    C++ Primer 类设计: 拷贝控制、explicit
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.14" data-path="../c++学习笔记/C++Primer类设计-基类派生类虚函数.html">
+            
+                <a href="../c++学习笔记/C++Primer类设计-基类派生类虚函数.html">
+            
+                    
+                    C++ Primer 类设计: 基类、派生类、虚函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.15" data-path="../c++学习笔记/C++Primer类设计-模板与泛型编程.html">
+            
+                <a href="../c++学习笔记/C++Primer类设计-模板与泛型编程.html">
+            
+                    
+                    C++ Primer 类设计:模板与泛型编程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.16" data-path="../c++学习笔记/C++并发编程实战-01基础使用Join传参.html">
+            
+                <a href="../c++学习笔记/C++并发编程实战-01基础使用Join传参.html">
+            
+                    
+                    C++并发编程实战一:基础使用、Join、传参、线程所有权转移
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.17" data-path="../c++学习笔记/C++并发编程实战-02mutexlock.html">
+            
+                <a href="../c++学习笔记/C++并发编程实战-02mutexlock.html">
+            
+                    
+                    C++并发编程实战: mutex、lock、unique_lock、call_once、shared_lock
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.18" data-path="../c++学习笔记/C++并发编程实战-03条件变量.html">
+            
+                <a href="../c++学习笔记/C++并发编程实战-03条件变量.html">
+            
+                    
+                    C++并发编程实战三: 条件变量
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.19" data-path="../c++学习笔记/C++并发编程实战-04原子操作和类型.html">
+            
+                <a href="../c++学习笔记/C++并发编程实战-04原子操作和类型.html">
+            
+                    
+                    C++并发编程实战四: 原子操作和类型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.20" data-path="../c++学习笔记/C++并发编程实战-05内存模型.html">
+            
+                <a href="../c++学习笔记/C++并发编程实战-05内存模型.html">
+            
+                    
+                    C++并发编程实战五: 内存模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.21" data-path="../c++学习笔记/c++补充-01.html">
+            
+                <a href="../c++学习笔记/c++补充-01.html">
+            
+                    
+                    c++补充-01
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.22" data-path="../c++学习笔记/c++补充-02EffectiveSTL有用使用经验.html">
+            
+                <a href="../c++学习笔记/c++补充-02EffectiveSTL有用使用经验.html">
+            
+                    
+                    C++补充02: Effective STL使用经验
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.23" data-path="../c++学习笔记/Glog使用.html">
+            
+                <a href="../c++学习笔记/Glog使用.html">
+            
+                    
+                    Glog使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Golang学习笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="Go常见错误集锦.html">
+            
+                <a href="Go常见错误集锦.html">
+            
+                    
+                    Go常见错误集锦
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="Go高性能的一些技巧.html">
+            
+                <a href="Go高性能的一些技巧.html">
+            
+                    
+                    Go常见高性能技巧
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.6.3" data-path="Golang反射.html">
+            
+                <a href="Golang反射.html">
+            
+                    
+                    Golang反射
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="内存逃逸.html">
+            
+                <a href="内存逃逸.html">
+            
+                    
+                    内存逃逸
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="调度器GMP.html">
+            
+                <a href="调度器GMP.html">
+            
+                    
+                    调度器GMP
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6" data-path="GC垃圾回收.html">
+            
+                <a href="GC垃圾回收.html">
+            
+                    
+                    GC垃圾回收
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../工具使用/">
+            
+                <a href="../工具使用/">
+            
+                    
+                    工具使用
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../工具使用/VSCode使用小技巧.html">
+            
+                <a href="../工具使用/VSCode使用小技巧.html">
+            
+                    
+                    VS Code使用小技巧
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../工具使用/GCC安装.html">
+            
+                <a href="../工具使用/GCC安装.html">
+            
+                    
+                    GCC安装
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../工具使用/CMake学习与使用.html">
+            
+                <a href="../工具使用/CMake学习与使用.html">
+            
+                    
+                    CMake学习与使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Golang反射</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h3 id="go&#x53CD;&#x5C04;reflect">Go&#x53CD;&#x5C04;:reflect</h3>
+<p>&#x6587;&#x7AE0;:<a href="https://juejin.cn/post/6844903559335526407" target="_blank">Golang&#x7684;&#x53CD;&#x5C04;reflect&#x6DF1;&#x5165;&#x7406;&#x89E3;&#x548C;&#x793A;&#x4F8B;</a></p>
+<p>Golang&#x7C7B;&#x578B;&#x8BBE;&#x8BA1;&#x7684;&#x4E00;&#x4E9B;&#x539F;&#x5219;:</p>
+<ul>
+<li><p>&#x53D8;&#x91CF;&#x5305;&#x62EC;(<code>type</code>&#x3001;<code>value</code>)&#x4E24;&#x90E8;&#x5206;&#xFF0C;&#x6240;&#x4EE5;<code>nil!=nil</code>&#x662F;&#x53EF;&#x80FD;&#x7684;</p>
+<p><code>fmt.Println( (interface{})(nil) == (*int)(nil) ) // false</code></p>
+</li>
+<li><p><code>type</code>&#x5305;&#x62EC;<code>static type</code>&#x548C;<code>concrete type</code>&#x3002;<code>static type</code>&#x5C31;&#x662F;&#x6211;&#x4EEC;&#x5E73;&#x65F6;&#x5728;&#x7F16;&#x7801;&#x4E2D;&#x770B;&#x5230;&#x7684;&#x7C7B;&#x578B;,&#x5982;int&#x3001;float&#x7B49;&#x3002;<code>concrete type</code>&#x662F;runtime&#x65F6;&#x770B;&#x5230;&#x7684;&#x7C7B;&#x578B;;</p>
+</li>
+<li><p>&#x65AD;&#x8A00;&#x662F;&#x5426;&#x6210;&#x529F;&#xFF0C;&#x53D6;&#x51B3;&#x4E8E;<code>concrete type</code>&#xFF0C;&#x800C;&#x4E0D;&#x662F;<code>static type</code>&#x3002;&#x6240;&#x4EE5;&#x4E00;&#x4E2A;reader&#x53D8;&#x91CF;&#x5982;&#x679C;&#x5176;<code>concrete type</code>&#x5B9E;&#x73B0;&#x4E86;<code>write</code>&#x65B9;&#x6CD5;&#xFF0C;&#x5219;&#x5B83;&#x4E5F;&#x53EF;&#x4EE5;&#x88AB;&#x65AD;&#x8A00;&#x4E3A;<code>writer</code>&#x3002;</p>
+</li>
+<li><p>Golang&#x7684;&#x5B9E;&#x73B0;&#x4E2D;&#xFF0C;&#x6BCF;&#x4E2A;<code>interface</code>&#x53D8;&#x91CF;&#x90FD;&#x6709;&#x4E00;&#x5BF9;<code>pair</code>,<code>pair</code>&#x4E2D;&#x8BB0;&#x5F55;&#x7740;&#x53D8;&#x91CF;&#x7684;<code>(value,type)</code>&#x3002;&#x4E14;pair&#x5728;&#x63A5;&#x53E3;&#x8FDE;&#x7EED;&#x8D4B;&#x503C;&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#x662F;&#x4E0D;&#x53D8;&#x7684;</p>
+</li>
+</ul>
+<pre><code class="lang-go">tty, err := os.OpenFile(<span class="hljs-string">&quot;/dev/tty&quot;</span>, os.O_RDWR, <span class="hljs-number">0</span>)
+
+<span class="hljs-keyword">var</span> r io.Reader
+r = tty
+
+<span class="hljs-keyword">var</span> w io.Writer
+w = r.(io.Writer)
+</code></pre>
+<h4 id="reflect&#x57FA;&#x672C;&#x529F;&#x80FD;typeof&#x548C;valueof">reflect&#x57FA;&#x672C;&#x529F;&#x80FD;<code>TypeOf</code>&#x548C;<code>ValueOf</code></h4>
+<pre><code class="lang-go"><span class="hljs-comment">// ValueOf returns a new Value initialized to the concrete value</span>
+<span class="hljs-comment">// stored in the interface i.  ValueOf(nil) returns the zero </span>
+<span class="hljs-keyword">func</span> ValueOf(i <span class="hljs-keyword">interface</span>{}) Value {...}
+
+&#x7FFB;&#x8BD1;&#x4E00;&#x4E0B;&#xFF1A;ValueOf&#x7528;&#x6765;&#x83B7;&#x53D6;&#x8F93;&#x5165;&#x53C2;&#x6570;&#x63A5;&#x53E3;&#x4E2D;&#x7684;&#x6570;&#x636E;&#x7684;&#x503C;&#xFF0C;&#x5982;&#x679C;&#x63A5;&#x53E3;&#x4E3A;&#x7A7A;&#x5219;&#x8FD4;&#x56DE;<span class="hljs-number">0</span>
+
+<span class="hljs-comment">// TypeOf returns the reflection Type that represents the dynamic type of i.</span>
+<span class="hljs-comment">// If i is a nil interface value, TypeOf returns nil.</span>
+<span class="hljs-keyword">func</span> TypeOf(i <span class="hljs-keyword">interface</span>{}) Type {...}
+
+&#x7FFB;&#x8BD1;&#x4E00;&#x4E0B;&#xFF1A;TypeOf&#x7528;&#x6765;&#x52A8;&#x6001;&#x83B7;&#x53D6;&#x8F93;&#x5165;&#x53C2;&#x6570;&#x63A5;&#x53E3;&#x4E2D;&#x7684;&#x503C;&#x7684;&#x7C7B;&#x578B;&#xFF0C;&#x5982;&#x679C;&#x63A5;&#x53E3;&#x4E3A;&#x7A7A;&#x5219;&#x8FD4;&#x56DE;<span class="hljs-literal">nil</span>
+</code></pre>
+<pre><code class="lang-go"><span class="hljs-keyword">func</span> main() {
+    <span class="hljs-keyword">var</span> num <span class="hljs-keyword">float64</span> = <span class="hljs-number">1.2345</span>
+
+    fmt.Println(<span class="hljs-string">&quot;type: &quot;</span>, reflect.TypeOf(num))
+    fmt.Println(<span class="hljs-string">&quot;value: &quot;</span>, reflect.ValueOf(num))
+}
+
+&#x8FD0;&#x884C;&#x7ED3;&#x679C;:
+<span class="hljs-keyword">type</span>:  <span class="hljs-keyword">float64</span>
+value:  <span class="hljs-number">1.2345</span>
+</code></pre>
+<h4 id="&#x5DF2;&#x77E5;&#x539F;&#x7C7B;&#x578B;-&#x5F3A;&#x5236;&#x7C7B;&#x578B;&#x8F6C;&#x6362;">&#x5DF2;&#x77E5;&#x539F;&#x7C7B;&#x578B; &#x5F3A;&#x5236;&#x7C7B;&#x578B;&#x8F6C;&#x6362;</h4>
+<p><code>realValue := value.Interface().(&#x5DF2;&#x77E5;&#x7684;&#x7C7B;&#x578B;)</code></p>
+<pre><code class="lang-go"><span class="hljs-keyword">func</span> main() {
+    <span class="hljs-keyword">var</span> num <span class="hljs-keyword">float64</span> = <span class="hljs-number">1.2345</span>
+
+    pointer := reflect.ValueOf(&amp;num)
+    value := reflect.ValueOf(num)
+
+    <span class="hljs-comment">// &#x53EF;&#x4EE5;&#x7406;&#x89E3;&#x4E3A;&#x201C;&#x5F3A;&#x5236;&#x8F6C;&#x6362;&#x201D;&#xFF0C;&#x4F46;&#x662F;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x8F6C;&#x6362;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5982;&#x679C;&#x8F6C;&#x6362;&#x7684;&#x7C7B;&#x578B;&#x4E0D;&#x5B8C;&#x5168;&#x7B26;&#x5408;&#xFF0C;&#x5219;&#x76F4;&#x63A5;panic</span>
+    <span class="hljs-comment">// Golang &#x5BF9;&#x7C7B;&#x578B;&#x8981;&#x6C42;&#x975E;&#x5E38;&#x4E25;&#x683C;&#xFF0C;&#x7C7B;&#x578B;&#x4E00;&#x5B9A;&#x8981;&#x5B8C;&#x5168;&#x7B26;&#x5408;</span>
+    <span class="hljs-comment">// &#x5982;&#x4E0B;&#x4E24;&#x4E2A;&#xFF0C;&#x4E00;&#x4E2A;&#x662F;*float64&#xFF0C;&#x4E00;&#x4E2A;&#x662F;float64&#xFF0C;&#x5982;&#x679C;&#x5F04;&#x6DF7;&#xFF0C;&#x5219;&#x4F1A;panic</span>
+    convertPointer := pointer.Interface().(*<span class="hljs-keyword">float64</span>)
+    convertValue := value.Interface().(<span class="hljs-keyword">float64</span>)
+
+    fmt.Println(convertPointer)
+    fmt.Println(convertValue)
+}
+
+&#x8FD0;&#x884C;&#x7ED3;&#x679C;&#xFF1A;
+<span class="hljs-number">0xc42000e238</span>
+<span class="hljs-number">1.2345</span>
+</code></pre>
+<ul>
+<li><strong>&#x8F6C;&#x6362;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5982;&#x679C;&#x8F6C;&#x6362;&#x7684;&#x7C7B;&#x578B;&#x4E0D;&#x5B8C;&#x5168;&#x7B26;&#x5408;&#xFF0C;&#x5219;&#x76F4;&#x63A5;panic&#xFF0C;&#x7C7B;&#x578B;&#x8981;&#x6C42;&#x975E;&#x5E38;&#x4E25;&#x683C;</strong></li>
+<li><strong>&#x8F6C;&#x6362;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x8981;&#x533A;&#x5206;&#x662F;&#x6307;&#x9488;&#x8FD8;&#x662F;&#x6307;</strong></li>
+</ul>
+<h4 id="&#x672A;&#x77E5;&#x539F;&#x7C7B;&#x578B;">&#x672A;&#x77E5;&#x539F;&#x7C7B;&#x578B;</h4>
+<pre><code class="lang-go"><span class="hljs-keyword">type</span> User <span class="hljs-keyword">struct</span> {
+    Id   <span class="hljs-keyword">int</span>
+    Name <span class="hljs-keyword">string</span>
+    Age  <span class="hljs-keyword">int</span>
+}
+<span class="hljs-keyword">func</span> (u User) ReflectCallFunc() {
+    fmt.Println(<span class="hljs-string">&quot;Allen.Wu ReflectCallFunc&quot;</span>)
+}
+
+<span class="hljs-keyword">func</span> main() {
+    user := User{<span class="hljs-number">1</span>, <span class="hljs-string">&quot;Allen.Wu&quot;</span>, <span class="hljs-number">25</span>}
+    DoFiledAndMethod(user)
+}
+
+<span class="hljs-comment">// &#x901A;&#x8FC7;&#x63A5;&#x53E3;&#x6765;&#x83B7;&#x53D6;&#x4EFB;&#x610F;&#x53C2;&#x6570;&#xFF0C;&#x7136;&#x540E;&#x4E00;&#x4E00;&#x63ED;&#x6653;</span>
+<span class="hljs-keyword">func</span> DoFiledAndMethod(input <span class="hljs-keyword">interface</span>{}) {
+    getType := reflect.TypeOf(input)
+    fmt.Println(<span class="hljs-string">&quot;get Type is :&quot;</span>, getType.Name())
+
+    getValue := reflect.ValueOf(input)
+    fmt.Println(<span class="hljs-string">&quot;get all Fields is:&quot;</span>, getValue)
+
+    <span class="hljs-comment">// &#x83B7;&#x53D6;&#x65B9;&#x6CD5;&#x5B57;&#x6BB5;</span>
+    <span class="hljs-comment">// 1. &#x5148;&#x83B7;&#x53D6;interface&#x7684;reflect.Type&#xFF0C;&#x7136;&#x540E;&#x901A;&#x8FC7;NumField&#x8FDB;&#x884C;&#x904D;&#x5386;</span>
+    <span class="hljs-comment">// 2. &#x518D;&#x901A;&#x8FC7;reflect.Type&#x7684;Field&#x83B7;&#x53D6;&#x5176;Field</span>
+    <span class="hljs-comment">// 3. &#x6700;&#x540E;&#x901A;&#x8FC7;Field&#x7684;Interface()&#x5F97;&#x5230;&#x5BF9;&#x5E94;&#x7684;value</span>
+    <span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; getType.NumField(); i++ {
+        field := getType.Field(i)
+        value := getValue.Field(i).Interface()
+        fmt.Printf(<span class="hljs-string">&quot;%s: %v = %v\n&quot;</span>, field.Name, field.Type, value)
+    }
+
+    <span class="hljs-comment">// &#x83B7;&#x53D6;&#x65B9;&#x6CD5;</span>
+    <span class="hljs-comment">// 1. &#x5148;&#x83B7;&#x53D6;interface&#x7684;reflect.Type&#xFF0C;&#x7136;&#x540E;&#x901A;&#x8FC7;.NumMethod&#x8FDB;&#x884C;&#x904D;&#x5386;</span>
+    <span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; getType.NumMethod(); i++ {
+        m := getType.Method(i) <span class="hljs-comment">//&#x771F;&#x5B9E;&#x51FD;&#x6570;</span>
+        fmt.Printf(<span class="hljs-string">&quot;%s: %v\n&quot;</span>, m.Name, m.Type)
+    }
+}
+&#x8FD0;&#x884C;&#x7ED3;&#x679C;&#xFF1A;
+get Type is : User
+get all Fields is: {<span class="hljs-number">1</span> Allen.Wu <span class="hljs-number">25</span>}
+Id: <span class="hljs-keyword">int</span> = <span class="hljs-number">1</span>
+Name: <span class="hljs-keyword">string</span> = Allen.Wu
+Age: <span class="hljs-keyword">int</span> = <span class="hljs-number">25</span>
+ReflectCallFunc: <span class="hljs-keyword">func</span>(main.User)
+</code></pre>
+<p>&#x83B7;&#x53D6;<code>interface{}</code>&#x7684;&#x5177;&#x4F53;&#x7C7B;&#x578B;&#x4EE5;&#x53CA;&#x5C5E;&#x6027;&#x7684;&#x6B65;&#x9AA4;&#x4E3A;:</p>
+<ol>
+<li>&#x5148;&#x901A;&#x8FC7;<code>reflect.TypeOf()</code>&#x83B7;&#x53D6;<code>interface{}</code>&#x7684;<code>reflect.Type</code>&#xFF0C;&#x7136;&#x540E;&#x901A;&#x8FC7;<code>NumField</code>&#x8FDB;&#x884C;&#x904D;&#x5386;;</li>
+<li>&#x518D;&#x901A;&#x8FC7;<code>reflect.Type</code>&#x7684;<code>Field()</code>&#x83B7;&#x53D6;&#x5176;<code>Field</code>;</li>
+<li>&#x6700;&#x540E;&#x901A;&#x8FC7;<code>Field.Name</code>&#x83B7;&#x53D6;&#x5C5E;&#x6027;&#x540D;&#x3001;<code>Field.Type</code>&#x83B7;&#x53D6;&#x5C5E;&#x6027;&#x7C7B;&#x578B;&#x3001;<code>Field.Interface()</code>&#x83B7;&#x53D6;value;</li>
+</ol>
+<p>&#x83B7;&#x53D6;<code>intereface{}</code>&#x6240;&#x5C5E;&#x65B9;&#x6CD5;&#x7684;&#x6B65;&#x9AA4;:</p>
+<ol>
+<li>&#x5148;&#x901A;&#x8FC7;<code>reflect.TypeOf()</code>&#x83B7;&#x53D6;<code>interface{}</code>&#x7684;<code>reflect.Type</code>,&#x7136;&#x540E;&#x901A;&#x8FC7;<code>NumMethod()</code>&#x8FDB;&#x884C;&#x904D;&#x5386;;</li>
+<li>&#x800C;&#x540E;&#x901A;&#x8FC7;<code>reflect.Type</code>&#x7684;<code>Method()</code>&#x83B7;&#x53D6;&#x5BF9;&#x5E94;&#x7684;&#x771F;&#x5B9E;&#x65B9;&#x6CD5;(&#x51FD;&#x6570;);</li>
+<li>&#x800C;&#x540E;&#x901A;&#x8FC7;<code>method.Name()</code>&#x3001;<code>method.Type()</code>&#x5F97;&#x77E5;&#x5177;&#x4F53;&#x7684;&#x65B9;&#x6CD5;&#x540D;;</li>
+</ol>
+<h4 id="&#x901A;&#x8FC7;reflectvalue&#x7C7B;&#x578B;&#x8BBE;&#x7F6E;&#x5B9E;&#x9645;&#x53D8;&#x91CF;&#x7684;&#x503C;">&#x901A;&#x8FC7;reflect.Value&#x7C7B;&#x578B;&#x8BBE;&#x7F6E;&#x5B9E;&#x9645;&#x53D8;&#x91CF;&#x7684;&#x503C;</h4>
+<p><code>reflect.Value</code>&#x662F;&#x901A;&#x8FC7;<code>reflect.ValueOf(X)</code>&#x83B7;&#x5F97;&#x7684;&#xFF0C;&#x53EA;&#x6709;&#x5F53;X&#x662F;&#x6307;&#x9488;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x624D;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;<code>reflect.Value</code>&#x4FEE;&#x6539;&#x5B9E;&#x9645;&#x53D8;&#x91CF;X&#x7684;&#x503C;&#xFF0C;&#x5373;&#xFF1A;&#x8981;&#x4FEE;&#x6539;&#x53CD;&#x5C04;&#x7C7B;&#x578B;&#x7684;&#x5BF9;&#x8C61;&#x5C31;&#x4E00;&#x5B9A;&#x8981;&#x4FDD;&#x8BC1;&#x5176;&#x503C;&#x662F;<code>addressable</code>&#x7684;&#x3002;</p>
+<pre><code class="lang-go"><span class="hljs-keyword">func</span> main() {
+    <span class="hljs-keyword">var</span> num <span class="hljs-keyword">float64</span> = <span class="hljs-number">1.2345</span>
+    fmt.Println(<span class="hljs-string">&quot;old value of pointer:&quot;</span>, num)
+
+    <span class="hljs-comment">// &#x901A;&#x8FC7;reflect.ValueOf&#x83B7;&#x53D6;num&#x4E2D;&#x7684;reflect.Value&#xFF0C;&#x6CE8;&#x610F;&#xFF0C;&#x53C2;&#x6570;&#x5FC5;&#x987B;&#x662F;&#x6307;&#x9488;&#x624D;&#x80FD;&#x4FEE;&#x6539;&#x5176;&#x503C;</span>
+    pointer := reflect.ValueOf(&amp;num)
+    newValue := pointer.Elem()
+
+    fmt.Println(<span class="hljs-string">&quot;type of pointer:&quot;</span>, newValue.Type())
+    fmt.Println(<span class="hljs-string">&quot;settability of pointer:&quot;</span>, newValue.CanSet())
+
+    <span class="hljs-comment">// &#x91CD;&#x65B0;&#x8D4B;&#x503C;</span>
+    newValue.SetFloat(<span class="hljs-number">77</span>)
+    fmt.Println(<span class="hljs-string">&quot;new value of pointer:&quot;</span>, num)
+
+    <span class="hljs-comment">// &#x5982;&#x679C;reflect.ValueOf&#x7684;&#x53C2;&#x6570;&#x4E0D;&#x662F;&#x6307;&#x9488;&#xFF0C;&#x4F1A;&#x5982;&#x4F55;&#xFF1F;</span>
+    pointer = reflect.ValueOf(num)
+    <span class="hljs-comment">//newValue = pointer.Elem() // &#x5982;&#x679C;&#x975E;&#x6307;&#x9488;&#xFF0C;&#x8FD9;&#x91CC;&#x76F4;&#x63A5;panic&#xFF0C;&#x201C;panic: reflect: call of reflect.Value.Elem on float64 Value&#x201D;</span>
+}
+
+&#x8FD0;&#x884C;&#x7ED3;&#x679C;&#xFF1A;
+old value of pointer: <span class="hljs-number">1.2345</span>
+<span class="hljs-keyword">type</span> of pointer: <span class="hljs-keyword">float64</span>
+settability of pointer: <span class="hljs-literal">true</span>
+<span class="hljs-built_in">new</span> value of pointer: <span class="hljs-number">77</span>
+</code></pre>
+<h4 id="&#x901A;&#x8FC7;reflectvalueof&#x6765;&#x8FDB;&#x884C;&#x65B9;&#x6CD5;&#x7684;&#x8C03;&#x7528;">&#x901A;&#x8FC7;<code>reflect.ValueOf()</code>&#x6765;&#x8FDB;&#x884C;&#x65B9;&#x6CD5;&#x7684;&#x8C03;&#x7528;</h4>
+<pre><code class="lang-go"><span class="hljs-keyword">type</span> User <span class="hljs-keyword">struct</span> {
+    Id   <span class="hljs-keyword">int</span>
+    Name <span class="hljs-keyword">string</span>
+    Age  <span class="hljs-keyword">int</span>
+}
+
+<span class="hljs-keyword">func</span> (u User) ReflectCallFuncHasArgs(name <span class="hljs-keyword">string</span>, age <span class="hljs-keyword">int</span>) {
+    fmt.Println(<span class="hljs-string">&quot;ReflectCallFuncHasArgs name: &quot;</span>, name, <span class="hljs-string">&quot;, age:&quot;</span>, age, <span class="hljs-string">&quot;and origal User.Name:&quot;</span>, u.Name)
+}
+
+<span class="hljs-keyword">func</span> (u User) ReflectCallFuncNoArgs() {
+    fmt.Println(<span class="hljs-string">&quot;ReflectCallFuncNoArgs&quot;</span>)
+}
+
+<span class="hljs-comment">// &#x5982;&#x4F55;&#x901A;&#x8FC7;&#x53CD;&#x5C04;&#x6765;&#x8FDB;&#x884C;&#x65B9;&#x6CD5;&#x7684;&#x8C03;&#x7528;&#xFF1F;</span>
+<span class="hljs-comment">// &#x672C;&#x6765;&#x53EF;&#x4EE5;&#x7528;u.ReflectCallFuncXXX&#x76F4;&#x63A5;&#x8C03;&#x7528;&#x7684;&#xFF0C;&#x4F46;&#x662F;&#x5982;&#x679C;&#x8981;&#x901A;&#x8FC7;&#x53CD;&#x5C04;&#xFF0C;&#x90A3;&#x4E48;&#x9996;&#x5148;&#x8981;&#x5C06;&#x65B9;&#x6CD5;&#x6CE8;&#x518C;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;MethodByName&#xFF0C;&#x7136;&#x540E;&#x901A;&#x8FC7;&#x53CD;&#x5C04;&#x8C03;&#x52A8;mv.Call</span>
+
+<span class="hljs-keyword">func</span> main() {
+    user := User{<span class="hljs-number">1</span>, <span class="hljs-string">&quot;Allen.Wu&quot;</span>, <span class="hljs-number">25</span>}
+
+    <span class="hljs-comment">// 1. &#x8981;&#x901A;&#x8FC7;&#x53CD;&#x5C04;&#x6765;&#x8C03;&#x7528;&#x8D77;&#x5BF9;&#x5E94;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x5FC5;&#x987B;&#x8981;&#x5148;&#x901A;&#x8FC7;reflect.ValueOf(interface)&#x6765;&#x83B7;&#x53D6;&#x5230;reflect.Value&#xFF0C;&#x5F97;&#x5230;&#x201C;&#x53CD;&#x5C04;&#x7C7B;&#x578B;&#x5BF9;&#x8C61;&#x201D;&#x540E;&#x624D;&#x80FD;&#x505A;&#x4E0B;&#x4E00;&#x6B65;&#x5904;&#x7406;</span>
+    getValue := reflect.ValueOf(user)
+
+    <span class="hljs-comment">// &#x4E00;&#x5B9A;&#x8981;&#x6307;&#x5B9A;&#x53C2;&#x6570;&#x4E3A;&#x6B63;&#x786E;&#x7684;&#x65B9;&#x6CD5;&#x540D;</span>
+    <span class="hljs-comment">// 2. &#x5148;&#x770B;&#x770B;&#x5E26;&#x6709;&#x53C2;&#x6570;&#x7684;&#x8C03;&#x7528;&#x65B9;&#x6CD5;</span>
+    methodValue := getValue.MethodByName(<span class="hljs-string">&quot;ReflectCallFuncHasArgs&quot;</span>)
+    args := []reflect.Value{reflect.ValueOf(<span class="hljs-string">&quot;wudebao&quot;</span>), reflect.ValueOf(<span class="hljs-number">30</span>)}
+    methodValue.Call(args)
+
+    <span class="hljs-comment">// &#x4E00;&#x5B9A;&#x8981;&#x6307;&#x5B9A;&#x53C2;&#x6570;&#x4E3A;&#x6B63;&#x786E;&#x7684;&#x65B9;&#x6CD5;&#x540D;</span>
+    <span class="hljs-comment">// 3. &#x518D;&#x770B;&#x770B;&#x65E0;&#x53C2;&#x6570;&#x7684;&#x8C03;&#x7528;&#x65B9;&#x6CD5;</span>
+    methodValue = getValue.MethodByName(<span class="hljs-string">&quot;ReflectCallFuncNoArgs&quot;</span>)
+    args = <span class="hljs-built_in">make</span>([]reflect.Value, <span class="hljs-number">0</span>)
+    methodValue.Call(args)
+}
+
+
+&#x8FD0;&#x884C;&#x7ED3;&#x679C;&#xFF1A;
+ReflectCallFuncHasArgs name:  wudebao , age: <span class="hljs-number">30</span> and origal User.Name: Allen.Wu
+ReflectCallFuncNoArgs
+</code></pre>
+<h4 id="&#x8865;&#x5145;">&#x8865;&#x5145;</h4>
+<ul>
+<li><p><strong>&#x5BF9;&#x6307;&#x9488;&#x7C7B;&#x578B;&#x6267;&#x884C; reflect.Value</strong></p>
+<p>&#x9519;&#x8BEF;&#x4FE1;&#x606F;: <code>reflect: call of reflect.Value.FieldByName on ptr Value</code></p>
+<p>&#x53C2;&#x8003;&#x95EE;&#x9898;: <a href="https://stackoverflow.com/questions/50098624/reflect-call-of-reflect-value-fieldbyname-on-ptr-value" target="_blank">reflect: call of reflect.Value.FieldByName on ptr Value</a></p>
+<p>&#x793A;&#x4F8B;&#x4E00;:</p>
+<pre><code class="lang-go"><span class="hljs-keyword">type</span> Family <span class="hljs-keyword">struct</span> {
+   first <span class="hljs-keyword">string</span>
+   last <span class="hljs-keyword">string</span>
+}
+<span class="hljs-keyword">type</span> Person <span class="hljs-keyword">struct</span> {
+   name <span class="hljs-keyword">string</span>
+   family *Family
+}
+<span class="hljs-keyword">func</span> Check(data <span class="hljs-keyword">interface</span>{}) {
+    <span class="hljs-keyword">var</span> v = reflect.ValueOf(data)
+
+    <span class="hljs-keyword">if</span> v.Kind() == reflect.Struct {
+        fmt.Println(<span class="hljs-string">&quot;was a struct&quot;</span>)
+        familyPtr := v.FieldByName(<span class="hljs-string">&quot;family&quot;</span>)
+        v = reflect.Indirect(familyPtr).FieldByName(<span class="hljs-string">&quot;last&quot;</span>) <span class="hljs-comment">//&#x7279;&#x522B;&#x6CE8;&#x610F;&#x8FD9;&#x91CC;</span>
+        fmt.Println(v)
+    }
+}
+
+<span class="hljs-keyword">func</span> main(){
+   per1 := Person{name:<span class="hljs-string">&quot;niki&quot;</span>,family:&amp;Familys{first:<span class="hljs-string">&quot;yam&quot;</span>,last:<span class="hljs-string">&quot;bari&quot;</span>}}
+   Check(per1)
+}
+</code></pre>
+<p>&#x793A;&#x4F8B;&#x4E8C;:</p>
+<pre><code class="lang-go"><span class="hljs-comment">//&#x8868;&#x7684;struct, &#x6839;&#x636E;field names&#x83B7;&#x53D6;&#x5BF9;&#x5E94;&#x7684;values</span>
+<span class="hljs-keyword">func</span> (task *TbTendisDTSTask) GetFieldsValue(fieldNames []<span class="hljs-keyword">string</span>) (ret []<span class="hljs-keyword">interface</span>{}, err error) {
+    <span class="hljs-comment">//&#x6700;&#x597D;,&#x5148;&#x5224;&#x65AD;field&#x662F;&#x5426;&#x5B58;&#x5728;</span>
+    ret = <span class="hljs-built_in">make</span>([]<span class="hljs-keyword">interface</span>{}, <span class="hljs-number">0</span>, <span class="hljs-built_in">len</span>(fieldNames))
+    getValue := reflect.ValueOf(task)
+    <span class="hljs-keyword">for</span> _, field01 := <span class="hljs-keyword">range</span> fieldNames {
+        val01 := reflect.Indirect(getValue).FieldByName(field01) <span class="hljs-comment">//&#x7279;&#x522B;&#x6CE8;&#x610F;&#x8FD9;&#x91CC;</span>
+        ret = <span class="hljs-built_in">append</span>(ret, val01.Interface())
+    }
+    <span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; <span class="hljs-built_in">len</span>(fieldNames); i++ {
+        fmt.Printf(<span class="hljs-string">&quot;fieldName:%s value:%v\n&quot;</span>, fieldNames[i], ret[i])
+    }
+    <span class="hljs-keyword">return</span>
+}
+</code></pre>
+</li>
+</ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="Go高性能的一些技巧.html" class="navigation navigation-prev " aria-label="Previous page: Go常见高性能技巧">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="内存逃逸.html" class="navigation navigation-next " aria-label="Next page: 内存逃逸">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Golang反射","level":"1.6.3","depth":2,"next":{"title":"内存逃逸","level":"1.6.4","depth":2,"path":"golang学习笔记/内存逃逸.md","ref":"golang学习笔记/内存逃逸.md","articles":[]},"previous":{"title":"Go常见高性能技巧","level":"1.6.2","depth":2,"path":"golang学习笔记/Go高性能的一些技巧.md","ref":"golang学习笔记/Go高性能的一些技巧.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"golang学习笔记/Golang反射.md","mtime":"2022-06-08T01:51:24.916Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-06-08T02:17:02.923Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
