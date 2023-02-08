@@ -156,7 +156,7 @@ Fair Scheduler 是Facebook开发的多用户调度器。
 
 **队列层面的分配**
 
-![image-20221005164556606](/Users/lukexwang/Library/Application Support/typora-user-images/image-20221005164556606.png)
+![image-20221005164556606](https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20221005164556606.png)
 
 **作业层面的分配**
 

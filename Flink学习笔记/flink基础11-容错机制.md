@@ -62,7 +62,7 @@ env.addSource(...)
 
   为了不丢失数据，我们应该从保存检查点后开始重新读取数据，这可以通过Source任务向外部数据源重新提交偏移量(offset)实现。
 
-  <img src="/Users/lukexwang/Library/Application Support/typora-user-images/image-20221214234220864.png" alt="image-20221214234220864" style="zoom:50%;" />
+  <img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20221214234220864.png" alt="image-20221214234220864" style="zoom:50%;" />
 
   这样，整个系统的状态已经完全回退到了检查点保存完成的那一刻。
 
@@ -313,7 +313,7 @@ env.addSource(...)
 
 **不同Source和Sink的一致性保证**
 
-<img src="/Users/lukexwang/Library/Application Support/typora-user-images/image-20221216230510928.png" alt="image-20221216230510928" style="zoom:50%;" />
+<img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20221216230510928.png" alt="image-20221216230510928" style="zoom:50%;" />
 
 #### Flink 和 kafka连接时的精确一次保证
 

@@ -221,7 +221,7 @@ Flink默认是事件时间。在窗口处理过程中，Flink可以基于数据�
     - 该窗口没有结束的时候，默认不会做触发计算；
     - 如果希望它能对数据进行计算处理，还需要自定义 "触发器" (Trigger)
   
-    <img src="/Users/lukexwang/Library/Application Support/typora-user-images/image-20221129230707053.png" alt="image-20221129230707053" style="zoom:50%;" />
+    <img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20221129230707053.png" alt="image-20221129230707053" style="zoom:50%;" />
 
 #### 窗口API 概览
 

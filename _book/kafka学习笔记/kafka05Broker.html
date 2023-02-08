@@ -1538,7 +1538,7 @@ d. &#x7B49;&#x8BE5;<strong>Follower(Broker2)&#x7684;LEO&#x5927;&#x4E8E;&#x7B49;&
 <li><p><strong>&#x4E3A;&#x4E86;&#x4FDD;&#x8BC1;&#x591A;&#x4E2A;&#x526F;&#x672C;&#x4E4B;&#x95F4;&#x7684;&#x6570;&#x636E;&#x4E00;&#x81F4;&#x6027;&#xFF0C;&#x5176;&#x4F59;Follower&#x4F1A;&#x5148;&#x5C06;&#x5404;&#x81EA;&#x7684;log&#x6587;&#x4EF6;&#x9AD8;&#x4E8E;HW&#x7684;&#x90E8;&#x5206;&#x622A;&#x6389;(&#x6BD4;&#x5982;broker2&#x7684; 5 6&#x6570;&#x636E;&#x5C31;&#x8981;&#x622A;&#x6389;&#x4E86;)&#xFF0C;&#x7136;&#x540E;&#x7092;&#x5E74;&#x7CD5;new Leader&#x540C;&#x6B65;&#x6570;&#x636E;;</strong></p>
 </li>
 <li><p><strong>&#x6CE8;&#x610F;: &#x8FD9;&#x53EA;&#x80FD;&#x4FDD;&#x8BC1;&#x526F;&#x672C;&#x4E4B;&#x95F4;&#x7684;&#x6570;&#x636E;&#x4E00;&#x81F4;&#x6027;&#xFF0C;&#x5E76;&#x4E0D;&#x80FD;&#x4FDD;&#x8BC1;&#x6570;&#x636E;&#x4E0D;&#x4E22;&#x5931;&#x6216;&#x4E0D;&#x91CD;&#x590D;&#x3002;</strong></p>
-<p><img src="../Users/lukexwang/Library/Application Support/typora-user-images/image-20230107102235628.png" alt="image-20230107102235628" style="zoom:33%;"></p>
+<p><img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20230107102235628.png" alt="image-20230107102235628" style="zoom:33%;"></p>
 </li>
 </ul>
 <h4 id="&#x5206;&#x533A;&#x526F;&#x672C;&#x5206;&#x914D;">&#x5206;&#x533A;&#x526F;&#x672C;&#x5206;&#x914D;</h4>
@@ -1573,7 +1573,7 @@ Topic: second   TopicId: j0wjIbyQSPyceZMi8EElyA PartitionCount: 16      Replicat
 <li><p><strong>&#x624B;&#x52A8;&#x8C03;&#x6574;&#x5206;&#x533A;&#x526F;&#x672C;&#x5B58;&#x50A8;</strong></p>
 <p>&#x5728;&#x751F;&#x4EA7;&#x73AF;&#x5883;&#x4E2D;&#xFF0C;&#x6BCF;&#x53F0;&#x670D;&#x52A1;&#x5668;&#x7684;&#x914D;&#x7F6E;&#x548C;&#x6027;&#x80FD;&#x4E0D;&#x4E00;-&#x81F4;&#xFF0C;&#x4F46;&#x662F;Kafka&#x53EA;&#x4F1A;&#x6839;&#x636E;&#x81EA;&#x5DF1;&#x7684;&#x4EE3;&#x7801;&#x89C4;&#x5219;&#x521B;&#x5EFA;&#x5BF9;&#x5E94;&#x7684;&#x5206;&#x533A;&#x526F;&#x672C;&#xFF0C;&#x5C31;&#x4F1A;&#x5BFC;&#x81F4;&#x4E2A;&#x522B;&#x670D;&#x52A1;&#x5668;&#x5B58;&#x50A8;&#x538B;&#x529B;&#x8F83;&#x5927;&#x3002;&#x6240;&#x6709;&#x9700;&#x8981;&#x624B;&#x52A8;&#x8C03;&#x6574;&#x5206;&#x533A;&#x526F;&#x672C;&#x7684;&#x5B58;&#x50A8;&#x3002;</p>
 <p><strong>&#x9700;&#x6C42;:&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x7684;topic&#xFF0C;4&#x4E2A;&#x5206;&#x533A;&#xFF0C;&#x4E24;&#x4E2A;&#x526F;&#x672C;&#xFF0C;&#x540D;&#x79F0;&#x4E3A;three&#x3002;&#x5C06;&#x8BE5;topic&#x7684;&#x6240;&#x6709;&#x526F;&#x672C;&#x90FD;&#x5B58;&#x50A8;&#x5230;broker0&#x548C;broker1&#x4E24;&#x53F0;&#x670D;&#x52A1;&#x5668;&#x4E0A;</strong></p>
-<p><img src="../Users/lukexwang/Library/Application Support/typora-user-images/image-20230107110120749.png" alt="image-20230107110120749"></p>
+<p><img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20230107110120749.png" alt="image-20230107110120749"></p>
 <p>a. &#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x7684; topic&#xFF0C;&#x540D;&#x79F0;&#x4E3A; three</p>
 <pre><code class="lang-shell">$ ./bin/kafka-topics.sh --bootstrap-server hadoop101:9092 --create --partitions 4 --replication-factor 2 --topic three
 </code></pre>
@@ -1639,7 +1639,7 @@ Topic: three    TopicId: 4yLz-lctR_K6FV60PfrDxQ PartitionCount: 4       Replicat
 <strong>&#x6240;&#x4EE5;broker0&#x8282;&#x70B9;&#x4E0D;&#x5E73;&#x8861;&#x7387;&#x4E3A;1/4&gt;10%&#xFF0C;&#x9700;&#x8981;&#x518D;&#x5E73;&#x8861;</strong></p>
 <p><strong>broker2&#x548C;broker3&#x8282;&#x70B9;&#x548C;broker0&#x4E0D;&#x5E73;&#x8861;&#x7387;&#x4E00;&#x6837;&#xFF0C; &#x9700;&#x8981;&#x518D;&#x5E73;&#x8861;</strong></p>
 <p>Broker1&#x7684;&#x4E0D;&#x5E73;&#x8861;&#x6570;&#x4E3A;0&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x518D;&#x5E73;&#x8861;&#x3002;</p>
-<p><img src="../Users/lukexwang/Library/Application Support/typora-user-images/image-20230107145053005.png" alt="image-20230107145053005" style="zoom:50%;"></p>
+<p><img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20230107145053005.png" alt="image-20230107145053005" style="zoom:50%;"></p>
 <p><strong>&#x4E00;&#x822C;&#x60C5;&#x51B5;&#x4E0B;&#x4E0D;&#x5EFA;&#x8BAE;&#x5F00;&#x542F;<code>auto.leader.rebalance.enable</code>&#xFF0C;&#x5982;&#x679C;&#x8981;&#x5F00;&#x542F;&#x4E5F;&#x5EFA;&#x8BAE;&#x9002;&#x5F53;&#x6269;&#x5927;<code>leader.imbalance.per.broker.percentage</code></strong></p>
 </li>
 <li><p><strong>&#x589E;&#x52A0;&#x526F;&#x672C;&#x56E0;&#x5B50;</strong></p>
@@ -1723,7 +1723,7 @@ baseOffset: 3 lastOffset: 3 count: 1 baseSequence: -1 lastSequence: -1 producerI
 </ul>
 </li>
 <li><p>&#x601D;&#x8003;: &#x5982;&#x679C;&#x4E00;&#x4E2A;segment&#x4E2D;&#x6709;&#x90E8;&#x5206;&#x6570;&#x636E;&#x8FC7;&#x671F;&#xFF0C;&#x53E6;&#x4E00;&#x90E8;&#x5206;&#x6570;&#x636E;&#x6CA1;&#x8FC7;&#x671F;&#xFF0C;&#x600E;&#x4E48;&#x5904;&#x7406;?</p>
-<p><img src="../Users/lukexwang/Library/Application Support/typora-user-images/image-20230107154312926.png" alt="image-20230107154312926" style="zoom:50%;"></p>
+<p><img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20230107154312926.png" alt="image-20230107154312926" style="zoom:50%;"></p>
 </li>
 </ul>
 </li>
@@ -1797,7 +1797,7 @@ baseOffset: 3 lastOffset: 3 count: 1 baseSequence: -1 lastSequence: -1 producerI
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"kafka中Broker","level":"1.11.5","depth":2,"next":{"title":"kafka消费者","level":"1.11.6","depth":2,"path":"kafka学习笔记/kafka06消费者.md","ref":"kafka学习笔记/kafka06消费者.md","articles":[]},"previous":{"title":"kafka生产者原理","level":"1.11.4","depth":2,"path":"kafka学习笔记/kafka04生产者原理.md","ref":"kafka学习笔记/kafka04生产者原理.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"kafka学习笔记/kafka05Broker.md","mtime":"2023-01-09T22:32:49.279Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-02-08T08:43:27.159Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"kafka中Broker","level":"1.11.5","depth":2,"next":{"title":"kafka消费者","level":"1.11.6","depth":2,"path":"kafka学习笔记/kafka06消费者.md","ref":"kafka学习笔记/kafka06消费者.md","articles":[]},"previous":{"title":"kafka生产者原理","level":"1.11.4","depth":2,"path":"kafka学习笔记/kafka04生产者原理.md","ref":"kafka学习笔记/kafka04生产者原理.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"kafka学习笔记/kafka05Broker.md","mtime":"2023-02-08T16:04:36.872Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-02-08T16:06:45.510Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

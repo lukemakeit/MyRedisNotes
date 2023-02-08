@@ -166,7 +166,7 @@
 
 - **注意: 这只能保证副本之间的数据一致性，并不能保证数据不丢失或不重复。**
 
-  <img src="/Users/lukexwang/Library/Application Support/typora-user-images/image-20230107102235628.png" alt="image-20230107102235628" style="zoom:33%;" />
+  <img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20230107102235628.png" alt="image-20230107102235628" style="zoom:33%;" />
 
 #### 分区副本分配
 
@@ -209,7 +209,7 @@
 
   **需求:创建一个新的topic，4个分区，两个副本，名称为three。将该topic的所有副本都存储到broker0和broker1两台服务器上**
 
-  ![image-20230107110120749](/Users/lukexwang/Library/Application Support/typora-user-images/image-20230107110120749.png)
+  ![image-20230107110120749](https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20230107110120749.png)
 
   a. 创建一个新的 topic，名称为 three
 
@@ -299,7 +299,7 @@
 
   Broker1的不平衡数为0，不需要再平衡。
 
-  <img src="/Users/lukexwang/Library/Application Support/typora-user-images/image-20230107145053005.png" alt="image-20230107145053005" style="zoom:50%;" />
+  <img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20230107145053005.png" alt="image-20230107145053005" style="zoom:50%;" />
 
   **一般情况下不建议开启`auto.leader.rebalance.enable`，如果要开启也建议适当扩大`leader.imbalance.per.broker.percentage`**
 
@@ -398,7 +398,7 @@ Kafka中<font style="color:red">默认日志保存时间为7天</font>，可通�
 
   - 思考: 如果一个segment中有部分数据过期，另一部分数据没过期，怎么处理?
 
-    <img src="/Users/lukexwang/Library/Application Support/typora-user-images/image-20230107154312926.png" alt="image-20230107154312926" style="zoom:50%;" />
+    <img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20230107154312926.png" alt="image-20230107154312926" style="zoom:50%;" />
 
 - **compact日志压缩: 对于相同key的不同value值，只保留最后一个版本**
 

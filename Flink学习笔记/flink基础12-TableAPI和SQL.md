@@ -565,7 +565,7 @@ Flink为我们提供了两种查询方式: `SQL`和`Table API`。
 
   动态表的查询永不停止，随着数据量的到来持续执行;
 
-  <img src="/Users/lukexwang/Library/Application Support/typora-user-images/image-20221221070550904.png" alt="image-20221221070550904" style="zoom:50%;" />
+  <img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20221221070550904.png" alt="image-20221221070550904" style="zoom:50%;" />
   
 - **更新(Update)查询**
 

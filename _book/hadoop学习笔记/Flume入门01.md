@@ -2,7 +2,7 @@
 
 Flume是一个高可用的，高可靠的，分布式的**海量日志采集、聚合和传输的系统。** 用作采集文本文件的，不能采集视频、音频等。
 Flume最主要的作用就是: **实时读取服务器本地磁盘的数据，将数据写入HDFS**
-<img src="/Users/lukexwang/Library/Application Support/typora-user-images/image-20221007195553997.png" alt="image-20221007195553997" style="zoom:50%;" />
+<img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20221007195553997.png" alt="image-20221007195553997" style="zoom:50%;" />
 
 **架构图**
 <img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20221007202911253.png" alt="image-20221007202911253" style="zoom:50%;" />
@@ -25,7 +25,7 @@ Flume自带两种Channel: **Memory Channel 和 File  Channel。**
 **Event**
 传输单元，Flume数据传输的基本单元，以Event的形式将数据从源头送到目的地。
 Event由**Header**和**Body**两部分组成，Header用来存放event的一些属性，为K-V结构，Body用来存放该条数据，形式为字节数组。
-<img src="/Users/lukexwang/Library/Application Support/typora-user-images/image-20221007204414493.png" alt="image-20221007204414493" style="zoom:50%;" />
+<img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20221007204414493.png" alt="image-20221007204414493" style="zoom:50%;" />
 
 ##### 安装
 
@@ -258,13 +258,13 @@ Flume支持将事件流向一个或者多个目的地。这种模式可以将相
 
 ##### 负载均衡和故障转移
 
-<img src="/Users/lukexwang/Library/Application Support/typora-user-images/image-20221017233630591.png" alt="image-20221017233630591" style="zoom:50%;" />
+<img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20221017233630591.png" alt="image-20221017233630591" style="zoom:50%;" />
 
 Flume支持使用将多个sink逻辑分到一个sink组，sink组配合不同的SinkProcessor。并发写提升了写性能。
 
 ##### 聚合
 
-<img src="/Users/lukexwang/Library/Application Support/typora-user-images/image-20221017233934219.png" alt="image-20221017233934219" style="zoom:50%;" />
+<img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20221017233934219.png" alt="image-20221017233934219" style="zoom:50%;" />
 
 
 

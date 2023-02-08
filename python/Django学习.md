@@ -59,7 +59,7 @@ def HelloWolrd(request):
     return HttpResponse(html)
 ```
 
-<img src="/Users/lukexwang/Library/Application Support/typora-user-images/image-20220626223326911.png" alt="image-20220626223326911" style="zoom:50%;" />
+<img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20220626223326911.png" alt="image-20220626223326911" style="zoom:50%;" />
 
 例如:
 
@@ -148,7 +148,7 @@ querystring is  <QueryDict: {'a': ['1'], 'b': ['2']}>
 
 **响应对象**
 
-<img src="/Users/lukexwang/Library/Application Support/typora-user-images/image-20220627065248929.png" alt="image-20220627065248929" style="zoom:25%;" />
+<img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20220627065248929.png" alt="image-20220627065248929" style="zoom:25%;" />
 
 <img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20220627065336505.png" alt="image-20220627065336505" style="zoom:25%;" />
 
@@ -216,11 +216,11 @@ default c
 
 **MTV**
 
-<img src="/Users/lukexwang/Library/Application Support/typora-user-images/image-20220627072649665.png" alt="image-20220627072649665" style="zoom:33%;" />
+<img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20220627072649665.png" alt="image-20220627072649665" style="zoom:33%;" />
 
 #### 模版配置
 
-<img src="/Users/lukexwang/Library/Application Support/typora-user-images/image-20220628061901247.png" alt="image-20220628061901247" style="zoom:33%;" />
+<img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20220628061901247.png" alt="image-20220628061901247" style="zoom:33%;" />
 
 创建templates
 
@@ -404,7 +404,7 @@ return render(request,"模版文件名",字典数据)
 
    `empty`: 意思是在 可迭代对象无数据时，填充这条语句;
 
-   <img src="/Users/lukexwang/Library/Application Support/typora-user-images/image-20220628072145658.png" alt="image-20220628072145658" style="zoom:33%;" />
+   <img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20220628072145658.png" alt="image-20220628072145658" style="zoom:33%;" />
 
 示例:
 ```python
@@ -454,7 +454,7 @@ INSTALLED_APPS = [
 **分布式路由**
 
 主路由配置文件可以做请求分发(分布式请求处理)。
-<img src="/Users/lukexwang/Library/Application Support/typora-user-images/image-20220716084912073.png" alt="image-20220716084912073" style="zoom:33%;" />
+<img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20220716084912073.png" alt="image-20220716084912073" style="zoom:33%;" />
 
 **配置分布式路由**
 主路由配置:
@@ -611,7 +611,7 @@ class 模型类名(models.Model):
     字段名 = models.字段类型(字段选项)
 ```
 
-<img src="/Users/lukexwang/Library/Application Support/typora-user-images/image-20220716111158465.png" alt="image-20220716111158465" style="zoom:50%;" />
+<img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20220716111158465.png" alt="image-20220716111158465" style="zoom:50%;" />
 
 **字段类型**
 

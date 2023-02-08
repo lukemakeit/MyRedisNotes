@@ -16,7 +16,7 @@
 
 #### 消费者整体工作流程
 
-![image-20230110064456442](/Users/lukexwang/Library/Application Support/typora-user-images/image-20230110064456442.png)
+![image-20230110064456442](https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20230110064456442.png)
 
 #### 消费者组
 

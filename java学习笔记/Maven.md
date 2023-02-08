@@ -5,7 +5,7 @@
 Maven本质是一个项目管理工具，将项目开发和管理过程抽象成一个项目对象模型(POM)。
 POM(Project Object Model): 项目对象模型
 
-![image-20220821225351338](/Users/lukexwang/Library/Application Support/typora-user-images/image-20220821225351338.png)
+![image-20220821225351338](https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20220821225351338.png)
 
 **Maven作用**
 
@@ -13,7 +13,7 @@ POM(Project Object Model): 项目对象模型
 - 依赖管理: 方便快捷的管理项目依赖的资源(jar包)，避免资源间版本冲突问题;
 - 统一开发结构: 提供标准的、统一的项目结构
 
-  <img src="/Users/lukexwang/Library/Application Support/typora-user-images/image-20220821225639970.png" alt="image-20220821225639970" style="zoom:50%;" />
+  <img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20220821225639970.png" alt="image-20220821225639970" style="zoom:50%;" />
 
 #### Maven 基础概念
 

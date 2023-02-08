@@ -100,7 +100,7 @@ CombineTextInputFormat用于小文件过多场景，可以将多个小文件从�
 `CombineTextInputFormat.setMaxinputSplitSize(job,4194304)`;// 4m
 **切片机制**
 生成切片过程包括: **虚拟存储过程和切片过程两部分**
-![image-20220926224426148](/Users/lukexwang/Library/Application Support/typora-user-images/image-20220926224426148.png)
+![image-20220926224426148](https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20220926224426148.png)
 
 如何用呢？上一章的`WordCount`程序增加如下代码:
 ```java
@@ -673,7 +673,7 @@ public class LogRecordWriter extends RecordWriter<Text, NullWritable> {
 
 #### MapTask 工作机制
 
-<img src="/Users/lukexwang/Library/Application Support/typora-user-images/image-20221001201048720.png" alt="image-20221001201048720" style="zoom:67%;" />
+<img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20221001201048720.png" alt="image-20221001201048720" style="zoom:67%;" />
 
 - 1/2/3/4 步都是客户端提交时执行的，属于提交流程。不属于MapReduce;
 - Read阶段: 第 5步，从默认TextInputFormat找那个读取数据;
