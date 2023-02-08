@@ -11,9 +11,9 @@ tcpdump的命令如: `tcpdump -i eth1 icmp and host 183.232.231.174 -nn`
 - `host`:表示主机过滤,抓取对应IP的数据包;
 - `-nn`: 表示不解析ip地址和端口号的命令;
 
-<img src="/Users/lukexwang/Library/Application Support/typora-user-images/image-20220222153529086.png" alt="image-20220222153529086" style="zoom:50%;" />
+<img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20220222153529086.png" alt="image-20220222153529086" style="zoom:50%;" />
 
-<img src="/Users/lukexwang/Library/Application Support/typora-user-images/image-20220222153611212.png" alt="image-20220222153611212" style="zoom:50%;" />
+<img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20220222153611212.png" alt="image-20220222153611212" style="zoom:50%;" />
 
 tcpdump抓取的包，通过`-w`参数保存成`.pcap`后缀的文件，接着用`wireshark`工具进行数据包分析。
 

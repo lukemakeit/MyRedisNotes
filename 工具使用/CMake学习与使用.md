@@ -573,7 +573,7 @@
 
     通过`--target finish`就会去生成`target finish`，进而执行依赖`printout`代表的命令。
 
-    <img src="/Users/lukexwang/Library/Application Support/typora-user-images/image-20220111203641759.png" alt="image-20220111203641759" style="zoom:67%;" />
+    <img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20220111203641759.png" alt="image-20220111203641759" style="zoom:67%;" />
 
     更加实际的一个示例:
 

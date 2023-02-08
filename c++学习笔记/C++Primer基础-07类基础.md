@@ -238,7 +238,7 @@ class Screen {
   }
   ```
 
-  ![image-20211128213544067](/Users/lukexwang/Library/Application Support/typora-user-images/image-20211128213544067.png)
+  ![image-20211128213544067](https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20211128213544067.png)
 
 ### 构造函数再探
 

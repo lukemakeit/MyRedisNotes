@@ -52,7 +52,7 @@ TCP 四元组可以唯⼀的确定⼀个连接，四元组包括如下：
 
 **源端⼝和⽬的端⼝的字段(16位)是在 TCP 头部中，作⽤是告诉 TCP 协议应该把报⽂发给哪个进程**
 
-<img src="/Users/lukexwang/Library/Application Support/typora-user-images/image-20220221161346504.png" alt="image-20220221161346504" style="zoom: 33%;" />
+<img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20220221161346504.png" alt="image-20220221161346504" style="zoom: 33%;" />
 
 #### 问题四: 有⼀个 IP 的服务器监听了⼀个端⼝，它的 TCP 的最⼤连接数是多少？
 
@@ -143,7 +143,7 @@ TCP 是⾯向连接的协议，所以使⽤ TCP 前必须先建⽴连接，⽽**
 
 3. **三次握手的第二个报文: `SYNC`+`ACK`报文**
 
-   <img src="/Users/lukexwang/Library/Application Support/typora-user-images/image-20220221214213700.png" alt="image-20220221214213700" style="zoom:50%;" />
+   <img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20220221214213700.png" alt="image-20220221214213700" style="zoom:50%;" />
 
    - 服务端收到客户端的`SYN`报⽂后，⾸先服务端也随机初始化⾃⼰的序号(`server_isn`)，将此序号填⼊TCP ⾸部的 **序号** 字段中;
    - 其次把TCP⾸部的 **确认应答号** 字段填⼊ `client_isn + 1`, 接着把`SYN`和`ACK`标志位置为 1 。
@@ -151,7 +151,7 @@ TCP 是⾯向连接的协议，所以使⽤ TCP 前必须先建⽴连接，⽽**
 
 4. **三次握手的第三个报文: ACK 报文**
 
-   <img src="/Users/lukexwang/Library/Application Support/typora-user-images/image-20220221214749906.png" alt="image-20220221214749906" style="zoom:50%;" />
+   <img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20220221214749906.png" alt="image-20220221214749906" style="zoom:50%;" />
 
    - 客户端收到服务端报⽂后,还要向服务端回应最后⼀个应答报⽂,⾸先该应答报⽂`TCP`⾸部`ACK`标志位置为1;
    - 其次**确认应答号**字段填⼊`server_isn + 1`,<mark style="color:red">**最后把报⽂发送给服务端,这次报⽂可以携带客户到服务器的数据,之后客户端处于`ESTABLISHED`状态**</mark>。
@@ -180,7 +180,7 @@ TCP 是⾯向连接的协议，所以使⽤ TCP 前必须先建⽴连接，⽽**
 
      > The principle reason for the three-way handshake is to prevent old duplicate connection initiations from causing confusion
 
-     <img src="/Users/lukexwang/Library/Application Support/typora-user-images/image-20220221230112137.png" alt="image-20220221230112137" style="zoom:50%;" />
+     <img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20220221230112137.png" alt="image-20220221230112137" style="zoom:50%;" />
 
      这种场景中正确的处理方式
 
@@ -215,7 +215,7 @@ TCP 是⾯向连接的协议，所以使⽤ TCP 前必须先建⽴连接，⽽**
 - <mark style="color:red">**`MTU`:一个网络包的最大长度，以太网中一般是`1500`字节;**</mark>
 - <mark style="color:red">**`MSS`:除去IP和TCP头部之后，一个网络包所容纳的TCP数据的最大长度;**</mark>
 
-<img src="/Users/lukexwang/Library/Application Support/typora-user-images/image-20220221235752486.png" alt="image-20220221235752486" style="zoom:50%;" />
+<img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20220221235752486.png" alt="image-20220221235752486" style="zoom:50%;" />
 
 
 
@@ -446,7 +446,7 @@ TCP 会在以下两种情况发⽣超时重传：
 - 当超时时间`RTO较⼤`时,重发就慢,丢了⽼半天才重发,没有效率,性能差；
 - 当超时时间`RTO较⼩`时,会导致可能并没有丢就重发,于是重发的就快,会增加⽹络拥塞,导致更多的超时,更多的超时导致更多的重发;
 
-<img src="/Users/lukexwang/Library/Application Support/typora-user-images/image-20220222163513321.png" alt="image-20220222163513321" style="zoom:50%;" />
+<img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20220222163513321.png" alt="image-20220222163513321" style="zoom:50%;" />
 
 根据上述的两种情况，我们可以得知,<mark style="color:blue"> **超时重传时间 RTO 的值应该略⼤于报⽂往返 RTT 的值**</mark>。
 
@@ -485,7 +485,7 @@ TCP 会在以下两种情况发⽣超时重传：
 
 **示例一:ACK丢包**
 
-<img src="/Users/lukexwang/Library/Application Support/typora-user-images/image-20220222165500599.png" alt="image-20220222165500599" style="zoom:50%;" />
+<img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20220222165500599.png" alt="image-20220222165500599" style="zoom:50%;" />
 
 - <mark style="color:blue">**接收⽅ 发现数据是重复收到的,于是回了⼀个SACK=3000~3500**</mark>,告诉「发送⽅」3000~3500的数据早已被接收了，因为 ACK 都到了 4000 了，已经意味着 4000 之前的所有数据都已收到，所以这个SACK 就代表着 D-SACK;
 - 这样「发送⽅」就知道了，数据没有丢，是「接收⽅」的 ACK 确认报⽂丢了.
