@@ -1,0 +1,1753 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>java02核心类 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="Maven.html" />
+    
+    
+    <link rel="prev" href="java01基础.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    README
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../redis学习/">
+            
+                <a href="../redis学习/">
+            
+                    
+                    Redis学习
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../redis学习/Redis备份.html">
+            
+                <a href="../redis学习/Redis备份.html">
+            
+                    
+                    Redis备份
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../redis学习/Redis复制.html">
+            
+                <a href="../redis学习/Redis复制.html">
+            
+                    
+                    Redis复制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../redis学习/Redis集群.html">
+            
+                <a href="../redis学习/Redis集群.html">
+            
+                    
+                    Redis集群
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../redis学习/缓存与数据库一致性.html">
+            
+                <a href="../redis学习/缓存与数据库一致性.html">
+            
+                    
+                    缓存与数据库一致性
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../redis学习/Redis消息队列Stream.html">
+            
+                <a href="../redis学习/Redis消息队列Stream.html">
+            
+                    
+                    Redis消息队列
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="../redis学习/RedisModule.html">
+            
+                <a href="../redis学习/RedisModule.html">
+            
+                    
+                    RedisModule
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../mysql/">
+            
+                <a href="../mysql/">
+            
+                    
+                    mysql学习
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../mysql/mysql补充.html">
+            
+                <a href="../mysql/mysql补充.html">
+            
+                    
+                    mysql补充
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../mysql/mysql8.0-手动安装.html">
+            
+                <a href="../mysql/mysql8.0-手动安装.html">
+            
+                    
+                    mysql8.0-手动安装
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../rocksdb-xue-xi/README.md">
+            
+                <span>
+            
+                    
+                    RocksDB学习
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../rocksdb学习/RocksDB基础概念.html">
+            
+                <a href="../rocksdb学习/RocksDB基础概念.html">
+            
+                    
+                    RocksDB基础概念
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../rocksdb学习/RocksDB基础操作-C语言.html">
+            
+                <a href="../rocksdb学习/RocksDB基础操作-C语言.html">
+            
+                    
+                    RocksDB基础操作-C语言
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../c语言笔记/">
+            
+                <a href="../c语言笔记/">
+            
+                    
+                    C语言笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../c语言笔记/C语言补充笔记一.html">
+            
+                <a href="../c语言笔记/C语言补充笔记一.html">
+            
+                    
+                    C语言补充笔记一
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../c++学习笔记/">
+            
+                <a href="../c++学习笔记/">
+            
+                    
+                    C++学习笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../c++学习笔记/C++Primer基础-01引用指针const.html">
+            
+                <a href="../c++学习笔记/C++Primer基础-01引用指针const.html">
+            
+                    
+                    C++Primer基础:引用、指针、const、auto/decltype
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../c++学习笔记/C++Primer基础-02volatile与using.html">
+            
+                <a href="../c++学习笔记/C++Primer基础-02volatile与using.html">
+            
+                    
+                    C++Primer基础:volatile、using
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../c++学习笔记/C++Primer基础-03stringvector数组.html">
+            
+                <a href="../c++学习笔记/C++Primer基础-03stringvector数组.html">
+            
+                    
+                    C++Primer基础: string、vector、数组
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../c++学习笔记/C++Primer基础-04函数重载函数指针.html">
+            
+                <a href="../c++学习笔记/C++Primer基础-04函数重载函数指针.html">
+            
+                    
+                    C++Primer基础:函数、重载、函数指针
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="../c++学习笔记/C++Primer基础-05function与bind与forward.html">
+            
+                <a href="../c++学习笔记/C++Primer基础-05function与bind与forward.html">
+            
+                    
+                    C++Primer基础:std::function、std::bind、std::forward
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6" data-path="../c++学习笔记/C++Primer基础-06-lambda.html">
+            
+                <a href="../c++学习笔记/C++Primer基础-06-lambda.html">
+            
+                    
+                    C++Primer基础:lambda
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.7" data-path="../c++学习笔记/C++Primer基础-07类基础.html">
+            
+                <a href="../c++学习笔记/C++Primer基础-07类基础.html">
+            
+                    
+                    C++ Primer基础: 类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.8" data-path="../c++学习笔记/C++Primer标准库-IO库.html">
+            
+                <a href="../c++学习笔记/C++Primer标准库-IO库.html">
+            
+                    
+                    C++ Primer 标准库: IO库
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.9" data-path="../c++学习笔记/C++Primer标准库-顺序容器.html">
+            
+                <a href="../c++学习笔记/C++Primer标准库-顺序容器.html">
+            
+                    
+                    C++ Primer 标准库: 顺序容器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.10" data-path="../c++学习笔记/C++Primer标准库-泛型算法.html">
+            
+                <a href="../c++学习笔记/C++Primer标准库-泛型算法.html">
+            
+                    
+                    C++ Primer 标准库: 泛型算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.11" data-path="../c++学习笔记/C++Primer标准库-关联容器.html">
+            
+                <a href="../c++学习笔记/C++Primer标准库-关联容器.html">
+            
+                    
+                    C++ Primer 标准库: 关联容器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.12" data-path="../c++学习笔记/C++Primer标准库-动态内存.html">
+            
+                <a href="../c++学习笔记/C++Primer标准库-动态内存.html">
+            
+                    
+                    C++ Primer 标准库: 动态内存
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.13" data-path="../c++学习笔记/C++Primer类设计-拷贝控制.html">
+            
+                <a href="../c++学习笔记/C++Primer类设计-拷贝控制.html">
+            
+                    
+                    C++ Primer 类设计: 拷贝控制、explicit
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.14" data-path="../c++学习笔记/C++Primer类设计-基类派生类虚函数.html">
+            
+                <a href="../c++学习笔记/C++Primer类设计-基类派生类虚函数.html">
+            
+                    
+                    C++ Primer 类设计: 基类、派生类、虚函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.15" data-path="../c++学习笔记/C++Primer类设计-模板与泛型编程.html">
+            
+                <a href="../c++学习笔记/C++Primer类设计-模板与泛型编程.html">
+            
+                    
+                    C++ Primer 类设计:模板与泛型编程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.16" data-path="../c++学习笔记/C++并发编程实战-01基础使用Join传参.html">
+            
+                <a href="../c++学习笔记/C++并发编程实战-01基础使用Join传参.html">
+            
+                    
+                    C++并发编程实战一:基础使用、Join、传参、线程所有权转移
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.17" data-path="../c++学习笔记/C++并发编程实战-02mutexlock.html">
+            
+                <a href="../c++学习笔记/C++并发编程实战-02mutexlock.html">
+            
+                    
+                    C++并发编程实战: mutex、lock、unique_lock、call_once、shared_lock
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.18" data-path="../c++学习笔记/C++并发编程实战-03条件变量.html">
+            
+                <a href="../c++学习笔记/C++并发编程实战-03条件变量.html">
+            
+                    
+                    C++并发编程实战三: 条件变量
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.19" data-path="../c++学习笔记/C++并发编程实战-04原子操作和类型.html">
+            
+                <a href="../c++学习笔记/C++并发编程实战-04原子操作和类型.html">
+            
+                    
+                    C++并发编程实战四: 原子操作和类型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.20" data-path="../c++学习笔记/C++并发编程实战-05内存模型.html">
+            
+                <a href="../c++学习笔记/C++并发编程实战-05内存模型.html">
+            
+                    
+                    C++并发编程实战五: 内存模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.21" data-path="../c++学习笔记/C++补充-01.html">
+            
+                <a href="../c++学习笔记/C++补充-01.html">
+            
+                    
+                    c++补充-01
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.22" data-path="../c++学习笔记/C++补充-02EffectiveSTL有用使用经验.html">
+            
+                <a href="../c++学习笔记/C++补充-02EffectiveSTL有用使用经验.html">
+            
+                    
+                    C++补充02: Effective STL使用经验
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.23" data-path="../c++学习笔记/C++面试题—算法.html">
+            
+                <a href="../c++学习笔记/C++面试题—算法.html">
+            
+                    
+                    C++面试题-算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.24" data-path="../c++学习笔记/Linux传统IO和零拷贝Zero-Copy技术.html">
+            
+                <a href="../c++学习笔记/Linux传统IO和零拷贝Zero-Copy技术.html">
+            
+                    
+                    Linux传统IO和零拷贝Zero-Copy技术
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.25" data-path="../c++学习笔记/Glog使用.html">
+            
+                <a href="../c++学习笔记/Glog使用.html">
+            
+                    
+                    Glog使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../golang学习笔记/">
+            
+                <a href="../golang学习笔记/">
+            
+                    
+                    Golang学习笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../golang学习笔记/Go常见错误集锦.html">
+            
+                <a href="../golang学习笔记/Go常见错误集锦.html">
+            
+                    
+                    Go常见错误集锦
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../golang学习笔记/Go高性能的一些技巧.html">
+            
+                <a href="../golang学习笔记/Go高性能的一些技巧.html">
+            
+                    
+                    Go常见高性能技巧
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../golang学习笔记/Golang反射.html">
+            
+                <a href="../golang学习笔记/Golang反射.html">
+            
+                    
+                    Golang反射
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="../golang学习笔记/内存逃逸.html">
+            
+                <a href="../golang学习笔记/内存逃逸.html">
+            
+                    
+                    内存逃逸
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="../golang学习笔记/调度器GMP.html">
+            
+                <a href="../golang学习笔记/调度器GMP.html">
+            
+                    
+                    调度器GMP
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6" data-path="../golang学习笔记/GC垃圾回收.html">
+            
+                <a href="../golang学习笔记/GC垃圾回收.html">
+            
+                    
+                    GC垃圾回收
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../网络协议学习/">
+            
+                <a href="../网络协议学习/">
+            
+                    
+                    网络协议学习
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../网络协议学习/网络面试题.html">
+            
+                <a href="../网络协议学习/网络面试题.html">
+            
+                    
+                    网络面试题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="../网络协议学习/TCP常见问题.html">
+            
+                <a href="../网络协议学习/TCP常见问题.html">
+            
+                    
+                    TCP常见问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" data-path="../网络协议学习/tcpdump工具.html">
+            
+                <a href="../网络协议学习/tcpdump工具.html">
+            
+                    
+                    tcpdump工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    java学习笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="java01基础.html">
+            
+                <a href="java01基础.html">
+            
+                    
+                    java01基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.9.2" data-path="java02核心类.html">
+            
+                <a href="java02核心类.html">
+            
+                    
+                    java02核心类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3" data-path="Maven.html">
+            
+                <a href="Maven.html">
+            
+                    
+                    Maven
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="../hadoop学习笔记/">
+            
+                <a href="../hadoop学习笔记/">
+            
+                    
+                    hadoop学习笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="../hadoop学习笔记/hadoop入门01-架构与安装.html">
+            
+                <a href="../hadoop学习笔记/hadoop入门01-架构与安装.html">
+            
+                    
+                    hadoop入门01-架构与安装
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" data-path="../hadoop学习笔记/hadoop入门02-HDFS基础.html">
+            
+                <a href="../hadoop学习笔记/hadoop入门02-HDFS基础.html">
+            
+                    
+                    hadoop入门02-HDFS基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.3" data-path="../hadoop学习笔记/hadoop入门03-MapReduce.html">
+            
+                <a href="../hadoop学习笔记/hadoop入门03-MapReduce.html">
+            
+                    
+                    hadoop入门03-MapReduce
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.4" data-path="../hadoop学习笔记/hadoop入门04-MapReduce框架原理.html">
+            
+                <a href="../hadoop学习笔记/hadoop入门04-MapReduce框架原理.html">
+            
+                    
+                    hadoop入门04-MapReduce框架原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.5" data-path="../hadoop学习笔记/hadoop入门05-MapReduce数据清洗和压缩.html">
+            
+                <a href="../hadoop学习笔记/hadoop入门05-MapReduce数据清洗和压缩.html">
+            
+                    
+                    hadoop入门05-MapReduce数据清洗与压缩
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.6" data-path="../hadoop学习笔记/hadoop入门06-yarn.html">
+            
+                <a href="../hadoop学习笔记/hadoop入门06-yarn.html">
+            
+                    
+                    hadoop入门06-yarn
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.7" data-path="../hadoop学习笔记/Hive入门01-基础入门.html">
+            
+                <a href="../hadoop学习笔记/Hive入门01-基础入门.html">
+            
+                    
+                    Hive入门01-基础入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="../kafka学习笔记/">
+            
+                <a href="../kafka学习笔记/">
+            
+                    
+                    kafka学习笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.11.1" data-path="../kafka学习笔记/kafka01概述与应用场景.html">
+            
+                <a href="../kafka学习笔记/kafka01概述与应用场景.html">
+            
+                    
+                    kafka概述与应用场景
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.2" data-path="../kafka学习笔记/kafka02安装与部署.md">
+            
+                <span>
+            
+                    
+                    kafka安装与部署
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.3" data-path="../kafka学习笔记/kafka03基本操作.html">
+            
+                <a href="../kafka学习笔记/kafka03基本操作.html">
+            
+                    
+                    kafka基本操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.4" data-path="../kafka学习笔记/kafka04生产者原理.html">
+            
+                <a href="../kafka学习笔记/kafka04生产者原理.html">
+            
+                    
+                    kafka生产者原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.5" data-path="../kafka学习笔记/kafka05Broker.html">
+            
+                <a href="../kafka学习笔记/kafka05Broker.html">
+            
+                    
+                    kafka中Broker
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.6" data-path="../kafka学习笔记/kafka06消费者.html">
+            
+                <a href="../kafka学习笔记/kafka06消费者.html">
+            
+                    
+                    kafka消费者
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="../Flink学习笔记/">
+            
+                <a href="../Flink学习笔记/">
+            
+                    
+                    Flink学习笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1" data-path="../Flink学习笔记/flink基础01—简介.html">
+            
+                <a href="../Flink学习笔记/flink基础01—简介.html">
+            
+                    
+                    flink基础01—简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2" data-path="../Flink学习笔记/flink基础02-集群启动-部署模式.html">
+            
+                <a href="../Flink学习笔记/flink基础02-集群启动-部署模式.html">
+            
+                    
+                    flink基础02-集群启动-部署模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3" data-path="../Flink学习笔记/flink基础03-运行时架构.html">
+            
+                <a href="../Flink学习笔记/flink基础03-运行时架构.html">
+            
+                    
+                    flink基础03-运行时架构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.4" data-path="../Flink学习笔记/flink基础04-DataStreamAPI-Source.html">
+            
+                <a href="../Flink学习笔记/flink基础04-DataStreamAPI-Source.html">
+            
+                    
+                    flink基础04-DataStreamAPI-Source
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.5" data-path="../Flink学习笔记/flink基础05-DataStreamAPI-Transformation.html">
+            
+                <a href="../Flink学习笔记/flink基础05-DataStreamAPI-Transformation.html">
+            
+                    
+                    flink基础05-DataStreamAPI-Transformation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.6" data-path="../Flink学习笔记/flink基础06-DataStreamAPI-Sink.html">
+            
+                <a href="../Flink学习笔记/flink基础06-DataStreamAPI-Sink.html">
+            
+                    
+                    flink基础06-DataStreamAPI-Sink
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.7" data-path="../Flink学习笔记/flink基础07-时间和窗口.html">
+            
+                <a href="../Flink学习笔记/flink基础07-时间和窗口.html">
+            
+                    
+                    flink基础07-时间和窗口
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.8" data-path="../Flink学习笔记/flink基础08-处理函数.html">
+            
+                <a href="../Flink学习笔记/flink基础08-处理函数.html">
+            
+                    
+                    flink基础08-处理函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.9" data-path="../Flink学习笔记/flink基础09-多流转换(分流与合流">
+            
+                <span>
+            
+                    
+                    flink基础09-多流转换(分流与合流)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.10" data-path="../Flink学习笔记/flink基础10-状态编程.html">
+            
+                <a href="../Flink学习笔记/flink基础10-状态编程.html">
+            
+                    
+                    flink基础10-状态编程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.11" data-path="../Flink学习笔记/flink基础11-容错机制.html">
+            
+                <a href="../Flink学习笔记/flink基础11-容错机制.html">
+            
+                    
+                    flink基础11-容错机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.12" data-path="../Flink学习笔记/flink基础12-TableAPI和SQL.html">
+            
+                <a href="../Flink学习笔记/flink基础12-TableAPI和SQL.html">
+            
+                    
+                    flink基础12-TableAPI和SQL
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.13" data-path="../Flink学习笔记/flink基础13-CEP.html">
+            
+                <a href="../Flink学习笔记/flink基础13-CEP.html">
+            
+                    
+                    flink基础13-CEP
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" data-path="../工具使用/">
+            
+                <a href="../工具使用/">
+            
+                    
+                    工具使用
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.13.1" data-path="../工具使用/VSCode使用小技巧.html">
+            
+                <a href="../工具使用/VSCode使用小技巧.html">
+            
+                    
+                    VS Code使用小技巧
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.2" data-path="../工具使用/GCC安装.html">
+            
+                <a href="../工具使用/GCC安装.html">
+            
+                    
+                    GCC安装
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.3" data-path="../工具使用/CMake学习与使用.html">
+            
+                <a href="../工具使用/CMake学习与使用.html">
+            
+                    
+                    CMake学习与使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.4" data-path="../工具使用/gdb调试.html">
+            
+                <a href="../工具使用/gdb调试.html">
+            
+                    
+                    gdb调试
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.5" data-path="../工具使用/perf、strace等工具.html">
+            
+                <a href="../工具使用/perf、strace等工具.html">
+            
+                    
+                    perf、strace等工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >java02核心类</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="&#x6838;&#x5FC3;&#x7C7B;">&#x6838;&#x5FC3;&#x7C7B;</h2>
+<h4 id="&#x5B57;&#x7B26;&#x4E32;string">&#x5B57;&#x7B26;&#x4E32;String</h4>
+<ul>
+<li><p><strong>Java&#x5B57;&#x7B26;&#x4E32;&#x662F;&#x4E0D;&#x53EF;&#x53D8;&#x7684;</strong>&#xFF0C;&#x8FD9;&#x79CD;&#x4E0D;&#x53EF;&#x53D8;&#x662F;&#x901A;&#x8FC7;&#x5185;&#x90E8;&#x7684;<code>private final char[]</code>&#x5B9E;&#x73B0;&#x7684;</p>
+</li>
+<li><p>&#x6BD4;&#x8F83;&#x5B57;&#x7B26;&#x4E32;&#x76F8;&#x7B49;&#x5FC5;&#x987B;&#x7528;<code>==</code> &#x800C;&#x4E0D;&#x662F;<code>equals</code></p>
+<pre><code class="lang-java">String s1=<span class="hljs-string">&quot;hello&quot;</span>;
+String s2=<span class="hljs-string">&quot;HELLO&quot;</span>.toLowerCase();
+System.out.println(s1==s2); <span class="hljs-comment">//&#x8F93;&#x51FA;false</span>
+System.out.println(s1.equals(s2)); <span class="hljs-comment">//&#x8F93;&#x51FA;true</span>
+</code></pre>
+</li>
+<li><p>&#x5FFD;&#x7565;&#x5927;&#x5C0F;&#x5199;&#x6BD4;&#x8F83;:<code>equalsIgnoreCase()</code></p>
+</li>
+<li><p>&#x5176;&#x4ED6;&#x7684;&#x4E00;&#x4E9B;&#x4F8B;&#x5B50;:</p>
+<pre><code class="lang-java"><span class="hljs-string">&quot;Hello&quot;</span>.contains(<span class="hljs-string">&quot;ll&quot;</span>); <span class="hljs-comment">// true</span>
+<span class="hljs-string">&quot;Hello&quot;</span>.indexOf(<span class="hljs-string">&quot;l&quot;</span>); <span class="hljs-comment">// 2</span>
+<span class="hljs-string">&quot;Hello&quot;</span>.lastIndexOf(<span class="hljs-string">&quot;l&quot;</span>); <span class="hljs-comment">// 3</span>
+<span class="hljs-string">&quot;Hello&quot;</span>.startsWith(<span class="hljs-string">&quot;He&quot;</span>); <span class="hljs-comment">// true</span>
+<span class="hljs-string">&quot;Hello&quot;</span>.endsWith(<span class="hljs-string">&quot;lo&quot;</span>); <span class="hljs-comment">// true</span>
+<span class="hljs-string">&quot;  \tHello\r\n &quot;</span>.trim(); <span class="hljs-comment">// &quot;Hello&quot;</span>
+</code></pre>
+<p>&#x6CE8;&#x610F;&#xFF1A;<code>trim()</code>&#x5E76;&#x6CA1;&#x6709;&#x6539;&#x53D8;&#x5B57;&#x7B26;&#x4E32;&#x7684;&#x5185;&#x5BB9;&#xFF0C;&#x800C;&#x662F;&#x8FD4;&#x56DE;&#x4E86;&#x4E00;&#x4E2A;&#x65B0;&#x5B57;&#x7B26;&#x4E32;&#x3002;
+&#x53E6;&#x4E00;&#x4E2A;<code>strip()</code>&#x65B9;&#x6CD5;&#x4E5F;&#x53EF;&#x4EE5;&#x79FB;&#x9664;&#x5B57;&#x7B26;&#x4E32;&#x9996;&#x5C3E;&#x7A7A;&#x767D;&#x5B57;&#x7B26;&#x3002;&#x5B83;&#x548C;<code>trim()</code>&#x4E0D;&#x540C;&#x7684;&#x662F;&#xFF0C;&#x7C7B;&#x4F3C;&#x4E2D;&#x6587;&#x7684;&#x7A7A;&#x683C;&#x5B57;&#x7B26;<code>\u3000</code>&#x4E5F;&#x4F1A;&#x88AB;&#x79FB;&#x9664;:</p>
+<pre><code class="lang-java"><span class="hljs-string">&quot;\u3000Hello\u3000&quot;</span>.strip(); <span class="hljs-comment">// &quot;Hello&quot;</span>
+<span class="hljs-string">&quot; Hello &quot;</span>.stripLeading(); <span class="hljs-comment">// &quot;Hello &quot;</span>
+<span class="hljs-string">&quot; Hello &quot;</span>.stripTrailing(); <span class="hljs-comment">// &quot; Hello&quot;</span>
+</code></pre>
+<p><code>String</code>&#x8FD8;&#x63D0;&#x4F9B;&#x4E86;<code>isEmpty()</code>&#x548C;<code>isBlank()</code>&#x6765;&#x5224;&#x65AD;&#x5B57;&#x7B26;&#x4E32;&#x662F;&#x5426;&#x4E3A;&#x7A7A;&#x548C;&#x7A7A;&#x767D;&#x5B57;&#x7B26;&#x4E32;:</p>
+<pre><code class="lang-java"><span class="hljs-string">&quot;&quot;</span>.isEmpty(); <span class="hljs-comment">// true&#xFF0C;&#x56E0;&#x4E3A;&#x5B57;&#x7B26;&#x4E32;&#x957F;&#x5EA6;&#x4E3A;0</span>
+<span class="hljs-string">&quot;  &quot;</span>.isEmpty(); <span class="hljs-comment">// false&#xFF0C;&#x56E0;&#x4E3A;&#x5B57;&#x7B26;&#x4E32;&#x957F;&#x5EA6;&#x4E0D;&#x4E3A;0</span>
+<span class="hljs-string">&quot;  \n&quot;</span>.isBlank(); <span class="hljs-comment">// true&#xFF0C;&#x56E0;&#x4E3A;&#x53EA;&#x5305;&#x542B;&#x7A7A;&#x767D;&#x5B57;&#x7B26;</span>
+<span class="hljs-string">&quot; Hello &quot;</span>.isBlank(); <span class="hljs-comment">// false&#xFF0C;&#x56E0;&#x4E3A;&#x5305;&#x542B;&#x975E;&#x7A7A;&#x767D;&#x5B57;&#x7B26;</span>
+</code></pre>
+</li>
+<li><p>&#x66FF;&#x6362;&#x5B57;&#x7B26;&#x4E32;:</p>
+<pre><code class="lang-java">String s = <span class="hljs-string">&quot;hello&quot;</span>;
+s.replace(<span class="hljs-string">&apos;l&apos;</span>, <span class="hljs-string">&apos;w&apos;</span>); <span class="hljs-comment">// &quot;hewwo&quot;&#xFF0C;&#x6240;&#x6709;&#x5B57;&#x7B26;&apos;l&apos;&#x88AB;&#x66FF;&#x6362;&#x4E3A;&apos;w&apos;</span>
+s.replace(<span class="hljs-string">&quot;ll&quot;</span>, <span class="hljs-string">&quot;~~&quot;</span>); <span class="hljs-comment">// &quot;he~~o&quot;&#xFF0C;&#x6240;&#x6709;&#x5B50;&#x4E32;&quot;ll&quot;&#x88AB;&#x66FF;&#x6362;&#x4E3A;&quot;~~&quot;</span>
+</code></pre>
+<p>&#x53E6;&#x4E00;&#x79CD;&#x662F;&#x901A;&#x8FC7;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x66FF;&#x6362;:</p>
+<pre><code class="lang-java">String s = <span class="hljs-string">&quot;A,,B;C ,D&quot;</span>;
+s.replaceAll(<span class="hljs-string">&quot;[\\,\\;\\s]+&quot;</span>, <span class="hljs-string">&quot;,&quot;</span>); <span class="hljs-comment">// &quot;A,B,C,D&quot;</span>
+</code></pre>
+</li>
+<li><p>&#x5206;&#x5272;&#x5B57;&#x7B26;&#x4E32;<code>split</code></p>
+<pre><code class="lang-java">String s = <span class="hljs-string">&quot;A,B,C,D&quot;</span>;
+String[] ss = s.split(<span class="hljs-string">&quot;\\,&quot;</span>); <span class="hljs-comment">// {&quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;D&quot;}</span>
+</code></pre>
+</li>
+<li><p>&#x62FC;&#x63A5;&#x5B57;&#x7B26;&#x4E32;<code>join</code></p>
+<pre><code class="lang-java">String[] arr = {<span class="hljs-string">&quot;A&quot;</span>, <span class="hljs-string">&quot;B&quot;</span>, <span class="hljs-string">&quot;C&quot;</span>};
+String s = String.join(<span class="hljs-string">&quot;***&quot;</span>, arr); <span class="hljs-comment">// &quot;A***B***C&quot;</span>
+</code></pre>
+</li>
+<li><p>&#x683C;&#x5F0F;&#x5316;&#x5B57;&#x7B26;&#x4E32;</p>
+<pre><code class="lang-java">String s = <span class="hljs-string">&quot;Hi %s, your score is %d!&quot;</span>;
+System.out.println(s.formatted(<span class="hljs-string">&quot;Alice&quot;</span>, <span class="hljs-number">80</span>));
+System.out.println(String.format(<span class="hljs-string">&quot;Hi %s, your score is %.2f!&quot;</span>, <span class="hljs-string">&quot;Bob&quot;</span>, <span class="hljs-number">59.5</span>));
+</code></pre>
+</li>
+<li><p>&#x7C7B;&#x578B;&#x8F6C;&#x6362;:</p>
+<pre><code class="lang-java">String.valueOf(<span class="hljs-number">123</span>); <span class="hljs-comment">// &quot;123&quot;</span>
+String.valueOf(<span class="hljs-number">45.67</span>); <span class="hljs-comment">// &quot;45.67&quot;</span>
+String.valueOf(<span class="hljs-keyword">true</span>); <span class="hljs-comment">// &quot;true&quot;</span>
+String.valueOf(<span class="hljs-keyword">new</span> Object()); <span class="hljs-comment">// &#x7C7B;&#x4F3C;java.lang.Object@636be97c</span>
+
+<span class="hljs-keyword">int</span> n1 = Integer.parseInt(<span class="hljs-string">&quot;123&quot;</span>); <span class="hljs-comment">// 123</span>
+<span class="hljs-keyword">int</span> n2 = Integer.parseInt(<span class="hljs-string">&quot;ff&quot;</span>, <span class="hljs-number">16</span>); <span class="hljs-comment">// &#x6309;&#x5341;&#x516D;&#x8FDB;&#x5236;&#x8F6C;&#x6362;&#xFF0C;255</span>
+
+<span class="hljs-keyword">boolean</span> b1 = Boolean.parseBoolean(<span class="hljs-string">&quot;true&quot;</span>); <span class="hljs-comment">// true</span>
+<span class="hljs-keyword">boolean</span> b2 = Boolean.parseBoolean(<span class="hljs-string">&quot;FALSE&quot;</span>); <span class="hljs-comment">// false</span>
+
+<span class="hljs-comment">//&#x8F6C;&#x6362;&#x4E3A;char[]</span>
+<span class="hljs-keyword">char</span>[] cs = <span class="hljs-string">&quot;Hello&quot;</span>.toCharArray(); <span class="hljs-comment">// String -&gt; char[]</span>
+String s = <span class="hljs-keyword">new</span> String(cs); <span class="hljs-comment">// char[] -&gt; String</span>
+</code></pre>
+</li>
+<li><p><strong>StringBuilder</strong></p>
+<p>Java&#x7F16;&#x8BD1;&#x5668;&#x5BF9;<code>String</code>&#x505A;&#x4E86;&#x7279;&#x6B8A;&#x5904;&#x7406;&#xFF0C;&#x4F7F;&#x5F97;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x7528;<code>+</code>&#x62FC;&#x63A5;&#x5B57;&#x7B26;&#x4E32;&#x3002;</p>
+<pre><code class="lang-java">String s = <span class="hljs-string">&quot;&quot;</span>;
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">1000</span>; i++) {
+    s = s + <span class="hljs-string">&quot;,&quot;</span> + i;
+}
+</code></pre>
+<p>&#x867D;&#x7136;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x62FC;&#x63A5;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x4F46;&#x662F;&#xFF0C;&#x5728;&#x5FAA;&#x73AF;&#x4E2D;&#xFF0C;&#x6BCF;&#x6B21;&#x5FAA;&#x73AF;&#x90FD;&#x4F1A;&#x521B;&#x5EFA;&#x65B0;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x5BF9;&#x8C61;&#xFF0C;&#x7136;&#x540E;&#x6254;&#x6389;&#x65E7;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x3002;&#x8FD9;&#x6837;&#xFF0C;&#x7EDD;&#x5927;&#x90E8;&#x5206;&#x5B57;&#x7B26;&#x4E32;&#x90FD;&#x662F;&#x4E34;&#x65F6;&#x5BF9;&#x8C61;&#xFF0C;&#x4E0D;&#x4F46;&#x6D6A;&#x8D39;&#x5185;&#x5B58;&#xFF0C;&#x8FD8;&#x4F1A;&#x5F71;&#x54CD;GC&#x6548;&#x7387;&#x3002;
+&#x4E3A;&#x4E86;&#x80FD;&#x9AD8;&#x6548;&#x62FC;&#x63A5;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;<strong>Java&#x6807;&#x51C6;&#x5E93;&#x63D0;&#x4F9B;&#x4E86;<code>StringBuilder</code>&#xFF0C;&#x5B83;&#x662F;&#x4E00;&#x4E2A;&#x53EF;&#x53D8;&#x5BF9;&#x8C61;&#xFF0C;&#x53EF;&#x4EE5;&#x9884;&#x5206;&#x914D;&#x7F13;&#x51B2;&#x533A;&#xFF0C;&#x8FD9;&#x6837;&#xFF0C;&#x5F80;<code>StringBuilder</code>&#x4E2D;&#x65B0;&#x589E;&#x5B57;&#x7B26;&#x65F6;&#xFF0C;&#x4E0D;&#x4F1A;&#x521B;&#x5EFA;&#x65B0;&#x7684;&#x4E34;&#x65F6;&#x5BF9;&#x8C61;</strong>&#xFF1A;</p>
+<pre><code class="lang-java">StringBuilder sb = <span class="hljs-keyword">new</span> StringBuilder(<span class="hljs-number">1024</span>);
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">1000</span>; i++) {
+    sb.append(<span class="hljs-string">&apos;,&apos;</span>);
+    sb.append(i);
+}
+String s = sb.toString();
+
+<span class="hljs-comment">//&#x94FE;&#x5F0F;&#x64CD;&#x4F5C;&#xFF0C;append()&#x65B9;&#x6CD5;&#x4F1A;&#x8FD4;&#x56DE;this</span>
+var sb = <span class="hljs-keyword">new</span> StringBuilder(<span class="hljs-number">1024</span>);
+sb.append(<span class="hljs-string">&quot;Mr &quot;</span>)
+.append(<span class="hljs-string">&quot;Bob&quot;</span>)
+.append(<span class="hljs-string">&quot;!&quot;</span>)
+</code></pre>
+<p>&#x53C2;&#x8003;<code>StringBuilder</code>&#x7684;&#x94FE;&#x5F0F;&#x8BBE;&#x8BA1;&#xFF0C;&#x6211;&#x4EEC;&#x4E5F;&#x53EF;&#x4EE5;&#x8BBE;&#x8BA1;&#x4E00;&#x4E2A;&#x7C7B;&#x3002;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Main</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+        Adder adder = <span class="hljs-keyword">new</span> Adder();
+        adder.add(<span class="hljs-number">3</span>)
+             .add(<span class="hljs-number">5</span>)
+             .inc()
+             .add(<span class="hljs-number">10</span>);
+        System.out.println(adder.value());
+    }
+}
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Adder</span> </span>{
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> sum = <span class="hljs-number">0</span>;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> Adder <span class="hljs-title">add</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>{
+        sum += n;
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>;
+    }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> Adder <span class="hljs-title">inc</span><span class="hljs-params">()</span> </span>{
+        sum ++;
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>;
+    }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">value</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> sum;
+    }
+}
+</code></pre>
+</li>
+<li><p><strong>StringJoiner</strong>
+&#x5148;&#x6765;&#x770B;&#x4E00;&#x4E2A;&#x793A;&#x4F8B;:</p>
+<pre><code class="lang-java"><span class="hljs-comment">// Hello Bob, Alice, Grace!</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Main</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+        String[] names = {<span class="hljs-string">&quot;Bob&quot;</span>, <span class="hljs-string">&quot;Alice&quot;</span>, <span class="hljs-string">&quot;Grace&quot;</span>};
+        var sb = <span class="hljs-keyword">new</span> StringBuilder();
+        sb.append(<span class="hljs-string">&quot;Hello &quot;</span>);
+        <span class="hljs-keyword">for</span> (String name : names) {
+            sb.append(name).append(<span class="hljs-string">&quot;, &quot;</span>);
+        }
+        <span class="hljs-comment">// &#x6CE8;&#x610F;&#x53BB;&#x6389;&#x6700;&#x540E;&#x7684;&quot;, &quot;:</span>
+        sb.delete(sb.length() - <span class="hljs-number">2</span>, sb.length());
+        sb.append(<span class="hljs-string">&quot;!&quot;</span>);
+        System.out.println(sb.toString());
+    }
+}
+</code></pre>
+<p>StringJoiner &#x6765;&#x5B9E;&#x73B0;&#x540C;&#x6837;&#x7684;&#x4E8B;&#x60C5;:</p>
+<pre><code class="lang-java"><span class="hljs-comment">// Hello Bob, Alice, Grace!</span>
+<span class="hljs-keyword">import</span> java.util.StringJoiner;
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Main</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+        String[] names = {<span class="hljs-string">&quot;Bob&quot;</span>, <span class="hljs-string">&quot;Alice&quot;</span>, <span class="hljs-string">&quot;Grace&quot;</span>};
+        var sj = <span class="hljs-keyword">new</span> StringJoiner(<span class="hljs-string">&quot;, &quot;</span>, <span class="hljs-string">&quot;Hello &quot;</span>, <span class="hljs-string">&quot;!&quot;</span>); <span class="hljs-comment">// Hello &#x548C; !&#x662F;&#x6307;&#x5B9A;&#x4E86;&#x5934;&#x90E8;&#x548C;&#x5C3E;&#x90E8;</span>
+        <span class="hljs-keyword">for</span> (String name : names) {
+            sj.add(name);
+        }
+        System.out.println(sj.toString());
+    }
+}
+</code></pre>
+<p>&#x9759;&#x6001;&#x65B9;&#x6CD5;<strong>String.join()</strong>&#x5185;&#x90E8;&#x4F7F;&#x7528;<code>StringJoiner</code>&#x6765;&#x62FC;&#x63A5;&#x5B57;&#x7B26;&#x4E32;&#x3002;</p>
+<pre><code class="lang-java">String[] names = {<span class="hljs-string">&quot;Bob&quot;</span>, <span class="hljs-string">&quot;Alice&quot;</span>, <span class="hljs-string">&quot;Grace&quot;</span>};
+var s = String.join(<span class="hljs-string">&quot;, &quot;</span>, names);
+</code></pre>
+</li>
+</ul>
+<h4 id="&#x5305;&#x88C5;&#x7C7B;&#x578B;">&#x5305;&#x88C5;&#x7C7B;&#x578B;</h4>
+<p>Java&#x6570;&#x636E;&#x7C7B;&#x578B;:</p>
+<ul>
+<li>&#x57FA;&#x672C;&#x7C7B;&#x578B;: <code>byte</code>&#x3001;<code>short</code>&#x3001;<code>int</code>&#x3001;<code>long</code>&#x3001;<code>boolean</code>&#x3001;<code>float</code>&#x3001;<code>double</code>&#x3001;<code>char</code></li>
+<li>&#x5F15;&#x7528;&#x7C7B;&#x578B;: &#x6240;&#x6709;&#x7684;<code>class</code>&#x548C;<code>interface</code>&#x7C7B;&#x578B;;</li>
+</ul>
+<p>&#x5F15;&#x7528;&#x7C7B;&#x578B;&#x53EF;&#x4EE5;&#x8D4B;&#x503C;&#x4E3A;<code>null</code>&#xFF0C;&#x8868;&#x793A;&#x7A7A;&#xFF0C;&#x4F46;&#x57FA;&#x672C;&#x7C7B;&#x578B;&#x4E0D;&#x80FD;&#x8D4B;&#x503C;&#x4E3A;<code>null</code>:</p>
+<pre><code class="lang-java">String s = <span class="hljs-keyword">null</span>;
+<span class="hljs-keyword">int</span> n = <span class="hljs-keyword">null</span>; <span class="hljs-comment">// compile error!</span>
+</code></pre>
+<p>&#x5305;&#x88C5;&#x7C7B;&#x578B;&#x975E;&#x5E38;&#x6709;&#x7528;&#xFF0C;Java&#x6838;&#x5FC3;&#x5E93;&#x4E3A;&#x6BCF;&#x79CD;&#x57FA;&#x672C;&#x7C7B;&#x578B;&#x90FD;&#x63D0;&#x4F9B;&#x4E86;&#x5BF9;&#x5E94;&#x7684;&#x5305;&#x88C5;&#x7C7B;&#x578B;:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">&#x57FA;&#x672C;&#x7C7B;&#x578B;</th>
+<th style="text-align:left">&#x5BF9;&#x5E94;&#x7684;&#x5F15;&#x7528;&#x7C7B;&#x578B;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">boolean</td>
+<td style="text-align:left">java.lang.Boolean</td>
+</tr>
+<tr>
+<td style="text-align:left">byte</td>
+<td style="text-align:left">java.lang.Byte</td>
+</tr>
+<tr>
+<td style="text-align:left">short</td>
+<td style="text-align:left">java.lang.Short</td>
+</tr>
+<tr>
+<td style="text-align:left">int</td>
+<td style="text-align:left">java.lang.Integer</td>
+</tr>
+<tr>
+<td style="text-align:left">long</td>
+<td style="text-align:left">java.lang.Long</td>
+</tr>
+<tr>
+<td style="text-align:left">float</td>
+<td style="text-align:left">java.lang.Float</td>
+</tr>
+<tr>
+<td style="text-align:left">double</td>
+<td style="text-align:left">java.lang.Double</td>
+</tr>
+<tr>
+<td style="text-align:left">char</td>
+<td style="text-align:left">java.lang.Character</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-java"><span class="hljs-comment">// &#x901A;&#x8FC7;&#x9759;&#x6001;&#x65B9;&#x6CD5;valueOf(int)&#x521B;&#x5EFA;Integer&#x5B9E;&#x4F8B;:</span>
+Integer n2 = Integer.valueOf(i);
+<span class="hljs-comment">// &#x901A;&#x8FC7;&#x9759;&#x6001;&#x65B9;&#x6CD5;valueOf(String)&#x521B;&#x5EFA;Integer&#x5B9E;&#x4F8B;:</span>
+Integer n3 = Integer.valueOf(<span class="hljs-string">&quot;100&quot;</span>);
+System.out.println(n3.intValue());
+</code></pre>
+<p><strong>Auto Boxing</strong>
+&#x56E0;&#x4E3A;<code>int</code>&#x548C;<code>Integer</code>&#x53EF;&#x76F8;&#x4E92;&#x8F6C;&#x6362;:</p>
+<pre><code class="lang-java"><span class="hljs-keyword">int</span> i = <span class="hljs-number">100</span>;
+Integer n = Integer.valueOf(i);
+<span class="hljs-keyword">int</span> x = n.intValue();
+</code></pre>
+<p>Java&#x7F16;&#x8BD1;&#x5668;&#x53EF;&#x4EE5;&#x5E2E;&#x52A9;&#x6211;&#x4EEC;&#x81EA;&#x52A8;&#x5728;<code>int</code>&#x548C;<code>Integer</code>&#x4E4B;&#x95F4;&#x8F6C;&#x578B;:</p>
+<pre><code class="lang-java">Integer n = <span class="hljs-number">100</span>; <span class="hljs-comment">// &#x7F16;&#x8BD1;&#x5668;&#x81EA;&#x52A8;&#x4F7F;&#x7528;Integer.valueOf(int)</span>
+<span class="hljs-keyword">int</span> x = n; <span class="hljs-comment">// &#x7F16;&#x8BD1;&#x5668;&#x81EA;&#x52A8;&#x4F7F;&#x7528;Integer.intValue()</span>
+</code></pre>
+<p>&#x8FD9;&#x79CD;&#x76F4;&#x63A5;&#x628A;<code>int</code>&#x53D8;&#x4E3A;<code>Integer</code>&#x7684;&#x8D4B;&#x503C;&#x5199;&#x6CD5;&#xFF0C;&#x79F0;&#x4E3A;&#x81EA;&#x52A8;&#x88C5;&#x7BB1;&#xFF08;Auto Boxing&#xFF09;&#xFF0C;&#x53CD;&#x8FC7;&#x6765;&#xFF0C;&#x628A;<code>Integer</code>&#x53D8;&#x4E3A;<code>int</code>&#x7684;&#x8D4B;&#x503C;&#x5199;&#x6CD5;&#xFF0C;&#x79F0;&#x4E3A;&#x81EA;&#x52A8;&#x62C6;&#x7BB1;&#xFF08;Auto Unboxing&#xFF09;&#x3002;&#x6CE8;&#x610F;&#xFF1A;&#x81EA;&#x52A8;&#x88C5;&#x7BB1;&#x548C;&#x81EA;&#x52A8;&#x62C6;&#x7BB1;&#x53EA;&#x53D1;&#x751F;&#x5728;&#x7F16;&#x8BD1;&#x9636;&#x6BB5;&#xFF0C;&#x76EE;&#x7684;&#x662F;&#x4E3A;&#x4E86;&#x5C11;&#x5199;&#x4EE3;&#x7801;&#x3002;
+<strong>&#x8FDB;&#x5236;&#x8F6C;&#x6362;</strong>
+&#x5B57;&#x7B26;&#x4E32;&#x8F6C;&#x6362;&#x4E3A; int</p>
+<pre><code class="lang-java"><span class="hljs-keyword">int</span> x1 = Integer.parseInt(<span class="hljs-string">&quot;100&quot;</span>); <span class="hljs-comment">// 100</span>
+<span class="hljs-keyword">int</span> x2 = Integer.parseInt(<span class="hljs-string">&quot;100&quot;</span>, <span class="hljs-number">16</span>); <span class="hljs-comment">// 256,&#x56E0;&#x4E3A;&#x6309;16&#x8FDB;&#x5236;&#x89E3;&#x6790;</span>
+</code></pre>
+<p><code>Integer</code>&#x8FD8;&#x53EF;&#x4EE5;&#x628A;&#x6574;&#x6570;&#x683C;&#x5F0F;&#x5316;&#x4E3A;&#x6307;&#x5B9A;&#x8FDB;&#x5236;&#x7684;&#x5B57;&#x7B26;&#x4E32;:</p>
+<pre><code class="lang-java">System.out.println(Integer.toString(<span class="hljs-number">100</span>)); <span class="hljs-comment">// &quot;100&quot;,&#x8868;&#x793A;&#x4E3A;10&#x8FDB;&#x5236;</span>
+System.out.println(Integer.toString(<span class="hljs-number">100</span>, <span class="hljs-number">36</span>)); <span class="hljs-comment">// &quot;2s&quot;,&#x8868;&#x793A;&#x4E3A;36&#x8FDB;&#x5236;</span>
+System.out.println(Integer.toHexString(<span class="hljs-number">100</span>)); <span class="hljs-comment">// &quot;64&quot;,&#x8868;&#x793A;&#x4E3A;16&#x8FDB;&#x5236;</span>
+System.out.println(Integer.toOctalString(<span class="hljs-number">100</span>)); <span class="hljs-comment">// &quot;144&quot;,&#x8868;&#x793A;&#x4E3A;8&#x8FDB;&#x5236;</span>
+System.out.println(Integer.toBinaryString(<span class="hljs-number">100</span>)); <span class="hljs-comment">// &quot;1100100&quot;,&#x8868;&#x793A;&#x4E3A;2&#x8FDB;&#x5236;</span>
+</code></pre>
+<p>&#x4E00;&#x4E9B;&#x6709;&#x7528;&#x7684;&#x9759;&#x6001;&#x904D;&#x5386;:</p>
+<pre><code class="lang-java"><span class="hljs-comment">// boolean&#x53EA;&#x6709;&#x4E24;&#x4E2A;&#x503C;true/false&#xFF0C;&#x5176;&#x5305;&#x88C5;&#x7C7B;&#x578B;&#x53EA;&#x9700;&#x8981;&#x5F15;&#x7528;Boolean&#x63D0;&#x4F9B;&#x7684;&#x9759;&#x6001;&#x5B57;&#x6BB5;:</span>
+Boolean t = Boolean.TRUE;
+Boolean f = Boolean.FALSE;
+<span class="hljs-comment">// int&#x53EF;&#x8868;&#x793A;&#x7684;&#x6700;&#x5927;/&#x6700;&#x5C0F;&#x503C;:</span>
+<span class="hljs-keyword">int</span> max = Integer.MAX_VALUE; <span class="hljs-comment">// 2147483647</span>
+<span class="hljs-keyword">int</span> min = Integer.MIN_VALUE; <span class="hljs-comment">// -2147483648</span>
+<span class="hljs-comment">// long&#x7C7B;&#x578B;&#x5360;&#x7528;&#x7684;bit&#x548C;byte&#x6570;&#x91CF;:</span>
+<span class="hljs-keyword">int</span> sizeOfLong = Long.SIZE; <span class="hljs-comment">// 64 (bits)</span>
+<span class="hljs-keyword">int</span> bytesOfLong = Long.BYTES; <span class="hljs-comment">// 8 (bytes)</span>
+</code></pre>
+<p><strong>&#x5904;&#x7406;&#x65E0;&#x7B26;&#x53F7;&#x6574;&#x578B;</strong>
+&#x5728;Java&#x4E2D;&#xFF0C;&#x5E76;&#x6CA1;&#x6709;&#x65E0;&#x7B26;&#x53F7;&#x6574;&#x578B;&#xFF08;Unsigned&#xFF09;&#x7684;&#x57FA;&#x672C;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x3002;<code>byte</code>&#x3001;<code>short</code>&#x3001;<code>int</code>&#x548C;<code>long</code>&#x90FD;&#x662F;&#x5E26;&#x7B26;&#x53F7;&#x6574;&#x578B;&#xFF0C;&#x6700;&#x9AD8;&#x4F4D;&#x662F;&#x7B26;&#x53F7;&#x4F4D;&#x3002;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">byte</span> x = -<span class="hljs-number">1</span>;
+<span class="hljs-keyword">byte</span> y = <span class="hljs-number">127</span>;
+System.out.println(Byte.toUnsignedInt(x)); <span class="hljs-comment">// 255</span>
+System.out.println(Byte.toUnsignedInt(y)); <span class="hljs-comment">// 127</span>
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="java01基础.html" class="navigation navigation-prev " aria-label="Previous page: java01基础">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="Maven.html" class="navigation navigation-next " aria-label="Next page: Maven">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"java02核心类","level":"1.9.2","depth":2,"next":{"title":"Maven","level":"1.9.3","depth":2,"path":"java学习笔记/Maven.md","ref":"java学习笔记/Maven.md","articles":[]},"previous":{"title":"java01基础","level":"1.9.1","depth":2,"path":"java学习笔记/java01基础.md","ref":"java学习笔记/java01基础.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"java学习笔记/java02核心类.md","mtime":"2022-08-15T12:51:43.048Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-02-08T08:43:27.159Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

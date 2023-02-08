@@ -23,7 +23,8 @@ XADD，命令用于在某个stream(流数据)中追加消息，演示如下:
 - key 没啥好说的;
 - 消息ID 最常用的是`*`,表示Redis生成消息ID,这也是强烈建议的方案;
 - `field string [field string]`: 当前消息的内容,由1个或多个key-value构成;  
-- 返回值就是 新增消息的 消息ID;  
+- 返回值就是 新增消息的 消息ID。消息ID由两个64位的数字组成,ID第一个数字代表unix毫秒时间,第二个数字是相同毫秒时间能消息的序列号;
+- xadd中支持限制消息队列的大小: `XADD mystream MAXLEN ~ 1000 * ... entry fields here ...`,限制消息队列大概在1000大小左右,如果要精确控制则替换`~`为`=`;  
 
 #### 从消息队列中 阻塞/非阻塞 方式获取消息:XREAD
 ```cpp
@@ -45,7 +46,7 @@ XADD，命令用于在某个stream(流数据)中追加消息，演示如下:
 其中:
 - `[COUNT count]`: 限定获取的消息数量;  
 - `[BLOCK milliseconds]`: 用于设置XREAD为阻塞模式,默认为非阻塞模式;  
-- `ID`: 用于设置由哪个消息ID开始读取。使用0表示从第一条消息开始。(本例中就是使用0）此处需要注意，消息队列ID是单调递增的，所以通过设置起点，可以向后读取。在阻塞模式中，可以使用`$`，表示最新的消息`ID`。（在非阻塞模式下`$`无意义）。  
+- `ID`: 用于设置由哪个消息ID开始读取。使用0表示从第一条消息开始。(本例中就是使用0）此处需要注意，消息队列ID是单调递增的，所以通过设置起点，可以向后读取。在阻塞模式中，可以使用`$`，表示当前最大消息后的消息(也就是最新的)消息`ID`,类似于`tail -f`。（在非阻塞模式下`$`无意义）。  
 
 XRED读消息时分为阻塞和非阻塞模式，使用`BLOCK`选项可以表示阻塞模式，需要设置阻塞时长。
 非阻塞模式下，读取完毕（即使没有任何消息）立即返回，而在阻塞模式下，若读取不到内容，则阻塞等待。  
@@ -91,15 +92,134 @@ QUEUED
 127.0.0.1:9001> xlen memberMessage
 (integer) 7
 ```
+#### XRANGE 和 XREVRANGE
+XRANGE命令返回stream的全部消息.
+```cpp
+127.0.0.1:9000> xrange memberMessage - +
+1) 1) "1654399915425-0"
+   2) 1) "user"
+      2) "kang"
+      3) "msg"
+      4) "Hello"
+2) 1) "1654399934474-0"
+   2) 1) "user"
+      2) "zhong"
+      3) "msg"
+      4) "nihao"
+3) 1) "1654670729984-0"
+   2) 1) "zhangsan"
+      2) "19"
+      3) "lisi"
+      4) "20"
+...
+```
+返回**某个时间段内**的消息:
+```cpp
+127.0.0.1:9000> xrange memberMessage 1654670747952 1654670834414
+1) 1) "1654670747952-0"
+   2) 1) "luxi"
+      2) "19"
+      3) "wangwu"
+      4) "25"
+2) 1) "1654670834414-0"
+   2) 1) "a"
+      2) "1"
+      3) "b"
+      4) "2"
+      5) "c"
+      6) "3"
+      7) "d"
+      8) "4"
+```
+XRANGE支持指定每次返回的消息条数,并从上一次读取的位置继续读取:
+```cpp
+127.0.0.1:9000> xrange memberMessage - + count 1 //获取一条消息 以及 这条消息的ID
+1) 1) "1654399915425-0"
+   2) 1) "user"
+      2) "kang"
+      3) "msg"
+      4) "Hello"
+127.0.0.1:9000> 
+127.0.0.1:9000> xrange memberMessage  (1654399915425-0 + count 2 //获取消息ID之后的额外两条消息
+1) 1) "1654399934474-0"
+   2) 1) "user"
+      2) "zhong"
+      3) "msg"
+      4) "nihao"
+2) 1) "1654670729984-0"
+   2) 1) "zhangsan"
+      2) "19"
+      3) "lisi"
+      4) "20"
+```
+XREVRANGE和XRANGE命令类似,不过返回的元素的倒序的. 注意:`XREVRANGE`命令以相反的顺序使用`start`、`stop`参数.  
+```cpp
+127.0.0.1:9000> xrange memberMessage - +
+1) 1) "1654399915425-0"
+   2) 1) "user"
+      2) "kang"
+      3) "msg"
+      4) "Hello"
+2) 1) "1654399934474-0"
+   2) 1) "user"
+      2) "zhong"
+      3) "msg"
+      4) "nihao"
+... //省略掉部分消息
+6) 1) "1654671267997-0"
+   2) 1) "aa"
+      2) "11"
+      3) "bb"
+      4) "22"
+7) 1) "1654671275530-0"
+   2) 1) "cc"
+      2) "33"
+8) 1) "1654671280688-0"
+   2) 1) "dd"
+      2) "44"
+      3) "ee"
+      4) "55"
+9) 1) "1654671288306-0"
+   2) 1) "ff"
+      2) "66"
+      3) "gg"
+      4) "77"
+127.0.0.1:9000> xrevrange memberMessage + - count 1 //注意是 + - 位置
+1) 1) "1654671288306-0"
+   2) 1) "ff"
+      2) "66"
+      3) "gg"
+      4) "77"
+127.0.0.1:9000> xrevrange memberMessage (1654671288306-0 - count 2 //利用上个命令的消息ID,继续获取两条消息
+1) 1) "1654671280688-0"
+   2) 1) "dd"
+      2) "44"
+      3) "ee"
+      4) "55"
+2) 1) "1654671275530-0"
+   2) 1) "cc"
+      2) "33"
+```
 
 #### 消费者组模式,consumer group
 当多个消费者（consumer）同时消费一个消息队列时，可以重复的消费相同的消息，就是消息队列中有10条消息，三个消费者都可以消费到这10条消息。  
-但有时，我们需要多个消费者配合协作来消费同一个消息队列，就是消息队列中有10条消息，三个消费者分别消费其中的某些消息，比如消费者A消费消息1、2、5、8，消费者B消费消息4、9、10，而消费者C消费消息3、6、7。也就是三个消费者配合完成消息的消费，可以在消费能力不足，也就是消息处理程序效率不高时，使用该模式。该模式就是消费者组模式。如下图所示:
+但有时，我们需要多个消费者配合协作来消费同一个消息队列，就是消息队列中有10条消息，三个消费者分别消费其中的某些消息，比如消费者A消费消息1、2、5、8，消费者B消费消息4、9、10，而消费者C消费消息3、6、7。也就是三个消费者配合完成消息的消费，可以在消费能力不足，也就是消息处理程序效率不高时，使用该模式。该模式就是消费者组模式。
+- 消费者组是对应 消息队列产生的,所以创建消费者组时,必须指定 目标消息队列;
+- 每个消费者组 在 某个消息队列中都有唯一确定的名字;
+- 一个消费者组创建后, 还能消费其他队列不？感觉是可以的,因为 XREADGROUP命令后面都可以跟多个key。  
+根据[官网文档](https://redis.io/docs/manual/data-types/streams/)解释,是可以在一个XREADGROUP中同时消费多个 消息队列的。但条件是每个消息队列上都创建了同名的 消费者组;  
+> Even with XREADGROUP you can read from multiple keys at the same time, however for this to work, you need to create a consumer group with the same name in every stream. This is not a common need, but it is worth mentioning that the feature is technically available.
+- 一个消息队列 可以 对应着 多个 consumerGroup, 同时也能服务 通过XREAD读取数据的client;  
+
+如下图所示:
 ![20220519070547](https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/20220519070547.png)
 
 消费者组模式的支持主要由两个命令实现：  
 - `XGROUP`:用于管理消费者组，提供创建组，销毁组，更新组起始消息ID等操作;
 - `XREADGROUP`，分组消费消息操作;
+```cpp
+> XREADGROUP GROUP group consumer [COUNT count] [BLOCK milliseconds] [NOACK] STREAMS key [key ...] id [id ...]
+```
 
 演示如下:  
 ```cpp
@@ -123,9 +243,14 @@ QUEUED
 4) "1652913903153-3"
 5) "1652913903153-4"
 
-# 创建消费组 consumGroup,并设置从第一条消息开始消费
+# 该命令为mq这个消息队列创建了一个消费者组 consumGroup,
+# 0代表从消息队列第一条消息开始消费,将0替换成$,代表从消息队列最新一条消息开始消费
+# 默认情况下, XGROUP CREATE命令默认目标消息队列已经存在,如果不存在则会报错. 也可以使用MKSTEAM子命令在目标消息队列不存在时 创建
 127.0.0.1:9001> XGROUP create mq consumGroup 0
 OK
+
+# 消息队列mystream不存在时创建
+> XGROUP CREATE mystream mygroup $ MKSTREAM
 
 # 消费者A,消费第1条消息
 127.0.0.1:9001> XREADGROUP group consumGroup consumerA count 1 streams mq >
@@ -160,9 +285,52 @@ OK
 ```
 上面的例子中，三个在同一组 mpGroup 消费者A、B、C在消费消息时（消费者在消费时指定即可，不用预先创建），有着互斥原则，消费方案为`A->1`, `A->2`, `B->3`, `A->4`, `C->5`。语法说明为:  
 - `XGROUP CREATE mq consumGroup 0`: 用于在消息队列mq上创建消费组 consumGroup，最后一个参数0，表示该组从第一条消息开始消费。（意义与`XREAD`的0一致）。除了支持`CREATE`外,还支持`SETID`设置起始ID,`DESTROY`销毁组,`DELCONSUMER`删除组内消费者等操作;  
-- `XREADGROUP GROUP consumGroup consumerA COUNT 1 STREAMS mq >`,用于组`consumGroup`内消费者`consumerA`在队列mq中消费,参数`>`表示未被组内消费的起始消息,参数`count 1`表示获取一条。语法与`XREAD`基本一致，不过是增加了组的概念;
+- `XREADGROUP GROUP consumGroup consumerA COUNT 1 STREAMS mq >`,用于组`consumGroup`内消费者`consumerA`在队列mq中消费,  
+参数`>`表示未被组内消费的起始消息(messages never delivered to other consumers so far);  
+如果我们提供的不是参数`>`而是一个有效的ID,如`0`。那么`XREADGROUP`返回的是group pending的历史消息(let us access our history of pending messages)。也就是哪些已经传递给具体consumer,但还没收到XACK确认的消息。如下:  
+参数`count 1`表示获取一条。语法与`XREAD`基本一致，不过是增加了组的概念;  
+```cpp
+127.0.0.1:9000> xinfo consumers memberMessage consumGroup
+1) 1) "name"
+   2) "consumerA" //consumerA 没有pending的消息
+   3) "pending"
+   4) (integer) 0
+   5) "idle"
+   6) (integer) 189234278
+2) 1) "name"
+   2) "consumerB"
+   3) "pending" //consumerB 有2条没收到ACK的消息
+   4) (integer) 2
+   5) "idle"
+   6) (integer) 5694
+// 下面来看下这2条消息的具体ID
+127.0.0.1:9000> xpending memberMessage consumGroup - + 10  consumerB
+1) 1) "1654399934474-0"
+   2) "consumerB"
+   3) (integer) 188995577
+   4) (integer) 1
+2) 1) "1654670729984-0"
+   2) "consumerB"
+   3) (integer) 241253
+   4) (integer) 1
+// consumerB 再次从ID为0开始读取,则将再次看到已经处于pending状态的消息
+127.0.0.1:9000> xreadgroup group consumGroup consumerB count 1 streams memberMessage 0
+1) 1) "memberMessage"
+   2) 1) 1) "1654399934474-0" // 这个ID原本就是pending状态
+         2) 1) "user"
+            2) "zhong"
+            3) "msg"
+            4) "nihao"
+//consumerA 再次从ID为0开始读取,因为 consumerA 没有处于pending状态的消息,所以返回结果为空
+127.0.0.1:9000> xreadgroup group consumGroup consumerA count 1 streams memberMessage 0
+1) 1) "memberMessage"
+   2) (empty list or set)
+```
+- 消费者组中的consumer不用人为创建,他们会在第一次提到时自动创建;
+> Consumers are auto-created the first time they are mentioned, no need for explicit creation.
 - 可以进行组内消费的基本原理是,`STREAM`类型会为每个组记录一个最后处理(交付)的消息`ID(last_delivered_id)`，这样在组内消费时，就可以从这个值后面开始读取，保证不重复消费;
-- 以上就是消费组的基础操作。除此之外，消费组消费时,还有一个必须要考虑的问题,就是若某个消费者,消费了某条消息,但是并没有处理成功时(例如消费者进程宕机),这条消息可能会丢失,因为组内其他消费者不能再次消费到该消息了;
+- 以上就是消费组的基础操作。除此之外，消费组消费时,还有一个必须要考虑的问题,就是若某个消费者,消费了某条消息,但是并没有处理成功时(例如消费者进程宕机),这条消息可能会丢失,因为组内其他消费者不能再次消费到该消息了(某个消费者程序永远挂掉);  
+- `XREADGROUP`是一个写命令,尽管看起来是读取 但他也会对 GROUP的情况造成修改。所以只能在master上执行;  
 
 #### pending 等待列表
 为了解决组内消息读取但处理期间消费者崩溃带来的消息丢失问题,`STREAM`设计了`Pending`列表,用于记录读取但并未处理完毕的消息。命令`XPENDIING`用来获消费组或消费内消费者的未处理完毕的消息。演示如下:
@@ -271,7 +439,57 @@ e. delivery counter,消息被读取次数;
 127.0.0.1:9001> XCLAIM mq consumGroup  consumerB 3600000000 1652913903153-3
 127.0.0.1:9001> XCLAIM mq consumGroup  consumerC 3600000000 1652913903153-3
 ```
-这就是消息转移。至此我们使用了一个Pending消息的ID，所属消费者和IDLE的属性，还有一个属性就是消息被读取次数，delivery counter，该属性的作用由于统计消息被读取的次数，包括被转移也算。这个属性主要用在判定是否为错误数据上。
+这就是消息转移。至此我们使用了一个Pending消息的ID，所属消费者和IDLE的属性，还有一个属性就是消息被读取次数，delivery counter，该属性的作用由于统计消息被读取的次数，包括被转移也算。这个属性主要用在判定是否为错误数据上。  
+
+**检查pending的消息 和 claiming 消息可以由不同的程序来完成。**  
+
+#### 自动化 claim:XAUTOCLAIM
+`XAUTOCLAIM`是6.2版本加入的,可以自动化claim一个长时间pending状态的消息。  
+语法:  
+`XAUTOCLAIM <key> <group> <consumer> <min-idle-time> <start> [COUNT count] [JUSTID]`
+下面是示例:  
+```cpp
+127.0.0.1:9000> xinfo consumers memberMessage consumGroup
+1) 1) "name"
+   2) "consumerA"
+   3) "pending"  //consumerA 没有pending的消息
+   4) (integer) 0
+   5) "idle"
+   6) (integer) 4160318
+2) 1) "name"
+   2) "consumerB"  //consumerB 有2条pending的消息
+   3) "pending"
+   4) (integer) 2
+   5) "idle"
+   6) (integer) 4443354
+//consumerA 认领了一条 
+//就像XCLAIM命令, XAUTOCAIM 会回复一系列的已经claimed的消息, 但是同时会返回一个 stream ID用于轮训pending的消息. 
+127.0.0.1:9000> xautoclaim memberMessage consumGroup consumerA 100000 0-0 count 1
+1) "1654399934474-0" //cursor, 我们可以用这个ID 做下一个命令的参数
+2) 1) 1) "1654399934474-0"
+      2) 1) "user"
+         2) "zhong"
+         3) "msg"
+         4) "nihao"
+127.0.0.1:9000> xinfo consumers memberMessage consumGroup
+1) 1) "name"
+   2) "consumerA"
+   3) "pending"
+   4) (integer) 1
+   5) "idle"
+   6) (integer) 6338
+2) 1) "name"
+   2) "consumerB"
+   3) "pending"
+   4) (integer) 1
+   5) "idle"
+   6) (integer) 4538052
+127.0.0.1:9000> xack memberMessage consumGroup 1654399934474-0 // 确认已处理
+127.0.0.1:9000> xautoclaim memberMessage consumGroup consumerA 100000 1654399934474-0 count 1 // consumerA再处理一条
+127.0.0.1:9000> xautoclaim memberMessage consumGroup consumerA 100000 1654670729984-0 count 1 //没有pending的消息啦
+1) "0-0"
+2) (empty list or set)
+```
 
 #### 坏消息问题,Dead Letter,死信问题
 正如上面所说，如果某个消息，不能被消费者处理，也就是不能被XACK，这是要长时间处于Pending列表中，即使被反复的转移给各个消费者也是如此。此时该消息的`delivery counter`就会累加（上一节的例子可以看到），当累加到某个我们预设的临界值时，我们就认为是坏消息（也叫死信，DeadLetter，无法投递的消息），由于有了判定条件，我们将坏消息处理掉即可，删除即可。删除一个消息，使用XDEL语法，演示如下：

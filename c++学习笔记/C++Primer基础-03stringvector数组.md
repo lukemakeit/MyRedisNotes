@@ -109,7 +109,7 @@ return 0;
     count << s << endl;
     ```
 
-![](https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20211127230618752.png)
+<img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20211127230618752.png" style="zoom: 50%;" />
 
 - **求string对象的子串:`substr`,n表示起始位置,m表示子串的长度**
 
@@ -180,7 +180,7 @@ return 0;
   
   string s2("Harry Potter");
   s2.replace(2, 3, 5, '0');  //用 5 个 '0' 替换子串(2,3)
-  cout << s2 << endl;  //输出 Ha0000 Potter
+  cout << s2 << endl;  //输出 Ha00000 Potter
   
   int n = s2.find("00000");  //查找子串 "00000" 的位置，n=2
   s2.replace(n, strlen("00000"), "XXX");  //将子串(n,5)替换为"XXX"

@@ -1,0 +1,1763 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>flink基础01—简介 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="flink基础02-集群启动-部署模式.html" />
+    
+    
+    <link rel="prev" href="./" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    README
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../redis学习/">
+            
+                <a href="../redis学习/">
+            
+                    
+                    Redis学习
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../redis学习/Redis备份.html">
+            
+                <a href="../redis学习/Redis备份.html">
+            
+                    
+                    Redis备份
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../redis学习/Redis复制.html">
+            
+                <a href="../redis学习/Redis复制.html">
+            
+                    
+                    Redis复制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../redis学习/Redis集群.html">
+            
+                <a href="../redis学习/Redis集群.html">
+            
+                    
+                    Redis集群
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../redis学习/缓存与数据库一致性.html">
+            
+                <a href="../redis学习/缓存与数据库一致性.html">
+            
+                    
+                    缓存与数据库一致性
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../redis学习/Redis消息队列Stream.html">
+            
+                <a href="../redis学习/Redis消息队列Stream.html">
+            
+                    
+                    Redis消息队列
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="../redis学习/RedisModule.html">
+            
+                <a href="../redis学习/RedisModule.html">
+            
+                    
+                    RedisModule
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../mysql/">
+            
+                <a href="../mysql/">
+            
+                    
+                    mysql学习
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../mysql/mysql补充.html">
+            
+                <a href="../mysql/mysql补充.html">
+            
+                    
+                    mysql补充
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../mysql/mysql8.0-手动安装.html">
+            
+                <a href="../mysql/mysql8.0-手动安装.html">
+            
+                    
+                    mysql8.0-手动安装
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../rocksdb-xue-xi/README.md">
+            
+                <span>
+            
+                    
+                    RocksDB学习
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../rocksdb学习/RocksDB基础概念.html">
+            
+                <a href="../rocksdb学习/RocksDB基础概念.html">
+            
+                    
+                    RocksDB基础概念
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../rocksdb学习/RocksDB基础操作-C语言.html">
+            
+                <a href="../rocksdb学习/RocksDB基础操作-C语言.html">
+            
+                    
+                    RocksDB基础操作-C语言
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../c语言笔记/">
+            
+                <a href="../c语言笔记/">
+            
+                    
+                    C语言笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../c语言笔记/C语言补充笔记一.html">
+            
+                <a href="../c语言笔记/C语言补充笔记一.html">
+            
+                    
+                    C语言补充笔记一
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../c++学习笔记/">
+            
+                <a href="../c++学习笔记/">
+            
+                    
+                    C++学习笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../c++学习笔记/C++Primer基础-01引用指针const.html">
+            
+                <a href="../c++学习笔记/C++Primer基础-01引用指针const.html">
+            
+                    
+                    C++Primer基础:引用、指针、const、auto/decltype
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../c++学习笔记/C++Primer基础-02volatile与using.html">
+            
+                <a href="../c++学习笔记/C++Primer基础-02volatile与using.html">
+            
+                    
+                    C++Primer基础:volatile、using
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../c++学习笔记/C++Primer基础-03stringvector数组.html">
+            
+                <a href="../c++学习笔记/C++Primer基础-03stringvector数组.html">
+            
+                    
+                    C++Primer基础: string、vector、数组
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../c++学习笔记/C++Primer基础-04函数重载函数指针.html">
+            
+                <a href="../c++学习笔记/C++Primer基础-04函数重载函数指针.html">
+            
+                    
+                    C++Primer基础:函数、重载、函数指针
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="../c++学习笔记/C++Primer基础-05function与bind与forward.html">
+            
+                <a href="../c++学习笔记/C++Primer基础-05function与bind与forward.html">
+            
+                    
+                    C++Primer基础:std::function、std::bind、std::forward
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6" data-path="../c++学习笔记/C++Primer基础-06-lambda.html">
+            
+                <a href="../c++学习笔记/C++Primer基础-06-lambda.html">
+            
+                    
+                    C++Primer基础:lambda
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.7" data-path="../c++学习笔记/C++Primer基础-07类基础.html">
+            
+                <a href="../c++学习笔记/C++Primer基础-07类基础.html">
+            
+                    
+                    C++ Primer基础: 类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.8" data-path="../c++学习笔记/C++Primer标准库-IO库.html">
+            
+                <a href="../c++学习笔记/C++Primer标准库-IO库.html">
+            
+                    
+                    C++ Primer 标准库: IO库
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.9" data-path="../c++学习笔记/C++Primer标准库-顺序容器.html">
+            
+                <a href="../c++学习笔记/C++Primer标准库-顺序容器.html">
+            
+                    
+                    C++ Primer 标准库: 顺序容器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.10" data-path="../c++学习笔记/C++Primer标准库-泛型算法.html">
+            
+                <a href="../c++学习笔记/C++Primer标准库-泛型算法.html">
+            
+                    
+                    C++ Primer 标准库: 泛型算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.11" data-path="../c++学习笔记/C++Primer标准库-关联容器.html">
+            
+                <a href="../c++学习笔记/C++Primer标准库-关联容器.html">
+            
+                    
+                    C++ Primer 标准库: 关联容器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.12" data-path="../c++学习笔记/C++Primer标准库-动态内存.html">
+            
+                <a href="../c++学习笔记/C++Primer标准库-动态内存.html">
+            
+                    
+                    C++ Primer 标准库: 动态内存
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.13" data-path="../c++学习笔记/C++Primer类设计-拷贝控制.html">
+            
+                <a href="../c++学习笔记/C++Primer类设计-拷贝控制.html">
+            
+                    
+                    C++ Primer 类设计: 拷贝控制、explicit
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.14" data-path="../c++学习笔记/C++Primer类设计-基类派生类虚函数.html">
+            
+                <a href="../c++学习笔记/C++Primer类设计-基类派生类虚函数.html">
+            
+                    
+                    C++ Primer 类设计: 基类、派生类、虚函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.15" data-path="../c++学习笔记/C++Primer类设计-模板与泛型编程.html">
+            
+                <a href="../c++学习笔记/C++Primer类设计-模板与泛型编程.html">
+            
+                    
+                    C++ Primer 类设计:模板与泛型编程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.16" data-path="../c++学习笔记/C++并发编程实战-01基础使用Join传参.html">
+            
+                <a href="../c++学习笔记/C++并发编程实战-01基础使用Join传参.html">
+            
+                    
+                    C++并发编程实战一:基础使用、Join、传参、线程所有权转移
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.17" data-path="../c++学习笔记/C++并发编程实战-02mutexlock.html">
+            
+                <a href="../c++学习笔记/C++并发编程实战-02mutexlock.html">
+            
+                    
+                    C++并发编程实战: mutex、lock、unique_lock、call_once、shared_lock
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.18" data-path="../c++学习笔记/C++并发编程实战-03条件变量.html">
+            
+                <a href="../c++学习笔记/C++并发编程实战-03条件变量.html">
+            
+                    
+                    C++并发编程实战三: 条件变量
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.19" data-path="../c++学习笔记/C++并发编程实战-04原子操作和类型.html">
+            
+                <a href="../c++学习笔记/C++并发编程实战-04原子操作和类型.html">
+            
+                    
+                    C++并发编程实战四: 原子操作和类型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.20" data-path="../c++学习笔记/C++并发编程实战-05内存模型.html">
+            
+                <a href="../c++学习笔记/C++并发编程实战-05内存模型.html">
+            
+                    
+                    C++并发编程实战五: 内存模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.21" data-path="../c++学习笔记/C++补充-01.html">
+            
+                <a href="../c++学习笔记/C++补充-01.html">
+            
+                    
+                    c++补充-01
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.22" data-path="../c++学习笔记/C++补充-02EffectiveSTL有用使用经验.html">
+            
+                <a href="../c++学习笔记/C++补充-02EffectiveSTL有用使用经验.html">
+            
+                    
+                    C++补充02: Effective STL使用经验
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.23" data-path="../c++学习笔记/C++面试题—算法.html">
+            
+                <a href="../c++学习笔记/C++面试题—算法.html">
+            
+                    
+                    C++面试题-算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.24" data-path="../c++学习笔记/Linux传统IO和零拷贝Zero-Copy技术.html">
+            
+                <a href="../c++学习笔记/Linux传统IO和零拷贝Zero-Copy技术.html">
+            
+                    
+                    Linux传统IO和零拷贝Zero-Copy技术
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.25" data-path="../c++学习笔记/Glog使用.html">
+            
+                <a href="../c++学习笔记/Glog使用.html">
+            
+                    
+                    Glog使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../golang学习笔记/">
+            
+                <a href="../golang学习笔记/">
+            
+                    
+                    Golang学习笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../golang学习笔记/Go常见错误集锦.html">
+            
+                <a href="../golang学习笔记/Go常见错误集锦.html">
+            
+                    
+                    Go常见错误集锦
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../golang学习笔记/Go高性能的一些技巧.html">
+            
+                <a href="../golang学习笔记/Go高性能的一些技巧.html">
+            
+                    
+                    Go常见高性能技巧
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../golang学习笔记/Golang反射.html">
+            
+                <a href="../golang学习笔记/Golang反射.html">
+            
+                    
+                    Golang反射
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="../golang学习笔记/内存逃逸.html">
+            
+                <a href="../golang学习笔记/内存逃逸.html">
+            
+                    
+                    内存逃逸
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="../golang学习笔记/调度器GMP.html">
+            
+                <a href="../golang学习笔记/调度器GMP.html">
+            
+                    
+                    调度器GMP
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6" data-path="../golang学习笔记/GC垃圾回收.html">
+            
+                <a href="../golang学习笔记/GC垃圾回收.html">
+            
+                    
+                    GC垃圾回收
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../网络协议学习/">
+            
+                <a href="../网络协议学习/">
+            
+                    
+                    网络协议学习
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../网络协议学习/网络面试题.html">
+            
+                <a href="../网络协议学习/网络面试题.html">
+            
+                    
+                    网络面试题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="../网络协议学习/TCP常见问题.html">
+            
+                <a href="../网络协议学习/TCP常见问题.html">
+            
+                    
+                    TCP常见问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" data-path="../网络协议学习/tcpdump工具.html">
+            
+                <a href="../网络协议学习/tcpdump工具.html">
+            
+                    
+                    tcpdump工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../java学习笔记/">
+            
+                <a href="../java学习笔记/">
+            
+                    
+                    java学习笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="../java学习笔记/java01基础.html">
+            
+                <a href="../java学习笔记/java01基础.html">
+            
+                    
+                    java01基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" data-path="../java学习笔记/java02核心类.html">
+            
+                <a href="../java学习笔记/java02核心类.html">
+            
+                    
+                    java02核心类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3" data-path="../java学习笔记/Maven.html">
+            
+                <a href="../java学习笔记/Maven.html">
+            
+                    
+                    Maven
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="../hadoop学习笔记/">
+            
+                <a href="../hadoop学习笔记/">
+            
+                    
+                    hadoop学习笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="../hadoop学习笔记/hadoop入门01-架构与安装.html">
+            
+                <a href="../hadoop学习笔记/hadoop入门01-架构与安装.html">
+            
+                    
+                    hadoop入门01-架构与安装
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" data-path="../hadoop学习笔记/hadoop入门02-HDFS基础.html">
+            
+                <a href="../hadoop学习笔记/hadoop入门02-HDFS基础.html">
+            
+                    
+                    hadoop入门02-HDFS基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.3" data-path="../hadoop学习笔记/hadoop入门03-MapReduce.html">
+            
+                <a href="../hadoop学习笔记/hadoop入门03-MapReduce.html">
+            
+                    
+                    hadoop入门03-MapReduce
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.4" data-path="../hadoop学习笔记/hadoop入门04-MapReduce框架原理.html">
+            
+                <a href="../hadoop学习笔记/hadoop入门04-MapReduce框架原理.html">
+            
+                    
+                    hadoop入门04-MapReduce框架原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.5" data-path="../hadoop学习笔记/hadoop入门05-MapReduce数据清洗和压缩.html">
+            
+                <a href="../hadoop学习笔记/hadoop入门05-MapReduce数据清洗和压缩.html">
+            
+                    
+                    hadoop入门05-MapReduce数据清洗与压缩
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.6" data-path="../hadoop学习笔记/hadoop入门06-yarn.html">
+            
+                <a href="../hadoop学习笔记/hadoop入门06-yarn.html">
+            
+                    
+                    hadoop入门06-yarn
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.7" data-path="../hadoop学习笔记/Hive入门01-基础入门.html">
+            
+                <a href="../hadoop学习笔记/Hive入门01-基础入门.html">
+            
+                    
+                    Hive入门01-基础入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="../kafka学习笔记/">
+            
+                <a href="../kafka学习笔记/">
+            
+                    
+                    kafka学习笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.11.1" data-path="../kafka学习笔记/kafka01概述与应用场景.html">
+            
+                <a href="../kafka学习笔记/kafka01概述与应用场景.html">
+            
+                    
+                    kafka概述与应用场景
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.2" data-path="../kafka学习笔记/kafka02安装与部署.md">
+            
+                <span>
+            
+                    
+                    kafka安装与部署
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.3" data-path="../kafka学习笔记/kafka03基本操作.html">
+            
+                <a href="../kafka学习笔记/kafka03基本操作.html">
+            
+                    
+                    kafka基本操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.4" data-path="../kafka学习笔记/kafka04生产者原理.html">
+            
+                <a href="../kafka学习笔记/kafka04生产者原理.html">
+            
+                    
+                    kafka生产者原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.5" data-path="../kafka学习笔记/kafka05Broker.html">
+            
+                <a href="../kafka学习笔记/kafka05Broker.html">
+            
+                    
+                    kafka中Broker
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.6" data-path="../kafka学习笔记/kafka06消费者.html">
+            
+                <a href="../kafka学习笔记/kafka06消费者.html">
+            
+                    
+                    kafka消费者
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Flink学习笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.12.1" data-path="flink基础01—简介.html">
+            
+                <a href="flink基础01—简介.html">
+            
+                    
+                    flink基础01—简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2" data-path="flink基础02-集群启动-部署模式.html">
+            
+                <a href="flink基础02-集群启动-部署模式.html">
+            
+                    
+                    flink基础02-集群启动-部署模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3" data-path="flink基础03-运行时架构.html">
+            
+                <a href="flink基础03-运行时架构.html">
+            
+                    
+                    flink基础03-运行时架构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.4" data-path="flink基础04-DataStreamAPI-Source.html">
+            
+                <a href="flink基础04-DataStreamAPI-Source.html">
+            
+                    
+                    flink基础04-DataStreamAPI-Source
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.5" data-path="flink基础05-DataStreamAPI-Transformation.html">
+            
+                <a href="flink基础05-DataStreamAPI-Transformation.html">
+            
+                    
+                    flink基础05-DataStreamAPI-Transformation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.6" data-path="flink基础06-DataStreamAPI-Sink.html">
+            
+                <a href="flink基础06-DataStreamAPI-Sink.html">
+            
+                    
+                    flink基础06-DataStreamAPI-Sink
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.7" data-path="flink基础07-时间和窗口.html">
+            
+                <a href="flink基础07-时间和窗口.html">
+            
+                    
+                    flink基础07-时间和窗口
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.8" data-path="flink基础08-处理函数.html">
+            
+                <a href="flink基础08-处理函数.html">
+            
+                    
+                    flink基础08-处理函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.9" data-path="flink基础09-多流转换(分流与合流">
+            
+                <span>
+            
+                    
+                    flink基础09-多流转换(分流与合流)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.10" data-path="flink基础10-状态编程.html">
+            
+                <a href="flink基础10-状态编程.html">
+            
+                    
+                    flink基础10-状态编程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.11" data-path="flink基础11-容错机制.html">
+            
+                <a href="flink基础11-容错机制.html">
+            
+                    
+                    flink基础11-容错机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.12" data-path="flink基础12-TableAPI和SQL.html">
+            
+                <a href="flink基础12-TableAPI和SQL.html">
+            
+                    
+                    flink基础12-TableAPI和SQL
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.13" data-path="flink基础13-CEP.html">
+            
+                <a href="flink基础13-CEP.html">
+            
+                    
+                    flink基础13-CEP
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" data-path="../工具使用/">
+            
+                <a href="../工具使用/">
+            
+                    
+                    工具使用
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.13.1" data-path="../工具使用/VSCode使用小技巧.html">
+            
+                <a href="../工具使用/VSCode使用小技巧.html">
+            
+                    
+                    VS Code使用小技巧
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.2" data-path="../工具使用/GCC安装.html">
+            
+                <a href="../工具使用/GCC安装.html">
+            
+                    
+                    GCC安装
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.3" data-path="../工具使用/CMake学习与使用.html">
+            
+                <a href="../工具使用/CMake学习与使用.html">
+            
+                    
+                    CMake学习与使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.4" data-path="../工具使用/gdb调试.html">
+            
+                <a href="../工具使用/gdb调试.html">
+            
+                    
+                    gdb调试
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.5" data-path="../工具使用/perf、strace等工具.html">
+            
+                <a href="../工具使用/perf、strace等工具.html">
+            
+                    
+                    perf、strace等工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >flink基础01—简介</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h3 id="flink-&#x7B80;&#x4ECB;">Flink &#x7B80;&#x4ECB;</h3>
+<p>Apache Flink&#x662F;&#x4E00;&#x4E2A;<strong>&#x6846;&#x67B6;&#x548C;&#x5206;&#x5E03;&#x5F0F;</strong>&#x5904;&#x7406;&#x5F15;&#x64CE;&#xFF0C;&#x7528;&#x4E8E;&#x5BF9;<strong>&#x65E0;&#x754C;&#x548C;&#x6709;&#x754C;&#x6570;&#x636E;&#x6D41;&#x8FDB;&#x884C;&#x72B6;&#x6001;&#x8BA1;&#x7B97;&#x3002;</strong></p>
+<h4 id="flink&#x6846;&#x67B6;&#x5904;&#x7406;&#x6D41;&#x7A0B;">Flink&#x6846;&#x67B6;&#x5904;&#x7406;&#x6D41;&#x7A0B;</h4>
+<p><img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20221023075440178.png" alt="image-20221023075440178" style="zoom:67%;"></p>
+<h4 id="&#x4F20;&#x7EDF;&#x6570;&#x636E;&#x5904;&#x7406;&#x6846;&#x67B6;">&#x4F20;&#x7EDF;&#x6570;&#x636E;&#x5904;&#x7406;&#x6846;&#x67B6;</h4>
+<ul>
+<li><p><strong>&#x4E8B;&#x52A1;&#x5904;&#x7406;(OLTP &#x5728;&#x7EBF;&#x4E8B;&#x52A1;&#x5904;&#x7406;)</strong></p>
+<p><img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20221023080857976.png" alt="image-20221023080857976" style="zoom:50%;"></p>
+</li>
+<li><p><strong>&#x5206;&#x6790;&#x5904;&#x7406;(OLAP &#x5728;&#x7EBF;&#x5206;&#x6790;&#x5904;&#x7406;)</strong></p>
+<p>&#x6570;&#x636E;&#x4E22;&#x5230;hive&#x4E2D;&#xFF0C;&#x6570;&#x636E;&#x91CF;&#x53EF;&#x4EE5;&#x5F88;&#x5927;&#xFF0C;&#x4F46;&#x662F;&#x4E0D;&#x591F;&#x5B9E;&#x65F6;&#x3002;</p>
+</li>
+</ul>
+<h4 id="&#x6D41;&#x5904;&#x7406;&#x7684;&#x6F14;&#x53D8;">&#x6D41;&#x5904;&#x7406;&#x7684;&#x6F14;&#x53D8;</h4>
+<p><strong> &#x5386;&#x53F2;lambda&#x67B6;&#x6784;&#x4E2D;&#x7684;&#x4E24;&#x5957;&#x7CFB;&#x7EDF;</strong></p>
+<ul>
+<li>&#x6279;&#x5904;&#x7406;: &#x7ED3;&#x679C;&#x8F83;&#x6162;&#xFF0C;&#x4F46;&#x4FDD;&#x8BC1;&#x4E86;&#x6570;&#x636E;&#x987A;&#x5E8F;&#xFF0C;&#x7ED3;&#x679C;&#x6B63;&#x786E;;</li>
+<li>&#x6D41;&#x5904;&#x7406;: &#x7ED3;&#x679C;&#x5B9E;&#x65F6;&#x66F4;&#x65B0;&#xFF0C;&#x4FDD;&#x8BC1;&#x4E86;&#x6570;&#x636E;&#x5FEB;&#x901F;&#x54CD;&#x5E94;&#xFF0C;&#x4F46;&#x7ED3;&#x679C;&#x4E0D;&#x4E00;&#x5B9A;&#x6700;&#x7EC8;&#x51C6;&#x786E;</li>
+</ul>
+<p><img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20221023082051753.png" alt="image-20221023082051753" style="zoom:67%;"></p>
+<p><strong>&#x65B0;&#x4E00;&#x4EE3;&#x6D41;&#x5904;&#x7406;&#x5668;&#x2014;&#x2014;Flink</strong></p>
+<p>(&#x4E8B;&#x4EF6;&#x65F6;&#x95F4; &#x548C; &#x5904;&#x7406;&#x65F6;&#x95F4;)</p>
+<h4 id="flink&#x5E94;&#x7528;&#x67B6;&#x6784;">Flink&#x5E94;&#x7528;&#x67B6;&#x6784;</h4>
+<p><img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20221023082515612.png" alt="image-20221023082515612" style="zoom: 50%;"></p>
+<h4 id="flink&#x7684;&#x5206;&#x5C42;api">Flink&#x7684;&#x5206;&#x5C42;API</h4>
+<ul>
+<li>&#x8D8A;&#x9876;&#x5C42;&#x8D8A;&#x62BD;&#x8C61;&#xFF0C;&#x8868;&#x8FBE;&#x542B;&#x4E49;&#x8D8A;&#x7B80;&#x660E;&#xFF0C;&#x4F7F;&#x7528;&#x8D8A;&#x65B9;&#x4FBF;</li>
+<li>&#x8D8A;&#x5E95;&#x5C42;&#x8D8A;&#x5177;&#x4F53;&#xFF0C;&#x8868;&#x8FBE;&#x80FD;&#x529B;&#x8D8A;&#x4E30;&#x5BCC;&#xFF0C;&#x4F7F;&#x7528;&#x8D8A;&#x7075;&#x6D3B;</li>
+</ul>
+<p><img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20221023083039636.png" alt="image-20221023083039636" style="zoom:33%;"></p>
+<h4 id="flink-vs-spark">Flink VS Spark</h4>
+<p><strong>&#x6570;&#x636E;&#x5904;&#x7406;&#x67B6;&#x6784;</strong></p>
+<ul>
+<li>Spark: &#x5E95;&#x5C42;&#x6279;&#x5904;&#x7406;&#xFF0C;&#x6D41;&#x5904;&#x7406;&#x5C31;&#x662F;&#x66F4;&#x5C0F;&#x7684;&#x6279;&#xFF0C;<strong>&#x5FAE;&#x6279;&#x6B21;</strong></li>
+<li>Flink &#x5BF9;&#x6279;&#x5904;&#x7406;: &#x6709;&#x754C;&#x6570;&#x636E; &#x548C; &#x65E0;&#x89E3;&#x6570;&#x636E;</li>
+</ul>
+<p><img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20221023083700141.png" alt="image-20221023083700141" style="zoom:33%;"></p>
+<p><strong>&#x6570;&#x636E;&#x5904;&#x7406;&#x6A21;&#x578B;</strong></p>
+<ul>
+<li>Spark &#x91C7;&#x7528;RDD&#x6A21;&#x578B;&#xFF0C;Spark streaming&#x7684;DStream&#x5B9E;&#x9645;&#x4E0A; &#x4E5F;&#x5C31;&#x662F;&#x4E00;&#x7EC4;&#x7EC4;&#x5C0F;&#x6279;&#x6570;&#x636E;RDD&#x7684;&#x96C6;&#x5408;</li>
+<li>Flink&#x57FA;&#x672C;&#x6570;&#x636E;&#x6A21;&#x578B;&#x662F;&#x6570;&#x636E;&#x6D41;&#xFF0C;&#x4EE5;&#x53CA;&#x4E8B;&#x4EF6;(Event)&#x5E8F;&#x5217;;</li>
+</ul>
+<p><strong>&#x8FD0;&#x884C;&#x65F6;&#x67B6;&#x6784;</strong></p>
+<ul>
+<li>Spark&#x662F;&#x6279;&#x8BA1;&#x7B97;&#xFF0C;&#x5C06;DAG&#x5212;&#x5206;&#x4E3A;&#x4E0D;&#x540C;&#x7684;stage&#xFF0C;&#x4E00;&#x4E2A;&#x5B8C;&#x6210;&#x540E;&#x624D;&#x8BA1;&#x7B97;&#x4E0B;&#x4E00;&#x4E2A;;</li>
+<li>flink&#x662F;&#x6807;&#x51C6;&#x7684;&#x6D41;&#x6267;&#x884C;&#x6A21;&#x5F0F;&#xFF0C;&#x4E00;&#x4E2A;&#x4E8B;&#x4EF6;&#x5728;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#x5904;&#x7406;&#x5B8C;&#x540E;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x53D1;&#x5F80;&#x4E0B;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#x8FDB;&#x884C;&#x5904;&#x7406;;</li>
+</ul>
+<h4 id="&#x7ECF;&#x5178;&#x6279;&#x5904;&#x7406;demo&#x7F16;&#x5199;flink-112-&#x6279;&#x6D41;&#x7EDF;&#x4E00;&#x540E;&#x5F88;&#x5C11;&#x7528;&#x4E86;">&#x7ECF;&#x5178;&#x6279;&#x5904;&#x7406;Demo&#x7F16;&#x5199;(Flink 1.12 &#x6279;&#x6D41;&#x7EDF;&#x4E00;&#x540E;&#x5F88;&#x5C11;&#x7528;&#x4E86;)</h4>
+<p>&#x8FD9;&#x91CC;&#x662F;<strong>DataSet API</strong>&#xFF0C;&#x76EE;&#x524D;&#x5DF2;&#x5904;&#x4E8E;<strong>&#x8F6F;&#x5F03;&#x7528;(soft deprecated)</strong>&#x72B6;&#x6001;&#x4E86;&#x3002;</p>
+<pre><code class="lang-shell">$ mvn archetype:generate  -DgroupId=com.luke  -DartifactId=flink-demo01  -DarchetypeArtifactId=maven-archetype-quickstart -Dversion=0.0.1-snapshot -DinteractiveMode=false
+</code></pre>
+<p>&#x7F16;&#x8F91;<code>pom.xml</code>&#x5F15;&#x5165;&#x4F9D;&#x8D56;:</p>
+<pre><code class="lang-xml">  <span class="hljs-tag">&lt;<span class="hljs-name">build</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">plugins</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">plugin</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>maven-compiler-plugin<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>3.6.1<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">configuration</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">source</span>&gt;</span>1.8<span class="hljs-tag">&lt;/<span class="hljs-name">source</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">target</span>&gt;</span>1.8<span class="hljs-tag">&lt;/<span class="hljs-name">target</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">configuration</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">plugin</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">plugin</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>maven-assembly-plugin<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">configuration</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">descriptorRefs</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">descriptorRef</span>&gt;</span>jar-with-dependencies<span class="hljs-tag">&lt;/<span class="hljs-name">descriptorRef</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">descriptorRefs</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">configuration</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">executions</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">execution</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">id</span>&gt;</span>make-assembly<span class="hljs-tag">&lt;/<span class="hljs-name">id</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">phase</span>&gt;</span>package<span class="hljs-tag">&lt;/<span class="hljs-name">phase</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">goals</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">goal</span>&gt;</span>single<span class="hljs-tag">&lt;/<span class="hljs-name">goal</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">goals</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">execution</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">executions</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">plugin</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">plugins</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">build</span>&gt;</span>
+
+  <span class="hljs-comment">&lt;!-- &#x7EDF;&#x4E00;&#x8BBE;&#x7F6E;&#x7248;&#x672C;&#x5C5E;&#x6027;,&#x76F8;&#x5F53;&#x4E8E;&#x5168;&#x5C40;&#x53D8;&#x91CF; --&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">properties</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">flink.version</span>&gt;</span>1.13.0<span class="hljs-tag">&lt;/<span class="hljs-name">flink.version</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">java.version</span>&gt;</span>1.8<span class="hljs-tag">&lt;/<span class="hljs-name">java.version</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">scala.binary.version</span>&gt;</span>2.12<span class="hljs-tag">&lt;/<span class="hljs-name">scala.binary.version</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">slf4j.version</span>&gt;</span>1.7.35<span class="hljs-tag">&lt;/<span class="hljs-name">slf4j.version</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">maven.compiler.source</span>&gt;</span>1.8<span class="hljs-tag">&lt;/<span class="hljs-name">maven.compiler.source</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">maven.compiler.target</span>&gt;</span>1.8<span class="hljs-tag">&lt;/<span class="hljs-name">maven.compiler.target</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">properties</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">dependencies</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.apache.flink<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>flink-java<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>${flink.version}<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.apache.flink<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>flink-streaming-java_${scala.binary.version}<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>${flink.version}<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.apache.flink<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>flink-clients_${scala.binary.version}<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>${flink.version}<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+    <span class="hljs-comment">&lt;!--&#x65E5;&#x5FD7;&#x7BA1;&#x7406;&#x76F8;&#x5173;&#x4F9D;&#x8D56;--&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.slf4j<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>slf4j-api<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>${slf4j.version}<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.apache.logging.log4j<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>log4j-to-slf4j<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>2.14.0<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>junit<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>junit<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>3.8.1<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">scope</span>&gt;</span>test<span class="hljs-tag">&lt;/<span class="hljs-name">scope</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">dependencies</span>&gt;</span>
+</code></pre>
+<p>&#x8BBE;&#x7F6E;<code>src/main/resources/log4j.properties</code></p>
+<pre><code class="lang-properties">log4j.rootLogger=error, stdout
+log4j.appender.stdout=org.apache.log4j.ConsoleAppender
+log4j.appender.stdout.layout=org.apache.log4j.PatternLayout
+log4j.appender.stdout.ConversionPattern=%-4r [%t] %-5p %c %x - %m%n
+</code></pre>
+<p>&#x6587;&#x4EF6;: <code>input/words.txt</code></p>
+<pre><code class="lang-txt">hello hello world
+good nice a b a
+</code></pre>
+<p>main&#x4EE3;&#x7801;:</p>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> com.luke.flink.wordcount;
+
+<span class="hljs-keyword">import</span> org.apache.flink.api.common.typeinfo.Types;
+<span class="hljs-keyword">import</span> org.apache.flink.api.java.ExecutionEnvironment;
+<span class="hljs-keyword">import</span> org.apache.flink.api.java.operators.AggregateOperator;
+<span class="hljs-keyword">import</span> org.apache.flink.api.java.operators.DataSource;
+<span class="hljs-keyword">import</span> org.apache.flink.api.java.operators.FlatMapOperator;
+<span class="hljs-keyword">import</span> org.apache.flink.api.java.operators.UnsortedGrouping;
+<span class="hljs-keyword">import</span> org.apache.flink.api.java.tuple.Tuple2;
+<span class="hljs-keyword">import</span> org.apache.flink.util.Collector;
+<span class="hljs-keyword">import</span> java.lang.Exception;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BatchWordCount</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+        <span class="hljs-comment">// 1. &#x521B;&#x5EFA;&#x6267;&#x884C;&#x73AF;&#x5883;</span>
+        ExecutionEnvironment env = ExecutionEnvironment.getExecutionEnvironment();
+
+        <span class="hljs-comment">// 2. &#x4ECE;&#x6587;&#x4EF6;&#x4E2D;&#x8BFB;&#x53D6;&#x6570;&#x636E;</span>
+        <span class="hljs-comment">// &#x9010;&#x884C;&#x8BFB;&#x53D6;</span>
+        DataSource&lt;String&gt; lineDataSource = env.readTextFile(<span class="hljs-string">&quot;/root/code/java/flink-demo01/input/words.txt&quot;</span>);
+
+        <span class="hljs-comment">// 3. &#x6BCF;&#x884C;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x5206;&#x8BCD;, &#x8F6C;&#x6362;&#x6210;&#x4E8C;&#x5143;&#x7EC4;,&#x6BD4;&#x5982; hello =&gt; (hello,1)</span>
+        <span class="hljs-comment">// flatmap&#x7684;&#x8F93;&#x51FA;&#x9700;&#x8981;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A; Collector&lt;&gt;</span>
+        FlatMapOperator&lt;String, Tuple2&lt;String, Long&gt;&gt; wordAndOneTuple = lineDataSource
+                .flatMap((String line, Collector&lt;Tuple2&lt;String, Long&gt;&gt; out) -&gt; {
+                    <span class="hljs-comment">// &#x5206;&#x8BCD;</span>
+                    String[] words = line.split(<span class="hljs-string">&quot;\\s+&quot;</span>);
+                    <span class="hljs-comment">// &#x8F6C;&#x6362;&#x6210;&#x4E8C;&#x5143;&#x7EC4;&#x8F93;&#x51FA;</span>
+                    <span class="hljs-keyword">for</span> (String word : words) {
+                        out.collect(Tuple2.of(word, <span class="hljs-number">1L</span>)); <span class="hljs-comment">// &#x5FC5;&#x987B;&#x662F; 1L</span>
+                        <span class="hljs-comment">// out.collect(); &#x5982;&#x679C;&#x6709;&#x4E24;&#x6761; out.collect(),&#x5219;&#x4EE3;&#x8868;&#x4E00;&#x4E2A;&#x5355;&#x8BCD;&#x591A;&#x6B21;&#x8F93;&#x51FA;</span>
+                    }
+                }).returns(Types.TUPLE(Types.STRING, Types.LONG)); <span class="hljs-comment">// &#x5B9A;&#x4E49;&#x8FD4;&#x56DE;&#x7C7B;&#x578B;?</span>
+        <span class="hljs-comment">// 4. &#x6309;&#x7167;word&#x8FDB;&#x884C;&#x5206;&#x7EC4;</span>
+        <span class="hljs-comment">// groupBy(0) &#x7528;&#x7B2C;&#x4E00;&#x4E2A;&#x8BCD;&#x505A;group</span>
+        UnsortedGrouping&lt;Tuple2&lt;String, Long&gt;&gt; wordAndOneGroup = wordAndOneTuple.groupBy(<span class="hljs-number">0</span>);
+
+        <span class="hljs-comment">// 5. &#x5206;&#x7EC4;&#x5185;&#x8FDB;&#x884C;&#x805A;&#x5408;&#x7EDF;&#x8BA1;,&#x4E8C;&#x5143;&#x7EC4;&#x4E2D;&#x4EE5;&#x7B2C;&#x4E8C;&#x4E2A;&#x5B57;&#x6BB5;&#x7684;&#x503C;&#x505A;&#x7D2F;&#x52A0;</span>
+        AggregateOperator&lt;Tuple2&lt;String, Long&gt;&gt; sum = wordAndOneGroup.sum(<span class="hljs-number">1</span>);
+
+        sum.print();
+    }
+}
+</code></pre>
+<p><strong>&#x8FD0;&#x884C;&#x547D;&#x4EE4;:</strong></p>
+<pre><code class="lang-shell">$ mvn compile exec:java -Dexec.mainClass=&quot;com.luke.flink.wordcount.BatchWordCount&quot;
+</code></pre>
+<p>&#x7ED3;&#x679C;&#x8F93;&#x51FA;:</p>
+<p><img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20221025065445730.png" alt="image-20221025065445730" style="zoom:50%;"></p>
+<h4 id="&#x6709;&#x754C;&#x6D41;&#x5904;&#x7406;demo&#x7F16;&#x5199;&#x4ECE;&#x6587;&#x4EF6;&#x8BFB;&#x53D6;&#x6570;&#x636E;&#x6A21;&#x62DF;&#x6279;&#x5904;&#x7406;">&#x6709;&#x754C;&#x6D41;&#x5904;&#x7406;Demo&#x7F16;&#x5199;(&#x4ECE;&#x6587;&#x4EF6;&#x8BFB;&#x53D6;&#x6570;&#x636E;,&#x6A21;&#x62DF;&#x6279;&#x5904;&#x7406;)</h4>
+<p>&#x4ECE;Flink 1.12&#x5F00;&#x59CB;&#xFF0C;&#x5B98;&#x65B9;&#x63A8;&#x8350;&#x76F4;&#x63A5;&#x4F7F;&#x7528;DataStream API&#xFF0C;<strong>&#x9ED8;&#x8BA4;&#x662F;&#x6D41;&#x5904;&#x7406;&#x65B9;&#x5F0F;&#x6267;&#x884C;</strong>&#xFF0C;&#x7528;&#x6237;&#x4E5F;&#x53EF;&#x4EE5;&#x5728;&#x63D0;&#x4EA4;&#x4EFB;&#x52A1;&#x65F6;&#x901A;&#x8FC7;<strong>&#x5C06;&#x6267;&#x884C;&#x6A21;&#x5F0F;&#x8BBE;&#x7F6E;&#x4E3A;BATCH&#x6765;&#x8FDB;&#x884C; &#x6279;&#x5904;&#x7406;</strong>:</p>
+<p><code>$ bin/flink run -Dexecution.runtime-mode=BATCH BatchWordCount.jar</code>&#x3002;</p>
+<p><strong>&#x6D41;&#x5904;&#x7406;&#x8F6C;&#x6362;&#x4E3A;&#x6279;&#x5904;&#x7406; &#x539F;&#x7406;&#x5C31;&#x662F;: &#x6709;&#x754C;&#x6D41;&#x5904;&#x7406;&#x5C31;&#x662F;&#x6279;&#x5904;&#x7406;&#x3002;</strong></p>
+<p>Wordcount&#x4EE3;&#x7801;&#x8BE6;&#x60C5;:</p>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> com.luke.flink.wordcount;
+
+<span class="hljs-keyword">import</span> org.apache.flink.api.common.typeinfo.Types;
+<span class="hljs-keyword">import</span> org.apache.flink.api.java.tuple.Tuple2;
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.datastream.DataStreamSource;
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.datastream.KeyedStream;
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.datastream.SingleOutputStreamOperator;
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
+<span class="hljs-keyword">import</span> org.apache.flink.util.Collector;
+
+<span class="hljs-comment">/*
+ * &#x6709;&#x754C;&#x6D41;&#x5904;&#x7406; &#x5C31;&#x662F; &#x6279;&#x5904;&#x7406;
+*/</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BoundedStreamWordCount</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+        <span class="hljs-comment">// 1. &#x521B;&#x5EFA;&#x6D41;&#x5F0F;&#x7684;&#x6267;&#x884C;&#x73AF;&#x5883;</span>
+        StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
+
+        <span class="hljs-comment">// 2. &#x8BFB;&#x53D6;&#x6587;&#x4EF6;</span>
+        DataStreamSource&lt;String&gt; lineDataStream = env.readTextFile(<span class="hljs-string">&quot;/root/code/java/flink-demo01/input/words.txt&quot;</span>);
+
+        <span class="hljs-comment">// 3. &#x8F6C;&#x6362;&#x8BA1;&#x7B97;</span>
+        <span class="hljs-comment">// &#x6BCF;&#x884C;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x5206;&#x8BCD;, &#x8F6C;&#x6362;&#x6210;&#x4E8C;&#x5143;&#x7EC4;,&#x6BD4;&#x5982; hello =&gt; (hello,1)</span>
+        <span class="hljs-comment">// flatmap&#x7684;&#x8F93;&#x5165;&#x662F;String line,&#x4E00;&#x884C;&#x7684;&#x5185;&#x5BB9;;&#x8F93;&#x51FA;&#x9700;&#x8981;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A; Collector&lt;&gt;,&#x8FD9;&#x91CC;&#x662F; Collector&lt;String,Long&gt;</span>
+        SingleOutputStreamOperator&lt;Tuple2&lt;String, Long&gt;&gt; wordAndOneTuple = lineDataStream
+                .flatMap((String line, Collector&lt;Tuple2&lt;String, Long&gt;&gt; out) -&gt; {
+                    <span class="hljs-comment">// &#x5206;&#x8BCD;</span>
+                    String[] words = line.split(<span class="hljs-string">&quot;\\s+&quot;</span>);
+                    <span class="hljs-comment">// &#x8F6C;&#x6362;&#x6210;&#x4E8C;&#x5143;&#x7EC4;&#x8F93;&#x51FA;</span>
+                    <span class="hljs-keyword">for</span> (String word : words) {
+                        out.collect(Tuple2.of(word, <span class="hljs-number">1L</span>)); <span class="hljs-comment">// &#x5FC5;&#x987B;&#x662F; 1L</span>
+                    }
+                }).returns(Types.TUPLE(Types.STRING, Types.LONG)); <span class="hljs-comment">// &#x5B9A;&#x4E49;&#x8FD4;&#x56DE;&#x7C7B;&#x578B;?</span>
+
+        <span class="hljs-comment">// 4.&#x5206;&#x7EC4;group</span>
+        <span class="hljs-comment">// data -&gt; data.f0 &#x7528;&#x7684;&#x662F;lambda&#x8868;&#x8FBE;&#x5F0F;, &#x4ECE;Tuple2&#x4E2D;&#x62FF;&#x5230;&#x5C5E;&#x6027; f0,&#x6839;&#x636E;f0&#x6765;&#x5206;&#x7EC4;</span>
+        KeyedStream&lt;Tuple2&lt;String, Long&gt;, String&gt; keyedStream = wordAndOneTuple.keyBy(data -&gt; data.f0);
+
+        <span class="hljs-comment">// 5.&#x6C42;&#x548C;, &#x5BF9;Tuple2&lt;String,Long&gt;&#x4E2D;Position=1&#x7684;&#x5143;&#x7D20;&#x505A;&#x6C42;&#x548C;</span>
+        SingleOutputStreamOperator&lt;Tuple2&lt;String, Long&gt;&gt; sum = keyedStream.sum(<span class="hljs-number">1</span>);
+
+        <span class="hljs-comment">// 6.&#x6253;&#x5370;</span>
+        sum.print();
+
+        <span class="hljs-comment">// 7.&#x542F;&#x52A8;&#x6267;&#x884C;(&#x6D41;&#x5904;&#x7406;&#x4F1A;&#x7B49;&#x5F85;&#x6570;&#x636E;&#x4E0D;&#x65AD;&#x6765;,&#x4E0D;&#x65AD;&#x6253;&#x5370;?)</span>
+        env.execute();
+    }
+}
+</code></pre>
+<p>&#x6267;&#x884C;&#x547D;&#x4EE4;:</p>
+<pre><code class="lang-java">mvn compile exec:java -Dexec.mainClass=<span class="hljs-string">&quot;com.luke.flink.wordcount.BoundedStreamWordCount&quot;</span>
+</code></pre>
+<p><img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20221025065316150.png" alt="image-20221025065316150" style="zoom: 50%;"></p>
+<ul>
+<li>&#x8F93;&#x51FA;&#x7ED3;&#x679C;&#x524D;&#x7684;: <code>1&gt;</code>&#x3001;<code>3&gt;</code>&#x662F;&#x56E0;&#x4E3A;&#x672C;&#x5730;&#x5728;&#x6A21;&#x62DF;Flink&#x5728;&#x5206;&#x5E03;&#x5F0F;&#x6846;&#x67B6;&#x4E0A;&#x8DD1;&#xFF0C;&#x6240;&#x4EE5;&#x542F;&#x52A8;&#x4E86;&#x591A;&#x7EBF;&#x7A0B;&#xFF0C;&#x56E0;&#x4E3A;&#x662F;3&#x6838;&#x7684;&#x673A;&#x5668;&#xFF0C;&#x6240;&#x4EE5;&#x7F16;&#x53F7;&#x662F;<code>1</code>&#x5230;<code>3</code>;</li>
+<li>&#x8F93;&#x51FA;&#x7ED3;&#x679C;&#x4E2D;<code>hello,1</code>&#x548C;<code>hello,2</code>&#x662F;&#x80AF;&#x5B9A;&#x5728;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x4E0A;&#x5904;&#x7406;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x76F8;&#x540C;&#x7684;key&#x524D;&#x9762;&#x7684;&#x7F16;&#x53F7;&#x76F8;&#x540C;;</li>
+</ul>
+<h4 id="&#x65E0;&#x754C;&#x6D41;&#x5904;&#x7406;&#xFF0C;&#x901A;&#x8FC7;netcat&#x76D1;&#x542C;&#x7AEF;&#x53E3;&#xFF0C;&#x4E0D;&#x65AD;&#x6253;&#x5370;">&#x65E0;&#x754C;&#x6D41;&#x5904;&#x7406;&#xFF0C;&#x901A;&#x8FC7;netcat&#x76D1;&#x542C;&#x7AEF;&#x53E3;&#xFF0C;&#x4E0D;&#x65AD;&#x6253;&#x5370;</h4>
+<ol>
+<li>&#x5728;&#x53E6;&#x5916;&#x7684;&#x673A;&#x5668;&#x4E0A;&#x542F;&#x7528;&#x4E00;&#x4E2A;<code>netcat</code>: <code>nc -lk 7777</code>;</li>
+<li>&#x7F16;&#x5199;&#x65E0;&#x754C;&#x6D41;&#x5904;&#x7406;&#x4EE3;&#x7801;:</li>
+</ol>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">StreamWordCount</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+        <span class="hljs-comment">// 1. &#x521B;&#x5EFA;&#x6D41;&#x5F0F;&#x7684;&#x6267;&#x884C;&#x73AF;&#x5883;</span>
+        StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
+
+        <span class="hljs-comment">// 2. &#x53BB;&#x8BFB;&#x6D41;&#x6570;&#x636E;</span>
+        DataStreamSource&lt;String&gt; lineDataStream = env.socketTextStream(<span class="hljs-string">&quot;10.211.55.6&quot;</span>, <span class="hljs-number">7777</span>);
+
+       <span class="hljs-comment">// 3. &#x540E;&#x9762;&#x548C;&#x6709;&#x754C;&#x6D41;&#x5904;&#x7406;&#x65B9;&#x5F0F;&#x4E00;&#x6A21;&#x4E00;&#x6837;</span>
+       .... 
+   }
+}
+</code></pre>
+<ol>
+<li><p>&#x6267;&#x884C;:</p>
+<pre><code class="lang-java">mvn compile exec:java -Dexec.mainClass=<span class="hljs-string">&quot;com.luke.flink.wordcount.StreamWordCount&quot;</span>
+</code></pre>
+</li>
+<li><p>&#x7ED3;&#x679C;&#x60C5;&#x51B5;</p>
+<p><img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20221025071135977.png" alt="image-20221025071135977" style="zoom:50%;"></p>
+</li>
+</ol>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="./" class="navigation navigation-prev " aria-label="Previous page: Flink学习笔记">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="flink基础02-集群启动-部署模式.html" class="navigation navigation-next " aria-label="Next page: flink基础02-集群启动-部署模式">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"flink基础01—简介","level":"1.12.1","depth":2,"next":{"title":"flink基础02-集群启动-部署模式","level":"1.12.2","depth":2,"path":"Flink学习笔记/flink基础02-集群启动-部署模式.md","ref":"Flink学习笔记/flink基础02-集群启动-部署模式.md","articles":[]},"previous":{"title":"Flink学习笔记","level":"1.12","depth":1,"path":"Flink学习笔记/README.md","ref":"Flink学习笔记/README.md","articles":[{"title":"flink基础01—简介","level":"1.12.1","depth":2,"path":"Flink学习笔记/flink基础01—简介.md","ref":"Flink学习笔记/flink基础01—简介.md","articles":[]},{"title":"flink基础02-集群启动-部署模式","level":"1.12.2","depth":2,"path":"Flink学习笔记/flink基础02-集群启动-部署模式.md","ref":"Flink学习笔记/flink基础02-集群启动-部署模式.md","articles":[]},{"title":"flink基础03-运行时架构","level":"1.12.3","depth":2,"path":"Flink学习笔记/flink基础03-运行时架构.md","ref":"Flink学习笔记/flink基础03-运行时架构.md","articles":[]},{"title":"flink基础04-DataStreamAPI-Source","level":"1.12.4","depth":2,"path":"Flink学习笔记/flink基础04-DataStreamAPI-Source.md","ref":"Flink学习笔记/flink基础04-DataStreamAPI-Source.md","articles":[]},{"title":"flink基础05-DataStreamAPI-Transformation","level":"1.12.5","depth":2,"path":"Flink学习笔记/flink基础05-DataStreamAPI-Transformation.md","ref":"Flink学习笔记/flink基础05-DataStreamAPI-Transformation.md","articles":[]},{"title":"flink基础06-DataStreamAPI-Sink","level":"1.12.6","depth":2,"path":"Flink学习笔记/flink基础06-DataStreamAPI-Sink.md","ref":"Flink学习笔记/flink基础06-DataStreamAPI-Sink.md","articles":[]},{"title":"flink基础07-时间和窗口","level":"1.12.7","depth":2,"path":"Flink学习笔记/flink基础07-时间和窗口.md","ref":"Flink学习笔记/flink基础07-时间和窗口.md","articles":[]},{"title":"flink基础08-处理函数","level":"1.12.8","depth":2,"path":"Flink学习笔记/flink基础08-处理函数.md","ref":"Flink学习笔记/flink基础08-处理函数.md","articles":[]},{"title":"flink基础09-多流转换(分流与合流)","level":"1.12.9","depth":2,"path":"Flink学习笔记/flink基础09-多流转换(分流与合流","ref":"Flink学习笔记/flink基础09-多流转换(分流与合流","articles":[]},{"title":"flink基础10-状态编程","level":"1.12.10","depth":2,"path":"Flink学习笔记/flink基础10-状态编程.md","ref":"Flink学习笔记/flink基础10-状态编程.md","articles":[]},{"title":"flink基础11-容错机制","level":"1.12.11","depth":2,"path":"Flink学习笔记/flink基础11-容错机制.md","ref":"Flink学习笔记/flink基础11-容错机制.md","articles":[]},{"title":"flink基础12-TableAPI和SQL","level":"1.12.12","depth":2,"path":"Flink学习笔记/flink基础12-TableAPI和SQL.md","ref":"Flink学习笔记/flink基础12-TableAPI和SQL.md","articles":[]},{"title":"flink基础13-CEP","level":"1.12.13","depth":2,"path":"Flink学习笔记/flink基础13-CEP.md","ref":"Flink学习笔记/flink基础13-CEP.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Flink学习笔记/flink基础01—简介.md","mtime":"2022-10-26T22:37:16.049Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-02-08T08:43:27.159Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

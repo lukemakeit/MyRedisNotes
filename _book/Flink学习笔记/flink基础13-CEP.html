@@ -1,0 +1,1869 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>flink基础13-CEP · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../工具使用/" />
+    
+    
+    <link rel="prev" href="flink基础12-TableAPI和SQL.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    README
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../redis学习/">
+            
+                <a href="../redis学习/">
+            
+                    
+                    Redis学习
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../redis学习/Redis备份.html">
+            
+                <a href="../redis学习/Redis备份.html">
+            
+                    
+                    Redis备份
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../redis学习/Redis复制.html">
+            
+                <a href="../redis学习/Redis复制.html">
+            
+                    
+                    Redis复制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../redis学习/Redis集群.html">
+            
+                <a href="../redis学习/Redis集群.html">
+            
+                    
+                    Redis集群
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../redis学习/缓存与数据库一致性.html">
+            
+                <a href="../redis学习/缓存与数据库一致性.html">
+            
+                    
+                    缓存与数据库一致性
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../redis学习/Redis消息队列Stream.html">
+            
+                <a href="../redis学习/Redis消息队列Stream.html">
+            
+                    
+                    Redis消息队列
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="../redis学习/RedisModule.html">
+            
+                <a href="../redis学习/RedisModule.html">
+            
+                    
+                    RedisModule
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../mysql/">
+            
+                <a href="../mysql/">
+            
+                    
+                    mysql学习
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../mysql/mysql补充.html">
+            
+                <a href="../mysql/mysql补充.html">
+            
+                    
+                    mysql补充
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../mysql/mysql8.0-手动安装.html">
+            
+                <a href="../mysql/mysql8.0-手动安装.html">
+            
+                    
+                    mysql8.0-手动安装
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../rocksdb-xue-xi/README.md">
+            
+                <span>
+            
+                    
+                    RocksDB学习
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../rocksdb学习/RocksDB基础概念.html">
+            
+                <a href="../rocksdb学习/RocksDB基础概念.html">
+            
+                    
+                    RocksDB基础概念
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../rocksdb学习/RocksDB基础操作-C语言.html">
+            
+                <a href="../rocksdb学习/RocksDB基础操作-C语言.html">
+            
+                    
+                    RocksDB基础操作-C语言
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../c语言笔记/">
+            
+                <a href="../c语言笔记/">
+            
+                    
+                    C语言笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../c语言笔记/C语言补充笔记一.html">
+            
+                <a href="../c语言笔记/C语言补充笔记一.html">
+            
+                    
+                    C语言补充笔记一
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../c++学习笔记/">
+            
+                <a href="../c++学习笔记/">
+            
+                    
+                    C++学习笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../c++学习笔记/C++Primer基础-01引用指针const.html">
+            
+                <a href="../c++学习笔记/C++Primer基础-01引用指针const.html">
+            
+                    
+                    C++Primer基础:引用、指针、const、auto/decltype
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../c++学习笔记/C++Primer基础-02volatile与using.html">
+            
+                <a href="../c++学习笔记/C++Primer基础-02volatile与using.html">
+            
+                    
+                    C++Primer基础:volatile、using
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../c++学习笔记/C++Primer基础-03stringvector数组.html">
+            
+                <a href="../c++学习笔记/C++Primer基础-03stringvector数组.html">
+            
+                    
+                    C++Primer基础: string、vector、数组
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../c++学习笔记/C++Primer基础-04函数重载函数指针.html">
+            
+                <a href="../c++学习笔记/C++Primer基础-04函数重载函数指针.html">
+            
+                    
+                    C++Primer基础:函数、重载、函数指针
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="../c++学习笔记/C++Primer基础-05function与bind与forward.html">
+            
+                <a href="../c++学习笔记/C++Primer基础-05function与bind与forward.html">
+            
+                    
+                    C++Primer基础:std::function、std::bind、std::forward
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6" data-path="../c++学习笔记/C++Primer基础-06-lambda.html">
+            
+                <a href="../c++学习笔记/C++Primer基础-06-lambda.html">
+            
+                    
+                    C++Primer基础:lambda
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.7" data-path="../c++学习笔记/C++Primer基础-07类基础.html">
+            
+                <a href="../c++学习笔记/C++Primer基础-07类基础.html">
+            
+                    
+                    C++ Primer基础: 类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.8" data-path="../c++学习笔记/C++Primer标准库-IO库.html">
+            
+                <a href="../c++学习笔记/C++Primer标准库-IO库.html">
+            
+                    
+                    C++ Primer 标准库: IO库
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.9" data-path="../c++学习笔记/C++Primer标准库-顺序容器.html">
+            
+                <a href="../c++学习笔记/C++Primer标准库-顺序容器.html">
+            
+                    
+                    C++ Primer 标准库: 顺序容器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.10" data-path="../c++学习笔记/C++Primer标准库-泛型算法.html">
+            
+                <a href="../c++学习笔记/C++Primer标准库-泛型算法.html">
+            
+                    
+                    C++ Primer 标准库: 泛型算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.11" data-path="../c++学习笔记/C++Primer标准库-关联容器.html">
+            
+                <a href="../c++学习笔记/C++Primer标准库-关联容器.html">
+            
+                    
+                    C++ Primer 标准库: 关联容器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.12" data-path="../c++学习笔记/C++Primer标准库-动态内存.html">
+            
+                <a href="../c++学习笔记/C++Primer标准库-动态内存.html">
+            
+                    
+                    C++ Primer 标准库: 动态内存
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.13" data-path="../c++学习笔记/C++Primer类设计-拷贝控制.html">
+            
+                <a href="../c++学习笔记/C++Primer类设计-拷贝控制.html">
+            
+                    
+                    C++ Primer 类设计: 拷贝控制、explicit
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.14" data-path="../c++学习笔记/C++Primer类设计-基类派生类虚函数.html">
+            
+                <a href="../c++学习笔记/C++Primer类设计-基类派生类虚函数.html">
+            
+                    
+                    C++ Primer 类设计: 基类、派生类、虚函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.15" data-path="../c++学习笔记/C++Primer类设计-模板与泛型编程.html">
+            
+                <a href="../c++学习笔记/C++Primer类设计-模板与泛型编程.html">
+            
+                    
+                    C++ Primer 类设计:模板与泛型编程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.16" data-path="../c++学习笔记/C++并发编程实战-01基础使用Join传参.html">
+            
+                <a href="../c++学习笔记/C++并发编程实战-01基础使用Join传参.html">
+            
+                    
+                    C++并发编程实战一:基础使用、Join、传参、线程所有权转移
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.17" data-path="../c++学习笔记/C++并发编程实战-02mutexlock.html">
+            
+                <a href="../c++学习笔记/C++并发编程实战-02mutexlock.html">
+            
+                    
+                    C++并发编程实战: mutex、lock、unique_lock、call_once、shared_lock
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.18" data-path="../c++学习笔记/C++并发编程实战-03条件变量.html">
+            
+                <a href="../c++学习笔记/C++并发编程实战-03条件变量.html">
+            
+                    
+                    C++并发编程实战三: 条件变量
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.19" data-path="../c++学习笔记/C++并发编程实战-04原子操作和类型.html">
+            
+                <a href="../c++学习笔记/C++并发编程实战-04原子操作和类型.html">
+            
+                    
+                    C++并发编程实战四: 原子操作和类型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.20" data-path="../c++学习笔记/C++并发编程实战-05内存模型.html">
+            
+                <a href="../c++学习笔记/C++并发编程实战-05内存模型.html">
+            
+                    
+                    C++并发编程实战五: 内存模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.21" data-path="../c++学习笔记/C++补充-01.html">
+            
+                <a href="../c++学习笔记/C++补充-01.html">
+            
+                    
+                    c++补充-01
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.22" data-path="../c++学习笔记/C++补充-02EffectiveSTL有用使用经验.html">
+            
+                <a href="../c++学习笔记/C++补充-02EffectiveSTL有用使用经验.html">
+            
+                    
+                    C++补充02: Effective STL使用经验
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.23" data-path="../c++学习笔记/C++面试题—算法.html">
+            
+                <a href="../c++学习笔记/C++面试题—算法.html">
+            
+                    
+                    C++面试题-算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.24" data-path="../c++学习笔记/Linux传统IO和零拷贝Zero-Copy技术.html">
+            
+                <a href="../c++学习笔记/Linux传统IO和零拷贝Zero-Copy技术.html">
+            
+                    
+                    Linux传统IO和零拷贝Zero-Copy技术
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.25" data-path="../c++学习笔记/Glog使用.html">
+            
+                <a href="../c++学习笔记/Glog使用.html">
+            
+                    
+                    Glog使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../golang学习笔记/">
+            
+                <a href="../golang学习笔记/">
+            
+                    
+                    Golang学习笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../golang学习笔记/Go常见错误集锦.html">
+            
+                <a href="../golang学习笔记/Go常见错误集锦.html">
+            
+                    
+                    Go常见错误集锦
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../golang学习笔记/Go高性能的一些技巧.html">
+            
+                <a href="../golang学习笔记/Go高性能的一些技巧.html">
+            
+                    
+                    Go常见高性能技巧
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../golang学习笔记/Golang反射.html">
+            
+                <a href="../golang学习笔记/Golang反射.html">
+            
+                    
+                    Golang反射
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="../golang学习笔记/内存逃逸.html">
+            
+                <a href="../golang学习笔记/内存逃逸.html">
+            
+                    
+                    内存逃逸
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="../golang学习笔记/调度器GMP.html">
+            
+                <a href="../golang学习笔记/调度器GMP.html">
+            
+                    
+                    调度器GMP
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6" data-path="../golang学习笔记/GC垃圾回收.html">
+            
+                <a href="../golang学习笔记/GC垃圾回收.html">
+            
+                    
+                    GC垃圾回收
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../网络协议学习/">
+            
+                <a href="../网络协议学习/">
+            
+                    
+                    网络协议学习
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../网络协议学习/网络面试题.html">
+            
+                <a href="../网络协议学习/网络面试题.html">
+            
+                    
+                    网络面试题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="../网络协议学习/TCP常见问题.html">
+            
+                <a href="../网络协议学习/TCP常见问题.html">
+            
+                    
+                    TCP常见问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" data-path="../网络协议学习/tcpdump工具.html">
+            
+                <a href="../网络协议学习/tcpdump工具.html">
+            
+                    
+                    tcpdump工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../java学习笔记/">
+            
+                <a href="../java学习笔记/">
+            
+                    
+                    java学习笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="../java学习笔记/java01基础.html">
+            
+                <a href="../java学习笔记/java01基础.html">
+            
+                    
+                    java01基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" data-path="../java学习笔记/java02核心类.html">
+            
+                <a href="../java学习笔记/java02核心类.html">
+            
+                    
+                    java02核心类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3" data-path="../java学习笔记/Maven.html">
+            
+                <a href="../java学习笔记/Maven.html">
+            
+                    
+                    Maven
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="../hadoop学习笔记/">
+            
+                <a href="../hadoop学习笔记/">
+            
+                    
+                    hadoop学习笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="../hadoop学习笔记/hadoop入门01-架构与安装.html">
+            
+                <a href="../hadoop学习笔记/hadoop入门01-架构与安装.html">
+            
+                    
+                    hadoop入门01-架构与安装
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" data-path="../hadoop学习笔记/hadoop入门02-HDFS基础.html">
+            
+                <a href="../hadoop学习笔记/hadoop入门02-HDFS基础.html">
+            
+                    
+                    hadoop入门02-HDFS基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.3" data-path="../hadoop学习笔记/hadoop入门03-MapReduce.html">
+            
+                <a href="../hadoop学习笔记/hadoop入门03-MapReduce.html">
+            
+                    
+                    hadoop入门03-MapReduce
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.4" data-path="../hadoop学习笔记/hadoop入门04-MapReduce框架原理.html">
+            
+                <a href="../hadoop学习笔记/hadoop入门04-MapReduce框架原理.html">
+            
+                    
+                    hadoop入门04-MapReduce框架原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.5" data-path="../hadoop学习笔记/hadoop入门05-MapReduce数据清洗和压缩.html">
+            
+                <a href="../hadoop学习笔记/hadoop入门05-MapReduce数据清洗和压缩.html">
+            
+                    
+                    hadoop入门05-MapReduce数据清洗与压缩
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.6" data-path="../hadoop学习笔记/hadoop入门06-yarn.html">
+            
+                <a href="../hadoop学习笔记/hadoop入门06-yarn.html">
+            
+                    
+                    hadoop入门06-yarn
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.7" data-path="../hadoop学习笔记/Hive入门01-基础入门.html">
+            
+                <a href="../hadoop学习笔记/Hive入门01-基础入门.html">
+            
+                    
+                    Hive入门01-基础入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="../kafka学习笔记/">
+            
+                <a href="../kafka学习笔记/">
+            
+                    
+                    kafka学习笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.11.1" data-path="../kafka学习笔记/kafka01概述与应用场景.html">
+            
+                <a href="../kafka学习笔记/kafka01概述与应用场景.html">
+            
+                    
+                    kafka概述与应用场景
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.2" data-path="../kafka学习笔记/kafka02安装与部署.md">
+            
+                <span>
+            
+                    
+                    kafka安装与部署
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.3" data-path="../kafka学习笔记/kafka03基本操作.html">
+            
+                <a href="../kafka学习笔记/kafka03基本操作.html">
+            
+                    
+                    kafka基本操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.4" data-path="../kafka学习笔记/kafka04生产者原理.html">
+            
+                <a href="../kafka学习笔记/kafka04生产者原理.html">
+            
+                    
+                    kafka生产者原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.5" data-path="../kafka学习笔记/kafka05Broker.html">
+            
+                <a href="../kafka学习笔记/kafka05Broker.html">
+            
+                    
+                    kafka中Broker
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.6" data-path="../kafka学习笔记/kafka06消费者.html">
+            
+                <a href="../kafka学习笔记/kafka06消费者.html">
+            
+                    
+                    kafka消费者
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Flink学习笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1" data-path="flink基础01—简介.html">
+            
+                <a href="flink基础01—简介.html">
+            
+                    
+                    flink基础01—简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2" data-path="flink基础02-集群启动-部署模式.html">
+            
+                <a href="flink基础02-集群启动-部署模式.html">
+            
+                    
+                    flink基础02-集群启动-部署模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3" data-path="flink基础03-运行时架构.html">
+            
+                <a href="flink基础03-运行时架构.html">
+            
+                    
+                    flink基础03-运行时架构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.4" data-path="flink基础04-DataStreamAPI-Source.html">
+            
+                <a href="flink基础04-DataStreamAPI-Source.html">
+            
+                    
+                    flink基础04-DataStreamAPI-Source
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.5" data-path="flink基础05-DataStreamAPI-Transformation.html">
+            
+                <a href="flink基础05-DataStreamAPI-Transformation.html">
+            
+                    
+                    flink基础05-DataStreamAPI-Transformation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.6" data-path="flink基础06-DataStreamAPI-Sink.html">
+            
+                <a href="flink基础06-DataStreamAPI-Sink.html">
+            
+                    
+                    flink基础06-DataStreamAPI-Sink
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.7" data-path="flink基础07-时间和窗口.html">
+            
+                <a href="flink基础07-时间和窗口.html">
+            
+                    
+                    flink基础07-时间和窗口
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.8" data-path="flink基础08-处理函数.html">
+            
+                <a href="flink基础08-处理函数.html">
+            
+                    
+                    flink基础08-处理函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.9" data-path="flink基础09-多流转换(分流与合流">
+            
+                <span>
+            
+                    
+                    flink基础09-多流转换(分流与合流)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.10" data-path="flink基础10-状态编程.html">
+            
+                <a href="flink基础10-状态编程.html">
+            
+                    
+                    flink基础10-状态编程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.11" data-path="flink基础11-容错机制.html">
+            
+                <a href="flink基础11-容错机制.html">
+            
+                    
+                    flink基础11-容错机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.12" data-path="flink基础12-TableAPI和SQL.html">
+            
+                <a href="flink基础12-TableAPI和SQL.html">
+            
+                    
+                    flink基础12-TableAPI和SQL
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.12.13" data-path="flink基础13-CEP.html">
+            
+                <a href="flink基础13-CEP.html">
+            
+                    
+                    flink基础13-CEP
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" data-path="../工具使用/">
+            
+                <a href="../工具使用/">
+            
+                    
+                    工具使用
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.13.1" data-path="../工具使用/VSCode使用小技巧.html">
+            
+                <a href="../工具使用/VSCode使用小技巧.html">
+            
+                    
+                    VS Code使用小技巧
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.2" data-path="../工具使用/GCC安装.html">
+            
+                <a href="../工具使用/GCC安装.html">
+            
+                    
+                    GCC安装
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.3" data-path="../工具使用/CMake学习与使用.html">
+            
+                <a href="../工具使用/CMake学习与使用.html">
+            
+                    
+                    CMake学习与使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.4" data-path="../工具使用/gdb调试.html">
+            
+                <a href="../工具使用/gdb调试.html">
+            
+                    
+                    gdb调试
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.5" data-path="../工具使用/perf、strace等工具.html">
+            
+                <a href="../工具使用/perf、strace等工具.html">
+            
+                    
+                    perf、strace等工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >flink基础13-CEP</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="flink-cep">Flink CEP</h2>
+<p>&#x5728;&#x5927;&#x6570;&#x636E;&#x5206;&#x6790;&#x9886;&#x57DF;&#xFF0C;&#x4E00;&#x5927;&#x7C7B;&#x9700;&#x6C42;&#x5C31;&#x662F;&#x8BF8;&#x5982;PV&#x3001;UV&#x8FD9;&#x6837;&#x7684;&#x7EDF;&#x8BA1;&#x6307;&#x6807;&#xFF0C;&#x6211;&#x4EEC;&#x5F80;&#x5F80;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x5199;SQL&#x641E;&#x5B9A;;&#x5BF9;&#x4E8E;&#x6BD4;&#x8F83;&#x590D;&#x6742;&#x7684;&#x4E1A;&#x52A1;&#x903B;&#x8F91;&#xFF0C;SQL&#x4E2D;&#x53EF;&#x80FD;&#x6CA1;&#x6709;&#x5BF9;&#x5E94;&#x529F;&#x80FD;&#x7684;&#x5185;&#x7F6E;&#x51FD;&#x6570;&#xFF0C;&#x90A3;&#x4E48;&#x6211;&#x4EEC;&#x4E5F;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;<code>DataStream API</code>,&#x5229;&#x7528;&#x72B6;&#x6001;&#x7F16;&#x7A0B;&#x6765;&#x8FDB;&#x884C;&#x5B9E;&#x73B0;&#x3002;<strong>&#x4E0D;&#x8FC7;&#x5728;&#x5B9E;&#x9645;&#x5E94;&#x7528;&#x4E2D;&#xFF0C;&#x8FD8;&#x6709;&#x4E00;&#x7C7B;&#x9700;&#x6C42;&#x662F;&#x8981;&#x68C0;&#x6D4B;&#x4EE5;&#x7279;&#x5B9A;&#x987A;&#x5E8F;&#x5148;&#x540E;&#x53D1;&#x751F;&#x7684;&#x4E00;&#x7EC4;&#x4E8B;&#x4EF6;&#xFF0C; &#x8FDB;&#x884C;&#x7EDF;&#x8BA1;&#x6216;&#x505A;&#x62A5;&#x8B66;&#x63D0;&#x793A;&#xFF0C;&#x8FD9;&#x5C31;&#x6BD4;&#x8F83;&#x9EBB;&#x70E6;&#x4E86;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x7F51;&#x7AD9;&#x505A;&#x7528;&#x6237;&#x7BA1;&#x7406;&#xFF0C;&#x53EF;&#x80FD;&#x9700;&#x8981;&#x68C0;&#x6D4B;&#x201C;&#x8FDE;&#x7EED;&#x767B;&#x5F55;&#x5931;&#x8D25;&#x201D;&#x4E8B;&#x4EF6;&#x7684;&#x53D1;&#x751F;&#xFF0C;&#x8FD9;&#x662F;&#x4E2A;&#x7EC4;&#x5408;&#x4E8B;&#x4EF6;&#xFF0C;&#x5176;&#x5B9E;&#x5C31;&#x662F;&#x201C;&#x767B;&#x5F55;&#x5931;&#x8D25;&#x201D;&#x548C;&#x201C;&#x767B;&#x5F55;&#x5931;&#x8D25;&#x201D;&#x7684;&#x7EC4;&#x5408;;&#x7535;&#x5546;&#x7F51;&#x7AD9;&#x53EF;&#x80FD;&#x9700;&#x8981;&#x68C0;&#x6D4B;&#x7528;&#x6237;&#x201C;&#x4E0B;&#x5355;&#x652F;&#x4ED8;&#x201D;&#x884C;&#x4E3A;&#xFF0C;&#x8FD9;&#x4E5F;&#x662F;&#x7EC4;&#x5408;&#x4E8B;&#x4EF6;&#xFF0C;&#x201C;&#x4E0B;&#x5355;&#x201D;&#x4E8B;&#x4EF6;&#x4E4B;&#x540E;&#x4E00;&#x6BB5;&#x65F6;&#x95F4;&#x5185;&#x53C8;&#x4F1A;&#x6709;&#x201C;&#x652F;&#x4ED8;&#x201D;&#x4E8B;&#x4EF6;&#x5230;&#x6765;&#xFF0C;&#x8FD8;&#x5305;&#x62EC;&#x4E86;&#x65F6;&#x95F4;&#x4E0A;&#x7684;&#x9650;&#x5236;</strong></p>
+<h4 id="cep&#x662F;&#x4EC0;&#x4E48;">CEP&#x662F;&#x4EC0;&#x4E48;</h4>
+<p><strong>&#x6240;&#x8C13;CEP,&#x5176;&#x5B9E;&#x5C31;&#x662F;&#x201C;&#x590D;&#x6742;&#x4E8B;&#x4EF6;&#x5904;&#x7406;(Complex Event Processing)&#x201D;&#x7684;&#x7F29;&#x5199;;&#x800C;Flink CEP,&#x5C31;&#x662F;Flink&#x5B9E;&#x73B0;&#x7684;&#x4E00;&#x4E00;&#x4E2A;&#x7528;&#x4E8E;&#x590D;&#x6742;&#x4E8B;&#x4EF6;&#x5904;&#x7406;&#x7684;&#x5E93;(library)</strong></p>
+<p>&#x90A3;&#x5230;&#x5E95;&#x4EC0;&#x4E48;&#x662F;&#x201C;&#x590D;&#x6742;&#x4E8B;&#x4EF6;&#x5904;&#x7406;&#x201D;&#x5462;? &#x5C31;&#x662F;&#x53EF;&#x4EE5;&#x5728;&#x4E8B;&#x4EF6;&#x6D41;&#x91CC;&#xFF0C;&#x68C0;&#x6D4B;&#x5230;&#x7279;&#x5B9A;&#x7684;&#x4E8B;&#x4EF6;&#x7EC4;&#x5408;&#x5E76;&#x8FDB;&#x884C;&#x5904;&#x7406;&#xFF0C;&#x6BD4;&#x5982;&#x8BF4;&#x201C;&#x8FDE;&#x7EED;&#x767B;&#x5F55;&#x5931;&#x8D25;&#x201D;&#xFF0C;&#x6216;&#x8005;&#x201C;&#x8BA2;&#x5355;&#x652F;&#x4ED8;&#x8D85;&#x65F6;&#x201D;&#x7B49;&#x7B49;&#x3002;</p>
+<p>&#x5177;&#x4F53;&#x7684;&#x5904;&#x7406;&#x8FC7;&#x7A0B;&#x662F;&#xFF0C;&#x628A;&#x4E8B;&#x4EF6;&#x6D41;&#x4E2D;&#x7684;&#x4E00;&#x4E2A;&#x4E2A;&#x7B80;&#x5355;&#x4E8B;&#x4EF6;&#xFF0C;&#x901A;&#x8FC7;&#x4E00;&#x5B9A;&#x7684;&#x89C4;&#x5219;&#x5339;&#x914D;&#x7EC4;&#x5408;&#x8D77;&#x6765;&#xFF0C;&#x8FD9;&#x5C31;&#x662F;&#x201C;&#x590D;&#x6742;&#x4E8B;&#x4EF6;&#x201D;;&#x7136;&#x540E;&#x57FA;&#x4E8E;&#x8FD9;&#x4E9B;&#x6EE1;&#x8DB3;&#x89C4;&#x5219;&#x7684;&#x4E00;-&#x7EC4;&#x7EC4;&#x590D;&#x6742;&#x4E8B;&#x4EF6;&#x8FDB;&#x884C;&#x8F6C;&#x6362;&#x5904;&#x7406;&#xFF0C;&#x5F97;&#x5230;&#x60F3;&#x8981;&#x7684;&#x7ED3;&#x679C;&#x8FDB;&#x884C;
+&#x8F93;&#x51FA;&#x3002;</p>
+<p>&#x603B;&#x7ED3;&#x8D77;&#x6765;&#xFF0C;&#x590D;&#x6742;&#x4E8B;&#x4EF6;&#x5904;&#x7406;(CEP)&#x7684;&#x6D41;&#x7A0B;&#x53EF;&#x4EE5;&#x5206;&#x6210;&#x4E09;&#x4E2A;&#x6B65;&#x9AA4;:</p>
+<ul>
+<li>&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x5339;&#x914D;&#x89C4;&#x5219;</li>
+<li>&#x5C06;&#x5339;&#x914D;&#x89C4;&#x5219;&#x5E94;&#x7528;&#x5230;&#x4E8B;&#x4EF6;&#x6D41;&#x4E0A;&#xFF0C;&#x68C0;&#x6D4B;&#x6EE1;&#x8DB3;&#x89C4;&#x5219;&#x7684;&#x590D;&#x6742;&#x4E8B;&#x4EF6;</li>
+<li>&#x5BF9;&#x68C0;&#x6D4B;&#x5230;&#x7684;&#x590D;&#x6742;&#x4E8B;&#x4EF6;&#x8FDB;&#x884C;&#x5904;&#x7406;&#xFF0C;&#x5F97;&#x5230;&#x7ED3;&#x679C;&#x8FDB;&#x884C;&#x8F93;&#x51FA;</li>
+</ul>
+<h4 id="&#x6A21;&#x5F0F;pattern">&#x6A21;&#x5F0F;(pattern)</h4>
+<p>CEP&#x7684;&#x7B2C;&#x4E00;&#x6B65;&#x6240;&#x5B9A;&#x4E49;&#x7684;&#x5339;&#x914D;&#x89C4;&#x5219;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x628A;&#x5B83;&#x53EB;&#x4F5C;&#x201C;&#x6A21;&#x5F0F;&#x201D;(Pattern)&#x3002;&#x6A21;&#x5F0F;&#x7684;&#x5B9A;&#x4E49;&#x4E3B;&#x8981;&#x5C31;&#x662F;&#x4E24;&#x90E8;&#x5206;&#x5185;&#x5BB9;:</p>
+<ul>
+<li>&#x6BCF;&#x4E2A;&#x7B80;&#x5355;&#x4E8B;&#x4EF6;&#x7684;&#x7279;&#x5F81;</li>
+<li>&#x7B80;&#x5355;&#x4E8B;&#x4EF6;&#x4E4B;&#x95F4;&#x7684;&#x7EC4;&#x5408;&#x5173;&#x7CFB;</li>
+</ul>
+<p>&#x5F53;&#x7136;&#xFF0C;&#x6211;&#x4EEC;&#x4E5F;&#x53EF;&#x4EE5;&#x8FDB;&#x4E00;&#x6B65;&#x6269;&#x5C55;&#x6A21;&#x5F0F;&#x7684;&#x529F;&#x80FD;&#x3002;&#x6BD4;&#x5982;:</p>
+<p>&#x5339;&#x914D;&#x68C0;&#x6D4B;&#x7684;&#x65F6;&#x95F4;&#x9650;&#x5236;;&#x6BCF;&#x4E2A;&#x7B80;&#x5355;&#x4E8B;&#x4EF6;&#x662F;&#x5426;&#x53EF;&#x4EE5;&#x91CD;&#x590D;&#x51FA;&#x73B0;;&#x5BF9;&#x4E8E;&#x4E8B;&#x4EF6;&#x53EF;&#x91CD;&#x590D;&#x51FA;&#x73B0;&#x7684;&#x6A21;&#x5F0F;&#xFF0C;&#x9047;&#x5230;&#x4E00;&#x4E2A;&#x5339;&#x914D;&#x540E;&#x662F;&#x5426;&#x8DF3;&#x8FC7;&#x540E;&#x9762;&#x7684;&#x5339;&#x914D;&#x7B49;&#x7B49;;</p>
+<p>&#x6240;&#x8C13;&#x201C;&#x4E8B;&#x4EF6;&#x4E4B;&#x95F4;&#x7684;&#x7EC4;&#x5408;&#x5173;&#x7CFB;&#x201D;&#xFF0C;&#x4E00;&#x822C;&#x5C31;&#x662F;&#x5B9A;&#x4E49;&#x201C;&#x8C01;&#x540E;&#x9762;&#x63A5;&#x7740;&#x662F;&#x8C01;&#x201D;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x4E8B;&#x4EF6;&#x53D1;&#x751F;&#x7684;&#x987A;&#x5E8F;;&#x6211;&#x4EEC;&#x628A;&#x5B83;&#x53EB;&#x4F5C;&#x201C;&#x8FD1;&#x90BB;&#x5173;&#x7CFB;&#x201D;&#x3002;&#x53EF;&#x4EE5;&#x5B9A;&#x4E49;&#x4E25;&#x683C;&#x7684;&#x8FD1;&#x90BB;&#x5173;&#x7CFB;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x4E24;&#x4E2A;&#x4E8B;&#x4EF6;&#x4E4B;&#x524D;&#x4E0D;&#x80FD;&#x6709;&#x4EFB;&#x4F55;&#x5176;&#x4ED6;&#x4E8B;&#x4EF6;;&#x4E5F;&#x53EF;&#x4EE5;&#x5B9A;&#x4E49;&#x5BBD;&#x677E;&#x7684;&#x8FD1;&#x90BB;&#x5173;&#x7CFB;&#xFF0C;&#x5373;&#x53EA;&#x8981;&#x524D;&#x540E;&#x987A;&#x5E8F;&#x6B63;&#x786E;&#x5373;&#x53EF;&#xFF0C;&#x4E2D;&#x95F4;&#x53EF;&#x4EE5;&#x6709;&#x5176;&#x4ED6;&#x4E8B;&#x4EF6;&#x3002;&#x53E6;&#x5916;,&#x8FD8;&#x53EF;&#x4EE5;&#x53CD;&#x5411;&#x5B9A;&#x4E49;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x201C;&#x8C01;&#x540E;&#x9762;&#x4E0D;&#x80FD;&#x8DDF;&#x7740;&#x8C01;&#x201D;&#x3002;CEP&#x505A;&#x7684;&#x4E8B;&#x5176;&#x5B9E;&#x5C31;&#x662F;&#x5728;&#x6D41;&#x4E0A;&#x8FDB;&#x884C;&#x6A21;&#x5F0F;&#x5339;&#x914D;&#x3002;&#x6839;&#x636E;&#x6A21;&#x5F0F;&#x7684;&#x8FD1;&#x90BB;&#x5173;&#x7CFB;&#x6761;&#x4EF6;&#x4E0D;&#x540C;&#xFF0C;&#x53EF;&#x4EE5;&#x68C0;&#x6D4B;&#x8FDE;&#x7EED;&#x7684;&#x4E8B;&#x4EF6;&#x6216;&#x4E0D;&#x8FDE;&#x7EED;&#x4F46;&#x5148;&#x540E;&#x53D1;&#x751F;&#x7684;&#x4E8B;&#x4EF6;;&#x6A21;&#x5F0F;&#x8FD8;&#x53EF;&#x80FD;&#x6709;&#x65F6;&#x95F4;&#x7684;&#x9650;&#x5236;,&#x5982;&#x679C;&#x5728;&#x8BBE;&#x5B9A;&#x65F6;&#x95F4;&#x8303;&#x56F4;&#x5185;&#x6CA1;&#x6709;&#x6EE1;&#x8DB3;&#x5339;&#x914D;&#x6761;&#x4EF6;&#xFF0C;&#x5C31;&#x4F1A;&#x5BFC;&#x81F4;&#x6A21;&#x5F0F;&#x5339;&#x914D;&#x8D85;&#x65F6;( timeout)&#x3002;</p>
+<h4 id="&#x5E94;&#x7528;&#x573A;&#x666F;">&#x5E94;&#x7528;&#x573A;&#x666F;</h4>
+<p>CEP&#x4E3B;&#x8981;&#x7528;&#x4E8E;&#x5B9E;&#x65F6;&#x6D41;&#x6570;&#x636E;&#x7684;&#x5206;&#x6790;&#x5904;&#x7406;&#x3002;CEP&#x53EF;&#x4EE5;&#x5E2E;&#x52A9;&#x5728;&#x590D;&#x6742;&#x7684;&#x3001;&#x770B;&#x4F3C;&#x4E0D;&#x76F8;&#x5173;&#x7684;&#x4E8B;&#x4EF6;&#x6D41;&#x4E2D;&#x627E;&#x51FA;&#x90A3;&#x4E9B;&#x6709;&#x610F;&#x4E49;&#x7684;&#x4E8B;&#x4EF6;&#x7EC4;&#x5408;&#xFF0C;&#x8FDB;&#x800C;&#x53EF;&#x4EE5;&#x63A5;&#x8FD1;&#x5B9E;&#x65F6;&#x5730;&#x8FDB;&#x884C;&#x5206;&#x6790;&#x5224;&#x65AD;&#x3001;&#x8F93;&#x51FA;&#x901A;&#x77E5;&#x4FE1;&#x606F;&#x6216;&#x62A5;&#x8B66;&#x3002;&#x8FD9;&#x5728;&#x4F01;&#x4E1A;&#x9879;&#x76EE;&#x7684;&#x98CE;&#x63A7;&#x7BA1;&#x7406;&#x3001;&#x7528;&#x6237;&#x753B;&#x50CF;&#x548C;&#x8FD0;&#x7EF4;&#x76D1;&#x63A7;&#x4E2D;&#xFF0C;&#x90FD;&#x6709;&#x975E;&#x5E38;&#x91CD;&#x8981;&#x7684;&#x5E94;&#x7528;&#x3002;</p>
+<ul>
+<li><p><strong>&#x98CE;&#x9669;&#x63A7;&#x5236;</strong>
+&#x8BBE;&#x5B9A;&#x4E00;&#x4E9B;&#x884C;&#x4E3A;&#x6A21;&#x5F0F;&#xFF0C;&#x53EF;&#x4EE5;&#x5BF9;&#x7528;&#x6237;&#x7684;&#x5F02;&#x5E38;&#x884C;&#x4E3A;&#x8FDB;&#x884C;&#x5B9E;&#x65F6;&#x68C0;&#x6D4B;&#x3002;&#x5F53;&#x4E00;&#x4E2A;&#x7528;&#x6237;&#x884C;&#x4E3A;&#x7B26;&#x5408;&#x4E86;&#x5F02;&#x5E38;&#x884C;&#x4E3A;&#x6A21;&#x5F0F;&#xFF0C;&#x6BD4;&#x5982;&#x77ED;&#x65F6;&#x95F4;&#x5185;&#x9891;&#x7E41;&#x767B;&#x5F55;&#x5E76;&#x5931;&#x8D25;&#x3001;&#x5927;&#x91CF;&#x4E0B;&#x5355;&#x5374;&#x4E0D;&#x652F;&#x4ED8;(&#x5237;&#x5355;)&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x5411;&#x7528;&#x6237;&#x53D1;&#x9001;&#x901A;&#x77E5;&#x4FE1;&#x606F;&#xFF0C;&#x6216;&#x662F;&#x8FDB;&#x884C;&#x62A5;&#x8B66;&#x63D0;&#x793A;&#x3001;&#x7531;&#x4EBA;&#x5DE5;&#x8FDB;&#x4E00;&#x6B65;&#x5224;&#x5B9A;&#x7528;&#x6237;&#x662F;&#x5426;&#x6709;&#x8FDD;&#x89C4;&#x64CD;&#x4F5C;&#x7684;&#x5ACC;&#x7591;&#x3002;&#x8FD9;&#x6837;&#x5C31;&#x53EF;&#x4EE5;&#x6709;&#x6548;&#x5730;&#x63A7;&#x5236;&#x7528;&#x6237;&#x4E2A;&#xFF0C;&#x4EBA;&#x548C;&#x5E73;&#x53F0;&#x7684;&#x98CE;&#x9669;&#x3002;</p>
+</li>
+<li><p><strong>&#x7528;&#x6237;&#x753B;&#x50CF;</strong></p>
+<p>&#x5229;&#x7528;CEP&#x53EF;&#x4EE5;&#x7528;&#x9884;&#x5148;&#x5B9A;&#x4E49;&#x597D;&#x7684;&#x89C4;&#x5219;&#xFF0C;&#x5BF9;&#x7528;&#x6237;&#x7684;&#x884C;&#x4E3A;&#x8F68;&#x8FF9;&#x8FDB;&#x884C;&#x5B9E;&#x65F6;&#x8DDF;&#x8E2A;&#xFF0C;&#x4ECE;&#x800C;&#x68C0;&#x6D4B;&#x51FA;&#x5177;&#x6709;&#x7279;&#x5B9A;&#x884C;&#x4E3A;&#x4E60;&#x60EF;&#x7684;&#x4E00;&#x4E9B;&#x7528;&#x6237;&#xFF0C;&#x505A;&#x51FA;&#x76F8;&#x5E94;&#x7684;&#x7528;&#x6237;&#x753B;&#x50CF;&#x3002;&#x57FA;&#x4E8E;&#x7528;&#x6237;&#x753B;&#x50CF;&#x53EF;&#x4EE5;&#x8FDB;&#x884C;&#x7CBE;&#x51C6;&#x8425;&#x9500;&#xFF0C;&#x5373;&#x5BF9;&#x884C;&#x4E3A;&#x5339;&#x914D;&#x9884;&#x5B9A;&#x4E49;&#x89C4;&#x5219;&#x7684;&#x7528;&#x6237;&#x5B9E;&#x65F6;&#x53D1;&#x9001;&#x76F8;&#x5E94;&#x7684;&#x8425;&#x9500;&#x63A8;&#x5E7F;;&#x8FD9;&#x4E0E;&#x76EE;&#x524D;&#x5F88;&#x591A;&#x4F01;&#x4E1A;&#x6240;&#x505A;&#x7684;&#x7CBE;&#x51C6;&#x63A8;&#x8350;&#x539F;&#x7406;&#x662F;&#x4E00;&#x6837;&#x7684;&#x3002;</p>
+</li>
+<li><p><strong>&#x8FD0;&#x7EF4;&#x76D1;&#x63A7;</strong>
+&#x5BF9;&#x4E8E;&#x4F01;&#x4E1A;&#x670D;&#x52A1;&#x7684;&#x8FD0;&#x7EF4;&#x7BA1;&#x7406;&#xFF0C;&#x53EF;&#x4EE5;&#x5229;&#x7528;CEP&#x7075;&#x6D3B;&#x914D;&#x7F6E;&#x591A;&#x6307;&#x6807;&#x3001;&#x591A;&#x4F9D;&#x8D56;&#x6765;&#x5B9E;&#x73B0;&#x66F4;&#x590D;&#x6742;&#x7684;&#x76D1;&#x63A7;&#x6A21;&#x5F0F;;</p>
+</li>
+</ul>
+<h4 id="&#x5FEB;&#x901F;&#x4E0A;&#x624B;">&#x5FEB;&#x901F;&#x4E0A;&#x624B;</h4>
+<p>&#x4E3A;&#x4E86;&#x7CBE;&#x7B80;&#x548C;&#x907F;&#x514D;&#x4F9D;&#x8D56;&#x51B2;&#x7A81;&#xFF0C;Flink&#x4F1A;&#x4FDD;&#x6301;&#x5C3D;&#x91CF;&#x5C11;&#x7684;&#x6838;&#x5FC3;&#x4F9D;&#x8D56;&#x3002;&#x6240;&#x4EE5;&#x6838;&#x5FC3;&#x4F9D;&#x8D56;&#x4E2D;&#x5E76;&#x4E0D;&#x5305;&#x62EC;&#x4EFB;&#x4F55;&#x7684;&#x8FDE;&#x63A5;&#x5668;(conncetor) &#x548C;&#x5E93;&#xFF0C;&#x8FD9;&#x91CC;&#x7684;&#x5E93;&#x5C31;&#x5305;&#x62EC;&#x4E86;SQL&#x3001;CEP &#x4EE5;&#x53CA;ML&#x7B49;&#x7B49;&#x3002;<strong>&#x6240;&#x4EE5;&#x5982;&#x679C;&#x60F3;&#x8981;&#x5728;Flink&#x96C6;&#x7FA4;&#x4E2D;&#x63D0;&#x4EA4;&#x8FD0;&#x884C;CEP&#x4F5C;&#x4E1A;&#xFF0C;&#x5E94;&#x8BE5;&#x5411;Flink SQL&#x90A3;&#x6837;&#x5C06;&#x4F9D;&#x8D56;&#x7684;jar &#x5305;&#x653E;&#x5728;/ib&#x76EE;&#x5F55;&#x4E0B;&#x4ECE;&#x8FD9;&#x4E2A;&#x89D2;&#x5EA6;&#x6765;&#x770B;&#xFF0C;Flink CEP&#x548C;Flink SQL&#x4E00;&#x6837;&#xFF0C;&#x90FD;&#x662F;&#x6700;&#x9879;&#x5C42;&#x7684;&#x5E94;&#x7528;&#x7EA7;API</strong></p>
+<p><strong>&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x5B9E;&#x4F8B;:&#x5982;&#x679C;&#x8FDE;&#x7EED;&#x4E09;&#x6B21;&#x767B;&#x5F55;&#x5931;&#x8D25;, &#x5219;&#x8F93;&#x51FA;&#x62A5;&#x8B66;&#x4FE1;&#x606F;&#x3002;</strong></p>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> com.luke.flink.datastreamdemo;
+
+<span class="hljs-keyword">import</span> java.time.Duration;
+<span class="hljs-keyword">import</span> java.util.List;
+<span class="hljs-keyword">import</span> java.util.Map;
+
+<span class="hljs-keyword">import</span> org.apache.flink.api.common.eventtime.SerializableTimestampAssigner;
+<span class="hljs-keyword">import</span> org.apache.flink.api.common.eventtime.WatermarkStrategy;
+<span class="hljs-keyword">import</span> org.apache.flink.cep.CEP;
+<span class="hljs-keyword">import</span> org.apache.flink.cep.PatternSelectFunction;
+<span class="hljs-keyword">import</span> org.apache.flink.cep.PatternStream;
+<span class="hljs-keyword">import</span> org.apache.flink.cep.pattern.Pattern;
+<span class="hljs-keyword">import</span> org.apache.flink.cep.pattern.conditions.SimpleCondition;
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.datastream.SingleOutputStreamOperator;
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CepLoginFailDetectExample</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+        StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
+        env.setParallelism(<span class="hljs-number">1</span>);
+
+        <span class="hljs-comment">// 1. &#x83B7;&#x53D6;&#x767B;&#x5F55;&#x6570;&#x636E;</span>
+        SingleOutputStreamOperator&lt;CepLoginEvent&gt; loginEventStream = env.fromElements(
+                <span class="hljs-keyword">new</span> CepLoginEvent(<span class="hljs-string">&quot;user 1&quot;</span>, <span class="hljs-string">&quot;192.168.0.1&quot;</span>, <span class="hljs-string">&quot;fail&quot;</span>, <span class="hljs-number">2000L</span>),
+                <span class="hljs-keyword">new</span> CepLoginEvent(<span class="hljs-string">&quot;user 1&quot;</span>, <span class="hljs-string">&quot;192.168.0.2&quot;</span>, <span class="hljs-string">&quot;fail&quot;</span>, <span class="hljs-number">3000L</span>),
+                <span class="hljs-keyword">new</span> CepLoginEvent(<span class="hljs-string">&quot;user 2&quot;</span>, <span class="hljs-string">&quot;192.168.1.29&quot;</span>, <span class="hljs-string">&quot;fail&quot;</span>, <span class="hljs-number">4000L</span>),
+                <span class="hljs-keyword">new</span> CepLoginEvent(<span class="hljs-string">&quot;user 1&quot;</span>, <span class="hljs-string">&quot;171.56.23.10&quot;</span>, <span class="hljs-string">&quot;fail&quot;</span>, <span class="hljs-number">5000L</span>),
+                <span class="hljs-keyword">new</span> CepLoginEvent(<span class="hljs-string">&quot;user 2&quot;</span>, <span class="hljs-string">&quot;192.168.1.29&quot;</span>, <span class="hljs-string">&quot;fail&quot;</span>, <span class="hljs-number">7000L</span>),
+                <span class="hljs-keyword">new</span> CepLoginEvent(<span class="hljs-string">&quot;user 2&quot;</span>, <span class="hljs-string">&quot;192.168.1.29&quot;</span>, <span class="hljs-string">&quot;fail&quot;</span>, <span class="hljs-number">8000L</span>),
+                <span class="hljs-comment">// &#x5982;&#x679C;user 2&#x6700;&#x540E;&#x4E00;&#x884C;&#x6570;&#x636E;timestamp&#x662F;6000L, &#x90A3;&#x5C31;&#x4E0D;&#x4F1A;&#x8F93;&#x51FA;user</span>
+                <span class="hljs-comment">// 2&#x8FDE;&#x7EED;&#x4E09;&#x6B21;&#x767B;&#x5F55;&#x5931;&#x8D25;&#x7684;&#x65E5;&#x5FD7;,&#x56E0;&#x4E3A;&#x65F6;&#x95F4;&#x786E;&#x5B9A;&#x4E86;&#x8FD9;&#x6761;success&#x65E5;&#x5FD7;&#x4F1A;&#x63D2;&#x961F;&#x5230;&#x524D;&#x9762;</span>
+                <span class="hljs-keyword">new</span> CepLoginEvent(<span class="hljs-string">&quot;user 2&quot;</span>, <span class="hljs-string">&quot;192.168.1.29&quot;</span>, <span class="hljs-string">&quot;success&quot;</span>, <span class="hljs-number">9000L</span>))
+                .assignTimestampsAndWatermarks(WatermarkStrategy.&lt;CepLoginEvent&gt;forBoundedOutOfOrderness(Duration.ZERO)
+                        .withTimestampAssigner(<span class="hljs-keyword">new</span> SerializableTimestampAssigner&lt;CepLoginEvent&gt;() {
+                            <span class="hljs-meta">@Override</span>
+                            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">long</span> <span class="hljs-title">extractTimestamp</span><span class="hljs-params">(CepLoginEvent element, <span class="hljs-keyword">long</span> recordTimestamp)</span> </span>{
+                                <span class="hljs-keyword">return</span> element.timestamp;
+                            }
+                        }));
+
+        <span class="hljs-comment">// 2. &#x5B9A;&#x4E49;&#x6A21;&#x5F0F;,&#x8FDE;&#x7EED;&#x4E09;&#x6B21;&#x767B;&#x5F55;&#x5931;&#x8D25;</span>
+        Pattern&lt;CepLoginEvent, CepLoginEvent&gt; pattern = Pattern.&lt;CepLoginEvent&gt;begin(<span class="hljs-string">&quot;first&quot;</span>) <span class="hljs-comment">// &#x7B2C;&#x4E00;&#x6B21;&#x767B;&#x5F55;&#x5931;&#x8D25;&#x4E8B;&#x4EF6;</span>
+                .where(<span class="hljs-keyword">new</span> SimpleCondition&lt;CepLoginEvent&gt;() {
+                    <span class="hljs-meta">@Override</span>
+                    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">filter</span><span class="hljs-params">(CepLoginEvent value)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+                        <span class="hljs-keyword">return</span> value.eventType.equals(<span class="hljs-string">&quot;fail&quot;</span>);
+                    }
+                })
+                .next(<span class="hljs-string">&quot;second&quot;</span>)
+                .where(<span class="hljs-keyword">new</span> SimpleCondition&lt;CepLoginEvent&gt;() {
+                    <span class="hljs-meta">@Override</span>
+                    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">filter</span><span class="hljs-params">(CepLoginEvent value)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+                        <span class="hljs-keyword">return</span> value.eventType.equals(<span class="hljs-string">&quot;fail&quot;</span>);
+                    }
+                })
+                .next(<span class="hljs-string">&quot;third&quot;</span>)
+                .where(<span class="hljs-keyword">new</span> SimpleCondition&lt;CepLoginEvent&gt;() {
+                    <span class="hljs-meta">@Override</span>
+                    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">filter</span><span class="hljs-params">(CepLoginEvent value)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+                        <span class="hljs-keyword">return</span> value.eventType.equals(<span class="hljs-string">&quot;fail&quot;</span>);
+                    }
+                });
+        <span class="hljs-comment">// 3. &#x5C06;&#x6A21;&#x5F0F;&#x5E94;&#x7528;&#x5230;&#x6570;&#x636E;&#x6D41;&#x4E0A;,&#x68C0;&#x67E5;&#x590D;&#x6742;&#x4E8B;&#x4EF6;</span>
+        PatternStream&lt;CepLoginEvent&gt; patternStram = CEP.pattern(loginEventStream.keyBy(event -&gt; event.userId), pattern);
+
+        <span class="hljs-comment">// 4. &#x5C06;&#x68C0;&#x6D4B;&#x5230;&#x7684;&#x590D;&#x6742;&#x4E8B;&#x4EF6;&#x63D0;&#x53D6;&#x51FA;&#x6765;,&#x8FDB;&#x884C;&#x5904;&#x7406;&#x5F97;&#x5230;&#x62A5;&#x8B66;&#x4FE1;&#x606F;&#x8F93;&#x51FA;</span>
+        SingleOutputStreamOperator&lt;String&gt; warningStream = patternStram
+                .select(<span class="hljs-keyword">new</span> PatternSelectFunction&lt;CepLoginEvent, String&gt;() {
+                    <span class="hljs-comment">// key&#x4E3A;&#x5565;string&#x5462;? &#x5176;&#x5B9E;map&#x4E2D;&#x4FDD;&#x5B58;&#x7684;&#x5C31;&#x662F;&#x4E8B;&#x4EF6;&#x540D;&#x79F0;,&#x5982;&#x4E0A;&#x9762;&#x7684; first&#x3001;second&#x3001;third</span>
+                    <span class="hljs-comment">// &#x4E3A;&#x5565;value&#x662F;list&#x5462;&#xFF0C;&#x56E0;&#x4E3A;&#x4E00;&#x4E2A;&#x4E8B;&#x4EF6;&#x53EF;&#x80FD;&#x91CD;&#x590D;&#x53D1;&#x751F;,list&#x4E2D;&#x5C31;&#x4F1A;&#x4FDD;&#x5B58;&#x591A;&#x4E2A;&#x4E8B;&#x4EF6;&#x3002;&#x672C;&#x793A;&#x4F8B;&#x4E2D;,list&#x957F;&#x5EA6;&#x603B;&#x662F;&#x552F;&#x4E00;</span>
+                    <span class="hljs-meta">@Override</span>
+                    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">select</span><span class="hljs-params">(Map&lt;String, List&lt;CepLoginEvent&gt;&gt; map)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+                        <span class="hljs-comment">// &#x63D0;&#x53D6;&#x590D;&#x6742;&#x4E8B;&#x4EF6;&#x4E2D;&#x7684;&#x4E09;&#x6B21;&#x767B;&#x5F55;&#x5931;&#x8D25;&#x4E8B;&#x4EF6;</span>
+                        CepLoginEvent firstFailEvent = map.get(<span class="hljs-string">&quot;first&quot;</span>).get(<span class="hljs-number">0</span>);
+                        CepLoginEvent secondFailEvent = map.get(<span class="hljs-string">&quot;second&quot;</span>).get(<span class="hljs-number">0</span>);
+                        CepLoginEvent thirdFailEvent = map.get(<span class="hljs-string">&quot;third&quot;</span>).get(<span class="hljs-number">0</span>);
+                        <span class="hljs-keyword">return</span> firstFailEvent.userId + <span class="hljs-string">&quot; &#x8FDE;&#x7EED;&#x4E09;&#x6B21;&#x767B;&#x5F55;&#x5931;&#x8D25;! &#x767B;&#x5F55;&#x65F6;&#x95F4;:&quot;</span> + firstFailEvent.timestamp + <span class="hljs-string">&quot;, &quot;</span>
+                                + secondFailEvent.timestamp + <span class="hljs-string">&quot;, &quot;</span> + thirdFailEvent.timestamp;
+                    }
+                });
+        <span class="hljs-comment">// &#x6253;&#x5370;&#x8F93;&#x51FA;</span>
+        warningStream.print();
+
+        env.execute();
+    }
+}
+<span class="hljs-comment">// &#x8F93;&#x51FA;:</span>
+user <span class="hljs-number">1</span> &#x8FDE;&#x7EED;&#x4E09;&#x6B21;&#x767B;&#x5F55;&#x5931;&#x8D25;! &#x767B;&#x5F55;&#x65F6;&#x95F4;:<span class="hljs-number">2000</span>, <span class="hljs-number">3000</span>, <span class="hljs-number">5000</span>
+user <span class="hljs-number">2</span> &#x8FDE;&#x7EED;&#x4E09;&#x6B21;&#x767B;&#x5F55;&#x5931;&#x8D25;! &#x767B;&#x5F55;&#x65F6;&#x95F4;:<span class="hljs-number">4000</span>, <span class="hljs-number">7000</span>, <span class="hljs-number">8000</span>
+</code></pre>
+<h4 id="&#x6A21;&#x5F0F;-apipattern-api">&#x6A21;&#x5F0F; API(Pattern API)</h4>
+<p>Pattern API&#x53EF;&#x4EE5;&#x8BA9;&#x6211;&#x4EEC;&#x5B9A;&#x4E49;&#x5404;&#x79CD;&#x590D;&#x6742;&#x7684;&#x4E8B;&#x4EF6;&#x7EC4;&#x5408;&#x89C4;&#x5219;&#xFF0C;&#x7528;&#x4E8E;&#x4ECE;&#x4E8B;&#x6D41;&#x4E2D;&#x63D0;&#x53D6;&#x590D;&#x6742;&#x4E8B;&#x4EF6;&#x3002;</p>
+<h5 id="&#x4E2A;&#x4F53;&#x6A21;&#x5F0F;">&#x4E2A;&#x4F53;&#x6A21;&#x5F0F;</h5>
+<ul>
+<li><p><strong>&#x57FA;&#x672C;&#x5F62;&#x5F0F;</strong></p>
+<p>&#x5982;&#x4E0A;&#x9762;&#xFF0C;&#x6BCF;&#x4E2A;&#x767B;&#x5F55;&#x5931;&#x8D25;&#x4E8B;&#x4EF6;&#x7684;&#x9009;&#x53D6;&#x89C4;&#x5219;&#xFF0C;&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x4E2A;&#x4F53;&#x6A21;&#x5F0F;&#x3002;&#x5982;:</p>
+<pre><code class="lang-java">&lt;CepLoginEvent&gt;begin(<span class="hljs-string">&quot;first&quot;</span>) <span class="hljs-comment">// &#x7B2C;&#x4E00;&#x6B21;&#x767B;&#x5F55;&#x5931;&#x8D25;&#x4E8B;&#x4EF6;</span>
+                .where(<span class="hljs-keyword">new</span> SimpleCondition&lt;CepLoginEvent&gt;() {
+                    <span class="hljs-meta">@Override</span>
+                    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">filter</span><span class="hljs-params">(CepLoginEvent value)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+                        <span class="hljs-keyword">return</span> value.eventType.equals(<span class="hljs-string">&quot;fail&quot;</span>);
+                    }
+                })
+</code></pre>
+<p>&#x6216;&#x8005;&#x540E;&#x9762;&#x7684;:</p>
+<pre><code class="lang-java">                .next(<span class="hljs-string">&quot;second&quot;</span>)
+                .where(<span class="hljs-keyword">new</span> SimpleCondition&lt;CepLoginEvent&gt;() {
+                    <span class="hljs-meta">@Override</span>
+                    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">filter</span><span class="hljs-params">(CepLoginEvent value)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+                        <span class="hljs-keyword">return</span> value.eventType.equals(<span class="hljs-string">&quot;fail&quot;</span>);
+                    }
+                })
+</code></pre>
+<p>&#x8FD9;&#x4E9B;&#x90FD;&#x662F;&#x4E2A;&#x4F53;&#x6A21;&#x5F0F;&#xFF0C;&#x4E2A;&#x4F53;&#x6A21;&#x5F0F;&#x4E00;&#x822C;&#x90FD;&#x4F1A;&#x5339;&#x914D;&#x63A5;&#x6536;&#x4E00;&#x4E2A;&#x4E8B;&#x4EF6;&#x3002;</p>
+</li>
+<li><p><strong>&#x91CF;&#x8BCD;(Quantifiers)</strong></p>
+<p>&#x4E2A;&#x4F53;&#x6A21;&#x5F0F;&#x540E;&#x9762;&#x53EF;&#x4EE5;&#x8DDF;&#x4E00;&#x4E2A;&#x201C;&#x91CF;&#x8BCD;&#x201D;&#xFF0C;&#x7528;&#x6765;&#x6307;&#x5B9A;&#x5FAA;&#x73AF;&#x7684;&#x6B21;&#x6570;&#x3002;&#x4ECE;&#x8FD9;&#x4E2A;&#x89D2;&#x5EA6;&#x5206;&#x7C7B;&#xFF0C;&#x4E2A;&#x4F53;&#x6A21;&#x5F0F;&#x53EF;&#x4EE5;&#x5305;&#x62EC;&#x201C;&#x5355;&#x4F8B;(singleton) &#x6A21;&#x5F0F;&#x201D;&#x548C;&#x201C;&#x5FAA;&#x73AF;(looping) &#x6A21;&#x5F0F;&#x201D;&#x3002;&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x4E2A;&#x4F53;&#x6A21;&#x5F0F;&#x662F;&#x5355;&#x4F8B;&#x6A21;&#x5F0F;&#xFF0C;&#x5339;&#x914D;&#x63A5;&#x6536;&#x4E00;&#x4E2A;&#x4E8B;&#x4EF6;;&#x5F53;&#x5B9A;&#x4E49;&#x4E86;&#x91CF;&#x8BCD;&#x4E4B;&#x540E;&#xFF0C;&#x5C31;&#x53D8;&#x6210;&#x4E86;&#x5FAA;&#x73AF;&#x6A21;&#x5F0F;&#xFF0C;&#x53EF;&#x4EE5;&#x5339;&#x914D;&#x63A5;&#x6536;&#x591A;&#x4E2A;&#x4E8B;&#x4EF6;&#x3002;</p>
+<p>&#x5728;&#x5FAA;&#x73AF;&#x6A21;&#x5F0F;&#x4E2D;&#xFF0C;&#x5BF9;&#x540C;&#x6837;&#x7279;&#x5F81;&#x7684;&#x4E8B;&#x4EF6;&#x53EF;&#x4EE5;&#x5339;&#x914D;&#x591A;&#x6B21;&#x3002;&#x6BD4;&#x5982;&#x6211;&#x4EEC;&#x5B9A;&#x4E49;&#x4E2A;&#x4F53;&#x6A21;&#x5F0F;&#x4E3A;&#x201C;&#x5339;&#x914D;&#x5F62;&#x72B6;&#x4E3A;&#x4E09;&#x89D2;&#x5F62;&#x7684;&#x4E8B;&#x4EF6;&#x201D;&#xFF0C;&#x518D;&#x8BA9;&#x5B83;&#x5FAA;&#x73AF;&#x591A;&#x6B21;&#xFF0C;&#x5C31;&#x53D8;&#x6210;&#x4E86;&#x201C;&#x5339;&#x914D;&#x8FDE;&#x7EED;&#x591A;&#x4E2A;&#x4E09;&#x89D2;&#x5F62;&#x7684;&#x4E8B;&#x4EF6;&#x201D;&#x3002;&#x6CE8;&#x610F;&#x8FD9;&#x91CC;&#x7684;&#x201C;&#x8FDE;&#x7EED;&#x201D;&#xFF0C;&#x53EA;&#x8981;&#x4FDD;&#x8BC1;&#x524D;&#x540E;&#x987A;&#x5E8F;&#x5373;&#x53EF;&#xFF0C;&#x4E2D;&#x95F4;&#x53EF;&#x4EE5;&#x6709;&#x5176;&#x4ED6;&#x4E8B;&#x4EF6;&#xFF0C;&#x6240;&#x4EE5;&#x662F;&#x201C;&#x5BBD;&#x677E;&#x8FD1;&#x90BB;&#x201D;&#x5173;&#x7CFB;&#x3002;</p>
+<p>&#x5728;Flink CEP&#x4E2D;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x4E0D;&#x540C;&#x7684;&#x65B9;&#x6CD5;&#x6307;&#x5B9A;&#x5FAA;&#x73AF;&#x6A21;&#x5F0F;&#xFF0C;&#x4E3B;&#x8981;&#x6709;:</p>
+<ul>
+<li><p><strong><code>oneOrMore()</code></strong></p>
+<p>&#x5339;&#x914D;&#x4E8B;&#x4EF6;&#x51FA;&#x73B0;&#x4E00;&#x6B21;&#x6216;&#x591A;&#x6B21;&#xFF0C;&#x5047;&#x8BBE;a&#x662F;&#x4E00;&#x4E2A;&#x4E2A;&#x4F53;&#x6A21;&#x5F0F;&#xFF0C;<code>a.oneOrMore()</code>&#x8868;&#x793A;&#x53EF;&#x4EE5;&#x5339;&#x914D;1&#x4E2A;&#x6216;&#x591A;&#x4E2A;a&#x7684;&#x4E8B;&#x4EF6;&#x7EC4;&#x5408;&#x3002;&#x6211;&#x4EEC;&#x6709;&#x65F6;&#x4F1A;&#x7528;<code>a+</code>&#x7B80;&#x5355;&#x8868;&#x793A;;</p>
+</li>
+<li><p><strong><code>.time(times)</code></strong></p>
+<p>&#x5339;&#x914D;&#x4E8B;&#x4EF6;&#x53D1;&#x751F;&#x7279;&#x5B9A;&#x6B21;&#x6570;&#xFF0C;&#x6BD4;&#x5982;<code>a.times(3)</code>&#x8868;&#x793A;aaa;</p>
+</li>
+<li><p><strong><code>.times(fromTimes,toTimes)</code></strong></p>
+<p>&#x6307;&#x5B9A;&#x5339;&#x914D;&#x4E8B;&#x4EF6;&#x51FA;&#x73B0;&#x7684;&#x6B21;&#x6570;&#x8303;&#x56F4;&#xFF0C;&#x6700;&#x5C0F;&#x6B21;&#x6570;&#x4E3A;<code>fromTimes</code>,&#x6700;&#x5927;&#x6B21;&#x6570;&#x4E3A;<code>toTimes</code>&#x3002;</p>
+</li>
+<li><p><strong><code>.greedy()</code></strong></p>
+<p>&#x53EA;&#x80FD;&#x7528;&#x5728;&#x5FAA;&#x73AF;&#x6A21;&#x5F0F;&#x540E;&#xFF0C;&#x4F7F;&#x5F53;&#x524D;&#x5FAA;&#x73AF;&#x6A21;&#x5F0F;&#x53D8;&#x5F97;&#x201C;&#x8D2A;&#x5FC3;<strong>(greedy)</strong>&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x603B;&#x662F;&#x5C3D;&#x53EF;&#x80FD;&#x591A;&#x5730;&#x53BB;&#x5339;&#x914D;&#x3002;&#x4F8B;&#x5982;<code>a.times(2, 4).greedy()</code>,&#x5982;&#x679C;&#x51FA;&#x73B0;&#x4E86;&#x8FDE;&#x7EED;4&#x4E2A;a,&#x90A3;&#x4E48;&#x4F1A;&#x76F4;&#x63A5;&#x628A;aaaa&#x68C0;&#x6D4B;&#x51FA;&#x6765;&#x8FDB;&#x884C;&#x5904;&#x7406;&#xFF0C;&#x5176;&#x4E2D;&#x4EFB;&#x610F;2&#x4E2A;a&#x662F;&#x4E0D;&#x7B97;&#x5339;&#x914D;&#x4E8B;&#x4EF6;&#x7684;;</p>
+</li>
+<li><p><strong><code>.optional()</code></strong></p>
+<p>&#x5F53;&#x524D;&#x6A21;&#x5F0F;&#x662F;&#x53EF;&#x9009;&#x7684;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#x53EF;&#x4EE5;&#x6EE1;&#x8DB3;&#x8FD9;&#x4E2A;&#x5339;&#x914D;&#x6761;&#x4EF6;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x4E0D;&#x6EE1;&#x8DB3;&#x3002;</p>
+</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-comment">//&#x5339;&#x914D;&#x4E8B;&#x4EF6;&#x51FA;&#x73B0;4&#x6B21;</span>
+pattern.times(<span class="hljs-number">4</span>);
+
+<span class="hljs-comment">//&#x5339;&#x914D;&#x4E8B;&#x4EF6;&#x51FA;&#x73B0;4&#x6B21;&#xFF0C;&#x6216;&#x8005;&#x4E0D;&#x51FA;&#x73B0;</span>
+pattern.times(<span class="hljs-number">4</span>).optional();
+
+<span class="hljs-comment">//&#x5339;&#x914D;&#x4E8B;&#x4EF6;&#x51FA;&#x73B0;2, 3&#x6216;&#x8005;4&#x6B21;</span>
+pattern.times(<span class="hljs-number">2</span>, <span class="hljs-number">4</span>);
+
+<span class="hljs-comment">//&#x5339;&#x914D;&#x4E8B;&#x4EF6;&#x51FA;&#x73B0;2, 3&#x6216;&#x8005;4&#x6B21;&#xFF0C;&#x5E76;&#x4E14;&#x5C3D;&#x53EF;&#x80FD;&#x591A;&#x5730;&#x5339;&#x914D;</span>
+pattern.times(<span class="hljs-number">2</span>, <span class="hljs-number">4</span>).greedy();
+
+<span class="hljs-comment">//&#x5339;&#x914D;&#x4E8B;&#x4EF6;&#x51FA;&#x73B0;2&#xFF0C;3, 4&#x6B21;&#xFF0C;&#x6216;&#x8005;&#x4E0D;&#x51FA;&#x73B0;</span>
+pattern.times(<span class="hljs-number">2</span>&#xFF0C;<span class="hljs-number">4</span>).optional();
+
+<span class="hljs-comment">//&#x5339;&#x914D;&#x4E8B;&#x4EF6;&#x51FA;&#x73B0;2&#xFF0C;3, 4&#x6B21;&#xFF0C;&#x6216;&#x8005;&#x4E0D;&#x51FA;&#x73B0;;&#x5E76;&#x4E14;&#x5C3D;&#x53EF;&#x80FD;&#x591A;&#x5730;&#x5339;&#x914D;</span>
+pattern.times(<span class="hljs-number">2</span>&#xFF0C;<span class="hljs-number">4</span>).optional().greedy();
+
+<span class="hljs-comment">//&#x5339;&#x914D;&#x4E8B;&#x4EF6;&#x51FA;&#x73B0;1&#x6B21;&#x6216;&#x591A;&#x6B21;</span>
+pattern.oneOrMore();
+
+<span class="hljs-comment">//&#x5339;&#x914D;&#x4E8B;&#x4EF6;&#x51FA;&#x73B0;1&#x6B21;&#x6216;&#x591A;&#x6B21;&#xFF0C;&#x5E76;&#x4E14;&#x5C3D;&#x53EF;&#x80FD;&#x591A;&#x5730;&#x5339;&#x914D;</span>
+pattern.oneOrMore().greedy();
+
+<span class="hljs-comment">//&#x5339;&#x914D;&#x4E8B;&#x4EF6;&#x51FA;&#x73B0;1&#x6B21;&#x6216;&#x591A;&#x6B21;&#xFF0C;&#x6216;&#x8005;&#x4E0D;&#x51FA;&#x73B0;</span>
+pattern.oneOrMore().optional();
+
+<span class="hljs-comment">//&#x5339;&#x914D;&#x4E8B;&#x4EF6;&#x51FA;&#x73B0;1&#x6B21;&#x6216;&#x591A;&#x6B21;&#xFF0C;&#x6216;&#x8005;&#x4E0D;&#x51FA;&#x73B0;;&#x5E76;&#x4E14;&#x5C3D;&#x53EF;&#x80FD;&#x591A;&#x5730;&#x5339;&#x914D;</span>
+pattern.oneOrMore().optional().greedy();
+
+<span class="hljs-comment">//&#x5339;&#x914D;&#x4E8B;&#x4EF6;&#x51FA;&#x73B0;2&#x6B21;&#x6216;&#x591A;&#x6B21;</span>
+pattern.timesOrMore(<span class="hljs-number">2</span>);
+
+<span class="hljs-comment">//&#x5339;&#x914D;&#x4E8B;&#x4EF6;&#x51FA;&#x73B0;2&#x6B21;&#x6216;&#x591A;&#x6B21;&#xFF0C;&#x5E76;&#x4E14;&#x5C3D;&#x53EF;&#x80FD;&#x591A;&#x5730;&#x5339;&#x914D;</span>
+pattern.timesOrMore(<span class="hljs-number">2</span>).greedy();
+
+<span class="hljs-comment">//&#x5339;&#x914D;&#x4E8B;&#x4EF6;&#x51FA;&#x73B0;2&#x6B21;&#x6216;&#x591A;&#x6B21;&#xFF0C;&#x6216;&#x8005;&#x4E0D;&#x51FA;&#x73B0;</span>
+pattern.timesOrMore(<span class="hljs-number">2</span>).optional();
+</code></pre>
+<p><strong>&#x6B63;&#x662F;&#x56E0;&#x4E3A;&#x4E2A;&#x4F53;&#x6A21;&#x5F0F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x91CF;&#x8BCD;&#x5B9A;&#x4E49;&#x4E3A;&#x5FAA;&#x73AF;&#x6A21;&#x5F0F;&#xFF0C;&#x4E00;&#x4E2A;&#x6A21;&#x5F0F;&#x80FD;&#x591F;&#x5339;&#x914D;&#x5230;&#x591A;&#x4E2A;&#x4E8B;&#x4EF6;&#xFF0C;&#x6240;&#x4EE5;&#x4E4B;&#x524D;&#x4EE3;&#x7801;&#x4E2D;&#x4E8B;&#x4EF6;&#x7684;&#x68C0;&#x6D4B;&#x63A5;&#x6536;&#x624D;&#x4F1A;&#x7528;Map&#x4E2D;&#x7684;&#x4E00;&#x4E2A;&#x5217;&#x8868;(List) &#x6765;&#x4FDD;&#x5B58;</strong>&#x3002;&#x800C;&#x4E4B;&#x524D;&#x4EE3;&#x7801;&#x4E2D;&#x6CA1;&#x6709;&#x5B9A;&#x4E49;&#x91CF;&#x8BCD;&#xFF0C;&#x90FD;&#x662F;&#x5355;&#x4F8B;&#x6A21;&#x5F0F;&#xFF0C;&#x6240;&#x4EE5;&#x53EA;&#x4F1A;&#x5339;&#x914D;&#x4E00;&#x4E2A;&#x4E8B;&#x4EF6;&#xFF0C;&#x6BCF;&#x4E2A;List&#x4E2D;&#x4E5F;&#x53EA;&#x6709;&#x4E00;&#x4E2A;&#x5143;&#x7D20;:</p>
+<pre><code class="lang-java">LoginEvent first = map.get(<span class="hljs-string">&quot;first&quot;</span>).get(<span class="hljs-number">0</span>);
+</code></pre>
+</li>
+<li><p><strong>&#x6761;&#x4EF6;(Conditions)</strong></p>
+<p>&#x5BF9;&#x4E8E;&#x6761;&#x4EF6;&#x7684;&#x5B9A;&#x4E49;&#xFF0C;&#x4E3B;&#x8981;&#x662F;&#x901A;&#x8FC7;&#x8C03;&#x7528;Pattern&#x5BF9;&#x8C61;&#x7684;<code>.where()</code>&#x65B9;&#x6CD5;&#x6765;&#x5B9E;&#x73B0;&#x7684;&#xFF0C;&#x4E3B;&#x8981;&#x53EF;&#x4EE5;&#x5206;&#x4E3A;&#x7B80;&#x5355;&#x6761;&#x4EF6;&#x3001;&#x8FED;&#x4EE3;&#x6761;&#x4EF6;&#x3001;&#x590D;&#x5408;&#x6761;&#x4EF6;&#x3001;&#x7EC8;&#x6B62;&#x6761;&#x4EF6;&#x51E0;&#x79CD;&#x7C7B;&#x578B;&#x3002;&#x6B64;&#x5916;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x8C03;&#x7528;Pattern&#x5BF9;&#x8C61;&#x7684;<code>.subtype()</code>&#x65B9;&#x6CD5;&#x6765;&#x9650;&#x5B9A;&#x5339;&#x914D;&#x4E8B;&#x4EF6;&#x7684;&#x5B50;&#x7C7B;&#x578B;&#x3002;&#x63A5;&#x4E0B;&#x6765;&#x6211;&#x4EEC;&#x5C31;&#x5206;&#x522B;&#x8FDB;&#x884C;&#x4ECB;&#x7ECD;&#x3002;</p>
+<ul>
+<li><p>&#x9650;&#x5B9A;&#x5B50;&#x7C7B;&#x578B;</p>
+<p>&#x8C03;&#x7528;<code>.subtype()</code>&#x65B9;&#x6CD5;&#x53EF;&#x4EE5;&#x4E3A;&#x5F53;&#x524D;&#x6A21;&#x5F0F;&#x589E;&#x52A0;&#x5B50;&#x7C7B;&#x578B;&#x9650;&#x5236;&#x6761;&#x4EF6;&#x3002;&#x4F8B;&#x5982;:</p>
+<pre><code>pattern.subtype (SubEvent.class);
+</code></pre><p>&#x8FD9;&#x91CC;SubEvent&#x662F;&#x6D41;&#x4E2D;&#x6570;&#x636E;&#x7C7B;&#x578B;Event&#x7684;&#x5B50;&#x7C7B;&#x578B;&#x3002;&#x8FD9;&#x65F6;&#xFF0C;&#x53EA;&#x6709;&#x5F53;&#x4E8B;&#x4EF6;&#x662F;SubEvent&#x7C7B;&#x578B;&#x65F6;&#xFF0C;&#x624D;&#x53EF;&#x4EE5;&#x6EE1;&#x8DB3;&#x5F53;&#x524D;&#x6A21;&#x5F0F;pattern&#x7684;&#x5339;&#x914D;&#x6761;&#x4EF6;&#x3002;</p>
+</li>
+<li><p><strong>&#x7B80;&#x5355;&#x6761;&#x4EF6;(Simple Conditions)</strong></p>
+<p>&#x7B80;&#x5355;&#x6761;&#x4EF6;&#x662F;&#x6700;&#x7B80;&#x5355;&#x7684;&#x5339;&#x914D;&#x89C4;&#x5219;&#xFF0C;&#x53EA;&#x6839;&#x636E;&#x5F53;&#x524D;&#x4E8B;&#x4EF6;&#x7684;&#x7279;&#x5F81;&#x6765;&#x51B3;&#x5B9A;&#x662F;&#x5426;&#x63A5;&#x53D7;&#x5B83;&#x3002;&#x672C;&#x8D28;&#x4E0A;&#x5C31;&#x662F;&#x4E00;&#x4E2A;filter&#x64CD;&#x4F5C;;</p>
+<p>&#x4EE3;&#x7801;&#x4E2D;&#x6211;&#x4EEC;&#x4E3A;.where(&#x65B9;&#x6CD5;&#x4F20;&#x5165;&#x4E00;&#x4E2A;<code>SimpleCondition</code>&#x7684;&#x5B9E;&#x4F8B;&#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#x3002;<code>SimpleCondition</code>&#x662F;&#x8868;&#x793A;&#x201C;&#x7B80;&#x5355;&#x6761;&#x4EF6;&#x201D;&#x7684;&#x62BD;&#x8C61;&#x7C7B;&#xFF0C;&#x5185;&#x90E8;&#x6709;&#x4E00;&#x4E2A;.filter(&#x65B9;&#x6CD5;&#xFF0C;&#x552F;&#x4E00;&#x7684;&#x53C2;&#x6570;&#x5C31;&#x662F;&#x5F53;&#x524D;&#x4E8B;&#x4EF6;&#x3002;&#x6240;&#x4EE5;&#x5B83;&#x53EF;&#x4EE5;&#x5F53;&#x4F5C;<code>FilterFunction</code>&#x6765;&#x4F7F;&#x7528;&#x3002;</p>
+</li>
+<li><p><strong>&#x8FED;&#x4EE3;&#x6761;&#x4EF6;(Iterative Conditions)</strong></p>
+<p>&#x7B80;&#x5355;&#x6761;&#x4EF6;&#x53EA;&#x80FD;&#x57FA;&#x4E8E;&#x5F53;&#x524D;&#x4E8B;&#x4EF6;&#x505A;&#x5224;&#x65AD;&#xFF0C;&#x80FD;&#x591F;&#x5904;&#x7406;&#x7684;&#x903B;&#x8F91;&#x6BD4;&#x8F83;&#x6709;&#x9650;&#x3002;<strong>&#x5728;&#x5B9E;&#x9645;&#x5E94;&#x7528;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x80FD;&#x9700;&#x8981;&#x5C06;&#x5F53;&#x524D;&#x4E8B;&#x4EF6;&#x8DDF;&#x4E4B;&#x524D;&#x7684;&#x4E8B;&#x4EF6;&#x505A;&#x5BF9;&#x6BD4;&#xFF0C;&#x624D;&#x80FD;&#x5224;&#x65AD;&#x51FA;&#x8981;&#x4E0D;&#x8981;&#x63A5;&#x53D7;&#x5F53;&#x524D;&#x4E8B;&#x4EF6;&#x3002;&#x8FD9;&#x79CD;&#x9700;&#x8981;&#x4F9D;&#x9760;&#x4E4B;&#x524D;&#x4E8B;&#x4EF6;&#x6765;&#x505A;&#x5224;&#x65AD;&#x7684;&#x6761;&#x4EF6;&#xFF0C;&#x5C31;&#x53EB;&#x4F5C;&#x201C;&#x8FED;&#x4EE3;&#x6761;&#x4EF6;&#x201D;( Iterative Condition)</strong></p>
+<p>&#x5728;FlinkCEP&#x4E2D;&#xFF0C;&#x63D0;&#x4F9B;&#x4E86;<code>IterativeCondition</code>&#x62BD;&#x8C61;&#x7C7B;&#x3002;&#x8FD9;&#x5176;&#x5B9E;&#x662F;&#x66F4;&#x52A0;&#x901A;&#x7528;&#x7684;&#x6761;&#x4EF6;&#x8868;&#x8FBE;&#xFF0C;&#x67E5;&#x770B;&#x6E90;&#x7801;&#x53EF;&#x4EE5;&#x53D1;&#x73B0;<code>.where()</code>&#x65B9;&#x6CD5;&#x672C;&#x8EAB;&#x8981;&#x6C42;&#x7684;&#x53C2;&#x6570;&#x7C7B;&#x578B;&#x5C31;&#x662F;<code>IterativeCondition</code>; &#x800C;&#x4E4B;&#x524D;&#x7684;<code>SimpleCondition</code>&#x662F;&#x5B83;&#x7684;&#x4E00;&#x4E2A;&#x5B50;&#x7C7B;&#x3002;</p>
+<p>&#x5728;<code>IterativeCondition&#x4E2D;&#x540C;&#x6837;&#x9700;&#x8981;&#x5B9E;&#x73B0;&#x4E00;&#x4E2A;</code>filter()<code>&#x65B9;&#x6CD5;&#xFF0C;&#x4E0D;&#x8FC7;&#x4E0E;</code>SimpleCondition<code>&#x4E2D;&#x4E0D;&#x540C;&#x7684;&#x662F;,**&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x6709;&#x4E24;&#x4E2A;&#x53C2;&#x6570;:&#x9664;&#x4E86;&#x5F53;&#x524D;&#x4E8B;&#x4EF6;&#x4E4B;&#x5916;&#xFF0C;&#x8FD8;&#x6709;&#x4E00;&#x4E2A;&#x4E0A;&#x4E0B;&#x6587;Context&#x3002;&#x8C03;&#x7528;&#x8FD9;&#x4E2A;&#x4E0A;&#x4E0B;&#x6587;&#x7684;</code>.getEventsForPattern()`&#x65B9;&#x6CD5;&#xFF0C;&#x4F20;&#x5165;&#x4E00;&#x4E2A;&#x6A21;&#x5F0F;&#x540D;&#x79F0;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x62FF;&#x5230;&#x8FD9;&#x4E2A;&#x6A21;&#x5F0F;&#x4E2D;&#x5DF2;&#x5339;&#x914D;&#x5230;&#x7684;&#x6240;&#x6709;&#x6570;&#x636E;&#x4E86;**</p>
+<pre><code class="lang-java"><span class="hljs-comment">// 1. oneOrMore() &#x5F88;&#x53EF;&#x80FD;&#x5BFC;&#x81F4; &#x4E00;&#x76F4;&#x5339;&#x914D;&#x4E0B;&#x53BB;&#xFF0C;&#x6570;&#x91CF;&#x65E0;&#x9650;&#x5236;&#xFF1B;&#x6BCF;&#x6765;&#x4E00;&#x4E2A;Event&#x90FD;&#x4F1A;&#x8C03;&#x7528; filter()&#x51FD;&#x6570;&#x54E6;</span>
+<span class="hljs-comment">// 2. &#x5982;&#x4F55;&#x9650;&#x5236;&#x4E0D;&#x518D;&#x5339;&#x914D;&#x5462;? &#x8FD9;&#x91CC;filter()&#x51FD;&#x6570;&#x505A;&#x4E86;&#x4E24;&#x4E2A;&#x9650;&#x5236;&#x5982;&#x679C;&#x4E0D;&#x662F;&#x4EE5;A&#x5F00;&#x5934;&#x7684;&#x7528;&#x6237;,&#x5219;&#x4E0D;&#x5339;&#x914D;&#x4E86;&#xFF0C;&#x4EE5;&#x524D;ctx&#x4E2D;&#x5339;&#x914D;&#x5230;&#x7684;&#x5143;&#x7D20;&#x4F1A;&#x4E22;&#x5F03;,&#x76F4;&#x5230;&#x4E0B;&#x4E00;&#x6B21;&#x5339;&#x914D;&#x5F00;&#x59CB;&#x3002;&#x5982;&#x679C;sum &gt;100&#x5219;&#x4E0D;&#x5339;&#x914D;&#x4E86;,&#x4EE5;&#x524D;ctx&#x4E2D;&#x5339;&#x914D;&#x5230;&#x7684;&#x5143;&#x7D20;&#x4F1A;&#x4E22;&#x5F03;&#xFF0C;&#x76F4;&#x5230;&#x4E0B;&#x4E00;&#x6B21;&#x5339;&#x914D;&#x5F00;&#x59CB;&#xFF1B;</span>
+middle.oneOrMore()
+.where(<span class="hljs-keyword">new</span> IterativeCondition&lt;Event&gt;() (
+    <span class="hljs-meta">@override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">filter</span><span class="hljs-params">(Event value, Context&lt;Event&gt; ctx)</span> <span class="hljs-keyword">throws</span> <span class="hljs-title">Exception</span> <span class="hljs-params">(
+        //&#x4E8B;&#x4EF6;&#x4E2D;&#x7684;user&#x5FC5;&#x987B;&#x4EE5;A&#x5F00;&#x5934;
+        <span class="hljs-keyword">if</span>(!value.user.startsWith(<span class="hljs-string">&quot;A&quot;</span>)</span>) [
+            return <span class="hljs-keyword">false</span></span>;
+        }
+        <span class="hljs-keyword">int</span> sum = value . amount;
+        <span class="hljs-comment">//&#x83B7;&#x53D6;&#x5F53;&#x524D;&#x6A21;&#x5F0F;&#x4E4B;&#x524D;&#x5DF2;&#x7ECF;&#x5339;&#x914D;&#x7684;&#x4E8B;&#x4EF6;&#xFF0C;&#x6C42;&#x6240;&#x6709;&#x4E8B;&#x4EF6;amount&#x4E4B;&#x548C;</span>
+        <span class="hljs-keyword">for</span>(Event event:ctx.getEventsForPattern (<span class="hljs-string">&quot;middle&quot;</span>)) (
+            sum += event.amount ;
+        )
+        <span class="hljs-comment">//&#x5728;&#x603B;&#x6570;&#x91CF;&#x5C0F;&#x4E8E;100&#x65F6;&#xFF0C;&#x5F53;&#x524D;&#x4E8B;&#x4EF6;&#x6EE1;&#x8DB3;&#x5339;&#x914D;&#x89C4;&#x5219;&#xFF0C;&#x53EF;&#x4EE5;&#x5339;&#x914D;&#x6210;&#x529F;</span>
+        <span class="hljs-keyword">return</span> sum &lt;<span class="hljs-number">100</span>;
+)) ;
+</code></pre>
+<p>&#x901A;&#x8FC7; &#x8FED;&#x4EE3;&#x6761;&#x4EF6;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x4E00;&#x4E9B;&#x66F4;&#x590D;&#x6742;&#x7684;&#x9700;&#x6C42;&#xFF0C;&#x6BD4;&#x5982;&#x53EF;&#x4EE5;&#x8981;&#x6C42; &quot;&#x53EA;&#x6709;&#x5927;&#x4E8E;&#x4E4B;&#x524D;&#x6570;&#x636E;&#x7684;&#x5E73;&#x5747;&#x503C;&#xFF0C;&#x624D;&#x63A5;&#x53D7;&#x5F53;&#x524D;&#x4E8B;&#x4EF6;&quot;&#x3002;</p>
+<p>&#x540C;&#x65F6;&#x8FED;&#x4EE3;&#x6761;&#x4EF6;&#x4E2D;&#x4E0A;&#x4E0B;&#x6587;Context&#x4E5F;&#x53EF;&#x4EE5;&#x83B7;&#x53D6;&#x65F6;&#x95F4;&#x76F8;&#x5173;&#x4FE1;&#x606F;&#xFF0C;&#x5982;&#x5F53;&#x524D;&#x4E8B;&#x4EF6;&#x65F6;&#x95F4;&#x6233; &#x548C; &#x5F53;&#x524D;&#x5904;&#x7406;&#x65F6;&#x95F4;(processing time)&#x3002;</p>
+</li>
+<li><p><strong>&#x7EC4;&#x5408;&#x6761;&#x4EF6; conbining Conditions</strong></p>
+<p>&#x5982;&#x679C;&#x4E00;&#x4E2A;&#x4E2A;&#x4F53;&#x6A21;&#x5F0F;&#x6709;&#x591A;&#x4E2A;&#x9650;&#x5B9A;&#x6761;&#x4EF6;&#xFF0C;&#x53C8;&#x8BE5;&#x600E;&#x4E48;&#x5B9A;&#x4E49;&#x5462;?</p>
+<p>&#x6700;&#x76F4;&#x63A5;&#x7684;&#x60F3;&#x6CD5;&#x662F;&#xFF0C;&#x53EF;&#x4EE5;&#x5728;&#x7B80;&#x5355;&#x6761;&#x4EF6;&#x6216;&#x8005;&#x8FED;&#x4EE3;&#x6761;&#x4EF6;&#x7684;<code>.filter()</code>&#x65B9;&#x6CD5;&#x4E2D;&#xFF0C;&#x589E;&#x52A0;&#x591A;&#x4E2A;&#x5224;&#x65AD;&#x903B;&#x8F91;&#x3002;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;<code>if-else</code>&#x7684;&#x6761;&#x4EF6;&#x5206;&#x652F;&#x5206;&#x522B;&#x5B9A;&#x4E49;&#x591A;&#x4E2A;&#x6761;&#x4EF6;,&#x4E5F;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x5728;return&#x8FD4;&#x56DE;&#x65F6;&#x7ED9;&#x4E00;&#x4E2A;&#x591A;&#x6761;&#x4EF6;&#x7684;&#x903B;&#x8F91;&#x7EC4;&#x5408;(&#x4E0E;&#x3001;&#x6216;&#x3001;&#x975E;)&#x3002;&#x4E0D;&#x8FC7;&#x8FD9;&#x6837;&#x4F1A;&#x8BA9;&#x4EE3;&#x7801;&#x53D8;&#x5F97;&#x81C3;&#x80BF;&#xFF0C;&#x53EF;&#x8BFB;&#x6027;&#x964D;&#x4F4E;&#x3002;&#x66F4;&#x597D;&#x7684;&#x65B9;&#x5F0F;&#x662F;&#x72EC;&#x7ACB;&#x5B9A;&#x4E49;&#x591A;&#x4E2A;&#x6761;&#x4EF6;&#xFF0C;&#x7136;&#x540E;&#x5728;&#x5916;&#x90E8;&#x628A;&#x5B83;&#x4EEC;&#x8FDE;&#x63A5;&#x8D77;&#x6765;&#xFF0C;&#x6784;&#x6210;&#x4E00;&#x4E2A;&#x201C;&#x7EC4;&#x5408;&#x6761;&#x4EF6;&#x201D;(Combining Condition)&#x3002;</p>
+<p><strong>&#x6700;&#x7B80;&#x5355;&#x7684;&#x7EC4;&#x5408;&#x6761;&#x4EF6;&#xFF0C;&#x5C31;&#x662F;<code>.where()</code>&#x540E;&#x9762;&#x518D;&#x63A5;&#x4E00;&#x4E2A;<code>.where()</code>&#x3002;&#x56E0;&#x4E3A;&#x524D;&#x9762;&#x63D0;&#x5230;&#x8FC7;&#xFF0C;&#x4E00;&#x4E2A;&#x6761;&#x4EF6;&#x5C31;&#x50CF;&#x662F;&#x4E00;&#x4E2A;filter&#x64CD;&#x4F5C;&#xFF0C;&#x6240;&#x4EE5;&#x6BCF;&#x6B21;&#x8C03;&#x7528;<code>.where()</code>&#x65B9;&#x6CD5;&#x90FD;&#x76F8;&#x5F53;&#x4E8E;&#x505A;&#x4E86;&#x4E00;&#x6B21;&#x8FC7;&#x6EE4;&#xFF0C;&#x8FDE;&#x7EED;&#x591A;&#x6B21;&#x8C03;&#x7528;&#x5C31;&#x8868;&#x793A;&#x591A;&#x91CD;&#x8FC7;&#x6EE4;&#xFF0C;&#x6700;&#x7EC8;&#x5339;&#x914D;&#x7684;&#x4E8B;&#x4EF6;&#x81EA;&#x7136;&#x5C31;&#x4F1A;&#x540C;&#x65F6;&#x6EE1;&#x8DB3;&#x6240;&#x6709;&#x6761;&#x4EF6;&#x3002;&#x8FD9;&#x76F8;&#x5F53;&#x4E8E;&#x5C31;&#x662F;&#x591A;&#x4E2A;&#x6761;&#x4EF6;&#x7684;&#x201C;&#x903B;&#x8F91;&#x4E0E;&#x201D;(AND)</strong></p>
+<p><strong>&#x800C;&#x591A;&#x4E2A;&#x6761;&#x4EF6;&#x7684;&#x903B;&#x8F91;&#x6216;(OR)&#xFF0C; &#x5219;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;<code>.where()</code>&#x540E;&#x52A0;&#x4E00;&#x4E2A;<code>.or()</code>&#x6765;&#x5B9E;&#x73B0;&#x3002;&#x8FD9;&#x91CC;&#x7684;<code>.or()</code>&#x65B9;&#x6CD5;&#x4E0E;<code>.where()</code>&#x4E00;&#x6837;&#xFF0C; &#x4F20;&#x5165;&#x4E00;&#x4E2A;<code>IterativeCondition</code>&#x4F5C;&#x4E3A;&#x53C2;&#x6570;,&#x5B9A;&#x4E49;&#x4E00; &#x4E2A;&#x72EC;&#x7ACB;&#x7684;&#x6761;&#x4EF6;;&#x5B83;&#x548C;&#x4E4B;&#x524D;<code>.where()</code>&#x5B9A;&#x4E49;&#x7684;&#x6761;&#x4EF6;&#x53EA;&#x8981;&#x6EE1;&#x8DB3;&#x4E00;&#x4E2A;&#xFF0C;&#x5F53;&#x524D;&#x4E8B;&#x4EF6;&#x5C31;&#x53EF;&#x4EE5;&#x6210;&#x529F;&#x5339;&#x914D;</strong>
+&#x5F53;&#x7136;&#xFF0C;&#x5B50;&#x7C7B;&#x578B;&#x9650;&#x5B9A;&#x6761;&#x4EF6;(subtype)&#x4E5F;&#x53EF;&#x4EE5;&#x548C;&#x5176;&#x4ED6;&#x6761;&#x4EF6;&#x7ED3;&#x5408;&#x8D77;&#x6765;&#xFF0C;&#x6210;&#x4E3A;&#x7EC4;&#x5408;&#x6761;&#x4EF6;</p>
+</li>
+<li><p><strong>&#x7EC8;&#x6B62;&#x6761;&#x4EF6;(Stop Conditions)</strong></p>
+<p>&#x5BF9;&#x5FAA;&#x73AF;&#x6A21;&#x5F0F;&#x800C;&#x8A00;&#xFF0C;&#x8FD8;&#x53EF;&#x4EE5;&#x6307;&#x5B9A;&#x4E00;&#x4E2A;&#x7EC8;&#x6B62;&#x6761;&#x4EF6;(Stop Condition)&#xFF0C;&#x8868;&#x793A;&#x9047;&#x5230;&#x67D0;&#x4E2A;&#x7279;&#x5B9A;&#x4E8B;&#x4EF6;&#x65F6;&#x5F53;&#x524D;&#x6A21;&#x5F0F;&#x5C31;&#x4E0D;&#x5728;&#x7EE7;&#x7EED;&#x5FAA;&#x73AF;&#x5339;&#x914D;&#x4E86;&#x3002;</p>
+<p>&#x7EC8;&#x6B62;&#x6761;&#x4EF6;&#x7684;&#x5B9A;&#x4E49;&#x662F;&#x901A;&#x8FC7;&#x8C03;&#x7528;&#x6A21;&#x5F0F;&#x5BF9;&#x8C61;&#x7684;<code>.until()</code>&#x65B9;&#x6CD5;&#x6765;&#x5B9E;&#x73B0;&#x7684;&#xFF0C;&#x540C;&#x6837;&#x4F20;&#x5165;&#x4E00;&#x4E2A;<code>IterativeCondition</code>&#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#x3002;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;<strong>&#x7EC8;&#x6B62;&#x6761;&#x4EF6;&#x53EA;&#x4E0E;<code>oneOrMore()</code>&#x6216;&#x8005;<code>oneOrMore().optional()</code>&#x7ED3;&#x5408;&#x4F7F;&#x7528;</strong>&#x3002;&#x56E0;&#x4E3A;&#x5728;&#x8FD9;&#x79CD;&#x5FAA;&#x73AF;&#x6A21;&#x5F0F;&#x4E0B;&#xFF0C;&#x6211;&#x4EEC;&#x4E0D;&#x77E5;&#x9053;&#x540E;&#x9762;&#x8FD8;&#x6709;&#x6CA1;&#x6709;&#x4E8B;&#x4EF6;&#x53EF;&#x4EE5;&#x5339;&#x914D;&#xFF0C;&#x53EA;&#x597D;&#x628A;&#x4E4B;&#x524D;&#x5339;&#x914D;&#x7684;&#x4E8B;&#x4EF6;&#x4F5C;&#x4E3A;&#x72B6;&#x6001;&#x7F13;&#x5B58;&#x8D77;&#x6765;&#x7EE7;&#x7EED;&#x7B49;&#x5F85;,&#x8FD9;&#x7B49;&#x5F85;&#x65E0;&#x7A77;&#x65E0;&#x5C3D;;&#x5982;&#x679C;&#x4E00;&#x76F4;&#x7B49;&#x4E0B;&#x53BB;&#xFF0C;&#x7F13;&#x5B58;&#x7684;&#x72B6;&#x6001;&#x8D8A;&#x6765;&#x8D8A;&#x591A;&#xFF0C;&#x6700;&#x7EC8;&#x4F1A;&#x8017;&#x5C3D;&#x5185;&#x5B58;&#x3002;&#x6240;&#x4EE5;&#x8FD9;&#x79CD;&#x5FAA;&#x73AF;&#x6A21;&#x5F0F;&#x5FC5;&#x987B;&#x6709;&#x4E2A;&#x7EC8;&#x70B9;&#xFF0C;&#x5F53;<code>.until()</code>&#x6307;&#x5B9A; &#x7684;&#x6761;&#x4EF6;&#x6EE1;&#x8DB3;&#x65F6;&#xFF0C;&#x5FAA;&#x73AF;&#x7EC8;&#x6B62;&#xFF0C;&#x8FD9;&#x6837;&#x5C31;&#x53EF;&#x4EE5;&#x6E05;&#x7A7A;&#x72B6;&#x6001;&#x91CA;&#x653E;&#x5185;&#x5B58;&#x4E86;&#x3002;</p>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="&#x7EC4;&#x5408;&#x6A21;&#x5F0F;">&#x7EC4;&#x5408;&#x6A21;&#x5F0F;</h5>
+<p>&#x6709;&#x4E86;&#x5B9A;&#x4E49;&#x597D;&#x7684;&#x4E2A;&#x4F53;&#x6A21;&#x5F0F;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x5C1D;&#x8BD5;&#x6309;&#x4E00;&#x5B9A;&#x7684;&#x987A;&#x5E8F;&#x628A;&#x5B83;&#x4EEC;&#x8FDE;&#x63A5;&#x8D77;&#x6765;&#xFF0C;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x5B8C;&#x6574;&#x7684;&#x590D;&#x6742;&#x4E8B;&#x4EF6;&#x5339;&#x914D;&#x89C4;&#x5219;&#x4E86;&#x3002;&#x8FD9;&#x79CD;&#x5C06;&#x591A;&#x4E2A;&#x4E2A;&#x4F53;&#x6A21;&#x5F0F;&#x7EC4;&#x5408;&#x8D77;&#x6765;&#x7684;&#x5B8C;&#x6574;&#x6A21;&#x5F0F;&#xFF0C;&#x5C31;&#x53EB;&#x4F5C;&quot;&#x7EC4;&#x5408;&#x6A21;&#x5F0F;&quot;(Combining Pattemn)&#xFF0C;&#x4E3A;&#x4E86;&#x8DDF;&#x4E2A;&#x4F53;&#x6A21;&#x5F0F;&#x533A;&#x5206;&#x6709;&#x65F6;&#x4E5F;&#x53EB;&#x4F5C;&quot;&#x6A21;&#x5F0F;&#x5E8F;&#x5217;&quot;(Pattern Sequence)&#x3002;</p>
+<p>&#x4E00;&#x4E2A;&#x7EC4;&#x5408;&#x6A21;&#x5F0F;&#x6709;&#x4EE5;&#x4E0B;&#x5F62;&#x5F0F;&#xFF1A;</p>
+<pre><code class="lang-java">Pattern&lt;Event,?&gt; pattern = Pattern
+    .&lt;Event&gt;begin(<span class="hljs-string">&quot;start&quot;</span>).where(...)
+    .next(<span class="hljs-string">&quot;next&quot;</span>).wheref(...)
+    .followedBy(<span class="hljs-string">&quot;follow&quot;</span>).where(...)
+    ...
+</code></pre>
+<p>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x7EC4;&#x5408;&#x6A21;&#x5F0F;&#x786E;&#x5B9E;&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x201C;&#x6A21;&#x5F0F;&#x5E8F;&#x5217;&#x201D;&#xFF0C;&#x662F;&#x7528;&#x8BF8;&#x5982; begin&#x3001; next&#x3001; followedBy &#x7B49;&#x8868;&#x793A;&#x5148;&#x540E;&#x987A;&#x5E8F;&#x7684;&#x201C;&#x8FDE;&#x63A5;&#x8BCD;&#x201D;&#x5C06;&#x4E2A;&#x4F53;&#x6A21;&#x5F0F;&#x4E32;&#x8FDE;&#x8D77;&#x6765;&#x5F97;&#x5230;&#x7684;&#x3002;&#x5728;&#x8FD9;&#x6837;&#x7684;&#x8BED;&#x6CD5;&#x8C03;&#x7528;&#x4E2D;&#xFF0C;&#x6BCF;&#x4E2A;&#x4E8B;&#x4EF6;&#x5339;&#x914D;&#x7684;&#x6761;&#x4EF6;&#x662F;&#x4EC0;&#x4E48;&#x3001;&#x5404;&#x4E2A;&#x4E8B;&#x4EF6;&#x4E4B;&#x95F4;&#x8C01;&#x5148;&#x8C01;&#x540E;&#x3001;&#x8FD1;&#x90BB;&#x5173;&#x7CFB;&#x5982;&#x4F55;&#x90FD;&#x5B9A;&#x4E49;&#x5F97;&#x4E00;&#x76EE;&#x4E86;&#x7136;&#x3002;&#x6BCF;&#x4E00;&#x4E2A;&#x201C;&#x8FDE;&#x63A5;&#x8BCD;&#x201D;&#x65B9;&#x6CD5;&#x8C03;&#x7528;&#x4E4B;&#x540E;&#xFF0C;&#x5F97;&#x5230;&#x7684;&#x90FD;&#x4ECD;&#x7136;&#x662F;&#x4E00;&#x4E2A; Pattern &#x7684;&#x5BF9;&#x8C61;&#xFF1B;&#x6240;&#x4EE5;&#x4ECE; Java &#x5BF9;&#x8C61;&#x7684;&#x89D2;&#x5EA6;&#x770B;&#xFF0C;&#x7EC4;&#x5408;&#x6A21;&#x5F0F;&#x4E0E;&#x4E2A;&#x4F53;&#x6A21;&#x5F0F;&#x662F;&#x4E00;&#x6837;&#x7684;&#xFF0C;&#x90FD;&#x662F; Pattern&#x3002;</p>
+<ul>
+<li><p><strong>&#x521D;&#x59CB;&#x6A21;&#x5F0F;(Initial Pattern)</strong></p>
+<p>&#x6240;&#x6709;&#x7684;&#x7EC4;&#x5408;&#x6A21;&#x5F0F;&#xFF0C;&#x90FD;&#x5FC5;&#x987B;&#x4EE5;&#x4E00;&#x4E2A;&quot;&#x521D;&#x59CB;&#x6A21;&#x5F0F;&quot;&#x5F00;&#x5934;&#xFF1B;&#x800C;&#x521D;&#x59CB;&#x6A21;&#x5F0F;&#x5FC5;&#x987B;&#x901A;&#x8FC7;&#x8C03;&#x7528;<code>Pattern</code>&#x7684;&#x9759;&#x6001;&#x65B9;&#x6CD5;<code>.begin()</code>&#x6765;&#x521B;&#x5EFA;&#x3002;&#x5982;&#x4E0B;&#x6240;&#x793A;:</p>
+<pre><code class="lang-java">Pattern&lt;Event,?&gt; start = Pattern.&lt;Event&gt;begin(<span class="hljs-string">&quot;start&quot;</span>);
+</code></pre>
+<ul>
+<li>&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x8C03;&#x7528; Pattern &#x7684;<code>.begin()</code>&#x65B9;&#x6CD5;&#x521B;&#x5EFA;&#x4E86;&#x4E00;&#x4E2A;&#x521D;&#x59CB;&#x6A21;&#x5F0F;&#x3002;&#x4F20;&#x5165;&#x7684; String &#x7C7B;&#x578B;&#x7684;&#x53C2;&#x6570;&#x5C31;&#x662F;&#x6A21;&#x5F0F;&#x7684;&#x540D;&#x79F0;&#xFF1B;</li>
+<li>&#x800C; begin &#x65B9;&#x6CD5;&#x9700;&#x8981;&#x4F20;&#x5165;&#x4E00;&#x4E2A;&#x7C7B;&#x578B;&#x53C2;&#x6570;&#xFF0C;&#x8FD9;&#x5C31;&#x662F;&#x6A21;&#x5F0F;&#x8981;&#x68C0;&#x6D4B;&#x6D41;&#x4E2D;&#x4E8B;&#x4EF6;&#x7684;&#x57FA;&#x672C;&#x7C7B;&#x578B;&#xFF0C; &#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x5B9A;&#x4E49;&#x4E3A; Event;</li>
+<li>&#x8C03;&#x7528;&#x7684;&#x7ED3;&#x679C;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A; Pattern &#x7684;&#x5BF9;&#x8C61;&#x5B9E;&#x4F8B;;</li>
+<li>Pattern &#x6709;&#x4E24;&#x4E2A;&#x6CDB;&#x578B;&#x53C2;&#x6570;&#xFF0C;&#x7B2C;&#x4E00;&#x4E2A;&#x5C31;&#x662F;&#x68C0;&#x6D4B;&#x4E8B;&#x4EF6;&#x7684;&#x57FA;&#x672C;&#x7C7B;&#x578B; Event&#xFF0C;&#x8DDF; begin &#x6307;&#x5B9A;&#x7684;&#x7C7B;&#x578B;&#x4E00;&#x81F4;&#xFF1B;&#x7B2C;&#x4E8C;&#x4E2A;&#x5219;&#x662F;&#x5F53;&#x524D;&#x6A21;&#x5F0F;&#x91CC;&#x4E8B;&#x4EF6;&#x7684;&#x5B50;&#x7C7B;&#x578B;&#xFF0C;&#x7531;&#x5B50;&#x7C7B;&#x578B;&#x9650;&#x5236;&#x6761;&#x4EF6;&#x6307;&#x5B9A;&#x3002;&#x6211;&#x4EEC;&#x8FD9;&#x91CC;&#x7528;&#x7C7B;&#x578B;&#x901A;&#x914D;&#x7B26;(?)&#x4EE3;&#x66FF;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x4ECE;&#x4E0A;&#x4E0B;&#x6587;&#x76F4;&#x63A5;&#x63A8;&#x65AD;&#x4E86;;</li>
+</ul>
+</li>
+<li><p><strong>&#x8FD1;&#x90BB;&#x6761;&#x4EF6;(Contiguity Conditions)</strong></p>
+<p>&#x5728;&#x521D;&#x59CB;&#x6A21;&#x5F0F;&#x4E4B;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x53EF;&#x4EE5;&#x6309;&#x7167;&#x590D;&#x6742;&#x4E8B;&#x4EF6;&#x7684;&#x987A;&#x5E8F;&#x8FFD;&#x52A0;&#x6A21;&#x5F0F;&#xFF0C;&#x7EC4;&#x5408;&#x6210;&#x6A21;&#x5F0F;&#x5E8F;&#x5217;&#x4E86;&#x3002;&#x6A21;&#x5F0F;&#x4E4B;&#x95F4;&#x7684;&#x7EC4;&#x5408;&#x901A;&#x8FC7;&#x4E00;&#x4E9B;&quot;&#x8FDE;&#x63A5;&#x8BCD;&quot;&#x65B9;&#x6CD5;&#x5B9E;&#x73B0;&#xFF0C;&#x8FD9;&#x4E9B;&#x8FDE;&#x63A5;&#x8BCD;&#x6307;&#x660E;&#x4E86;&#x5148;&#x540E;&#x4E8B;&#x4EF6;&#x4E4B;&#x95F4;&#x6709;&#x7740;&#x600E;&#x6837;&#x7684;&#x8FD1;&#x90BB;&#x5173;&#x7CFB;&#xFF0C;&#x8FD9;&#x5C31;&#x662F;&#x6240;&#x8C13;&#x7684;&quot;&#x8FD1;&#x90BB;&#x6761;&#x4EF6;&quot;(contiguity Contitions)</p>
+<p>Flink CEP&#x63D0;&#x4F9B;&#x4E86;&#x4E09;&#x79CD;&#x8FD1;&#x90BB;&#x5173;&#x7CFB;:</p>
+<ul>
+<li><p>&#x4E25;&#x683C;&#x8FD1;&#x90BB;(Strict Contiguity)</p>
+<p><strong>&#x5339;&#x914D;&#x7684;&#x4E8B;&#x4EF6;&#x4E25;&#x683C;&#x5730;&#x6309;&#x987A;&#x5E8F;&#x4E00;&#x4E2A;&#x63A5;&#x4E00;&#x4E2A;&#x51FA;&#x73B0;&#xFF0C;&#x4E2D;&#x95F4;&#x4E0D;&#x4F1A;&#x6709;&#x4EFB;&#x4F55;&#x5176;&#x4ED6;&#x4E8B;&#x4EF6;&#x3002;&#x4EE3;&#x7801;&#x4E2D;&#x5BF9;&#x5E94;&#x7684;&#x5C31;&#x662F; Pattern &#x7684;.next0&#x65B9;&#x6CD5;&#xFF0C;&#x540D;&#x79F0;&#x4E0A;&#x5C31;&#x80FD;&#x770B;&#x51FA;&#x6765;&#xFF0C;&#x201C;&#x4E0B;&#x4E00;&#x4E2A;&#x201D;&#x81EA;&#x7136;&#x5C31;&#x662F;&#x7D27;&#x6328;&#x7740;&#x7684;</strong></p>
+</li>
+<li><p><strong>&#x5BBD;&#x677E;&#x8FD1;&#x90BB;(Relaxed Contiguity)</strong></p>
+<p>&#x5BBD;&#x677E;&#x8FD1;&#x90BB;&#x53EA;&#x5173;&#x5FC3;&#x4E8B;&#x4EF6;&#x53D1;&#x751F;&#x7684;&#x987A;&#x5E8F;&#xFF0C;&#x800C;&#x653E;&#x5BBD;&#x4E86;&#x5BF9;&#x5339;&#x914D;&#x4E8B;&#x4EF6;&#x7684;&#x201C;&#x8DDD;&#x79BB;&#x201D;&#x8981;&#x6C42;&#xFF0C; &#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#x4E24;&#x4E2A;&#x5339;&#x914D;&#x7684;&#x4E8B;&#x4EF6;&#x4E4B;&#x95F4;&#x53EF;&#x4EE5;&#x6709;&#x5176;&#x4ED6;&#x4E0D;&#x5339;&#x914D;&#x7684;&#x4E8B;&#x4EF6;&#x51FA;&#x73B0;&#x3002;&#x4EE3;&#x7801;&#x4E2D;&#x5BF9;&#x5E94;<code>.followedBy()</code>&#x65B9;&#x6CD5;&#xFF0C; &#x5F88;&#x660E;&#x663E;&#x8FD9;&#x8868;&#x793A; &#x201C;&#x8DDF;&#x5728;&#x540E;&#x9762;&#x201D;&#x5C31;&#x53EF;&#x4EE5;&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x7D27;&#x7D27;&#x76F8;&#x90BB;&#x3002;</p>
+<p><img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20230103144118382.png" alt="image-20230103144118382" style="zoom: 50%;"></p>
+</li>
+<li><p><strong>&#x975E;&#x786E;&#x5B9A;&#x6027;&#x5BBD;&#x677E;&#x8FD1;&#x90BB;(Non-Deterministic Relaxed Contiguity)</strong></p>
+<p>&#x8FD9;&#x79CD;&#x8FD1;&#x90BB;&#x5173;&#x7CFB;&#x66F4;&#x52A0;&#x5BBD;&#x677E;&#x3002;&#x6240;&#x8C13;&#x201C;&#x975E;&#x786E;&#x5B9A;&#x6027;&#x201D;&#x662F;&#x6307;<font style="color:red">&#x53EF;&#x4EE5;&#x91CD;&#x590D;&#x4F7F;&#x7528;&#x4E4B;&#x524D;&#x5DF1;&#x7ECF;&#x5339;&#x914D;&#x8FC7;&#x7684;&#x4E8B;&#x4EF6;</font>&#xFF1B;&#x8FD9;&#x79CD;&#x8FD1;&#x90BB;&#x6761;&#x4EF6;&#x4E0B;&#x5339;&#x914D;&#x5230;&#x7684;&#x4E0D;&#x540C;&#x590D;&#x6742;&#x4E8B;&#x4EF6;&#xFF0C;&#x53EF;&#x4EE5;&#x4EE5;&#x540C;&#x4E00;&#x4E2A;&#x4E8B;&#x4EF6;&#x4F5C;&#x4E3A;&#x5F00;&#x59CB;&#xFF0C;&#x6240;&#x4EE5;&#x5339;&#x914D;&#x7ED3;&#x679C;&#x4E00;&#x822C;&#x4F1A;&#x6BD4;&#x5BBD;&#x677E;&#x8FD1;&#x90BB;&#x66F4;&#x591A;&#x3002;&#x4EE3;&#x7801;&#x4E2D;&#x5BF9;&#x5E94;<code>.followedByAny()</code>&#x65B9;&#x6CD5;&#x3002;</p>
+<p><img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20230103144538210.png" alt="image-20230103144538210" style="zoom:50%;"></p>
+</li>
+<li><p><strong>&#x5176;&#x4ED6;&#x9650;&#x5B9A;&#x6761;&#x4EF6;</strong></p>
+<p>&#x9664;&#x4E86;&#x4E0A;&#x9762;&#x63D0;&#x5230;&#x7684;<code>next()</code>&#x3001;<code>followedBy()</code>&#x3001;<code>followedByAny()</code>&#x53EF;&#x4EE5;&#x5206;&#x522B;&#x8868;&#x793A;&#x4E09;&#x79CD;&#x8FD1;&#x90BB;&#x6761;&#x4EF6;&#xFF0C;&#x6211;&#x4EEC;&#x8FD8;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x5426;&#x5B9A;&#x7684;&quot;&#x8FDE;&#x63A5;&#x8BCD;&quot;&#x6765;&#x7EC4;&#x5408;&#x4E2A;&#x4F53;&#x6A21;&#x5F0F;&#x3002;&#x4E3B;&#x8981;&#x5305;&#x62EC;:</p>
+<ul>
+<li><p><strong><code>.notNext()</code></strong></p>
+<p>&#x8868;&#x793A;&#x4E00;&#x4E2A;&#x6A21;&#x5F0F;&#x5339;&#x914D;&#x5230;&#x7684;&#x4E8B;&#x4EF6;&#x540E;&#x9762;&#xFF0C;&#x4E0D;&#x80FD;&#x7D27;&#x8DDF;&#x67D0;&#x79CD;&#x4E8B;&#x4EF6;&#x3002;</p>
+</li>
+<li><p><strong><code>.notFollowedBy()</code></strong></p>
+<p><strong>&#x8868;&#x793A;&#x524D;&#x4E00;&#x4E2A;&#x6A21;&#x5F0F;&#x5339;&#x914D;&#x5230;&#x7684;&#x4E8B;&#x4EF6;&#x540E;&#x9762;&#xFF0C;&#x4E0D;&#x4F1A;&#x51FA;&#x73B0;&#x67D0;&#x79CD;&#x4E8B;&#x4EF6;&#x3002;&#x8FD9;&#x91CC;&#x9700;&#x8981;&#x6CE8;&#x610F;&#xFF0C;&#x7531;&#x4E8E;<code>noFollowedBy()</code>&#x662F;&#x6CA1;&#x6709;&#x4E25;&#x683C;&#x9650;&#x5B9A;&#x7684;&#xFF1B;&#x6D41;&#x6570;&#x636E;&#x4E0D;&#x505C;&#x5730;&#x5230;&#x6765;&#xFF0C;&#x6211;&#x4EEC;&#x6C38;&#x8FDC;&#x4E0D;&#x80FD;&#x4FDD;&#x8BC1;&#x4E4B;&#x540E; &#x201C;&#x4E0D;&#x4F1A;&#x51FA;&#x73B0;&#x67D0;&#x79CD;&#x4E8B;&#x4EF6;&#x201D;&#x3002;&#x6240;&#x4EE5;&#x4E00;&#x4E2A;&#x6A21;&#x5F0F;&#x5E8F;&#x5217;&#x4E0D;&#x80FD;&#x4EE5; <code>notFollowedBy()</code>&#x7ED3;&#x5C3E;&#xFF0C;&#x8FD9;&#x4E2A;&#x9650;&#x5B9A;&#x6761;&#x4EF6;&#x4E3B;&#x8981;&#x7528;&#x6765;&#x8868;&#x793A;&#x201C;&#x4E24;&#x4E2A;&#x4E8B;&#x4EF6;&#x4E2D;&#x95F4;&#x4E0D;&#x4F1A;&#x51FA;&#x73B0;&#x67D0;&#x79CD;&#x4E8B;&#x4EF6;&#x201D;</strong></p>
+</li>
+</ul>
+<p>&#x53E6;&#x5916;&#xFF0C;Flink CEP &#x4E2D;&#x8FD8;&#x53EF;&#x4EE5;&#x4E3A;&#x6A21;&#x5F0F;&#x6307;&#x5B9A;&#x4E00;&#x4E2A;&#x65F6;&#x95F4;&#x9650;&#x5236;&#xFF0C;&#x8FD9;&#x662F;&#x901A;&#x8FC7;&#x8C03;&#x7528;<code>.within()</code>&#x65B9;&#x6CD5;&#x5B9E;&#x73B0;&#x7684;&#x3002;<strong>&#x65B9;&#x6CD5;&#x4F20;&#x5165;&#x4E00;&#x4E2A;&#x65F6;&#x95F4;&#x53C2;&#x6570;&#xFF0C;&#x8FD9;&#x662F;&#x6A21;&#x5F0F;&#x5E8F;&#x5217;&#x4E2D;&#x7B2C;&#x4E00;&#x4E2A;&#x4E8B;&#x4EF6;&#x5230;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x4E8B;&#x4EF6;&#x4E4B;&#x95F4;&#x7684;&#x6700;&#x5927;&#x65F6;&#x95F4;&#x95F4;&#x9694;&#xFF0C;&#x53EA;&#x6709;&#x5728;&#x8FD9;&#x671F;&#x95F4;&#x6210;&#x529F;&#x5339;&#x914D;&#x7684;&#x590D;&#x6742;&#x4E8B;&#x4EF6;&#x624D;&#x662F;&#x6709;&#x6548;&#x7684;</strong>&#x3002;&#x4E00;&#x4E2A;&#x6A21;&#x5F0F;&#x5E8F;&#x5217;&#x4E2D;&#x53EA;&#x80FD;&#x6709;&#x4E00;&#x4E2A;&#x65F6;&#x95F4;&#x9650;&#x5236;&#xFF0C;&#x8C03;&#x7528;.within0&#x7684;&#x4F4D;&#x7F6E;&#x4E0D;&#x9650;&#xFF1B;&#x5982;&#x679C;&#x591A;&#x6B21;&#x8C03;&#x7528;&#x5219;&#x4F1A;&#x4EE5;&#x6700;&#x5C0F;&#x7684;&#x90A3;&#x4E2A;&#x65F6;&#x95F4;&#x95F4;&#x9694;&#x4E3A;&#x51C6;&#x3002;</p>
+<pre><code class="lang-java"><span class="hljs-comment">// &#x4E25;&#x683C;&#x8FD1;&#x90BB;&#x6761;&#x4EF6;</span>
+Pattern&lt;Event,?&gt; strict = start.next(<span class="hljs-string">&quot;middle&quot;</span>).where (...&#xFF09;&#xFF1B;
+
+<span class="hljs-comment">//&#x5BBD;&#x677E;&#x8FD1;&#x90BB;&#x6761;&#x4EF6;</span>
+Pattern&lt;Event,?&gt; relaxed = start.followedBy(<span class="hljs-string">&quot;middle&quot;</span>).where (...);
+
+<span class="hljs-comment">// &#x975E;&#x786E;&#x5B9A;&#x6027;&#x5BBD;&#x677E;&#x8FD1;&#x90BB;&#x6761;&#x4EF6;</span>
+Pattern&lt;Event,?&gt; nonDetermin = start.followedByAny(<span class="hljs-string">&quot;middle&quot;</span>).where(. . .&#xFF09;&#xFF1B;
+
+<span class="hljs-comment">//&#x4E0D;&#x80FD;&#x4E25;&#x683C;&#x8FD1;&#x90BB;&#x6761;&#x4EF6;</span>
+Pattern&lt;Event, ?&gt; strictNot = start.notNext(<span class="hljs-string">&quot;not&quot;</span>).where(...);
+
+<span class="hljs-comment">// &#x4E0D;&#x80FD;&#x5BBD;&#x677E;&#x8FD1;&#x90BB;&#x6761;&#x4EF6;</span>
+Pattern&lt;Event,?&#xFF1E; relaxedNot = start.notFollowedBy(<span class="hljs-string">&quot;not&quot;</span>).where(...);
+
+<span class="hljs-comment">// &#x65F6;&#x95F4;&#x9650;&#x5236;&#x6761;&#x4EF6;</span>
+middle.within (Time.seconds(<span class="hljs-number">10</span>))&#xFF1B;
+</code></pre>
+</li>
+<li><p><strong>&#x5FAA;&#x73AF;&#x6A21;&#x5F0F;&#x4E2D;&#x7684;&#x8FD1;&#x90BB;&#x6761;&#x4EF6;</strong></p>
+<p>&#x5FAA;&#x73AF;&#x6A21;&#x5F0F;&#x662F;&#x6307;&#x4E0A;&#x9762;&#x7528;&#x4E24;&#x6B21;&#x5B9A;&#x4E49;&#x591A;&#x6B21;&#x5339;&#x914D;&#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x5982;:</p>
+<pre><code class="lang-java"><span class="hljs-comment">//&#x5339;&#x914D;&#x4E8B;&#x4EF6;&#x51FA;&#x73B0;4&#x6B21;</span>
+pattern.times(<span class="hljs-number">4</span>);
+
+<span class="hljs-comment">//&#x5339;&#x914D;&#x4E8B;&#x4EF6;&#x51FA;&#x73B0;4&#x6B21;&#xFF0C;&#x6216;&#x8005;&#x4E0D;&#x51FA;&#x73B0;</span>
+pattern.times(<span class="hljs-number">4</span>).optional();
+
+<span class="hljs-comment">//&#x5339;&#x914D;&#x4E8B;&#x4EF6;&#x51FA;&#x73B0;2, 3&#x6216;&#x8005;4&#x6B21;</span>
+pattern.times(<span class="hljs-number">2</span>, <span class="hljs-number">4</span>);
+
+<span class="hljs-comment">//&#x5339;&#x914D;&#x4E8B;&#x4EF6;&#x51FA;&#x73B0;1&#x6B21;&#x6216;&#x591A;&#x6B21;</span>
+pattern.oneOrMore();
+...
+</code></pre>
+<ul>
+<li><strong><code>.time(3).consecutive()</code>: &#x8868;&#x793A;&#x4E09;&#x6B21;&#x7D27;&#x8DDF;&#x7684;&#x5339;&#x914D;&#x5173;&#x7CFB;&#xFF0C;&#x76F8;&#x5F53;&#x4E8E;&#x8C03;&#x7528;&#x4E86;&#x4E09;&#x6B21;<code>.next()</code></strong></li>
+<li><code>.time(3).allowCombinations()</code>: &#x76F8;&#x5F53;&#x4E8E;&#x8C03;&#x7528;&#x4E86;&#x4E09;&#x6B21;<code>.followedByAny()</code></li>
+</ul>
+</li>
+</ul>
+<h5 id="&#x6A21;&#x5F0F;&#x7EC4;">&#x6A21;&#x5F0F;&#x7EC4;</h5>
+<p>&#x4E00;&#x822C;&#x6765;&#x8BF4;&#xFF0C;&#x4EE3;&#x7801;&#x4E2D;&#x5B9A;&#x4E49;&#x7684;&#x6A21;&#x5F0F;&#x5E8F;&#x5217;&#xFF0C;&#x5C31;&#x662F;&#x6211;&#x4EEC;&#x5728;&#x4E1A;&#x52A1;&#x903B;&#x8F91;&#x4E2D;&#x5339;&#x914D;&#x590D;&#x6742;&#x4E8B;&#x4EF6;&#x7684;&#x89C4;&#x5219;&#x3002;&#x4E0D;&#x8FC7;&#x5728;&#x6709;&#x4E9B;&#x975E;&#x5E38;&#x590D;&#x6742;&#x7684;&#x573A;&#x666F;&#x4E2D;&#xFF0C;&#x53EF;&#x80FD;&#x9700;&#x8981;&#x5212;&#x5206;&#x591A;&#x4E2A;&#x201C;&#x9636;&#x6BB5;&#xB0;&#xFF0C;&#x6BCF;&#x4E2A;&#x201C;&#x9636;&#x6BB5;&#x201D;&#x53C8;&#x6709;&#x4E00;&#x8FDE;&#x4E32;&#x7684;&#x5339;&#x914D;&#x89C4;&#x5219;&#x3002;&#x4E3A;&#x4E86;&#x5E94;&#x5BF9;&#x8FD9;&#x6837;&#x7684;&#x9700;&#x6C42;&#xFF0C;Flink CEP &#x5141;&#x8BB8;&#x6211;&#x4EEC;&#x4EE5;&#x201C;&#x5D4C;&#x5957;&#x201D;&#x7684;&#x65B9;&#x5F0F;&#x6765;&#x5B9A;&#x4E49;&#x6A21;&#x5F0F;&#x3002;</p>
+<p>&#x76F4;&#x63A5;&#x4EE5;&#x4E00;&#x4E2A;&#x6A21;&#x5F0F;&#x5E8F;&#x5217;&#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#xFF0C;&#x5C31;&#x5C06;&#x6A21;&#x5F0F;&#x5E8F;&#x5217;&#x53C8;&#x4E00;&#x6B21;&#x8FDE;&#x63A5;&#x7EC4;&#x5408;&#x8D77;&#x6765;&#x4E86;&#x3002;&#x8FD9;&#x6837;&#x5F97;&#x5230;&#x7684;&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x201C;&#x6A21;&#x5F0F;&#x7EC4;&#x201D; (Groups of Patterns )&#x3002;</p>
+<p><strong>&#x5728;&#x6A21;&#x5F0F;&#x7EC4;&#x4E2D;&#xFF0C;&#x6BCF;&#x4E00;&#x4E2A;&#x6A21;&#x5F0F;&#x5E8F;&#x5217;&#x5C31;&#x88AB;&#x5F53;&#x4F5C;&#x4E86;&#x67D0;&#x4E00;&#x9636;&#x6BB5;&#x7684;&#x5339;&#x914D;&#x6761;&#x4EF6;&#xFF0C;&#x8FD4;&#x56DE;&#x7684;&#x7C7B;&#x578B;&#x662F;&#x4E00;&#x4E2A;GroupPattern&#x3002;&#x800C; GroupPatern &#x672C;&#x8EAB;&#x662F; Pattern &#x7684;&#x5B50;&#x7C7B;&#xFF1A;&#x6240;&#x4EE5;&#x4E2A;&#x4F53;&#x6A21;&#x5F0F;&#x548C;&#x7EC4;&#x5408;&#x6A21;&#x5F0F;&#x80FD;&#x8C03;&#x7528;&#x7684;&#x65B9;&#x6CD5;&#xFF0C; &#x6BD4;&#x5982;<code>times()</code>&#x3001;<code>oneOrMore()</code>&#x3001;<code>optional()</code>&#x4E4B;&#x7C7B;&#x7684;&#x91CF;&#x8BCD;&#xFF0C;&#x6A21;&#x5F0F;&#x7EC4;&#x4E00;&#x822C;&#x4E5F;&#x662F;&#x53EF;&#x4EE5;&#x7528;&#x7684;</strong></p>
+<p>&#x5177;&#x4F53;&#x5728;&#x4EE3;&#x7801;&#x4E2D;&#x7684;&#x5E94;&#x7528;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;</p>
+<pre><code class="lang-java"><span class="hljs-comment">// &#x4EE5;&#x6A21;&#x5F0F;&#x5E8F;&#x5217;&#x4F5C;&#x4E3A;&#x521D;&#x59CB;&#x6A21;&#x5F0F;</span>
+Pattern&lt;Event,?&gt;startPattern.begin(Pattern.&lt;Event&gt;begin(<span class="hljs-string">&quot;start start&quot;</span>).where(...))
+.followedBy(<span class="hljs-string">&quot;start middle&quot;</span>).where(...)
+
+<span class="hljs-comment">//&#x5728;start &#x540E;&#x5B9A;&#x4E49;&#x4E25;&#x683C;&#x8FD1;&#x90BB;&#x7684;&#x6A21;&#x5F0F;&#x5E8F;&#x5217;&#xFF0C;&#x5E76;&#x91CD;&#x590D;&#x5339;&#x914D;&#x4E24;&#x6B21;</span>
+Pattern&lt;Event, ?&#xFF1E;strict = start. next (
+    Pattern.&lt;Event&gt;begin(<span class="hljs-string">&quot;next start&quot;</span>).where(...)
+    .followedBy(<span class="hljs-string">&quot;next middle&quot;</span>).where(...)
+).times(<span class="hljs-number">2</span>);
+
+<span class="hljs-comment">//&#x5728;start &#x540E;&#x5B9A;&#x4E49;&#x5BBD;&#x677E;&#x8FD1;&#x90BB;&#x7684;&#x6A21;&#x5F0F;&#x5E8F;&#x5217;,&#x5E76;&#x91CD;&#x590D;&#x5339;&#x914D;&#x4E00;&#x6B21;&#x6216;&#x591A;&#x6B21;</span>
+Pattern&lt;Event&#xFF0C; ?&gt; relaxed = start. followedBy(
+    Pattern. &lt;Event&gt;begin(<span class="hljs-string">&quot;followedby start&quot;</span>) .where (..)
+    .followedBy(<span class="hljs-string">&quot;followedby middle&quot;</span>).where (...)
+).oneOrMore();
+</code></pre>
+</li>
+</ul>
+<h5 id="&#x5339;&#x914D;&#x540E;&#x8DF3;&#x8FC7;&#x7B56;&#x7565;">&#x5339;&#x914D;&#x540E;&#x8DF3;&#x8FC7;&#x7B56;&#x7565;</h5>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="flink基础12-TableAPI和SQL.html" class="navigation navigation-prev " aria-label="Previous page: flink基础12-TableAPI和SQL">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../工具使用/" class="navigation navigation-next " aria-label="Next page: 工具使用">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"flink基础13-CEP","level":"1.12.13","depth":2,"next":{"title":"工具使用","level":"1.13","depth":1,"path":"工具使用/README.md","ref":"工具使用/README.md","articles":[{"title":"VS Code使用小技巧","level":"1.13.1","depth":2,"path":"工具使用/VSCode使用小技巧.md","ref":"工具使用/VSCode使用小技巧.md","articles":[]},{"title":"GCC安装","level":"1.13.2","depth":2,"path":"工具使用/GCC安装.md","ref":"工具使用/GCC安装.md","articles":[]},{"title":"CMake学习与使用","level":"1.13.3","depth":2,"path":"工具使用/CMake学习与使用.md","ref":"工具使用/CMake学习与使用.md","articles":[]},{"title":"gdb调试","level":"1.13.4","depth":2,"path":"工具使用/gdb调试.md","ref":"工具使用/gdb调试.md","articles":[]},{"title":"perf、strace等工具","level":"1.13.5","depth":2,"path":"工具使用/perf、strace等工具.md","ref":"工具使用/perf、strace等工具.md","articles":[]}]},"previous":{"title":"flink基础12-TableAPI和SQL","level":"1.12.12","depth":2,"path":"Flink学习笔记/flink基础12-TableAPI和SQL.md","ref":"Flink学习笔记/flink基础12-TableAPI和SQL.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Flink学习笔记/flink基础13-CEP.md","mtime":"2023-01-03T07:28:27.565Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-02-08T08:43:27.159Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

@@ -1,0 +1,2562 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>flink基础10-状态编程 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="flink基础11-容错机制.html" />
+    
+    
+    <link rel="prev" href="flink基础09-多流转换(分流与合流" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    README
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../redis学习/">
+            
+                <a href="../redis学习/">
+            
+                    
+                    Redis学习
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../redis学习/Redis备份.html">
+            
+                <a href="../redis学习/Redis备份.html">
+            
+                    
+                    Redis备份
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../redis学习/Redis复制.html">
+            
+                <a href="../redis学习/Redis复制.html">
+            
+                    
+                    Redis复制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../redis学习/Redis集群.html">
+            
+                <a href="../redis学习/Redis集群.html">
+            
+                    
+                    Redis集群
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../redis学习/缓存与数据库一致性.html">
+            
+                <a href="../redis学习/缓存与数据库一致性.html">
+            
+                    
+                    缓存与数据库一致性
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../redis学习/Redis消息队列Stream.html">
+            
+                <a href="../redis学习/Redis消息队列Stream.html">
+            
+                    
+                    Redis消息队列
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="../redis学习/RedisModule.html">
+            
+                <a href="../redis学习/RedisModule.html">
+            
+                    
+                    RedisModule
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../mysql/">
+            
+                <a href="../mysql/">
+            
+                    
+                    mysql学习
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../mysql/mysql补充.html">
+            
+                <a href="../mysql/mysql补充.html">
+            
+                    
+                    mysql补充
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../mysql/mysql8.0-手动安装.html">
+            
+                <a href="../mysql/mysql8.0-手动安装.html">
+            
+                    
+                    mysql8.0-手动安装
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../rocksdb-xue-xi/README.md">
+            
+                <span>
+            
+                    
+                    RocksDB学习
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../rocksdb学习/RocksDB基础概念.html">
+            
+                <a href="../rocksdb学习/RocksDB基础概念.html">
+            
+                    
+                    RocksDB基础概念
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../rocksdb学习/RocksDB基础操作-C语言.html">
+            
+                <a href="../rocksdb学习/RocksDB基础操作-C语言.html">
+            
+                    
+                    RocksDB基础操作-C语言
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../c语言笔记/">
+            
+                <a href="../c语言笔记/">
+            
+                    
+                    C语言笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../c语言笔记/C语言补充笔记一.html">
+            
+                <a href="../c语言笔记/C语言补充笔记一.html">
+            
+                    
+                    C语言补充笔记一
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../c++学习笔记/">
+            
+                <a href="../c++学习笔记/">
+            
+                    
+                    C++学习笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../c++学习笔记/C++Primer基础-01引用指针const.html">
+            
+                <a href="../c++学习笔记/C++Primer基础-01引用指针const.html">
+            
+                    
+                    C++Primer基础:引用、指针、const、auto/decltype
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../c++学习笔记/C++Primer基础-02volatile与using.html">
+            
+                <a href="../c++学习笔记/C++Primer基础-02volatile与using.html">
+            
+                    
+                    C++Primer基础:volatile、using
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../c++学习笔记/C++Primer基础-03stringvector数组.html">
+            
+                <a href="../c++学习笔记/C++Primer基础-03stringvector数组.html">
+            
+                    
+                    C++Primer基础: string、vector、数组
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../c++学习笔记/C++Primer基础-04函数重载函数指针.html">
+            
+                <a href="../c++学习笔记/C++Primer基础-04函数重载函数指针.html">
+            
+                    
+                    C++Primer基础:函数、重载、函数指针
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="../c++学习笔记/C++Primer基础-05function与bind与forward.html">
+            
+                <a href="../c++学习笔记/C++Primer基础-05function与bind与forward.html">
+            
+                    
+                    C++Primer基础:std::function、std::bind、std::forward
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6" data-path="../c++学习笔记/C++Primer基础-06-lambda.html">
+            
+                <a href="../c++学习笔记/C++Primer基础-06-lambda.html">
+            
+                    
+                    C++Primer基础:lambda
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.7" data-path="../c++学习笔记/C++Primer基础-07类基础.html">
+            
+                <a href="../c++学习笔记/C++Primer基础-07类基础.html">
+            
+                    
+                    C++ Primer基础: 类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.8" data-path="../c++学习笔记/C++Primer标准库-IO库.html">
+            
+                <a href="../c++学习笔记/C++Primer标准库-IO库.html">
+            
+                    
+                    C++ Primer 标准库: IO库
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.9" data-path="../c++学习笔记/C++Primer标准库-顺序容器.html">
+            
+                <a href="../c++学习笔记/C++Primer标准库-顺序容器.html">
+            
+                    
+                    C++ Primer 标准库: 顺序容器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.10" data-path="../c++学习笔记/C++Primer标准库-泛型算法.html">
+            
+                <a href="../c++学习笔记/C++Primer标准库-泛型算法.html">
+            
+                    
+                    C++ Primer 标准库: 泛型算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.11" data-path="../c++学习笔记/C++Primer标准库-关联容器.html">
+            
+                <a href="../c++学习笔记/C++Primer标准库-关联容器.html">
+            
+                    
+                    C++ Primer 标准库: 关联容器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.12" data-path="../c++学习笔记/C++Primer标准库-动态内存.html">
+            
+                <a href="../c++学习笔记/C++Primer标准库-动态内存.html">
+            
+                    
+                    C++ Primer 标准库: 动态内存
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.13" data-path="../c++学习笔记/C++Primer类设计-拷贝控制.html">
+            
+                <a href="../c++学习笔记/C++Primer类设计-拷贝控制.html">
+            
+                    
+                    C++ Primer 类设计: 拷贝控制、explicit
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.14" data-path="../c++学习笔记/C++Primer类设计-基类派生类虚函数.html">
+            
+                <a href="../c++学习笔记/C++Primer类设计-基类派生类虚函数.html">
+            
+                    
+                    C++ Primer 类设计: 基类、派生类、虚函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.15" data-path="../c++学习笔记/C++Primer类设计-模板与泛型编程.html">
+            
+                <a href="../c++学习笔记/C++Primer类设计-模板与泛型编程.html">
+            
+                    
+                    C++ Primer 类设计:模板与泛型编程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.16" data-path="../c++学习笔记/C++并发编程实战-01基础使用Join传参.html">
+            
+                <a href="../c++学习笔记/C++并发编程实战-01基础使用Join传参.html">
+            
+                    
+                    C++并发编程实战一:基础使用、Join、传参、线程所有权转移
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.17" data-path="../c++学习笔记/C++并发编程实战-02mutexlock.html">
+            
+                <a href="../c++学习笔记/C++并发编程实战-02mutexlock.html">
+            
+                    
+                    C++并发编程实战: mutex、lock、unique_lock、call_once、shared_lock
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.18" data-path="../c++学习笔记/C++并发编程实战-03条件变量.html">
+            
+                <a href="../c++学习笔记/C++并发编程实战-03条件变量.html">
+            
+                    
+                    C++并发编程实战三: 条件变量
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.19" data-path="../c++学习笔记/C++并发编程实战-04原子操作和类型.html">
+            
+                <a href="../c++学习笔记/C++并发编程实战-04原子操作和类型.html">
+            
+                    
+                    C++并发编程实战四: 原子操作和类型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.20" data-path="../c++学习笔记/C++并发编程实战-05内存模型.html">
+            
+                <a href="../c++学习笔记/C++并发编程实战-05内存模型.html">
+            
+                    
+                    C++并发编程实战五: 内存模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.21" data-path="../c++学习笔记/C++补充-01.html">
+            
+                <a href="../c++学习笔记/C++补充-01.html">
+            
+                    
+                    c++补充-01
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.22" data-path="../c++学习笔记/C++补充-02EffectiveSTL有用使用经验.html">
+            
+                <a href="../c++学习笔记/C++补充-02EffectiveSTL有用使用经验.html">
+            
+                    
+                    C++补充02: Effective STL使用经验
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.23" data-path="../c++学习笔记/C++面试题—算法.html">
+            
+                <a href="../c++学习笔记/C++面试题—算法.html">
+            
+                    
+                    C++面试题-算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.24" data-path="../c++学习笔记/Linux传统IO和零拷贝Zero-Copy技术.html">
+            
+                <a href="../c++学习笔记/Linux传统IO和零拷贝Zero-Copy技术.html">
+            
+                    
+                    Linux传统IO和零拷贝Zero-Copy技术
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.25" data-path="../c++学习笔记/Glog使用.html">
+            
+                <a href="../c++学习笔记/Glog使用.html">
+            
+                    
+                    Glog使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../golang学习笔记/">
+            
+                <a href="../golang学习笔记/">
+            
+                    
+                    Golang学习笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../golang学习笔记/Go常见错误集锦.html">
+            
+                <a href="../golang学习笔记/Go常见错误集锦.html">
+            
+                    
+                    Go常见错误集锦
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../golang学习笔记/Go高性能的一些技巧.html">
+            
+                <a href="../golang学习笔记/Go高性能的一些技巧.html">
+            
+                    
+                    Go常见高性能技巧
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../golang学习笔记/Golang反射.html">
+            
+                <a href="../golang学习笔记/Golang反射.html">
+            
+                    
+                    Golang反射
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="../golang学习笔记/内存逃逸.html">
+            
+                <a href="../golang学习笔记/内存逃逸.html">
+            
+                    
+                    内存逃逸
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="../golang学习笔记/调度器GMP.html">
+            
+                <a href="../golang学习笔记/调度器GMP.html">
+            
+                    
+                    调度器GMP
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6" data-path="../golang学习笔记/GC垃圾回收.html">
+            
+                <a href="../golang学习笔记/GC垃圾回收.html">
+            
+                    
+                    GC垃圾回收
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../网络协议学习/">
+            
+                <a href="../网络协议学习/">
+            
+                    
+                    网络协议学习
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../网络协议学习/网络面试题.html">
+            
+                <a href="../网络协议学习/网络面试题.html">
+            
+                    
+                    网络面试题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="../网络协议学习/TCP常见问题.html">
+            
+                <a href="../网络协议学习/TCP常见问题.html">
+            
+                    
+                    TCP常见问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" data-path="../网络协议学习/tcpdump工具.html">
+            
+                <a href="../网络协议学习/tcpdump工具.html">
+            
+                    
+                    tcpdump工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../java学习笔记/">
+            
+                <a href="../java学习笔记/">
+            
+                    
+                    java学习笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="../java学习笔记/java01基础.html">
+            
+                <a href="../java学习笔记/java01基础.html">
+            
+                    
+                    java01基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" data-path="../java学习笔记/java02核心类.html">
+            
+                <a href="../java学习笔记/java02核心类.html">
+            
+                    
+                    java02核心类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3" data-path="../java学习笔记/Maven.html">
+            
+                <a href="../java学习笔记/Maven.html">
+            
+                    
+                    Maven
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="../hadoop学习笔记/">
+            
+                <a href="../hadoop学习笔记/">
+            
+                    
+                    hadoop学习笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="../hadoop学习笔记/hadoop入门01-架构与安装.html">
+            
+                <a href="../hadoop学习笔记/hadoop入门01-架构与安装.html">
+            
+                    
+                    hadoop入门01-架构与安装
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" data-path="../hadoop学习笔记/hadoop入门02-HDFS基础.html">
+            
+                <a href="../hadoop学习笔记/hadoop入门02-HDFS基础.html">
+            
+                    
+                    hadoop入门02-HDFS基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.3" data-path="../hadoop学习笔记/hadoop入门03-MapReduce.html">
+            
+                <a href="../hadoop学习笔记/hadoop入门03-MapReduce.html">
+            
+                    
+                    hadoop入门03-MapReduce
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.4" data-path="../hadoop学习笔记/hadoop入门04-MapReduce框架原理.html">
+            
+                <a href="../hadoop学习笔记/hadoop入门04-MapReduce框架原理.html">
+            
+                    
+                    hadoop入门04-MapReduce框架原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.5" data-path="../hadoop学习笔记/hadoop入门05-MapReduce数据清洗和压缩.html">
+            
+                <a href="../hadoop学习笔记/hadoop入门05-MapReduce数据清洗和压缩.html">
+            
+                    
+                    hadoop入门05-MapReduce数据清洗与压缩
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.6" data-path="../hadoop学习笔记/hadoop入门06-yarn.html">
+            
+                <a href="../hadoop学习笔记/hadoop入门06-yarn.html">
+            
+                    
+                    hadoop入门06-yarn
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.7" data-path="../hadoop学习笔记/Hive入门01-基础入门.html">
+            
+                <a href="../hadoop学习笔记/Hive入门01-基础入门.html">
+            
+                    
+                    Hive入门01-基础入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="../kafka学习笔记/">
+            
+                <a href="../kafka学习笔记/">
+            
+                    
+                    kafka学习笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.11.1" data-path="../kafka学习笔记/kafka01概述与应用场景.html">
+            
+                <a href="../kafka学习笔记/kafka01概述与应用场景.html">
+            
+                    
+                    kafka概述与应用场景
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.2" data-path="../kafka学习笔记/kafka02安装与部署.md">
+            
+                <span>
+            
+                    
+                    kafka安装与部署
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.3" data-path="../kafka学习笔记/kafka03基本操作.html">
+            
+                <a href="../kafka学习笔记/kafka03基本操作.html">
+            
+                    
+                    kafka基本操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.4" data-path="../kafka学习笔记/kafka04生产者原理.html">
+            
+                <a href="../kafka学习笔记/kafka04生产者原理.html">
+            
+                    
+                    kafka生产者原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.5" data-path="../kafka学习笔记/kafka05Broker.html">
+            
+                <a href="../kafka学习笔记/kafka05Broker.html">
+            
+                    
+                    kafka中Broker
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.6" data-path="../kafka学习笔记/kafka06消费者.html">
+            
+                <a href="../kafka学习笔记/kafka06消费者.html">
+            
+                    
+                    kafka消费者
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Flink学习笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1" data-path="flink基础01—简介.html">
+            
+                <a href="flink基础01—简介.html">
+            
+                    
+                    flink基础01—简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2" data-path="flink基础02-集群启动-部署模式.html">
+            
+                <a href="flink基础02-集群启动-部署模式.html">
+            
+                    
+                    flink基础02-集群启动-部署模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3" data-path="flink基础03-运行时架构.html">
+            
+                <a href="flink基础03-运行时架构.html">
+            
+                    
+                    flink基础03-运行时架构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.4" data-path="flink基础04-DataStreamAPI-Source.html">
+            
+                <a href="flink基础04-DataStreamAPI-Source.html">
+            
+                    
+                    flink基础04-DataStreamAPI-Source
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.5" data-path="flink基础05-DataStreamAPI-Transformation.html">
+            
+                <a href="flink基础05-DataStreamAPI-Transformation.html">
+            
+                    
+                    flink基础05-DataStreamAPI-Transformation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.6" data-path="flink基础06-DataStreamAPI-Sink.html">
+            
+                <a href="flink基础06-DataStreamAPI-Sink.html">
+            
+                    
+                    flink基础06-DataStreamAPI-Sink
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.7" data-path="flink基础07-时间和窗口.html">
+            
+                <a href="flink基础07-时间和窗口.html">
+            
+                    
+                    flink基础07-时间和窗口
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.8" data-path="flink基础08-处理函数.html">
+            
+                <a href="flink基础08-处理函数.html">
+            
+                    
+                    flink基础08-处理函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.9" data-path="flink基础09-多流转换(分流与合流">
+            
+                <span>
+            
+                    
+                    flink基础09-多流转换(分流与合流)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.12.10" data-path="flink基础10-状态编程.html">
+            
+                <a href="flink基础10-状态编程.html">
+            
+                    
+                    flink基础10-状态编程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.11" data-path="flink基础11-容错机制.html">
+            
+                <a href="flink基础11-容错机制.html">
+            
+                    
+                    flink基础11-容错机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.12" data-path="flink基础12-TableAPI和SQL.html">
+            
+                <a href="flink基础12-TableAPI和SQL.html">
+            
+                    
+                    flink基础12-TableAPI和SQL
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.13" data-path="flink基础13-CEP.html">
+            
+                <a href="flink基础13-CEP.html">
+            
+                    
+                    flink基础13-CEP
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" data-path="../工具使用/">
+            
+                <a href="../工具使用/">
+            
+                    
+                    工具使用
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.13.1" data-path="../工具使用/VSCode使用小技巧.html">
+            
+                <a href="../工具使用/VSCode使用小技巧.html">
+            
+                    
+                    VS Code使用小技巧
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.2" data-path="../工具使用/GCC安装.html">
+            
+                <a href="../工具使用/GCC安装.html">
+            
+                    
+                    GCC安装
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.3" data-path="../工具使用/CMake学习与使用.html">
+            
+                <a href="../工具使用/CMake学习与使用.html">
+            
+                    
+                    CMake学习与使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.4" data-path="../工具使用/gdb调试.html">
+            
+                <a href="../工具使用/gdb调试.html">
+            
+                    
+                    gdb调试
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.5" data-path="../工具使用/perf、strace等工具.html">
+            
+                <a href="../工具使用/perf、strace等工具.html">
+            
+                    
+                    perf、strace等工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >flink基础10-状态编程</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="&#x72B6;&#x6001;&#x7F16;&#x7A0B;">&#x72B6;&#x6001;&#x7F16;&#x7A0B;</h2>
+<p>&#x6BCF;&#x4E2A;&#x4EFB;&#x52A1;&#x8FDB;&#x884C;&#x8BA1;&#x7B97;&#x5904;&#x7406;&#x65F6;&#x5019;&#xFF0C;&#x53EF;&#x4EE5;&#x57FA;&#x4E8E;&#x5F53;&#x524D;&#x6570;&#x636E;&#x76F4;&#x63A5;&#x8F6C;&#x6362;&#x5F97;&#x5230;&#x8F93;&#x51FA;&#x7ED3;&#x679C;&#xFF1B;&#x4E5F;&#x53EF;&#x4EE5;&#x4F9D;&#x8D56;&#x4E00;&#x4E9B;&#x5176;&#x4ED6;&#x6570;&#x636E;&#xFF0C;&#x8FD9;&#x4E9B;&#x7531;&#x4E00;&#x4E2A;&#x4EFB;&#x52A1;&#x7EF4;&#x62A4;&#xFF0C;&#x5E76;&#x4E14;&#x53EF;&#x4EE5;&#x7528;&#x8BA1;&#x7B97;&#x8F93;&#x51FA;&#x7ED3;&#x679C;&#x7684;&#x6240;&#x6709;&#x6570;&#x636E;&#xFF0C;&#x5C31;&#x53EB;&#x505A;&#x8FD9;&#x4E2A;&#x4EFB;&#x52A1;&#x7684;&#x72B6;&#x6001;&#x3002;</p>
+<h4 id="&#x6709;&#x72B6;&#x6001;&#x7B97;&#x5B50;">&#x6709;&#x72B6;&#x6001;&#x7B97;&#x5B50;</h4>
+<p>&#x5728;Flink&#x4E2D;&#xFF0C;&#x7B97;&#x5B50;&#x4EFB;&#x52A1;&#x53EF;&#x4EE5;&#x5206;&#x4E3A;&#x65E0;&#x72B6;&#x6001;&#x548C;&#x6709;&#x72B6;&#x6001;&#x4E24;&#x79CD;&#x60C5;&#x51B5;&#x3002;
+&#x65E0;&#x72B6;&#x6001;&#x7684;&#x7B97;&#x5B50;&#x4EFB;&#x52A1;&#x53EA;&#x9700;&#x8981;&#x89C2;&#x5BDF;&#x6BCF;&#x4E2A;&#x72EC;&#x7ACB;&#x4E8B;&#x4EF6;&#xFF0C;&#x6839;&#x636E;&#x5F53;&#x524D;&#x8F93;&#x5165;&#x7684;&#x6570;&#x636E;&#x76F4;&#x63A5;&#x8F6C;&#x6362;&#x8F93;&#x51FA;&#x7ED3;&#x679C;&#x3002;&#x4F8B;&#x5982;&#x53EF;&#x4EE5;&#x5C06;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#x7C7B;&#x578B;&#x7684;&#x6570;&#x636E;&#x62C6;&#x5206;&#x5F00;&#x4F5C;&#x4E3A;&#x5143;&#x7EC4;&#x8F93;&#x51FA;;&#x4E5F;&#x53EF;&#x4EE5;&#x5BF9;&#x6570;&#x636E;&#x505A;&#x4E00;&#x4E9B;&#x8BA1;&#x7B97;&#xFF0C;&#x6BD4;&#x5982;&#x6BCF;&#x4E2A;&#x4EE3;&#x8868;&#x6570;&#x91CF;&#x7684;&#x5B57;&#x6BB5;&#x52A0;1&#x3002;
+&#x6211;&#x4EEC;&#x4E4B;&#x524D;&#x8BB2;&#x5230;&#x7684;&#x57FA;&#x672C;&#x8F6C;&#x6362;&#x7B97;&#x5B50;&#xFF0C;&#x5982;map&#x3001;filter&#x3001; flatMap,&#x8BA1;&#x7B97;&#x65F6;&#x4E0D;&#x4F9D;&#x8D56;&#x5176;&#x4ED6;&#x6570;&#x636E;&#xFF0C;&#x5C31;&#x90FD;&#x5C5E;&#x4E8E;&#x65E0;&#x72B6;&#x6001;&#x7684;&#x7B97;&#x5B50;&#x3002;
+&#x6BD4;&#x5982;sum&#x3001;window&#x7B49;&#x5C31;&#x662F;&#x6709;&#x72B6;&#x6001;&#x7684;&#x7B97;&#x5B50;&#x3002;</p>
+<p><img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20221212000951566.png" alt="image-20221212000951566" style="zoom:50%;"></p>
+<h4 id="&#x72B6;&#x6001;&#x7684;&#x5206;&#x7C7B;">&#x72B6;&#x6001;&#x7684;&#x5206;&#x7C7B;</h4>
+<ol>
+<li><p><strong>&#x6258;&#x7BA1;zhuangt(Managed State) &#x548C; &#x539F;&#x59CB;&#x72B6;&#x6001;(Raw State)</strong></p>
+<p>Flink&#x7684;&#x72B6;&#x6001;&#x6709;&#x4E24;&#x79CD;:&#x6258;&#x7BA1;&#x72B6;&#x6001;(Managed State)&#x548C;&#x539F;&#x59CB;&#x72B6;&#x6001;(Raw State)&#x3002;
+<strong>&#x6258;&#x7BA1;&#x72B6;&#x6001;&#x5C31;&#x662F;&#x7531;Flink&#x7EDF;&#x4E00;&#x7BA1;&#x7406;&#x7684;&#xFF0C;&#x72B6;&#x6001;&#x7684;&#x5B58;&#x50A8;&#x8BBF;&#x95EE;&#x3001;&#x6545;&#x969C;&#x6062;&#x590D;&#x548C;&#x91CD;&#x7EC4;&#x7B49;&#x4E00;&#x7CFB;&#x5217;&#x95EE;&#x9898;&#x90FD;&#x7531;Flink&#x5B9E;&#x73B0;&#xFF0C;&#x6211;&#x4EEC;&#x53EA;&#x8981;&#x8C03;&#x63A5;&#x53E3;&#x5C31;&#x53EF;&#x4EE5;;&#x800C;&#x539F;&#x59CB;&#x72B6;&#x6001;&#x5219;&#x662F;&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#xFF0C;&#x76F8;&#x5F53;&#x4E8E;&#x5C31;&#x662F;&#x5F00;&#x8F9F;&#x4E86;&#x4E00;&#x5757;&#x5185;&#x5B58;&#xFF0C;&#x9700;&#x8981;&#x6211;&#x4EEC;&#x81EA;&#x5DF1;&#x7BA1;&#x7406;&#xFF0C;&#x5B9E;&#x73B0;&#x72B6;&#x6001;&#x7684;&#x5E8F;&#x5217;&#x5316;&#x548C;&#x6545;&#x969C;&#x6062;&#x590D;</strong></p>
+<p><strong>&#x5177;&#x4F53;&#x6765;&#x8BB2;&#xFF0C;&#x6258;&#x7BA1;&#x72B6;&#x6001;&#x662F;&#x7531;Flink &#x7684;&#x8FD0;&#x884C;&#x65F6;(Runtime) &#x6765;&#x6258;&#x7BA1;&#x7684;;&#x5728;&#x914D;&#x7F6E;&#x5BB9;&#x9519;&#x673A;&#x5236;&#x540E;&#xFF0C;&#x72B6;&#x6001;&#x4F1A;&#x81EA;&#x52A8;&#x6301;&#x4E45;&#x5316;&#x5185;&#x5B58;&#xFF0C;&#x5E76;&#x5728;&#x53D1;&#x751F;&#x6545;&#x969C;&#x65F6;&#x81EA;&#x52A8;&#x6062;&#x590D;&#x3002;&#x5F53;&#x5E94;&#x7528;&#x53D1;&#x751F;&#x6A2A;&#x5411;&#x6269;&#x5C55;&#x65F6;&#xFF0C;&#x72B6;&#x6001;&#x4E5F;&#x4F1A;&#x81EA;&#x52A8;&#x5730;&#x91CD;&#x7EC4;&#x5206;&#x914D;&#x5230;&#x6240;&#x6709;&#x7684;&#x5B50;&#x4EFB;&#x52A1;&#x5B9E;&#x4F8B;&#x4E0A;</strong></p>
+<p><strong>&#x5BF9;&#x4E8E;&#x5177;&#x4F53;&#x7684;&#x72B6;&#x6001;&#x5185;&#x5BB9;&#xFF0C;Flink &#x4E5F;&#x63D0;&#x4F9B;&#x4E86;&#x503C;&#x72B6;&#x6001;( ValueState)&#x3001;&#x5217;&#x8868;&#x72B6;&#x6001;(ListState)&#x3001; &#x6620;&#x5C04;&#x72B6;&#x6001;(MapState)&#x3001; &#x805A;&#x5408;&#x72B6;&#x6001;(AggregateState) &#x7B49;&#x591A;&#x79CD;&#x7ED3;&#x6784;&#xFF0C;&#x5185;&#x90E8;&#x652F;&#x6301;&#x5404;&#x79CD;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x3002;&#x805A;&#x5408;&#x3001;&#x7A97;&#x53E3;&#x7B49;&#x7B97;&#x5B50;&#x4E2D;&#x5185;&#x7F6E;&#x7684;&#x72B6;&#x6001;&#xFF0C;&#x5C31;&#x90FD;&#x662F;&#x6258;&#x7BA1;&#x72B6;&#x6001;;&#x6211;&#x4EEC;&#x4E5F;&#x53EF;&#x4EE5;&#x5728;&#x5BCC;&#x51FD;&#x6570;&#x7C7B;(RichFunction)&#x4E2D;&#x901A;&#x8FC7;&#x4E0A;&#x4E0B;&#x6587;&#x6765;&#x81EA;&#x5B9A;&#x4E49;&#x72B6;&#x6001;&#xFF0C;&#x8FD9;&#x4E9B;&#x4E5F;&#x90FD;&#x662F;&#x6258;&#x7BA1;&#x72B6;&#x6001;</strong></p>
+<p>&#x800C;&#x5BF9;&#x6BD4;&#x4E4B;&#x4E0B;&#xFF0C;&#x539F;&#x59CB;&#x72B6;&#x6001;&#x5C31;&#x5168;&#x90E8;&#x9700;&#x8981;&#x81EA;&#x5B9A;&#x4E49;&#x4E86;&#x3002;Flink &#x4E0D;&#x4F1A;&#x5BF9;&#x72B6;&#x6001;&#x8FDB;&#x884C;&#x4EFB;&#x4F55;&#x81EA;&#x52A8;&#x64CD;&#x4F5C;&#xFF0C;&#x4E5F;&#x4E0D;&#x77E5;&#x9053;&#x72B6;&#x6001;&#x7684;&#x5177;&#x4F53;&#x6570;&#x636E;&#x7C7B;&#x578B;&#xFF0C;&#x53EA;&#x4F1A;&#x628A;&#x5B83;&#x5F53;&#x4F5C;&#x6700;&#x539F;&#x59CB;&#x7684;&#x5B57;&#x8282;(Byte) &#x6570;&#x7EC4;&#x6765;&#x5B58;&#x50A8;&#x3002;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x82B1;&#x8D39;&#x5927;&#x91CF;&#x7684;&#x7CBE;&#x529B;&#x6765;&#x5904;&#x7406;&#x72B6;&#x6001;&#x7684;&#x7BA1;&#x7406;&#x548C;&#x7EF4;&#x62A4;&#x3002;</p>
+<p>&#x6240;&#x4EE5;&#x53EA;&#x6709;&#x5728;&#x9047;&#x5230;&#x6258;&#x7BA1;&#x72B6;&#x6001;&#x65E0;&#x6CD5;&#x5B9E;&#x73B0;&#x7684;&#x7279;&#x6B8A;&#x9700;&#x6C42;&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x624D;&#x4F1A;&#x8003;&#x8651;&#x4F7F;&#x7528;&#x539F;&#x59CB;&#x72B6;&#x6001;;&#x4E00;&#x822C;&#x60C5;&#x51B5;;&#x4E0B;&#x4E0D;&#x63A8;&#x8350;&#x4F7F;&#x7528;&#x3002;&#x7EDD;&#x5927;&#x591A;&#x6570;&#x5E94;&#x7528;&#x573A;&#x666F;&#xFF0C;&#x6211;&#x4EEC;&#x90FD;&#x53EF;&#x4EE5;&#x7528;Flink&#x63D0;&#x4F9B;&#x7684;&#x7B97;&#x5B50;&#x6216;&#x8005;&#x81EA;&#x5B9A;&#x4E49;&#x6258;&#x7BA1;&#x72B6;&#x6001;&#x6765;&#x5B9E;&#x73B0;&#x9700;&#x6C42;&#x3002;</p>
+</li>
+<li><p><strong>&#x7B97;&#x5B50;&#x72B6;&#x6001;(Operator State) &#x548C; &#x6309;&#x952E;&#x5206;&#x533A;&#x72B6;&#x6001;(Keyed State)</strong></p>
+<p>&#x63A5;&#x4E0B;&#x6765;&#x6211;&#x4EEC;&#x7684;&#x91CD;&#x70B9;&#x5C31;&#x662F;&#x6258;&#x7BA1;&#x72B6;&#x6001;( Managed State)&#x3002;</p>
+<p><strong>&#x6211;&#x4EEC;&#x77E5;&#x9053;&#x5728;Flink&#x4E2D;&#xFF0C;&#x4E00;&#x4E2A;&#x7B97;&#x5B50;&#x4EFB;&#x52A1;&#x4F1A;&#x6309;&#x7167;&#x5E76;&#x884C;&#x5EA6;&#x5206;&#x4E3A;&#x591A;&#x4E2A;&#x5E76;&#x884C;&#x5B50;&#x4EFB;&#x52A1;&#x6267;&#x884C;&#xFF0C;&#x800C;&#x4E0D;&#x540C;&#x7684;&#x5B50;&#x4EFB;&#x52A1;&#x4F1A;&#x5360;&#x636E;&#x4E0D;&#x540C;&#x7684;&#x4EFB;&#x52A1;&#x69FD;(taskslot)&#x3002;&#x7531;&#x4E8E;&#x4E0D;&#x540C;&#x7684;slot&#x5728;&#x8BA1;&#x7B97;&#x8D44;&#x6E90;&#x4E0A;&#x662F;&#x7269;&#x7406;&#x9694;&#x79BB;&#x7684;&#xFF0C;&#x6240;&#x4EE5;Flink&#x80FD;&#x7BA1;&#x7406;&#x7684;&#x72B6;&#x6001;&#x5728;&#x5E76;&#x884C;&#x4EFB;&#x52A1;&#x95F4;&#x662F;&#x65E0;&#x6CD5;&#x5171;&#x4EAB;&#x7684;&#xFF0C;&#x6BCF;&#x4E2A;&#x72B6;&#x6001;&#x53EA;&#x80FD;&#x9488;&#x5BF9;&#x5F53;&#x524D;&#x5B50;&#x4EFB;&#x52A1;&#x7684;&#x5B9E;&#x4F8B;&#x6709;&#x6548;</strong></p>
+<p><strong>&#x800C;&#x5F88;&#x591A;&#x6709;&#x72B6;&#x6001;&#x7684;&#x64CD;&#x4F5C;(&#x6BD4;&#x5982;&#x805A;&#x5408;&#x3001;&#x7A97;&#x53E3;)&#x90FD;&#x662F;&#x8981;&#x5148;&#x505A;keyBy &#x8FDB;&#x884C;&#x6309;&#x952E;&#x5206;&#x533A;&#x7684;&#x3002;&#x6309;&#x952E;&#x5206;&#x533A;&#x4E4B;&#x540E;&#xFF0C;&#x4EFB;&#x52A1;&#x6240;&#x8FDB;&#x884C;&#x7684;&#x6240;&#x6709;&#x8BA1;&#x7B97;&#x90FD;&#x5E94;&#x8BE5;&#x53EA;&#x9488;&#x5BF9;&#x5F53;&#x524D;key&#x6709;&#x6548;,&#x6240;&#x4EE5;&#x72B6;&#x6001;&#x4E5F;&#x5E94;&#x8BE5;&#x6309;&#x7167;key&#x5F7C;&#x6B64;&#x9694;&#x79BB;&#x3002;&#x5728;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x72B6;&#x6001;&#x7684;&#x8BBF;&#x95EE;&#x65B9;&#x5F0F;&#x53C8;&#x4F1A;&#x6709;&#x6240;&#x4E0D;&#x540C;</strong>
+&#x57FA;&#x4E8E;&#x8FD9;&#x6837;&#x7684;&#x60F3;&#x6CD5;&#xFF0C;&#x6211;&#x4EEC;&#x53C8;&#x53EF;&#x4EE5;&#x5C06;&#x6258;&#x7BA1;&#x72B6;&#x6001;&#x5206;&#x4E3A;&#x4E24;&#x7C7B;:&#x7B97;&#x5B50;&#x72B6;&#x6001;&#x548C;&#x6309;&#x952E;&#x5206;&#x533A;&#x72B6;&#x6001;&#x3002;</p>
+<ul>
+<li><p><strong>&#x7B97;&#x5B50;&#x72B6;&#x6001;(Operator State)</strong>
+&#x72B6;&#x6001;&#x4F5C;&#x7528;&#x8303;&#x56F4;&#x9650;&#x5B9A;&#x4E3A;&#x5F53;&#x524D;&#x7684;&#x7B97;&#x5B50;&#x4EFB;&#x52A1;&#x5B9E;&#x4F8B;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x53EA;&#x5BF9;&#x5F53;&#x524D;&#x5E76;&#x884C;&#x5B50;&#x4EFB;&#x52A1;&#x5B9E;&#x4F8B;&#x6709;&#x6548;&#x3002;&#x8FD9;&#x5C31;&#x610F;&#x5473;&#x7740;&#x5BF9;&#x4E8E;&#x4E00;&#x4E2A;&#x5E76;&#x884C;&#x5B50;&#x4EFB;&#x52A1;&#xFF0C;&#x5360;&#x636E;&#x4E86;&#x4E00;&#x4E2A;&#x201C;&#x5206;&#x533A;&#x201D;&#xFF0C;&#x5B83;&#x6240;&#x5904;&#x7406;&#x7684;&#x6240;&#x6709;&#x6570;&#x636E;&#x90FD;&#x4F1A;&#x8BBF;&#x95EE;&#x5230;&#x76F8;&#x540C;&#x7684;&#x72B6;&#x6001;&#xFF0C;&#x72B6;&#x6001;&#x5BF9;&#x4E8E;&#x540C;&#x4E00;&#x4EFB;&#x52A1;&#x800C;&#x8A00;&#x662F;&#x5171;&#x4EAB;&#x7684;&#x3002;</p>
+<p><img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20221212215240989.png" alt="image-20221212215240989" style="zoom:50%;"></p>
+<p><strong>&#x7B97;&#x5B50;&#x72B6;&#x6001;&#x53EF;&#x4EE5;&#x7528;&#x5728;&#x6240;&#x6709;&#x7B97;&#x5B50;&#x4E0A;&#xFF0C;&#x5404;&#x4E2A;&#x7B97;&#x5B50;&#x7684;&#x7B97;&#x5B50;&#x72B6;&#x6001;&#x72EC;&#x7ACB;&#x53D8;&#x5316;&#x3001;&#x4E92;&#x4E0D;&#x5E72;&#x6270;&#xFF0C;&#x4F7F;&#x7528;&#x7684;&#x65F6;&#x5019;&#x5176;&#x5B9E;&#x5C31;&#x8DDF;&#x4E00;&#x4E2A;&#x672C;&#x5730;&#x53D8;&#x91CF;&#x6CA1;&#x4EC0;&#x4E48;&#x533A;&#x522B;</strong>&#x2014;&#x2014;&#x56E0;&#x4E3A;&#x672C;&#x5730;&#x53D8;&#x91CF;&#x7684;&#x4F5C;&#x7528;&#x57DF;&#x4E5F;&#x662F;&#x5F53;&#x524D;&#x4EFB;&#x52A1;&#x5B9E;&#x4F8B;&#x3002;&#x5728;&#x4F7F;&#x7528;&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x8FD8;&#x9700;&#x8981;&#x8FDB;&#x4E00;&#x6B65;&#x5B9E;&#x73B0;CheckpointedFunction&#x63A5;&#x53E3;&#x3002;</p>
+<p><strong>&#x4E00;&#x4E2A;&#x7B97;&#x5B50;&#x53EF;&#x80FD;&#x5904;&#x7406; &#x591A;&#x4E2A;&#x6570;&#x636E;&#xFF0C;&#x90A3;&#x4E48;&#x8BE5;&#x7B97;&#x5B50;&#x4E0A;&#x7684;&#x7B97;&#x5B50;&#x72B6;&#x6001; &#x5C31;&#x662F;&#x5BF9;&#x6240;&#x6709;&#x8FD9;&#x4E9B;&#x6570;&#x636E;&#x53EF;&#x89C1;&#x3001;&#x53EF;&#x7528;&#x7684;</strong></p>
+</li>
+<li><p><strong><font style="color:red">&#x6309;&#x952E;&#x5206;&#x533A;&#x72B6;&#x6001;(Keyed State)</font></strong></p>
+<p>&#x72B6;&#x6001;&#x662F;&#x6839;&#x636E;&#x8F93;&#x5165;&#x6D41;&#x4E2D;&#x5B9A;&#x4E49;&#x7684;key&#x6765;&#x7EF4;&#x62A4;&#x548C;&#x8BBF;&#x95EE;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x53EA;&#x80FD;&#x5B9A;&#x4E49;KeyedStream&#x4E2D;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;keyBy&#x4E4B;&#x540E;&#x624D;&#x80FD;&#x4F7F;&#x7528;&#x3002;</p>
+<p><img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20221212215956532.png" alt="image-20221212215956532" style="zoom:50%;"><strong>&#x6309;&#x952E;&#x5206;&#x533A;&#x72B6;&#x6001;&#x5E94;&#x7528;&#x975E;&#x5E38;&#x5E7F;&#x6CDB;&#x3002;&#x4E4B;&#x524D;&#x8BB2;&#x5230;&#x7684;&#x805A;&#x5408;&#x7B97;&#x5B50;&#x5FC5;&#x987B;&#x5728;keyBy &#x4E4B;&#x540E;&#x624D;&#x80FD;&#x4F7F;&#x7528;&#xFF0C;&#x5C31;&#x662F;&#x56E0;&#x4E3A;&#x805A;&#x5408;&#x7684;&#x7ED3;&#x679C;&#x662F;&#x4EE5;Keyed State &#x7684;&#x5F62;&#x5F0F;&#x4FDD;&#x5B58;&#x7684;&#x3002;&#x53E6;&#x5916;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5BCC;&#x51FD;&#x6570;&#x7C7B;(Rich Function)&#x6765;&#x81EA;&#x5B9A;&#x4E49;Keyed State&#xFF0C;&#x6240;&#x4EE5;&#x53EA;&#x8981;&#x63D0;&#x4F9B;&#x4E86;&#x5BCC;&#x51FD;&#x6570;&#x7C7B;&#x63A5;&#x53E3;&#x7684;&#x7B97;&#x5B50;&#xFF0C;&#x4E5F;&#x90FD;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;Keyed State</strong></p>
+<p>&#x6240;&#x4EE5;&#x5373;&#x4F7F;&#x662F;map&#x3001;filter &#x8FD9;&#x6837;&#x65E0;&#x72B6;&#x6001;&#x7684;&#x57FA;&#x672C;&#x8F6C;&#x6362;&#x7B97;&#x5B50;&#xFF0C;&#x6211;&#x4EEC;&#x4E5F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5BCC;&#x51FD;&#x6570;&#x7C7B;&#x7ED9;&#x5B83;&#x4EEC;&#x201C;&#x8FFD;&#x52A0;&#x201D;Keyed State&#xFF0C;&#x6216;&#x8005;&#x5B9E;&#x73B0;CheckpointedFunction&#x63A5;&#x53E3;&#x6765;&#x5B9A;&#x4E49;Operator State;&#x4ECE;&#x8FD9;&#x4E2A;&#x89D2;&#x5EA6;&#x8BB2;,Flink&#x4E2D;&#x6240;&#x6709;&#x7684;&#x7B97;&#x5B50;&#x90FD;&#x53EF;&#x4EE5;&#x662F;&#x6709;&#x72B6;&#x6001;&#x7684;&#xFF0C;&#x4E0D;&#x6127;&#x662F;&#x201C;&#x6709;&#x72B6;&#x6001;&#x7684;&#x6D41;&#x5904;&#x7406;&#x201D;&#x3002;</p>
+</li>
+</ul>
+</li>
+</ol>
+<h4 id="&#x6309;&#x952E;&#x5206;&#x533A;&#x72B6;&#x6001;keyed-state"><font style="color:red">&#x6309;&#x952E;&#x5206;&#x533A;&#x72B6;&#x6001;(Keyed State)</font></h4>
+<ul>
+<li>&#x6309;&#x952E;&#x5206;&#x533A;(keyBy)&#x4E4B;&#x540E;&#xFF0C;&#x5177;&#x6709;&#x76F8;&#x540C;key&#x7684;&#x6240;&#x6709;&#x6570;&#x636E;&#xFF0C;&#x90FD;&#x4F1A;&#x5206;&#x914D;&#x5230;&#x540C;&#x4E00;&#x4E2A;&#x5E76;&#x884C;&#x5B50;&#x4EFB;&#x52A1;&#x4E2D;;</li>
+<li>&#x5982;&#x679C;&#x5F53;&#x524D;&#x4EFB;&#x52A1;&#x5B9A;&#x4E49;&#x4E86;&#x72B6;&#x6001;&#xFF0C;Flink&#x5C31;&#x4F1A;&#x5728;&#x5F53;&#x524D;&#x5E76;&#x884C;&#x5B50;&#x4EFB;&#x52A1;&#x5B9E;&#x4F8B;&#x4E2D;&#xFF0C;&#x4E3A;&#x6BCF;&#x4E2A;key&#x7EF4;&#x62A4;&#x4E00;&#x4E2A;&#x72B6;&#x6001;&#x7684;&#x5B9E;&#x4F8B;;</li>
+<li>&#x4E8E;&#x662F;&#x5F53;&#x524D;&#x4EFB;&#x52A1;&#x5C31;&#x4F1A;&#x4E3A;&#x5206;&#x914D;&#x6765;&#x7684;&#x6240;&#x6709;&#x6570;&#x636E;&#xFF0C;&#x6309;&#x7167;key&#x7EF4;&#x62A4;&#x548C;&#x5904;&#x7406;&#x8FD9;&#x4E9B;&#x72B6;&#x6001;;</li>
+<li>&#x4E00;&#x4E2A;&#x5E76;&#x884C;&#x5B50;&#x4EFB;&#x52A1;&#x53EF;&#x80FD;&#x4F1A;&#x5904;&#x7406;&#x591A;&#x4E2A;key&#x7684;&#x6570;&#x636E;&#xFF0C;&#x5728;&#x5E95;&#x5C42;&#xFF0C;Keyed State&#x7C7B;&#x4F3C;&#x4E8E;&#x4E00;&#x4E2A;&#x5206;&#x5E03;&#x5F0F;&#x7684;&#x6620;&#x5C04;(map)&#x6570;&#x636E;&#x7ED3;&#x6784;;</li>
+<li>&#x5F53;&#x4E00;&#x6761;&#x6570;&#x636E;&#x5230;&#x6765;&#x65F6;&#xFF0C;&#x4EFB;&#x52A1;&#x5C31;&#x4F1A;&#x81EA;&#x52A8;&#x5C06;&#x72B6;&#x6001;&#x4E2D;&#x7684;&#x8BBF;&#x95EE;&#x8303;&#x56F4;&#x9650;&#x5B9A;&#x4E3A;&#x5F53;&#x524D;&#x6570;&#x636E;&#x7684;key&#xFF0C;&#x5E76;&#x4ECE;map&#x4E2D;&#x8BFB;&#x53D6;&#x51FA;&#x5176;&#x5BF9;&#x5E94;&#x7684;&#x72B6;&#x6001;&#x503C;&#x3002;&#x6B64;&#x65F6;&#x76F8;&#x540C;key&#x7684;&#x6240;&#x6709;&#x6570;&#x636E;&#x90FD;&#x4F1A;&#x8BBF;&#x95EE;&#x5230;&#x76F8;&#x540C;&#x7684;&#x72B6;&#x6001;&#xFF0C;&#x4E0D;&#x540C;key&#x7684;&#x72B6;&#x6001;&#x4E4B;&#x95F4;&#x662F;&#x5F7C;&#x6B64;&#x9694;&#x79BB;&#x7684;&#xFF1B;</li>
+<li><strong>&#x53E6;&#x5916;&#xFF0C;&#x5728;&#x5E94;&#x7528;&#x7684;&#x5E76;&#x884C;&#x5EA6;&#x6539;&#x53D8;&#x65F6;&#xFF0C;&#x72B6;&#x6001;&#x4E5F;&#x9700;&#x8981;&#x968F;&#x4E4B;&#x8FDB;&#x884C;&#x91CD;&#x7EC4;&#x3002;&#x4E0D;&#x540C;key&#x5BF9;&#x5E94;&#x7684;Keyed State&#x53EF;&#x4EE5;&#x8FDB;&#x4E00;&#x6B65;&#x7EC4;&#x6210;&#x6240;&#x8C13;&#x7684;&#x952E;&#x7EC4;(key groups)&#xFF0C;&#x6BCF;&#x4E00;&#x7EC4;&#x90FD;&#x5BF9;&#x5E94;&#x7740;&#x4E00;&#x4E2A;&#x5E76;&#x884C;&#x5B50;&#x4EFB;&#x52A1;</strong></li>
+<li><strong>&#x952E;&#x7EC4;&#x662F;Flink&#x91CD;&#x65B0;&#x5206;&#x914D;Keyed State&#x7684;&#x5355;&#x5143;&#xFF0C;&#x952E;&#x7EC4;&#x7684;&#x6570;&#x91CF;&#x5C31;&#x7B49;&#x4E8E;&#x5B9A;&#x4E49;&#x7684;&#x6700;&#x5927;&#x5E76;&#x884C;&#x5EA6;&#x3002;&#x5F53;&#x7B97;&#x5B50;&#x5E76;&#x884C;&#x5EA6;&#x53D1;&#x751F;&#x6539;&#x53D8;&#x65F6;&#xFF0C;KeyedState&#x5C31;&#x4F1A;&#x6309;&#x7167;&#x5F53;&#x524D;&#x7684;&#x5E76;&#x884C;&#x5EA6;&#x91CD;&#x65B0;&#x5E73;&#x5747;&#x5206;&#x914D;&#xFF0C;&#x4FDD;&#x8BC1;&#x8FD0;&#x884C;&#x65F6;&#x5404;&#x4E2A;&#x5B50;&#x4EFB;&#x52A1;&#x7684;&#x8D1F;&#x8F7D;&#x76F8;&#x540C;</strong></li>
+<li><strong>&#x9700;&#x8981;&#x6CE8;&#x610F;&#xFF0C;&#x4F7F;&#x7528;Keyed State&#x5FC5;&#x987B;&#x57FA;&#x4E8E;KeyedStream&#x3002;&#x6CA1;&#x6709;&#x8FDB;&#x884C;keyBy&#x5206;&#x533A;&#x7684;DataStream,&#x5373;&#x4F7F;&#x8F6C;&#x6362;&#x7B97;&#x5B50;&#x5B9E;&#x73B0;&#x4E86;&#x5BF9;&#x5E94;&#x7684;&#x5BCC;&#x51FD;&#x6570;&#x7C7B;&#xFF0C;&#x4E5F;&#x4E0D;&#x80FD;&#x901A;&#x8FC7;&#x8FD0;&#x884C;&#x65F6;&#xFF0C;&#x4E0A;&#x4E0B;&#x6587;&#x8BBF;&#x95EE;Keyed State</strong></li>
+</ul>
+<h5 id="&#x6240;&#x652F;&#x6301;&#x7684;&#x7ED3;&#x6784;&#x7C7B;&#x578B;">&#x6240;&#x652F;&#x6301;&#x7684;&#x7ED3;&#x6784;&#x7C7B;&#x578B;</h5>
+<ol>
+<li><p><strong>&#x503C;&#x72B6;&#x6001;(ValueState<t>)</t></strong></p>
+<p>&#x8BBF;&#x95EE;&#x548C;&#x66F4;&#x65B0;&#x72B6;&#x6001;:</p>
+<ul>
+<li><code>T value()</code>: &#x83B7;&#x53D6;&#x5F53;&#x524D;&#x72B6;&#x6001;&#x7684;&#x503C;</li>
+<li><code>update(T value)</code>: &#x5BF9;&#x72B6;&#x6001;&#x8FDB;&#x884C;&#x66F4;&#x65B0;&#xFF0C;&#x4F20;&#x5165;&#x7684;&#x53C2;&#x6570;value&#x5C31;&#x662F;&#x8981;&#x590D;&#x5199;&#x7684;&#x72B6;&#x6001;&#x503C;</li>
+</ul>
+<p>&#x5728;&#x5177;&#x4F53;&#x4F7F;&#x7528;&#x65F6;&#xFF0C;&#x4E3A;&#x4E86;&#x8BA9;&#x8FD0;&#x884C;&#x65F6;&#x4E0A;&#x4E0B;&#x6587;&#x6E05;&#x695A;&#x5230;&#x5E95;&#x662F;&#x54EA;&#x4E2A;&#x72B6;&#x6001;&#xFF0C;&#x6211;&#x4EEC;&#x8FD8;&#x9700;&#x8981;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&quot;&#x72B6;&#x6001;&#x63CF;&#x8FF0;&#x5668;&quot;(StateDescriptor)&#x6765;&#x63D0;&#x4F9B;&#x72B6;&#x6001;&#x7684;&#x57FA;&#x672C;&#x4FE1;&#x606F;&#x3002;&#x5982;&#x6E90;&#x7801;&#x4E2D;&#xFF0C;<code>ValueState</code>&#x7684;&#x72B6;&#x6001;&#x63CF;&#x8FF0;&#x5668;&#x6784;&#x9020;&#x65B9;&#x6CD5;&#x5982;&#x4E0B;:</p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">ValueStateDescriptor</span><span class="hljs-params">(String name, Class&lt;T&gt; typeClass)</span> </span>{
+    <span class="hljs-keyword">super</span>(name,typeClass,<span class="hljs-keyword">null</span>);
+}
+</code></pre>
+<p>&#x6709;&#x4E86;&#x8FD9;&#x4E2A;&#x63CF;&#x8FF0;&#x5668;&#xFF0C;&#x8FD0;&#x884C;&#x65F6;&#x73AF;&#x5883;&#x5C31;&#x53EF;&#x4EE5;&#x83B7;&#x53D6;&#x5230;&#x72B6;&#x6001;&#x7684;&#x63A7;&#x5236;&#x53E5;&#x67C4;(handler)&#x4E86;&#x3002;</p>
+</li>
+<li><p><strong>&#x5217;&#x8868;&#x72B6;&#x6001;(ListState)</strong></p>
+<p>&#x5C06;&#x9700;&#x8981;&#x4FDD;&#x5B58;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x4EE5;&#x5217;&#x8868;(List) &#x7684;&#x5F62;&#x5F0F;&#x7EC4;&#x7EC7;&#x8D77;&#x6765;&#x3002;&#x5728;<code>ListState&lt;T&gt;</code>&#x63A5;&#x53E3;&#x4E2D;&#x540C;&#x6837;&#x6709;&#x4E00;&#x4E2A;&#x7C7B;&#x578B;&#x53C2;&#x6570;T&#xFF0C;&#x8868;&#x793A;&#x5217;&#x8868;&#x4E2D;&#x6570;&#x636E;&#x7684;&#x7C7B;&#x578B;&#x3002;
+ListState &#x4E5F;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x7CFB;&#x5217;&#x7684;&#x65B9;&#x6CD5;&#x6765;&#x64CD;&#x4F5C;&#x72B6;&#x6001;&#xFF0C;&#x4F7F;&#x7528;&#x65B9;&#x5F0F;&#x4E0E;&#x4E00;&#x822C;&#x7684;List&#x975E;&#x5E38;&#x76F8;&#x4F3C;&#x3002;</p>
+<ul>
+<li><code>Iterable&lt;T&gt; get()</code>:&#x83B7;&#x53D6;&#x5F53;&#x524D;&#x7684;&#x5217;&#x8868;&#x72B6;&#x6001;&#xFF0C;&#x8FD4;&#x56DE;&#x7684;&#x662F;&#x4E00;&#x4E2A;&#x53EF;&#x8FED;&#x4EE3;&#x7C7B;&#x578B;Iterable<t>;</t></li>
+<li><code>update(List&lt;T&gt; values)</code>:&#x4F20;&#x5165;&#x4E00;&#x4E2A;&#x5217;&#x8868;values&#xFF0C;&#x76F4;&#x63A5;&#x5BF9;&#x72B6;&#x6001;&#x8FDB;&#x884C;&#x8986;&#x76D6;;</li>
+<li><code>add(T value)</code>:&#x5728;&#x72B6;&#x6001;&#x5217;&#x8868;&#x4E2D;&#x6DFB;&#x52A0;&#x4E00;-&#x4E2A;&#x5143;&#x7D20;value;</li>
+<li><code>addAll(List&lt;T&gt; values)</code>:&#x5411;&#x5217;&#x8868;&#x4E2D;&#x6DFB;&#x52A0;&#x591A;&#x4E2A;&#x5143;&#x7D20;&#xFF0C;&#x4EE5;&#x5217;&#x8868;values &#x5F62;&#x5F0F;&#x4F20;&#x5165;&#x3002;</li>
+</ul>
+<p>&#x7C7B;&#x4F3C;&#x5730;&#xFF0C;ListState &#x7684;&#x72B6;&#x6001;&#x63CF;&#x8FF0;&#x5668;&#x5C31;&#x53EB;&#x4F5C;ListStateDescriptor&#xFF0C; &#x7528;&#x6CD5;&#x8DDF;ValueStateDescriptor&#x5B8C;&#x5168;&#x4E00;&#x81F4;&#x3002;</p>
+</li>
+<li><p><strong>&#x6620;&#x5C04;&#x72B6;&#x6001;(MapState)</strong></p>
+<p>&#x628A;&#x4E00;&#x4E9B;&#x952E;&#x503C;&#x5BF9;(key-value) &#x4F5C;&#x4E3A;&#x72B6;&#x6001;&#x6574;&#x4F53;&#x4FDD;&#x5B58;&#x8D77;&#x6765;&#xFF0C;&#x53EF;&#x4EE5;&#x8BA4;&#x4E3A;&#x5C31;&#x662F;&#x4E00;&#x7EC4;key-value&#x6620;&#x5C04;&#x7684;&#x5217;&#x8868;&#x3002;&#x5BF9;&#x5E94;&#x7684;MapState<uk, uv="">&#x63A5;&#x53E3;&#x4E2D;&#xFF0C;&#x5C31;&#x4F1A;&#x6709;UK&#x3001;UV&#x4E24;&#x4E2A;&#x6CDB;&#x578B;&#xFF0C;&#x5206;&#x522B;&#x8868;&#x793A;&#x4FDD;&#x5B58;&#x7684;key&#x548C;value&#x7684;&#x7C7B;&#x578B;&#x3002;&#x540C;&#x6837;&#xFF0C;MapState &#x63D0;&#x4F9B;&#x4E86;&#x64CD;&#x4F5C;&#x6620;&#x5C04;&#x72B6;&#x6001;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x4E0E;Map&#x7684;&#x4F7F;&#x7528;&#x975E;&#x5E38;&#x7C7B;&#x4F3C;&#x3002;</uk,></p>
+<ul>
+<li><code>UV get(UK key)</code>:&#x4F20;&#x5165;&#x4E00;&#x4E2A;key&#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#xFF0C;&#x67E5;&#x8BE2;&#x5BF9;&#x5E94;&#x7684;value&#x503C;;</li>
+<li>put(UK key, UV value):&#x4F20;&#x5165;&#x4E00;&#x4E2A;&#x952E;&#x503C;&#x5BF9;&#xFF0C; &#x66F4;&#x65B0;key&#x5BF9;&#x5E94;&#x7684;value&#x503C;;</li>
+<li><code>putAll(Map&lt;UK, UV&gt; map)</code>:&#x5C06;&#x4F20;&#x5165;&#x7684;&#x6620;&#x5C04;map&#x4E2D;&#x6240;&#x6709;&#x7684;&#x952E;&#x503C;&#x5BF9;&#xFF0C;&#x5168;&#x90E8;&#x6DFB;&#x52A0;&#x5230;&#x6620;&#x5C04;&#x72B6;
+&#x6001;&#x4E2D;;</li>
+<li><code>remove(UK key)</code>:&#x5C06;&#x6307;&#x5B9A;key&#x5BF9;&#x5E94;&#x7684;&#x952E;&#x503C;&#x5BF9;&#x5220;&#x9664;;</li>
+<li><code>boolean contains(UK key)</code>:&#x5224;&#x65AD;&#x662F;&#x5426;&#x5B58;&#x5728;&#x6307;&#x5B9A;&#x7684;key,&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;boolean&#x503C;&#x3002;</li>
+</ul>
+<p>&#x53E6;&#x5916;&#xFF0C;MapState &#x4E5F;&#x63D0;&#x4F9B;&#x4E86;&#x83B7;&#x53D6;&#x6574;&#x4E2A;&#x6620;&#x5C04;&#x76F8;&#x5173;&#x4FE1;&#x606F;&#x7684;&#x65B9;&#x6CD5;:</p>
+<ul>
+<li><code>Iterable&lt;Map.Entry&lt;UK, UV&gt;&gt; entries()</code>: &#x83B7;&#x53D6;&#x6620;&#x5C04;&#x72B6;&#x6001;&#x4E2D;&#x6240;&#x6709;&#x7684;&#x952E;&#x503C;&#x5BF9;; .</li>
+<li><code>Iterable&lt;UK&gt; keys()</code>: &#x83B7;&#x53D6;&#x6620;&#x5C04;&#x72B6;&#x6001;&#x4E2D;&#x6240;&#x6709;&#x7684;&#x952E;(key),&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x53EF;&#x8FED;&#x4EE3;Iterable&#x7C7B;&#x578B;;</li>
+<li><code>Iterable&lt;UV&gt; values()</code>: &#x83B7;&#x53D6;&#x6620;&#x5C04;&#x72B6;&#x6001;&#x4E2D;&#x6240;&#x6709;&#x7684;&#x503C;(value)&#xFF0C; &#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x53EF;&#x8FED;&#x4EE3;Iterable&#x7C7B;&#x578B;;</li>
+<li><code>boolean isEmpty()</code>: &#x5224;&#x65AD;&#x6620;&#x5C04;&#x662F;&#x5426;&#x4E3A;&#x7A7A;&#xFF0C;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;boolean&#x503C;;</li>
+</ul>
+</li>
+<li><p><strong>&#x5F52;&#x7EA6;&#x72B6;&#x6001;ReducingState</strong></p>
+<p>&#x7C7B;&#x4F3C;&#x4E8E;&#x503C;&#x72B6;&#x6001;(Value),&#x4E0D;&#x8FC7;&#x9700;&#x8981;&#x5BF9;&#x6DFB;&#x52A0;&#x8FDB;&#x6765;&#x7684;&#x6240;&#x6709;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x5F52;&#x7EA6;&#xFF0C;&#x5C06;&#x5F52;&#x7EA6;&#x805A;&#x5408;&#x4E4B;&#x540E;&#x7684;&#x503C;&#x4F5C;&#x4E3A;&#x72B6;&#x6001;&#x4FDD;&#x5B58;&#x4E0B;&#x6765;&#x3002;</p>
+<p><code>ReducintState&lt;T&gt;</code>&#x8FD9;&#x4E2A;&#x63A5;&#x53E3;&#x8C03;&#x7528;&#x7684;&#x65B9;&#x6CD5;&#x7C7B;&#x4F3C;&#x4E8E;<code>ListState</code>&#xFF0C; &#x53EA;&#x4E0D;&#x8FC7;&#x5B83;&#x4FDD;&#x5B58;&#x7684;&#x53EA;&#x662F;&#x4E00;&#x4E2A;&#x805A;&#x5408;&#x503C;&#xFF0C;&#x6240;&#x4EE5;&#x8C03;&#x7528;<code>.add()</code>&#x65B9;&#x6CD5;&#x65F6;&#xFF0C;&#x4E0D;&#x662F;&#x5728;&#x72B6;&#x6001;&#x5217;&#x8868;&#x91CC;&#x6DFB;&#x52A0;&#x5143;&#x7D20;&#xFF0C;&#x800C;&#x662F;&#x76F4;&#x63A5;&#x628A;&#x65B0;&#x6570;&#x636E;&#x548C;&#x4E4B;&#x524D;&#x7684;&#x72B6;&#x6001;&#x8FDB;&#x884C;&#x5F52;&#x7EA6;&#xFF0C;&#x5E76;&#x7528;&#x5F97;&#x5230;&#x7684;&#x7ED3;&#x679C;&#x66F4;&#x65B0;&#x72B6;&#x6001;&#x3002;</p>
+<p>&#x5F52;&#x7EA6;&#x903B;&#x8F91;&#x7684;&#x5B9A;&#x4E49;&#xFF0C;&#x662F;&#x5728;&#x5F52;&#x7EA6;&#x72B6;&#x6001;&#x63CF;&#x8FF0;&#x5668;(ReducingStateDescriptor)&#x4E2D;&#xFF0C;&#x901A;&#x8FC7;&#x4F20;&#x5165;&#x4E00;&#x4E2A;&#x5F52;&#x7EA6;&#x51FD;&#x6570;(<code>ReduceFunction</code>)&#x6765;&#x5B9E;&#x73B0;&#x7684;&#x3002;
+&#x8FD9;&#x91CC;&#x7684;&#x5F52;&#x7EA6;&#x51FD;&#x6570;&#xFF0C;&#x5C31;&#x662F;&#x6211;&#x4EEC;&#x4E4B;&#x524D;&#x4ECB;&#x7ECD;reduce&#x805A;&#x5408;&#x7B97;&#x5B50;&#x65F6;&#x8BB2;&#x5230;&#x7684;ReduceFunction&#xFF0C;&#x6240;&#x4EE5;&#x72B6;&#x6001;&#x7C7B;&#x578B;&#x8DDF;&#x8F93;&#x5165;&#x7684;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x662F;&#x4E00;&#x6837;&#x7684;&#x3002;</p>
+<pre><code>public ReducingStateDescriptor (
+String name, ReduceFunction&lt;T&gt; reduceFunction, Class&lt;T&gt; typeClass) {. . .}
+</code></pre><p>&#x8FD9;&#x91CC;&#x7684;&#x63CF;&#x8FF0;&#x5668;&#x6709;&#x4E09;&#x4E2A;&#x53C2;&#x6570;&#xFF0C;&#x5176;&#x4E2D;&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;&#x5C31;&#x662F;&#x5B9A;&#x4E49;&#x4E86;&#x5F52;&#x7EA6;&#x805A;&#x5408;&#x903B;&#x8F91;&#x7684;<code>ReduceFunction</code>,&#x53E6;&#x5916;&#x4E24;&#x4E2A;&#x53C2;&#x6570;&#x5219;&#x662F;&#x72B6;&#x6001;&#x7684;&#x540D;&#x79F0;&#x548C;&#x7C7B;&#x578B;&#x3002;</p>
+</li>
+<li><p><strong>&#x805A;&#x5408;&#x72B6;&#x6001;(AggregatingState)</strong></p>
+<p>&#x4E0E;&#x5F52;&#x7EA6;&#x72B6;&#x6001;&#x975E;&#x5E38;&#x7C7B;&#x4F3C;&#xFF0C;&#x805A;&#x5408;&#x72B6;&#x6001;&#x4E5F;&#x662F;&#x4E00;&#x4E2A;&#x503C;&#xFF0C;&#x7528;&#x6765;&#x4FDD;&#x5B58;&#x6DFB;&#x52A0;&#x8FDB;&#x6765;&#x7684;&#x6240;&#x6709;&#x6570;&#x636E;&#x7684;&#x805A;&#x5408;&#x7ED3;&#x679C;&#x3002;</p>
+<p>&#x4E0E;<code>ReducingState</code>&#x4E0D;&#x540C;&#x7684;&#x662F;&#xFF0C;&#x5B83;&#x7684;&#x805A;&#x5408;&#x903B;&#x8F91;&#x662F;&#x7531;&#x5728;&#x63CF;&#x8FF0;&#x5668;&#x4E2D;&#x4F20;&#x5165;&#x4E00;&#x4E2A;&#x66F4;&#x52A0;&#x4E00;&#x822C;&#x5316;&#x7684;&#x805A;&#x5408;&#x51FD;&#x6570;(<code>AggregateFunction</code>)&#x6765;&#x5B9A;&#x4E49;&#x7684;;&#x8FD9;&#x4E5F;&#x5C31;&#x662F;&#x4E4B;&#x524D;&#x6211;&#x4EEC;&#x8BB2;&#x8FC7;&#x7684;<code>AggregateFunction</code>,&#x91CC;&#x9762;&#x901A;&#x8FC7;&#x4E00;&#x4E2A;&#x7D2F;&#x52A0;&#x5668;(<code>Accumulator</code>) &#x6765;&#x8868;&#x793A;&#x72B6;&#x6001;&#xFF0C;&#x6240;&#x4EE5;&#x805A;&#x5408;&#x7684;&#x72B6;&#x6001;&#x7C7B;&#x578B;&#x53EF;&#x4EE5;&#x8DDF;&#x6DFB;&#x52A0;&#x8FDB;&#x6765;&#x7684;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x5B8C;&#x5168;&#x4E0D;&#x540C;&#xFF0C;&#x4F7F;&#x7528;&#x66F4;&#x52A0;&#x7075;&#x6D3B;&#x3002;</p>
+<p>&#x540C;&#x6837;&#x5730;&#xFF0C;<code>AggregatingState()</code>&#x63A5;&#x53E3;&#x8C03;&#x7528;&#x65B9;&#x6CD5;&#x4E5F;&#x4E0E;<code>ReducingState</code>&#x76F8;&#x540C;&#xFF0C;&#x8C03;&#x7528;<code>.add)</code>&#x65B9;&#x6CD5;&#x6DFB;&#x52A0;&#x5143;&#x7D20;&#x65F6;&#xFF0C;&#x4F1A;&#x76F4;&#x63A5;&#x4F7F;&#x7528;&#x6307;&#x5B9A;&#x7684;<code>AggregateFunction</code>&#x8FDB;&#x884C;&#x805A;&#x5408;&#x5E76;&#x66F4;&#x65B0;&#x72B6;&#x6001;&#x3002;</p>
+</li>
+</ol>
+<p>&#x7B80;&#x5355;&#x4F7F;&#x7528;&#x793A;&#x4F8B;:</p>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> com.luke.flink.datastreamdemo;
+
+<span class="hljs-keyword">import</span> java.time.Duration;
+
+<span class="hljs-keyword">import</span> org.apache.flink.api.common.eventtime.SerializableTimestampAssigner;
+<span class="hljs-keyword">import</span> org.apache.flink.api.common.eventtime.WatermarkStrategy;
+<span class="hljs-keyword">import</span> org.apache.flink.api.common.functions.AggregateFunction;
+<span class="hljs-keyword">import</span> org.apache.flink.api.common.functions.ReduceFunction;
+<span class="hljs-keyword">import</span> org.apache.flink.api.common.functions.RichFlatMapFunction;
+<span class="hljs-keyword">import</span> org.apache.flink.api.common.state.AggregatingState;
+<span class="hljs-keyword">import</span> org.apache.flink.api.common.state.AggregatingStateDescriptor;
+<span class="hljs-keyword">import</span> org.apache.flink.api.common.state.ListState;
+<span class="hljs-keyword">import</span> org.apache.flink.api.common.state.ListStateDescriptor;
+<span class="hljs-keyword">import</span> org.apache.flink.api.common.state.MapState;
+<span class="hljs-keyword">import</span> org.apache.flink.api.common.state.MapStateDescriptor;
+<span class="hljs-keyword">import</span> org.apache.flink.api.common.state.ReducingState;
+<span class="hljs-keyword">import</span> org.apache.flink.api.common.state.ReducingStateDescriptor;
+<span class="hljs-keyword">import</span> org.apache.flink.api.common.state.ValueState;
+<span class="hljs-keyword">import</span> org.apache.flink.api.common.state.ValueStateDescriptor;
+<span class="hljs-keyword">import</span> org.apache.flink.configuration.Configuration;
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.datastream.SingleOutputStreamOperator;
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
+<span class="hljs-keyword">import</span> org.apache.flink.util.Collector;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">StateTest</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+        StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
+        env.setParallelism(<span class="hljs-number">1</span>);
+        env.getConfig().setAutoWatermarkInterval(<span class="hljs-number">100</span>); <span class="hljs-comment">// &#x548C;&#x4E0B;&#x9762;&#x7684;createWatermarkGenerator&#x6709;&#x5173;&#x7CFB; ,100&#x6BEB;&#x79D2;&#x751F;&#x6210;watermark</span>
+
+        SingleOutputStreamOperator&lt;Event&gt; stream = env.addSource(<span class="hljs-keyword">new</span> ClickLogs())
+                <span class="hljs-comment">// &#x4E71;&#x5E8F;&#x6D41;&#x7684;watermark&#x751F;&#x6210;</span>
+                .assignTimestampsAndWatermarks(WatermarkStrategy.&lt;Event&gt;forBoundedOutOfOrderness(Duration.ZERO)
+                        .withTimestampAssigner(<span class="hljs-keyword">new</span> SerializableTimestampAssigner&lt;Event&gt;() {
+                            <span class="hljs-meta">@Override</span>
+                            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">long</span> <span class="hljs-title">extractTimestamp</span><span class="hljs-params">(Event element, <span class="hljs-keyword">long</span> recordTimestamp)</span> </span>{
+                                <span class="hljs-keyword">return</span> element.timestamp;
+                            }
+                        }));
+
+        stream.keyBy(data -&gt; data.user)
+                .flatMap(<span class="hljs-keyword">new</span> MyFlatFunc())
+                .print();
+
+        env.execute();
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyFlatFunc</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">RichFlatMapFunction</span>&lt;<span class="hljs-title">Event</span>, <span class="hljs-title">String</span>&gt; </span>{
+        ValueState&lt;Event&gt; myValueState;
+        ListState&lt;Event&gt; myListState;
+        MapState&lt;String, Long&gt; myMapState;
+        ReducingState&lt;Event&gt; myReducingState;
+        AggregatingState&lt;Event, String&gt; myAggregatingState;
+
+        <span class="hljs-meta">@Override</span>
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">open</span><span class="hljs-params">(Configuration parameters)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+            myValueState = getRuntimeContext().getState(<span class="hljs-keyword">new</span> ValueStateDescriptor&lt;Event&gt;(<span class="hljs-string">&quot;val-state&quot;</span>, Event.class));
+            myListState = getRuntimeContext().getListState(<span class="hljs-keyword">new</span> ListStateDescriptor&lt;Event&gt;(<span class="hljs-string">&quot;list-state&quot;</span>, Event.class));
+            myMapState = getRuntimeContext()
+                    .getMapState(<span class="hljs-keyword">new</span> MapStateDescriptor&lt;String, Long&gt;(<span class="hljs-string">&quot;map-state&quot;</span>, String.class, Long.class));
+            myReducingState = getRuntimeContext()
+                    .getReducingState(<span class="hljs-keyword">new</span> ReducingStateDescriptor&lt;Event&gt;(<span class="hljs-string">&quot;reduce-state&quot;</span>, <span class="hljs-keyword">new</span> ReduceFunction&lt;Event&gt;() {
+                        <span class="hljs-meta">@Override</span>
+                        <span class="hljs-function"><span class="hljs-keyword">public</span> Event <span class="hljs-title">reduce</span><span class="hljs-params">(Event value1, Event value2)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+                            <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Event(value1.user, value1.url, value2.timestamp); <span class="hljs-comment">// &#x7B80;&#x5355;&#x7684;&#x7528;value2&#x7684;timestamp&#x6765;&#x66F4;&#x65B0;</span>
+                        }
+                    }, Event.class));
+            myAggregatingState = getRuntimeContext()
+                    .getAggregatingState(
+                            <span class="hljs-keyword">new</span> AggregatingStateDescriptor&lt;Event, Long, String&gt;(<span class="hljs-string">&quot;aggregate-state&quot;</span>,
+                                    <span class="hljs-keyword">new</span> AggregateFunction&lt;Event, Long, String&gt;() {
+                                        <span class="hljs-meta">@Override</span>
+                                        <span class="hljs-function"><span class="hljs-keyword">public</span> Long <span class="hljs-title">createAccumulator</span><span class="hljs-params">()</span> </span>{
+                                            <span class="hljs-keyword">return</span> <span class="hljs-number">0L</span>;
+                                        }
+
+                                        <span class="hljs-meta">@Override</span>
+                                        <span class="hljs-function"><span class="hljs-keyword">public</span> Long <span class="hljs-title">add</span><span class="hljs-params">(Event value, Long accumulator)</span> </span>{
+                                            <span class="hljs-keyword">return</span> accumulator + <span class="hljs-number">1</span>;
+                                        }
+
+                                        <span class="hljs-meta">@Override</span>
+                                        <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getResult</span><span class="hljs-params">(Long accumulator)</span> </span>{
+                                            <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;count: &quot;</span> + accumulator;
+                                        }
+
+                                        <span class="hljs-meta">@Override</span>
+                                        <span class="hljs-function"><span class="hljs-keyword">public</span> Long <span class="hljs-title">merge</span><span class="hljs-params">(Long a, Long b)</span> </span>{
+                                            <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
+                                        }
+
+                                    },
+                                    Long.class));
+
+        }
+
+        <span class="hljs-meta">@Override</span>
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">flatMap</span><span class="hljs-params">(Event value, Collector&lt;String&gt; out)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+            <span class="hljs-comment">// &#x8BBF;&#x95EE;&#x548C;&#x66F4;&#x65B0;&#x72B6;&#x6001;</span>
+            <span class="hljs-comment">// System.out.println(myValueState.value());</span>
+            myValueState.update(value);
+
+            myListState.add(value);
+
+            myMapState.put(value.user, myMapState.get(value.user) == <span class="hljs-keyword">null</span> ? <span class="hljs-number">1</span> : myMapState.get(value.user));
+            System.out.println(<span class="hljs-string">&quot;my map value:&quot;</span> + value.user + <span class="hljs-string">&quot; &quot;</span> + myMapState.get(value.user));
+
+            myAggregatingState.add(value);
+            System.out.println(<span class="hljs-string">&quot;my agg state: &quot;</span> + myAggregatingState.get());
+
+            myReducingState.add(value);
+            System.out.println(<span class="hljs-string">&quot;reducing state:&quot;</span> + myReducingState.get());
+        }
+    }
+}
+<span class="hljs-comment">// &#x8F93;&#x51FA;</span>
+my map value:Mary <span class="hljs-number">1</span>
+my agg state: count: <span class="hljs-number">1</span>
+reducing state:Event [user=Mary, url=./prod?id=<span class="hljs-number">100</span>, timestamp=<span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">12</span> <span class="hljs-number">22</span>:<span class="hljs-number">18</span>:<span class="hljs-number">25.71</span>]
+my map value:Bob <span class="hljs-number">1</span>
+my agg state: count: <span class="hljs-number">1</span>
+reducing state:Event [user=Bob, url=./home, timestamp=<span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">12</span> <span class="hljs-number">22</span>:<span class="hljs-number">18</span>:<span class="hljs-number">26.715</span>]
+my map value:Bob <span class="hljs-number">1</span>
+my agg state: count: <span class="hljs-number">2</span>
+reducing state:Event [user=Bob, url=./home, timestamp=<span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">12</span> <span class="hljs-number">22</span>:<span class="hljs-number">18</span>:<span class="hljs-number">27.716</span>]
+my map value:Bob <span class="hljs-number">1</span>
+my agg state: count: <span class="hljs-number">3</span>
+reducing state:Event [user=Bob, url=./home, timestamp=<span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">12</span> <span class="hljs-number">22</span>:<span class="hljs-number">18</span>:<span class="hljs-number">28.717</span>]
+my map value:Cary <span class="hljs-number">1</span>
+my agg state: count: <span class="hljs-number">1</span>
+reducing state:Event [user=Cary, url=. /home, timestamp=<span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">12</span> <span class="hljs-number">22</span>:<span class="hljs-number">18</span>:<span class="hljs-number">29.718</span>]
+my map value:Bob <span class="hljs-number">1</span>
+my agg state: count: <span class="hljs-number">4</span>
+</code></pre>
+<h5 id="valuestatet&#x4F7F;&#x7528;&#x6848;&#x4F8B;"><code>ValueState&lt;T&gt;</code>&#x4F7F;&#x7528;&#x6848;&#x4F8B;</h5>
+<ul>
+<li>&#x524D;&#x9762;&#x7684;&#x7EDF;&#x8BA1; wordCount&#x7684;&#x6848;&#x4F8B;&#x4E2D;&#xFF0C;&#x76F4;&#x63A5;&#x8C03;&#x7528;reduce&#x65B9;&#x6CD5;&#xFF0C;&#x5219;&#x6BCF;&#x6765;&#x4E00;&#x6761;&#x6570;&#x636E;&#x90FD;&#x6253;&#x5370;&#x4E00;&#x6B21;&#x7ED3;&#x679C;&#xFF0C;&#x8F93;&#x51FA;&#x7ED3;&#x679C;&#x592A;&#x591A;&#x4E86;&#xFF1B;</li>
+<li>&#x6211;&#x4EEC;&#x60F3;&#x8981;&#x7684;&#x662F; &#x9694;&#x65AD;&#x65F6;&#x95F4;&#x6253;&#x5370;&#x4E00;&#x4E2A;&#x7ED3;&#x679C;&#xFF0C;&#x77E5;&#x9053;&#x76F8;&#x5173;&#x8FDB;&#x5EA6;</li>
+<li>&#x80FD;&#x5426;&#x4F7F;&#x7528;window&#x6765;&#x5B8C;&#x6210;&#x5462;&#xFF1F;<strong><font style="color:red">window&#x53EA;&#x80FD;&#x7EDF;&#x8BA1; window&#x8FD9;&#x4E2A;&#x7A97;&#x53E3;&#x65F6;&#x95F4;&#x8303;&#x56F4;&#x5185;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x5168;&#x91CF;&#x6570;&#x636E;</font></strong></li>
+<li><strong><font style="color:red">&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x901A;&#x8FC7; &#x5468;&#x671F;&#x5B9A;&#x65F6;&#x5668; &#x6765;&#x5B8C;&#x6210;</font></strong></li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> com.luke.flink.datastreamdemo;
+
+<span class="hljs-keyword">import</span> java.time.Duration;
+
+<span class="hljs-keyword">import</span> org.apache.flink.api.common.eventtime.SerializableTimestampAssigner;
+<span class="hljs-keyword">import</span> org.apache.flink.api.common.eventtime.WatermarkStrategy;
+<span class="hljs-keyword">import</span> org.apache.flink.api.common.state.ValueState;
+<span class="hljs-keyword">import</span> org.apache.flink.api.common.state.ValueStateDescriptor;
+<span class="hljs-keyword">import</span> org.apache.flink.configuration.Configuration;
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.datastream.SingleOutputStreamOperator;
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.functions.KeyedProcessFunction;
+<span class="hljs-keyword">import</span> org.apache.flink.util.Collector;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">StatePeriodicPvExample</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+        StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
+        env.setParallelism(<span class="hljs-number">1</span>);
+        env.getConfig().setAutoWatermarkInterval(<span class="hljs-number">100</span>); <span class="hljs-comment">// &#x548C;&#x4E0B;&#x9762;&#x7684;createWatermarkGenerator&#x6709;&#x5173;&#x7CFB; ,100&#x6BEB;&#x79D2;&#x751F;&#x6210;watermark</span>
+
+        SingleOutputStreamOperator&lt;Event&gt; stream = env.addSource(<span class="hljs-keyword">new</span> ClickLogs())
+                <span class="hljs-comment">// &#x4E71;&#x5E8F;&#x6D41;&#x7684;watermark&#x751F;&#x6210;</span>
+                .assignTimestampsAndWatermarks(WatermarkStrategy.&lt;Event&gt;forBoundedOutOfOrderness(Duration.ZERO)
+                        .withTimestampAssigner(<span class="hljs-keyword">new</span> SerializableTimestampAssigner&lt;Event&gt;() {
+                            <span class="hljs-meta">@Override</span>
+                            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">long</span> <span class="hljs-title">extractTimestamp</span><span class="hljs-params">(Event element, <span class="hljs-keyword">long</span> recordTimestamp)</span> </span>{
+                                <span class="hljs-keyword">return</span> element.timestamp;
+                            }
+                        }));
+
+        <span class="hljs-comment">// &#x7EDF;&#x8BA1;&#x6BCF;&#x4E2A;&#x7528;&#x6237;&#x7684;pv,&#x4E5F;&#x5C31;&#x662F;&#x6BCF;&#x4E2A;&#x7528;&#x6237;&#x4ECE;&#x6700;&#x5F00;&#x59CB;&#x8BBF;&#x95EE;&#x4E86;&#x591A;&#x5C11;&#x9875;&#x9762;</span>
+        stream.keyBy(data -&gt; data.user)
+                .process(<span class="hljs-keyword">new</span> PeriodicPvEvent()).print();
+
+        env.execute();
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PeriodicPvEvent</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">KeyedProcessFunction</span>&lt;<span class="hljs-title">String</span>, <span class="hljs-title">Event</span>, <span class="hljs-title">String</span>&gt; </span>{
+        <span class="hljs-comment">// &#x5B9A;&#x4E49;&#x72B6;&#x6001;,&#x4FDD;&#x5B58;&#x5F53;&#x524D;&#x7684;pv&#x7EDF;&#x8BA1;&#x503C;</span>
+        ValueState&lt;Long&gt; countState;
+        ValueState&lt;Long&gt; timerState;
+
+        <span class="hljs-meta">@Override</span>
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">open</span><span class="hljs-params">(Configuration parameters)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+            countState = getRuntimeContext().getState(<span class="hljs-keyword">new</span> ValueStateDescriptor&lt;Long&gt;(<span class="hljs-string">&quot;count&quot;</span>, Long.class));
+            timerState = getRuntimeContext().getState(<span class="hljs-keyword">new</span> ValueStateDescriptor&lt;Long&gt;(<span class="hljs-string">&quot;timer&quot;</span>, Long.class));
+        }
+
+        <span class="hljs-meta">@Override</span>
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">processElement</span><span class="hljs-params">(Event value, KeyedProcessFunction&lt;String, Event, String&gt;.Context ctx,
+                Collector&lt;String&gt; out)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+            <span class="hljs-comment">// &#x6BCF;&#x6765;&#x4E00;&#x6761;&#x6570;&#x636E;,&#x66F4;&#x65B0;&#x5BF9;&#x5E94;&#x7684;count&#x503C;</span>
+            Long count = countState.value();
+            countState.update(count == <span class="hljs-keyword">null</span> ? <span class="hljs-number">1</span> : count + <span class="hljs-number">1</span>);
+
+            <span class="hljs-comment">// &#x5982;&#x679C;&#x6CA1;&#x6CE8;&#x518C;&#x8FC7;&#x5B9A;&#x65F6;&#x5668;,&#x5219;&#x6CE8;&#x518C;</span>
+            <span class="hljs-keyword">if</span> (timerState.value() == <span class="hljs-keyword">null</span>) {
+                ctx.timerService().registerEventTimeTimer(value.timestamp + <span class="hljs-number">10</span> * <span class="hljs-number">1000L</span>);
+                timerState.update(value.timestamp + <span class="hljs-number">10</span> * <span class="hljs-number">1000L</span>);
+            }
+        }
+
+        <span class="hljs-meta">@Override</span>
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onTimer</span><span class="hljs-params">(<span class="hljs-keyword">long</span> timestamp, KeyedProcessFunction&lt;String, Event, String&gt;.OnTimerContext ctx,
+                Collector&lt;String&gt; out)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+            out.collect(ctx.getCurrentKey() + <span class="hljs-string">&quot; pv count: &quot;</span> + countState.value());
+            <span class="hljs-comment">// &#x6E05;&#x7A7A;&#x72B6;&#x6001;</span>
+            timerState.clear();
+            <span class="hljs-comment">// &#x4E0D;&#x80FD;&#x6E05;&#x7A7A; countState,&#x5426;&#x5219;&#x5C31;&#x548C; window&#x7ED3;&#x679C;&#x4E00;&#x6837;&#x4E86;</span>
+        }
+    }
+}
+<span class="hljs-comment">//&#x7ED3;&#x679C;</span>
+Alice pv count: <span class="hljs-number">3</span>
+Bob pv count: <span class="hljs-number">2</span>
+Cary pv count: <span class="hljs-number">5</span>
+Mary pv count: <span class="hljs-number">2</span>
+Alice pv count: <span class="hljs-number">5</span>
+Bob pv count: <span class="hljs-number">6</span>
+Cary pv count: <span class="hljs-number">9</span>
+Mary pv count: <span class="hljs-number">5</span>
+Bob pv count: <span class="hljs-number">8</span>
+Alice pv count: <span class="hljs-number">7</span>
+Mary pv count: <span class="hljs-number">11</span>
+</code></pre>
+<h4 id="liststate-&#x4F7F;&#x7528;&#x6848;&#x4F8B;">ListState &#x4F7F;&#x7528;&#x6848;&#x4F8B;</h4>
+<p>&#x4F7F;&#x7528;ListState&#x6765;&#x5B9E;&#x73B0;<code>SELECT * FROM A INNER JOIN B WHERE A.id=B.id</code></p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">StateTwoStreamJoinExample</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+        StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
+        env.setParallelism(<span class="hljs-number">1</span>);
+
+        SingleOutputStreamOperator&lt;Tuple3&lt;String, String, Long&gt;&gt; stream1 = env.fromElements(
+                Tuple3.of(<span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-string">&quot;stream-1&quot;</span>, <span class="hljs-number">1000L</span>),
+                Tuple3.of(<span class="hljs-string">&quot;b&quot;</span>, <span class="hljs-string">&quot;stream-1&quot;</span>, <span class="hljs-number">2000L</span>),
+                Tuple3.of(<span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-string">&quot;stream-1&quot;</span>, <span class="hljs-number">3000L</span>))
+                .assignTimestampsAndWatermarks(WatermarkStrategy
+                        .&lt;Tuple3&lt;String, String, Long&gt;&gt;forBoundedOutOfOrderness(Duration.ZERO)
+                        .withTimestampAssigner(<span class="hljs-keyword">new</span> SerializableTimestampAssigner&lt;Tuple3&lt;String, String, Long&gt;&gt;() {
+                            <span class="hljs-meta">@Override</span>
+                            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">long</span> <span class="hljs-title">extractTimestamp</span><span class="hljs-params">(Tuple3&lt;String, String, Long&gt; element, <span class="hljs-keyword">long</span> recordTimestamp)</span> </span>{
+                                <span class="hljs-keyword">return</span> element.f2;
+                            }
+                        }));
+
+        SingleOutputStreamOperator&lt;Tuple3&lt;String, String, Long&gt;&gt; stream2 = env.fromElements(
+                Tuple3.of(<span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-string">&quot;stream-2&quot;</span>, <span class="hljs-number">3000L</span>),
+                Tuple3.of(<span class="hljs-string">&quot;b&quot;</span>, <span class="hljs-string">&quot;stream-3&quot;</span>, <span class="hljs-number">4000L</span>),
+                Tuple3.of(<span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-string">&quot;stream-1&quot;</span>, <span class="hljs-number">6000L</span>))
+                .assignTimestampsAndWatermarks(WatermarkStrategy
+                        .&lt;Tuple3&lt;String, String, Long&gt;&gt;forBoundedOutOfOrderness(Duration.ZERO)
+                        .withTimestampAssigner(<span class="hljs-keyword">new</span> SerializableTimestampAssigner&lt;Tuple3&lt;String, String, Long&gt;&gt;() {
+                            <span class="hljs-meta">@Override</span>
+                            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">long</span> <span class="hljs-title">extractTimestamp</span><span class="hljs-params">(Tuple3&lt;String, String, Long&gt; element, <span class="hljs-keyword">long</span> recordTimestamp)</span> </span>{
+                                <span class="hljs-keyword">return</span> element.f2;
+                            }
+                        }));
+        <span class="hljs-comment">// &#x81EA;&#x5B9A;&#x4E49;&#x5217;&#x8868;&#x72B6;&#x6001;&#x8FDB;&#x884C; &#x5168;&#x5916;&#x8FDE;&#x63A5;</span>
+        stream1.keyBy(data -&gt; data.f0)
+                .connect(stream2.keyBy(data -&gt; data.f0))
+                .process(<span class="hljs-keyword">new</span> CoProcessFunction&lt;Tuple3&lt;String, String, Long&gt;, Tuple3&lt;String, String, Long&gt;, String&gt;() {
+                    ListState&lt;Tuple2&lt;String, Long&gt;&gt; list01;
+                    ListState&lt;Tuple2&lt;String, Long&gt;&gt; list02;
+
+                    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">open</span><span class="hljs-params">(org.apache.flink.configuration.Configuration parameters)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+                        list01 = getRuntimeContext().getListState(<span class="hljs-keyword">new</span> ListStateDescriptor&lt;Tuple2&lt;String, Long&gt;&gt;(
+                                <span class="hljs-string">&quot;stream1-list&quot;</span>, Types.TUPLE(Types.STRING, Types.LONG)));
+                        list02 = getRuntimeContext().getListState(<span class="hljs-keyword">new</span> ListStateDescriptor&lt;Tuple2&lt;String, Long&gt;&gt;(
+                                <span class="hljs-string">&quot;stream2-list&quot;</span>, Types.TUPLE(Types.STRING, Types.LONG)));
+                    };
+
+                    <span class="hljs-meta">@Override</span>
+                    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">processElement1</span><span class="hljs-params">(Tuple3&lt;String, String, Long&gt; left,
+                            CoProcessFunction&lt;Tuple3&lt;String, String, Long&gt;, Tuple3&lt;String, String, Long&gt;, String&gt;.Context ctx,
+                            Collector&lt;String&gt; out)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+                        <span class="hljs-comment">// &#x83B7;&#x53D6;&#x53E6;&#x4E00;&#x6761;&#x4E2D;&#x7684;&#x6240;&#x6709;&#x6570;&#x636E;,&#x914D;&#x5BF9;&#x8F93;&#x51FA;</span>
+                        <span class="hljs-keyword">for</span> (Tuple2&lt;String, Long&gt; right : list02.get()) {
+                            out.collect(left + <span class="hljs-string">&quot;=&gt;&quot;</span> + right);
+                        }
+                        list01.add(Tuple2.of(left.f0, left.f2));
+                    }
+
+                    <span class="hljs-meta">@Override</span>
+                    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">processElement2</span><span class="hljs-params">(Tuple3&lt;String, String, Long&gt; right,
+                            CoProcessFunction&lt;Tuple3&lt;String, String, Long&gt;, Tuple3&lt;String, String, Long&gt;, String&gt;.Context ctx,
+                            Collector&lt;String&gt; out)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+                        <span class="hljs-keyword">for</span> (Tuple2&lt;String, Long&gt; left : list01.get()) {
+                            out.collect(left + <span class="hljs-string">&quot;=&gt;&quot;</span> + right);
+                        }
+                        list02.add(Tuple2.of(right.f0, right.f2));
+                    }
+                }).print();
+
+        env.execute();
+    }
+}
+<span class="hljs-comment">// &#x7ED3;&#x679C;&#x8F93;&#x51FA;</span>
+(a,<span class="hljs-number">1000</span>)=&gt;(a,stream-<span class="hljs-number">2</span>,<span class="hljs-number">3000</span>)
+(b,<span class="hljs-number">2000</span>)=&gt;(b,stream-<span class="hljs-number">3</span>,<span class="hljs-number">4000</span>)
+(a,stream-<span class="hljs-number">1</span>,<span class="hljs-number">3000</span>)=&gt;(a,<span class="hljs-number">3000</span>)
+(a,<span class="hljs-number">1000</span>)=&gt;(a,stream-<span class="hljs-number">1</span>,<span class="hljs-number">6000</span>)
+(a,<span class="hljs-number">3000</span>)=&gt;(a,stream-<span class="hljs-number">1</span>,<span class="hljs-number">6000</span>)
+</code></pre>
+<h4 id="mapstate-&#x4F7F;&#x7528;&#x6848;&#x4F8B;">MapState &#x4F7F;&#x7528;&#x6848;&#x4F8B;</h4>
+<p>&#x4F7F;&#x7528;mapState&#x6A21;&#x62DF; &#x7A97;&#x53E3;&#x64CD;&#x4F5C;&#xFF0C;&#x5982;&#x4E0B;&#x662F; &#x6EDA;&#x52A8;&#x7A97;&#x53E3;&#x3002;
+&#x9996;&#x5148;&#x80FD;&#x5426;&#x7528; &#x76F4;&#x63A5;&#x7528; ListState &#x5C06;&#x67D0;&#x6BB5;&#x65F6;&#x95F4;&#x5185;&#x7684;&#x6570;&#x636E;&#x5168;&#x4FDD;&#x5B58;&#x4E0B;&#x6765;&#xFF0C;&#x7136;&#x540E;&#x8BBE;&#x7F6E;&#x5B9A;&#x65F6;&#x5668;&#xFF0C;&#x5B9A;&#x65F6;&#x5668;&#x5230;&#x4E86; &#x5C06;&#x6570;&#x636E;&#x6574;&#x4F53;&#x505A;&#x4E00;&#x4E2A;&#x8BA1;&#x7B97;&#xFF1F;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x9002;&#x5408;&#x4E8E; &#x6CA1;&#x6709; &#x5EF6;&#x8FDF;&#x6570;&#x636E;&#x7684;&#x60C5;&#x51B5;&#xFF1B;
+&#x4F7F;&#x7528;MapState&#xFF0C;key&#x662F;&#x7A97;&#x53E3;&#x5F00;&#x59CB;&#x65F6;&#x95F4;&#xFF0C;value&#x662F;&#x8FD9;&#x4E2A;&#x7A97;&#x53E3;&#x4E2D;&#x7684;&#x591A;&#x4E2A;&#x503C; &#x6216;&#x8005;&#x4E00;&#x4E2A;&#x503C;&#xFF0C;&#x6BD4;&#x5982; count&#x3001;sum&#x3002;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> com.luke.flink.datastreamdemo;
+
+<span class="hljs-keyword">import</span> java.sql.Timestamp;
+<span class="hljs-keyword">import</span> java.time.Duration;
+
+<span class="hljs-keyword">import</span> org.apache.flink.api.common.eventtime.SerializableTimestampAssigner;
+<span class="hljs-keyword">import</span> org.apache.flink.api.common.eventtime.WatermarkStrategy;
+<span class="hljs-keyword">import</span> org.apache.flink.api.common.state.MapState;
+<span class="hljs-keyword">import</span> org.apache.flink.api.common.state.MapStateDescriptor;
+<span class="hljs-keyword">import</span> org.apache.flink.configuration.Configuration;
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.datastream.SingleOutputStreamOperator;
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.functions.KeyedProcessFunction;
+<span class="hljs-keyword">import</span> org.apache.flink.util.Collector;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">StateFakeWindowExample</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+        <span class="hljs-comment">// &#x7EDF;&#x8BA1;&#x6BCF;&#x4E2A;url&#xFF0C;10&#x79D2;&#x65F6;&#x95F4;&#x5185;&#x88AB;&#x8BBF;&#x95EE;&#x6B21;&#x6570;</span>
+        StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
+        env.setParallelism(<span class="hljs-number">1</span>);
+
+        SingleOutputStreamOperator&lt;Event&gt; stream = env.addSource(<span class="hljs-keyword">new</span> ClickLogs())
+                .assignTimestampsAndWatermarks(WatermarkStrategy.&lt;Event&gt;forBoundedOutOfOrderness(Duration.ZERO)
+                        .withTimestampAssigner(<span class="hljs-keyword">new</span> SerializableTimestampAssigner&lt;Event&gt;() {
+                            <span class="hljs-meta">@Override</span>
+                            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">long</span> <span class="hljs-title">extractTimestamp</span><span class="hljs-params">(Event element, <span class="hljs-keyword">long</span> recordTimestamp)</span> </span>{
+                                <span class="hljs-keyword">return</span> element.timestamp;
+                            }
+                        }));
+
+        stream.print(<span class="hljs-string">&quot;input&quot;</span>);
+        stream.keyBy(data -&gt; data.url)
+                .process(<span class="hljs-keyword">new</span> FakeWindowResult(<span class="hljs-number">10000L</span>))
+                .print();
+
+        env.execute();
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FakeWindowResult</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">KeyedProcessFunction</span>&lt;<span class="hljs-title">String</span>, <span class="hljs-title">Event</span>, <span class="hljs-title">String</span>&gt; </span>{
+        <span class="hljs-keyword">private</span> Long windowSize;
+
+        <span class="hljs-comment">// &#x5B9A;&#x4E49;&#x4E00;&#x4E2A;MapState, &#x7528;&#x6765;&#x4FDD;&#x5B58;&#x6BCF;&#x4E2A;&#x7A97;&#x53E3;&#x7EDF;&#x8BA1;&#x7684;count&#x503C;</span>
+        MapState&lt;Long, Long&gt; windowUrlCount;
+
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">FakeWindowResult</span><span class="hljs-params">(Long windowSize)</span> </span>{
+            <span class="hljs-keyword">this</span>.windowSize = windowSize;
+        }
+
+        <span class="hljs-meta">@Override</span>
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">open</span><span class="hljs-params">(Configuration parameters)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+            windowUrlCount = getRuntimeContext()
+                    .getMapState(<span class="hljs-keyword">new</span> MapStateDescriptor&lt;Long, Long&gt;(<span class="hljs-string">&quot;window-count&quot;</span>, Long.class, Long.class));
+        }
+
+        <span class="hljs-meta">@Override</span>
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">processElement</span><span class="hljs-params">(Event value, KeyedProcessFunction&lt;String, Event, String&gt;.Context ctx,
+                Collector&lt;String&gt; out)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+
+            <span class="hljs-comment">// &#x6BCF;&#x6765;&#x4E00;&#x6761;&#x6570;&#x636E;,&#x6839;&#x636E;&#x65F6;&#x95F4;&#x6233;&#x5224;&#x65AD;&#x5C5E;&#x4E8E;&#x54EA;&#x4E2A;&#x7A97;&#x53E3;(&#x7A97;&#x53E3;&#x5206;&#x914D;&#x5668;)</span>
+            Long windowStart = value.timestamp / windowSize * windowSize; <span class="hljs-comment">// &#x5982;&#x679C;window&#x662F;10&#x79D2;,&#x8FD9;&#x6837;&#x5C31;&#x662F;&#x6574;10&#x79D2;&#x7684;&#x65F6;&#x95F4;</span>
+            Long windowEnd = windowStart + windowSize;
+
+            <span class="hljs-comment">// &#x6CE8;&#x518C;end-1&#x7684;&#x5B9A;&#x65F6;&#x5668;</span>
+            ctx.timerService().registerEventTimeTimer(windowEnd - <span class="hljs-number">1</span>);
+
+            <span class="hljs-comment">// &#x66F4;&#x65B0;&#x72B6;&#x6001;,&#x8FDB;&#x884C;&#x589E;&#x91CF;&#x805A;&#x5408;</span>
+            <span class="hljs-keyword">if</span> (windowUrlCount.contains(windowStart)) {
+                Long count = windowUrlCount.get(windowStart);
+                windowUrlCount.put(windowStart, count + <span class="hljs-number">1L</span>);
+            } <span class="hljs-keyword">else</span> {
+                windowUrlCount.put(windowStart, <span class="hljs-number">1L</span>);
+            }
+        }
+
+        <span class="hljs-comment">// &#x5B9A;&#x65F6;&#x5668;&#x89E6;&#x53D1;&#x65F6;&#x8F93;&#x51FA;&#x7ED3;&#x679C;</span>
+        <span class="hljs-meta">@Override</span>
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onTimer</span><span class="hljs-params">(<span class="hljs-keyword">long</span> timestamp, KeyedProcessFunction&lt;String, Event, String&gt;.OnTimerContext ctx,
+                Collector&lt;String&gt; out)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+            Long windowEnd = timestamp + <span class="hljs-number">1</span>;
+            Long windowStart = windowEnd - windowSize;
+
+            Long count = windowUrlCount.get(windowStart);
+
+            out.collect(<span class="hljs-string">&quot;&#x7A97;&#x53E3;&quot;</span> + <span class="hljs-keyword">new</span> Timestamp(windowStart) + <span class="hljs-string">&quot;~&quot;</span> + <span class="hljs-keyword">new</span> Timestamp(windowEnd)
+                    + <span class="hljs-string">&quot; url:&quot;</span> + ctx.getCurrentKey() + <span class="hljs-string">&quot;  count:&quot;</span> + count);
+
+            <span class="hljs-comment">// &#x6A21;&#x62DF;&#x7A97;&#x53E3;&#x7684;&#x5173;&#x95ED;,&#x6E05;&#x9664; mapState&#x4E2D;key-value</span>
+            windowUrlCount.remove(windowStart);
+        }
+    }
+}
+
+<span class="hljs-comment">//&#x7ED3;&#x679C;&#x8F93;&#x51FA;</span>
+input&gt; Event [user=Mary, url=./cart, timestamp=<span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">13</span> <span class="hljs-number">14</span>:<span class="hljs-number">37</span>:<span class="hljs-number">09.835</span>]
+input&gt; Event [user=Bob, url=./prod?id=<span class="hljs-number">10</span>, timestamp=<span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">13</span> <span class="hljs-number">14</span>:<span class="hljs-number">37</span>:<span class="hljs-number">10.839</span>]
+&#x7A97;&#x53E3;<span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">13</span> <span class="hljs-number">14</span>:<span class="hljs-number">37</span>:<span class="hljs-number">00.0</span>~<span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">13</span> <span class="hljs-number">14</span>:<span class="hljs-number">37</span>:<span class="hljs-number">10.0</span> url:./cart  count:<span class="hljs-number">1</span> <span class="hljs-comment">//&#x6574;&#x6570;10&#x79D2;&#x624D;&#x8F93;&#x51FA;</span>
+input&gt; Event [user=Alice, url=./cart, timestamp=<span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">13</span> <span class="hljs-number">14</span>:<span class="hljs-number">37</span>:<span class="hljs-number">11.839</span>]
+input&gt; Event [user=Mary, url=. /home, timestamp=<span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">13</span> <span class="hljs-number">14</span>:<span class="hljs-number">37</span>:<span class="hljs-number">12.84</span>]
+input&gt; Event [user=Cary, url=./cart, timestamp=<span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">13</span> <span class="hljs-number">14</span>:<span class="hljs-number">37</span>:<span class="hljs-number">13.841</span>]
+input&gt; Event [user=Bob, url=./prod?id=<span class="hljs-number">100</span>, timestamp=<span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">13</span> <span class="hljs-number">14</span>:<span class="hljs-number">37</span>:<span class="hljs-number">14.844</span>]
+input&gt; Event [user=Mary, url=./prod?id=<span class="hljs-number">10</span>, timestamp=<span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">13</span> <span class="hljs-number">14</span>:<span class="hljs-number">37</span>:<span class="hljs-number">15.849</span>]
+input&gt; Event [user=Alice, url=./prod?id=<span class="hljs-number">100</span>, timestamp=<span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">13</span> <span class="hljs-number">14</span>:<span class="hljs-number">37</span>:<span class="hljs-number">16.851</span>]
+input&gt; Event [user=Alice, url=. /home, timestamp=<span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">13</span> <span class="hljs-number">14</span>:<span class="hljs-number">37</span>:<span class="hljs-number">17.853</span>]
+input&gt; Event [user=Alice, url=./prod?id=<span class="hljs-number">10</span>, timestamp=<span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">13</span> <span class="hljs-number">14</span>:<span class="hljs-number">37</span>:<span class="hljs-number">18.855</span>]
+input&gt; Event [user=Mary, url=./cart, timestamp=<span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">13</span> <span class="hljs-number">14</span>:<span class="hljs-number">37</span>:<span class="hljs-number">19.857</span>]
+input&gt; Event [user=Bob, url=./prod?id=<span class="hljs-number">10</span>, timestamp=<span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">13</span> <span class="hljs-number">14</span>:<span class="hljs-number">37</span>:<span class="hljs-number">20.858</span>]
+&#x7A97;&#x53E3;<span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">13</span> <span class="hljs-number">14</span>:<span class="hljs-number">37</span>:<span class="hljs-number">10.0</span>~<span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">13</span> <span class="hljs-number">14</span>:<span class="hljs-number">37</span>:<span class="hljs-number">20.0</span> url:./prod?id=<span class="hljs-number">10</span>  count:<span class="hljs-number">3</span>
+&#x7A97;&#x53E3;<span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">13</span> <span class="hljs-number">14</span>:<span class="hljs-number">37</span>:<span class="hljs-number">10.0</span>~<span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">13</span> <span class="hljs-number">14</span>:<span class="hljs-number">37</span>:<span class="hljs-number">20.0</span> url:./cart  count:<span class="hljs-number">3</span>
+&#x7A97;&#x53E3;<span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">13</span> <span class="hljs-number">14</span>:<span class="hljs-number">37</span>:<span class="hljs-number">10.0</span>~<span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">13</span> <span class="hljs-number">14</span>:<span class="hljs-number">37</span>:<span class="hljs-number">20.0</span> url:./prod?id=<span class="hljs-number">100</span>  count:<span class="hljs-number">2</span>
+&#x7A97;&#x53E3;<span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">13</span> <span class="hljs-number">14</span>:<span class="hljs-number">37</span>:<span class="hljs-number">10.0</span>~<span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">13</span> <span class="hljs-number">14</span>:<span class="hljs-number">37</span>:<span class="hljs-number">20.0</span> url:. /home  count:<span class="hljs-number">2</span>
+</code></pre>
+<h4 id="reducingstate-&#x4F7F;&#x7528;&#x6848;&#x4F8B;">ReducingState &#x4F7F;&#x7528;&#x6848;&#x4F8B;</h4>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> com.luke.flink.datastreamdemo;
+
+<span class="hljs-keyword">import</span> java.time.Duration;
+
+<span class="hljs-keyword">import</span> org.apache.flink.api.common.eventtime.SerializableTimestampAssigner;
+<span class="hljs-keyword">import</span> org.apache.flink.api.common.eventtime.WatermarkStrategy;
+<span class="hljs-keyword">import</span> org.apache.flink.api.common.functions.AggregateFunction;
+<span class="hljs-keyword">import</span> org.apache.flink.api.common.functions.RichFlatMapFunction;
+<span class="hljs-keyword">import</span> org.apache.flink.api.common.state.AggregatingState;
+<span class="hljs-keyword">import</span> org.apache.flink.api.common.state.AggregatingStateDescriptor;
+<span class="hljs-keyword">import</span> org.apache.flink.api.common.state.ValueState;
+<span class="hljs-keyword">import</span> org.apache.flink.api.common.state.ValueStateDescriptor;
+<span class="hljs-keyword">import</span> org.apache.flink.api.common.typeinfo.Types;
+<span class="hljs-keyword">import</span> org.apache.flink.api.java.tuple.Tuple2;
+<span class="hljs-keyword">import</span> org.apache.flink.configuration.Configuration;
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.datastream.SingleOutputStreamOperator;
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
+<span class="hljs-keyword">import</span> org.apache.flink.util.Collector;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">StateAverageTimestampExample</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+        StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
+        env.setParallelism(<span class="hljs-number">1</span>);
+
+        SingleOutputStreamOperator&lt;Event&gt; stream = env.addSource(<span class="hljs-keyword">new</span> ClickLogs())
+                <span class="hljs-comment">// &#x4E71;&#x5E8F;&#x6D41;&#x7684;watermark&#x751F;&#x6210;</span>
+                .assignTimestampsAndWatermarks(WatermarkStrategy.&lt;Event&gt;forBoundedOutOfOrderness(Duration.ZERO)
+                        .withTimestampAssigner(<span class="hljs-keyword">new</span> SerializableTimestampAssigner&lt;Event&gt;() {
+                            <span class="hljs-meta">@Override</span>
+                            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">long</span> <span class="hljs-title">extractTimestamp</span><span class="hljs-params">(Event element, <span class="hljs-keyword">long</span> recordTimestamp)</span> </span>{
+                                <span class="hljs-keyword">return</span> element.timestamp;
+                            }
+                        }));
+
+        stream.print(<span class="hljs-string">&quot;input&quot;</span>);
+
+        <span class="hljs-comment">// &#x81EA;&#x5B9A;&#x4E49;&#x5B9E;&#x73B0;&#x5E73;&#x5747;&#x65F6;&#x95F4;&#x6233;&#x7684;&#x7EDF;&#x8BA1;</span>
+        stream.keyBy(data -&gt; data.user)
+                .flatMap(<span class="hljs-keyword">new</span> AvgTsResult(<span class="hljs-number">5L</span>))
+                .print();
+
+        env.execute();
+    }
+
+    <span class="hljs-comment">// &#x5B9E;&#x73B0;&#x81EA;&#x5B9A;&#x4E49;&#x7684;RichFlatmapFunction</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AvgTsResult</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">RichFlatMapFunction</span>&lt;<span class="hljs-title">Event</span>, <span class="hljs-title">String</span>&gt; </span>{
+        <span class="hljs-comment">// &#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x805A;&#x5408;&#x72B6;&#x6001;,&#x7528;&#x4E8E;&#x4FDD;&#x5B58;&#x5E73;&#x5747;&#x65F6;&#x95F4;&#x6233;</span>
+        AggregatingState&lt;Event, Long&gt; avgTsAggState;
+        <span class="hljs-comment">// &#x6BCF;&#x6B21;&#x5230;count&#x6B21;&#x6570;&#x65F6;&#x5C31;&#x5F00;&#x59CB;&#x8F93;&#x51FA;&#x5E73;&#x5747;&#x65F6;&#x95F4;&#x6233;</span>
+        <span class="hljs-keyword">private</span> Long count;
+        <span class="hljs-comment">// &#x4FDD;&#x5B58;&#x7528;&#x6237;&#x8BBF;&#x95EE;&#x6B21;&#x6570;</span>
+        ValueState&lt;Long&gt; userTimesState;
+
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">AvgTsResult</span><span class="hljs-params">(Long count)</span> </span>{
+            <span class="hljs-keyword">this</span>.count = count;
+        }
+
+        <span class="hljs-meta">@Override</span>
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">open</span><span class="hljs-params">(Configuration parameters)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+            avgTsAggState = getRuntimeContext()
+                    .getAggregatingState(<span class="hljs-keyword">new</span> AggregatingStateDescriptor&lt;Event, Tuple2&lt;Long, Long&gt;, Long&gt;(
+                            <span class="hljs-string">&quot;avg-ts-state&quot;</span>, <span class="hljs-keyword">new</span> AggregateFunction&lt;Event, Tuple2&lt;Long, Long&gt;, Long&gt;() {
+
+                                <span class="hljs-meta">@Override</span>
+                                <span class="hljs-function"><span class="hljs-keyword">public</span> Tuple2&lt;Long, Long&gt; <span class="hljs-title">createAccumulator</span><span class="hljs-params">()</span> </span>{
+                                    <span class="hljs-keyword">return</span> Tuple2.of(<span class="hljs-number">0L</span>, <span class="hljs-number">0L</span>);
+                                }
+
+                                <span class="hljs-meta">@Override</span>
+                                <span class="hljs-function"><span class="hljs-keyword">public</span> Tuple2&lt;Long, Long&gt; <span class="hljs-title">add</span><span class="hljs-params">(Event value, Tuple2&lt;Long, Long&gt; accumulator)</span> </span>{
+                                    <span class="hljs-keyword">return</span> Tuple2.of(accumulator.f0 + value.timestamp, accumulator.f1 + <span class="hljs-number">1L</span>);
+                                }
+
+                                <span class="hljs-meta">@Override</span>
+                                <span class="hljs-function"><span class="hljs-keyword">public</span> Long <span class="hljs-title">getResult</span><span class="hljs-params">(Tuple2&lt;Long, Long&gt; accumulator)</span> </span>{
+                                    <span class="hljs-keyword">return</span> accumulator.f0 / accumulator.f1;
+                                }
+
+                                <span class="hljs-meta">@Override</span>
+                                <span class="hljs-function"><span class="hljs-keyword">public</span> Tuple2&lt;Long, Long&gt; <span class="hljs-title">merge</span><span class="hljs-params">(Tuple2&lt;Long, Long&gt; a, Tuple2&lt;Long, Long&gt; b)</span> </span>{
+                                    <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
+                                }
+                            }, Types.TUPLE(Types.LONG, Types.LONG)));
+            userTimesState = getRuntimeContext().getState(<span class="hljs-keyword">new</span> ValueStateDescriptor&lt;Long&gt;(<span class="hljs-string">&quot;user-times&quot;</span>, Types.LONG));
+        }
+
+        <span class="hljs-meta">@Override</span>
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">flatMap</span><span class="hljs-params">(Event value, Collector&lt;String&gt; out)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+            <span class="hljs-comment">// &#x6BCF;&#x6765;&#x4E00;&#x6761;&#x6570;&#x636E;, count +1</span>
+            Long currCount = userTimesState.value();
+            <span class="hljs-keyword">if</span> (currCount == <span class="hljs-keyword">null</span>) {
+                currCount = <span class="hljs-number">1L</span>;
+            } <span class="hljs-keyword">else</span> {
+                currCount++;
+            }
+
+            <span class="hljs-comment">// &#x66F4;&#x65B0;&#x72B6;&#x6001;</span>
+            userTimesState.update(currCount);
+            avgTsAggState.add(value);
+
+            <span class="hljs-comment">// &#x5982;&#x679C;&#x8FBE;&#x5230;count&#x6B21;&#x6570;&#x5C31;&#x8F93;&#x51FA;&#x7ED3;&#x679C;</span>
+            <span class="hljs-keyword">if</span> (currCount.equals(count)) {
+                out.collect(value.user + <span class="hljs-string">&quot;&#x8FC7;&#x53BB;&quot;</span> + count + <span class="hljs-string">&quot;&#x6B21;&#x5E73;&#x5747;&#x65F6;&#x95F4;&#x6233;&#x4E3A;&quot;</span> + avgTsAggState.get());
+                <span class="hljs-comment">// &#x6E05;&#x7406;&#x72B6;&#x6001;</span>
+                userTimesState.clear();
+                <span class="hljs-comment">// &#x5982;&#x679C;&#x4E0B;&#x9762;&#x8FD9;&#x4E00;&#x884C;&#x4E0D;&#x6CE8;&#x91CA;,&#x5219;&#x662F;&#x6BCF;5&#x79D2;&#x8F93;&#x51FA; &#x5355;&#x4E2A;user&#x7684;&#x6240;&#x6709;&#x5386;&#x53F2;&#x4F9D;&#x8D56;&#x7684;&#x5E73;&#x5747;&#x8BBF;&#x95EE;&#x65F6;&#x95F4;,</span>
+                <span class="hljs-comment">// &#x56E0;&#x4E3A; avgTsAggState&#x4E2D;&#x7684; Tuple2&lt;Long, Long&gt; &#x662F;&#x6301;&#x7EED;&#x7D2F;&#x52A0;&#x4E0D;&#x6E05;&#x7A7A;&#x7684;</span>
+                avgTsAggState.clear();
+            }
+        }
+    }
+}
+
+<span class="hljs-comment">//&#x8F93;&#x51FA;:</span>
+input&gt; Event [user=Bob, url=./cart, timestamp=<span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">13</span> <span class="hljs-number">15</span>:<span class="hljs-number">11</span>:<span class="hljs-number">08.474</span>]
+input&gt; Event [user=Bob, url=./prod?id=<span class="hljs-number">100</span>, timestamp=<span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">13</span> <span class="hljs-number">15</span>:<span class="hljs-number">11</span>:<span class="hljs-number">09.478</span>]
+input&gt; Event [user=Mary, url=./prod?id=<span class="hljs-number">100</span>, timestamp=<span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">13</span> <span class="hljs-number">15</span>:<span class="hljs-number">11</span>:<span class="hljs-number">10.483</span>]
+input&gt; Event [user=Bob, url=./home, timestamp=<span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">13</span> <span class="hljs-number">15</span>:<span class="hljs-number">11</span>:<span class="hljs-number">11.485</span>]
+input&gt; Event [user=Alice, url=. /home, timestamp=<span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">13</span> <span class="hljs-number">15</span>:<span class="hljs-number">11</span>:<span class="hljs-number">12.486</span>]
+input&gt; Event [user=Alice, url=. /home, timestamp=<span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">13</span> <span class="hljs-number">15</span>:<span class="hljs-number">11</span>:<span class="hljs-number">13.488</span>]
+input&gt; Event [user=Mary, url=./prod?id=<span class="hljs-number">100</span>, timestamp=<span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">13</span> <span class="hljs-number">15</span>:<span class="hljs-number">11</span>:<span class="hljs-number">14.493</span>]
+input&gt; Event [user=Cary, url=./cart, timestamp=<span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">13</span> <span class="hljs-number">15</span>:<span class="hljs-number">11</span>:<span class="hljs-number">15.495</span>]
+input&gt; Event [user=Bob, url=./home, timestamp=<span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">13</span> <span class="hljs-number">15</span>:<span class="hljs-number">11</span>:<span class="hljs-number">16.503</span>]
+input&gt; Event [user=Cary, url=./cart, timestamp=<span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">13</span> <span class="hljs-number">15</span>:<span class="hljs-number">11</span>:<span class="hljs-number">17.504</span>]
+input&gt; Event [user=Cary, url=./cart, timestamp=<span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">13</span> <span class="hljs-number">15</span>:<span class="hljs-number">11</span>:<span class="hljs-number">18.505</span>]
+input&gt; Event [user=Bob, url=. /home, timestamp=<span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">13</span> <span class="hljs-number">15</span>:<span class="hljs-number">11</span>:<span class="hljs-number">19.506</span>]
+Bob&#x8FC7;&#x53BB;<span class="hljs-number">5</span>&#x6B21;&#x5E73;&#x5747;&#x65F6;&#x95F4;&#x6233;&#x4E3A;<span class="hljs-number">1670944273089</span>
+</code></pre>
+<h4 id="&#x72B6;&#x6001;&#x751F;&#x5B58;&#x65F6;&#x95F4;ttl">&#x72B6;&#x6001;&#x751F;&#x5B58;&#x65F6;&#x95F4;TTL</h4>
+<p><strong>&#x6211;&#x4EEC;&#x5728;&#x521B;&#x5EFA;&#x72B6;&#x6001;&#x65F6;&#xFF0C;&#x53EF;&#x4EE5;&#x7ED9;&#x72B6;&#x6001;&#x9644;&#x52A0;&#x4E00;&#x4E2A;&#x5C5E;&#x6027;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x72B6;&#x6001;&#x7684; &quot;&#x5931;&#x6548;&#x65F6;&#x95F4;&quot;&#x3002;&#x72B6;&#x6001;&#x521B;&#x5EFA;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x8BBE;&#x7F6E;&#x5931;&#x6548;&#x65F6;&#x95F4;=&#x5F53;&#x524D;&#x65F6;&#x95F4;+ TTL;&#x4E4B;&#x540E;&#x5982;&#x679C;&#x6709;&#x5BF9;&#x72B6;&#x6001;&#x7684;&#x8BBF;&#x95EE;&#x548C;&#x4FEE;&#x6539;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x518D;&#x5BF9;&#x5931;&#x6548;&#x65F6;&#x95F4;&#x8FDB;&#x884C;&#x66F4;&#x65B0;;&#x5F53;&#x8BBE;&#x7F6E;&#x7684;&#x6E05;&#x9664;&#x6761;&#x4EF6;&#x88AB;&#x89E6;&#x53D1;&#x65F6;(&#x6BD4;&#x5982;&#xFF0C;&#x72B6;&#x6001;&#x88AB;&#x8BBF;&#x95EE;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x6216;&#x8005;&#x6BCF;&#x9694;&#x4E00;&#x6BB5;&#x65F6;&#x95F4;&#x626B;&#x63CF;&#x4E00;&#x6B21;&#x5931;&#x6548;&#x72B6;&#x6001;)&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x5224;&#x65AD;&#x72B6;&#x6001;&#x662F;&#x5426;&#x5931;&#x6548;&#x3001;&#x4ECE;&#x800C;&#x8FDB;&#x884C;&#x6E05;&#x9664;&#x4E86;&#x3002;</strong></p>
+<p>&#x914D;&#x7F6E;&#x72B6;&#x6001;&#x7684;TTL&#x65F6;&#xFF0C;&#x9700;&#x8981;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;<code>StateTtlConfig</code> &#x914D;&#x7F6E;&#x5BF9;&#x8C61;&#xFF0C;&#x7136;&#x540E;&#x8C03;&#x7528;&#x72B6;&#x6001;&#x63CF;&#x8FF0;&#x5668;&#x7684;<code>.enableTime&apos;ToLive()</code>&#x65B9;&#x6CD5;&#x542F;&#x52A8;TTL&#x529F;&#x80FD;&#x3002;</p>
+<pre><code class="lang-java">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyFlatFunc</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">RichFlatMapFunction</span>&lt;<span class="hljs-title">Event</span>, <span class="hljs-title">String</span>&gt; </span>{
+        ValueStateDescriptor&lt;Event&gt; valStateDescpter = <span class="hljs-keyword">new</span> ValueStateDescriptor&lt;Event&gt;(<span class="hljs-string">&quot;val-state&quot;</span>, Event.class);
+        ValueState&lt;Event&gt; myValueState;
+
+        <span class="hljs-meta">@Override</span>
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">open</span><span class="hljs-params">(Configuration parameters)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+            myValueState = getRuntimeContext().getState(valStateDescpter);
+
+            <span class="hljs-comment">// &#x914D;&#x7F6E;&#x72B6;&#x6001;&#x7684;TTL, &#x57FA;&#x4E8E;&#x5904;&#x7406;&#x65F6;&#x95F4;</span>
+            StateTtlConfig ttlConfig = StateTtlConfig.newBuilder(Time.hours(<span class="hljs-number">1</span>))
+                    <span class="hljs-comment">// &#x4EC0;&#x4E48;&#x65F6;&#x5019;&#x66F4;&#x65B0; &#x72B6;&#x6001;&#x7684;ttl &#x65F6;&#x95F4;, &#x9ED8;&#x8BA4; &#x8BFB;&#x662F;&#x4E0D;&#x66F4;&#x65B0;ttl&#x7684;,&#x53EA;&#x6709;&#x5199;&#x65F6;&#x5019;&#x66F4;&#x65B0;</span>
+                    .setUpdateType(StateTtlConfig.UpdateType.OnCreateAndWrite)
+                    <span class="hljs-comment">// &#x914D;&#x7F6E;&#x72B6;&#x6001;&#x7684;&#x53EF;&#x89C1;&#x6027;: &#x5BF9;&#x4E8E;&#x4E00;&#x4E2A;&#x5DF2;&#x7ECF;&#x8FC7;&#x671F;&#x8FD8;&#x6CA1;clear&#x7684;&#x6570;&#x636E;,&#x662F;&#x7EE7;&#x7EED;&#x62FF;&#x6765;&#x7528;; &#x8FD8;&#x662F;&#x7ACB;&#x9A6C;&#x6E05;&#x7406;?</span>
+                    <span class="hljs-comment">// &#x9ED8;&#x8BA4;&#x662F; NeverReturnExpired</span>
+                    .setStateVisibility(StateTtlConfig.StateVisibility.ReturnExpiredIfNotCleanedUp)
+                    .build();
+            valStateDescpter.enableTimeToLive(ttlConfig);
+        }
+    }
+</code></pre>
+<h4 id="&#x7B97;&#x5B50;&#x72B6;&#x6001;-operator-state">&#x7B97;&#x5B50;&#x72B6;&#x6001; Operator State</h4>
+<p>&#x7B97;&#x5B50;&#x72B6;&#x6001;(OperatorState)&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x7B97;&#x5B50;&#x5E76;&#x884C;&#x5B9E;&#x4F8B;&#x4E0A;&#x5B9A;&#x4E49;&#x7684;&#x72B6;&#x6001;&#xFF0C;&#x4F5C;&#x7528;&#x8303;&#x56F4;&#x88AB;&#x9650;&#x5B9A;&#x4E3A;&#x5F53;&#x524D;&#x7B97;&#x5B50;&#x4EFB;&#x52A1;&#x3002;&#x7B97;&#x5B50;&#x72B6;&#x6001;&#x8DDF;&#x6570;&#x636E;&#x7684;key&#x65E0;&#x5173;,&#x6240;&#x4EE5;&#x4E0D;&#x540C;key&#x7684;&#x6570;&#x636E;&#x53EA;&#x8981;&#x88AB;&#x5206;&#x53D1;&#x5230;&#x540C;&#x4E00;&#x4E2A;&#x5E76;&#x884C;&#x5B50;&#x4EFB;&#x52A1;&#xFF0C;&#x5C31;&#x4F1A;&#x8BBF;&#x95EE;&#x5230;&#x540C;&#x4E00;&#x4E2A;Operator State&#x3002;</p>
+<p><strong>&#x7B97;&#x5B50;&#x72B6;&#x6001;&#x7684;&#x5B9E;&#x9645;&#x5E94;&#x7528;&#x573A;&#x666F;&#x4E0D;&#x5982;Keyed State&#x591A;, &#x4E00;&#x822C;&#x7528;&#x5728;Source&#x6216;Sink&#x7B49;&#x4E0E;&#x5916;&#x90E8;&#x7CFB;&#x7EDF;&#x8FDE;&#x63A5;&#x7684;&#x7B97;&#x5B50;&#x4E0A;&#xFF0C;&#x6216;&#x8005;&#x5B8C;&#x5168;&#x6CA1;&#x6709;key&#x5B9A;&#x4E49;&#x7684;&#x573A;&#x666F;&#x3002;&#x6BD4;&#x5982;Flink&#x7684;Kafka&#x8FDE;&#x63A5;&#x5668;&#x4E2D;&#xFF0C;&#x5C31;&#x7528;&#x5230;&#x4E86;&#x7B97;&#x5B50;&#x72B6;&#x6001;</strong></p>
+<p>&#x5728;&#x6211;&#x4EEC;&#x7ED9;Source &#x7B97;&#x5B50;&#x8BBE;&#x7F6E;&#x5E76;&#x884C;&#x5EA6;&#x540E;&#xFF0C;Kafka &#x6D88;&#x8D39;&#x8005;&#x7684;&#x6BCF;&#x4E00;&#x4E2A;&#x5E76;&#x884C;&#x5B9E;&#x4F8B;&#xFF0C;&#x90FD;&#x4F1A;&#x4E3A;&#x5BF9;&#x5E94;&#x7684;&#x4E3B;&#x9898;(topic) &#x5206;&#x533A;&#x7EF4;&#x62A4;&#x4E00;&#x4E2A;&#x504F;&#x79FB;&#x91CF;&#xFF0C; &#x4F5C;&#x4E3A;&#x7B97;&#x5B50;&#x72B6;&#x6001;&#x4FDD;&#x5B58;&#x8D77;&#x6765;&#x3002;&#x8FD9;&#x5728;&#x4FDD;&#x8BC1;Flink&#x5E94;&#x7528;&#x201C;&#x7CBE;&#x786E;&#x4E00;&#x6B21;&#x201D;( exactly-once) &#x72B6;&#x6001;&#x4E00; &#x81F4;&#x6027;&#x65F6;&#x975E;&#x5E38;&#x6709;&#x7528;&#x3002;</p>
+<p><strong>&#x5F53;&#x7B97;&#x5B50;&#x7684;&#x5E76;&#x884C;&#x5EA6;&#x53D1;&#x751F;&#x53D8;&#x5316;&#x65F6;&#xFF0C;&#x7B97;&#x5B50;&#x72B6;&#x6001;&#x4E5F;&#x652F;&#x6301;&#x5728;&#x5E76;&#x884C;&#x7684;&#x7B97;&#x5B50;&#x4EFB;&#x52A1;&#x5B9E;&#x4F8B;&#x4E4B;&#x95F4;&#x505A;&#x91CD;&#x7EC4;&#x5206;&#x914D;&#x3002;&#x6839;&#x636E;&#x72B6;&#x6001;&#x7684;&#x7C7B;&#x578B;&#x4E0D;&#x540C;&#xFF0C;&#x91CD;&#x7EC4;&#x5206;&#x914D;&#x7684;&#x65B9;&#x6848;&#x4E5F;&#x4F1A;&#x4E0D;&#x540C;</strong></p>
+<h5 id="&#x72B6;&#x6001;&#x7C7B;&#x578B;">&#x72B6;&#x6001;&#x7C7B;&#x578B;</h5>
+<p>&#x4E3B;&#x8981;&#x7531;&#x4E09;&#x79CD;: <code>ListState</code>&#x3001;<code>UnionListState</code>&#x3001;<code>BroadcastState</code></p>
+<ol>
+<li><p><strong>&#x5217;&#x8868;&#x72B6;&#x6001; ListState</strong></p>
+<p>&#x4E0E;Keyed State&#x4E2D;&#x7684;ListState&#x4E00;&#x6837;&#xFF0C;&#x5C06;&#x72B6;&#x6001;&#x8868;&#x793A;&#x4E3A;&#x4E00;&#x7EC4;&#x6570;&#x636E;&#x7684;&#x5217;&#x8868;&#x3002;</p>
+<p>&#x4E0E;Keyed State&#x4E2D;&#x7684;&#x5217;&#x8868;&#x72B6;&#x6001;&#x7684;&#x533A;&#x522B;&#x662F;:&#x5728;&#x7B97;&#x5B50;&#x72B6;&#x6001;&#x7684;&#x4E0A;&#x4E0B;&#x6587;&#x4E2D;&#xFF0C;&#x4E0D;&#x4F1A;&#x6309;&#x952E;(key)&#x5206;&#x522B;&#x5904;&#x7406;&#x72B6;&#x6001;&#xFF0C;&#x6240;&#x4EE5;&#x6BCF;&#x4E00;&#x4E2A;&#x5E76;&#x884C;&#x5B50;&#x4EFB;&#x52A1;&#xFF0C;&#x4E0A;&#x53EA;&#x4F1A;&#x4FDD;&#x7559;&#x4E00;&#x4E2A;&#x201C;&#x5217;&#x8868;&#x201D;(list)&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x5F53;&#x524D;&#x5E76;&#x884C;&#x5B50;&#x4EFB;&#x52A1;&#xFF0C;&#x4E0A;&#x6240;&#x6709;&#x72B6;&#x6001;&#x9879;&#x7684;&#x96C6;&#x5408;&#x3002;&#x5217;&#x8868;&#x4E2D;&#x7684;&#x72B6;&#x6001;&#x9879;&#x5C31;&#x662F;&#x53EF;&#x4EE5;&#x91CD;&#x65B0;&#x5206;&#x914D;&#x7684;&#x6700;&#x7EC6;&#x7C92;&#x5EA6;&#xFF0C;&#x5F7C;&#x6B64;&#x4E4B;&#x95F4;&#x5B8C;&#x5168;&#x72EC;&#x7ACB;&#x3002;
+&#x5F53;&#x7B97;&#x5B50;&#x5E76;&#x884C;&#x5EA6;&#x8FDB;&#x884C;&#x7F29;&#x653E;&#x8C03;&#x6574;&#x65F6;&#xFF0C;<strong>&#x7B97;&#x5B50;&#x7684;&#x5217;&#x8868;&#x72B6;&#x6001;&#x4E2D;&#x7684;&#x6240;&#x6709;&#x5143;&#x7D20;&#x9879;&#x4F1A;&#x88AB;&#x7EDF;&#x4E00;&#x6536;&#x96C6;&#x8D77;&#x6765;&#xFF0C;&#x76F8;&#x5F53;&#x4E8E;&#x628A;&#x591A;&#x4E2A;&#x5206;&#x533A;&#x7684;&#x5217;&#x8868;&#x5408;&#x5E76;&#x6210;&#x4E86;&#x4E00;&#x4E00;&#x4E2A;&#x201C;&#x5927;&#x5217;&#x8868;&#x201D;&#xFF0C;&#x7136;&#x540E;&#x518D;&#x5747;&#x5300;&#x5730;&#x5206;&#x914D;&#x7ED9;&#x6240;&#x6709;&#x5E76;&#x884C;&#x4EFB;&#x52A1;&#x3002;&#x8FD9;&#x79CD;&#x201C;&#x5747;&#x5300;&#x5206;&#x914D;&#x201D;&#x7684;&#x5177;&#x4F53;&#x65B9;&#x6CD5;&#x5C31;&#x662F;&#x201C;&#x8F6E;&#x8BE2;&#x201D;(round-robin)&#xFF0C;&#x4E0E;&#x4E4B;&#x524D;&#x4ECB;&#x7ECD;&#x7684;rebanlance&#x6570;&#x636E;&#x4F20;&#x8F93;&#x65B9;&#x5F0F;&#x7C7B;&#x4F3C;</strong>
+&#x662F;&#x901A;&#x8FC7;&#x9010;&#x4E00;&#x201C;&#x53D1;&#x724C;&quot;&#x7684;&#x65B9;&#x5F0F;&#x5C06;&#x72B6;&#x6001;&#x9879;&#x5E73;&#x5747;&#x5206;&#x914D;&#x7684;&#x3002;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x4E5F;&#x53EB;&#x4F5C;&#x201C;&#x5E73;&#x5747;&#x5206;&#x5272;&#x91CD;&#x7EC4;&#x201D;(even-split redistribution)&#x3002;</p>
+<p>&#x7B97;&#x5B50;&#x72B6;&#x6001;&#x4E2D;&#x4E0D;&#x4F1A;&#x5B58;&#x5728;&#x201C;&#x952E;&#x7EC4;&#x201D;(key group)&#x8FD9;&#x6837;&#x7684;&#x7ED3;&#x6784;&#xFF0C;&#x6240;&#x4EE5;&#x4E3A;&#x4E86;&#x65B9;&#x4FBF;&#x91CD;&#x7EC4;&#x5206;&#x914D;&#xFF0C;&#x5C31;&#x628A;&#x5B83;&#x76F4;&#x63A5;&#x5B9A;&#x4E49;&#x6210;&#x4E86;&#x201C;&#x5217;&#x8868;&#x201D;(list)&#x3002;&#x8FD9;&#x4E5F;&#x5C31;&#x89E3;&#x91CA;&#x4E86;&#xFF0C;&#x4E3A;&#x4EC0;&#x4E48;&#x7B97;&#x5B50;&#x72B6;&#x6001;&#x4E2D;&#x6CA1;&#x6709;&#x6700;&#x7B80;&#x5355;&#x7684;ValueState&#x3002;</p>
+</li>
+<li><p><strong>&#x8054;&#x5408;&#x5217;&#x8868;&#x72B6;&#x6001; UnionListState</strong></p>
+<p>&#x4E0E;ListState&#x7C7B;&#x4F3C;&#xFF0C;&#x8054;&#x5408;&#x5217;&#x8868;&#x72B6;&#x6001;&#x4E5F;&#x4F1A;&#x5C06;&#x72B6;&#x6001;&#x8868;&#x793A;&#x4E3A;&#x4E00;&#x4E2A;&#x5217;&#x8868;&#x3002;&#x5B83;&#x4E0E;&#x5E38;&#x89C4;&#x5217;&#x8868;&#x72B6;&#x6001;&#x7684;&#x533A;&#x522B;&#x5728;&#x4E8E;&#xFF0C;&#x7B97;&#x5B50;&#x5E76;&#x884C;&#x5EA6;&#x8FDB;&#x884C;&#x7F29;&#x653E;&#x8C03;&#x6574;&#x65F6;&#x5BF9;&#x4E8E;&#x72B6;&#x6001;&#x7684;&#x5206;&#x914D;&#x65B9;&#x5F0F;&#x4E0D;&#x540C;&#x3002;</p>
+<p><strong>UnionListState&#x7684;&#x91CD;&#x70B9;&#x5C31;&#x5728;&#x4E8E;&#x201C;&#x8054;&#x5408;&#x201D;(union)&#x3002;&#x5728;&#x5E76;&#x884C;&#x5EA6;&#x8C03;&#x6574;&#x65F6;&#xFF0C;&#x5E38;&#x89C4;&#x5217;&#x8868;&#x72B6;&#x6001;&#x662F;&#x8F6E;&#x8BE2;&#x5206;&#x914D;&#x72B6;&#x6001;&#x9879;&#xFF0C;&#x800C;&#x8054;&#x5408;&#x5217;&#x8868;&#x72B6;&#x6001;&#x7684;&#x7B97;&#x5B50;&#x5219;&#x4F1A;&#x76F4;&#x63A5;&#x5E7F;&#x64AD;&#x72B6;&#x6001;&#x7684;&#x5B8C;&#x6574;&#x5217;&#x8868;&#x3002;&#x8FD9;&#x6837;&#xFF0C;&#x5E76;&#x884C;&#x5EA6;&#x7F29;&#x653E;&#x4E4B;&#x540E;&#x7684;&#x5E76;&#x884C;&#x5B50;&#x4EFB;&#x52A1;&#x5C31;&#x83B7;&#x53D6;&#x5230;&#x4E86;&#x8054;&#x5408;&#x540E;&#x5B8C;&#x6574;&#x7684;&#x201C;&#x5927;&#x5217;&#x8868;&#x201D;&#xFF0C;&#x53EF;&#x4EE5;&#x81EA;&#x884C;&#x9009;&#x62E9;&#x8981;&#x4F7F;&#x7528;&#x7684;&#x72B6;&#x6001;&#x9879;&#x548C;&#x8981;&#x4E22;&#x5F03;&#x7684;&#x72B6;&#x6001;&#x9879;&#x3002;&#x8FD9;&#x79CD;&#x5206;&#x914D;&#x4E5F;&#x53EB;&#x4F5C;&#x201C;&#x8054;&#x5408;&#x91CD;&#x7EC4;&#x201D;(union redistribution)&#x3002;&#x5982;&#x679C;&#x5217;&#x8868;&#x4E2D;&#x72B6;&#x6001;&#x9879;&#x6570;&#x91CF;&#x592A;&#x591A;&#xFF0C;&#x4E3A;&#x8D44;&#x6E90;&#x548C;&#x6548;&#x7387;&#x8003;&#x8651;&#x4E00;&#x822C;&#x4E0D;&#x5EFA;&#x8BAE;&#x4F7F;&#x7528;&#x8054;&#x5408;&#x91CD;&#x7EC4;&#x7684;&#x65B9;&#x5F0F;</strong></p>
+</li>
+<li><p><strong>&#x5E7F;&#x64AD;&#x72B6;&#x6001; BroadcastState</strong></p>
+<p>&#x6709;&#x65F6;&#x6211;&#x4EEC;&#x5E0C;&#x671B;&#x7B97;&#x5B50;&#x5E76;&#x884C;&#x5B50;&#x4EFB;&#x52A1;&#x90FD;&#x4FDD;&#x6301;&#x540C;&#x4E00;&#x4EFD;&#x201C;&#x5168;&#x5C40;&#x201D;&#x72B6;&#x6001;,&#x7528;&#x6765;&#x505A;&#x7EDF;&#x4E00;&#x7684;&#x914D;&#x7F6E;&#x548C;&#x89C4;&#x5219;&#x8BBE;&#x5B9A;&#x3002;</p>
+<p><strong>&#x8FD9;&#x65F6;&#x6240;&#x6709;&#x5206;&#x533A;&#x7684;&#x6240;&#x6709;&#x6570;&#x636E;&#x90FD;&#x4F1A;&#x8BBF;&#x95EE;&#x5230;&#x540C;&#x4E00;&#x4E2A;&#x72B6;&#x6001;&#xFF0C;&#x72B6;&#x6001;&#x5C31;&#x50CF;&#x88AB;&#x201C;&#x5E7F;&#x64AD;&#x201D;&#x5230;&#x6240;&#x6709;&#x5206;&#x533A;&#x4E00;&#x6837;&#xFF0C;&#x8FD9;&#x79CD;&#x7279;&#x6B8A;&#x7684;&#x7B97;&#x5B50;&#x72B6;&#x6001;&#xFF0C;&#x5C31;&#x53EB;&#x4F5C;&#x5E7F;&#x64AD;&#x72B6;&#x6001;( BroadcastState)&#x3002;
+&#x56E0;&#x4E3A;&#x5E7F;&#x64AD;&#x72B6;&#x6001;&#x5728;&#x6BCF;&#x4E2A;&#x5E76;&#x884C;&#x5B50;&#x4EFB;&#x52A1;.&#x4E0A;&#x7684;&#x5B9E;&#x4F8B;&#x90FD;&#x4E00;&#x6837;&#xFF0C;&#x6240;&#x4EE5;&#x5728;&#x5E76;&#x884C;&#x5EA6;&#x8C03;&#x6574;&#x7684;&#x65F6;&#x5019;&#x5C31;&#x6BD4;&#x8F83;&#x7B80;&#x5355;&#xFF0C;&#x53EA;&#x8981;&#x590D;&#x5236;&#x4E00;&#x4EFD;&#x5230;&#x65B0;&#x7684;&#x5E76;&#x884C;&#x4EFB;&#x52A1;&#x5C31;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x6269;&#x5C55;;&#x800C;&#x5BF9;&#x4E8E;&#x5E76;&#x884C;&#x5EA6;&#x7F29;&#x5C0F;&#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x53EF;&#x4EE5;&#x5C06;&#x591A;&#x4F59;&#x7684;&#x5E76;&#x884C;&#x5B50;&#x4EFB;&#x52A1;&#x8FDE;&#x540C;&#x72B6;&#x6001;&#x76F4;&#x63A5;&#x780D;&#x6389;&#x4E00;-&#x56E0;&#x4E3A;&#x72B6;&#x6001; &#x90FD;&#x662F;&#x590D;&#x5236;&#x51FA;&#x6765;&#x7684;&#xFF0C;&#x5E76;&#x4E0D;&#x4F1A;&#x4E22;&#x5931;</strong></p>
+<p>&#x5728;&#x5E95;&#x5C42;&#xFF0C;&#x5E7F;&#x64AD;&#x72B6;&#x6001;&#x662F;&#x4EE5;&#x7C7B;&#x4F3C;&#x6620;&#x5C04;&#x7ED3;&#x6784;(map) &#x7684;&#x952E;&#x503C;&#x5BF9;(key-value) &#x6765;&#x4FDD;&#x5B58;&#x7684;&#xFF0C;&#x5FC5;&#x987B;&#x57FA;&#x4E8E;&#x4E00;&#x4E2A;&#x201C;&#x5E7F;&#x64AD;&#x6D41;&quot; (BroadcastStream)&#x6765;&#x521B;&#x5EFA;&#x3002;&#x5173;&#x4E8E;&#x5E7F;&#x64AD;&#x6D41;&#xFF0C;&#x540E;&#x9762;&#x4ECB;&#x7ECD;&#x3002;</p>
+</li>
+</ol>
+<h5 id="&#x4EE3;&#x7801;&#x5B9E;&#x73B0;">&#x4EE3;&#x7801;&#x5B9E;&#x73B0;</h5>
+<p>&#x6570;&#x636E;&#x5206;&#x533A;&#x53D1;&#x751F;&#x53D8;&#x5316;&#xFF0C;&#x5E26;&#x6765;&#x7684;&#x95EE;&#x9898;&#x662F;: &#x600E;&#x4E48;&#x4FDD;&#x8BC1;&#x539F;&#x5148;&#x7684;&#x72B6;&#x6001;&#x8DDF;&#x6545;&#x969C;&#x6062;&#x590D;&#x540E;&#x6570;&#x636E;&#x7684;&#x5BF9;&#x5E94;&#x5173;&#x7CFB;&#x5462;?</p>
+<ul>
+<li>&#x5BF9;&#x4E8E;KeyedState&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#x5F88;&#x597D;&#x89E3;&#x51B3;:&#x72B6;&#x6001;&#x90FD;&#x662F;&#x8DDF;key&#x76F8;&#x5173;&#x7684;&#xFF0C;&#x800C;&#x76F8;&#x540C;key&#x7684;&#x6570;&#x636E;&#x4E0D;&#x7BA1;&#x53D1;&#x5F80;&#x54EA;&#x4E2A;&#x5206;&#x533A;&#xFF0C;&#x603B;&#x662F;&#x4F1A;&#x5168;&#x90E8;&#x8FDB;&#x5165;&#x4E00;&#x4E2A;&#x5206;&#x533A;&#x7684;;
+&#x4E8E;&#x662F;&#x53EA;&#x8981;&#x5C06;&#x72B6;&#x6001;&#x4E5F;&#x6309;&#x7167;key&#x7684;&#x54C8;&#x5E0C;&#x503C;&#x8BA1;&#x7B97;&#x51FA;&#x5BF9;&#x5E94;&#x7684;&#x5206;&#x533A;&#xFF0C;&#x8FDB;&#x884C;&#x91CD;&#x7EC4;&#x5206;&#x914D;&#x5C31;&#x53EF;&#x4EE5;&#x4E86;&#x3002;
+&#x6062;&#x590D;&#x72B6;&#x6001;&#x540E;&#x7EE7;&#x7EED;&#x5904;&#x7406;&#x6570;&#x636E;&#xFF0C;&#x5C31;&#x603B;&#x80FD;&#x6309;&#x7167;key&#x627E;&#x5230;&#x5BF9;&#x5E94;&#x4E4B;&#x524D;&#x7684;&#x72B6;&#x6001;&#xFF0C;&#x5C31;&#x4FDD;&#x8BC1;&#x4E86;&#x7ED3;&#x679C;&#x7684;&#x4E00;&#x81F4;&#x6027;&#x3002;&#x6240;&#x4EE5;Flink&#x5BF9;Keyed State&#x8FDB;&#x884C;&#x4E86;&#x975E;&#x5E38;&#x5B8C;&#x5584;&#x7684;&#x5305;&#x88C5;&#xFF0C;&#x6211;&#x4EEC;&#x4E0D;&#x9700;&#x5B9E;&#x73B0;&#x4EFB;&#x4F55;&#x63A5;&#x53E3;&#x5C31;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x4F7F;&#x7528;&#x3002;</li>
+<li><p>&#x800C;&#x5BF9;&#x4E8E;Operator State&#x6765;&#x8BF4;&#x5C31;&#x4F1A;&#x6709;&#x6240;&#x4E0D;&#x540C;&#x3002;&#x56E0;&#x4E3A;&#x4E0D;&#x5B58;&#x5728;key,&#x6240;&#x6709;&#x6570;&#x636E;&#x53D1;&#x5F80;&#x54EA;&#x4E2A;&#x5206;&#x533A;&#x662F;&#x4E0D;&#x53EF;&#x9884;&#x6D4B;&#x7684;;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#xFF0C;&#x5F53;&#x53D1;&#x751F;&#x6545;&#x969C;&#x91CD;&#x542F;&#x4E4B;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x4E0D;&#x80FD;&#x4FDD;&#x8BC1;&#x67D0;&#x4E2A;&#x6570;&#x636E;&#x8DDF;&#x4E4B;&#x524D;&#x4E00;&#x6837;&#xFF0C;&#x8FDB;&#x5165;&#x5230;&#x540C;&#x4E00;&#x4E2A;&#x5E76;&#x884C;&#x5B50;&#x4EFB;&#x52A1;&#x3001;&#x8BBF;&#x95EE;&#x540C;&#x4E00;&#x4E2A;&#x72B6;&#x6001;&#x3002;&#x6240;&#x4EE5;Flink&#x65E0;&#x6CD5;&#x76F4;&#x63A5;&#x5224;&#x65AD;&#x8BE5;&#x600E;&#x6837;&#x4FDD;&#x5B58;&#x548C;&#x6062;&#x590D;&#x72B6;&#x6001;&#xFF0C;&#x800C;&#x662F;&#x63D0;&#x4F9B;&#x4E86;&#x63A5;&#x53E3;&#xFF0C;&#x8BA9;&#x6211;&#x4EEC;&#x6839;&#x636E;&#x4E1A;&#x52A1;&#x9700;&#x6C42;&#x81EA;&#x884C;&#x8BBE;&#x8BA1;&#x72B6;&#x6001;&#x7684;&#x5FEB;&#x7167;&#x4FDD;&#x5B58;( snapshot)&#x548C;&#x6062;&#x590D;(restore) &#x903B;&#x8F91;&#x3002;</p>
+</li>
+<li><p><strong>CheckpointedFunction&#x63A5;&#x53E3;</strong></p>
+<p>&#x5728;Flink&#x4E2D;&#xFF0C;&#x5BF9;&#x72B6;&#x6001;&#x8FDB;&#x884C;&#x6301;&#x4E45;&#x5316;&#x4FDD;&#x5B58;&#x7684;&#x5FEB;&#x7167;&#x673A;&#x5236;&#x53EB;&#x4F5C;&#x201C;&#x68C0;&#x67E5;&#x70B9;&quot; (Checkpoint)&#x3002; &#x4E8E;&#x662F;&#x4F7F;&#x7528;&#x7B97;&#x5B50;&#x72B6;&#x6001;&#x65F6;&#xFF0C;&#x5C31;&#x9700;&#x8981;&#x5BF9;&#x68C0;&#x67E5;&#x70B9;&#x7684;&#x76F8;&#x5173;&#x64CD;&#x4F5C;&#x8FDB;&#x884C;&#x5B9A;&#x4E49;&#xFF0C;&#x5B9E;&#x73B0;&#x4E00;&#x4E2A;CheckpointedFunction&#x63A5;&#x53E3;&#x3002;</p>
+<p>CheckpointedFunction&#x63A5;&#x53E3;&#x5728;&#x6E90;&#x7801;&#x4E2D;&#x5B9A;&#x4E49;&#x5982;&#x4E0B;:</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">CheckpointedFunction</span> </span>{
+    <span class="hljs-comment">//&#x4FDD;&#x5B58;&#x72B6;&#x6001;&#x5FEB;&#x7167;&#x5230;&#x68C0;&#x67E5;&#x70B9;&#x65F6;&#xFF0C;&#x8C03;&#x7528;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;</span>
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">snapshotState</span> <span class="hljs-params">(FunctionSnapshotContext context)</span> <span class="hljs-keyword">throws</span> Exception
+    <span class="hljs-comment">//&#x521D;&#x59CB;&#x5316;&#x72B6;&#x6001;&#x65F6;&#x8C03;&#x7528;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#xFF0C;&#x4E5F;&#x4F1A;&#x5728;&#x6062;&#x590D;&#x72B6;&#x6001;&#x65F6;&#x8C03;&#x7528;</span>
+    <span class="hljs-keyword">void</span> initiali <span class="hljs-title">zeState</span> <span class="hljs-params">(FunctionInitializationContext context)</span> <span class="hljs-keyword">throws</span> Exception</span>;
+}
+</code></pre>
+<p>&#x6BCF;&#x6B21;&#x5E94;&#x7528;&#x4FDD;&#x5B58;&#x68C0;&#x67E5;&#x70B9;&#x505A;&#x5FEB;&#x7167;&#x65F6;&#xFF0C;&#x90FD;&#x4F1A;&#x8C03;&#x7528;<code>.snapshotState()</code>&#x65B9;&#x6CD5;&#xFF0C;&#x5C06;&#x72B6;&#x6001;&#x8FDB;&#x884C;&#x5916;&#x90E8;&#x6301;&#x4E45;&#x5316;&#x3002;&#x800C;&#x5728;&#x7B97;&#x5B50;&#x4EFB;&#x52A1;&#x8FDB;&#x884C;&#x521D;&#x59CB;&#x5316;&#x65F6;&#xFF0C;&#x4F1A;&#x8C03;&#x7528;<code>.initializeState()</code>&#x65B9;&#x6CD5;&#x3002;
+&#x8FD9;&#x53C8;&#x6709;&#x4E24;&#x79CD;&#x60C5;&#x51B5;:&#x4E00;&#x79CD;&#x662F;&#x6574;&#x4E2A;&#x5E94;&#x7528;&#x7B2C;&#x4E00;&#x6B21;&#x8FD0;&#x884C;&#xFF0C;&#x8FD9;&#x65F6;&#x72B6;&#x6001;&#x4F1A;&#x88AB;&#x521D;&#x59CB;&#x5316;&#x4E3A;&#x4E00;&#x4E2A;&#x9ED8;&#x8BA4;&#x503C;(default value);&#x53E6;&#x4E00;&#x79CD;&#x662F;&#x5E94;&#x7528;&#x91CD;&#x542F;&#x65F6;&#xFF0C;&#x4ECE;&#x68C0;&#x67E5;&#x70B9;(checkpoint)&#x6216;&#x8005;&#x4FDD;&#x5B58;&#x70B9;(savepoint) &#x4E2D;&#x8BFB;&#x53D6;&#x4E4B;&#x524D;&#x72B6;&#x6001;&#x7684;&#x5FEB;&#x7167;&#xFF0C;&#x5E76;&#x8D4B;&#x7ED9;&#x672C;&#x5730;&#x72B6;&#x6001;&#x3002;&#x6240;&#x4EE5;&#xFF0C;<strong>&#x63A5;&#x53E3;&#x4E2D;&#x7684;<code>.snapshotState()</code>&#x65B9;&#x6CD5;&#x5B9A;&#x4E49;&#x4E86;&#x68C0;&#x67E5;&#x70B9;&#x7684;&#x5FEB;&#x7167;&#x4FDD;&#x5B58;&#x903B;&#x8F91;&#xFF0C;&#x800C;<code>.initializeState()</code>&#x65B9;&#x6CD5;&#x4E0D;&#x4EC5;&#x5B9A;&#x4E49;&#x4E86;&#x521D;&#x59CB;&#x5316;&#x903B;&#x8F91;&#xFF0C;&#x4E5F;&#x5B9A;&#x4E49;&#x4E86;&#x6062;&#x590D;&#x903B;&#x8F91;</strong></p>
+<p>&#x8FD9;&#x91CC;&#x9700;&#x8981;&#x6CE8;&#x610F;, <code>CheckpointedFunction</code>&#x63A5;&#x53E3;&#x4E2D;&#x7684;&#x4E24;&#x4E2A;&#x65B9;&#x6CD5;&#xFF0C;&#x5206;&#x522B;&#x4F20;&#x5165;&#x4E86;&#x4E00;&#x4E2A;&#x4E0A;&#x4E0B;&#x6587;(context)&#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#x3002;</p>
+<p>&#x4E0D;&#x540C;&#x7684;&#x662F;&#xFF0C;<code>.snapshotState()</code>&#x65B9;&#x6CD5; &#x62FF;&#x5230;&#x7684;&#x662F;&#x5FEB;&#x7167;&#x7684;&#x4E0A;&#x4E0B;&#x6587;<code>FunctionSnapshotContext</code>,&#x5B83;&#x53EF;&#x4EE5;&#x63D0;&#x4F9B;&#x68C0;&#x67E5;&#x70B9;&#x7684;&#x76F8;&#x5173;&#x4FE1;&#x606F;&#xFF0C;<strong>&#x4E0D;&#x8FC7;&#x65E0;&#x6CD5;&#x83B7;&#x53D6;&#x72B6;&#x6001;&#x53E5;&#x67C4;</strong>;</p>
+<p>&#x800C;<code>.initializeState()</code>&#x65B9;&#x6CD5;&#x62FF;&#x5230;&#x7684;&#x662F;<code>FunctionInitializationContext</code>&#xFF0C;&#x8FD9;&#x662F;&#x51FD;&#x6570;&#x7C7B;&#x8FDB;&#x884C;&#x521D;&#x59CB;&#x5316;&#x65F6;&#x7684;&#x4E0A;&#x4E0B;&#x6587;&#xFF0C;&#x662F;&#x771F;&#x6B63;&#x7684;&#x201C;&#x8FD0;&#x884C;&#x65F6;&#x4E0A;&#x4E0B;&#x6587;&#x201D;&#x3002;</p>
+<p><code>FunctionInitializationContext</code>&#x4E2D;&#x63D0;&#x4F9B;&#x4E86;&#x201C;&#x7B97;&#x5B50;&#x72B6;&#x6001;&#x5B58;&#x50A8;&#x201D;(OperatorStateStore) &#x548C;&#x201C;&#x6309;&#x952E;&#x5206;&#x533A;&#x72B6;&#x6001;&#x5B58;&#x50A8;&quot;(KeyedStateStore),&#x5728;&#x8FD9;&#x4E24;&#x4E2A;&#x5B58;&#x50A8;&#x5BF9;&#x8C61;&#x4E2D;&#x53EF;&#x4EE5;&#x975E;&#x5E38;&#x65B9;&#x4FBF;&#x5730;&#x83B7;&#x53D6;&#x5F53;&#x524D;&#x4EFB;&#x52A1;&#x5B9E;&#x4F8B;&#x4E2D;&#x7684;Operator State&#x548C;Keyed State&#x3002;&#x4F8B;&#x5982;:</p>
+<pre><code class="lang-java">ListstateDescriptor&lt;string&gt; descriptor = <span class="hljs-keyword">new</span> ListstateDescriptor&lt;&gt;(<span class="hljs-string">&quot;buf fered-elements&quot;</span>,Types.of (String));
+
+Liststate&lt;string&gt; checkpointedstate = context.getOperatorSt&#x1EA1;teStore().getListstate (descriptor);
+</code></pre>
+</li>
+</ul>
+<p><strong>&#x793A;&#x4F8B;&#x4EE3;&#x7801;</strong></p>
+<p>&#x4E0B;&#x9762;&#x4F8B;&#x5B50;&#x4E2D;&#x81EA;&#x5B9A;&#x4E49;&#x7684;SinkFuntion&#x4F1A;&#x5728;<code>CheckpointedFunction</code>&#x4E2D;&#x8FDB;&#x884C;&#x6570;&#x636E;&#x7F13;&#x5B58;&#xFF0C;&#x7136;&#x540E;&#x7EDF;&#x4E00;&#x53D1;&#x9001;&#x7ED9;&#x4E0B;&#x6E38;&#x3002;&#x8FD9;&#x4E2A;&#x4F8B;&#x5B50;&#x6F14;&#x793A;&#x4E86;&#x5217;&#x8868;&#x72B6;&#x6001;&#x7684;&#x5E73;&#x5747;&#x5206;&#x5272;&#x91CD;&#x7EC4;(event-split redistribution)</p>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> com.luke.flink.datastreamdemo;
+
+<span class="hljs-keyword">import</span> java.time.Duration;
+<span class="hljs-keyword">import</span> java.util.ArrayList;
+<span class="hljs-keyword">import</span> java.util.List;
+
+<span class="hljs-keyword">import</span> org.apache.flink.api.common.eventtime.SerializableTimestampAssigner;
+<span class="hljs-keyword">import</span> org.apache.flink.api.common.eventtime.WatermarkStrategy;
+<span class="hljs-keyword">import</span> org.apache.flink.api.common.state.ListState;
+<span class="hljs-keyword">import</span> org.apache.flink.api.common.state.ListStateDescriptor;
+<span class="hljs-keyword">import</span> org.apache.flink.runtime.state.FunctionInitializationContext;
+<span class="hljs-keyword">import</span> org.apache.flink.runtime.state.FunctionSnapshotContext;
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.checkpoint.CheckpointedFunction;
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.datastream.SingleOutputStreamOperator;
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.functions.sink.SinkFunction;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">StateBufferingSinkExample</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+        StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
+        env.setParallelism(<span class="hljs-number">1</span>);
+        env.getConfig().setAutoWatermarkInterval(<span class="hljs-number">100</span>); <span class="hljs-comment">// &#x548C;&#x4E0B;&#x9762;&#x7684;createWatermarkGenerator&#x6709;&#x5173;&#x7CFB; ,100&#x6BEB;&#x79D2;&#x751F;&#x6210;watermark</span>
+
+        SingleOutputStreamOperator&lt;Event&gt; stream = env.addSource(<span class="hljs-keyword">new</span> ClickLogs())
+                <span class="hljs-comment">// &#x4E71;&#x5E8F;&#x6D41;&#x7684;watermark&#x751F;&#x6210;</span>
+                .assignTimestampsAndWatermarks(WatermarkStrategy.&lt;Event&gt;forBoundedOutOfOrderness(Duration.ZERO)
+                        .withTimestampAssigner(<span class="hljs-keyword">new</span> SerializableTimestampAssigner&lt;Event&gt;() {
+                            <span class="hljs-meta">@Override</span>
+                            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">long</span> <span class="hljs-title">extractTimestamp</span><span class="hljs-params">(Event element, <span class="hljs-keyword">long</span> recordTimestamp)</span> </span>{
+                                <span class="hljs-keyword">return</span> element.timestamp;
+                            }
+                        }));
+
+        <span class="hljs-comment">// stream.print(&quot;input:&quot;);</span>
+
+        stream.addSink(<span class="hljs-keyword">new</span> BufferingSink(<span class="hljs-number">10</span>));
+
+        env.execute();
+    }
+
+    <span class="hljs-comment">// &#x81EA;&#x5B9A;&#x4E49;&#x5B9E;&#x73B0;SinkFunction</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BufferingSink</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">SinkFunction</span>&lt;<span class="hljs-title">Event</span>&gt;, <span class="hljs-title">CheckpointedFunction</span> </span>{
+        <span class="hljs-comment">// &#x5B9A;&#x4E49;&#x5F53;&#x524D;&#x7C7B;&#x7684;&#x5C5E;&#x6027;,&#x6279;&#x91CF;</span>
+        <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> threshold;
+        <span class="hljs-keyword">private</span> List&lt;Event&gt; bufferedElements;
+
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">BufferingSink</span><span class="hljs-params">(<span class="hljs-keyword">int</span> threshold)</span> </span>{
+            <span class="hljs-keyword">this</span>.threshold = threshold;
+            <span class="hljs-keyword">this</span>.bufferedElements = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
+        }
+
+        <span class="hljs-comment">// &#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x7B97;&#x5B50;&#x72B6;&#x6001;, &#x548C; bufferedElements &#x4FDD;&#x5B58;&#x7684;&#x662F;&#x540C;&#x6837;&#x7684;&#x6570;&#x636E;</span>
+        <span class="hljs-comment">// &#x53EA;&#x6709;&#x5728;&#x9700;&#x8981;&#x505A;checkpoint&#x65F6;&#x624D;&#x5C06; bufferedElements&#x4E2D;&#x6570;&#x636E;&#x4FDD;&#x5B58;&#x5230; checkpointedState &#x4E2D;</span>
+        <span class="hljs-keyword">private</span> ListState&lt;Event&gt; checkpointedState;
+
+        <span class="hljs-meta">@Override</span>
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">invoke</span><span class="hljs-params">(Event value, Context context)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+            bufferedElements.add(value);
+            <span class="hljs-comment">// &#x5224;&#x65AD;&#x5982;&#x679C;&#x8FBE;&#x5230;&#x9608;&#x503C;,&#x5219;&#x6279;&#x91CF;&#x5199;&#x5165;</span>
+            <span class="hljs-keyword">if</span> (bufferedElements.size() == threshold) {
+                <span class="hljs-comment">// &#x7528;&#x63A7;&#x5236;&#x53F0;&#x6253;&#x5370;,&#x6A21;&#x62DF;&#x5199;&#x5165;&#x5916;&#x90E8;&#x7CFB;&#x7EDF;</span>
+                <span class="hljs-keyword">for</span> (Event ele : bufferedElements) {
+                    System.out.println(ele);
+                }
+                System.out.println(<span class="hljs-string">&quot;=====&#x8F93;&#x51FA;&#x5B8C;&#x6BD5;=====&quot;</span>);
+                bufferedElements.clear();
+            }
+        }
+
+        <span class="hljs-meta">@Override</span>
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">snapshotState</span><span class="hljs-params">(FunctionSnapshotContext context)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+            checkpointedState.clear();
+            <span class="hljs-comment">// &#x5BF9;&#x72B6;&#x6001;&#x8FDB;&#x884C;&#x6301;&#x4E45;&#x5316;, &#x590D;&#x5236; bufferedElements &#x5230; checkpointedState</span>
+            <span class="hljs-keyword">for</span> (Event ele : bufferedElements) {
+                checkpointedState.add(ele);
+            }
+        }
+
+        <span class="hljs-meta">@Override</span>
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">initializeState</span><span class="hljs-params">(FunctionInitializationContext context)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+            <span class="hljs-comment">// &#x5B9A;&#x4E49;&#x7B97;&#x5B50;</span>
+            ListStateDescriptor&lt;Event&gt; descripter = <span class="hljs-keyword">new</span> ListStateDescriptor&lt;&gt;(<span class="hljs-string">&quot;buffered-elements&quot;</span>, Event.class);
+            checkpointedState = context.getOperatorStateStore().getListState(descripter);
+
+            <span class="hljs-comment">// &#x5982;&#x679C;&#x4ECE;&#x6545;&#x969C;&#x6062;&#x590D;,&#x9700;&#x8981;&#x5C06; checkpointedState &#x4E2D;&#x6570;&#x636E;&#x6062;&#x590D;&#x5230; bufferedElements &#x4E2D;</span>
+            <span class="hljs-keyword">if</span> (context.isRestored()) {
+                <span class="hljs-keyword">for</span> (Event ele : checkpointedState.get()) {
+                    bufferedElements.add(ele);
+                }
+            }
+        }
+
+    }
+}
+</code></pre>
+<h4 id="&#x5E7F;&#x64AD;&#x72B6;&#x6001;-broadcast-state">&#x5E7F;&#x64AD;&#x72B6;&#x6001; Broadcast State</h4>
+<p>&#x72B6;&#x6001;&#x5E7F;&#x64AD;&#x51FA;&#x53BB;&#xFF0C;&#x6240;&#x6709;&#x5E76;&#x884C;&#x5B50;&#x4EFB;&#x52A1;&#x7684;&#x72B6;&#x6001;&#x90FD;&#x662F;&#x76F8;&#x540C;&#x7684;&#xFF1B;&#x5E76;&#x884C;&#x5EA6;&#x8C03;&#x6574;&#x65F6;&#x53EA;&#x8981;&#x76F4;&#x63A5;&#x590D;&#x5236;&#x5373;&#x53EF;&#x3002;</p>
+<p><strong>&#x57FA;&#x672C;&#x7528;&#x6CD5;</strong></p>
+<p>&#x8BA9;&#x6240;&#x6709;&#x5E76;&#x884C;&#x5B50;&#x4EFB;&#x52A1;&#x90FD;&#x6301;&#x6709;&#x540C;&#x4E00;&#x72B6;&#x6001;&#xFF0C;&#x4E5F;&#x5C31;&#x610F;&#x5473;&#x7740;&#x4E00;&#x65E6;&#x72B6;&#x6001;&#x53D1;&#x751F;&#x53D8;&#x5316;&#xFF0C;&#x6240;&#x6709;&#x5B50;&#x4EFB;&#x52A1;&#x4E0A;&#x7684;&#x5B9E;&#x4F8B;&#x90FD;&#x8981;&#x66F4;&#x65B0;&#x3002;</p>
+<p>&#x4EC0;&#x4E48;&#x65F6;&#x5019;&#x4F1A;&#x7528;&#x5230; &#x5E7F;&#x64AD;&#x72B6;&#x6001;&#x5462;&#xFF1F;</p>
+<p>&#x6700;&#x666E;&#x904D;&#x7684;&#x60C5;&#x51B5;&#x662F;&quot;&#x52A8;&#x6001;&#x914D;&#x7F6E;&quot; &#x6216; &quot;&#x52A8;&#x6001;&#x89C4;&#x5219;&quot;&#x3002;</p>
+<p><strong>&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x7684;&#x60F3;&#x6CD5;&#x662F;&#xFF0C;&#x5B9A;&#x671F;&#x626B;&#x63CF;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#xFF0C;&#x53D1;&#x73B0;&#x6539;&#x53D8;&#x5C31;&#x7ACB;&#x5373;&#x66F4;&#x65B0;&#x3002;&#x4F46;&#x8FD9;&#x6837;&#x5C31;&#x9700;&#x8981;&#x53E6;&#x5916;&#x542F;&#x52A8;&#x4E00;&#x4E2A;&#x626B;&#x63CF;&#x8FDB;&#x7A0B;&#xFF0C;&#x5982;&#x679C;&#x626B;&#x63CF;&#x5468;&#x671F;&#x592A;&#x957F;&#xFF0C;&#x914D;&#x7F6E;&#x66F4;&#x65B0;&#x4E0D;&#x53CA;&#x65F6;&#x5C31;&#x4F1A;&#x5BFC;&#x81F4;&#x7ED3;&#x679C;&#x9519;&#x8BEF;;&#x5982;&#x679C;&#x626B;&#x63CF;&#x5468;&#x671F;&#x592A;&#x77ED;&#xFF0C;&#x53C8;&#x4F1A;&#x8017;&#x8D39;&#x5927;&#x91CF;&#x8D44;&#x6E90;&#x505A;&#x65E0;&#x7528;&#x529F;&#x3002;&#x89E3;&#x51B3;&#x7684;&#x529E;&#x6CD5;,&#x8FD8;&#x662F;&#x6D41;&#x5904;&#x7406;&#x7684;&#x201C;&#x4E8B;&#x4EF6;&#x9A71;&#x52A8;&#x201D;&#x601D;&#x8DEF;&#x4E00;&#x4E00;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;<font style="color:red">&#x5C06;&#x8FD9;&#x52A8;&#x6001;&#x7684;&#x914D;&#x7F6E;&#x6570;&#x636E;&#x770B;&#x4F5C;&#x4E00;&#x6761;&#x6D41;&#xFF0C;&#x5C06;&#x8FD9;&#x6761;&#x6D41;&#x548C;&#x672C;&#x8EAB;&#x8981;&#x5904;&#x7406;&#x7684;&#x6570;&#x636E;&#x6D41;&#x8FDB;&#x884C;&#x8FDE;&#x63A5;(connect)&#xFF0C; &#x5C31;&#x53EF;&#x4EE5;&#x5B9E;&#x65F6;&#x5730;&#x66F4;&#x65B0;&#x914D;&#x7F6E;&#x8FDB;&#x884C;&#x8BA1;&#x7B97;&#x4E86;</font></strong></p>
+<p><strong><font style="color:red">&#x7531;&#x4E8E;&#x914D;&#x7F6E;&#x6216;&#x8005;&#x89C4;&#x5219;&#x6570;&#x636E;&#x662F;&#x5168;&#x5C40;&#x6709;&#x6548;&#x7684;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x628A;&#x5B83;&#x5E7F;&#x64AD;&#x7ED9;&#x6240;&#x6709;&#x7684;&#x5E76;&#x884C;&#x5B50;&#x4EFB;&#x52A1;&#x3002;&#x800C;&#x5B50;&#x4EFB;&#x52A1;&#x9700;&#x8981;&#x628A;&#x5B83;&#x4F5C;&#x4E3A;&#x4E00;&#x4E2A;&#x7B97;&#x5B50;&#x72B6;&#x6001;&#x4FDD;&#x5B58;&#x8D77;&#x6765;&#xFF0C;&#x4EE5;&#x4FDD;&#x8BC1;&#x6545;&#x969C;&#x6062;&#x590D;&#x540E;&#x5904;&#x7406;&#x7ED3;&#x679C;&#x662F;&#x4E00;&#x81F4;&#x7684;</font>&#x3002;&#x8FD9;&#x65F6;&#x7684;&#x72B6;&#x6001;&#xFF0C;&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x5178;&#x578B;&#x7684;&#x5E7F;&#x64AD;&#x72B6;&#x6001;&#x3002;&#x6211;&#x4EEC;&#x77E5;&#x9053;&#xFF0C;&#x5E7F;&#x64AD;&#x72B6;&#x6001;&#x4E0E;&#x5176;&#x4ED6;&#x7B97;&#x5B50;&#x72B6;&#x6001;&#x7684;&#x5217;&#x8868;(list) &#x7ED3;&#x6784;&#x4E0D;&#x540C;&#xFF0C;&#x5E95;&#x5C42;&#x662F;&#x4EE5;&#x952E;&#x503C;&#x5BF9;(key-value) &#x5F62;&#x5F0F;&#x63CF;&#x8FF0;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x5176;&#x5B9E;&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x6620;&#x5C04;&#x72B6;&#x6001;( MapState)</strong></p>
+<p>&#x4EE3;&#x7801;&#x4E0A;&#xFF0C;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x8C03;&#x7528;<code>DataStream</code>&#x7684;<code>.broadcast()</code>&#x65B9;&#x6CD5;&#xFF0C;&#x4F20;&#x5165;&#x4E00;&#x4E2A;&quot;&#x6620;&#x5C04;&#x72B6;&#x6001;&#x63CF;&#x8FF0;&#x5668;&quot; (MapStateDescripter)&#x8BF4;&#x660E;&#x72B6;&#x6001;&#x7684;&#x540D;&#x79F0;&#x548C;&#x7C7B;&#x578B;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x5F97;&#x5230;&#x4E00;&#x4E2A; &#x5E7F;&#x64AD;&#x6D41; (BroadcastStream)&#x3002;&#x8FDB;&#x800C;&#x5C06;&#x8981;&#x5904;&#x7406;&#x7684;&#x6570;&#x636E;&#x6D41;&#x548C;&#x8FD9;&#x6761;&#x5E7F;&#x64AD;&#x6D41;&#x8FDB;&#x884C;&#x8FDE;&#x63A5;(connect)&#xFF0C;&#x5C31;&#x4F1A;&#x5F97;&#x5230;&quot;&#x5E7F;&#x64AD;&#x8FDE;&#x63A5;&#x6D41;&quot;(BroadcastConnectedStream)&#x3002;</p>
+<pre><code class="lang-java"><span class="hljs-comment">// &#x72B6;&#x6001;&#x63CF;&#x8FF0;&#x5668;&#x4E2D;key&#x7C7B;&#x578B;&#x4E3A;string, &#x533A;&#x5206;&#x4E0D;&#x540C;&#x72B6;&#x6001;&#x503C;&#x800C;&#x7ED9;&#x5B9A;&#x7684;key&#x540D;&#x79F0;</span>
+MapStateDescriptor&lt;string,Rule&gt; ruleStateDescriptor = <span class="hljs-keyword">new</span> MapStateDescriptor&lt;&gt;(...);
+<span class="hljs-comment">// ruleStream &#x4E2D;&#x4FDD;&#x5B58;&#x7684;&#x5C31;&#x662F; &#x6570;&#x636E;&#x6D41;stream&#x7684;&#x5904;&#x7406;&#x89C4;&#x5219;</span>
+<span class="hljs-comment">// &#x901A;&#x8FC7; ruleStream.broadcast() &#x5F97;&#x5230;&#x5E7F;&#x64AD;&#x6D41;</span>
+BroadcastStream&lt;Rule&gt; ruleBroadcastStream = ruleStream.broadcast(rulestateDescriptor);
+
+DataStream&lt;string&gt; output = stream.connect(ruleBroadcaststream).process(<span class="hljs-keyword">new</span> BroadcastProcessFunction&lt;&gt;() l. ..)) ;
+</code></pre>
+<p>&#x5BF9;&#x4E8E;&#x5E7F;&#x64AD;&#x6D41;&#x8C03;&#x7528;<code>.process()</code>&#x65B9;&#x6CD5;&#xFF0C;&#x53EF;&#x4EE5;&#x4F20;&#x5165;&quot;&#x5E7F;&#x64AD;&#x5904;&#x7406;&#x51FD;&#x6570;&quot; KeyedBroadcastProcessFunction &#x6216;&#x8005; BroadcastProcessFuntion&#x6765;&#x8FDB;&#x884C;&#x5904;&#x7406;&#x8BA1;&#x7B97;&#x3002;&#x5E7F;&#x64AD;&#x5904;&#x7406;&#x51FD;&#x6570;&#x4E2D;&#x6709;&#x4E24;&#x4E2A;&#x65B9;&#x6CD5;<code>.processElement()</code>&#x548C;<code>.processBroadcastElement()</code></p>
+<pre><code class="lang-java"><span class="hljs-comment">// &#x5904;&#x7406;&#x6B63;&#x5E38;&#x7684;&#x6570;&#x636E;&#x6D41;,&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;value&#x6025;&#x901F;&#x5F53;&#x524D;&#x6765;&#x7684;&#x6D41;&#x6570;&#x636E;</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span>  <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">void</span> <span class="hljs-title">processElement</span> <span class="hljs-params">(IN1 value,ReadOnlyContext ctx,Collector&lt;ouT&gt; out)</span> <span class="hljs-keyword">throws</span> Exception</span>;
+
+<span class="hljs-comment">//&#x5904;&#x7406;&#x5E7F;&#x64AD;&#x6D41;&#xFF0C;&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;value&#x5C31;&#x662F;&#x5E7F;&#x64AD;&#x6D41;&#x4E2D;&#x7684;&#x89C4;&#x5219;&#x6216;&#x8005;&#x914D;&#x7F6E;&#x6570;&#x636E;&#x3002;</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">void</span> <span class="hljs-title">processBroadcastElement</span> <span class="hljs-params">(IN2 value, Context ctx, Collector&lt;ouT&gt; out)</span> <span class="hljs-keyword">throws</span> Exception</span>;
+</code></pre>
+<p>&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;&#x90FD;&#x4E00;&#x4E2A;ctx&#xFF0C;&#x90FD;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x8C03;&#x7528; .getBroadcastState()&#x65B9;&#x6CD5;&#x83B7;&#x53D6;&#x5230;&#x5F53;&#x524D;&#x7684;&#x5E7F;&#x64AD;&#x72B6;&#x6001;&#x3002;
+<strong>&#x533A;&#x522B;&#x5728;&#x4E8E;.processElement()&#x65B9;&#x6CD5;&#x91CC;&#x7684;&#x4E0A;&#x4E0B;&#x6587;&#x662F;&#x53EA;&#x8BFB;&#x7684;Readonly&#xFF0C;&#x56E0;&#x6B64;&#x83B7;&#x53D6;&#x5230;&#x7684;&#x5E7F;&#x64AD;&#x72B6;&#x6001;&#x4E5F;&#x53EA;&#x80FD;&#x8BFB;&#x53D6;&#x4E0D;&#x80FD;&#x66F4;&#x6539;</strong>
+<strong>&#x800C;.processBroadcastElement()&#x4E2D;&#x7684; Context &#x6CA1;&#x6709;&#x9650;&#x5236;&#xFF0C;&#x53EF;&#x4EE5;&#x6839;&#x636E;&#x5F53;&#x524D;&#x5E7F;&#x64AD;&#x6D41;&#x4E2D;&#x6570;&#x636E;&#x66F4;&#x65B0;&#x72B6;&#x6001;</strong></p>
+<pre><code class="lang-java">Rule rule= ctx.getBroadcastState(<span class="hljs-keyword">new</span> MapStateDescriptor&lt;&gt;(<span class="hljs-string">&quot;rules&quot;</span>,Types.String,Types.Pojo(Rule.class))).get(<span class="hljs-string">&quot;my rule&quot;</span>);
+</code></pre>
+<p>&#x901A;&#x8FC7;&#x8C03;&#x7528;<code>ctx.getBroadcastState()</code>&#x65B9;&#x6CD5;&#xFF0C;&#x4F20;&#x5165;&#x4E00;&#x4E2A;<code>MapStateDescriptor</code>&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x5F97;&#x5230;&#x5F53;&#x524D;&#x53EB;&#x505A;<code>rules</code>&#x7684;&#x5E7F;&#x64AD;&#x72B6;&#x6001;&#xFF0C;&#x8C03;&#x7528;&#x5B83;&#x7684;<code>.get()</code>&#x65B9;&#x6CD5;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x53D6;&#x51FA;&#x5176;&#x4E2D;&#x7684;<code>my rule</code>&#x5BF9;&#x5E94;&#x7684;&#x503C;&#x8FDB;&#x884C;&#x8BA1;&#x7B97;&#x5904;&#x7406;&#x3002;</p>
+<p><strong>&#x793A;&#x4F8B;&#x4EE3;&#x7801;</strong></p>
+<p>&#x7535;&#x5546;&#x5E94;&#x7528;&#x4E2D;&#xFF0C;&#x5F80;&#x5F80;&#x9700;&#x8981;&#x5224;&#x65AD;&#x7528;&#x6237;&#x5148;&#x540E;&#x53D1;&#x751F;&#x7684;&#x884C;&#x4E3A;&#x7684;&quot;&#x7EC4;&#x5408;&#x6A21;&#x5F0F;&quot;&#xFF0C;&#x6BD4;&#x5982; &quot;&#x767B;&#x5F55;-&#x4E0B;&#x5355;&quot; &#x6216;&#x8005; &quot;&#x767B;&#x5F55;-&#x652F;&#x4ED8;&quot;&#xFF0C;&#x68C0;&#x6D4B;&#x51FA;&#x8FD9;&#x4E9B;&#x8FDE;&#x7EED;&#x884C;&#x4E3A;&#x8FDB;&#x884C;&#x7EDF;&#x4E00;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x4E86;&#x89E3;&#x5E73;&#x53F0;&#x7684;&#x8FD0;&#x7528;&#x72B6;&#x72B6;&#x51B5;&#x4EE5;&#x53CA;&#x7528;&#x6237;&#x7684;&#x884C;&#x4E3A;&#x4E60;&#x60EF;&#x3002;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> com.luke.flink.datastreamdemo;
+
+<span class="hljs-keyword">import</span> org.apache.flink.api.common.state.BroadcastState;
+<span class="hljs-keyword">import</span> org.apache.flink.api.common.state.MapStateDescriptor;
+<span class="hljs-keyword">import</span> org.apache.flink.api.common.state.ReadOnlyBroadcastState;
+<span class="hljs-keyword">import</span> org.apache.flink.api.common.state.ValueState;
+<span class="hljs-keyword">import</span> org.apache.flink.api.common.state.ValueStateDescriptor;
+<span class="hljs-keyword">import</span> org.apache.flink.api.common.typeinfo.Types;
+<span class="hljs-keyword">import</span> org.apache.flink.api.java.tuple.Tuple2;
+<span class="hljs-keyword">import</span> org.apache.flink.configuration.Configuration;
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.datastream.BroadcastStream;
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.datastream.DataStreamSource;
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.functions.co.KeyedBroadcastProcessFunction;
+<span class="hljs-keyword">import</span> org.apache.flink.util.Collector;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">StateBehaviorPatternDetectExample</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+        StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
+        env.setParallelism(<span class="hljs-number">1</span>);
+
+        <span class="hljs-comment">// &#x7528;&#x6237;&#x7684;&#x884C;&#x4E3A;&#x6570;&#x636E;&#x6D41;</span>
+        DataStreamSource&lt;Action&gt; actionStream = env.fromElements(
+                <span class="hljs-keyword">new</span> Action(<span class="hljs-string">&quot;Alice&quot;</span>, <span class="hljs-string">&quot;login&quot;</span>),
+                <span class="hljs-keyword">new</span> Action(<span class="hljs-string">&quot;Alice&quot;</span>, <span class="hljs-string">&quot;pay&quot;</span>),
+                <span class="hljs-keyword">new</span> Action(<span class="hljs-string">&quot;Bob&quot;</span>, <span class="hljs-string">&quot;login&quot;</span>),
+                <span class="hljs-keyword">new</span> Action(<span class="hljs-string">&quot;Bob&quot;</span>, <span class="hljs-string">&quot;order&quot;</span>));
+
+        <span class="hljs-comment">// &#x884C;&#x4E3A;&#x6A21;&#x5F0F;&#x6D41;&#xFF0C;&#x7528;&#x4E8E;&#x6784;&#x5EFA;&#x5E7F;&#x64AD;&#x6D41;</span>
+        DataStreamSource&lt;Pattern&gt; patternStream = env.fromElements(
+                <span class="hljs-keyword">new</span> Pattern(<span class="hljs-string">&quot;login&quot;</span>, <span class="hljs-string">&quot;pay&quot;</span>),
+                <span class="hljs-keyword">new</span> Pattern(<span class="hljs-string">&quot;login&quot;</span>, <span class="hljs-string">&quot;order&quot;</span>));
+
+        <span class="hljs-comment">// &#x5B9A;&#x4E49;&#x5E7F;&#x64AD;&#x72B6;&#x6001;&#x63CF;&#x8FF0;&#x5668;</span>
+        MapStateDescriptor&lt;Void, Pattern&gt; descriptor = <span class="hljs-keyword">new</span> MapStateDescriptor&lt;Void, Pattern&gt;(<span class="hljs-string">&quot;pattern&quot;</span>, Types.VOID,
+                Types.POJO(Pattern.class));
+
+        BroadcastStream&lt;Pattern&gt; broadcastStream = patternStream.broadcast(descriptor);
+
+        <span class="hljs-comment">// connect&#x4E24;&#x6761;&#x6D41;&#x8FDB;&#x884C;&#x5904;&#x7406;</span>
+        actionStream.keyBy(data -&gt; data.userId)
+                .connect(broadcastStream)
+                .process(<span class="hljs-keyword">new</span> PatternDetector())
+                .print();
+
+        env.execute();
+    }
+
+    <span class="hljs-comment">// &#x5B9A;&#x4E49;&#x7528;&#x6237;&#x884C;&#x4E3A;&#x548C;&#x6A21;&#x5F0F;&#x7684;POJO&#x7C7B;</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Action</span> </span>{
+        <span class="hljs-keyword">public</span> String userId;
+        <span class="hljs-keyword">public</span> String action;
+
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Action</span><span class="hljs-params">(String userId, String action)</span> </span>{
+            <span class="hljs-keyword">this</span>.userId = userId;
+            <span class="hljs-keyword">this</span>.action = action;
+        }
+
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Action</span><span class="hljs-params">()</span> </span>{
+        }
+
+        <span class="hljs-meta">@Override</span>
+        <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">toString</span><span class="hljs-params">()</span> </span>{
+            <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Action [userId=&quot;</span> + userId + <span class="hljs-string">&quot;, action=&quot;</span> + action + <span class="hljs-string">&quot;]&quot;</span>;
+        }
+    }
+
+    <span class="hljs-comment">// &#x884C;&#x4E3A;&#x6A21;&#x5F0F;</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Pattern</span> </span>{
+        <span class="hljs-keyword">public</span> String action1;
+        <span class="hljs-keyword">public</span> String action2;
+
+        <span class="hljs-meta">@Override</span>
+        <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">toString</span><span class="hljs-params">()</span> </span>{
+            <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Pattern [action1=&quot;</span> + action1 + <span class="hljs-string">&quot;, action2=&quot;</span> + action2 + <span class="hljs-string">&quot;]&quot;</span>;
+        }
+
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Pattern</span><span class="hljs-params">(String action1, String action2)</span> </span>{
+            <span class="hljs-keyword">this</span>.action1 = action1;
+            <span class="hljs-keyword">this</span>.action2 = action2;
+        }
+
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Pattern</span><span class="hljs-params">()</span> </span>{
+        }
+    }
+
+    <span class="hljs-comment">// &#x5B9E;&#x73B0;&#x81EA;&#x5B9A;&#x4E49;&#x7684; keyedBroadcastProcessFunction</span>
+    <span class="hljs-comment">// &#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x662F; key&#x7C7B;&#x578B;, userId&#x662F;string</span>
+    <span class="hljs-comment">// &#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;&#x662F; &#x7B2C;&#x4E00;&#x6761;&#x6D41;&#x7684;&#x8F93;&#x5165;&#x7C7B;&#x578B; Action</span>
+    <span class="hljs-comment">// &#x7B2C;&#x4E09;&#x4E2A;&#x53C2;&#x6570;&#x662F; &#x7B2C;&#x4E8C;&#x6761;&#x6D41;&#x7684;&#x8F93;&#x5165;&#x7C7B;&#x578B; Pattern</span>
+    <span class="hljs-comment">// &#x7B2C;&#x56DB;&#x4E2A;&#x53C2;&#x6570;&#x662F; &#x8F93;&#x51FA;&#x7C7B;&#x578B; Tuple2&lt;String,Pattern&gt;</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PatternDetector</span>
+            <span class="hljs-keyword">extends</span> <span class="hljs-title">KeyedBroadcastProcessFunction</span>&lt;<span class="hljs-title">String</span>, <span class="hljs-title">Action</span>, <span class="hljs-title">Pattern</span>, <span class="hljs-title">Tuple2</span>&lt;<span class="hljs-title">String</span>, <span class="hljs-title">Pattern</span>&gt;&gt; </span>{
+
+        <span class="hljs-comment">// &#x5B9A;&#x4E49;&#x4E00;&#x4E2A; keydState, &#x4FDD;&#x5B58;&#x4E0A;&#x4E00;&#x6B21;&#x7528;&#x6237;&#x7684;&#x884C;&#x4E3A;</span>
+        ValueState&lt;String&gt; prevActionState;
+
+        <span class="hljs-meta">@Override</span>
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">open</span><span class="hljs-params">(Configuration parameters)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+            prevActionState = getRuntimeContext()
+                    .getState(<span class="hljs-keyword">new</span> ValueStateDescriptor&lt;String&gt;(<span class="hljs-string">&quot;last-state&quot;</span>, String.class));
+        }
+
+        <span class="hljs-meta">@Override</span>
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">processElement</span><span class="hljs-params">(Action value,
+                KeyedBroadcastProcessFunction&lt;String, Action, Pattern, Tuple2&lt;String, Pattern&gt;&gt;.ReadOnlyContext ctx,
+                Collector&lt;Tuple2&lt;String, Pattern&gt;&gt; out)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+            <span class="hljs-comment">// &#x4ECE;&#x5E7F;&#x64AD;&#x72B6;&#x6001;&#x4E2D;&#x83B7;&#x53D6;&#x5339;&#x914D;&#x6A21;&#x5F0F;</span>
+            <span class="hljs-comment">// new MapStateDescriptor &#x8FD9;&#x91CC;&#x5199;&#x6CD5;&#x548C; main&#x51FD;&#x6570;&#x4E2D;&#x662F;&#x4E00;&#x6837;&#x7684;</span>
+            ReadOnlyBroadcastState&lt;Void, Pattern&gt; readonlyPatternState = ctx
+                    .getBroadcastState(<span class="hljs-keyword">new</span> MapStateDescriptor&lt;Void, Pattern&gt;(<span class="hljs-string">&quot;pattern&quot;</span>, Types.VOID,
+                            Types.POJO(Pattern.class)));
+            Pattern pattern = readonlyPatternState.get(<span class="hljs-keyword">null</span>);
+
+            <span class="hljs-comment">// &#x83B7;&#x53D6;&#x7528;&#x6237;&#x4E0A;&#x4E00;&#x6B21;&#x884C;&#x4E3A;</span>
+            String prevAction = prevActionState.value();
+
+            <span class="hljs-comment">// &#x5224;&#x65AD;&#x662F;&#x5426;&#x5339;&#x914D;</span>
+            <span class="hljs-keyword">if</span> (pattern != <span class="hljs-keyword">null</span> &amp;&amp; prevAction != <span class="hljs-keyword">null</span>) {
+                <span class="hljs-keyword">if</span> (pattern.action1.equals(prevAction) &amp;&amp; pattern.action2.equals(value.action)) {
+                    out.collect(<span class="hljs-keyword">new</span> Tuple2&lt;String, Pattern&gt;(ctx.getCurrentKey(), pattern));
+                }
+            }
+            <span class="hljs-comment">// value.action&#x4E2D;&#x4FDD;&#x5B58;&#x7684;&#x662F;&#x7528;&#x6237;&#x672C;&#x6B21;&#x884C;&#x4E3A;,&#x66F4;&#x65B0;&#x72B6;&#x6001;</span>
+            prevActionState.update(value.action);
+        }
+
+        <span class="hljs-meta">@Override</span>
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">processBroadcastElement</span><span class="hljs-params">(Pattern value,
+                KeyedBroadcastProcessFunction&lt;String, Action, Pattern, Tuple2&lt;String, Pattern&gt;&gt;.Context ctx,
+                Collector&lt;Tuple2&lt;String, Pattern&gt;&gt; out)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+            <span class="hljs-comment">// &#x4ECE;&#x4E0A;&#x4E0B;&#x6587;&#x4E2D;&#x83B7;&#x53D6;&#x5E7F;&#x64AD;&#x72B6;&#x6001;, &#x5E76;&#x7528;&#x5F53;&#x524D;&#x6570;&#x636E;&#x66F4;&#x65B0;&#x72B6;&#x6001;</span>
+            <span class="hljs-comment">// new MapStateDescriptor &#x8FD9;&#x91CC;&#x5199;&#x6CD5;&#x548C; main&#x51FD;&#x6570;&#x4E2D;&#x662F;&#x4E00;&#x6837;&#x7684;</span>
+            BroadcastState&lt;Void, Pattern&gt; patternState = ctx
+                    .getBroadcastState(<span class="hljs-keyword">new</span> MapStateDescriptor&lt;Void, Pattern&gt;(<span class="hljs-string">&quot;pattern&quot;</span>, Types.VOID,
+                            Types.POJO(Pattern.class)));
+
+            <span class="hljs-comment">// &#x66F4;&#x65B0;&#x5F53;&#x524D;&#x7684;&#x5E7F;&#x64AD;&#x72B6;&#x6001;</span>
+            patternState.put(<span class="hljs-keyword">null</span>, value);
+        }
+
+    }
+}
+<span class="hljs-comment">//&#x8F93;&#x51FA;</span>
+(Alice,Pattern [action1=login, action2=pay])
+(Bob,Pattern [action1=login, action2=order])
+</code></pre>
+<h3 id="&#x72B6;&#x6001;&#x6301;&#x4E45;&#x5316;-&#x548C;-&#x72B6;&#x6001;&#x540E;&#x7AEF;">&#x72B6;&#x6001;&#x6301;&#x4E45;&#x5316; &#x548C; &#x72B6;&#x6001;&#x540E;&#x7AEF;</h3>
+<p><strong>&#x5728;Flink &#x7684;&#x72B6;&#x6001;&#x7BA1;&#x7406;&#x673A;&#x5236;&#x4E2D;&#xFF0C;&#x5F88;&#x91CD;&#x8981;&#x7684;&#x4E00;&#x4E2A;&#x529F;&#x80FD;&#x5C31;&#x662F;&#x5BF9;&#x72B6;&#x6001;&#x8FDB;&#x884C;&#x6301;&#x4E45;&#x5316;(persistence) &#x4FDD;&#x5B58;&#xFF0C;&#x8FD9;&#x6837;&#x5C31;&#x53EF;&#x4EE5;&#x5728;&#x53D1;&#x751F;&#x6545;&#x969C;&#x540E;&#x8FDB;&#x884C;&#x91CD;&#x542F;&#x6062;&#x590D;&#x3002;Flink &#x5BF9;&#x72B6;&#x6001;&#x8FDB;&#x884C;&#x6301;&#x4E45;&#x5316;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x5C31;&#x662F;&#x5C06;&#x5F53;&#x524D;&#x6240;&#x6709;&#x5206;&#x5E03;&#x5F0F;&#x72B6;&#x6001;&#x8FDB;&#x884C;&#x201C;&#x5FEB;&#x7167;&#x201D;&#x4FDD;&#x5B58;&#xFF0C;&#x5199;&#x5165;&#x4E00;&#x4E2A;&#x201C;&#x68C0;&#x67E5;&#x70B9;&#x201D;(checkpoint)&#x6216;&#x8005;&#x4FDD;&#x5B58;&#x70B9;(savepoint)&#x4FDD;&#x5B58;&#x5230;&#x5916;&#x90E8;&#x5B58;&#x50A8;&#x7CFB;&#x7EDF;&#x4E2D;&#x3002;&#x5177;&#x4F53;&#x7684;&#x5B58;&#x50A8;&#x4ECB;&#x8D28;&#xFF0C;&#x4E00;&#x822C;&#x662F;&#x5206;&#x5E03;&#x5F0F;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;( distributed file system)</strong></p>
+<h4 id="&#x68C0;&#x67E5;&#x70B9;-checkpoint">&#x68C0;&#x67E5;&#x70B9; checkpoint</h4>
+<p><strong>&#x6709;&#x72B6;&#x6001;&#x6D41;&#x5E94;&#x7528;&#x4E2D;&#x7684;&#x68C0;&#x67E5;&#x70B9;(checkpoint)&#xFF0C;&#x5176;&#x5B9E;&#x5C31;&#x662F;&#x6240;&#x6709;&#x4EFB;&#x52A1;&#x7684;&#x72B6;&#x6001;&#x5728;&#x67D0;&#x4E2A;&#x65F6;&#x95F4;&#x70B9;&#x7684;&#x4E00;&#x4E2A;&#x5FEB;&#x7167;(&#x4E00;&#x4EFD;&#x62F7;&#x8D1D;)</strong>&#x3002;
+&#x7B80;&#x5355;&#x6765;&#x8BB2;&#xFF0C;&#x5C31;&#x662F;&#x4E00;&#x6B21;&#x201C;&#x5B58;&#x76D8;&#x201D;&#xFF0C;&#x8BA9;&#x6211;&#x4EEC;&#x4E4B;&#x524D;&#x5904;&#x7406;&#x6570;&#x636E;&#x7684;&#x8FDB;&#x5EA6;&#x4E0D;&#x8981;&#x4E22;&#x6389;&#x3002;&#x5728;&#x4E00;&#x4E2A;&#x6D41;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x8FD0;&#x884C;&#x65F6;&#xFF0C;Flink&#x4F1A;&#x5B9A;&#x671F;&#x4FDD;&#x5B58;&#x68C0;&#x67E5;&#x70B9;&#xFF0C;&#x5728;&#x68C0;&#x67E5;&#x70B9;&#x4E2D;&#x4F1A;&#x8BB0;&#x5F55;&#x6BCF;&#x4E2A;&#x7B97;&#x5B50;&#x7684;id&#x548C;&#x72B6;&#x6001;;&#x5982;&#x679C;&#x53D1;&#x751F;&#x6545;&#x969C;&#xFF0C;Flink &#x5C31;&#x4F1A;&#x7528;&#x6700;&#x8FD1;&#x4E00;&#x6B21;&#x6210;&#x529F;&#x4FDD;&#x5B58;&#x7684;&#x68C0;&#x67E5;&#x70B9;&#x6765;&#x6062;&#x590D;&#x5E94;&#x7528;&#x7684;&#x72B6;&#x6001;&#xFF0C;&#x91CD;&#x65B0;&#x542F;&#x52A8;&#x5904;&#x7406;&#x6D41;&#x7A0B;, &#x5C31;&#x5982;&#x540C;&#x201C;&#x8BFB;&#x6863;&#x201D;&#x4E00;&#x6837;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x4FDD;&#x5B58;&#x68C0;&#x67E5;&#x70B9;&#x4E4B;&#x540E;&#x53C8;&#x5904;&#x7406;&#x4E86;&#x4E00;&#x4E9B;&#x6570;&#x636E;&#xFF0C;&#x7136;&#x540E;&#x53D1;&#x751F;&#x4E86;&#x6545;&#x969C;&#xFF0C;&#x90A3;&#x4E48;&#x91CD;&#x542F;&#x6062;&#x590D;&#x72B6;&#x6001;&#x4E4B;&#x540E;&#x8FD9;&#x4E9B;&#x6570;&#x636E;&#x5E26;&#x6765;&#x7684;&#x72B6;&#x6001;&#x6539;&#x53D8;&#x4F1A;&#x4E22;&#x5931;&#x3002;&#x4E3A;&#x4E86;&#x8BA9;&#x6700;&#x7EC8;&#x5904;&#x7406;&#x7ED3;&#x679C;&#x6B63;&#x786E;&#xFF0C;&#x6211;&#x4EEC;&#x8FD8;&#x9700;&#x8981;&#x8BA9;&#x6E90;(Source)&#x7B97;&#x5B50;&#x91CD;&#x65B0;&#x8BFB;&#x53D6;&#x8FD9;&#x4E9B;&#x6570;&#x636E;&#xFF0C;&#x518D;&#x6B21;&#x5904;&#x7406;&#x4E00;&#x904D;&#x3002; &#x8FD9;&#x5C31;&#x9700;&#x8981;&#x6D41;&#x7684;&#x6570;&#x636E;&#x6E90;&#x5177;&#x6709;&#x201C;&#x6570;&#x636E;&#x91CD;&#x653E;&#x201D;&#x7684;&#x80FD;&#x529B;&#xFF0C;&#x4E00;&#x4E2A;&#x5178;&#x578B;&#x7684;&#x4F8B;&#x5B50;&#x5C31;&#x662F;Kafka&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x4FDD;&#x5B58;&#x6D88;&#x8D39;&#x6570;&#x636E;&#x7684;&#x504F;&#x79FB;&#x91CF;&#x3001;&#x6545;&#x969C;&#x91CD;&#x542F;&#x540E;&#x91CD;&#x65B0;&#x63D0;&#x4EA4;&#x6765;&#x5B9E;&#x73B0;&#x6570;&#x636E;&#x7684;&#x91CD;&#x653E;&#x3002;
+&#x8FD9;&#x662F;&#x5BF9;&#x201C;&#x81F3;&#x5C11;&#x4E00;&#x6B21;&#x201D;(at least once)&#x72B6;&#x6001;&#x4E00;&#x81F4;&#x6027;&#x7684;&#x4FDD;&#x8BC1;&#xFF0C; &#x5982;&#x679C;&#x5E0C;&#x671B;&#x5B9E;&#x73B0;&#x201C;&#x7CBE;&#x786E;&#x4E00;&#x6B21;&quot;( exactly once)&#x7684;&#x4E00;&#x81F4;&#x6027;&#xFF0C;&#x8FD8;&#x9700;&#x8981;&#x6570;&#x636E;&#x5199;&#x5165;&#x5916;&#x90E8;&#x7CFB;&#x7EDF;&#x65F6;&#x7684;&#x76F8;&#x5173;&#x4FDD;&#x8BC1;&#x3002;&#x5173;&#x4E8E;&#x8FD9;&#x90E8;&#x5206;&#x5185;&#x5BB9;&#x540E;&#x7EED;&#x8BA8;&#x8BBA;&#x3002;</p>
+<p>&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x68C0;&#x67E5;&#x70B9;&#x662F;&#x88AB;&#x7981;&#x7528;&#x7684;&#xFF0C;&#x9700;&#x8981;&#x5728;&#x4EE3;&#x7801;&#x4E2D;&#x624B;&#x52A8;&#x5F00;&#x542F;&#x3002;&#x76F4;&#x63A5;&#x8C03;&#x7528;&#x6267;&#x884C;&#x73AF;&#x5883;&#x7684; <code>.enableCheckpointing()</code>&#x65B9;&#x6CD5;&#x5F00;&#x542F;&#x53EF;&#x4EE5;&#x5F00;&#x542F;&#x68C0;&#x67E5;&#x70B9;&#x3002;</p>
+<pre><code class="lang-java">env.enableCheckpointing(<span class="hljs-number">1000L</span>); <span class="hljs-comment">//&#x53C2;&#x6570;&#x662F;&#x6BEB;&#x79D2;</span>
+</code></pre>
+<h5 id="&#x72B6;&#x6001;&#x540E;&#x7AEF;-state-backends">&#x72B6;&#x6001;&#x540E;&#x7AEF; State Backends</h5>
+<p>&#x68C0;&#x67E5;&#x70B9;&#x7684;&#x4FDD;&#x5B58;&#x79BB;&#x4E0D;&#x5F00;JobManager&#x548C;TaskManager&#xFF0C;&#x4EE5;&#x53CA;&#x5916;&#x90E8;&#x5B58;&#x50A8;&#x7CFB;&#x7EDF;&#x7684;&#x534F;&#x8C03;&#x3002;&#x5728;&#x5E94;&#x7528;&#x8FDB;&#x884C;&#x68C0;&#x67E5;&#x70B9;&#x4FDD;&#x5B58;&#x65F6;&#xFF0C;&#x9996;&#x5148;&#x4F1A;&#x7531;JobManager &#x5411;&#x6240;&#x6709;TaskManager &#x53D1;&#x51FA;&#x89E6;&#x53D1;&#x68C0;&#x67E5;&#x70B9;&#x7684;&#x547D;&#x4EE4;;TaskManger&#x6536;&#x5230;&#x4E4B;&#x540E;&#xFF0C;&#x5C06;&#x5F53;&#x524D;&#x4EFB;&#x52A1;&#x7684;&#x6240;&#x6709;&#x72B6;&#x6001;&#x8FDB;&#x884C;&#x5FEB;&#x7167;&#x4FDD;&#x5B58;&#xFF0C;&#x6301;&#x4E45;&#x5316;&#x5230;&#x8FDC;&#x7A0B;&#x7684;&#x5B58;&#x50A8;&#x4ECB;&#x8D28;&#x4E2D;; &#x5B8C;&#x6210;&#x4E4B;&#x540E;&#x5411;JobManager &#x8FD4;&#x56DE;&#x786E;&#x8BA4;&#x4FE1;&#x606F;&#x3002;&#x8FD9;&#x4E2A;&#x8FC7;&#x7A0B;&#x662F;&#x5206;&#x5E03;&#x5F0F;&#x7684;&#xFF0C;&#x5F53;JobManger &#x6536;&#x5230;&#x6240;&#x6709;TaskManager&#x7684;&#x8FD4;&#x56DE;&#x4FE1;&#x606F;&#x540E;&#xFF0C;&#x5C31;&#x4F1A;&#x786E;&#x8BA4;&#x5F53;&#x524D;&#x68C0;&#x67E5;&#x70B9;&#x6210;&#x529F;&#x4FDD;&#x5B58;&#xFF0C;&#x5982;&#x56FE;9-5 &#x6240;&#x793A;&#x3002;&#x800C;&#x8FD9;&#x4E00;&#x5207;&#x5DE5;&#x4F5C;&#x7684;&#x534F;&#x8C03;&#xFF0C;&#x5C31;&#x9700;&#x8981;&#x4E00;&#x4E2A;&#x201C;&#x4E13;&#x804C;&#x4EBA;&#x5458;&#x201D;&#x6765;&#x5B8C;&#x6210;&#x3002;</p>
+<p><img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20221214221628840.png" alt="image-20221214221628840" style="zoom:50%;"></p>
+<p>&#x5728;Flink&#x4E2D;&#xFF0C;&#x72B6;&#x6001;&#x7684;&#x5B58;&#x50A8;&#x3001;&#x8BBF;&#x95EE;&#x4EE5;&#x53CA;&#x7EF4;&#x62A4;&#xFF0C;&#x90FD;&#x662F;&#x7531;&#x4E00;&#x4E2A;&#x53EF;&#x63D2;&#x62D4;&#x7684;&#x7EC4;&#x4EF6;&#x51B3;&#x5B9A;&#x7684;&#xFF0C;&#x8FD9;&#x4E2A;&#x7EC4;&#x4EF6;&#x5C31;&#x53EB;&#x4F5C;&#x72B6;&#x6001;&#x540E;&#x7AEF;(state backend)&#x3002;&#x72B6;&#x6001;&#x540E;&#x7AEF;&#x4E3B;&#x8981;&#x8D1F;&#x8D23;&#x4E24;&#x4EF6;&#x4E8B;:&#x4E00;&#x662F;&#x672C;&#x5730;&#x7684;&#x72B6;&#x6001;&#x7BA1;&#x7406;&#xFF0C;&#x4E8C;&#x662F;&#x5C06;&#x68C0;&#x67E5;&#x70B9;(checkpoint)&#x5199;&#x5165;&#x8FDC;&#x7A0B;&#x7684;&#x6301;&#x4E45;&#x5316;&#x5B58;&#x50A8;&#x3002;</p>
+<p><strong>&#x72B6;&#x6001;&#x540E;&#x7AEF;&#x7684;&#x5206;&#x7C7B;</strong></p>
+<p>&#x72B6;&#x6001;&#x540E;&#x7AEF;&#x662F;&#x4E00;&#x4E2A;&#x201C;&#x5F00;&#x7BB1;&#x5373;&#x7528;&#x201D;&#x7684;&#x7EC4;&#x4EF6;&#xFF0C;&#x53EF;&#x4EE5;&#x5728;&#x4E0D;&#x6539;&#x53D8;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x903B;&#x8F91;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x72EC;&#x7ACB;&#x914D;&#x7F6E;&#x3002;</p>
+<p>Flink&#x4E2D;&#x63D0;&#x4F9B;&#x4E86;&#x4E24;&#x7C7B;&#x4E0D;&#x540C;&#x7684;&#x72B6;&#x6001;&#x540E;&#x7AEF;&#xFF0C;&#x4E00;&#x79CD;&#x662F; &#x201C;&#x54C8;&#x5E0C;&#x8868;&#x72B6;&#x6001;&#x540E;&#x7AEF;&#x201D;(<code>HashMapStateBackend</code>)&#xFF0C;&#x53E6;&#x4E00;&#x79CD;&#x662F; &#x201C;&#x5185;&#x5D4C;RocksDB&#x72B6;&#x6001;&#x540E;&#x7AEF;&#x201D;(<code>EmbeddedRocksDBStateBackend</code>)&#x3002;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x7279;&#x522B;&#x914D;&#x7F6E;,&#x7CFB;&#x7EDF;&#x9ED8;&#x8BA4;&#x7684;&#x72B6;&#x6001;&#x540E;&#x7AEF;&#x662F;<code>HashMapStateBackend</code></p>
+<ul>
+<li><strong>&#x54C8;&#x5E0C;&#x8868;&#x72B6;&#x6001;&#x540E;&#x7AEF; HashMapStateBackend</strong><ul>
+<li>&#x628A;&#x72B6;&#x6001;&#x5B58;&#x653E;&#x5728;&#x5185;&#x5B58;&#x91CC;;</li>
+<li>&#x5177;&#x4F53;&#x5B9E;&#x73B0;&#x4E0A;&#xFF0C;&#x54C8;&#x5E0C;&#x8868;&#x72B6;&#x6001;&#x540E;&#x7AEF;&#x5728;&#x5185;&#x90E8;&#x4F1A;&#x76F4;&#x63A5;&#x628A;&#x72B6;&#x6001;&#x5F53;&#x4F5C;&#x5BF9;&#x8C61;(objects), &#x4FDD;&#x5B58;&#x5728;Taskmanager&#x7684;JVM&#x5806;(heap), &#x4E0A;;</li>
+<li>&#x666E;&#x901A;&#x7684;&#x72B6;&#x6001;&#xFF0C; &#x4EE5;&#x53CA;&#x7A97;&#x53E3;&#x4E2D;&#x6536;&#x96C6;&#x7684;&#x6570;&#x636E;&#x548C;&#x89E6;&#x53D1;&#x5668;(triggers)&#xFF0C; &#x90FD;&#x4F1A;&#x4EE5;&#x952E;&#x503C;&#x5BF9;(key-value) &#x7684;&#x5F62;&#x5F0F;&#x5B58;&#x50A8;&#x8D77;&#x6765;&#xFF0C;&#x6240;&#x4EE5;&#x5E95;&#x5C42;&#x662F;&#x4E00;&#x4E2A;&#x54C8;&#x5E0C;&#x8868;(HashMap)&#xFF0C; &#x8FD9;&#x79CD;&#x72B6;&#x6001;&#x540E;&#x7AEF;&#x4E5F;&#x56E0;&#x6B64;&#x5F97;&#x540D;&#x3002;</li>
+<li>&#x5BF9;&#x4E8E;&#x68C0;&#x67E5;&#x70B9;&#x7684;&#x4FDD;&#x5B58;&#xFF0C;&#x4E00;&#x822C;&#x662F;&#x653E;&#x5728;&#x6301;&#x4E45;&#x5316;&#x7684;&#x5206;&#x5E03;&#x5F0F;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;( file system)&#x4E2D;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x914D;&#x7F6E;&#x201C;&#x68C0;&#x67E5;&#x70B9;&#x5B58;&#x50A8;&#x201D;(CheckpointStorage)&#x6765;&#x53E6;&#x5916;&#x6307;&#x5B9A;;</li>
+<li>HashMapStateBackend&#x662F;&#x5C06;&#x672C;&#x5730;&#x72B6;&#x6001;&#x5168;&#x90E8;&#x653E;&#x5165;&#x5185;&#x5B58;&#x7684;&#xFF0C;&#x8FD9;&#x6837;&#x53EF;&#x4EE5;&#x83B7;&#x5F97;&#x6700;&#x5FEB;&#x7684;&#x8BFB;&#x5199;&#x901F;&#x5EA6;&#xFF0C;&#x4F7F;&#x8BA1;&#x7B97;&#x6027;&#x80FD;&#x8FBE;&#x5230;&#x6700;&#x4F73;;&#x4EE3;&#x4EF7;&#x5219;&#x662F;&#x5185;&#x5B58;&#x7684;&#x5360;&#x7528;&#x3002;&#x5B83;&#x9002;&#x7528;&#x4E8E;&#x5177;&#x6709;&#x5927;&#x72B6;&#x6001;&#x3001;&#x957F;&#x7A97;&#x53E3;&#x3001;&#x5927;&#x952E;&#x503C;&#x72B6;&#x6001;&#x7684;&#x4F5C;&#x4E1A;&#xFF0C;&#x5BF9;&#x6240;&#x6709;&#x9AD8;&#x53EF;&#x7528;&#x6027;&#x8BBE;&#x7F6E;&#x4E5F;&#x662F;&#x6709;&#x6548;&#x7684;&#x3002;</li>
+</ul>
+</li>
+<li><strong>&#x5185;&#x5D4C;RocksDB&#x72B6;&#x6001;&#x540E;&#x7AEF; EmbeddedRocksDBStateBackend</strong><ul>
+<li>RocksDB&#x662F;&#x4E00;&#x79CD;&#x5185;&#x5D4C;&#x7684;key-value &#x5B58;&#x50A8;&#x4ECB;&#x8D28;&#xFF0C;&#x53EF;&#x4EE5;&#x628A;&#x6570;&#x636E;&#x6301;&#x4E45;&#x5316;&#x5230;&#x672C;&#x5730;&#x786C;&#x76D8;&#x3002;<strong>&#x914D;&#x7F6E; EmbeddedRocksDBStateBackend&#x540E;&#xFF0C;&#x4F1A;&#x5C06;&#x5904;&#x7406;&#x4E2D;&#x7684;&#x6570;&#x636E;&#x5168;&#x90E8;&#x653E;&#x5165;RocksDB&#x6570;&#x636E;&#x5E93;&#x4E2D;&#xFF0C;RocksDB &#x9ED8;&#x8BA4;&#x5B58;&#x50A8;&#x5728;TaskManager&#x7684;&#x672C;&#x5730;&#x6570;&#x636E;&#x76EE;&#x5F55;&#x91CC;</strong></li>
+<li>&#x4E0E;HashMapStateBackend &#x76F4;&#x63A5;&#x5728;&#x5806;&#x5185;&#x5B58;&#x4E2D;&#x5B58;&#x50A8;&#x5BF9;&#x8C61;&#x4E0D;&#x540C;&#xFF0C;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x4E0B;&#x72B6;&#x6001;&#x4E3B;&#x8981;&#x662F;&#x653E;&#x5728;RocksDB&#x4E2D;&#x7684;&#x3002;&#x6570;&#x636E;&#x88AB;&#x5B58;&#x50A8;&#x4E3A;&#x5E8F;&#x5217;&#x5316;&#x7684;&#x5B57;&#x8282;&#x6570;&#x7EC4;(Byte Arrays),&#x8BFB;&#x5199;&#x64CD;&#x4F5C;&#x9700;&#x8981;&#x5E8F;&#x5217;&#x5316;/&#x53CD;&#x5E8F;&#x5217;&#x5316;&#xFF0C;&#x56E0;&#x6B64;&#x72B6;&#x6001;&#x7684;&#x8BBF;&#x95EE;&#x6027;&#x80FD;&#x8981;&#x5DEE;&#x4E00;&#x4E9B;&#x3002; &#x53E6;&#x5916;&#xFF0C;&#x56E0;&#x4E3A;&#x505A;&#x4E86;&#x5E8F;&#x5217;&#x5316;&#xFF0C;key &#x7684;&#x6BD4;&#x8F83;&#x4E5F;&#x4F1A;&#x6309;&#x7167;&#x5B57;&#x8282;&#x8FDB;&#x884C;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x76F4;&#x63A5;&#x8C03;&#x7528;<code>.hashCode()</code>&#x548C;<code>.equals()</code>&#x65B9;&#x6CD5;&#x3002;</li>
+<li>&#x5BF9;&#x4E8E;&#x68C0;&#x67E5;&#x70B9;&#xFF0C;&#x540C;&#x6837;&#x4F1A;&#x5199;&#x5165;&#x5230;&#x8FDC;&#x7A0B;&#x7684;&#x6301;&#x4E45;&#x5316;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x4E2D;&#x3002;</li>
+<li><strong>EmbeddedRocksDBStateBackend&#x59CB;&#x7EC8;&#x6267;&#x884C;&#x7684;&#x662F;&#x5F02;&#x6B65;&#x5FEB;&#x7167;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x4E0D;&#x4F1A;&#x56E0;&#x4E3A;&#x4FDD;&#x5B58;&#x68C0;&#x67E5;&#x70B9;&#x800C;&#x963B;&#x585E;&#x6570;&#x636E;&#x7684;&#x5904;&#x7406;;&#x800C;&#x4E14;&#x5B83;&#x8FD8;&#x63D0;&#x4F9B;&#x4E86;<font style="color:red">&#x589E;&#x91CF;&#x5F0F;&#x4FDD;&#x5B58;&#x68C0;&#x67E5;&#x70B9;</font>&#x7684;&#x673A;&#x5236;&#xFF0C;&#x8FD9;&#x5728;&#x5F88;&#x591A;&#x60C5;&#x51B5;&#x4E0B;&#x53EF;&#x4EE5;&#x5927;&#x5927;&#x63D0;&#x5347;&#x4FDD;&#x5B58;&#x6548;&#x7387;</strong></li>
+<li><strong>&#x7531;&#x4E8E;&#x5B83;&#x4F1A;&#x628A;&#x72B6;&#x6001;&#x6570;&#x636E;&#x843D;&#x76D8;&#xFF0C;&#x800C;&#x4E14;&#x652F;&#x6301;&#x589E;&#x91CF;&#x5316;&#x7684;&#x68C0;&#x67E5;&#x70B9;&#xFF0C;&#x6240;&#x4EE5;&#x5728;&#x72B6;&#x6001;&#x975E;&#x5E38;&#x5927;&#x3001;&#x7A97;&#x53E3;&#x975E;&#x5E38;&#x957F;&#x3001;&#x952E;/&#x503C;&#x72B6;&#x6001;&#x5F88;&#x5927;&#x7684;&#x5E94;&#x7528;&#x573A;&#x666F;&#x4E2D;&#x662F;&#x4E00;&#x4E2A;&#x597D;&#x9009;&#x62E9;&#xFF0C;&#x540C;&#x6837;&#x5BF9;&#x6240;&#x6709;&#x9AD8;&#x53EF;&#x7528;&#x6027;&#x8BBE;&#x7F6E;&#x6709;&#x6548;</strong></li>
+</ul>
+</li>
+</ul>
+<p><strong>&#x5982;&#x4F55;&#x9009;&#x62E9;&#x6B63;&#x786E;&#x7684;&#x72B6;&#x6001;&#x540E;&#x7AEF;&#x5462;?</strong></p>
+<p>HashMap&#x548C;RocksDB&#x4E24;&#x79CD;&#x72B6;&#x6001;&#x540E;&#x7AEF;&#x6700;&#x5927;&#x7684;&#x533A;&#x522B;&#xFF0C;&#x5C31;&#x5728;&#x4E8E;&#x672C;&#x5730;&#x72B6;&#x6001;&#x5B58;&#x653E;&#x5728;&#x54EA;&#x91CC;:&#x524D;&#x8005;&#x662F;&#x5185;&#x5B58;&#xFF0C;&#x540E;&#x8005;&#x662F;RocksDB&#x3002; &#x5728;&#x5B9E;&#x9645;&#x5E94;&#x7528;&#x4E2D;&#xFF0C;&#x9009;&#x62E9;&#x90A3;&#x79CD;&#x72B6;&#x6001;&#x540E;&#x7AEF;&#xFF0C;&#x4E3B;&#x8981;&#x662F;&#x9700;&#x8981;&#x6839;&#x636E;&#x4E1A;&#x52A1;&#x9700;&#x6C42;&#x5728;&#x5904;&#x7406;&#x6027;&#x80FD;&#x548C;&#x5E94;&#x7528;&#x7684;&#x6269;&#x5C55;&#x6027;&#x4E0A;&#x505A;-&#x4E00;&#x4E2A;&#x9009;&#x62E9;&#x3002;
+HashMapStateBackend&#x662F;&#x5185;&#x5B58;&#x8BA1;&#x7B97;&#xFF0C;&#x8BFB;&#x5199;&#x901F;&#x5EA6;&#x975E;&#x5E38;&#x5FEB;;&#x4F46;&#x662F;&#xFF0C;&#x72B6;&#x6001;&#x7684;&#x5927;&#x5C0F;&#x4F1A;&#x53D7;&#x5230;&#x96C6;&#x7FA4;&#x53EF;&#x7528;&#x5185;&#x5B58;&#x7684;&#x9650;&#x5236;&#xFF0C;&#x5982;&#x679C;&#x5E94;&#x7528;&#x7684;&#x72B6;&#x6001;&#x968F;&#x7740;&#x65F6;&#x95F4;&#x4E0D;&#x505C;&#x5730;&#x589E;&#x957F;&#xFF0C;&#x5C31;&#x4F1A;&#x8017;&#x5C3D;&#x5185;&#x5B58;&#x8D44;&#x6E90;&#x3002;</p>
+<p>&#x800C;RocksDB&#x662F;&#x786C;&#x76D8;&#x5B58;&#x50A8;&#xFF0C;&#x6240;&#x4EE5;&#x53EF;&#x4EE5;&#x6839;&#x636E;&#x53EF;&#x7528;&#x7684;&#x78C1;&#x76D8;&#x7A7A;&#x95F4;&#x8FDB;&#x884C;&#x6269;&#x5C55;&#xFF0C;&#x800C;&#x4E14;&#x662F;&#x552F;&#x4E00;&#x652F;&#x6301;&#x589E;&#x91CF;&#x68C0;&#x67E5;&#x70B9;&#x7684;&#x72B6;&#x6001;&#x540E;&#x7AEF;&#xFF0C;&#x6240;&#x4EE5;&#x5B83;&#x975E;&#x5E38;&#x9002;&#x5408;&#x4E8E;&#x8D85;&#x7EA7;&#x6D77;&#x91CF;&#x72B6;&#x6001;&#x7684;&#x5B58;&#x50A8;&#x3002;&#x4E0D;&#x8FC7;&#x7531;&#x4E8E;&#x6BCF;&#x4E2A;&#x72B6;&#x6001;&#x7684;&#x8BFB;&#x5199;&#x90FD;&#x9700;&#x8981;&#x505A;&#x5E8F;&#x5217;&#x5316;/&#x53CD;&#x5E8F;&#x5217;&#x5316;,r&#x800C;&#x4E14;&#x53EF;&#x80FD;&#x9700;&#x8981;&#x76F4;&#x63A5;&#x4ECE;&#x78C1;&#x76D8;&#x8BFB;&#x53D6;&#x6570;&#x636E;&#xFF0C;&#x8FD9;&#x5C31;&#x4F1A;&#x5BFC;&#x81F4;&#x6027;&#x80FD;&#x7684;&#x964D;&#x4F4E;&#xFF0C;&#x5E73;&#x5747;&#x8BFB;&#x5199;&#x6027;&#x80FD;&#x8981;&#x6BD4;HashMapStateBackend&#x6162;&#x4E00;&#x4E2A;&#x6570;&#x91CF;&#x7EA7;&#x3002;</p>
+<p><strong>&#x72B6;&#x6001;&#x540E;&#x7AEF;&#x7684;&#x914D;&#x7F6E;</strong></p>
+<p>&#x4E0D;&#x505A;&#x914D;&#x7F6E;&#x65F6;&#xFF0C;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x4F7F;&#x7528;&#x7684;&#x9ED8;&#x8BA4;&#x72B6;&#x6001;&#x540E;&#x7AEF;&#x662F; &#x96C6;&#x7FA4;&#x914D;&#x7F6E;&#x6587;&#x4EF6;<code>flink-conf.yaml</code>&#x4E2D;&#x6307;&#x5B9A;&#x7684;&#xFF0C;&#x914D;&#x7F6E;&#x952E;&#x540D;&#x662F;<code>state.backend</code>&#x3002;&#x8BE5;&#x914D;&#x7F6E;&#x5BF9;&#x96C6;&#x7FA4;&#x4E0A;&#x8FD0;&#x884C;&#x7684;&#x6240;&#x6709;&#x4F5C;&#x4E1A;&#x90FD;&#x6709;&#x6548;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x4FEE;&#x6539;&#x503C;&#x6765;&#x6539;&#x53D8;&#x9ED8;&#x8BA4;&#x7684;&#x72B6;&#x6001;&#x540E;&#x7AEF;&#x3002;</p>
+<p>&#x6211;&#x4EEC;&#x4E5F;&#x53EF;&#x4EE5;&#x5728;&#x4EE3;&#x7801;&#x4E2D;&#x4E3A;&#x5F53;&#x524D;&#x4F5C;&#x4E1A;&#x5355;&#x72EC;&#x914D;&#x7F6E;&#x72B6;&#x6001;&#x540E;&#x7AEF;&#xFF0C;&#x8FD9;&#x4E2A;&#x914D;&#x7F6E;&#x4F1A;&#x8986;&#x76D6;&#x96C6;&#x7FA4;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x7684;&#x9ED8;&#x8BA4;&#x503C;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x4E0D;&#x60F3;&#x7528;hashmap &#x4E5F;&#x4E0D;&#x60F3;&#x7528; rocksdb&#xFF0C;&#x60F3;&#x81EA;&#x5B9A;&#x4E49;&#xFF0C;&#x90A3;&#x5C31;&#x9700;&#x8981;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x5B9E;&#x73B0;&#x4E86;&#x72B6;&#x6001;&#x540E;&#x7AEF;&#x5DE5;&#x5382;&#x7C7B;<code>StateBackendFactory</code>&#x7684;&#x7C7B;&#x3002;</p>
+<ul>
+<li><p>&#x914D;&#x7F6E;&#x96C6;&#x7FA4;&#x9ED8;&#x8BA4;&#x72B6;&#x6001;&#x540E;&#x7AEF;</p>
+<pre><code class="lang-yaml">state.backend: hashmap  or rocksdb
+state.checkpoints.dir: hdfs://namenode:<span class="hljs-number">40010</span>/flink/checkpoints
+</code></pre>
+</li>
+<li><p>&#x4E3A;&#x6BCF;&#x4E00;&#x4E2A;&#x4F5C;&#x4E1A;&#x5355;&#x72EC;&#x914D;&#x7F6E;&#x72B6;&#x6001;&#x540E;&#x7AEF;</p>
+<pre><code class="lang-java">        env.setStateBackend(new HashMapStateBackend());
+
+    //&#x6DFB;&#x52A0;&#x4F9D;&#x8D56;
+    &lt;dependency&gt;
+      &lt;groupId&gt;org.apache.flink&lt;/groupId&gt;
+      &lt;artifactId&gt;flink-statebackend-rocksdb_2.11&lt;/artifactId&gt;
+      &lt;version&gt;1.13.0&lt;/version&gt;
+    &lt;/dependency&gt;
+        env.setStateBackend(new EmbeddedRocksDBStateBackend());
+</code></pre>
+</li>
+</ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="flink基础09-多流转换(分流与合流" class="navigation navigation-prev " aria-label="Previous page: flink基础09-多流转换(分流与合流)">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="flink基础11-容错机制.html" class="navigation navigation-next " aria-label="Next page: flink基础11-容错机制">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"flink基础10-状态编程","level":"1.12.10","depth":2,"next":{"title":"flink基础11-容错机制","level":"1.12.11","depth":2,"path":"Flink学习笔记/flink基础11-容错机制.md","ref":"Flink学习笔记/flink基础11-容错机制.md","articles":[]},"previous":{"title":"flink基础09-多流转换(分流与合流)","level":"1.12.9","depth":2,"path":"Flink学习笔记/flink基础09-多流转换(分流与合流","ref":"Flink学习笔记/flink基础09-多流转换(分流与合流","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Flink学习笔记/flink基础10-状态编程.md","mtime":"2022-12-14T14:44:59.888Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-02-08T08:43:27.159Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

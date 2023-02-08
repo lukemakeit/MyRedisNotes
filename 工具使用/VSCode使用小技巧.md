@@ -93,3 +93,13 @@
 参考文章: [Disabling go modules in Visual Studio Code](https://dev.to/codeboten/disabling-go-modules-in-visual-studio-code-31mp)
 
 ![image-20211127215048544](https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20211127215048544.png)
+
+10、将`tab`转换成`spaces`
+方法: 
+
+```shell
+Ctrl+Shift+P or View->Command Palette.
+
+>Convert Indentation to Spaces
+```
+

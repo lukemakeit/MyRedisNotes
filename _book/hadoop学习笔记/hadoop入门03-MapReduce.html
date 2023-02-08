@@ -1,0 +1,2021 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>hadoop入门03-MapReduce · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="hadoop入门04-MapReduce框架原理.html" />
+    
+    
+    <link rel="prev" href="hadoop入门02-HDFS基础.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    README
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../redis学习/">
+            
+                <a href="../redis学习/">
+            
+                    
+                    Redis学习
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../redis学习/Redis备份.html">
+            
+                <a href="../redis学习/Redis备份.html">
+            
+                    
+                    Redis备份
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../redis学习/Redis复制.html">
+            
+                <a href="../redis学习/Redis复制.html">
+            
+                    
+                    Redis复制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../redis学习/Redis集群.html">
+            
+                <a href="../redis学习/Redis集群.html">
+            
+                    
+                    Redis集群
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../redis学习/缓存与数据库一致性.html">
+            
+                <a href="../redis学习/缓存与数据库一致性.html">
+            
+                    
+                    缓存与数据库一致性
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../redis学习/Redis消息队列Stream.html">
+            
+                <a href="../redis学习/Redis消息队列Stream.html">
+            
+                    
+                    Redis消息队列
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="../redis学习/RedisModule.html">
+            
+                <a href="../redis学习/RedisModule.html">
+            
+                    
+                    RedisModule
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../mysql/">
+            
+                <a href="../mysql/">
+            
+                    
+                    mysql学习
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../mysql/mysql补充.html">
+            
+                <a href="../mysql/mysql补充.html">
+            
+                    
+                    mysql补充
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../mysql/mysql8.0-手动安装.html">
+            
+                <a href="../mysql/mysql8.0-手动安装.html">
+            
+                    
+                    mysql8.0-手动安装
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../rocksdb-xue-xi/README.md">
+            
+                <span>
+            
+                    
+                    RocksDB学习
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../rocksdb学习/RocksDB基础概念.html">
+            
+                <a href="../rocksdb学习/RocksDB基础概念.html">
+            
+                    
+                    RocksDB基础概念
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../rocksdb学习/RocksDB基础操作-C语言.html">
+            
+                <a href="../rocksdb学习/RocksDB基础操作-C语言.html">
+            
+                    
+                    RocksDB基础操作-C语言
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../c语言笔记/">
+            
+                <a href="../c语言笔记/">
+            
+                    
+                    C语言笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../c语言笔记/C语言补充笔记一.html">
+            
+                <a href="../c语言笔记/C语言补充笔记一.html">
+            
+                    
+                    C语言补充笔记一
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../c++学习笔记/">
+            
+                <a href="../c++学习笔记/">
+            
+                    
+                    C++学习笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../c++学习笔记/C++Primer基础-01引用指针const.html">
+            
+                <a href="../c++学习笔记/C++Primer基础-01引用指针const.html">
+            
+                    
+                    C++Primer基础:引用、指针、const、auto/decltype
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../c++学习笔记/C++Primer基础-02volatile与using.html">
+            
+                <a href="../c++学习笔记/C++Primer基础-02volatile与using.html">
+            
+                    
+                    C++Primer基础:volatile、using
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../c++学习笔记/C++Primer基础-03stringvector数组.html">
+            
+                <a href="../c++学习笔记/C++Primer基础-03stringvector数组.html">
+            
+                    
+                    C++Primer基础: string、vector、数组
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../c++学习笔记/C++Primer基础-04函数重载函数指针.html">
+            
+                <a href="../c++学习笔记/C++Primer基础-04函数重载函数指针.html">
+            
+                    
+                    C++Primer基础:函数、重载、函数指针
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="../c++学习笔记/C++Primer基础-05function与bind与forward.html">
+            
+                <a href="../c++学习笔记/C++Primer基础-05function与bind与forward.html">
+            
+                    
+                    C++Primer基础:std::function、std::bind、std::forward
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6" data-path="../c++学习笔记/C++Primer基础-06-lambda.html">
+            
+                <a href="../c++学习笔记/C++Primer基础-06-lambda.html">
+            
+                    
+                    C++Primer基础:lambda
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.7" data-path="../c++学习笔记/C++Primer基础-07类基础.html">
+            
+                <a href="../c++学习笔记/C++Primer基础-07类基础.html">
+            
+                    
+                    C++ Primer基础: 类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.8" data-path="../c++学习笔记/C++Primer标准库-IO库.html">
+            
+                <a href="../c++学习笔记/C++Primer标准库-IO库.html">
+            
+                    
+                    C++ Primer 标准库: IO库
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.9" data-path="../c++学习笔记/C++Primer标准库-顺序容器.html">
+            
+                <a href="../c++学习笔记/C++Primer标准库-顺序容器.html">
+            
+                    
+                    C++ Primer 标准库: 顺序容器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.10" data-path="../c++学习笔记/C++Primer标准库-泛型算法.html">
+            
+                <a href="../c++学习笔记/C++Primer标准库-泛型算法.html">
+            
+                    
+                    C++ Primer 标准库: 泛型算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.11" data-path="../c++学习笔记/C++Primer标准库-关联容器.html">
+            
+                <a href="../c++学习笔记/C++Primer标准库-关联容器.html">
+            
+                    
+                    C++ Primer 标准库: 关联容器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.12" data-path="../c++学习笔记/C++Primer标准库-动态内存.html">
+            
+                <a href="../c++学习笔记/C++Primer标准库-动态内存.html">
+            
+                    
+                    C++ Primer 标准库: 动态内存
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.13" data-path="../c++学习笔记/C++Primer类设计-拷贝控制.html">
+            
+                <a href="../c++学习笔记/C++Primer类设计-拷贝控制.html">
+            
+                    
+                    C++ Primer 类设计: 拷贝控制、explicit
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.14" data-path="../c++学习笔记/C++Primer类设计-基类派生类虚函数.html">
+            
+                <a href="../c++学习笔记/C++Primer类设计-基类派生类虚函数.html">
+            
+                    
+                    C++ Primer 类设计: 基类、派生类、虚函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.15" data-path="../c++学习笔记/C++Primer类设计-模板与泛型编程.html">
+            
+                <a href="../c++学习笔记/C++Primer类设计-模板与泛型编程.html">
+            
+                    
+                    C++ Primer 类设计:模板与泛型编程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.16" data-path="../c++学习笔记/C++并发编程实战-01基础使用Join传参.html">
+            
+                <a href="../c++学习笔记/C++并发编程实战-01基础使用Join传参.html">
+            
+                    
+                    C++并发编程实战一:基础使用、Join、传参、线程所有权转移
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.17" data-path="../c++学习笔记/C++并发编程实战-02mutexlock.html">
+            
+                <a href="../c++学习笔记/C++并发编程实战-02mutexlock.html">
+            
+                    
+                    C++并发编程实战: mutex、lock、unique_lock、call_once、shared_lock
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.18" data-path="../c++学习笔记/C++并发编程实战-03条件变量.html">
+            
+                <a href="../c++学习笔记/C++并发编程实战-03条件变量.html">
+            
+                    
+                    C++并发编程实战三: 条件变量
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.19" data-path="../c++学习笔记/C++并发编程实战-04原子操作和类型.html">
+            
+                <a href="../c++学习笔记/C++并发编程实战-04原子操作和类型.html">
+            
+                    
+                    C++并发编程实战四: 原子操作和类型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.20" data-path="../c++学习笔记/C++并发编程实战-05内存模型.html">
+            
+                <a href="../c++学习笔记/C++并发编程实战-05内存模型.html">
+            
+                    
+                    C++并发编程实战五: 内存模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.21" data-path="../c++学习笔记/C++补充-01.html">
+            
+                <a href="../c++学习笔记/C++补充-01.html">
+            
+                    
+                    c++补充-01
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.22" data-path="../c++学习笔记/C++补充-02EffectiveSTL有用使用经验.html">
+            
+                <a href="../c++学习笔记/C++补充-02EffectiveSTL有用使用经验.html">
+            
+                    
+                    C++补充02: Effective STL使用经验
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.23" data-path="../c++学习笔记/C++面试题—算法.html">
+            
+                <a href="../c++学习笔记/C++面试题—算法.html">
+            
+                    
+                    C++面试题-算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.24" data-path="../c++学习笔记/Linux传统IO和零拷贝Zero-Copy技术.html">
+            
+                <a href="../c++学习笔记/Linux传统IO和零拷贝Zero-Copy技术.html">
+            
+                    
+                    Linux传统IO和零拷贝Zero-Copy技术
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.25" data-path="../c++学习笔记/Glog使用.html">
+            
+                <a href="../c++学习笔记/Glog使用.html">
+            
+                    
+                    Glog使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../golang学习笔记/">
+            
+                <a href="../golang学习笔记/">
+            
+                    
+                    Golang学习笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../golang学习笔记/Go常见错误集锦.html">
+            
+                <a href="../golang学习笔记/Go常见错误集锦.html">
+            
+                    
+                    Go常见错误集锦
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../golang学习笔记/Go高性能的一些技巧.html">
+            
+                <a href="../golang学习笔记/Go高性能的一些技巧.html">
+            
+                    
+                    Go常见高性能技巧
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../golang学习笔记/Golang反射.html">
+            
+                <a href="../golang学习笔记/Golang反射.html">
+            
+                    
+                    Golang反射
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="../golang学习笔记/内存逃逸.html">
+            
+                <a href="../golang学习笔记/内存逃逸.html">
+            
+                    
+                    内存逃逸
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="../golang学习笔记/调度器GMP.html">
+            
+                <a href="../golang学习笔记/调度器GMP.html">
+            
+                    
+                    调度器GMP
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6" data-path="../golang学习笔记/GC垃圾回收.html">
+            
+                <a href="../golang学习笔记/GC垃圾回收.html">
+            
+                    
+                    GC垃圾回收
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../网络协议学习/">
+            
+                <a href="../网络协议学习/">
+            
+                    
+                    网络协议学习
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../网络协议学习/网络面试题.html">
+            
+                <a href="../网络协议学习/网络面试题.html">
+            
+                    
+                    网络面试题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="../网络协议学习/TCP常见问题.html">
+            
+                <a href="../网络协议学习/TCP常见问题.html">
+            
+                    
+                    TCP常见问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" data-path="../网络协议学习/tcpdump工具.html">
+            
+                <a href="../网络协议学习/tcpdump工具.html">
+            
+                    
+                    tcpdump工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../java学习笔记/">
+            
+                <a href="../java学习笔记/">
+            
+                    
+                    java学习笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="../java学习笔记/java01基础.html">
+            
+                <a href="../java学习笔记/java01基础.html">
+            
+                    
+                    java01基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" data-path="../java学习笔记/java02核心类.html">
+            
+                <a href="../java学习笔记/java02核心类.html">
+            
+                    
+                    java02核心类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3" data-path="../java学习笔记/Maven.html">
+            
+                <a href="../java学习笔记/Maven.html">
+            
+                    
+                    Maven
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    hadoop学习笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="hadoop入门01-架构与安装.html">
+            
+                <a href="hadoop入门01-架构与安装.html">
+            
+                    
+                    hadoop入门01-架构与安装
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" data-path="hadoop入门02-HDFS基础.html">
+            
+                <a href="hadoop入门02-HDFS基础.html">
+            
+                    
+                    hadoop入门02-HDFS基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.10.3" data-path="hadoop入门03-MapReduce.html">
+            
+                <a href="hadoop入门03-MapReduce.html">
+            
+                    
+                    hadoop入门03-MapReduce
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.4" data-path="hadoop入门04-MapReduce框架原理.html">
+            
+                <a href="hadoop入门04-MapReduce框架原理.html">
+            
+                    
+                    hadoop入门04-MapReduce框架原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.5" data-path="hadoop入门05-MapReduce数据清洗和压缩.html">
+            
+                <a href="hadoop入门05-MapReduce数据清洗和压缩.html">
+            
+                    
+                    hadoop入门05-MapReduce数据清洗与压缩
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.6" data-path="hadoop入门06-yarn.html">
+            
+                <a href="hadoop入门06-yarn.html">
+            
+                    
+                    hadoop入门06-yarn
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.7" data-path="Hive入门01-基础入门.html">
+            
+                <a href="Hive入门01-基础入门.html">
+            
+                    
+                    Hive入门01-基础入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="../kafka学习笔记/">
+            
+                <a href="../kafka学习笔记/">
+            
+                    
+                    kafka学习笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.11.1" data-path="../kafka学习笔记/kafka01概述与应用场景.html">
+            
+                <a href="../kafka学习笔记/kafka01概述与应用场景.html">
+            
+                    
+                    kafka概述与应用场景
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.2" data-path="../kafka学习笔记/kafka02安装与部署.md">
+            
+                <span>
+            
+                    
+                    kafka安装与部署
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.3" data-path="../kafka学习笔记/kafka03基本操作.html">
+            
+                <a href="../kafka学习笔记/kafka03基本操作.html">
+            
+                    
+                    kafka基本操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.4" data-path="../kafka学习笔记/kafka04生产者原理.html">
+            
+                <a href="../kafka学习笔记/kafka04生产者原理.html">
+            
+                    
+                    kafka生产者原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.5" data-path="../kafka学习笔记/kafka05Broker.html">
+            
+                <a href="../kafka学习笔记/kafka05Broker.html">
+            
+                    
+                    kafka中Broker
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.6" data-path="../kafka学习笔记/kafka06消费者.html">
+            
+                <a href="../kafka学习笔记/kafka06消费者.html">
+            
+                    
+                    kafka消费者
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="../Flink学习笔记/">
+            
+                <a href="../Flink学习笔记/">
+            
+                    
+                    Flink学习笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1" data-path="../Flink学习笔记/flink基础01—简介.html">
+            
+                <a href="../Flink学习笔记/flink基础01—简介.html">
+            
+                    
+                    flink基础01—简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2" data-path="../Flink学习笔记/flink基础02-集群启动-部署模式.html">
+            
+                <a href="../Flink学习笔记/flink基础02-集群启动-部署模式.html">
+            
+                    
+                    flink基础02-集群启动-部署模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3" data-path="../Flink学习笔记/flink基础03-运行时架构.html">
+            
+                <a href="../Flink学习笔记/flink基础03-运行时架构.html">
+            
+                    
+                    flink基础03-运行时架构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.4" data-path="../Flink学习笔记/flink基础04-DataStreamAPI-Source.html">
+            
+                <a href="../Flink学习笔记/flink基础04-DataStreamAPI-Source.html">
+            
+                    
+                    flink基础04-DataStreamAPI-Source
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.5" data-path="../Flink学习笔记/flink基础05-DataStreamAPI-Transformation.html">
+            
+                <a href="../Flink学习笔记/flink基础05-DataStreamAPI-Transformation.html">
+            
+                    
+                    flink基础05-DataStreamAPI-Transformation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.6" data-path="../Flink学习笔记/flink基础06-DataStreamAPI-Sink.html">
+            
+                <a href="../Flink学习笔记/flink基础06-DataStreamAPI-Sink.html">
+            
+                    
+                    flink基础06-DataStreamAPI-Sink
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.7" data-path="../Flink学习笔记/flink基础07-时间和窗口.html">
+            
+                <a href="../Flink学习笔记/flink基础07-时间和窗口.html">
+            
+                    
+                    flink基础07-时间和窗口
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.8" data-path="../Flink学习笔记/flink基础08-处理函数.html">
+            
+                <a href="../Flink学习笔记/flink基础08-处理函数.html">
+            
+                    
+                    flink基础08-处理函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.9" data-path="../Flink学习笔记/flink基础09-多流转换(分流与合流">
+            
+                <span>
+            
+                    
+                    flink基础09-多流转换(分流与合流)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.10" data-path="../Flink学习笔记/flink基础10-状态编程.html">
+            
+                <a href="../Flink学习笔记/flink基础10-状态编程.html">
+            
+                    
+                    flink基础10-状态编程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.11" data-path="../Flink学习笔记/flink基础11-容错机制.html">
+            
+                <a href="../Flink学习笔记/flink基础11-容错机制.html">
+            
+                    
+                    flink基础11-容错机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.12" data-path="../Flink学习笔记/flink基础12-TableAPI和SQL.html">
+            
+                <a href="../Flink学习笔记/flink基础12-TableAPI和SQL.html">
+            
+                    
+                    flink基础12-TableAPI和SQL
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.13" data-path="../Flink学习笔记/flink基础13-CEP.html">
+            
+                <a href="../Flink学习笔记/flink基础13-CEP.html">
+            
+                    
+                    flink基础13-CEP
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" data-path="../工具使用/">
+            
+                <a href="../工具使用/">
+            
+                    
+                    工具使用
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.13.1" data-path="../工具使用/VSCode使用小技巧.html">
+            
+                <a href="../工具使用/VSCode使用小技巧.html">
+            
+                    
+                    VS Code使用小技巧
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.2" data-path="../工具使用/GCC安装.html">
+            
+                <a href="../工具使用/GCC安装.html">
+            
+                    
+                    GCC安装
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.3" data-path="../工具使用/CMake学习与使用.html">
+            
+                <a href="../工具使用/CMake学习与使用.html">
+            
+                    
+                    CMake学习与使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.4" data-path="../工具使用/gdb调试.html">
+            
+                <a href="../工具使用/gdb调试.html">
+            
+                    
+                    gdb调试
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.5" data-path="../工具使用/perf、strace等工具.html">
+            
+                <a href="../工具使用/perf、strace等工具.html">
+            
+                    
+                    perf、strace等工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >hadoop入门03-MapReduce</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="mapreduce">MapReduce</h2>
+<p>&#x4F18;&#x70B9;:</p>
+<ol>
+<li>&#x6613;&#x4E8E;&#x7F16;&#x7A0B;, &#x7528;&#x6237;&#x53EA;&#x5173;&#x5FC3;&#x4E1A;&#x52A1;&#x903B;&#x8F91;&#x3002;&#x5B9E;&#x73B0;&#x6846;&#x67B6;&#x7684;&#x63A5;&#x53E3;;</li>
+<li>&#x826F;&#x597D;&#x6269;&#x5C55;&#x6027;: &#x53EF;&#x4EE5;&#x52A8;&#x6001;&#x589E;&#x52A0;&#x670D;&#x52A1;&#x5668;,&#x89E3;&#x51B3;&#x8BA1;&#x7B97;&#x8D44;&#x6E90;&#x4E0D;&#x8DB3;&#x95EE;&#x9898;;</li>
+<li>&#x9AD8;&#x5BB9;&#x9519;&#x6027;: &#x4EFB;&#x4F55;&#x4E00;&#x53F0;&#x673A;&#x5668;&#x6302;&#x6389;,&#x53EF;&#x4EE5;&#x5C06;&#x4EFB;&#x52A1;&#x8F6C;&#x79FB;&#x5230;&#x5176;&#x4ED6;&#x8282;&#x70B9;</li>
+<li>&#x9002;&#x5408;&#x6D77;&#x91CF;&#x6570;&#x636E;&#x8BA1;&#x7B97;;</li>
+</ol>
+<p>&#x7F3A;&#x70B9;:</p>
+<ol>
+<li>&#x4E0D;&#x64C5;&#x957F;&#x5B9E;&#x65F6;&#x8BA1;&#x7B97;;</li>
+<li>&#x4E0D;&#x64C5;&#x957F;&#x6D41;&#x5F0F;&#x8BA1;&#x7B97;;</li>
+<li><p>&#x4E0D;&#x64C5;&#x957F;DAG&#x6709;&#x5411;&#x65E0;&#x73AF;&#x56FE;&#x8BA1;&#x7B97;;</p>
+</li>
+<li><p><strong>MapReduce&#x8FD0;&#x7B97;&#x7A0B;&#x5E8F;&#x4E00;&#x822C;&#x9700;&#x8981;&#x5206;&#x6210;2&#x9636;&#x6BB5;:Map&#x9636;&#x6BB5;&#x548C;Reduce&#x9636;&#x6BB5;</strong></p>
+</li>
+<li><strong>Map&#x9636;&#x6BB5;&#x7684;&#x5E76;&#x53D1;MapTask,&#x5B8C;&#x5168;&#x5E76;&#x884C;&#x8FD0;&#x884C;,&#x4E92;&#x4E0D;&#x76F8;&#x5E72;</strong></li>
+<li>Reduce&#x9636;&#x6BB5;&#x7684;&#x5E76;&#x53D1;ReduceTask,&#x5B8C;&#x5168;&#x4E92;&#x4E0D;&#x76F8;&#x5E72;,&#x4F46;&#x662F;&#x4ED6;&#x4EEC;&#x7684;&#x6570;&#x636E;&#x4F9D;&#x8D56;&#x4E8E;&#x4E0A;&#x8863;&#x9636;&#x6BB5;&#x7684;MapTask&#x5E76;&#x53D1;&#x5B9E;&#x4F8B;&#x7684;&#x8F93;&#x51FA;</li>
+<li>MapReduce&#x7F16;&#x7A0B;&#x6A21;&#x578B;&#x53EA;&#x80FD;&#x5305;&#x542B;&#x4E00;&#x4E2A;Map&#x9636;&#x6BB5;&#x548C;&#x4E00;&#x4E2A;Reduce&#x9636;&#x6BB5;, &#x5982;&#x679C;&#x7528;&#x6237;&#x4E1A;&#x52A1;&#x903B;&#x8F91;&#x590D;&#x6742;,&#x90A3;&#x4E48;&#x53EA;&#x80FD;&#x591A;&#x4E2A;MapReduce&#x7A0B;&#x5E8F;,&#x4E32;&#x884C;&#x8FD0;&#x884C;;</li>
+</ol>
+<p><strong>Hadoop&#x4E2D;&#x5E38;&#x7528;&#x6570;&#x636E;&#x5E8F;&#x5217;&#x5316;&#x7C7B;&#x578B;</strong></p>
+<table>
+<thead>
+<tr>
+<th>Java &#x7C7B;&#x578B;</th>
+<th>Hadoop Writeable&#x7C7B;&#x578B;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Boolean</td>
+<td>BooleanWritable</td>
+</tr>
+<tr>
+<td>Byte</td>
+<td>ByteWritable</td>
+</tr>
+<tr>
+<td>Int</td>
+<td>IntWritable</td>
+</tr>
+<tr>
+<td>Float</td>
+<td>FloatWritable</td>
+</tr>
+<tr>
+<td>Long</td>
+<td>LongWritable</td>
+</tr>
+<tr>
+<td>Double</td>
+<td>DoubleWritable</td>
+</tr>
+<tr>
+<td><strong>String</strong></td>
+<td>Text</td>
+</tr>
+<tr>
+<td>Map</td>
+<td>MapWritable</td>
+</tr>
+<tr>
+<td>Array</td>
+<td>ArrayWritable</td>
+</tr>
+<tr>
+<td>Null</td>
+<td>NullWritable</td>
+</tr>
+</tbody>
+</table>
+<p><strong>MapReduce&#x8FDB;&#x7A0B;</strong></p>
+<ol>
+<li>MrAppMaster: &#x8D1F;&#x8D23;&#x6574;&#x4E2A;&#x7A0B;&#x5E8F;&#x7684;&#x8FC7;&#x7A0B;&#x8C03;&#x5EA6;&#x548C;&#x72B6;&#x6001;&#x534F;&#x8C03;;</li>
+<li>MapTask: &#x8D1F;&#x8D23;Map&#x9636;&#x6BB5;&#x7684;&#x6574;&#x4E2A;&#x6570;&#x636E;&#x5904;&#x7406;&#x6D41;&#x7A0B;;</li>
+<li>ReduceTask: &#x8D1F;&#x8D23;Reduce&#x9636;&#x6BB5;&#x6574;&#x4E2A;&#x6570;&#x636E;&#x5904;&#x7406;&#x6D41;&#x7A0B;;</li>
+</ol>
+<p><strong>Mapper&#x9636;&#x6BB5;</strong></p>
+<ol>
+<li>&#x7528;&#x6237;&#x81EA;&#x5B9A;&#x4E49;&#x7684;Mapper&#x8981;&#x7EE7;&#x627F;&#x81EA;&#x5DF1;&#x7684;&#x7236;&#x7C7B;<code>Mapper</code>;</li>
+<li>Mapper&#x7684;<strong>&#x8F93;&#x5165;&#x6570;&#x636E;&#x662F;KV&#x5BF9;&#x7684;&#x5F62;&#x5F0F;</strong>(KV&#x7C7B;&#x578B;&#x81EA;&#x5B9A;&#x4E49;)</li>
+<li>Mapper&#x4E2D;&#x4E1A;&#x52A1;&#x903B;&#x8F91;&#x5199;&#x5728;<code>map()</code>&#x65B9;&#x6CD5;&#x4E2D;</li>
+<li>Mapper&#x7684;<strong>&#x8F93;&#x51FA;&#x6570;&#x636E;&#x662F;KV&#x5BF9;&#x7684;&#x5F62;&#x5F0F;</strong>(KV&#x7684;&#x7C7B;&#x578B;&#x53EF;&#x81EA;&#x5B9A;&#x4E49;)</li>
+<li><strong><code>map()</code>&#x65B9;&#x6CD5;(MapTask&#x8FDB;&#x7A0B;)&#x5BF9;&#x6BCF;&#x4E00;&#x4E2A;<code>&lt;K,V&gt;</code>&#x8C03;&#x7528;&#x4E00;&#x6B21;&#x3002;&#x6BD4;&#x5982; word count&#x7A0B;&#x5E8F;&#x4E2D;&#xFF0C;&#x6BCF;&#x4E00;&#x884C;&#x5BF9;&#x5E94;key&#x662F;&#x884C;&#x53F7;, &#x8BE5;&#x884C;&#x7684;&#x5185;&#x5BB9;&#x662F;value&#xFF0C;&#x8FDB;&#x800C;&#x6BCF;&#x4E00;&#x884C;&#x8C03;&#x7528;&#x4E00;&#x6B21;map&#x65B9;&#x6CD5;</strong></li>
+</ol>
+<p><strong>Reducer&#x9636;&#x6BB5;</strong></p>
+<ol>
+<li><p>&#x7528;&#x6237;&#x81EA;&#x5B9A;&#x4E49;&#x7684;Reducer&#x8981;&#x7EE7;&#x627F;&#x81EA;&#x5DF1;&#x7684;&#x7236;&#x7C7B;<code>Reducer</code></p>
+</li>
+<li><p>Reducer&#x7684;&#x8F93;&#x5165;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x5BF9;&#x5E94;Mapper&#x7684;&#x8F93;&#x51FA;&#x6570;&#x636E;&#x7C7B;&#x578B;&#xFF0C;&#x4E5F;&#x662F;KV</p>
+</li>
+<li><p>Recuder&#x7684;&#x4E1A;&#x52A1;&#x903B;&#x8F91;&#x5199;&#x5728;<code>reduce()</code>&#x65B9;&#x6CD5;&#x4E2D;</p>
+</li>
+<li><p><strong><code>ReduceTask</code>&#x8FDB;&#x7A0B;&#x5BF9;&#x6BCF;&#x4E00;&#x7EC4;&#x76F8;&#x540C;k&#x7684;<code>k,v</code>&#x7EC4;&#x8C03;&#x7528;&#x4E00;&#x6B21;<code>reduce()</code>&#x65B9;&#x6CD5;</strong></p>
+<p>&#x5982;</p>
+<pre><code class="lang-shell"> &#x539F;&#x59CB;&#x5185;&#x5BB9;:
+ a  a
+ b  c
+ c  b
+
+ Map&#x9636;&#x6BB5;&#x5904;&#x7406;&#x5B8C;&#x6210;&#x540E;&#x7684;&#x7ED3;&#x679C;:
+ (a,1) (a,1)
+ (b,1) (c,1)
+ (c,1) (b,1)
+
+ Reducer&#x4E2D;&#x8F93;&#x5165;&#x662F;:
+ a,(1,1) &#x540E;&#x9762;&#x7684;(1,1)&#x662F;&#x4E00;&#x4E2A;&#x8FED;&#x4EE3;&#x5668;,&#x662F;&#x4E00;&#x4E2A;&#x96C6;&#x5408;,&#x8C03;&#x7528;&#x4E00;&#x6B21; reduce &#x65B9;&#x6CD5;
+ b,(1,1) &#x8C03;&#x7528;&#x4E00;&#x6B21; reduce &#x65B9;&#x6CD5;
+ c,(1,1) &#x8C03;&#x7528;&#x4E00;&#x6B21; reduce &#x65B9;&#x6CD5;
+</code></pre>
+</li>
+</ol>
+<p><strong>Driver&#x9636;&#x6BB5;</strong></p>
+<p>&#x76F8;&#x5F53;&#x4E8E;YARN&#x96C6;&#x7FA4;&#x7684;&#x5BA2;&#x6237;&#x7AEF;&#xFF0C;&#x7528;&#x4E8E;&#x63D0;&#x4EA4;&#x6211;&#x4EEC;&#x6574;&#x4E2A;&#x7A0B;&#x5E8F;&#x5230;YARN&#x96C6;&#x7FA4;&#xFF0C;&#x63D0;&#x4EA4;&#x7684;&#x662F;&#x5C01;&#x88C5;&#x4E86;MapReduce&#x7A0B;&#x5E8F;&#x76F8;&#x5173;&#x8FD0;&#x884C;&#x53C2;&#x6570;&#x7684;job&#x5BF9;&#x8C61;&#x3002;</p>
+<p><strong>&#x793A;&#x4F8B;</strong>
+<code>pom.xml</code>&#x6587;&#x4EF6;:</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">project</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">&quot;http://maven.apache.org/POM/4.0.0&quot;</span> <span class="hljs-attr">xmlns:xsi</span>=<span class="hljs-string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>
+  <span class="hljs-attr">xsi:schemaLocation</span>=<span class="hljs-string">&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">modelVersion</span>&gt;</span>4.0.0<span class="hljs-tag">&lt;/<span class="hljs-name">modelVersion</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>com.luke.hadoop<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>hdfs-client<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">packaging</span>&gt;</span>jar<span class="hljs-tag">&lt;/<span class="hljs-name">packaging</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>0.0.1-snapshot<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>hdfs-client<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">url</span>&gt;</span>http://maven.apache.org<span class="hljs-tag">&lt;/<span class="hljs-name">url</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">dependencies</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>junit<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>junit<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>3.8.1<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">scope</span>&gt;</span>test<span class="hljs-tag">&lt;/<span class="hljs-name">scope</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>log4j<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>log4j<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>1.2.17<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.apache.hadoop<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>hadoop-client<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>3.2.4<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">dependencies</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">properties</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">maven.compiler.source</span>&gt;</span>1.6<span class="hljs-tag">&lt;/<span class="hljs-name">maven.compiler.source</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">maven.compiler.target</span>&gt;</span>1.6<span class="hljs-tag">&lt;/<span class="hljs-name">maven.compiler.target</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">properties</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">build</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">plugins</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">plugin</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>maven-compiler-plugin<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>3.6.1<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">configuration</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">source</span>&gt;</span>1.8<span class="hljs-tag">&lt;/<span class="hljs-name">source</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">target</span>&gt;</span>1.8<span class="hljs-tag">&lt;/<span class="hljs-name">target</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">configuration</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">plugin</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">plugin</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>maven-assembly-plugin<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">configuration</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">descriptorRefs</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">descriptorRef</span>&gt;</span>jar-with-dependencies<span class="hljs-tag">&lt;/<span class="hljs-name">descriptorRef</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">descriptorRefs</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">configuration</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">executions</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">execution</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">id</span>&gt;</span>make-assembly<span class="hljs-tag">&lt;/<span class="hljs-name">id</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">phase</span>&gt;</span>package<span class="hljs-tag">&lt;/<span class="hljs-name">phase</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">goals</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">goal</span>&gt;</span>single<span class="hljs-tag">&lt;/<span class="hljs-name">goal</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">goals</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">execution</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">executions</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">plugin</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">plugins</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">build</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">project</span>&gt;</span>
+</code></pre>
+<pre><code class="lang-java"><span class="hljs-comment">/* WordCountMapper.java */</span>
+<span class="hljs-keyword">package</span> com.luke.mapreduce.wordcount;
+
+<span class="hljs-keyword">import</span> java.io.IOException;
+
+<span class="hljs-keyword">import</span> org.apache.hadoop.io.IntWritable;
+<span class="hljs-keyword">import</span> org.apache.hadoop.io.LongWritable;
+<span class="hljs-keyword">import</span> org.apache.hadoop.io.Text;
+<span class="hljs-keyword">import</span> org.apache.hadoop.mapreduce.Mapper;
+
+<span class="hljs-comment">/*
+ * KEYIN map&#x9636;&#x6BB5;&#x8F93;&#x5165;&#x7684;key&#x7C7B;&#x578B;:LongWritable
+ * VALUEIN map&#x9636;&#x6BB5;&#x8F93;&#x5165;value&#x7C7B;&#x578B;:Text
+ * KeyOUT map&#x9636;&#x6BB5;&#x8F93;&#x51FA;&#x7684;Key&#x7C7B;&#x578B;:Text
+ * VALUEOUT map&#x9636;&#x6BB5;&#x8F93;&#x51FA;&#x7684;value&#x7C7B;&#x578B;: IntWritable
+*/</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">WordCountMapper</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Mapper</span>&lt;<span class="hljs-title">LongWritable</span>, <span class="hljs-title">Text</span>, <span class="hljs-title">Text</span>, <span class="hljs-title">IntWritable</span>&gt; </span>{
+    <span class="hljs-keyword">private</span> Text outK = <span class="hljs-keyword">new</span> Text();
+    <span class="hljs-keyword">private</span> IntWritable outV = <span class="hljs-keyword">new</span> IntWritable();
+
+    <span class="hljs-comment">// context &#x505A;&#x4E0A;&#x4E0B;&#x6587;&#x8054;&#x7EDC;,&#x505A;mapper &#x548C; reducer&#x4E4B;&#x95F4;&#x7684;&#x8054;&#x7EDC;</span>
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">map</span><span class="hljs-params">(LongWritable key, Text value, Mapper&lt;LongWritable, Text, Text, IntWritable&gt;.Context context)</span>
+            <span class="hljs-keyword">throws</span> IOException, InterruptedException </span>{
+        <span class="hljs-comment">// &#x5355;&#x884C;&#x5185;&#x5BB9;</span>
+        String line = value.toString();
+
+        <span class="hljs-comment">// &#x5207;&#x5272;</span>
+        String[] words = line.split(<span class="hljs-string">&quot; &quot;</span>);
+
+        <span class="hljs-comment">// &#x5FAA;&#x73AF;&#x5199;&#x51FA;</span>
+        <span class="hljs-keyword">for</span> (String each : words) {
+            outK.set(each);
+            outV.set(<span class="hljs-number">1</span>);
+            context.write(outK, outV);
+        }
+    }
+}
+</code></pre>
+<pre><code class="lang-java"><span class="hljs-comment">/* WordCountReducer.java */</span>
+<span class="hljs-keyword">package</span> com.luke.mapreduce.wordcount;
+<span class="hljs-keyword">import</span> java.io.IOException;
+<span class="hljs-keyword">import</span> org.apache.hadoop.io.IntWritable;
+<span class="hljs-keyword">import</span> org.apache.hadoop.io.Text;
+<span class="hljs-keyword">import</span> org.apache.hadoop.mapreduce.Reducer;
+
+<span class="hljs-comment">/*
+ * KEYIN reducer&#x9636;&#x6BB5;&#x7684;&#x8F93;&#x5165;&#x662F; mapper&#x9636;&#x6BB5;&#x7684;&#x8F93;&#x51FA;,
+ * VALUEIN 
+ * KeyOUT reducer&#x9636;&#x6BB5;&#x8F93;&#x51FA;&#x7684;Key&#x7C7B;&#x578B;:Text
+ * VALUEOUT reducer&#x9636;&#x6BB5;&#x8F93;&#x51FA;&#x7684;value&#x7C7B;&#x578B;: IntWritable
+*/</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">WordCountReducer</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Reducer</span>&lt;<span class="hljs-title">Text</span>, <span class="hljs-title">IntWritable</span>, <span class="hljs-title">Text</span>, <span class="hljs-title">IntWritable</span>&gt; </span>{
+    <span class="hljs-keyword">private</span> IntWritable sum = <span class="hljs-keyword">new</span> IntWritable();
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">reduce</span><span class="hljs-params">(Text key, Iterable&lt;IntWritable&gt; values,
+            Reducer&lt;Text, IntWritable, Text, IntWritable&gt;.Context context)</span> <span class="hljs-keyword">throws</span> IOException, InterruptedException </span>{
+        <span class="hljs-comment">// &#x4F20;&#x5165;&#x7684;&#x503C;&#x5982; atguigu,(1,1)</span>
+        <span class="hljs-comment">// key&#x662F;atguigu, value&#x662F; (1,1)</span>
+        <span class="hljs-keyword">int</span> tmp = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">for</span> (IntWritable value : values) {
+            tmp += value.get();
+        }
+        sum.set(tmp);
+        context.write(key, sum);
+    }
+}
+</code></pre>
+<pre><code class="lang-java"><span class="hljs-comment">/* WordCountDriver.java */</span>
+<span class="hljs-keyword">package</span> com.luke.mapreduce.wordcount;
+
+<span class="hljs-keyword">import</span> java.io.IOException;
+<span class="hljs-keyword">import</span> org.apache.hadoop.conf.Configuration;
+<span class="hljs-keyword">import</span> org.apache.hadoop.fs.Path;
+<span class="hljs-keyword">import</span> org.apache.hadoop.io.IntWritable;
+<span class="hljs-keyword">import</span> org.apache.hadoop.io.Text;
+<span class="hljs-keyword">import</span> org.apache.hadoop.mapreduce.Job;
+<span class="hljs-keyword">import</span> org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
+<span class="hljs-keyword">import</span> org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">WordCountDriver</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> IOException, ClassNotFoundException, InterruptedException </span>{
+        <span class="hljs-comment">// 1. &#x83B7;&#x53D6;job</span>
+        Configuration conf = <span class="hljs-keyword">new</span> Configuration();
+        Job job = Job.getInstance(conf);
+        <span class="hljs-comment">// 2 &#x8BBE;&#x7F6E;jar&#x5305;&#x8DEF;&#x5F84;</span>
+        job.setJarByClass(WordCountDriver.class);
+        <span class="hljs-comment">// 3 &#x5173;&#x8054; mapper &#x548C; reducer</span>
+        job.setMapperClass(WordCountMapper.class);
+        job.setReducerClass(WordCountReducer.class);
+        <span class="hljs-comment">// 4. &#x8BBE;&#x7F6E;map&#x8F93;&#x51FA;&#x7684;kv &#x7C7B;&#x578B;</span>
+        job.setMapOutputKeyClass(Text.class);
+        job.setMapOutputValueClass(IntWritable.class);
+
+        <span class="hljs-comment">// 5 &#x8BBE;&#x7F6E;&#x6700;&#x7EC8;&#x8F93;&#x51FA;&#x7684;KV&#x7C7B;&#x578B;(&#x5176;&#x5B9E;&#x5C31;&#x662F;reducer&#x9636;&#x6BB5;&#x7684;&#x8F93;&#x51FA;&#x7C7B;&#x578B;)</span>
+        job.setOutputKeyClass(Text.class);
+        job.setOutputValueClass(IntWritable.class);
+        <span class="hljs-comment">// 6 &#x8BBE;&#x7F6E;&#x8F93;&#x5165;&#x8DEF;&#x5F84;&#x548C;&#x8F93;&#x51FA;&#x8DEF;&#x5F84;</span>
+        FileInputFormat.setInputPaths(job, <span class="hljs-keyword">new</span> Path(args[<span class="hljs-number">0</span>]));
+        FileOutputFormat.setOutputPath(job, <span class="hljs-keyword">new</span> Path(args[<span class="hljs-number">1</span>]));
+
+        <span class="hljs-comment">// 7 &#x63D0;&#x4EA4;job</span>
+        <span class="hljs-keyword">boolean</span> ret = job.waitForCompletion(<span class="hljs-keyword">true</span>);
+        System.exit(ret ? <span class="hljs-number">0</span> : <span class="hljs-number">1</span>);
+    }
+}
+</code></pre>
+<p><strong>&#x6700;&#x540E;&#x7684;&#x6253;&#x5305;&#x8FD0;&#x884C;:</strong></p>
+<ul>
+<li><strong>&#x6253;&#x5305;</strong>: <code>mvn package</code></li>
+<li>&#x8FD0;&#x884C;: <code>hadoop jar target/hdfs-client-0.0.1-snapshot-jar-with-dependencies.jar com.luke.mapreduce.wordcount.WordCountDriver /wcinput/words /wcoutput</code></li>
+</ul>
+<h4 id="mapreduce&#x5E8F;&#x5217;&#x5316;">MapReduce&#x5E8F;&#x5217;&#x5316;</h4>
+<p><strong>&#x5E8F;&#x5217;&#x5316;</strong>&#x5C31;&#x662F;<mark style="color:red">&#x5C06;&#x5185;&#x5B58;&#x4E2D;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;&#x8F6C;&#x6362;&#x6210;&#x5B57;&#x8282;&#x5E8F;&#x5217;</mark>(&#x6216;&#x5176;&#x4ED6;&#x6570;&#x636E;&#x4F20;&#x8F93;&#x534F;&#x8BAE;)&#x4FBF;&#x4E8E;&#x5B58;&#x50A8;&#x5230;&#x78C1;&#x76D8;(&#x6301;&#x4E45;&#x5316;)&#x548C;&#x7F51;&#x7EDC;&#x4F20;&#x8F93;;
+<strong>&#x53CD;&#x5E8F;&#x5217;&#x5316;</strong>&#x5C31;&#x662F;&#x5C06;&#x6536;&#x5230;&#x5B57;&#x8282;&#x5E8F;&#x5217;(&#x6216;&#x5176;&#x4ED6;&#x6570;&#x636E;&#x4F20;&#x8F93;&#x534F;&#x8BAE;) &#x6216;&#x8005; <mark style="color:red">&#x78C1;&#x76D8;&#x7684;&#x6301;&#x4E45;&#x5316;&#x6570;&#x636E;&#xFF0C;&#x8F6C;&#x6362;&#x6210;&#x5185;&#x5B58;&#x4E2D;&#x7684;&#x5BF9;&#x8C61;</mark>;
+&#x5E8F;&#x5217;&#x5316;&#x7684;&#x76EE;&#x7684;: &#x4FBF;&#x4E8E;&#x4ECE;&#x4E00;&#x53F0;&#x673A;&#x5668;&#x4F20;&#x8F93;&#x5230;&#x53E6;&#x5916;&#x4E00;&#x53F0;&#x673A;&#x5668;;</p>
+<p>&#x4E0A;&#x9762;&#x6709;&#x4ECB;&#x7ECD;&#x5E38;&#x7528;&#x7684;&#x5E8F;&#x5217;&#x5316;&#x7C7B;&#x578B;&#xFF0C;&#x5982;<code>BooleanWritable</code>&#x3001;<code>ByteWritable</code>&#x7B49;&#x3002;</p>
+<p><strong>&#x81EA;&#x5B9A;&#x4E49;<code>bean</code>&#x5BF9;&#x8C61;&#x5B9E;&#x73B0;&#x5E8F;&#x5217;&#x5316;&#x63A5;&#x53E3;</strong></p>
+<p>&#x57FA;&#x672C;&#x7684;&#x5E8F;&#x5217;&#x5316;&#x7C7B;&#x578B;&#x4E0D;&#x80FD;&#x6EE1;&#x8DB3;&#x6240;&#x6709;&#x9700;&#x6C42;&#xFF0C;&#x5219;&#x9700;&#x8981;&#x5728;Hadoop&#x6846;&#x67B6;&#x5185;&#x4F20;&#x9012;&#x4E00;&#x4E2A;bean&#x5BF9;&#x8C61;&#xFF0C;&#x8BE5;&#x5BF9;&#x8C61;&#x6765;&#x5B9E;&#x73B0;&#x5E8F;&#x5217;&#x5316;&#x63A5;&#x53E3;&#x3002;</p>
+<ol>
+<li><p>&#x5FC5;&#x987B;&#x5B9E;&#x73B0;<code>Writable</code>&#x63A5;&#x53E3;;</p>
+</li>
+<li><p>&#x53CD;&#x5E8F;&#x5217;&#x5316;&#x65F6;&#xFF0C;&#x9700;&#x8981;&#x53CD;&#x5C04;&#x8C03;&#x7528;&#x7A7A;&#x53C2;&#x6784;&#x9020;&#x51FD;&#x6570;&#xFF0C;&#x6240;&#x4EE5;&#x5FC5;&#x987B;&#x6709;&#x7A7A;&#x53C2;&#x6784;&#x9020;</p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">FlowBean</span><span class="hljs-params">()</span></span>{
+    <span class="hljs-keyword">super</span>();
+}
+</code></pre>
+</li>
+<li><p>&#x91CD;&#x5199;&#x5E8F;&#x5217;&#x5316;&#x65B9;&#x6CD5;</p>
+<pre><code class="lang-java"><span class="hljs-meta">@Override</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">write</span><span class="hljs-params">(DataOutput out)</span> <span class="hljs-keyword">throws</span> IOException</span>{
+    out.WriteLong(upFlow);
+    out.WriteLong(downFlow);
+    out.WriteLong(sumFlow);
+}
+</code></pre>
+</li>
+<li><p>&#x91CD;&#x5199;&#x53CD;&#x5E8F;&#x5217;&#x5316;&#x65B9;&#x6CD5;</p>
+<pre><code class="lang-java"><span class="hljs-meta">@Override</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">readFields</span><span class="hljs-params">(DataOutput in)</span> <span class="hljs-keyword">throws</span> IOException</span>{
+    upFlow = in.readLong();
+    downFlow = in.readLong();
+    sumFlow = in.readLong();
+}
+</code></pre>
+</li>
+<li><p><mark style="color:red">&#x6CE8;&#x610F;&#x53CD;&#x5E8F;&#x5217;&#x5316;&#x7684;&#x987A;&#x5E8F;&#x548C;&#x5E8F;&#x5217;&#x5316;&#x7684;&#x987A;&#x5E8F;&#x5B8C;&#x5168;&#x4E00;&#x81F4;</mark>&#xFF0C;&#x961F;&#x5217;&#xFF1F;</p>
+</li>
+<li><p>&#x60F3;&#x8981;&#x628A;&#x7ED3;&#x679C;&#x663E;&#x793A;&#x5728;&#x6587;&#x4EF6;&#x4E2D;&#xFF0C;&#x9700;&#x8981;&#x91CD;&#x5199;<code>toString()</code>&#xFF0C;&#x53EF;&#x7528;<code>\t</code>&#x5206;&#x5F00;&#xFF0C;&#x65B9;&#x4FBF;&#x540E;&#x7EED;&#x7528;;</p>
+</li>
+<li><p><strong>&#x5982;&#x679C;&#x9700;&#x8981;&#x5C06;&#x81EA;&#x5B9A;&#x4E49;&#x7684;<code>bean</code>&#x653E;&#x5728;key&#x4E2D;&#x4F20;&#x8F93;&#xFF0C;&#x5219;&#x8FD8;&#x9700;&#x8981;&#x5B9E;&#x73B0;<code>Comparable</code>&#x63A5;&#x53E3;</strong>&#xFF0C;&#x56E0;&#x4E3A;MapReduce&#x6846;&#x4E2D;&#x7684;<code>Shuffle</code>&#x8FC7;&#x7A0B;&#x8981;&#x6C42;&#x5BF9;key&#x5FC5;&#x987B;&#x80FD;&#x6392;&#x5E8F;&#x3002;
+&#x4E5F;&#x5C31;&#x662F;&#x4E0A;&#x9762;MapReduce&#x7684;<code>mapper</code>&#x3001;<code>reducer</code>&#x51FD;&#x6570;&#x4E2D;&#x7684;<code>KEY</code>&#x3001;<code>VALUE</code></p>
+<pre><code class="lang-java"><span class="hljs-meta">@Override</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">compareTo</span><span class="hljs-params">(FlowBean o)</span> <span class="hljs-keyword">throws</span> IOException</span>{
+    <span class="hljs-comment">//&#x5012;&#x5E8F;&#x6392;&#x5217;,&#x4ECE;&#x5927;&#x5230;&#x5C0F;</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.sumFlow &gt; o.getSumFlow()? -<span class="hljs-number">1</span> : <span class="hljs-number">1</span>;
+}
+</code></pre>
+</li>
+</ol>
+<p><strong>&#x5E8F;&#x5217;&#x5316;&#x6848;&#x4F8B;&#x5B9E;&#x64CD;:</strong></p>
+<p>&#x80CC;&#x666F;: &#x7EDF;&#x8BA1;&#x6BCF;&#x9694;&#x4E00;&#x624B;&#x673A;&#x53F7;&#x8017;&#x8D39;&#x7684;&#x603B;&#x4E0A;&#x884C;&#x6D41;&#x91CF;&#x3001;&#x603B;&#x4E0B;&#x884C;&#x6D41;&#x91CF;&#x3001;&#x603B;&#x6D41;&#x91CF;&#x3002;</p>
+<ol>
+<li><p>&#x8F93;&#x5165;&#x6570;&#x636E;: phone_data.txt</p>
+</li>
+<li><p>&#x8F93;&#x5165;&#x6570;&#x636E;&#x683C;&#x5F0F;:</p>
+<pre><code class="lang-tex">id    &#x624B;&#x673A;&#x53F7;&#x7801;    &#x7F51;&#x7EDC;ip    &#x4E0A;&#x884C;&#x6D41;&#x91CF;    &#x4E0B;&#x884C;&#x6D41;&#x91CF;    &#x7F51;&#x7EDC;&#x72B6;&#x6001;&#x7801;
+7    13566667777    120.196.100.99    1116    954    200
+</code></pre>
+</li>
+<li><p>&#x671F;&#x671B;&#x8F93;&#x51FA;&#x6570;&#x636E;&#x683C;&#x5F0F;:(&#x603B;&#x6D41;&#x91CF;&#x662F; &#x4E0A;&#x884C;&#x6D41;&#x91CF; + &#x4E0B;&#x884C;&#x6D41;&#x91CF;)</p>
+<pre><code class="lang-java">&#x624B;&#x673A;&#x53F7;&#x7801;    &#x4E0A;&#x884C;&#x6D41;&#x91CF;    &#x4E0B;&#x884C;&#x6D41;&#x91CF;    &#x603B;&#x6D41;&#x91CF;
+<span class="hljs-number">13566667777</span>    <span class="hljs-number">1116</span>    <span class="hljs-number">954</span>    <span class="hljs-number">2070</span>
+</code></pre>
+</li>
+<li><p>&#x793A;&#x4F8B;&#x8F93;&#x5165;&#x6570;&#x636E;<code>phone_data.txt</code></p>
+<pre><code class="lang-text">1       13736230513     192.196.100.1   www.atguigu.com 2481    24681   200
+2       13846544121     192.196.100.2           264     0       200
+3       13956435636     192.196.100.3           132     1512    200
+4       13966251146     192.168.100.1           240     0       404
+5       18271575951     192.168.100.2   www.atguigu.com 1527    2106    200
+6       84188413        192.168.100.3   www.atguigu.com 4116    1432    200
+7       13590439668     192.168.100.4           1116    954     200
+8       15910133277     192.168.100.5   www.hao123.com  3156    2936    200
+9       13729199489     192.168.100.6           240     0       200
+10      13630577991     192.168.100.7   www.shouhu.com  6960    690     200
+11      15043685818     192.168.100.8   www.baidu.com   3659    3538    200
+12      15959002129     192.168.100.9   www.atguigu.com 1938    180     500
+13      13560439638     192.168.100.10          918     4938    200
+14      13470253144     192.168.100.11          180     180     200
+15      13682846555     192.168.100.12  www.qq.com      1938    2910    200
+16      13992314666     192.168.100.13  www.gaga.com    3008    3720    200
+17      13509468723     192.168.100.14  www.qinghua.com 7335    110349  404
+18      18390173782     192.168.100.15  www.sogou.com   9531    2412    200
+19      13975057813     192.168.100.16  www.baidu.com   11058   48243   200
+20      13768778790     192.168.100.17          120     120     200
+21      13568436656     192.168.100.18  www.alibaba.com 2481    24681   200
+22      13568436656     192.168.100.19         1116    954     200
+</code></pre>
+<p>&#x5982;&#x679C;&#x6709;&#x76F8;&#x540C;&#x7684;&#x624B;&#x673A;&#x53F7;&#x5982;<code>13568436656</code>, &#x5219;&#x662F; &#x5C06;&#x6240;&#x6709;&#x884C;&#x7684; &#x4E0A;&#x884C;&#x6D41;&#x91CF; &#x52A0;&#x4E00;&#x8D77;&#x7B49;&#x4E8E;&#x4E0A;&#x884C;&#x6D41;&#x91CF;&#xFF0C;&#x6240;&#x6709;&#x4E0B;&#x884C;&#x6D41;&#x91CF;&#x52A0;&#x4E00;&#x8D77;&#x7B49;&#x4E8E;&#x4E0B;&#x884C;&#x6D41;&#x91CF;&#xFF0C;&#x800C;&#x540E;&#x662F;&#x603B;&#x6D41;&#x91CF;&#x3002;</p>
+<pre><code class="lang-java"><span class="hljs-comment">/* FlowBean.java */</span>
+<span class="hljs-keyword">package</span> com.luke.mapreduce.writable;
+<span class="hljs-keyword">import</span> java.io.DataInput;
+<span class="hljs-keyword">import</span> java.io.DataOutput;
+<span class="hljs-keyword">import</span> java.io.IOException;
+<span class="hljs-keyword">import</span> org.apache.hadoop.io.Writable;
+<span class="hljs-comment">/*
+ * 1. &#x5B9A;&#x4E49;&#x7C7B;&#x5B9E;&#x73B0; writable &#x63A5;&#x53E3;
+ * 2. &#x91CD;&#x5199;&#x5E8F;&#x5217;&#x5316;&#x548C;&#x53CD;&#x5E8F;&#x5217;&#x5316;&#x65B9;&#x6CD5;
+ * 3. &#x91CD;&#x5199;&#x7A7A;&#x53C2;&#x6784;&#x9020;
+ * 4. toString()&#x65B9;&#x6CD5;
+*/</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FlowBean</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Writable</span> </span>{
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">long</span> upFlow; <span class="hljs-comment">// &#x4E0A;&#x884C;&#x6D41;&#x91CF;</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">long</span> downFlow; <span class="hljs-comment">// &#x4E0B;&#x884C;&#x6D41;&#x91CF;</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">long</span> sumFlow; <span class="hljs-comment">// &#x603B;&#x6D41;&#x91CF;</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">long</span> <span class="hljs-title">getUpFlow</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> upFlow;
+    }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">long</span> <span class="hljs-title">getDownFlow</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> downFlow;
+    }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">long</span> <span class="hljs-title">getSumFlow</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> sumFlow;
+    }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setUpFlow</span><span class="hljs-params">(<span class="hljs-keyword">long</span> upFlow)</span> </span>{
+        <span class="hljs-keyword">this</span>.upFlow = upFlow;
+    }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setDownFlow</span><span class="hljs-params">(<span class="hljs-keyword">long</span> downFlow)</span> </span>{
+        <span class="hljs-keyword">this</span>.downFlow = downFlow;
+    }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setSumFlow</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">this</span>.sumFlow = <span class="hljs-keyword">this</span>.upFlow + <span class="hljs-keyword">this</span>.downFlow;
+    }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">FlowBean</span><span class="hljs-params">()</span> </span>{}
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">write</span><span class="hljs-params">(DataOutput out)</span> <span class="hljs-keyword">throws</span> IOException </span>{
+        out.writeLong(upFlow);
+        out.writeLong(downFlow);
+        out.writeLong(sumFlow);
+    }
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">readFields</span><span class="hljs-params">(DataInput in)</span> <span class="hljs-keyword">throws</span> IOException </span>{
+        <span class="hljs-keyword">this</span>.upFlow = in.readLong();
+        <span class="hljs-keyword">this</span>.downFlow = in.readLong();
+        <span class="hljs-keyword">this</span>.sumFlow = in.readLong();
+    }
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">toString</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.upFlow + <span class="hljs-string">&quot;\t&quot;</span> + <span class="hljs-keyword">this</span>.downFlow + <span class="hljs-string">&quot;\t&quot;</span> + <span class="hljs-keyword">this</span>.sumFlow;
+    }
+}
+</code></pre>
+<pre><code class="lang-java"><span class="hljs-comment">/* FlowMapper.java */</span>
+<span class="hljs-keyword">package</span> com.luke.mapreduce.writable;
+
+<span class="hljs-keyword">import</span> java.io.IOException;
+<span class="hljs-keyword">import</span> org.apache.hadoop.io.LongWritable;
+<span class="hljs-keyword">import</span> org.apache.hadoop.io.Text;
+<span class="hljs-keyword">import</span> org.apache.hadoop.mapreduce.Mapper;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FlowMapper</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Mapper</span>&lt;<span class="hljs-title">LongWritable</span>, <span class="hljs-title">Text</span>, <span class="hljs-title">Text</span>, <span class="hljs-title">FlowBean</span>&gt; </span>{
+    <span class="hljs-keyword">private</span> Text outK = <span class="hljs-keyword">new</span> Text();
+    <span class="hljs-keyword">private</span> FlowBean outV = <span class="hljs-keyword">new</span> FlowBean();
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">map</span><span class="hljs-params">(LongWritable key, Text value, Mapper&lt;LongWritable, Text, Text, FlowBean&gt;.Context context)</span>
+            <span class="hljs-keyword">throws</span> IOException, InterruptedException </span>{
+        <span class="hljs-comment">// 1 &#x83B7;&#x53D6;&#x4E00;&#x884C;</span>
+        <span class="hljs-comment">// 1 13736230513 192.196.100.1 www.atguigu.com 2481 24681 200</span>
+        String line = value.toString();
+        String[] list = line.split(<span class="hljs-string">&quot;\\s+&quot;</span>);
+
+        String phoneNum = list[<span class="hljs-number">1</span>];
+        String upFlow = list[list.length - <span class="hljs-number">3</span>];
+        String downFlow = list[list.length - <span class="hljs-number">2</span>];
+
+        outK.set(phoneNum);
+        outV.setUpFlow(Long.parseLong(upFlow));
+        outV.setDownFlow(Long.parseLong(downFlow));
+        outV.setSumFlow();
+        context.write(outK, outV);
+    }
+}
+</code></pre>
+<pre><code class="lang-java"><span class="hljs-comment">/* FlowReducer.java */</span>
+<span class="hljs-keyword">package</span> com.luke.mapreduce.writable;
+
+<span class="hljs-keyword">import</span> java.io.IOException;
+<span class="hljs-keyword">import</span> org.apache.hadoop.io.Text;
+<span class="hljs-keyword">import</span> org.apache.hadoop.mapreduce.Reducer;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FlowReducer</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Reducer</span>&lt;<span class="hljs-title">Text</span>, <span class="hljs-title">FlowBean</span>, <span class="hljs-title">Text</span>, <span class="hljs-title">FlowBean</span>&gt; </span>{
+    <span class="hljs-keyword">private</span> FlowBean outV = <span class="hljs-keyword">new</span> FlowBean();
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">long</span> sumUp;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">long</span> sumDown;
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">reduce</span><span class="hljs-params">(Text key, Iterable&lt;FlowBean&gt; values, Reducer&lt;Text, FlowBean, Text, FlowBean&gt;.Context context)</span>
+            <span class="hljs-keyword">throws</span> IOException, InterruptedException </span>{
+        sumUp = <span class="hljs-number">0</span>;
+        sumDown = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">for</span> (FlowBean value : values) {
+            sumUp += value.getUpFlow();
+            sumDown += value.getDownFlow();
+        }
+        outV.setUpFlow(sumUp);
+        outV.setDownFlow(sumDown);
+        outV.setSumFlow();
+        context.write(key, outV);
+    }
+}
+</code></pre>
+<pre><code class="lang-java"><span class="hljs-comment">/* FlowDriver.java */</span>
+<span class="hljs-keyword">package</span> com.luke.mapreduce.writable;
+
+<span class="hljs-keyword">import</span> java.io.IOException;
+
+<span class="hljs-keyword">import</span> org.apache.hadoop.conf.Configuration;
+<span class="hljs-keyword">import</span> org.apache.hadoop.fs.Path;
+<span class="hljs-keyword">import</span> org.apache.hadoop.io.Text;
+<span class="hljs-keyword">import</span> org.apache.hadoop.mapreduce.Job;
+<span class="hljs-keyword">import</span> org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
+<span class="hljs-keyword">import</span> org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FlowDriver</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> IOException, ClassNotFoundException, InterruptedException </span>{
+        <span class="hljs-comment">// 1. &#x83B7;&#x53D6;job</span>
+        Configuration conf = <span class="hljs-keyword">new</span> Configuration();
+        Job job = Job.getInstance(conf);
+        <span class="hljs-comment">// 2 &#x8BBE;&#x7F6E;jar&#x5305;&#x8DEF;&#x5F84;</span>
+        job.setJarByClass(FlowDriver.class);
+        <span class="hljs-comment">// 3 &#x5173;&#x8054; mapper &#x548C; reducer</span>
+        job.setMapperClass(FlowMapper.class);
+        job.setReducerClass(FlowReducer.class);
+        <span class="hljs-comment">// 4. &#x8BBE;&#x7F6E;map&#x8F93;&#x51FA;&#x7684;kv &#x7C7B;&#x578B;</span>
+        job.setMapOutputKeyClass(Text.class);
+        job.setMapOutputValueClass(FlowBean.class);
+
+        <span class="hljs-comment">// 5 &#x8BBE;&#x7F6E;&#x6700;&#x7EC8;&#x8F93;&#x51FA;&#x7684;KV&#x7C7B;&#x578B;(&#x5176;&#x5B9E;&#x5C31;&#x662F;reducer&#x9636;&#x6BB5;&#x7684;&#x8F93;&#x51FA;&#x7C7B;&#x578B;)</span>
+        job.setOutputKeyClass(Text.class);
+        job.setOutputValueClass(FlowBean.class);
+        <span class="hljs-comment">// 6 &#x8BBE;&#x7F6E;&#x8F93;&#x5165;&#x8DEF;&#x5F84;&#x548C;&#x8F93;&#x51FA;&#x8DEF;&#x5F84;</span>
+        FileInputFormat.setInputPaths(job, <span class="hljs-keyword">new</span> Path(<span class="hljs-string">&quot;/root/code/java/hdfs-client/phone_data.txt&quot;</span>));
+        FileOutputFormat.setOutputPath(job, <span class="hljs-keyword">new</span> Path(<span class="hljs-string">&quot;/root/code/java/hdfs-client/retdir&quot;</span>));
+
+        <span class="hljs-comment">// 7 &#x63D0;&#x4EA4;job</span>
+        <span class="hljs-keyword">boolean</span> ret = job.waitForCompletion(<span class="hljs-keyword">true</span>);
+        System.exit(ret ? <span class="hljs-number">0</span> : <span class="hljs-number">1</span>);
+    }
+}
+</code></pre>
+</li>
+</ol>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="hadoop入门02-HDFS基础.html" class="navigation navigation-prev " aria-label="Previous page: hadoop入门02-HDFS基础">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="hadoop入门04-MapReduce框架原理.html" class="navigation navigation-next " aria-label="Next page: hadoop入门04-MapReduce框架原理">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"hadoop入门03-MapReduce","level":"1.10.3","depth":2,"next":{"title":"hadoop入门04-MapReduce框架原理","level":"1.10.4","depth":2,"path":"hadoop学习笔记/hadoop入门04-MapReduce框架原理.md","ref":"hadoop学习笔记/hadoop入门04-MapReduce框架原理.md","articles":[]},"previous":{"title":"hadoop入门02-HDFS基础","level":"1.10.2","depth":2,"path":"hadoop学习笔记/hadoop入门02-HDFS基础.md","ref":"hadoop学习笔记/hadoop入门02-HDFS基础.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"hadoop学习笔记/hadoop入门03-MapReduce.md","mtime":"2022-09-26T13:58:00.545Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-02-08T08:43:27.159Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

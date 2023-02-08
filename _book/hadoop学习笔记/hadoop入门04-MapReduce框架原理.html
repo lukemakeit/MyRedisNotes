@@ -1,0 +1,2529 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>hadoop入门04-MapReduce框架原理 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="hadoop入门05-MapReduce数据清洗和压缩.html" />
+    
+    
+    <link rel="prev" href="hadoop入门03-MapReduce.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    README
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../redis学习/">
+            
+                <a href="../redis学习/">
+            
+                    
+                    Redis学习
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../redis学习/Redis备份.html">
+            
+                <a href="../redis学习/Redis备份.html">
+            
+                    
+                    Redis备份
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../redis学习/Redis复制.html">
+            
+                <a href="../redis学习/Redis复制.html">
+            
+                    
+                    Redis复制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../redis学习/Redis集群.html">
+            
+                <a href="../redis学习/Redis集群.html">
+            
+                    
+                    Redis集群
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../redis学习/缓存与数据库一致性.html">
+            
+                <a href="../redis学习/缓存与数据库一致性.html">
+            
+                    
+                    缓存与数据库一致性
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../redis学习/Redis消息队列Stream.html">
+            
+                <a href="../redis学习/Redis消息队列Stream.html">
+            
+                    
+                    Redis消息队列
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="../redis学习/RedisModule.html">
+            
+                <a href="../redis学习/RedisModule.html">
+            
+                    
+                    RedisModule
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../mysql/">
+            
+                <a href="../mysql/">
+            
+                    
+                    mysql学习
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../mysql/mysql补充.html">
+            
+                <a href="../mysql/mysql补充.html">
+            
+                    
+                    mysql补充
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../mysql/mysql8.0-手动安装.html">
+            
+                <a href="../mysql/mysql8.0-手动安装.html">
+            
+                    
+                    mysql8.0-手动安装
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../rocksdb-xue-xi/README.md">
+            
+                <span>
+            
+                    
+                    RocksDB学习
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../rocksdb学习/RocksDB基础概念.html">
+            
+                <a href="../rocksdb学习/RocksDB基础概念.html">
+            
+                    
+                    RocksDB基础概念
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../rocksdb学习/RocksDB基础操作-C语言.html">
+            
+                <a href="../rocksdb学习/RocksDB基础操作-C语言.html">
+            
+                    
+                    RocksDB基础操作-C语言
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../c语言笔记/">
+            
+                <a href="../c语言笔记/">
+            
+                    
+                    C语言笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../c语言笔记/C语言补充笔记一.html">
+            
+                <a href="../c语言笔记/C语言补充笔记一.html">
+            
+                    
+                    C语言补充笔记一
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../c++学习笔记/">
+            
+                <a href="../c++学习笔记/">
+            
+                    
+                    C++学习笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../c++学习笔记/C++Primer基础-01引用指针const.html">
+            
+                <a href="../c++学习笔记/C++Primer基础-01引用指针const.html">
+            
+                    
+                    C++Primer基础:引用、指针、const、auto/decltype
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../c++学习笔记/C++Primer基础-02volatile与using.html">
+            
+                <a href="../c++学习笔记/C++Primer基础-02volatile与using.html">
+            
+                    
+                    C++Primer基础:volatile、using
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../c++学习笔记/C++Primer基础-03stringvector数组.html">
+            
+                <a href="../c++学习笔记/C++Primer基础-03stringvector数组.html">
+            
+                    
+                    C++Primer基础: string、vector、数组
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../c++学习笔记/C++Primer基础-04函数重载函数指针.html">
+            
+                <a href="../c++学习笔记/C++Primer基础-04函数重载函数指针.html">
+            
+                    
+                    C++Primer基础:函数、重载、函数指针
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="../c++学习笔记/C++Primer基础-05function与bind与forward.html">
+            
+                <a href="../c++学习笔记/C++Primer基础-05function与bind与forward.html">
+            
+                    
+                    C++Primer基础:std::function、std::bind、std::forward
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6" data-path="../c++学习笔记/C++Primer基础-06-lambda.html">
+            
+                <a href="../c++学习笔记/C++Primer基础-06-lambda.html">
+            
+                    
+                    C++Primer基础:lambda
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.7" data-path="../c++学习笔记/C++Primer基础-07类基础.html">
+            
+                <a href="../c++学习笔记/C++Primer基础-07类基础.html">
+            
+                    
+                    C++ Primer基础: 类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.8" data-path="../c++学习笔记/C++Primer标准库-IO库.html">
+            
+                <a href="../c++学习笔记/C++Primer标准库-IO库.html">
+            
+                    
+                    C++ Primer 标准库: IO库
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.9" data-path="../c++学习笔记/C++Primer标准库-顺序容器.html">
+            
+                <a href="../c++学习笔记/C++Primer标准库-顺序容器.html">
+            
+                    
+                    C++ Primer 标准库: 顺序容器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.10" data-path="../c++学习笔记/C++Primer标准库-泛型算法.html">
+            
+                <a href="../c++学习笔记/C++Primer标准库-泛型算法.html">
+            
+                    
+                    C++ Primer 标准库: 泛型算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.11" data-path="../c++学习笔记/C++Primer标准库-关联容器.html">
+            
+                <a href="../c++学习笔记/C++Primer标准库-关联容器.html">
+            
+                    
+                    C++ Primer 标准库: 关联容器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.12" data-path="../c++学习笔记/C++Primer标准库-动态内存.html">
+            
+                <a href="../c++学习笔记/C++Primer标准库-动态内存.html">
+            
+                    
+                    C++ Primer 标准库: 动态内存
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.13" data-path="../c++学习笔记/C++Primer类设计-拷贝控制.html">
+            
+                <a href="../c++学习笔记/C++Primer类设计-拷贝控制.html">
+            
+                    
+                    C++ Primer 类设计: 拷贝控制、explicit
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.14" data-path="../c++学习笔记/C++Primer类设计-基类派生类虚函数.html">
+            
+                <a href="../c++学习笔记/C++Primer类设计-基类派生类虚函数.html">
+            
+                    
+                    C++ Primer 类设计: 基类、派生类、虚函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.15" data-path="../c++学习笔记/C++Primer类设计-模板与泛型编程.html">
+            
+                <a href="../c++学习笔记/C++Primer类设计-模板与泛型编程.html">
+            
+                    
+                    C++ Primer 类设计:模板与泛型编程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.16" data-path="../c++学习笔记/C++并发编程实战-01基础使用Join传参.html">
+            
+                <a href="../c++学习笔记/C++并发编程实战-01基础使用Join传参.html">
+            
+                    
+                    C++并发编程实战一:基础使用、Join、传参、线程所有权转移
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.17" data-path="../c++学习笔记/C++并发编程实战-02mutexlock.html">
+            
+                <a href="../c++学习笔记/C++并发编程实战-02mutexlock.html">
+            
+                    
+                    C++并发编程实战: mutex、lock、unique_lock、call_once、shared_lock
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.18" data-path="../c++学习笔记/C++并发编程实战-03条件变量.html">
+            
+                <a href="../c++学习笔记/C++并发编程实战-03条件变量.html">
+            
+                    
+                    C++并发编程实战三: 条件变量
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.19" data-path="../c++学习笔记/C++并发编程实战-04原子操作和类型.html">
+            
+                <a href="../c++学习笔记/C++并发编程实战-04原子操作和类型.html">
+            
+                    
+                    C++并发编程实战四: 原子操作和类型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.20" data-path="../c++学习笔记/C++并发编程实战-05内存模型.html">
+            
+                <a href="../c++学习笔记/C++并发编程实战-05内存模型.html">
+            
+                    
+                    C++并发编程实战五: 内存模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.21" data-path="../c++学习笔记/C++补充-01.html">
+            
+                <a href="../c++学习笔记/C++补充-01.html">
+            
+                    
+                    c++补充-01
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.22" data-path="../c++学习笔记/C++补充-02EffectiveSTL有用使用经验.html">
+            
+                <a href="../c++学习笔记/C++补充-02EffectiveSTL有用使用经验.html">
+            
+                    
+                    C++补充02: Effective STL使用经验
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.23" data-path="../c++学习笔记/C++面试题—算法.html">
+            
+                <a href="../c++学习笔记/C++面试题—算法.html">
+            
+                    
+                    C++面试题-算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.24" data-path="../c++学习笔记/Linux传统IO和零拷贝Zero-Copy技术.html">
+            
+                <a href="../c++学习笔记/Linux传统IO和零拷贝Zero-Copy技术.html">
+            
+                    
+                    Linux传统IO和零拷贝Zero-Copy技术
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.25" data-path="../c++学习笔记/Glog使用.html">
+            
+                <a href="../c++学习笔记/Glog使用.html">
+            
+                    
+                    Glog使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../golang学习笔记/">
+            
+                <a href="../golang学习笔记/">
+            
+                    
+                    Golang学习笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../golang学习笔记/Go常见错误集锦.html">
+            
+                <a href="../golang学习笔记/Go常见错误集锦.html">
+            
+                    
+                    Go常见错误集锦
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../golang学习笔记/Go高性能的一些技巧.html">
+            
+                <a href="../golang学习笔记/Go高性能的一些技巧.html">
+            
+                    
+                    Go常见高性能技巧
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../golang学习笔记/Golang反射.html">
+            
+                <a href="../golang学习笔记/Golang反射.html">
+            
+                    
+                    Golang反射
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="../golang学习笔记/内存逃逸.html">
+            
+                <a href="../golang学习笔记/内存逃逸.html">
+            
+                    
+                    内存逃逸
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="../golang学习笔记/调度器GMP.html">
+            
+                <a href="../golang学习笔记/调度器GMP.html">
+            
+                    
+                    调度器GMP
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6" data-path="../golang学习笔记/GC垃圾回收.html">
+            
+                <a href="../golang学习笔记/GC垃圾回收.html">
+            
+                    
+                    GC垃圾回收
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../网络协议学习/">
+            
+                <a href="../网络协议学习/">
+            
+                    
+                    网络协议学习
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../网络协议学习/网络面试题.html">
+            
+                <a href="../网络协议学习/网络面试题.html">
+            
+                    
+                    网络面试题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="../网络协议学习/TCP常见问题.html">
+            
+                <a href="../网络协议学习/TCP常见问题.html">
+            
+                    
+                    TCP常见问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" data-path="../网络协议学习/tcpdump工具.html">
+            
+                <a href="../网络协议学习/tcpdump工具.html">
+            
+                    
+                    tcpdump工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../java学习笔记/">
+            
+                <a href="../java学习笔记/">
+            
+                    
+                    java学习笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="../java学习笔记/java01基础.html">
+            
+                <a href="../java学习笔记/java01基础.html">
+            
+                    
+                    java01基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" data-path="../java学习笔记/java02核心类.html">
+            
+                <a href="../java学习笔记/java02核心类.html">
+            
+                    
+                    java02核心类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3" data-path="../java学习笔记/Maven.html">
+            
+                <a href="../java学习笔记/Maven.html">
+            
+                    
+                    Maven
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    hadoop学习笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="hadoop入门01-架构与安装.html">
+            
+                <a href="hadoop入门01-架构与安装.html">
+            
+                    
+                    hadoop入门01-架构与安装
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" data-path="hadoop入门02-HDFS基础.html">
+            
+                <a href="hadoop入门02-HDFS基础.html">
+            
+                    
+                    hadoop入门02-HDFS基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.3" data-path="hadoop入门03-MapReduce.html">
+            
+                <a href="hadoop入门03-MapReduce.html">
+            
+                    
+                    hadoop入门03-MapReduce
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.10.4" data-path="hadoop入门04-MapReduce框架原理.html">
+            
+                <a href="hadoop入门04-MapReduce框架原理.html">
+            
+                    
+                    hadoop入门04-MapReduce框架原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.5" data-path="hadoop入门05-MapReduce数据清洗和压缩.html">
+            
+                <a href="hadoop入门05-MapReduce数据清洗和压缩.html">
+            
+                    
+                    hadoop入门05-MapReduce数据清洗与压缩
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.6" data-path="hadoop入门06-yarn.html">
+            
+                <a href="hadoop入门06-yarn.html">
+            
+                    
+                    hadoop入门06-yarn
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.7" data-path="Hive入门01-基础入门.html">
+            
+                <a href="Hive入门01-基础入门.html">
+            
+                    
+                    Hive入门01-基础入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="../kafka学习笔记/">
+            
+                <a href="../kafka学习笔记/">
+            
+                    
+                    kafka学习笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.11.1" data-path="../kafka学习笔记/kafka01概述与应用场景.html">
+            
+                <a href="../kafka学习笔记/kafka01概述与应用场景.html">
+            
+                    
+                    kafka概述与应用场景
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.2" data-path="../kafka学习笔记/kafka02安装与部署.md">
+            
+                <span>
+            
+                    
+                    kafka安装与部署
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.3" data-path="../kafka学习笔记/kafka03基本操作.html">
+            
+                <a href="../kafka学习笔记/kafka03基本操作.html">
+            
+                    
+                    kafka基本操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.4" data-path="../kafka学习笔记/kafka04生产者原理.html">
+            
+                <a href="../kafka学习笔记/kafka04生产者原理.html">
+            
+                    
+                    kafka生产者原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.5" data-path="../kafka学习笔记/kafka05Broker.html">
+            
+                <a href="../kafka学习笔记/kafka05Broker.html">
+            
+                    
+                    kafka中Broker
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.6" data-path="../kafka学习笔记/kafka06消费者.html">
+            
+                <a href="../kafka学习笔记/kafka06消费者.html">
+            
+                    
+                    kafka消费者
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="../Flink学习笔记/">
+            
+                <a href="../Flink学习笔记/">
+            
+                    
+                    Flink学习笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1" data-path="../Flink学习笔记/flink基础01—简介.html">
+            
+                <a href="../Flink学习笔记/flink基础01—简介.html">
+            
+                    
+                    flink基础01—简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2" data-path="../Flink学习笔记/flink基础02-集群启动-部署模式.html">
+            
+                <a href="../Flink学习笔记/flink基础02-集群启动-部署模式.html">
+            
+                    
+                    flink基础02-集群启动-部署模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3" data-path="../Flink学习笔记/flink基础03-运行时架构.html">
+            
+                <a href="../Flink学习笔记/flink基础03-运行时架构.html">
+            
+                    
+                    flink基础03-运行时架构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.4" data-path="../Flink学习笔记/flink基础04-DataStreamAPI-Source.html">
+            
+                <a href="../Flink学习笔记/flink基础04-DataStreamAPI-Source.html">
+            
+                    
+                    flink基础04-DataStreamAPI-Source
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.5" data-path="../Flink学习笔记/flink基础05-DataStreamAPI-Transformation.html">
+            
+                <a href="../Flink学习笔记/flink基础05-DataStreamAPI-Transformation.html">
+            
+                    
+                    flink基础05-DataStreamAPI-Transformation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.6" data-path="../Flink学习笔记/flink基础06-DataStreamAPI-Sink.html">
+            
+                <a href="../Flink学习笔记/flink基础06-DataStreamAPI-Sink.html">
+            
+                    
+                    flink基础06-DataStreamAPI-Sink
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.7" data-path="../Flink学习笔记/flink基础07-时间和窗口.html">
+            
+                <a href="../Flink学习笔记/flink基础07-时间和窗口.html">
+            
+                    
+                    flink基础07-时间和窗口
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.8" data-path="../Flink学习笔记/flink基础08-处理函数.html">
+            
+                <a href="../Flink学习笔记/flink基础08-处理函数.html">
+            
+                    
+                    flink基础08-处理函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.9" data-path="../Flink学习笔记/flink基础09-多流转换(分流与合流">
+            
+                <span>
+            
+                    
+                    flink基础09-多流转换(分流与合流)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.10" data-path="../Flink学习笔记/flink基础10-状态编程.html">
+            
+                <a href="../Flink学习笔记/flink基础10-状态编程.html">
+            
+                    
+                    flink基础10-状态编程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.11" data-path="../Flink学习笔记/flink基础11-容错机制.html">
+            
+                <a href="../Flink学习笔记/flink基础11-容错机制.html">
+            
+                    
+                    flink基础11-容错机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.12" data-path="../Flink学习笔记/flink基础12-TableAPI和SQL.html">
+            
+                <a href="../Flink学习笔记/flink基础12-TableAPI和SQL.html">
+            
+                    
+                    flink基础12-TableAPI和SQL
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.13" data-path="../Flink学习笔记/flink基础13-CEP.html">
+            
+                <a href="../Flink学习笔记/flink基础13-CEP.html">
+            
+                    
+                    flink基础13-CEP
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" data-path="../工具使用/">
+            
+                <a href="../工具使用/">
+            
+                    
+                    工具使用
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.13.1" data-path="../工具使用/VSCode使用小技巧.html">
+            
+                <a href="../工具使用/VSCode使用小技巧.html">
+            
+                    
+                    VS Code使用小技巧
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.2" data-path="../工具使用/GCC安装.html">
+            
+                <a href="../工具使用/GCC安装.html">
+            
+                    
+                    GCC安装
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.3" data-path="../工具使用/CMake学习与使用.html">
+            
+                <a href="../工具使用/CMake学习与使用.html">
+            
+                    
+                    CMake学习与使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.4" data-path="../工具使用/gdb调试.html">
+            
+                <a href="../工具使用/gdb调试.html">
+            
+                    
+                    gdb调试
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.5" data-path="../工具使用/perf、strace等工具.html">
+            
+                <a href="../工具使用/perf、strace等工具.html">
+            
+                    
+                    perf、strace等工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >hadoop入门04-MapReduce框架原理</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="mapreduce-&#x6846;&#x67B6;&#x539F;&#x7406;">MapReduce &#x6846;&#x67B6;&#x539F;&#x7406;</h2>
+<p><strong>&#x603B;&#x7ED3;</strong></p>
+<ol>
+<li>InputFormat<ul>
+<li>&#x9ED8;&#x8BA4;&#x7684;&#x662F;TextInputFormat, kv, key&#x662F;&#x504F;&#x79FB;&#x91CF;,value&#x662F;&#x4E00;&#x884C;&#x7684;&#x5185;&#x5BB9;;</li>
+<li>&#x5904;&#x7406;&#x5C0F;&#x6587;&#x4EF6;<code>CombineTextInputFormat</code>&#x628A;&#x591A;&#x4E2A;&#x6587;&#x4EF6;&#x5408;&#x5E76;&#x5230;&#x4E00;&#x4E2A;&#x4E00;&#x8D77;&#x5904;&#x7406;;</li>
+</ul>
+</li>
+<li>Mapper:<ul>
+<li><code>setup()</code>:&#x521D;&#x59CB;&#x5316;;</li>
+<li><code>map()</code>:&#x7528;&#x6237;&#x7684;&#x4E1A;&#x52A1;&#x903B;&#x8F91;;</li>
+<li><code>clearup()</code>: &#x5173;&#x95ED;&#x8D44;&#x6E90;;</li>
+</ul>
+</li>
+<li>&#x5206;&#x533A;(<code>partition</code>)<ul>
+<li>&#x9ED8;&#x8BA4;&#x5206;&#x533A; hashPartitioner, &#x9ED8;&#x8BA4;&#x6309;&#x7167;key&#x7684;hash&#x503C;%numreducetask &#x4E2A;&#x6570;;</li>
+<li>&#x81EA;&#x5B9A;&#x4E49;&#x5206;&#x533A;;</li>
+</ul>
+</li>
+<li>&#x6392;&#x5E8F;(&#x7F13;&#x51B2;&#x533A;&#x6EA2;&#x5199;&#x524D;&#x5C31;&#x662F;&#x9700;&#x8981;&#x6392;&#x5E8F;)<ul>
+<li>&#x90E8;&#x5206;&#x6392;&#x5E8F;: &#x6BCF;&#x4E2A;&#x8F93;&#x51FA;&#x7684;&#x6587;&#x4EF6;&#x5185;&#x90E8;&#x6709;&#x5E8F;;</li>
+<li>&#x5168;&#x6392;&#x5E8F;: &#x4E00;&#x4E2A;reduceTask, &#x5BF9;&#x6240;&#x6709;&#x6570;&#x636E;&#x6392;&#x5E8F;(&#x614E;&#x7528;&#xFF0C;&#x53EF;&#x80FD;oom)&#xFF1B;</li>
+<li>&#x81EA;&#x5B9A;&#x4E49;&#x6392;&#x5E8F;: &#x5B9E;&#x73B0;WritableCompare&#x63A5;&#x53E3;&#xFF0C;&#x91CD;&#x5199;<code>compareTo</code>&#x65B9;&#x6CD5;;</li>
+</ul>
+</li>
+<li>Combiner:<ul>
+<li>&#x524D;&#x63D0;: &#x4E0D;&#x5F71;&#x54CD;&#x6700;&#x7EC8;&#x4E1A;&#x52A1;&#x903B;&#x8F91;(&#x6C42;&#x548C;&#x6CA1;&#x95EE;&#x9898;,&#x8BF7;&#x5E73;&#x5747;&#x503C;&#x4E0D;&#x884C;);</li>
+<li>map&#x9636;&#x6BB5;&#x63D0;&#x524D;&#x9884;&#x805A;&#x5408;, &#x89E3;&#x51B3;&#x6570;&#x636E;&#x503E;&#x659C;&#x7684;&#x65B9;&#x6CD5;;</li>
+</ul>
+</li>
+<li>Reducer<ul>
+<li><code>setup()</code>:&#x521D;&#x59CB;&#x5316;;</li>
+<li><code>reduce()</code>:&#x7528;&#x6237;&#x7684;&#x4E1A;&#x52A1;&#x903B;&#x8F91;;</li>
+<li><code>clearup()</code>: &#x5173;&#x95ED;&#x8D44;&#x6E90;;</li>
+</ul>
+</li>
+<li>OutputFormat:<ul>
+<li>&#x9ED8;&#x8BA4;<code>TextOutputFormat</code>: &#x6309;&#x884C;&#x8F93;&#x51FA;&#x5230;&#x6587;&#x4EF6;;</li>
+<li>&#x81EA;&#x5B9A;&#x4E49;&#x8F93;&#x51FA;;</li>
+</ul>
+</li>
+</ol>
+<h3 id="inputformat-&#x6570;&#x636E;&#x8F93;&#x5165;">InputFormat &#x6570;&#x636E;&#x8F93;&#x5165;</h3>
+<h4 id="&#x5207;&#x7247;&#x4E0E;maptask-&#x5E76;&#x884C;&#x5EA6;&#x51B3;&#x5B9A;&#x673A;&#x5236;">&#x5207;&#x7247;&#x4E0E;MapTask &#x5E76;&#x884C;&#x5EA6;&#x51B3;&#x5B9A;&#x673A;&#x5236;</h4>
+<p><strong>&#x95EE;&#x9898;&#x5F15;&#x51FA;</strong>
+MapTask&#x7684;&#x5E76;&#x884C;&#x5EA6;&#x51B3;&#x5B9A;Map&#x9636;&#x6BB5;&#x7684;&#x4EFB;&#x52A1;&#x5904;&#x7406;&#x5E76;&#x53D1;&#x5EA6;&#xFF0C;&#x8FDB;&#x800C;&#x5F71;&#x54CD;&#x6574;&#x4E2A;Job&#x7684;&#x5904;&#x7406;&#x901F;&#x5EA6;&#x3002;
+<mark style="color:red">&#x601D;&#x8003;: 1G&#x7684;&#x6570;&#x636E;&#xFF0C;&#x542F;&#x52A8;8&#x4E2A;MapTask&#xFF0C;&#x53EF;&#x4EE5;&#x63D0;&#x9AD8;&#x96C6;&#x7FA4;&#x7684;&#x5E76;&#x53D1;&#x5904;&#x7406;&#x80FD;&#x529B;&#x3002;&#x90A3;&#x4E48;1K&#x7684;&#x6570;&#x636E;&#xFF0C;&#x4E5F;&#x542F;&#x52A8;8&#x4E2A;MapTask&#xFF0C;&#x4F1A;&#x63D0;&#x4F9B;&#x96C6;&#x7FA4;&#x6027;&#x80FD;&#x5417;&#xFF1F;MapTask&#x5E76;&#x884C;&#x4EFB;&#x52A1;&#x662F;&#x5426;&#x8D8A;&#x591A;&#x8D8A;&#x597D;&#x5462;&#xFF1F;&#x54EA;&#x4E9B;&#x56E0;&#x7D20;&#x5F71;&#x54CD;&#x4E86;MapTask&#x5E76;&#x884C;&#x5EA6;?</mark></p>
+<p><strong>&#x5E76;&#x884C;&#x5EA6;&#x51B3;&#x5B9A;&#x673A;&#x5236;</strong></p>
+<ul>
+<li><p>&#x6570;&#x636E;&#x5757;: Block&#x662F;HDFS&#x7269;&#x7406;&#x4E0A;&#x628A;&#x6570;&#x636E;&#x5206;&#x6210;&#x4E00;&#x5757;&#x4E00;&#x5757;&#x3002;<mark style="color:red">&#x6570;&#x636E;&#x5757;&#x662F;HDFS&#x5B58;&#x50A8;&#x6570;&#x636E;&#x7684;&#x5355;&#x5143;</mark></p>
+</li>
+<li><p>&#x6570;&#x636E;&#x5207;&#x7247;: &#x6570;&#x636E;&#x5207;&#x7247;&#x53EA;&#x662F;&#x5728;&#x903B;&#x8F91;&#x4E0A;&#x5BF9;&#x8F93;&#x5165;&#x8FDB;&#x884C;&#x5206;&#x7247;&#xFF0C;&#x5E76;&#x4E0D;&#x4F1A;&#x5728;&#x78C1;&#x76D8;&#x4E0A;&#x5C06;&#x5176;&#x5207;&#x5206;&#x8FDB;&#x884C;&#x5B58;&#x50A8;&#x3002;<mark style="color:red">&#x6570;&#x636E;&#x5207;&#x7247;&#x662F;MapReduce&#x7A0B;&#x5E8F;&#x8BA1;&#x7B97;&#x8F93;&#x5165;&#x6570;&#x636E;&#x7684;&#x5355;&#x4F4D;</mark>&#xFF0C;&#x4E00;&#x4E2A;&#x5207;&#x7247;&#x4F1A;&#x5BF9;&#x5E94;&#x542F;&#x52A8;&#x4E00;&#x4E2A;MapTask&#x3002;</p>
+<p><img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20220926064444801.png" alt="image-20220926064444801"></p>
+<ul>
+<li><mark style="color:red">&#x4E00;&#x4E2A;Job&#x7684;Map&#x9636;&#x6BB5;&#x5E76;&#x884C;&#x5EA6;&#x6709;&#x5BA2;&#x6237;&#x7AEF;&#x5728;&#x63D0;&#x4EA4;Job&#x65F6;&#x7684;&#x5207;&#x7247;&#x6570;&#x51B3;&#x5B9A;&#x7684;</mark></li>
+<li><strong>&#x6BCF;&#x4E00;&#x4E2A;Split&#x5207;&#x7247;&#x5206;&#x914D;&#x4E00;&#x4E2A;MapTask&#x5E76;&#x884C;&#x5B9E;&#x4F8B;&#x5904;&#x7406;</strong></li>
+<li><strong>&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x5207;&#x7247;&#x5927;&#x5C0F;=BlockSize</strong></li>
+<li><strong>&#x5207;&#x7247;&#x65F6;&#x4E0D;&#x8003;&#x8651;&#x6570;&#x636E;&#x96C6;&#x6574;&#x4F53;&#xFF0C;&#x800C;&#x662F;&#x9010;&#x4E2A;&#x9488;&#x5BF9;&#x6BCF;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x5355;&#x72EC;&#x5207;&#x7247;&#x3002;&#x6BD4;&#x5982;&#x6709;1.sql 200MB&#x548C; 2.sql 56MB&#xFF0C;&#x5E76;&#x4E0D;&#x4F1A;&#x8003;&#x8651;&#x5C06;&#x4E24;&#x8005;&#x5408;&#x5E76;&#x8D77;&#x6765;&#x653E;&#x5728;&#x4E24;&#x4E2A;&#x6570;&#x636E;&#x5757;&#x4E2D;</strong></li>
+</ul>
+</li>
+</ul>
+<p><strong>FileInputFormat&#x5207;&#x7247;&#x6E90;&#x7801;&#x89E3;&#x6790;</strong></p>
+<ol>
+<li><p>&#x7A0B;&#x5E8F;&#x5148;&#x627E;&#x5230;&#x4F60;&#x6570;&#x636E;&#x5B58;&#x50A8;&#x7684;&#x76EE;&#x5F55;</p>
+</li>
+<li><p>&#x5F00;&#x59CB;&#x904D;&#x5386;&#x5904;&#x7406;(&#x89C4;&#x5212;&#x5207;&#x7247;)&#x76EE;&#x5F55;&#x4E2D;&#x6BCF;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;</p>
+</li>
+<li><p>&#x904D;&#x5386;&#x7B2C;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;ss.txt</p>
+<p>a. &#x8BA1;&#x7B97;&#x6587;&#x4EF6;&#x5927;&#x5C0F;<code>fs.sizeOf(ss.txt)</code>
+b. &#x8BA1;&#x7B97;&#x5207;&#x7247;&#x5927;&#x5C0F;: <code>computeSplitSize(Math.max(minSize,Math.min(maxSize,blocksize)))=blocksize=128M</code></p>
+<ul>
+<li><code>mapreduce.input.fileinputformat.split.minsize=1</code> &#x9ED8;&#x8BA4;&#x503C;1&#x3002;<mark style="color:red"><code>minsize(&#x5207;&#x7247;&#x6700;&#x5927;&#x503C;)</code>: &#x53C2;&#x6570;&#x8C03;&#x5F97;&#x6BD4;blockSize&#x5927;&#xFF0C;&#x5219;&#x53EF;&#x4EE5;&#x8BA9;&#x5207;&#x7247;&#x53D8;&#x5F97;&#x6BD4;blocksize&#x8FD8;&#x5927;</mark></li>
+<li><code>mapreduce.input.fileinputformat.split.maxsize=Long.MAXVlaue</code> &#x3002;<mark style="color:red"><code>maxsize(&#x5207;&#x7247;&#x6700;&#x5927;&#x503C;)</code>:&#x53C2;&#x6570;&#x5982;&#x679C;&#x8C03;&#x5F97;&#x6BD4;<code>blockSize</code>&#x4E0B;&#xFF0C;&#x5219;&#x4F1A;&#x8BA9;&#x5207;&#x7247;&#x53D8;&#x5C0F;&#xFF0C;&#x800C;&#x4E14;&#x5C31;&#x7B49;&#x4E8E;&#x914D;&#x7F6E;&#x7684;<code>maxSize</code></mark></li>
+<li>blockSize &#x4E00;&#x822C;&#x662F;&#x7531;&#x78C1;&#x76D8;&#x7684;&#x4F20;&#x8F93;&#x901F;&#x5EA6;&#x51B3;&#x5B9A;&#xFF0C;&#x524D;&#x9762;&#x6709;&#x63D0;&#x5230;&#xFF1B;</li>
+</ul>
+<p>c. <mark style="color:red">&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;, &#x5207;&#x7247;&#x5927;&#x5C0F;&#x7B49;&#x4E8E;=blocksize&#x3002;&#x8FD9;&#x6837;&#x5C31;&#x4E0D;&#x7528;&#x8DE8;&#x8282;&#x70B9;&#x4F20;&#x8F93;&#x6570;&#x636E;&#x4E86;</mark>
+d. &#x5F00;&#x59CB;&#x5207;,&#x5F62;&#x6210;&#x7B2C;1&#x4E2A;&#x5207;&#x7247;: <code>ss.txt&#x2014;&#x2014;0:128M</code>, &#x7B2C;2&#x4E2A;&#x5207;&#x7247;<code>ss.txt&#x2014;&#x2014;128M:356M</code>, &#x7B2C;3&#x4E2A;&#x5207;&#x7247;<code>ss.txt&#x2014;&#x2014;256M:300M</code>
+(<mark style="color:red">&#x6BCF;&#x6B21;&#x5207;&#x7247;&#x65F6;,&#x90FD;&#x8981;&#x5224;&#x65AD;&#x5207;&#x5B8C;&#x57CE;&#x4E0B;&#x7684;&#x90E8;&#x5206;&#x662F;&#x5426;&#x5927;&#x4E8E;&#x5757;&#x7684;1.1&#x500D;,&#x4E0D;&#x5927;&#x4E8E;1.1&#x500D;&#x5C31;&#x5212;&#x5206;&#x4E00;&#x5757;&#x5207;&#x7247;&#x5373;&#x53EF;</mark>)
+e. &#x5C06;&#x5207;&#x7247;&#x4FE1;&#x606F;&#x5199;&#x5230;&#x4E00;&#x4E2A;&#x5207;&#x7247;&#x89C4;&#x5212;&#x6587;&#x4EF6;&#x4E2D;;
+f. &#x6574;&#x4E2A;&#x5207;&#x7247;&#x7684;&#x6838;&#x5FC3;&#x8FC7;&#x7A0B;&#x5C31;&#x5728;<code>getSplit()</code>&#x65B9;&#x6CD5;&#x4E2D;&#x5B8C;&#x6210;;
+g. <mark style="color:red"><code>InputSplit</code>&#x53EA;&#x8BB0;&#x5F55;&#x4E86;&#x5207;&#x7247;&#x7684;&#x5143;&#x6570;&#x636E;&#x4FE1;&#x606F;&#xFF0C;&#x6BD4;&#x5982;&#x8D77;&#x59CB;&#x4F4D;&#x7F6E;&#x3001;&#x957F;&#x5EA6;&#x4EE5;&#x53CA;&#x6240;&#x5728;&#x8282;&#x70B9;&#x5217;&#x8868;&#x7B49;</mark></p>
+</li>
+<li><p>&#x63D0;&#x4EA4;&#x5207;&#x7247;&#x89C4;&#x5212;&#x6587;&#x4EF6;&#x5230;YARN&#x4E0A;&#xFF0C;YARN&#x4E0A;&#x7684;<code>MrAppMaster</code>&#x5C31;&#x53EF;&#x4EE5;&#x6839;&#x636E;&#x5207;&#x7247;&#x89C4;&#x5212;&#x6587;&#x4EF6;&#x5F00;&#x59CB;&#x8BA1;&#x7B97;<code>MapTask</code>&#x4E2A;&#x6570;;</p>
+</li>
+<li><p>&#x83B7;&#x53D6;&#x5207;&#x7247;&#x4FE1;&#x606F;API</p>
+<pre><code class="lang-java"><span class="hljs-comment">//&#x83B7;&#x53D6;&#x5207;&#x7247;&#x7684;&#x6587;&#x4EF6;&#x540D;&#x79F0;</span>
+String name = inputSplit.getPath().getName();
+<span class="hljs-comment">//&#x6839;&#x636E;&#x6587;&#x4EF6;&#x70C8;&#x6027;&#x83B7;&#x53D6;&#x5207;&#x7247;&#x4FE1;&#x606F;</span>
+FileSplit inputSplit=(FileSplit) context.getInputSplit();
+</code></pre>
+</li>
+</ol>
+<p><strong>TextInputFormat</strong></p>
+<ul>
+<li><p>FileInputFormat&#x5B9E;&#x73B0;&#x7C7B;
+&#x601D;&#x8003;: <mark style="color:red">&#x5728;&#x8FD0;&#x884C;MapReduce&#x7A0B;&#x5E8F;&#x65F6;,&#x8F93;&#x5165;&#x7684;&#x6587;&#x4EF6;&#x683C;&#x5F0F;&#x5305;&#x62EC;: &#x57FA;&#x4E8E;&#x884C;&#x7684;&#x65E5;&#x5FD7;&#x6587;&#x4EF6;&#x3001;&#x4E8C;&#x8FDB;&#x5236;&#x683C;&#x5F0F;&#x6587;&#x4EF6;&#x3001;&#x6570;&#x636E;&#x5E93;&#x8868;&#x7B49;</mark>&#x3002;&#x9488;&#x5BF9;&#x4E0D;&#x540C;&#x7684;&#x6570;&#x636E;&#x7C7B;&#x578B;&#xFF0C;MapReduce&#x662F;&#x5982;&#x4F55;&#x8BFB;&#x53D6;&#x8FD9;&#x4E9B;&#x6570;&#x636E;&#x7684;?
+FileInputFormat&#x5E38;&#x89C1;&#x7684;&#x63A5;&#x53E3;&#x5B9E;&#x73B0;&#x7C7B;&#x5305;&#x62EC;: <code>TextInputFormat</code>&#x3001;<code>KeyValueTextInputFormat</code>&#x3001;<code>NLineInputFormat</code>&#x3001;<code>CombineTextInputFormat</code>&#x548C;&#x81EA;&#x5B9A;&#x4E49;<code>InputFormat</code>;</p>
+</li>
+<li><p><strong>TextInputFormat</strong></p>
+<p>TextInputFormat &#x662F;&#x9ED8;&#x8BA4;&#x7684;<code>FileInputFormat</code>&#x5B9E;&#x73B0;&#x7C7B;&#x3002;&#x6309;&#x884C;&#x8BFB;&#x53D6;&#x6BCF;&#x6761;&#x8BB0;&#x5F55;&#x3002;key&#x662F;&#x8BE5;&#x884C;&#x5728;&#x6574;&#x4E2A;&#x6587;&#x4EF6;&#x4E2D;&#x8D77;&#x59CB;&#x5B57;&#x8282;&#x7684;&#x504F;&#x79FB;&#x91CF;&#xFF0C;LongWritable&#x7C7B;&#x578B;&#x3002;&#x503C;&#x662F;&#x8BE5;&#x884C;&#x7684;&#x5185;&#x5BB9;&#xFF0C;&#x4E0D;&#x5305;&#x62EC;&#x4EFB;&#x4F55;&#x884C;&#x7EC8;&#x6B62;&#x7B26;(&#x6362;&#x884C;&#x6216;&#x56DE;&#x8F66;)&#xFF0C;Text&#x7C7B;&#x578B;;</p>
+</li>
+</ul>
+<p><strong>CombineTextInputFormat&#x5207;&#x7247;&#x673A;&#x5236;</strong>
+&#x6846;&#x67B6;&#x9ED8;&#x8BA4;&#x7684;<code>TextInputFormat</code>&#x5207;&#x7247;&#x673A;&#x5236;&#x662F;&#x5BF9;&#x4EFB;&#x52A1;&#x6309;&#x6587;&#x4EF6;&#x89C4;&#x5212;&#x5207;&#x7247;&#xFF0C;<strong>&#x4E0D;&#x7BA1;&#x6587;&#x4EF6;&#x5927;&#x5C0F;&#xFF0C;&#x90FD;&#x4F1A;&#x662F;&#x4E00;&#x4E2A;&#x5355;&#x72EC;&#x7684;&#x5207;&#x7247;</strong>&#xFF0C;&#x90FD;&#x4F1A;&#x4EA4;&#x7ED9;&#x4E00;&#x4E2A;<code>MapTask</code>&#xFF0C;&#x8FD9;&#x6837;<mark style="color:red">&#x5982;&#x679C;&#x6709;&#x5927;&#x91CF;&#x5C0F;&#x6587;&#x4EF6;&#xFF0C;&#x5C31;&#x4F1A;&#x4EA7;&#x751F;&#x5927;&#x91CF;MapTask&#xFF0C;&#x5904;&#x7406;&#x6548;&#x7387;&#x5730;&#x4E0B;</mark></p>
+<p><strong>&#x5E94;&#x7528;&#x573A;&#x666F;:</strong>
+CombineTextInputFormat&#x7528;&#x4E8E;&#x5C0F;&#x6587;&#x4EF6;&#x8FC7;&#x591A;&#x573A;&#x666F;&#xFF0C;&#x53EF;&#x4EE5;&#x5C06;&#x591A;&#x4E2A;&#x5C0F;&#x6587;&#x4EF6;&#x4ECE;&#x903B;&#x8F91;&#x4E0A;&#x89C4;&#x5212;&#x5230;&#x4E00;&#x4E2A;&#x5207;&#x7247;&#x4E2D;&#xFF0C;&#x8FD9;&#x6837;&#x591A;&#x4E2A;&#x5C0F;&#x6587;&#x4EF6;&#x5C31;&#x53EF;&#x4EE5;&#x4EA4;&#x7ED9;&#x4E00;&#x4E2A;<code>MapTask</code>&#x5904;&#x7406;&#x3002;
+<strong>&#x865A;&#x62DF;&#x5B58;&#x50A8;&#x5207;&#x7247;&#x6700;&#x5927;&#x503C;&#x8BBE;&#x7F6E;</strong>
+<code>CombineTextInputFormat.setMaxinputSplitSize(job,4194304)</code>;// 4m
+<strong>&#x5207;&#x7247;&#x673A;&#x5236;</strong>
+&#x751F;&#x6210;&#x5207;&#x7247;&#x8FC7;&#x7A0B;&#x5305;&#x62EC;: <strong>&#x865A;&#x62DF;&#x5B58;&#x50A8;&#x8FC7;&#x7A0B;&#x548C;&#x5207;&#x7247;&#x8FC7;&#x7A0B;&#x4E24;&#x90E8;&#x5206;</strong>
+<img src="../Users/lukexwang/Library/Application Support/typora-user-images/image-20220926224426148.png" alt="image-20220926224426148"></p>
+<p>&#x5982;&#x4F55;&#x7528;&#x5462;&#xFF1F;&#x4E0A;&#x4E00;&#x7AE0;&#x7684;<code>WordCount</code>&#x7A0B;&#x5E8F;&#x589E;&#x52A0;&#x5982;&#x4E0B;&#x4EE3;&#x7801;:</p>
+<pre><code class="lang-java"><span class="hljs-comment">// &#x5982;&#x679C;&#x4E0D;&#x8BBE;&#x7F6E; InputFormat, &#x5B83;&#x9ED8;&#x8BA4;&#x7528;&#x7684;&#x662F; TextInputFormat.class</span>
+job.setInputFormatClass(CombineTextInputFormat.class);
+
+<span class="hljs-comment">//&#x865A;&#x62DF;&#x5B58;&#x50A8;&#x5207;&#x7247;&#x6700;&#x5927;&#x503C;&#x8BBE;&#x7F6E;4m</span>
+CombineTextInputFormat.setMaxInputSplitSize(job,<span class="hljs-number">20971520</span>);<span class="hljs-comment">// 20m</span>
+</code></pre>
+<h3 id="mapreduce-&#x5DE5;&#x4F5C;&#x6D41;&#x7A0B;">MapReduce &#x5DE5;&#x4F5C;&#x6D41;&#x7A0B;</h3>
+<h4 id="shuffle&#x673A;&#x5236;">Shuffle&#x673A;&#x5236;</h4>
+<p>Map&#x65B9;&#x6CD5;&#x4E4B;&#x540E;&#xFF0C;Reduce&#x65B9;&#x6CD5;&#x4E4B;&#x524D;&#x7684;&#x6570;&#x636E;&#x5904;&#x7406;&#x8FC7;&#x7A0B;&#x79F0;&#x4E4B;&#x4E3A;Shuffle&#x673A;&#x5236;&#x3002;</p>
+<p><mark style="color:red">Shuffle&#x6700;&#x4E3B;&#x8981;&#x7684;&#x5DE5;&#x4F5C;&#x662F; &#x627E;&#x5230;&#x76F8;&#x540C;&#x7684;key&#xFF0C;&#x7136;&#x540E;&#x5C06;&#x5B83;&#x7684;value&#x96C6;&#x5408;&#x5230;&#x4E00;&#x8D77;</mark></p>
+<ul>
+<li>&#x73AF;&#x5F62;&#x7F13;&#x51B2;&#x533A;: &#x9ED8;&#x8BA4; 100M&#xFF0C;&#x5230;80%&#x540E;&#xFF0C;&#x5F00;&#x59CB;&#x9006;&#x5199;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x4ECE;&#x6700;&#x9AD8;&#x5730;&#x5740;(100%&#x7684;&#x4F4D;&#x7F6E;)&#x5F00;&#x59CB;&#x5012;&#x7740;&#x5199;&#xFF0C;&#x518D;&#x6B21;&#x5199;&#x5230;80%&#x65F6;&#xFF0C;&#x5982;&#x679C; &#x6EA2;&#x5199;&#x5DF2;&#x7ECF;&#x5B8C;&#x6210;&#xFF0C;&#x5219;&#x7EE7;&#x7EED;&#x8986;&#x76D6;&#x3002;&#x5426;&#x5219;&#x7B49;&#x5F85;;</li>
+<li>&#x6EA2;&#x5199;: &#x5C31;&#x662F;&#x5C06;&#x7F13;&#x51B2;&#x533A;&#x4E2D;&#x6570;&#x636E;&#x5199;&#x5230;&#x78C1;&#x76D8;&#x3002;&#x6EA2;&#x5199;&#x4E00;&#x822C;&#x662F;&#x73AF;&#x5F62;&#x7F13;&#x51B2;&#x533A; &#x4F7F;&#x7528;&#x5230;80%&#x540E;&#x5F00;&#x59CB;&#x8FDB;&#x884C;&#xFF0C;&#x6EA2;&#x5199;&#x524D;&#x8FD8;&#x4F1A;&#x5C06;&#x73AF;&#x5F62;&#x7F13;&#x51B2;&#x533A;&#x4E2D;&#x7684;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x6392;&#x5E8F;&#xFF1B;<ul>
+<li>&#x6392;&#x5E8F;&#x662F;&#x5BF9; Key &#x7D22;&#x5F15;&#x8FDB;&#x884C;&#x7684;&#xFF0C;&#x662F;&#x6309;&#x7167;&#x5B57;&#x5178;&#x6392;&#x5E8F;&#xFF0C;&#x4F7F;&#x7528;&#x5FEB;&#x901F;&#x6392;&#x5E8F;&#x65B9;&#x6CD5;;</li>
+<li>&#x6EA2;&#x5199;&#x4F1A;&#x4EA7;&#x751F;&#x591A;&#x4E2A;&#x6587;&#x4EF6;:&#x7D22;&#x5F15;&#x6587;&#x4EF6;<code>spill.index</code>&#x3001;&#x6570;&#x636E;&#x6587;&#x4EF6;<code>splill.out</code>;</li>
+<li>Combiner&#x662F;&#x53EF;&#x9009;&#x6D41;&#x7A0B;&#xFF0C;&#x6BD4;&#x5982;<code>(a,1) (a,1)</code>&#x5408;&#x5E76;&#x6210;<code>(a,2)</code>;</li>
+</ul>
+</li>
+<li>&#x5206;&#x533A;: &#x4E0D;&#x540C;&#x5206;&#x533A;&#x662F;&#x8FDB;&#x5165;&#x4E0D;&#x540C;ReduceTask&#x4E2D;;</li>
+<li>&#x591A;&#x6B21;&#x6EA2;&#x5199;&#x7684;&#x6587;&#x4EF6;&#xFF0C;&#x9700;&#x8981;&#x505A;&#x5F52;&#x5E76;&#x6392;&#x5E8F;&#xFF1B;</li>
+<li>Combiner&#x540E;&#x53EF;&#x914D;&#x7F6E;&#x538B;&#x7F29;&#xFF0C;&#x51CF;&#x5C11;&#x7F51;&#x7EDC;&#x4F20;&#x8F93;&#x5F00;&#x9500;;</li>
+<li>&#x6700;&#x540E;&#x662F;&#x5199;&#x5165;&#x5230;&#x78C1;&#x76D8;&#xFF0C;&#x7B49;&#x5F85; ReducerTask&#x6765;&#x62C9;&#x53D6;;</li>
+<li>ReducerTask &#x62C9;&#x53D6;&#x5148;&#x653E;&#x5728;&#x5185;&#x5B58;&#xFF0C;&#x5982;&#x679C;&#x5185;&#x5B58;&#x4E0D;&#x591F;&#xFF0C;&#x653E;&#x78C1;&#x76D8;&#x3002;ReducerTask&#x62C9;&#x53D6;&#x73A9;&#x6587;&#x4EF6;&#x540E;&#xFF0C;&#x8FD8;&#x8981;&#x505A;&#x4E00;&#x6B21;&#x5927;&#x7684;&#x5F52;&#x5E76;&#x6392;&#x5E8F;&#xFF1A;&#x6309;&#x7167;&#x76F8;&#x540C;&#x7684;Key&#x5206;&#x7EC4;&#xFF1B;</li>
+</ul>
+<p><img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20220926232348260.png" alt="image-20220926232348260"></p>
+<h4 id="shuffle&#x4E2D;&#x7684;partition&#x5206;&#x533A;">Shuffle&#x4E2D;&#x7684;Partition&#x5206;&#x533A;</h4>
+<p><strong>&#x95EE;&#x9898;&#x5F15;&#x51FA;</strong>
+&#x8981;&#x6C42;&#x7EDF;&#x8BA1;&#x7ED3;&#x679C;<strong>&#x6309;&#x7167;&#x6761;&#x4EF6;&#x8F93;&#x51FA;&#x5230;&#x4E0D;&#x540C;&#x6587;&#x4EF6;&#x4E2D;(&#x5206;&#x533A;)</strong>&#x3002;&#x6BD4;&#x5982;: &#x5C06;&#x7EDF;&#x8BA1;&#x7ED3;&#x679C;&#x6309;&#x7167;&#x624B;&#x673A;&#x5F52;&#x5C5E;&#x5730;&#x4E0D;&#x540C;&#x7701;&#x4EFD;&#x8F93;&#x51FA;&#x5230;&#x4E0D;&#x540C;&#x6587;&#x4EF6;&#x4E2D;&#x3002;
+<strong>&#x9ED8;&#x8BA4;Partioner&#x5206;&#x533A;</strong></p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">HashPartitioner</span>&lt;<span class="hljs-title">K</span>,<span class="hljs-title">V</span>&gt; <span class="hljs-keyword">extends</span> <span class="hljs-title">Partitioner</span>&lt;<span class="hljs-title">K</span>,<span class="hljs-title">V</span>&gt;</span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getPartition</span><span class="hljs-params">(K key,V value, <span class="hljs-keyword">int</span> numReduceTasks)</span> </span>{
+        <span class="hljs-keyword">return</span> (key.hashCode() &amp; Inter.MAX_VALUE)%numReduceTasks;
+    }
+}
+</code></pre>
+<p>&#x9ED8;&#x8BA4;&#x5206;&#x533A;&#x662F;&#x6839;&#x636E;Key&#x7684;hashCode&#x5BF9;ReduceTasks&#x4E2A;&#x6570;&#x53D6;&#x4F59;&#x5F97;&#x5230;&#x7684;&#x3002;&#x7528;&#x6237;&#x65E0;&#x6CD5;&#x63A7;&#x5236;&#x54EA;&#x4E2A;key&#x5B58;&#x50A8;&#x5230;&#x54EA;&#x4E2A;&#x5206;&#x533A;&#x3002;
+&#x4EE5;&#x524D;&#x7684;&#x7ED3;&#x679C;&#x603B;&#x662F;&#x8F93;&#x51FA;&#x5230;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#xFF0C;&#x901A;&#x8FC7;<code>job.setNumReduceTasks(2)</code>&#x5C31;&#x6709;&#x4F1A;&#x5C06;&#x7ED3;&#x679C;&#x8F93;&#x51FA;&#x5230;&#x4E24;&#x4E2A;&#x6587;&#x4EF6;&#x3002;</p>
+<p><strong>&#x81EA;&#x5B9A;&#x4E49;Partition&#x6B65;&#x9AA4;</strong></p>
+<ol>
+<li><p>&#x81EA;&#x5B9A;&#x4E49;&#x7C7B;&#x7EE7;&#x627F;Partitioner&#xFF0C;&#x91CD;&#x5199;<code>getPartition()</code>&#x65B9;&#x6CD5;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CustomPartitioner</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Partitioner</span>&lt;<span class="hljs-title">Text</span>,<span class="hljs-title">FlowBean</span>&gt;</span>{
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getPartition</span><span class="hljs-params">(Text key,FlowBean Value,<span class="hljs-keyword">int</span> numPartitions)</span> </span>{
+        <span class="hljs-comment">//&#x63A7;&#x5236;&#x5206;&#x533A;&#x4EE3;&#x7801;&#x903B;&#x8F91;</span>
+        ....
+        <span class="hljs-keyword">return</span> partition;
+    }
+}
+</code></pre>
+</li>
+<li><p>&#x5728;Job&#x9A71;&#x52A8;&#x4E2D;&#xFF0C;&#x8BBE;&#x7F6E;&#x81EA;&#x5B9A;&#x4E49;Partitioner
+<code>job.setPartitionerClass(CustomPartitioner)</code></p>
+</li>
+<li><p><strong>&#x81EA;&#x5B9A;&#x4E49;Partition&#x540E;&#xFF0C;&#x8981;&#x6839;&#x636E;&#x81EA;&#x5B9A;&#x4E49;Partitioner&#x7684;&#x903B;&#x8F91;&#x8BBE;&#x7F6E;&#x76F8;&#x5E94;&#x6570;&#x91CF;&#x7684;ReduceTask</strong>
+<code>job.setNumReduceTasks(5)</code></p>
+</li>
+</ol>
+<p><strong>&#x5206;&#x533A;&#x603B;&#x7ED3;</strong></p>
+<ol>
+<li><mark style="color:red">&#x5982;&#x679C;ReduceTask&#x7684;&#x6570;&#x91CF; &gt; getPartition&#x7684;&#x7ED3;&#x679C;&#x6570;,&#x5219;&#x4F1A;&#x4EA7;&#x751F;&#x51E0;&#x4E2A;&#x7A7A;&#x7684;&#x8F93;&#x51FA;&#x6587;&#x4EF6;<code>part-r-00xx</code>;</mark></li>
+<li><mark style="color:red">&#x5982;&#x679C; <code>1&lt;ReduceTask&#x7684;&#x6570;&#x91CF;&lt;getPartition&#x7684;&#x7ED3;&#x679C;&#x6570;</code>, &#x5219;&#x6709;&#x4E00;&#x90E8;&#x5206;&#x5206;&#x533A;&#x6570;&#x636E;&#x65E0;&#x5904;&#x5B89;&#x653E;&#xFF0C;&#x4F1A;<code>Exeption</code>;</mark></li>
+<li><mark style="color:red">&#x5982;&#x679C;ReduceTask&#x6570;&#x91CF;&#x4E3A;1,&#x5219;&#x4E0D;&#x7BA1;MapTask&#x7AEF;&#x8F93;&#x51FA;&#x591A;&#x5C11;&#x4E2A;&#x5206;&#x533A;&#x6587;&#x4EF6;,&#x6700;&#x7EC8;&#x7ED3;&#x679C;&#x90FD;&#x4EA4;&#x7ED9;&#x8FD9;&#x4E00;&#x4E2A;ReduceTask,&#x6700;&#x7EC8;&#x4E5F;&#x5C31;&#x53EA;&#x4F1A;&#x4EA7;&#x751F;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;<code>part-r-00000</code>;</mark></li>
+<li><mark style="color:red">&#x5206;&#x533A;&#x53F7;&#x5FC5;&#x987B;&#x4ECE;&#x96F6;&#x5F00;&#x59CB;&#xFF0C;&#x9010;&#x4E00;&#x7D2F;&#x52A0;;</mark></li>
+</ol>
+<p><strong>&#x6848;&#x4F8B;:</strong></p>
+<pre><code class="lang-java"><span class="hljs-comment">/* ProvincePartitioner.java */</span>
+<span class="hljs-keyword">package</span> com.luke.mapreduce.writable;
+
+<span class="hljs-keyword">import</span> org.apache.hadoop.io.Text;
+<span class="hljs-keyword">import</span> org.apache.hadoop.mapreduce.Partitioner;
+
+<span class="hljs-comment">// &#x4ECE;Mapper&#x51FA;&#x6765; -&gt; &#x7ECF;&#x8FC7;Partitioner -&gt; &#x8FDB;&#x5165;Reducer,</span>
+<span class="hljs-comment">// &#x6240;&#x4EE5;Parritioner&#x7684;&#x8F93;&#x5165;&#x548C;Mapper&#x7684;&#x8F93;&#x51FA;&#x4E00;&#x81F4;</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ProvincePartitioner</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Partitioner</span>&lt;<span class="hljs-title">Text</span>, <span class="hljs-title">FlowBean</span>&gt; </span>{
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getPartition</span><span class="hljs-params">(Text key, FlowBean value, <span class="hljs-keyword">int</span> numPartitions)</span> </span>{
+        <span class="hljs-comment">// key&#x662F;&#x624B;&#x673A;&#x53F7;,&#x8F6C;&#x6362;&#x4E3A;string</span>
+        String phone = key.toString();
+        String prePhone = phone.substring(<span class="hljs-number">0</span>, <span class="hljs-number">3</span>);
+        <span class="hljs-keyword">int</span> partition;
+        <span class="hljs-keyword">if</span> (<span class="hljs-string">&quot;136&quot;</span>.equals(prePhone)) {
+            partition = <span class="hljs-number">0</span>;
+        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-string">&quot;137&quot;</span>.equals(prePhone)) {
+            partition = <span class="hljs-number">1</span>;
+        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-string">&quot;138&quot;</span>.equals(prePhone)) {
+            partition = <span class="hljs-number">2</span>;
+        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-string">&quot;139&quot;</span>.equals(prePhone)) {
+            partition = <span class="hljs-number">3</span>;
+        } <span class="hljs-keyword">else</span> {
+            partition = <span class="hljs-number">4</span>;
+        }
+        <span class="hljs-keyword">return</span> partition;
+    }
+}
+
+<span class="hljs-comment">/* FlowDriver.java &#x6DFB;&#x52A0;&#x4E24;&#x884C; */</span>
+job.setPartitionerClass(ProvincePartitioner.class);
+job.setNumReduceTasks(<span class="hljs-number">5</span>);
+</code></pre>
+<h4 id="shuffle&#x4E2D;&#x7684;&#x6392;&#x5E8F;">Shuffle&#x4E2D;&#x7684;&#x6392;&#x5E8F;</h4>
+<p>MapTask&#x548C;ReduceTask&#x5747;&#x4F1A;&#x5BF9;&#x6570;&#x636E;<strong>&#x6309;&#x7167;Key</strong>&#x8FDB;&#x884C;&#x6392;&#x5E8F;&#x3002;&#x8BE5;&#x64CD;&#x4F5C;&#x5C5E;&#x4E8E;Hadoop&#x7684;&#x9ED8;&#x8BA4;&#x884C;&#x4E3A;&#x3002;<strong><mark style="color:red">&#x4EFB;&#x4F55;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x4E2D;&#x7684;&#x6570;&#x636E;&#x5747;&#x4F1A;&#x88AB;&#x6392;&#x5E8F;&#xFF0C;&#x4E0D;&#x7BA1;&#x903B;&#x8F91;&#x4E0A;&#x662F;&#x5426;&#x9700;&#x8981;(&#x4E3A;&#x4EC0;&#x4E48;&#x5462;? &#x56E0;&#x4E3A;&#x4E0D;&#x6392;&#x5E8F;,&#x5219;Reduce&#x9636;&#x6BB5;&#x5C06;&#x76F8;&#x540C;Key&#x505A;&#x540C;&#x4E00;&#x7EC4;&#x8F93;&#x51FA;&#x662F;&#x65E0;&#x6CD5;&#x8FDB;&#x884C;&#x7684;)</mark></strong>
+&#x9ED8;&#x8BA4;&#x6392;&#x5E8F;&#x662F;&#x6309;&#x7167;<strong>&#x5B57;&#x5178;&#x987A;&#x5E8F;&#x6392;&#x5E8F;</strong>, &#x4E14;&#x5B9E;&#x73B0;&#x8BE5;&#x6392;&#x5E8F;&#x7684;&#x65B9;&#x6CD5;&#x662F;<strong>&#x5FEB;&#x901F;&#x6392;&#x5E8F;</strong>&#x3002;</p>
+<p>&#x5BF9;&#x4E8E;MapTask&#xFF0C;&#x5B83;&#x4F1A;&#x5C06;&#x5904;&#x7406;&#x7684;&#x7ED3;&#x679C;&#x6682;&#x65F6;&#x653E;&#x5728;&#x73AF;&#x5F62;&#x7F13;&#x51B2;&#x533A;&#x4E2D;&#xFF0C;<strong>&#x5F53;&#x73AF;&#x5F62;&#x7F13;&#x51B2;&#x533A;&#x4F7F;&#x7528;&#x7387;&#x5230;&#x8FBE;&#x4E00;&#x5B9A;&#x9608;&#x503C;&#x540E;&#xFF0C;&#x5728;&#x5BF9;&#x7F13;&#x51B2;&#x533A;&#x4E2D;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x4E00;&#x6B21;&#x5FEB;&#x901F;&#x6392;&#x5E8F;</strong>&#xFF0C;&#x5E76;&#x5C06;&#x8FD9;&#x4E9B;&#x6570;&#x636E;&#x6EA2;&#x5199;&#x5230;&#x78C1;&#x76D8;&#x4E0A;&#xFF0C;&#x800C;&#x5F53;&#x6570;&#x636E;&#x90FD;&#x5199;&#x5230;&#x78C1;&#x76D8;&#x540E;&#xFF0C;&#x4ED6;&#x4F1A;&#x5BF9;<strong>&#x78C1;&#x76D8;&#x4E0A;&#x6240;&#x6709;&#x6587;&#x4EF6;&#x8FDB;&#x884C;&#x4E00;&#x6B21;&#x5F52;&#x5E76;&#x6392;&#x5E8F;</strong>;</p>
+<p>&#x5BF9;&#x4E8E;ReduceTask&#xFF0C;&#x5B83;&#x4ECE;&#x6BCF;&#x4E2A;MapTask&#x4E0A;&#x8FDC;&#x7A0B;&#x62C9;&#x53D6;&#x76F8;&#x5E94;&#x7684;&#x6570;&#x636E;&#x6587;&#x4EF6;,&#x5982;&#x679C;&#x6587;&#x4EF6;&#x5927;&#x5C0F;&#x8D85;&#x8FC7;&#x4E00;&#x5B9A;&#x95F4;&#x503C;,&#x5219;&#x6EA2;&#x5199;&#x78C1;&#x76D8;&#x4E0A;,&#x5426;&#x5219;&#x5B58;&#x50A8;&#x5728;&#x5185;&#x5B58;&#x4E2D;&#x3002;
+<strong>&#x5982;&#x679C;&#x78C1;&#x76D8;&#x4E0A;&#x6587;&#x4EF6;&#x6570;&#x76EE;&#x8FBE;&#x5230;&#x4E00;&#x5B9A;&#x570B;&#x503C;,&#x5219;&#x8FDB;&#x884C;&#x4E00;&#x6B21;&#x5F52;&#x5E76;&#x6392;&#x5E8F;&#x4EE5;&#x751F;&#x6210;&#x4E00;&#x4E2A;&#x66F4;&#x5927;&#x6587;&#x4EF6;</strong>;
+<strong>&#x5982;&#x679C;&#x5185;&#x5B58;&#x4E2D;&#x6587;&#x4EF6;&#x5927;&#x5C0F;&#x6216;&#x8005;&#x6570;&#x76EE;&#x8D85;&#x8FC7;&#x4E00;&#x5B9A;&#x570B;&#x503C;,&#x5219;&#x8FDB;&#x884C;&#x4E00;&#x6B21;&#x5408;&#x5E76;&#x540E;&#x5C06;&#x6570;&#x636E;&#x6EA2;&#x5199;&#x5230;&#x78C1;&#x76D8;&#x4E0A;</strong>&#x3002;
+<strong><mark style="color:red">&#x5F53;&#x6240;&#x6709;&#x6570;&#x636E;&#x62F7;&#x8D1D;&#x5B8C;&#x6BD5;&#x540E;&#xFF0C;ReduceTask&#x7EDF;&#x4E00;&#x5BF9;&#x5185;&#x5B58;&#x548C;&#x78C1;&#x76D8;&#x4E0A;&#x7684;&#x6240;&#x6709;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x4E00;&#x6B21;&#x5F52;&#x5E76;&#x6392;&#x5E8F;</mark></strong></p>
+<ol>
+<li>&#x90E8;&#x5206;&#x6392;&#x5E8F;
+MapReduce&#x6839;&#x636E;&#x8F93;&#x5165;&#x8BB0;&#x5F55;&#x7684;key&#x5BF9;&#x6570;&#x636E;&#x96C6;&#x6392;&#x5E8F;&#x3002;&#x4FDD;&#x8BC1;<strong>&#x8F93;&#x51FA;&#x5230;&#x78C1;&#x76D8;&#x7684;&#x6BCF;&#x4E2A;&#x6587;&#x4EF6;&#x5185;&#x90E8;&#x6709;&#x5E8F;&#x3002;&#x751F;&#x4EA7;&#x73AF;&#x5883;&#x4E2D;&#x4E00;&#x822C;&#x505A;&#x5206;&#x533A;&#x5185;&#x6709;&#x5E8F;&#xFF0C;&#x6BD4;&#x5982;&#x4E1C;&#x5317;&#x5730;&#x533A;&#x3001;&#x534E;&#x5317;&#x5730;&#x533A;&#xFF0C;&#x67D0;&#x7701;&#x3001;&#x67D0;&#x5E02; &#x6709;&#x5E8F;&#xFF1B;</strong></li>
+<li>&#x5168;&#x6392;&#x5E8F;
+<strong>&#x6700;&#x7EC8;&#x8F93;&#x51FA;&#x7ED3;&#x679C;&#x53EA;&#x6709;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#xFF0C;&#x4E14;&#x6587;&#x4EF6;&#x5185;&#x90E8;&#x6709;&#x5E8F;&#x3002;</strong>&#x5B9E;&#x73B0;&#x65B9;&#x5F0F;&#x662F;<strong>&#x53EA;&#x8BBE;&#x7F6E;&#x4E00;&#x4E2A;ReduceTask</strong>&#x3002;&#x4F46;&#x8BE5;&#x65B9;&#x6CD5;&#x5728;&#x5904;&#x7406;&#x5927;&#x578B;&#x6587;&#x4EF6;&#x65F6;&#x6548;&#x7387;&#x6781;&#x4F4E;&#xFF0C;&#x56E0;&#x4E3A;&#x4E00;&#x53F0;&#x673A;&#x5668;&#x5904;&#x7406;&#x6240;&#x6709;&#x6587;&#x4EF6;&#xFF0C;&#x5B8C;&#x5168;&#x4E27;&#x5931;&#x4E86;MapRedue&#x63D0;&#x4F9B;&#x7684;&#x5E76;&#x884C;&#x67B6;&#x6784;&#x3002;&#x6BD4;&#x5982;&#x7EDF;&#x8BA1;wordCoun&#xFF0C;&#x53EA;&#x6709;&#x4E00;&#x4E2A;&#x8F93;&#x51FA;(&#x4E00;&#x4E2A;&#x5206;&#x533A;)&#xFF0C;&#x5206;&#x533A;&#x5185;&#x6709;&#x5E8F;&#xFF0C;&#x751F;&#x4EA7;&#x73AF;&#x5883;&#x4E2D;&#x9700;&#x614E;&#x7528;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;;</li>
+<li>&#x8F85;&#x52A9;&#x6392;&#x5E8F;: (GroupingComparator&#x5206;&#x7EC4;) &#x751F;&#x4EA7;&#x73AF;&#x5883;&#x4E2D;&#x4F7F;&#x7528;&#x8F83;&#x5C11;
+&#x5728;Reduce&#x7AEF;&#x5BF9;key&#x8FDB;&#x884C;&#x5206;&#x7EC4;&#x3002;&#x5E94;&#x7528;&#x4E8E;: &#x5728;&#x63A5;&#x6536;&#x7684;key&#x4E3A;bean&#x5BF9;&#x8C61;&#x65F6;&#xFF0C;&#x60F3;&#x8BA9;&#x4E00;&#x4E2A;&#x6216;&#x51E0;&#x4E2A;&#x5B57;&#x6BB5;&#x76F8;&#x540C;(&#x5168;&#x90E8;&#x5B57;&#x6BB5;&#x6BD4;&#x8F83;&#x4E0D;&#x76F8;&#x540C;)&#x7684;key&#x8FDB;&#x5165;&#x5230;&#x540C;&#x4E00;&#x4E2A;reduce&#x65B9;&#x6CD5;&#x65F6;&#xFF0C;&#x53EF;&#x4EE5;&#x91C7;&#x7528;&#x5206;&#x7EC4;&#x6392;&#x5E8F;&#x3002;</li>
+<li>&#x4E8C;&#x6B21;&#x6392;&#x5E8F;
+&#x5728;&#x4E8C;&#x6B21;&#x6392;&#x5E8F;(&#x81EA;&#x5B9A;&#x4E49;&#x6392;&#x5E8F;)&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x5982;&#x679C;compareTo&#x4E2D;&#x7684;&#x5224;&#x65AD;&#x6761;&#x4EF6;&#x4E3A;&#x4E24;&#x4E2A;&#x5373;&#x4E3A;&#x4E8C;&#x6B21;&#x6392;&#x5E8F;&#x3002;</li>
+</ol>
+<p><strong>&#x5047;&#x5982;&#x8981;&#x5BF9;&#x81EA;&#x5B9A;&#x4E49;&#x7684;Bean&#x5BF9;&#x8C61;&#x505A;key&#x4F20;&#x8F93;,&#x9700;&#x8981;&#x5B9E;&#x73B0; <mark style="color:red">WritableComparable</mark>&#x63A5;&#x53E3;&#x91CD;&#x5199; compareTo&#x65B9;&#x6CD5;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x6392;&#x5E8F;</strong></p>
+<pre><code class="lang-java"><span class="hljs-meta">@Override</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">compareTo</span><span class="hljs-params">(FlowBean bean)</span> </span>{
+    <span class="hljs-keyword">int</span> result;
+    <span class="hljs-comment">// &#x6309;&#x7167;&#x603B;&#x6D41;&#x91CF;&#x5927;&#x5C0F;,&#x5012;&#x5E8F;&#x6392;&#x5E8F;</span>
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.sumFlow &gt; bean.getSumFlow()){
+        result =-<span class="hljs-number">1</span>;
+    }<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.sumFlow &lt; bean.getSumFlow()){
+        result =<span class="hljs-number">1</span>;
+    }<span class="hljs-keyword">else</span>{
+        result=<span class="hljs-number">0</span>;
+    }
+    <span class="hljs-keyword">return</span> result;
+}
+</code></pre>
+<p><strong>&#x6848;&#x4F8B;: WritableComparable&#x6392;&#x5E8F;&#x6848;&#x4F8B;&#x5B9E;&#x64CD;(&#x5168;&#x6392;&#x5E8F;)</strong>
+<strong>&#x4E0A;&#x9762;&#x6848;&#x4F8B;&#x4E2D;&#x8F93;&#x51FA;&#x4E86; &#x6BCF;&#x4E2A;&#x624B;&#x673A;&#x7684;&#x603B;&#x6D41;&#x91CF;&#xFF0C;&#x73B0;&#x5728;&#x8981;&#x6839;&#x636E;&#x7ED3;&#x679C;&#x518D;&#x6B21;&#x5BF9;&#x603B;&#x6D41;&#x91CF;&#x8FDB;&#x884C;&#x5012;&#x5E8F;&#x6392;&#x5E8F;</strong>
+&#x7ED3;&#x679C;&#x793A;&#x4F8B;:</p>
+<pre><code class="lang-java"><span class="hljs-number">13630577991</span>     <span class="hljs-number">6960</span>    <span class="hljs-number">690</span>     <span class="hljs-number">7650</span>
+<span class="hljs-number">13682846555</span>     <span class="hljs-number">1938</span>    <span class="hljs-number">2910</span>    <span class="hljs-number">4848</span>
+<span class="hljs-number">13729199489</span>     <span class="hljs-number">240</span>     <span class="hljs-number">0</span>       <span class="hljs-number">240</span>
+...
+</code></pre>
+<p>&#x8981;&#x5B9E;&#x73B0;&#x76EE;&#x7684;&#xFF0C;&#x9700;&#x8981;&#x5206;&#x4E24;&#x6B65;: </p>
+<ul>
+<li><p>&#x7B2C;&#x4E00;&#x6C42;&#x51FA;&#x6BCF;&#x4E2A;&#x624B;&#x673A;&#x53F7;&#x7684;&#x603B;&#x6D41;&#x91CF;(&#x5C31;&#x662F;&#x4E0A;&#x9762;&#x81EA;&#x5B9A;&#x4E49;FlowBean&#x6848;&#x4F8B;&#x5F97;&#x5230;&#x7684;&#x7ED3;&#x679C;)</p>
+</li>
+<li><p>&#x7B2C;&#x4E8C;&#x7528;FlowBean&#x505A;key&#xFF0C;&#x5012;&#x5E8F;&#x6392;&#x5E8F;</p>
+<ul>
+<li><p>&#x8F93;&#x5165;&#x6570;&#x636E;:</p>
+<pre><code class="lang-java"><span class="hljs-number">13729199489</span>     <span class="hljs-number">240</span>     <span class="hljs-number">0</span>       <span class="hljs-number">240</span>
+<span class="hljs-number">13630577991</span>     <span class="hljs-number">6960</span>    <span class="hljs-number">690</span>     <span class="hljs-number">7650</span>
+<span class="hljs-number">13682846555</span>     <span class="hljs-number">1938</span>    <span class="hljs-number">2910</span>    <span class="hljs-number">4848</span>
+...
+</code></pre>
+</li>
+<li><p>&#x8F93;&#x51FA;&#x6570;&#x636E;:</p>
+<pre><code class="lang-java"><span class="hljs-number">13630577991</span>     <span class="hljs-number">6960</span>    <span class="hljs-number">690</span>     <span class="hljs-number">7650</span>
+<span class="hljs-number">13682846555</span>     <span class="hljs-number">1938</span>    <span class="hljs-number">2910</span>    <span class="hljs-number">4848</span>
+<span class="hljs-number">13729199489</span>     <span class="hljs-number">240</span>     <span class="hljs-number">0</span>       <span class="hljs-number">240</span>
+...
+</code></pre>
+</li>
+<li><p>FlowBean&#x9700;&#x5B9E;&#x73B0;<code>WritableComparable</code>&#x63A5;&#x53E3;&#x91CD;&#x5199;<code>compareTo</code>&#x65B9;&#x6CD5;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FlowBean</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">WritableComparable</span>&lt;<span class="hljs-title">FlowBean</span>&gt; </span>{
+      ...
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">compareTo</span><span class="hljs-params">(FlowBean o)</span> </span>{
+        <span class="hljs-comment">// &#x6309;&#x7167;&#x603B;&#x6D41;&#x91CF;&#x7684;&#x5012;&#x5E8F;&#x8FDB;&#x884C;&#x6392;&#x5E8F;</span>
+        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.sumFlow &gt; o.sumFlow) {
+            <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;
+        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.sumFlow &lt; o.sumFlow) {
+            <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
+        } <span class="hljs-keyword">else</span> {
+            <span class="hljs-comment">// &#x603B;&#x6D41;&#x91CF;&#x76F8;&#x7B49;,&#x6309;&#x7167;&#x4E0A;&#x884C;&#x6D41;&#x91CF;&#x5012;&#x5E8F;</span>
+            <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.upFlow &gt; o.upFlow) {
+                <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;
+            } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.upFlow &lt; o.upFlow) {
+                <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
+            }
+            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+        }
+    }
+}
+</code></pre>
+</li>
+<li><p>Mapper&#x7C7B;: <code>context(FlowBean,&#x624B;&#x673A;&#x53F7;)</code></p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FlowMapper</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Mapper</span>&lt;<span class="hljs-title">LongWritable</span>, <span class="hljs-title">Text</span>, <span class="hljs-title">FlowBean</span>, <span class="hljs-title">Text</span>&gt; </span>{
+    <span class="hljs-keyword">private</span> FlowBean outK = <span class="hljs-keyword">new</span> FlowBean();
+    <span class="hljs-keyword">private</span> Text outV = <span class="hljs-keyword">new</span> Text();
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">map</span><span class="hljs-params">(LongWritable key, Text value, Mapper&lt;LongWritable, Text, FlowBean, Text&gt;.Context context)</span>
+            <span class="hljs-keyword">throws</span> IOException, InterruptedException </span>{
+        <span class="hljs-comment">// 1 &#x83B7;&#x53D6;&#x4E00;&#x884C;</span>
+        <span class="hljs-comment">// 13630577991 6960 690 7650</span>
+        String line = value.toString();
+        String[] list = line.split(<span class="hljs-string">&quot;\\s+&quot;</span>);
+
+        String phoneNum = list[<span class="hljs-number">0</span>];
+        String upFlow = list[list.length - <span class="hljs-number">3</span>];
+        String downFlow = list[list.length - <span class="hljs-number">2</span>];
+
+        outV.set(phoneNum);
+        outK.setUpFlow(Long.parseLong(upFlow));
+        outK.setDownFlow(Long.parseLong(downFlow));
+        outK.setSumFlow();
+        context.write(outK, outV);
+    }
+}
+</code></pre>
+</li>
+<li><p>Reducer&#x7C7B;: &#x6253;&#x5370;&#xFF0C;&#x5FAA;&#x73AF;&#x8F93;&#x51FA;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FlowReducer</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Reducer</span>&lt;<span class="hljs-title">FlowBean</span>, <span class="hljs-title">Text</span>, <span class="hljs-title">Text</span>, <span class="hljs-title">FlowBean</span>&gt; </span>{
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">reduce</span><span class="hljs-params">(FlowBean key, Iterable&lt;Text&gt; values, Reducer&lt;FlowBean, Text, Text, FlowBean&gt;.Context context)</span>
+            <span class="hljs-keyword">throws</span> IOException, InterruptedException </span>{
+        <span class="hljs-comment">// &#x5177;&#x6709;&#x76F8;&#x540C;&#x4E0A;&#x884C;&#x6D41;&#x91CF;Phone(Phone&#x662F;Values)&#x7684;&#x4F1A;&#x5728;&#x4E00;&#x8D77;</span>
+        <span class="hljs-keyword">for</span> (Text value : values) {
+            <span class="hljs-comment">// &#x9010;&#x884C;&#x6253;&#x5370;,&#x5148;&#x6253;&#x5370;phone,&#x518D;&#x6253;&#x5370;value</span>
+            context.write(value, key);
+        }
+    }
+}
+</code></pre>
+</li>
+<li><p>Driver&#x7C7B;: &#x4FEE;&#x6539;map &#x7684;&#x6700;&#x7EC8;&#x8F93;&#x51FA;&#x3001;&#x6700;&#x7EC8;&#x4EFB;&#x52A1;&#x7684;&#x6700;&#x7EC8;&#x8F93;&#x51FA;</p>
+<pre><code class="lang-java"><span class="hljs-comment">// 4. &#x8BBE;&#x7F6E;map&#x8F93;&#x51FA;&#x7684;kv &#x7C7B;&#x578B;</span>
+job.setMapOutputKeyClass(FlowBean.class);
+job.setMapOutputValueClass(Text.class);
+
+<span class="hljs-comment">// ReduceTask&#x662F;1,&#x624D;&#x80FD;&#x5168;&#x6392;&#x5E8F;</span>
+job.setNumReduceTasks(<span class="hljs-number">1</span>);
+
+<span class="hljs-comment">// 5 &#x8BBE;&#x7F6E;&#x6700;&#x7EC8;&#x8F93;&#x51FA;&#x7684;KV&#x7C7B;&#x578B;(&#x5176;&#x5B9E;&#x5C31;&#x662F;reducer&#x9636;&#x6BB5;&#x7684;&#x8F93;&#x51FA;&#x7C7B;&#x578B;)</span>
+job.setOutputKeyClass(Text.class);
+job.setOutputValueClass(FlowBean.class);
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="shuffle-&#x53C8;&#x5206;&#x533A;partition-&#x53C8;&#x6392;&#x5E8F;&#xFF0C;&#x5206;&#x533A;&#x7C7B;&#x6309;&#x7167;&#x603B;&#x6D41;&#x91CF;&#x5012;&#x5E8F;">Shuffle &#x53C8;&#x5206;&#x533A;(Partition) &#x53C8;&#x6392;&#x5E8F;&#xFF0C;&#x5206;&#x533A;&#x7C7B;&#x6309;&#x7167;&#x603B;&#x6D41;&#x91CF;&#x5012;&#x5E8F;</h4>
+<p>&#x5728;&#x4E0A;&#x9762;&#x6392;&#x5E8F;&#x7684;&#x57FA;&#x7840;&#x4E0A;&#x505A;&#x5982;&#x4E0B;&#x64CD;&#x4F5C;:</p>
+<pre><code class="lang-java"><span class="hljs-comment">/* &#x6587;&#x4EF6; provincePartitioner2.java */</span>
+<span class="hljs-keyword">package</span> com.luke.mapreduce.partitionerandwritableComparable;
+
+<span class="hljs-keyword">import</span> org.apache.hadoop.io.Text;
+<span class="hljs-keyword">import</span> org.apache.hadoop.mapreduce.Partitioner;
+
+<span class="hljs-comment">// &#x4ECE;Mapper&#x51FA;&#x6765; -&gt; &#x7ECF;&#x8FC7;Partitioner -&gt; &#x8FDB;&#x5165;Reducer,</span>
+<span class="hljs-comment">// &#x6240;&#x4EE5;Parritioner&#x7684;&#x8F93;&#x5165;&#x548C;Mapper&#x7684;&#x8F93;&#x51FA;&#x4E00;&#x81F4;</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">provincePartitioner2</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Partitioner</span>&lt;<span class="hljs-title">FlowBean</span>, <span class="hljs-title">Text</span>&gt; </span>{
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getPartition</span><span class="hljs-params">(FlowBean key, Text value, <span class="hljs-keyword">int</span> numPartitions)</span> </span>{
+        <span class="hljs-comment">// key &#x662F;&#x6BCF;&#x4E2A;&#x53F7;&#x7801;&#x7684;&#x6D41;&#x91CF;&#x4FE1;&#x606F;, value &#x662F;&#x624B;&#x673A;&#x53F7;string</span>
+        String phone = value.toString();
+        String prePhone = phone.substring(<span class="hljs-number">0</span>, <span class="hljs-number">3</span>);
+        <span class="hljs-keyword">int</span> partition;
+        <span class="hljs-keyword">if</span> (<span class="hljs-string">&quot;136&quot;</span>.equals(prePhone)) {
+            partition = <span class="hljs-number">0</span>;
+        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-string">&quot;137&quot;</span>.equals(prePhone)) {
+            partition = <span class="hljs-number">1</span>;
+        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-string">&quot;138&quot;</span>.equals(prePhone)) {
+            partition = <span class="hljs-number">2</span>;
+        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-string">&quot;139&quot;</span>.equals(prePhone)) {
+            partition = <span class="hljs-number">3</span>;
+        } <span class="hljs-keyword">else</span> {
+            partition = <span class="hljs-number">4</span>;
+        }
+        <span class="hljs-keyword">return</span> partition;
+    }
+}
+
+<span class="hljs-comment">/* &#x6587;&#x4EF6; FlowDriver.java */</span>
+<span class="hljs-comment">// &#x8BBE;&#x7F6E;&#x5206;&#x533A;&#x4FE1;&#x606F;</span>
+job.setPartitionerClass(provincePartitioner2.class);
+job.setNumReduceTasks(<span class="hljs-number">5</span>);
+</code></pre>
+<h4 id="shuffle-&#x4E2D;&#x7684;combiner">Shuffle &#x4E2D;&#x7684;Combiner</h4>
+<p>&#x80CC;&#x666F;:</p>
+<ul>
+<li>Reduce task&#x8981;&#x5904;&#x7406;&#x7684;&#x4E1C;&#x897F;&#x66F4;&#x591A; &#x66F4;&#x7E41;&#x5FD9;&#xFF0C;&#x6240;&#x4EE5;&#x5982;&#x679C; map&#x9636;&#x6BB5;&#x80FD;&#x505A;&#x4E00;&#x4E9B;&#x805A;&#x5408;&#x66F4;&#x597D;;</li>
+<li>Map task &#x7684;&#x4E2A;&#x6570;&#x66F4;&#x591A;&#xFF0C;&#x5E76;&#x53D1;&#x5EA6;&#x66F4;&#x9AD8;;</li>
+</ul>
+<p><strong>Combiner&#x5408;&#x5E76;</strong></p>
+<ol>
+<li><p>Combiner &#x662F;MR&#x7A0B;&#x5E8F;&#x4E2D;Mapper&#x548C;Reducer&#x4E4B;&#x5916;&#x7684;&#x4E00;&#x79CD;&#x7EC4;&#x4EF6;&#x3002;&#x5E76;&#x975E;&#x5FC5;&#x9009;&#x9879;&#xFF1B;</p>
+</li>
+<li><p>Combiner&#x7EC4;&#x4EF6;&#x7684;&#x7236;&#x7C7B;&#x5C31;&#x662F;Reducer;</p>
+</li>
+<li><p>Combiner&#x548C;Reducer&#x7684;&#x533A;&#x522B;&#x5728;&#x4E8E;&#x8FD0;&#x884C;&#x7684;&#x4F4D;&#x7F6E;&#x3002;</p>
+<ul>
+<li><strong>Combiner &#x662F;&#x5728;Map&#x9636;&#x6BB5;&#x8FD0;&#x884C;&#x7684;&#xFF0C;&#x5728;&#x6BCF;&#x4E2A;MapTask&#x6240;&#x5728;&#x8282;&#x70B9;&#x8FD0;&#x884C;&#xFF0C;&#x9488;&#x5BF9;&#x6BCF;&#x4E2A;MapTask&#x7684;&#x7ED3;&#x679C;&#x505A;&#x5408;&#x5E76;;</strong></li>
+<li><strong>Reducer&#x662F;&#x63A5;&#x6536;&#x5168;&#x5C40;&#x6240;&#x6709;Mapper&#x7684;&#x8F93;&#x51FA;&#x7ED3;&#x679C;</strong>;</li>
+</ul>
+</li>
+<li><p><strong>Combiner &#x7684;&#x610F;&#x4E49;&#x5C31;&#x662F;&#x5BF9;&#x6BCF;&#x4E00;&#x4E2A;MapTask&#x7684;&#x8F93;&#x51FA;&#x8FDB;&#x884C;&#x5C40;&#x90E8;&#x6C47;&#x603B;&#xFF0C;&#x4EE5;&#x51CF;&#x5C11;&#x7F51;&#x7EDC;&#x6D41;&#x91CF;</strong>;</p>
+</li>
+<li><p><strong><mark style="color:red">Combiner&#x80FD;&#x591F;&#x5E94;&#x7528;&#x7684;&#x524D;&#x63D0;&#x662F;&#x4E0D;&#x80FD;&#x5F71;&#x54CD;&#x6700;&#x7EC8;&#x7684;&#x4E1A;&#x52A1;&#x903B;&#x8F91;&#x3002;</mark></strong> &#x800C;&#x4E14;&#xFF0C;Combiner&#x7684;&#x8F93;&#x51FA;KV&#x5E94;&#x8BE5;&#x80FD;&#x8DDF;Reducer&#x7684;&#x8F93;&#x51FA;KV&#x7C7B;&#x578B;&#x5BF9;&#x5E94;&#x8D77;&#x6765;;</p>
+<p>&#x6BD4;&#x5982;&#xFF0C;&#x6C42;&#x5E73;&#x5747;&#x503C;:</p>
+<pre><code class="lang-java">Mapper&#x4E24;&#x4E2A;Task
+<span class="hljs-number">3</span> <span class="hljs-number">5</span> <span class="hljs-number">7</span> =&gt; combiner (<span class="hljs-number">3</span>+<span class="hljs-number">5</span>+<span class="hljs-number">7</span>)/<span class="hljs-number">3</span>=<span class="hljs-number">5</span>
+<span class="hljs-number">2</span> <span class="hljs-number">6</span> =&gt; combiner (<span class="hljs-number">2</span>+<span class="hljs-number">6</span>)/<span class="hljs-number">2</span>=<span class="hljs-number">4</span>
+
+Reducer&#x9636;&#x6BB5;:
+(<span class="hljs-number">3</span>+<span class="hljs-number">5</span>+<span class="hljs-number">7</span>+<span class="hljs-number">2</span>+<span class="hljs-number">6</span>)/<span class="hljs-number">5</span>=<span class="hljs-number">23</span>/<span class="hljs-number">5</span>  &#x4E0D;&#x7B49;&#x4E8E;  (<span class="hljs-number">5</span>+<span class="hljs-number">4</span>)/<span class="hljs-number">2</span>=<span class="hljs-number">9</span>/<span class="hljs-number">2</span>
+</code></pre>
+</li>
+</ol>
+<p><strong>&#x7EE7;&#x7EED;&#x641E;&#x4E0A;&#x9762;&#x7684; WordCount &#x8F93;&#x51FA;&#x6848;&#x4F8B;</strong></p>
+<p><img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20221001122218298.png" alt="image-20221001122218298" style="zoom:67%;"></p>
+<p><strong>&#x65B9;&#x6848;&#x4E00;:</strong></p>
+<ol>
+<li><p>&#x589E;&#x52A0;&#x4E00;&#x4E2A;WordcountCombiner&#x7C7B;&#x7EE7;&#x627F;Reducer;</p>
+</li>
+<li><p>&#x5728;WordcountCombiner&#x4E2D;</p>
+<ul>
+<li>&#x7EDF;&#x8BA1;&#x5355;&#x8BCD;&#x6C47;&#x603B;</li>
+<li>&#x7EDF;&#x8BA1;&#x7ED3;&#x679C;&#x8F93;&#x51FA;;</li>
+</ul>
+<pre><code class="lang-java"><span class="hljs-comment">/* WordCountCombiner.java */</span>
+<span class="hljs-keyword">package</span> com.luke.mapreduce.combinerwordcount;
+<span class="hljs-keyword">import</span> java.io.IOException;
+<span class="hljs-keyword">import</span> org.apache.hadoop.io.IntWritable;
+<span class="hljs-keyword">import</span> org.apache.hadoop.io.Text;
+<span class="hljs-keyword">import</span> org.apache.hadoop.mapreduce.Reducer;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">WordCountCombiner</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Reducer</span>&lt;<span class="hljs-title">Text</span>, <span class="hljs-title">IntWritable</span>, <span class="hljs-title">Text</span>, <span class="hljs-title">IntWritable</span>&gt; </span>{
+    <span class="hljs-keyword">private</span> IntWritable outV = <span class="hljs-keyword">new</span> IntWritable(<span class="hljs-number">0</span>);
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">reduce</span><span class="hljs-params">(Text key, Iterable&lt;IntWritable&gt; values,
+            Reducer&lt;Text, IntWritable, Text, IntWritable&gt;.Context context)</span> <span class="hljs-keyword">throws</span> IOException, InterruptedException </span>{
+        <span class="hljs-keyword">int</span> sum = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">for</span> (IntWritable value : values) {
+            sum += value.get();
+        }
+        outV.set(sum);
+        context.write(key, outV);
+    }
+}
+
+<span class="hljs-comment">/*  WordCountDriver.java */</span>
+<span class="hljs-comment">// &#x8BBE;&#x7F6E;combiner</span>
+job.setCombinerClass(WordCountCombiner.class);
+</code></pre>
+</li>
+</ol>
+<p><strong>&#x65B9;&#x6848;&#x4E8C;:</strong></p>
+<ol>
+<li><p>&#x5C06;<code>WordcountReducer</code>&#x4F5C;&#x4E3A;<code>Combiner</code>&#x5728;<code>WordcountDriver</code>&#x9A71;&#x52A8;&#x7C7B;&#x4E2D;&#x6307;&#x5B9A;&#x3002;&#x4E5F;&#x5C31;&#x662F;Map&#x9636;&#x6BB5;&#x4E5F;&#x6709;&#x4E00;&#x4E9B;Reduce&#x7684;&#x5C0F;&#x4EFB;&#x52A1;&#x5148;&#x8DD1;;</p>
+<p><code>job.setCombinnerClass(WordcountReducer)</code></p>
+<pre><code>/*  WordCountDriver.java */
+// &#x8BBE;&#x7F6E;combiner
+job.setCombinerClass(WordCountReducer.class);
+</code></pre></li>
+</ol>
+<h4 id="outputformat&#x63A5;&#x53E3;&#x5B9E;&#x73B0;&#x7C7B;">OutputFormat&#x63A5;&#x53E3;&#x5B9E;&#x73B0;&#x7C7B;</h4>
+<p>OutputFormat&#x662F;MapReduce&#x8F93;&#x51FA;&#x7684;&#x57FA;&#x7C7B;&#xFF0C;&#x6240;&#x6709;&#x5B9E;&#x73B0;MapReduce&#x8F93;&#x51FA;&#x90FD;&#x5B9E;&#x73B0;&#x4E86; OutputFormat&#x63A5;&#x53E3;&#x3002;&#x4E0B;&#x9762;&#x6211;&#x4EEC;&#x4ECB;&#x7ECD;&#x51E0;&#x79CD;&#x573A;&#x666F;&#x7684;OutputFormat&#x5B9E;&#x73B0;&#x7C7B;:</p>
+<p><img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20221001132749483.png" alt="image-20221001132749483" style="zoom:50%;"></p>
+<p><strong>&#x9ED8;&#x8BA4;&#x8F93;&#x51FA;&#x683C;&#x5F0F;TextOutputFormat;</strong></p>
+<p><strong>&#x81EA;&#x5B9A;&#x4E49;OutputFormat:</strong></p>
+<ul>
+<li>&#x5E94;&#x7528;&#x573A;&#x666F;: &#x5982;&#x5C06;&#x6570;&#x636E;&#x8F93;&#x51FA;&#x5230;MySQL/HBase/Elasticsearch&#x7B49;&#x5B58;&#x50A8;&#x6846;&#x67B6;&#x4E2D;;</li>
+<li>&#x81EA;&#x5B9A;&#x4E49;OutputFormat&#x6B65;&#x9AA4;<ul>
+<li>&#x81EA;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x7C7B;&#x7EE7;&#x627F;<code>FileOutputFormat</code></li>
+<li>&#x6539;&#x5199;<code>RecordWriter</code>,&#x5177;&#x4F53;&#x6539;&#x5199;&#x8F93;&#x51FA;&#x6570;&#x636E;&#x7684;&#x65B9;&#x6CD5;:<code>write()</code></li>
+</ul>
+</li>
+</ul>
+<p><strong>&#x793A;&#x4F8B;: &#x81EA;&#x5B9A;&#x4E49;OutputFormat&#x7684;&#x6848;&#x4F8B;</strong></p>
+<p><strong>&#x9700;&#x6C42;</strong>
+&#x8FC7;&#x6EE4;&#x8F93;&#x5165;&#x7684;log&#x65E5;&#x5FD7;&#xFF0C;&#x5305;&#x542B;atguigu&#x7684;&#x7F51;&#x7AD9;&#x8F93;&#x51FA;&#x5230;<code>atguigu.log</code>,&#x5426;&#x5219;&#x8F93;&#x51FA;&#x5230;<code>other.log</code></p>
+<p><strong>&#x8F93;&#x5165;&#x6570;&#x636E;:</strong></p>
+<pre><code class="lang-java"><span class="hljs-comment">/* it.log */</span>
+http:<span class="hljs-comment">//www.baidu.com</span>
+http:<span class="hljs-comment">//www.google.com</span>
+http:<span class="hljs-comment">//cn.bing.com</span>
+http:<span class="hljs-comment">//www.atguigu.com</span>
+http:<span class="hljs-comment">//www.sohu.com</span>
+http:<span class="hljs-comment">//www.sina.com</span>
+http:<span class="hljs-comment">//www.sin2a.com</span>
+http:<span class="hljs-comment">//www.sin2desa.com</span>
+http:<span class="hljs-comment">//www.sindsafa.com</span>
+</code></pre>
+<p><strong>&#x5B9E;&#x73B0;:</strong></p>
+<ol>
+<li>&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x7C7B; LogRecordWriter&#x7EE7;&#x627F;RecordWriter:<ul>
+<li>&#x521B;&#x5EFA;&#x4E24;&#x4E2A;&#x6587;&#x4EF6;&#x7684;&#x8F93;&#x51FA;&#x6D41;: <code>atguiguOut</code>&#x3001;<code>otherOut</code></li>
+<li>&#x5982;&#x679C;&#x8F93;&#x5165;&#x6570;&#x636E;&#x5305;&#x542B;atguigu,&#x8F93;&#x51FA;&#x5230; <code>atguiguOut</code>&#x6D41;&#xFF1B; &#x5426;&#x5219;&#x8F93;&#x51FA;&#x5230;<code>otherOut</code>&#x6D41;</li>
+</ul>
+</li>
+</ol>
+<p>&#x6E90;&#x7801;:</p>
+<pre><code class="lang-java"><span class="hljs-comment">/* LogMapper.java */</span>
+<span class="hljs-keyword">package</span> com.luke.mapreduce.outputformat;
+
+<span class="hljs-keyword">import</span> java.io.IOException;
+
+<span class="hljs-keyword">import</span> org.apache.hadoop.io.LongWritable;
+<span class="hljs-keyword">import</span> org.apache.hadoop.io.NullWritable;
+<span class="hljs-keyword">import</span> org.apache.hadoop.io.Text;
+<span class="hljs-keyword">import</span> org.apache.hadoop.mapreduce.Mapper;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">LogMapper</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Mapper</span>&lt;<span class="hljs-title">LongWritable</span>, <span class="hljs-title">Text</span>, <span class="hljs-title">Text</span>, <span class="hljs-title">NullWritable</span>&gt; </span>{
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">map</span><span class="hljs-params">(LongWritable key, Text value, Mapper&lt;LongWritable, Text, Text, NullWritable&gt;.Context context)</span>
+            <span class="hljs-keyword">throws</span> IOException, InterruptedException </span>{
+        <span class="hljs-comment">// http://www.baidu.com</span>
+        <span class="hljs-comment">// http://www.google.com</span>
+        <span class="hljs-comment">// &#x4E0D;&#x505A;&#x4EFB;&#x4F55;&#x5904;&#x7406;</span>
+        context.write(value, NullWritable.get());
+    }
+}
+
+<span class="hljs-comment">/* LogReducer.java */</span>
+<span class="hljs-keyword">package</span> com.luke.mapreduce.outputformat;
+
+<span class="hljs-keyword">import</span> java.io.IOException;
+
+<span class="hljs-keyword">import</span> org.apache.hadoop.io.NullWritable;
+<span class="hljs-keyword">import</span> org.apache.hadoop.io.Text;
+<span class="hljs-keyword">import</span> org.apache.hadoop.mapreduce.Reducer;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">LogReducer</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Reducer</span>&lt;<span class="hljs-title">Text</span>, <span class="hljs-title">NullWritable</span>, <span class="hljs-title">Text</span>, <span class="hljs-title">NullWritable</span>&gt; </span>{
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">reduce</span><span class="hljs-params">(Text key, Iterable&lt;NullWritable&gt; values,
+            Reducer&lt;Text, NullWritable, Text, NullWritable&gt;.Context context)</span> <span class="hljs-keyword">throws</span> IOException, InterruptedException </span>{
+        <span class="hljs-comment">// &#x9632;&#x6B62;&#x6709;&#x76F8;&#x540C;&#x7684;key, &#x5982;&#x679C;&#x4E0D;&#x904D;&#x5386;, &#x5219;&#x76F8;&#x540C;key&#x53EA;&#x8F93;&#x51FA;&#x4E00;&#x4E2A;&#x4E86;</span>
+        <span class="hljs-keyword">for</span> (NullWritable val : values) {
+            context.write(key, NullWritable.get());
+        }
+    }
+}
+
+
+<span class="hljs-comment">/* LogOutputFormat.java */</span>
+<span class="hljs-keyword">package</span> com.luke.mapreduce.outputformat;
+
+<span class="hljs-keyword">import</span> java.io.IOException;
+
+<span class="hljs-keyword">import</span> org.apache.hadoop.io.NullWritable;
+<span class="hljs-keyword">import</span> org.apache.hadoop.io.Text;
+<span class="hljs-keyword">import</span> org.apache.hadoop.mapreduce.RecordWriter;
+<span class="hljs-keyword">import</span> org.apache.hadoop.mapreduce.TaskAttemptContext;
+<span class="hljs-keyword">import</span> org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">LogOutputFormat</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">FileOutputFormat</span>&lt;<span class="hljs-title">Text</span>, <span class="hljs-title">NullWritable</span>&gt; </span>{
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> RecordWriter&lt;Text, NullWritable&gt; <span class="hljs-title">getRecordWriter</span><span class="hljs-params">(TaskAttemptContext job)</span>
+            <span class="hljs-keyword">throws</span> IOException, InterruptedException </span>{
+        LogRecordWriter lrw = <span class="hljs-keyword">new</span> LogRecordWriter(job);
+        <span class="hljs-keyword">return</span> lrw;
+    }
+}
+
+
+<span class="hljs-comment">/* LogRecordWriter.java */</span>
+<span class="hljs-keyword">package</span> com.luke.mapreduce.outputformat;
+
+<span class="hljs-keyword">import</span> java.io.IOException;
+
+<span class="hljs-keyword">import</span> org.apache.hadoop.fs.FSDataOutputStream;
+<span class="hljs-keyword">import</span> org.apache.hadoop.fs.FileSystem;
+<span class="hljs-keyword">import</span> org.apache.hadoop.fs.Path;
+<span class="hljs-keyword">import</span> org.apache.hadoop.io.IOUtils;
+<span class="hljs-keyword">import</span> org.apache.hadoop.io.NullWritable;
+<span class="hljs-keyword">import</span> org.apache.hadoop.io.Text;
+<span class="hljs-keyword">import</span> org.apache.hadoop.mapreduce.RecordWriter;
+<span class="hljs-keyword">import</span> org.apache.hadoop.mapreduce.TaskAttemptContext;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">LogRecordWriter</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">RecordWriter</span>&lt;<span class="hljs-title">Text</span>, <span class="hljs-title">NullWritable</span>&gt; </span>{
+    <span class="hljs-keyword">private</span> FSDataOutputStream atguiguOut;
+    <span class="hljs-keyword">private</span> FSDataOutputStream otherOut;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">LogRecordWriter</span><span class="hljs-params">(TaskAttemptContext job)</span> </span>{
+        <span class="hljs-comment">// &#x521B;&#x5EFA;&#x4E24;&#x4E2A;&#x6D41;</span>
+        FileSystem fs;
+        <span class="hljs-keyword">try</span> {
+            fs = FileSystem.get(job.getConfiguration());
+            <span class="hljs-keyword">this</span>.atguiguOut = fs
+                    .create(<span class="hljs-keyword">new</span> Path(<span class="hljs-string">&quot;/root/code/java/hdfs-client/output/outputformat_ret/atguigu.log&quot;</span>));
+
+            <span class="hljs-keyword">this</span>.otherOut = fs
+                    .create(<span class="hljs-keyword">new</span> Path(<span class="hljs-string">&quot;/root/code/java/hdfs-client/output/outputformat_ret/other.log&quot;</span>));
+        } <span class="hljs-keyword">catch</span> (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">write</span><span class="hljs-params">(Text key, NullWritable value)</span> <span class="hljs-keyword">throws</span> IOException, InterruptedException </span>{
+        <span class="hljs-comment">// &#x5177;&#x4F53;&#x5199;&#x5165;</span>
+        String line = key.toString();
+        <span class="hljs-keyword">if</span> (line.contains(<span class="hljs-string">&quot;atguigu&quot;</span>)) {
+            atguiguOut.writeBytes(line + <span class="hljs-string">&quot;\n&quot;</span>);
+        } <span class="hljs-keyword">else</span> {
+            otherOut.writeBytes(line + <span class="hljs-string">&quot;\n&quot;</span>);
+        }
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">close</span><span class="hljs-params">(TaskAttemptContext context)</span> <span class="hljs-keyword">throws</span> IOException, InterruptedException </span>{
+        IOUtils.closeStream(atguiguOut);
+        IOUtils.closeStreams(otherOut);
+    }
+}
+
+<span class="hljs-comment">/* LogDriver.java */</span>
+...
+        <span class="hljs-comment">// &#x8BBE;&#x7F6E;&#x81EA;&#x5B9A;&#x4E49;&#x7684;outputFormat</span>
+        job.setOutputFormatClass(LogOutputFormat.class);
+
+        <span class="hljs-comment">// 6. &#x8BBE;&#x7F6E;&#x8F93;&#x5165;&#x8DEF;&#x5F84;&#x548C;&#x8F93;&#x51FA;&#x8DEF;&#x5F84;</span>
+        FileInputFormat.setInputPaths(job, <span class="hljs-keyword">new</span> Path(<span class="hljs-string">&quot;/root/code/java/hdfs-client/input/it.log&quot;</span>));
+        <span class="hljs-comment">// &#x867D;&#x7136;&#x6211;&#x4EEC;&#x81EA;&#x5B9A;&#x4E49;&#x4E86;outputformat, &#x4F46;&#x662F;&#x56E0;&#x4E3A;&#x6211;&#x4EEC;&#x7684;outputformat &#x7EE7;&#x627F;&#x81EA; fileoutputformat</span>
+        <span class="hljs-comment">// &#x800C; fileoutputformat&#x8981;&#x8F93;&#x51FA;&#x4E00;&#x4E2A; _SUCCESS&#x6587;&#x4EF6;,&#x6240;&#x4EE5;&#x8FD8;&#x5F97;&#x6307;&#x5B9A;&#x4E00;&#x4E2A;&#x8F93;&#x51FA;&#x76EE;&#x5F55;</span>
+        FileOutputFormat.setOutputPath(job, <span class="hljs-keyword">new</span> Path(<span class="hljs-string">&quot;/root/code/java/hdfs-client/output/outputformat_ret&quot;</span>));
+...
+</code></pre>
+<h4 id="maptask-&#x5DE5;&#x4F5C;&#x673A;&#x5236;">MapTask &#x5DE5;&#x4F5C;&#x673A;&#x5236;</h4>
+<p><img src="../Users/lukexwang/Library/Application Support/typora-user-images/image-20221001201048720.png" alt="image-20221001201048720" style="zoom:67%;"></p>
+<ul>
+<li>1/2/3/4 &#x6B65;&#x90FD;&#x662F;&#x5BA2;&#x6237;&#x7AEF;&#x63D0;&#x4EA4;&#x65F6;&#x6267;&#x884C;&#x7684;&#xFF0C;&#x5C5E;&#x4E8E;&#x63D0;&#x4EA4;&#x6D41;&#x7A0B;&#x3002;&#x4E0D;&#x5C5E;&#x4E8E;MapReduce;</li>
+<li>Read&#x9636;&#x6BB5;: &#x7B2C; 5&#x6B65;&#xFF0C;&#x4ECE;&#x9ED8;&#x8BA4;TextInputFormat&#x627E;&#x90A3;&#x4E2A;&#x8BFB;&#x53D6;&#x6570;&#x636E;;</li>
+<li>Map&#x9636;&#x6BB5;: &#x7B2C;6&#x6B65;&#xFF0C;&#x8FDB;&#x5165;&#x7528;&#x6237;&#x81EA;&#x5DF1;&#x5199;&#x7684;map&#x65B9;&#x6CD5;;</li>
+<li>Collect&#x9636;&#x6BB5;: &#x7B2C;7/8&#x6B65;&#xFF0C;&#x73AF;&#x5F62;&#x7F13;&#x51B2;&#x533A;&#x4E2D;&#x8FDB;&#x884C;&#x7684; &#x5206;&#x533A;&#x3001;&#x6392;&#x5E8F; &#x90FD;&#x5C5E;&#x4E8E;&#x8BE5;&#x9636;&#x6BB5;;</li>
+<li>&#x6EA2;&#x5199;&#x9636;&#x6BB5;: &#x7B2C;9&#x6B65;&#xFF0C;&#x4ECE;&#x73AF;&#x5F62;&#x7F13;&#x51B2;&#x533A;&#x4E2D;&#x5199;&#x5165;&#x5230;&#x6587;&#x4EF6;&#x4E2D;&#xFF1B;</li>
+<li>Merge&#x9636;&#x6BB5;: &#x7B2C;10&#x6B65;&#xFF0C;&#x5BF9;&#x6EA2;&#x5199;&#x7684;&#x6587;&#x4EF6;&#x8FDB;&#x884C; &#x5F52;&#x5E76;&#x6392;&#x5E8F;&#xFF1B;</li>
+</ul>
+<h4 id="reducetask-&#x5DE5;&#x4F5C;&#x673A;&#x5236;">ReduceTask &#x5DE5;&#x4F5C;&#x673A;&#x5236;</h4>
+<p><img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20221001202208279.png" alt="image-20221001202208279"></p>
+<ul>
+<li>Copy&#x9636;&#x6BB5;: &#x7B2C;10&#x6B65;&#xFF0C;&#x4ECE;MapTask&#x4E2D;&#x62C9;&#x53D6;&#x81EA;&#x5DF1;&#x6307;&#x5B9A;&#x5206;&#x533A;&#x7684;&#x6587;&#x4EF6;;</li>
+<li>Sort&#x9636;&#x6BB5;: &#x7B2C;13&#x6B65;&#xFF0C;&#x5BF9;&#x62C9;&#x53D6;&#x7684;&#x6587;&#x4EF6;&#x8FDB;&#x884C;&#x5408;&#x5E76;&#x6587;&#x4EF6;&#xFF0C;&#x5F52;&#x5E76;&#x6392;&#x5E8F;;</li>
+<li>Reduce&#x9636;&#x6BB5;: &#x76F8;&#x540C;&#x7684;key &#x8FDB;&#x5165;&#x7528;&#x6237;&#x5B9A;&#x4E49;&#x7684;Reduce&#x65B9;&#x6CD5;;</li>
+</ul>
+<h4 id="reducetask-&#x5E76;&#x884C;&#x5EA6;&#x51B3;&#x5B9A;&#x673A;&#x5236;">ReduceTask &#x5E76;&#x884C;&#x5EA6;&#x51B3;&#x5B9A;&#x673A;&#x5236;</h4>
+<p>&#x56DE;&#x987E;: MapTask&#x5E76;&#x884C;&#x5EA6;&#x7531;&#x5207;&#x7247;&#x4E2A;&#x6570;&#x51B3;&#x5B9A;&#xFF0C;&#x5207;&#x7247;&#x4E2A;&#x6570;&#x7531;&#x8F93;&#x5165;&#x6587;&#x4EF6;&#x597D;&#x5207;&#x7247;&#x89C4;&#x5219;&#x51B3;&#x5B9A;;</p>
+<p>&#x601D;&#x8003;: ReduceTask&#x5E76;&#x884C;&#x5EA6;&#x7531;&#x8C01;&#x51B3;&#x5B9A;?</p>
+<ol>
+<li><strong>&#x8BBE;&#x7F6E;ReduceTask&#x5E76;&#x884C;&#x5EA6;(&#x4E2A;&#x6570;)</strong></li>
+</ol>
+<p>ReduceTask&#x7684;&#x5E76;&#x884C;&#x5EA6;&#x540C;&#x6837;&#x5F71;&#x54CD;&#x6574;&#x4E2A;job&#x7684;&#x6267;&#x884C;&#x5E76;&#x53D1;&#x5EA6;&#x548C;&#x6267;&#x884C;&#x6548;&#x7387;&#xFF0C;&#x4F46;&#x4E0E;MapTask&#x7684;&#x5E76;&#x53D1;&#x6570;&#x7531;&#x5206;&#x7247;&#x6570;&#x51B3;&#x5B9A;&#x4E0D;&#x540C;&#xFF0C;ReduceTask&#x6570;&#x91CF;&#x7684;&#x51B3;&#x5B9A;&#x662F;&#x53EF;&#x4EE5;&#x624B;&#x52A8;&#x8BBE;&#x7F6E;:</p>
+<pre><code class="lang-java"><span class="hljs-comment">// &#x9ED8;&#x8BA4;&#x503C;1, &#x624B;&#x52A8;&#x8BBE;&#x7F6E; 4</span>
+job.setNumReduceTasks(<span class="hljs-number">4</span>);
+</code></pre>
+<ol>
+<li><p><strong>&#x5B9E;&#x9A8C;: &#x6D4B;&#x8BD5;ReduceTask&#x591A;&#x5C11;&#x5408;&#x9002;&#xFF0C;&#x6B63;&#x5E38;&#x751F;&#x4EA7;&#x73AF;&#x5883;&#x4E2D;&#xFF0C;&#x4E5F;&#x9700;&#x8981;&#x81EA;&#x5DF1;&#x53BB;&#x6D4B;&#x8BD5;</strong></p>
+<p>&#x5B9E;&#x9A8C;&#x73AF;&#x5883;: 1&#x4E2A;master&#x8282;&#x70B9;&#xFF0C;16&#x4E2A;Slave&#x8282;&#x70B9;: CPU 8GHZ&#xFF0C;&#x5185;&#x5B58; 2G</p>
+<p>&#x5B9E;&#x9A8C;&#x7ED3;&#x8BBA;: 
+<img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20221001205953142.png" alt="image-20221001205953142" style="zoom:50%;"></p>
+</li>
+<li><p><strong>&#x6CE8;&#x610F;&#x4E8B;&#x9879;</strong></p>
+<ul>
+<li><strong>ReduceTask=0, &#x8868;&#x793A;&#x6CA1;&#x6709;Reduce&#x9636;&#x6BB5;&#xFF0C;&#x8F93;&#x51FA;&#x6587;&#x4EF6;&#x4E2A;&#x6570;&#x548C;Map&#x4E2A;&#x6570;&#x4FDD;&#x6301;&#x4E00;&#x81F4;</strong>;</li>
+<li><strong>ReduceTask &#x9ED8;&#x8BA4;&#x503C;&#x662F;1&#xFF0C;&#x6240;&#x6709;&#x8F93;&#x51FA;&#x6587;&#x4EF6;&#x4E3A;&#x4E00;&#x4E2A;</strong>;</li>
+<li><strong>&#x5982;&#x679C;&#x6570;&#x636E;&#x5206;&#x5E03;&#x4E0D;&#x5747;&#xFF0C;&#x5C31;&#x6709;&#x53EF;&#x80FD;&#x5728;Reduce&#x9636;&#x6BB5;&#x4EA7;&#x751F;&#x6570;&#x636E;&#x503E;&#x659C;</strong></li>
+<li><strong>ReduceTask&#x6570;&#x91CF;&#x5E76;&#x4E0D;&#x662F;&#x4EFB;&#x610F;&#x8BBE;&#x7F6E;&#x7684;&#xFF0C;&#x8FD8;&#x9700;&#x8981;&#x8003;&#x8651;&#x4E1A;&#x52A1;&#x903B;&#x8F91;&#x9700;&#x6C42;&#xFF0C;&#x6709;&#x4E9B;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x9700;&#x8981;&#x8BA1;&#x7B97;&#x5168;&#x5C40;&#x6C47;&#x603B;&#x7ED3;&#x679C;&#xFF0C;&#x5C31;&#x53EA;&#x80FD;1&#x4E2A;ReduceTask</strong></li>
+<li><strong>&#x5177;&#x4F53;&#x591A;&#x5C11;ReduceTask, &#x9700;&#x8981;&#x6839;&#x636E;&#x96C6;&#x7FA4;&#x6027;&#x80FD;&#x800C;&#x5B9A;</strong></li>
+<li><strong><mark style="color:red">&#x5982;&#x679C;&#x5206;&#x533A;&#x6570;&#x4E0D;&#x662F;1&#xFF0C;&#x4F46;&#x662F;ReduceTask&#x4E3A;1&#xFF0C;&#x662F;&#x5426;&#x6267;&#x884C;&#x5206;&#x533A;&#x8FC7;&#x7A0B;&#x3002;&#x7B54;&#x6848;&#x662F;: &#x4E0D;&#x6267;&#x884C;&#x5206;&#x533A;&#x8FC7;&#x7A0B;&#x3002;&#x56E0;&#x4E3A;&#x5728;MapTask&#x7684;&#x6E90;&#x7801;&#x4E2D;&#xFF0C;&#x6267;&#x884C;&#x5206;&#x533A;&#x7684;&#x524D;&#x63D0;&#x662F;&#x5148;&#x5224;&#x65AD;ReduceNum&#x4E2A;&#x6570;&#x662F;&#x5426;&#x5927;&#x4E8E;1&#x3002;&#x4E0D;&#x5927;&#x4E8E;1&#x80AF;&#x5B9A;&#x4E0D;&#x6267;&#x884C;</mark></strong></li>
+</ul>
+</li>
+</ol>
+<h4 id="reduce-join&#x64CD;&#x4F5C;">Reduce Join&#x64CD;&#x4F5C;</h4>
+<ol>
+<li>Map&#x7AEF;&#x7684;&#x4E3B;&#x8981;&#x5DE5;&#x4F5C;: &#x4E3A;&#x6765;&#x81EA;&#x4E0D;&#x540C;&#x8868;&#x6216;&#x6587;&#x4EF6;&#x7684;key/value&#x5BF9;&#xFF0C;<mark style="color:red">&#x6253;&#x6807;&#x7B7E;&#x4EE5;&#x533A;&#x522B;&#x4E0D;&#x540C;&#x6765;&#x6E90;&#x7684;&#x8BB0;&#x5F55;&#x3002;</mark>&#x7136;&#x540E;&#x7528;<mark style="color:red">&#x8FDE;&#x63A5;&#x5B57;&#x6BB5;&#x4F5C;&#x4E3A;key</mark>&#xFF0C;&#x5176;&#x4F59;&#x90E8;&#x5206;&#x548C;&#x65B0;&#x52A0;&#x7684;&#x6807;&#x5FD7;&#x4F5C;&#x4E3A;value&#xFF0C;&#x6700;&#x540E;&#x8FDB;&#x884C;&#x8F93;&#x51FA;;</li>
+<li>Reduce&#x7AEF;&#x7684;&#x4E3B;&#x8981;&#x5DE5;&#x4F5C;: &#x5728;Reduce&#x7AEF;<mark style="color:red">&#x4EE5;&#x8FDE;&#x63A5;&#x5B57;&#x6BB5;&#x4F5C;&#x4E3A;key&#x7684;&#x5206;&#x7EC4;&#x5DF2;&#x7ECF;&#x5B8C;&#x6210;&#xFF0C;</mark>&#x6211;&#x4EEC;&#x53EA;&#x9700;&#x5728;&#x6BCF;&#x4E00;&#x4E2A;&#x5206;&#x7EC4;&#x5F53;&#x4E2D;&#x5C06;&#x90A3;&#x4E9B;&#x6765;&#x6E90;&#x4E8E;&#x4E0D;&#x540C;&#x6587;&#x4EF6;&#x7684;&#x8BB0;&#x5F55;(&#x5728;Map&#x9636;&#x6BB5;&#x5DF2;&#x7ECF;&#x6253;&#x6807;&#x5FD7;)&#x5206;&#x5F00;&#xFF0C;&#x6700;&#x540E;&#x8FDB;&#x884C;&#x5408;&#x5E76;&#x5C31;ok&#x4E86;&#x3002;</li>
+</ol>
+<p><strong>&#x7F3A;&#x70B9;:</strong>
+<strong>&#x5408;&#x5E76;&#x64CD;&#x4F5C;&#x662F;&#x5728;Reduce&#x9636;&#x6BB5;&#x5B8C;&#x6210;&#x7684;&#xFF0C;Reduce&#x7AEF;&#x5904;&#x7406;&#x538B;&#x529B;&#x5927;&#xFF0C;Map&#x7AEF;&#x8FD0;&#x7B97;&#x8D1F;&#x8F7D;&#x5219;&#x5F88;&#x4F4E;&#xFF0C;&#x8D44;&#x6E90;&#x5229;&#x7528;&#x4E0D;&#x8DB3;&#xFF0C;&#x4E14;&#x5728;Reduce&#x7AEF;&#x6781;&#x5BB9;&#x6613;&#x4EA7;&#x751F;&#x6570;&#x636E;&#x503E;&#x659C;&#x3002;</strong></p>
+<p><strong>&#x6848;&#x4F8B;&#x5B9E;&#x64CD;:</strong>
+&#x4E24;&#x4E2A;&#x8868;:</p>
+<ul>
+<li>&#x8BA2;&#x5355;&#x6570;&#x636E;&#x8868; <code>t_order</code></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th><mark style="color:red">Pid</mark></th>
+<th>Amount</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1001</td>
+<td><mark style="color:red">01</mark></td>
+<td>1</td>
+</tr>
+<tr>
+<td>1002</td>
+<td><mark style="color:red">02</mark></td>
+<td>2</td>
+</tr>
+<tr>
+<td>1003</td>
+<td><mark style="color:red">03</mark></td>
+<td>3</td>
+</tr>
+<tr>
+<td>1004</td>
+<td><mark style="color:red">01</mark></td>
+<td>4</td>
+</tr>
+<tr>
+<td>1005</td>
+<td><mark style="color:red">02</mark></td>
+<td>5</td>
+</tr>
+<tr>
+<td>1006</td>
+<td><mark style="color:red">03</mark></td>
+<td>6</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>&#x5546;&#x54C1;&#x4FE1;&#x606F;&#x8868; <code>t_product</code></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th><mark style="color:red">Pid</mark></th>
+<th>Pname</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><mark style="color:red">01</mark></td>
+<td>&#x5C0F;&#x7C73;</td>
+</tr>
+<tr>
+<td><mark style="color:red">02</mark></td>
+<td>&#x534E;&#x4E3A;</td>
+</tr>
+<tr>
+<td><mark style="color:red">03</mark></td>
+<td>&#x683C;&#x529B;</td>
+</tr>
+</tbody>
+</table>
+<p><img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20221004155153077.png" alt="image-20221004155153077"></p>
+<p><strong>&#x5B9E;&#x73B0; TableBean</strong></p>
+<pre><code class="lang-java"><span class="hljs-comment">/* TableBean.java */</span>
+<span class="hljs-keyword">package</span> com.luke.mapreduce.reduceJoin;
+<span class="hljs-keyword">import</span> java.io.DataInput;
+<span class="hljs-keyword">import</span> java.io.DataOutput;
+<span class="hljs-keyword">import</span> java.io.IOException;
+<span class="hljs-keyword">import</span> org.apache.hadoop.io.WritableComparable;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TableBean</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">WritableComparable</span>&lt;<span class="hljs-title">TableBean</span>&gt; </span>{
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">long</span> orderID; <span class="hljs-comment">// &#x8BA2;&#x5355;id</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">long</span> pid; <span class="hljs-comment">// &#x5546;&#x54C1;id</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">long</span> amount; <span class="hljs-comment">// &#x5546;&#x54C1;&#x6570;&#x91CF;</span>
+    <span class="hljs-keyword">private</span> String pname; <span class="hljs-comment">// &#x5546;&#x54C1;&#x540D;&#x79F0;</span>
+    <span class="hljs-keyword">private</span> String tname; <span class="hljs-comment">// &#x8868;&#x540D;</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getTname</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> tname;
+    }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setTname</span><span class="hljs-params">(String tname)</span> </span>{
+        <span class="hljs-keyword">this</span>.tname = tname;
+    }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">long</span> <span class="hljs-title">getOrderID</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> orderID;
+    }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setOrderID</span><span class="hljs-params">(<span class="hljs-keyword">long</span> orderID)</span> </span>{
+        <span class="hljs-keyword">this</span>.orderID = orderID;
+    }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">long</span> <span class="hljs-title">getPid</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> pid;
+    }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setPid</span><span class="hljs-params">(<span class="hljs-keyword">long</span> pid)</span> </span>{
+        <span class="hljs-keyword">this</span>.pid = pid;
+    }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">long</span> <span class="hljs-title">getAmount</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> amount;
+    }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setAmount</span><span class="hljs-params">(<span class="hljs-keyword">long</span> amount)</span> </span>{
+        <span class="hljs-keyword">this</span>.amount = amount;
+    }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getPname</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> pname;
+    }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setPname</span><span class="hljs-params">(String pname)</span> </span>{
+        <span class="hljs-keyword">this</span>.pname = pname;
+    }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">TableBean</span><span class="hljs-params">()</span> </span>{
+    }
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">write</span><span class="hljs-params">(DataOutput out)</span> <span class="hljs-keyword">throws</span> IOException </span>{
+        out.writeLong(orderID);
+        out.writeLong(pid);
+        out.writeLong(amount);
+        out.writeUTF(pname);
+        out.writeUTF(tname);
+    }
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">readFields</span><span class="hljs-params">(DataInput in)</span> <span class="hljs-keyword">throws</span> IOException </span>{
+        <span class="hljs-keyword">this</span>.orderID = in.readLong();
+        <span class="hljs-keyword">this</span>.pid = in.readLong();
+        <span class="hljs-keyword">this</span>.amount = in.readLong();
+        <span class="hljs-keyword">this</span>.pname = in.readUTF();
+        <span class="hljs-keyword">this</span>.tname = in.readUTF();
+    }
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">toString</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.orderID + <span class="hljs-string">&quot;\t&quot;</span> + <span class="hljs-keyword">this</span>.pname + <span class="hljs-string">&quot;\t&quot;</span> + <span class="hljs-keyword">this</span>.amount;
+    }
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">compareTo</span><span class="hljs-params">(TableBean o)</span> </span>{
+        <span class="hljs-comment">// &#x6309;&#x7167; &#x8BA2;&#x5355;ID &#x6B63;&#x5E8F;</span>
+        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.orderID &gt; o.orderID) {
+            <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
+        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.orderID &lt; o.orderID) {
+            <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;
+        } <span class="hljs-keyword">else</span> {
+            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+        }
+    }
+}
+</code></pre>
+<pre><code class="lang-java"><span class="hljs-comment">/* TableMapper.java */</span>
+<span class="hljs-keyword">package</span> com.luke.mapreduce.reduceJoin;
+
+<span class="hljs-keyword">import</span> java.io.IOException;
+<span class="hljs-keyword">import</span> org.apache.hadoop.io.LongWritable;
+<span class="hljs-keyword">import</span> org.apache.hadoop.io.Text;
+<span class="hljs-keyword">import</span> org.apache.hadoop.mapreduce.Mapper;
+<span class="hljs-keyword">import</span> org.apache.hadoop.mapreduce.lib.input.FileSplit;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TableMapper</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Mapper</span>&lt;<span class="hljs-title">LongWritable</span>, <span class="hljs-title">Text</span>, <span class="hljs-title">LongWritable</span>, <span class="hljs-title">TableBean</span>&gt; </span>{
+    <span class="hljs-keyword">private</span> String fileName;
+    <span class="hljs-keyword">private</span> LongWritable outK = <span class="hljs-keyword">new</span> LongWritable();
+    <span class="hljs-keyword">private</span> TableBean outV = <span class="hljs-keyword">new</span> TableBean();
+    <span class="hljs-comment">// setup&#x65B9;&#x6CD5;,&#x4E24;&#x4E2A;&#x6587;&#x4EF6;&#xFF0C;,&#x6BCF;&#x4E2A;&#x6267;&#x884C;&#x4E00;&#x6B21;</span>
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setup</span><span class="hljs-params">(Mapper&lt;LongWritable, Text, LongWritable, TableBean&gt;.Context context)</span>
+            <span class="hljs-keyword">throws</span> IOException, InterruptedException </span>{
+        <span class="hljs-comment">// &#x8BFB;&#x53D6;&#x7684;&#x662F; order.txt, pd.txt &#x4E24;&#x4E2A;&#x6587;&#x4EF6;,&#x6BCF;&#x4E2A;&#x6587;&#x4EF6;&#x4E00;&#x4E2A;&#x5207;&#x7247;</span>
+        FileSplit split = (FileSplit) context.getInputSplit();
+        fileName = split.getPath().getName();
+    }
+    <span class="hljs-comment">// &#x6CE8;&#x610F;&#x8F93;&#x51FA;&#x7684;outK &#x5C31;&#x662F;&#x7528;&#x4E8E;Join&#x7684; pid (&#x5546;&#x54C1;id)</span>
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">map</span><span class="hljs-params">(LongWritable key, Text value,
+            Mapper&lt;LongWritable, Text, LongWritable, TableBean&gt;.Context context)</span>
+            <span class="hljs-keyword">throws</span> IOException, InterruptedException </span>{
+        <span class="hljs-comment">// 1 &#x83B7;&#x53D6;&#x4E00;&#x884C;</span>
+        <span class="hljs-comment">// &#x5185;&#x5BB9;&#x53EF;&#x80FD;&#x662F;:</span>
+        <span class="hljs-comment">// t_order &#x8868;</span>
+        <span class="hljs-comment">// 1001 01 1</span>
+        <span class="hljs-comment">//</span>
+        <span class="hljs-comment">// t_product &#x8868;</span>
+        <span class="hljs-comment">// 01 &#x5C0F;&#x7C73;</span>
+        String line = value.toString();
+        String[] list = line.split(<span class="hljs-string">&quot;\\s+&quot;</span>);
+        <span class="hljs-keyword">if</span> (fileName.contains(<span class="hljs-string">&quot;order&quot;</span>)) {
+            outV.setOrderID(Long.parseLong(list[<span class="hljs-number">0</span>]));
+            outV.setPid(Long.parseLong(list[<span class="hljs-number">1</span>]));
+            outK.set(Long.parseLong(list[<span class="hljs-number">1</span>]));
+            outV.setAmount(Long.parseLong(list[<span class="hljs-number">2</span>]));
+            outV.setPname(<span class="hljs-string">&quot;&quot;</span>);
+            outV.setTname(<span class="hljs-string">&quot;t_order&quot;</span>);
+        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (fileName.contains(<span class="hljs-string">&quot;pd&quot;</span>)) {
+            outV.setOrderID(<span class="hljs-number">0</span>); <span class="hljs-comment">// &#x5C3D;&#x7BA1;&#x662F;0&#x4E5F;&#x662F;&#x5FC5;&#x987B;&#x8BBE;&#x7F6E;&#x7684;</span>
+            outV.setPid(Long.parseLong(list[<span class="hljs-number">0</span>]));
+            outK.set(Long.parseLong(list[<span class="hljs-number">0</span>]));
+            outV.setAmount(<span class="hljs-number">0</span>);
+            outV.setPname(list[<span class="hljs-number">1</span>]);
+            outV.setTname(<span class="hljs-string">&quot;t_product&quot;</span>);
+        }
+        context.write(outK, outV);
+    }
+}
+</code></pre>
+<pre><code class="lang-java"><span class="hljs-comment">/* TableReducer.java */</span>
+<span class="hljs-keyword">package</span> com.luke.mapreduce.reduceJoin;
+
+<span class="hljs-keyword">import</span> java.io.IOException;
+<span class="hljs-keyword">import</span> java.lang.reflect.InvocationTargetException;
+<span class="hljs-keyword">import</span> java.util.ArrayList;
+<span class="hljs-keyword">import</span> org.apache.commons.beanutils.BeanUtils;
+<span class="hljs-keyword">import</span> org.apache.hadoop.io.LongWritable;
+<span class="hljs-keyword">import</span> org.apache.hadoop.io.NullWritable;
+<span class="hljs-keyword">import</span> org.apache.hadoop.mapreduce.Reducer;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TableReducer</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Reducer</span>&lt;<span class="hljs-title">LongWritable</span>, <span class="hljs-title">TableBean</span>, <span class="hljs-title">TableBean</span>, <span class="hljs-title">NullWritable</span>&gt; </span>{
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">reduce</span><span class="hljs-params">(LongWritable key, Iterable&lt;TableBean&gt; values,
+            Reducer&lt;LongWritable, TableBean, TableBean, NullWritable&gt;.Context context)</span>
+            <span class="hljs-keyword">throws</span> IOException, InterruptedException </span>{
+        <span class="hljs-comment">// &#x8F93;&#x5165;&#x6570;&#x636E;&#x793A;&#x4F8B;:</span>
+        <span class="hljs-comment">// 01 1001 1 order</span>
+        <span class="hljs-comment">// 01 1004 4 order</span>
+        <span class="hljs-comment">// 01 &#x5C0F;&#x7C73; pd</span>
+        ArrayList&lt;TableBean&gt; orders = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
+        TableBean myPd = <span class="hljs-keyword">new</span> TableBean();
+        <span class="hljs-keyword">for</span> (TableBean val : values) {
+            <span class="hljs-keyword">if</span> (<span class="hljs-string">&quot;t_order&quot;</span>.equals(val.getTname())) {
+                <span class="hljs-comment">// &#x5FC5;&#x987B;&#x6709;&#x8FD9;&#x4E00;&#x6B65;,&#x5426;&#x5219;for&#x5FAA;&#x73AF;&#x7ED3;&#x675F;&#x540E;,&#x6240;&#x6709;orders&#x4E2D;&#x6307;&#x5411;&#x7684;&#x662F;&#x540C;&#x4E00;&#x4E2A;TableBean val(&#x4E5F;&#x5C31;&#x662F;values&#x4E2D;&#x7684;&#x6700;&#x540E;&#x4E00;&#x4E2A;)</span>
+                <span class="hljs-comment">// &#x8FD9;&#x662F;mapreduce&#x7684;&#x4F18;&#x5316;</span>
+                TableBean tmp = <span class="hljs-keyword">new</span> TableBean();
+                <span class="hljs-keyword">try</span> {
+                    BeanUtils.copyProperties(tmp, val); <span class="hljs-comment">// &#x5F88;&#x91CD;&#x8981;</span>
+                } <span class="hljs-keyword">catch</span> (IllegalAccessException | InvocationTargetException e) {
+                    e.printStackTrace();
+                }
+                orders.add(tmp);
+            } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-string">&quot;t_product&quot;</span>.equals(val.getTname())) {
+                <span class="hljs-keyword">try</span> {
+                    BeanUtils.copyProperties(myPd, val); <span class="hljs-comment">// &#x5F88;&#x91CD;&#x8981;</span>
+                } <span class="hljs-keyword">catch</span> (IllegalAccessException | InvocationTargetException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        <span class="hljs-keyword">for</span> (TableBean bitem : orders) {
+            bitem.setPname(myPd.getPname());
+            context.write(bitem, NullWritable.get());
+        }
+    }
+}
+</code></pre>
+<h4 id="mapjoin">MapJoin</h4>
+<p><strong>&#x4F7F;&#x7528;&#x573A;&#x666F;: MapJoin&#x9002;&#x7528;&#x4E8E;&#x4E00;&#x5F20;&#x8868;&#x5F88;&#x5C0F;&#xFF0C;&#x4E00;&#x5F20;&#x8868;&#x5F88;&#x5927;&#x7684;&#x573A;&#x666F;&#x3002;</strong>
+<strong>&#x4F18;&#x70B9;: &#x5728;Map&#x7AEF;&#x7F13;&#x5B58;&#x591A;&#x5F20;&#x8868;,&#x63D0;&#x524D;&#x5904;&#x7406;&#x4E1A;&#x52A1;&#x903B;&#x8F91;&#xFF0C;&#x8FD9;&#x6837;&#x589E;&#x52A0;Map&#x7AEF;&#x4E1A;&#x52A1;&#x3002;&#x51CF;&#x5C11;Reduce&#x7AEF;&#x6570;&#x636E;&#x538B;&#x529B;&#xFF0C;&#x5C3D;&#x53EF;&#x80FD;&#x51CF;&#x5C11;&#x6570;&#x636E;&#x503E;&#x659C;&#x3002;</strong>
+<strong>&#x5177;&#x4F53;&#x65B9;&#x6CD5;: &#x91C7;&#x7528;DistributedCache</strong></p>
+<ol>
+<li><p>&#x5728;Mapper&#x7684;Setup&#x9636;&#x6BB5;&#xFF0C;&#x5C06;&#x6587;&#x4EF6;&#x8BFB;&#x53D6;&#x5230;&#x7F13;&#x5B58;&#x96C6;&#x5408;&#x4E2D;&#x3002;<strong>setup&#x65B9;&#x6CD5;&#x5B8C;&#x6210;&#x540E;&#xFF0C;&#x624D;&#x4F1A;&#x6267;&#x884C;&#x81EA;&#x5B9A;&#x4E49;&#x7684;Map&#x903B;&#x8F91;</strong>;</p>
+</li>
+<li><p>&#x5728;Driver&#x9A71;&#x52A8;&#x7C7B;&#x4E2D;&#x52A0;&#x8F7D;&#x7F13;&#x5B58;</p>
+<pre><code class="lang-java"><span class="hljs-comment">// &#x7F13;&#x5B58;&#x666E;&#x901A;&#x6587;&#x4EF6;&#x5230; Task &#x8FD0;&#x884C;&#x8282;&#x70B9;</span>
+job.addCacheFile(<span class="hljs-keyword">new</span> URI(<span class="hljs-string">&quot;file:/path/fo/pd.txt&quot;</span>));
+<span class="hljs-comment">// &#x5982;&#x679C;&#x662F;&#x96C6;&#x7FA4;&#x8FD0;&#x884C;,&#x9700;&#x8981;&#x8BBE;&#x7F6E;HDFS&#x8DEF;&#x5F84;</span>
+job.addCacheFile(<span class="hljs-keyword">new</span> Uri()<span class="hljs-string">&quot;hdfs://hadoop101:8020/cache/pd.txt&quot;</span>);
+</code></pre>
+</li>
+</ol>
+<p>&#x8FD8;&#x662F;&#x4E0A;&#x9762;&#x7684;&#x6848;&#x4F8B;&#xFF0C;&#x4EE3;&#x7801;&#x60C5;&#x51B5;&#x5982;&#x4E0B;:</p>
+<pre><code class="lang-java"><span class="hljs-comment">/* MapJoinDriver.java main&#x51FD;&#x6570;&#x5185;&#x5BB9; */</span>
+        <span class="hljs-comment">// 1. &#x83B7;&#x53D6;job</span>
+        Configuration conf = <span class="hljs-keyword">new</span> Configuration();
+        Job job = Job.getInstance(conf);
+        <span class="hljs-comment">// 2 &#x8BBE;&#x7F6E;jar&#x5305;&#x8DEF;&#x5F84;</span>
+        job.setJarByClass(MapJoinDriver.class);
+        <span class="hljs-comment">// 3 &#x5173;&#x8054; mapper, &#x65E0;&#x9700;&#x8BBE;&#x7F6E;&#x5173;&#x8054;&#x7684; reducer &#x7C7B;</span>
+        job.setMapperClass(MapJoinMapper.class);
+        <span class="hljs-comment">// 4. &#x8BBE;&#x7F6E;map&#x8F93;&#x51FA;&#x7684;kv &#x7C7B;&#x578B;</span>
+        job.setMapOutputKeyClass(Text.class);
+        job.setMapOutputValueClass(NullWritable.class);
+
+        <span class="hljs-comment">// ReduceTask&#x662F;0,map&#x9636;&#x6BB5;join&#x5DF2;&#x7ECF;ok,&#x65E0;&#x9700;reduce&#x9636;&#x6BB5;</span>
+        job.setNumReduceTasks(<span class="hljs-number">0</span>);
+
+        <span class="hljs-comment">// 5 &#x8BBE;&#x7F6E;&#x6700;&#x7EC8;&#x8F93;&#x51FA;&#x7684;KV&#x7C7B;&#x578B;(&#x56E0;&#x4E3A;&#x4E0D;&#x518D;&#x6709;redusce&#x9636;&#x6BB5;,&#x6240;&#x4EE5;map&#x9636;&#x6BB5;&#x7684;&#x8F93;&#x51FA;&#x7C7B;&#x578B;&#x5C31;&#x662F;&#x6700;&#x7EC8;&#x7C7B;&#x578B;)</span>
+        job.setOutputKeyClass(Text.class);
+        job.setOutputValueClass(NullWritable.class);
+
+        <span class="hljs-comment">// &#x52A0;&#x8F7D;&#x5C0F;&#x6587;&#x4EF6;(pd.txt)&#x7F13;&#x5B58;&#x6570;&#x636E;</span>
+        job.addCacheFile(<span class="hljs-keyword">new</span> URI(<span class="hljs-string">&quot;file:/root/code/java/hdfs-client/input/reducerJoin/pd.txt&quot;</span>));
+
+        <span class="hljs-comment">// 6 &#x8BBE;&#x7F6E;&#x8F93;&#x5165;&#x8DEF;&#x5F84;&#x548C;&#x8F93;&#x51FA;&#x8DEF;&#x5F84;</span>
+        <span class="hljs-comment">// &#x8F93;&#x5165;&#x4E3B;&#x8981;&#x662F;&#x4E3A;&#x4E86;&#x8BFB;&#x53D6; order &#x8BA2;&#x5355;&#x6570;&#x636E;</span>
+        FileInputFormat.setInputPaths(job,
+                <span class="hljs-keyword">new</span> Path(<span class="hljs-string">&quot;/root/code/java/hdfs-client/input/reducerJoin/order.txt&quot;</span>));
+        FileOutputFormat.setOutputPath(job, <span class="hljs-keyword">new</span> Path(<span class="hljs-string">&quot;/root/code/java/hdfs-client/output/mapJoin&quot;</span>));
+
+        <span class="hljs-comment">// 7 &#x63D0;&#x4EA4;job</span>
+        <span class="hljs-keyword">boolean</span> ret = job.waitForCompletion(<span class="hljs-keyword">true</span>);
+        System.exit(ret ? <span class="hljs-number">0</span> : <span class="hljs-number">1</span>);
+
+<span class="hljs-comment">/* MapJoinMapper.java */</span>
+<span class="hljs-keyword">package</span> com.luke.mapreduce.mapJoin;
+<span class="hljs-keyword">import</span> java.io.BufferedReader;
+<span class="hljs-keyword">import</span> java.io.IOException;
+<span class="hljs-keyword">import</span> java.io.InputStreamReader;
+<span class="hljs-keyword">import</span> java.net.URI;
+<span class="hljs-keyword">import</span> java.util.HashMap;
+<span class="hljs-keyword">import</span> org.apache.commons.lang3.StringUtils;
+<span class="hljs-keyword">import</span> org.apache.hadoop.fs.FSDataInputStream;
+<span class="hljs-keyword">import</span> org.apache.hadoop.fs.FileSystem;
+<span class="hljs-keyword">import</span> org.apache.hadoop.fs.Path;
+<span class="hljs-keyword">import</span> org.apache.hadoop.io.IOUtils;
+<span class="hljs-keyword">import</span> org.apache.hadoop.io.LongWritable;
+<span class="hljs-keyword">import</span> org.apache.hadoop.io.NullWritable;
+<span class="hljs-keyword">import</span> org.apache.hadoop.io.Text;
+<span class="hljs-keyword">import</span> org.apache.hadoop.mapreduce.Mapper;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MapJoinMapper</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Mapper</span>&lt;<span class="hljs-title">LongWritable</span>, <span class="hljs-title">Text</span>, <span class="hljs-title">Text</span>, <span class="hljs-title">NullWritable</span>&gt; </span>{
+    <span class="hljs-keyword">private</span> HashMap&lt;String, String&gt; pdMap = <span class="hljs-keyword">new</span> HashMap&lt;&gt;();
+    <span class="hljs-keyword">private</span> Text outK = <span class="hljs-keyword">new</span> Text();
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setup</span><span class="hljs-params">(Mapper&lt;LongWritable, Text, Text, NullWritable&gt;.Context context)</span>
+            <span class="hljs-keyword">throws</span> IOException, InterruptedException </span>{
+        <span class="hljs-comment">// &#x83B7;&#x53D6;&#x7F13;&#x5B58;&#x7684;&#x6587;&#x4EF6; pd.txt, &#x5E76;&#x628A;&#x6587;&#x4EF6;&#x5185;&#x5BB9;&#x5C01;&#x88C5;&#x5230;&#x96C6;&#x5408;</span>
+        URI[] cacheFiles = context.getCacheFiles();
+
+        FileSystem fs = FileSystem.get(context.getConfiguration());
+        FSDataInputStream fis = fs.open(<span class="hljs-keyword">new</span> Path(cacheFiles[<span class="hljs-number">0</span>]));
+
+        <span class="hljs-comment">// &#x4ECE;&#x6D41;&#x4E2D;&#x8BFB;&#x53D6;&#x6570;&#x636E;</span>
+        BufferedReader reader = <span class="hljs-keyword">new</span> BufferedReader(<span class="hljs-keyword">new</span> InputStreamReader(fis, <span class="hljs-string">&quot;UTF-8&quot;</span>));
+        String line;
+        <span class="hljs-keyword">while</span> (StringUtils.isNotEmpty(line = reader.readLine())) {
+            String[] fields = line.split(<span class="hljs-string">&quot;\\s+&quot;</span>);
+            pdMap.put(fields[<span class="hljs-number">0</span>], fields[<span class="hljs-number">1</span>]);
+        }
+        <span class="hljs-comment">// &#x5173;&#x6D41;</span>
+        IOUtils.closeStream(reader);
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">map</span><span class="hljs-params">(LongWritable key, Text value, Mapper&lt;LongWritable, Text, Text, NullWritable&gt;.Context context)</span>
+            <span class="hljs-keyword">throws</span> IOException, InterruptedException </span>{
+        <span class="hljs-comment">// &#x5904;&#x7406; order.txt</span>
+        String line = value.toString();
+        String[] fields = line.split(<span class="hljs-string">&quot;\\s+&quot;</span>);
+
+        <span class="hljs-comment">// &#x83B7;&#x53D6;pid</span>
+        String pid = fields[<span class="hljs-number">1</span>];
+        String pname = pdMap.get(pid);
+        String str = fields[<span class="hljs-number">0</span>] + <span class="hljs-string">&quot;\t&quot;</span> + pname + <span class="hljs-string">&quot;\t&quot;</span> + fields[<span class="hljs-number">2</span>];
+        outK.set(str);
+        context.write(outK, NullWritable.get());
+    }
+}
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="hadoop入门03-MapReduce.html" class="navigation navigation-prev " aria-label="Previous page: hadoop入门03-MapReduce">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="hadoop入门05-MapReduce数据清洗和压缩.html" class="navigation navigation-next " aria-label="Next page: hadoop入门05-MapReduce数据清洗与压缩">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"hadoop入门04-MapReduce框架原理","level":"1.10.4","depth":2,"next":{"title":"hadoop入门05-MapReduce数据清洗与压缩","level":"1.10.5","depth":2,"path":"hadoop学习笔记/hadoop入门05-MapReduce数据清洗和压缩.md","ref":"hadoop学习笔记/hadoop入门05-MapReduce数据清洗和压缩.md","articles":[]},"previous":{"title":"hadoop入门03-MapReduce","level":"1.10.3","depth":2,"path":"hadoop学习笔记/hadoop入门03-MapReduce.md","ref":"hadoop学习笔记/hadoop入门03-MapReduce.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"hadoop学习笔记/hadoop入门04-MapReduce框架原理.md","mtime":"2022-10-05T05:10:38.273Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-02-08T08:43:27.159Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

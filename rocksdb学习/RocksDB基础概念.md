@@ -41,7 +41,7 @@ LSM(Log-Structured-Merge Tree) 使用了一种不同于上述四种的方法，�
 
 ### LSM基础算法
 
-概念上，LSM树非常简单。没有一个巨大的索引结构，批量的写入会被顺序保存到一系小的索引文件中。所以每个文件保存了一小段时间的更改。**每个文件都是有序的 所以后面检索会很快。文件是不能修改的。新的数据更新会写入到新文件中。读取将检查所有文件。同时文件会定期合并，以减少文件数据。**
+概念上，LSM树非常简单。没有一个巨大的索引结构，批量的写入会被顺序保存到一系列小的索引文件中。所以每个文件保存了一小段时间的更改。**每个文件都是有序的 所以后面检索会很快。文件是不能修改的。新的数据更新会写入到新文件中。读取将检查所有文件。同时文件会定期合并，以减少文件数据。**
 
 来看一些实现细节：
 
@@ -81,10 +81,17 @@ LSM(Log-Structured-Merge Tree) 使用了一种不同于上述四种的方法，�
 
 基于level的compaction 对比 base compaction有两个关键的区别：
 
-1.  每个level都包含多个文件(**某个level保存的文件数是固定的？**)，**并保证作为的一个整体其中没有重复的keys**。也就是说，keys 横跨多个可用文件被 partitioned 。**因此在某个level查找一个key，只需查阅一个文件即可**；
+1. 每个level都包含多个文件(**某个level保存的文件数是固定的？**)，**并保证作为的一个整体其中没有重复的keys**。也就是说，keys 横跨多个可用文件被 partitioned 。**因此在某个level查找一个key，只需查阅一个文件即可**；
 
-    level 0 是很特殊，不满足上述性质。keys可以跨域多个文件(同一个key的多次修改保存在不同文件中)。
+   **level 0 是很特殊，不满足上述性质。keys可以跨域多个文件(同一个key的多次修改保存在不同文件中)**
+
+   **level1 - leveln 每一层中没有数据重复，层与层之间有冗余数据**
+
 2. 某个时间，文件会被合并到更高一层的level的一个文件中。当一个level 填满时，一个文件会被提取出来并合并到更高一层的level中(这个level会创建空间以便更多数据加入)。这和 base compaction一点细微区别：base compaction是将几个相似大小的文件合并为一个更大的文件。
+
+3. **<font style="color:red">一个问题:如果key1 在level 0的sst_0、sst_10文件中都存在，是怎么compact后让level1中这个这个key1不重复的?</font>**
+
+   遍历sst_0和level1某个sst文件合并吗，然后遍历sst_1和level1中某个sst文件合并吗，依次此类推吗? 那level1中的某个sst文件会不会因为合并太多了，拆分？
 
 这些区别也意味着基于level的compaction 可以随着时间的推移分散compaction的影响，并且需要更少的空间。它还具有更好的性能。然而，对大多数工作负载来说，总IO更高，这也意味着一些更简单的大部分只是写入的工作负载将不会受益。
 
@@ -121,7 +128,7 @@ LSM(Log-Structured-Merge Tree) 使用了一种不同于上述四种的方法，�
 ### 几种文件类型
 
 - `memtable`: 常驻内存中，在Write Ahead Log写之后，接受具体的key-value数据。每个memtable大小以及个数都有指定的参数进行控制, `write_buffer_size` 表示memtable的大小，`max_write_buffer_number` 表示内存中最多可以同时存在多少个memtable；
-- `Immutable memtable`: 当memtable被写满之后会生成一个新的 memtable 继续接受IO，就的memtable 就会变成 immutable memtable，只读状态，且开始flush到.sst文件中；
+- `Immutable memtable`: 当memtable被写满之后会生成一个新的 memtable 继续接受IO，旧的memtable 就会变成 immutable memtable，只读状态，且开始flush到.sst文件中；
 - `*.log`: rocksdb的Write Ahead Log，用于数据恢复。当memtable => immutable memtable 中的数据刷到L0之后，之前的LOG会被删除；
 - `*.sst`: 存储key-value的文件；
 - MANIFEST：保存当前DB的状态信息(类似于快照)，主要是SST文件的各个版本信息(Compaction过程会添加新文件并从数据库中删除旧文件，sst文件被改动，即生成对应的versionEdit，并触发sync写manifest文件)。用于异常断电后恢复；

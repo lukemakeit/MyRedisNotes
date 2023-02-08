@@ -1,0 +1,1945 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>flink基础08-处理函数 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="flink基础09-多流转换(分流与合流" />
+    
+    
+    <link rel="prev" href="flink基础07-时间和窗口.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    README
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../redis学习/">
+            
+                <a href="../redis学习/">
+            
+                    
+                    Redis学习
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../redis学习/Redis备份.html">
+            
+                <a href="../redis学习/Redis备份.html">
+            
+                    
+                    Redis备份
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../redis学习/Redis复制.html">
+            
+                <a href="../redis学习/Redis复制.html">
+            
+                    
+                    Redis复制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../redis学习/Redis集群.html">
+            
+                <a href="../redis学习/Redis集群.html">
+            
+                    
+                    Redis集群
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../redis学习/缓存与数据库一致性.html">
+            
+                <a href="../redis学习/缓存与数据库一致性.html">
+            
+                    
+                    缓存与数据库一致性
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../redis学习/Redis消息队列Stream.html">
+            
+                <a href="../redis学习/Redis消息队列Stream.html">
+            
+                    
+                    Redis消息队列
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="../redis学习/RedisModule.html">
+            
+                <a href="../redis学习/RedisModule.html">
+            
+                    
+                    RedisModule
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../mysql/">
+            
+                <a href="../mysql/">
+            
+                    
+                    mysql学习
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../mysql/mysql补充.html">
+            
+                <a href="../mysql/mysql补充.html">
+            
+                    
+                    mysql补充
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../mysql/mysql8.0-手动安装.html">
+            
+                <a href="../mysql/mysql8.0-手动安装.html">
+            
+                    
+                    mysql8.0-手动安装
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../rocksdb-xue-xi/README.md">
+            
+                <span>
+            
+                    
+                    RocksDB学习
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../rocksdb学习/RocksDB基础概念.html">
+            
+                <a href="../rocksdb学习/RocksDB基础概念.html">
+            
+                    
+                    RocksDB基础概念
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../rocksdb学习/RocksDB基础操作-C语言.html">
+            
+                <a href="../rocksdb学习/RocksDB基础操作-C语言.html">
+            
+                    
+                    RocksDB基础操作-C语言
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../c语言笔记/">
+            
+                <a href="../c语言笔记/">
+            
+                    
+                    C语言笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../c语言笔记/C语言补充笔记一.html">
+            
+                <a href="../c语言笔记/C语言补充笔记一.html">
+            
+                    
+                    C语言补充笔记一
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../c++学习笔记/">
+            
+                <a href="../c++学习笔记/">
+            
+                    
+                    C++学习笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../c++学习笔记/C++Primer基础-01引用指针const.html">
+            
+                <a href="../c++学习笔记/C++Primer基础-01引用指针const.html">
+            
+                    
+                    C++Primer基础:引用、指针、const、auto/decltype
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../c++学习笔记/C++Primer基础-02volatile与using.html">
+            
+                <a href="../c++学习笔记/C++Primer基础-02volatile与using.html">
+            
+                    
+                    C++Primer基础:volatile、using
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../c++学习笔记/C++Primer基础-03stringvector数组.html">
+            
+                <a href="../c++学习笔记/C++Primer基础-03stringvector数组.html">
+            
+                    
+                    C++Primer基础: string、vector、数组
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../c++学习笔记/C++Primer基础-04函数重载函数指针.html">
+            
+                <a href="../c++学习笔记/C++Primer基础-04函数重载函数指针.html">
+            
+                    
+                    C++Primer基础:函数、重载、函数指针
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="../c++学习笔记/C++Primer基础-05function与bind与forward.html">
+            
+                <a href="../c++学习笔记/C++Primer基础-05function与bind与forward.html">
+            
+                    
+                    C++Primer基础:std::function、std::bind、std::forward
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6" data-path="../c++学习笔记/C++Primer基础-06-lambda.html">
+            
+                <a href="../c++学习笔记/C++Primer基础-06-lambda.html">
+            
+                    
+                    C++Primer基础:lambda
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.7" data-path="../c++学习笔记/C++Primer基础-07类基础.html">
+            
+                <a href="../c++学习笔记/C++Primer基础-07类基础.html">
+            
+                    
+                    C++ Primer基础: 类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.8" data-path="../c++学习笔记/C++Primer标准库-IO库.html">
+            
+                <a href="../c++学习笔记/C++Primer标准库-IO库.html">
+            
+                    
+                    C++ Primer 标准库: IO库
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.9" data-path="../c++学习笔记/C++Primer标准库-顺序容器.html">
+            
+                <a href="../c++学习笔记/C++Primer标准库-顺序容器.html">
+            
+                    
+                    C++ Primer 标准库: 顺序容器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.10" data-path="../c++学习笔记/C++Primer标准库-泛型算法.html">
+            
+                <a href="../c++学习笔记/C++Primer标准库-泛型算法.html">
+            
+                    
+                    C++ Primer 标准库: 泛型算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.11" data-path="../c++学习笔记/C++Primer标准库-关联容器.html">
+            
+                <a href="../c++学习笔记/C++Primer标准库-关联容器.html">
+            
+                    
+                    C++ Primer 标准库: 关联容器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.12" data-path="../c++学习笔记/C++Primer标准库-动态内存.html">
+            
+                <a href="../c++学习笔记/C++Primer标准库-动态内存.html">
+            
+                    
+                    C++ Primer 标准库: 动态内存
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.13" data-path="../c++学习笔记/C++Primer类设计-拷贝控制.html">
+            
+                <a href="../c++学习笔记/C++Primer类设计-拷贝控制.html">
+            
+                    
+                    C++ Primer 类设计: 拷贝控制、explicit
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.14" data-path="../c++学习笔记/C++Primer类设计-基类派生类虚函数.html">
+            
+                <a href="../c++学习笔记/C++Primer类设计-基类派生类虚函数.html">
+            
+                    
+                    C++ Primer 类设计: 基类、派生类、虚函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.15" data-path="../c++学习笔记/C++Primer类设计-模板与泛型编程.html">
+            
+                <a href="../c++学习笔记/C++Primer类设计-模板与泛型编程.html">
+            
+                    
+                    C++ Primer 类设计:模板与泛型编程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.16" data-path="../c++学习笔记/C++并发编程实战-01基础使用Join传参.html">
+            
+                <a href="../c++学习笔记/C++并发编程实战-01基础使用Join传参.html">
+            
+                    
+                    C++并发编程实战一:基础使用、Join、传参、线程所有权转移
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.17" data-path="../c++学习笔记/C++并发编程实战-02mutexlock.html">
+            
+                <a href="../c++学习笔记/C++并发编程实战-02mutexlock.html">
+            
+                    
+                    C++并发编程实战: mutex、lock、unique_lock、call_once、shared_lock
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.18" data-path="../c++学习笔记/C++并发编程实战-03条件变量.html">
+            
+                <a href="../c++学习笔记/C++并发编程实战-03条件变量.html">
+            
+                    
+                    C++并发编程实战三: 条件变量
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.19" data-path="../c++学习笔记/C++并发编程实战-04原子操作和类型.html">
+            
+                <a href="../c++学习笔记/C++并发编程实战-04原子操作和类型.html">
+            
+                    
+                    C++并发编程实战四: 原子操作和类型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.20" data-path="../c++学习笔记/C++并发编程实战-05内存模型.html">
+            
+                <a href="../c++学习笔记/C++并发编程实战-05内存模型.html">
+            
+                    
+                    C++并发编程实战五: 内存模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.21" data-path="../c++学习笔记/C++补充-01.html">
+            
+                <a href="../c++学习笔记/C++补充-01.html">
+            
+                    
+                    c++补充-01
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.22" data-path="../c++学习笔记/C++补充-02EffectiveSTL有用使用经验.html">
+            
+                <a href="../c++学习笔记/C++补充-02EffectiveSTL有用使用经验.html">
+            
+                    
+                    C++补充02: Effective STL使用经验
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.23" data-path="../c++学习笔记/C++面试题—算法.html">
+            
+                <a href="../c++学习笔记/C++面试题—算法.html">
+            
+                    
+                    C++面试题-算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.24" data-path="../c++学习笔记/Linux传统IO和零拷贝Zero-Copy技术.html">
+            
+                <a href="../c++学习笔记/Linux传统IO和零拷贝Zero-Copy技术.html">
+            
+                    
+                    Linux传统IO和零拷贝Zero-Copy技术
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.25" data-path="../c++学习笔记/Glog使用.html">
+            
+                <a href="../c++学习笔记/Glog使用.html">
+            
+                    
+                    Glog使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../golang学习笔记/">
+            
+                <a href="../golang学习笔记/">
+            
+                    
+                    Golang学习笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../golang学习笔记/Go常见错误集锦.html">
+            
+                <a href="../golang学习笔记/Go常见错误集锦.html">
+            
+                    
+                    Go常见错误集锦
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../golang学习笔记/Go高性能的一些技巧.html">
+            
+                <a href="../golang学习笔记/Go高性能的一些技巧.html">
+            
+                    
+                    Go常见高性能技巧
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../golang学习笔记/Golang反射.html">
+            
+                <a href="../golang学习笔记/Golang反射.html">
+            
+                    
+                    Golang反射
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="../golang学习笔记/内存逃逸.html">
+            
+                <a href="../golang学习笔记/内存逃逸.html">
+            
+                    
+                    内存逃逸
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="../golang学习笔记/调度器GMP.html">
+            
+                <a href="../golang学习笔记/调度器GMP.html">
+            
+                    
+                    调度器GMP
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6" data-path="../golang学习笔记/GC垃圾回收.html">
+            
+                <a href="../golang学习笔记/GC垃圾回收.html">
+            
+                    
+                    GC垃圾回收
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../网络协议学习/">
+            
+                <a href="../网络协议学习/">
+            
+                    
+                    网络协议学习
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../网络协议学习/网络面试题.html">
+            
+                <a href="../网络协议学习/网络面试题.html">
+            
+                    
+                    网络面试题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="../网络协议学习/TCP常见问题.html">
+            
+                <a href="../网络协议学习/TCP常见问题.html">
+            
+                    
+                    TCP常见问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" data-path="../网络协议学习/tcpdump工具.html">
+            
+                <a href="../网络协议学习/tcpdump工具.html">
+            
+                    
+                    tcpdump工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../java学习笔记/">
+            
+                <a href="../java学习笔记/">
+            
+                    
+                    java学习笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="../java学习笔记/java01基础.html">
+            
+                <a href="../java学习笔记/java01基础.html">
+            
+                    
+                    java01基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" data-path="../java学习笔记/java02核心类.html">
+            
+                <a href="../java学习笔记/java02核心类.html">
+            
+                    
+                    java02核心类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3" data-path="../java学习笔记/Maven.html">
+            
+                <a href="../java学习笔记/Maven.html">
+            
+                    
+                    Maven
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="../hadoop学习笔记/">
+            
+                <a href="../hadoop学习笔记/">
+            
+                    
+                    hadoop学习笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="../hadoop学习笔记/hadoop入门01-架构与安装.html">
+            
+                <a href="../hadoop学习笔记/hadoop入门01-架构与安装.html">
+            
+                    
+                    hadoop入门01-架构与安装
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" data-path="../hadoop学习笔记/hadoop入门02-HDFS基础.html">
+            
+                <a href="../hadoop学习笔记/hadoop入门02-HDFS基础.html">
+            
+                    
+                    hadoop入门02-HDFS基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.3" data-path="../hadoop学习笔记/hadoop入门03-MapReduce.html">
+            
+                <a href="../hadoop学习笔记/hadoop入门03-MapReduce.html">
+            
+                    
+                    hadoop入门03-MapReduce
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.4" data-path="../hadoop学习笔记/hadoop入门04-MapReduce框架原理.html">
+            
+                <a href="../hadoop学习笔记/hadoop入门04-MapReduce框架原理.html">
+            
+                    
+                    hadoop入门04-MapReduce框架原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.5" data-path="../hadoop学习笔记/hadoop入门05-MapReduce数据清洗和压缩.html">
+            
+                <a href="../hadoop学习笔记/hadoop入门05-MapReduce数据清洗和压缩.html">
+            
+                    
+                    hadoop入门05-MapReduce数据清洗与压缩
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.6" data-path="../hadoop学习笔记/hadoop入门06-yarn.html">
+            
+                <a href="../hadoop学习笔记/hadoop入门06-yarn.html">
+            
+                    
+                    hadoop入门06-yarn
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.7" data-path="../hadoop学习笔记/Hive入门01-基础入门.html">
+            
+                <a href="../hadoop学习笔记/Hive入门01-基础入门.html">
+            
+                    
+                    Hive入门01-基础入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="../kafka学习笔记/">
+            
+                <a href="../kafka学习笔记/">
+            
+                    
+                    kafka学习笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.11.1" data-path="../kafka学习笔记/kafka01概述与应用场景.html">
+            
+                <a href="../kafka学习笔记/kafka01概述与应用场景.html">
+            
+                    
+                    kafka概述与应用场景
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.2" data-path="../kafka学习笔记/kafka02安装与部署.md">
+            
+                <span>
+            
+                    
+                    kafka安装与部署
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.3" data-path="../kafka学习笔记/kafka03基本操作.html">
+            
+                <a href="../kafka学习笔记/kafka03基本操作.html">
+            
+                    
+                    kafka基本操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.4" data-path="../kafka学习笔记/kafka04生产者原理.html">
+            
+                <a href="../kafka学习笔记/kafka04生产者原理.html">
+            
+                    
+                    kafka生产者原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.5" data-path="../kafka学习笔记/kafka05Broker.html">
+            
+                <a href="../kafka学习笔记/kafka05Broker.html">
+            
+                    
+                    kafka中Broker
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.6" data-path="../kafka学习笔记/kafka06消费者.html">
+            
+                <a href="../kafka学习笔记/kafka06消费者.html">
+            
+                    
+                    kafka消费者
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Flink学习笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1" data-path="flink基础01—简介.html">
+            
+                <a href="flink基础01—简介.html">
+            
+                    
+                    flink基础01—简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2" data-path="flink基础02-集群启动-部署模式.html">
+            
+                <a href="flink基础02-集群启动-部署模式.html">
+            
+                    
+                    flink基础02-集群启动-部署模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3" data-path="flink基础03-运行时架构.html">
+            
+                <a href="flink基础03-运行时架构.html">
+            
+                    
+                    flink基础03-运行时架构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.4" data-path="flink基础04-DataStreamAPI-Source.html">
+            
+                <a href="flink基础04-DataStreamAPI-Source.html">
+            
+                    
+                    flink基础04-DataStreamAPI-Source
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.5" data-path="flink基础05-DataStreamAPI-Transformation.html">
+            
+                <a href="flink基础05-DataStreamAPI-Transformation.html">
+            
+                    
+                    flink基础05-DataStreamAPI-Transformation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.6" data-path="flink基础06-DataStreamAPI-Sink.html">
+            
+                <a href="flink基础06-DataStreamAPI-Sink.html">
+            
+                    
+                    flink基础06-DataStreamAPI-Sink
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.7" data-path="flink基础07-时间和窗口.html">
+            
+                <a href="flink基础07-时间和窗口.html">
+            
+                    
+                    flink基础07-时间和窗口
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.12.8" data-path="flink基础08-处理函数.html">
+            
+                <a href="flink基础08-处理函数.html">
+            
+                    
+                    flink基础08-处理函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.9" data-path="flink基础09-多流转换(分流与合流">
+            
+                <span>
+            
+                    
+                    flink基础09-多流转换(分流与合流)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.10" data-path="flink基础10-状态编程.html">
+            
+                <a href="flink基础10-状态编程.html">
+            
+                    
+                    flink基础10-状态编程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.11" data-path="flink基础11-容错机制.html">
+            
+                <a href="flink基础11-容错机制.html">
+            
+                    
+                    flink基础11-容错机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.12" data-path="flink基础12-TableAPI和SQL.html">
+            
+                <a href="flink基础12-TableAPI和SQL.html">
+            
+                    
+                    flink基础12-TableAPI和SQL
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.13" data-path="flink基础13-CEP.html">
+            
+                <a href="flink基础13-CEP.html">
+            
+                    
+                    flink基础13-CEP
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" data-path="../工具使用/">
+            
+                <a href="../工具使用/">
+            
+                    
+                    工具使用
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.13.1" data-path="../工具使用/VSCode使用小技巧.html">
+            
+                <a href="../工具使用/VSCode使用小技巧.html">
+            
+                    
+                    VS Code使用小技巧
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.2" data-path="../工具使用/GCC安装.html">
+            
+                <a href="../工具使用/GCC安装.html">
+            
+                    
+                    GCC安装
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.3" data-path="../工具使用/CMake学习与使用.html">
+            
+                <a href="../工具使用/CMake学习与使用.html">
+            
+                    
+                    CMake学习与使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.4" data-path="../工具使用/gdb调试.html">
+            
+                <a href="../工具使用/gdb调试.html">
+            
+                    
+                    gdb调试
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.5" data-path="../工具使用/perf、strace等工具.html">
+            
+                <a href="../工具使用/perf、strace等工具.html">
+            
+                    
+                    perf、strace等工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >flink基础08-处理函数</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h3 id="&#x5904;&#x7406;&#x51FD;&#x6570;">&#x5904;&#x7406;&#x51FD;&#x6570;</h3>
+<p><img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20221204152433092.png" alt="image-20221204152433092" style="zoom:50%;"></p>
+<p>&#x5728;&#x66F4;&#x5E95;&#x5C42;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x4E0D;&#x5B9A;&#x4E49;&#x4EFB;&#x4F55;&#x5177;&#x4F53;&#x7684;&#x7B97;&#x5B50;(&#x6BD4;&#x5982;map, filter,&#x6216;&#x8005; window), &#x800C;&#x662F;&#x63D0;&#x70BC;&#x51FA;&#x4E00;&#x4E2A;&#x7EDF;&#x4E00;&#x7684; &quot;&#x5904;&#x7406;&quot;(process)&#x64CD;&#x4F5C;&#x2014;&#x2014;&#x5B83;&#x662F;&#x5DE6;&#x53F3;&#x8F6C;&#x6362;&#x7B97;&#x5B50;&#x7684;&#x4E00;&#x4E2A;&#x6982;&#x62EC;&#x6027;&#x8868;&#x8FBE;&#xFF0C;&#x53EF;&#x4EE5;&#x81EA;&#x5B9A;&#x4E49;&#x5904;&#x7406;&#x903B;&#x8F91;&#xFF0C;&#x6240;&#x4EE5;&#x8FD9;&#x4E00;&#x5C42;&#x63A5;&#x53E3;&#x5C31;&#x88AB;&#x53EB;&#x4F5C; &quot;&#x5904;&#x7406;&#x51FD;&#x6570;&quot;(process function)&#x3002;</p>
+<ul>
+<li><p>&#x6211;&#x4EEC;&#x4E4B;&#x524D;&#x5B66;&#x4E60;&#x7684;&#x8F6C;&#x6362;&#x7B97;&#x5B50;&#xFF0C;&#x4E00;&#x822C;&#x53EA;&#x662F;&#x9488;&#x5BF9;&#x67D0;&#x79CD;&#x5177;&#x4F53;&#x64CD;&#x4F5C;&#x6765;&#x5B9A;&#x4E49;&#x7684;&#xFF0C;&#x80FD;&#x591F;&#x62FF;&#x5230;&#x7684;&#x4FE1;&#x606F;&#x6BD4;&#x8F83;&#x6709;&#x9650;;</p>
+</li>
+<li><p>&#x5982;&#x679C;&#x6211;&#x4EEC;&#x60F3;&#x8981;&#x8BBF;&#x95EE;&#x4E8B;&#x4EF6;&#x7684;&#x65F6;&#x95F4;&#x6233;&#xFF0C;&#x6216;&#x8005;&#x5F53;&#x524D;&#x7684;&#x6C34;&#x4F4D;&#x7EBF;&#x4FE1;&#x606F;&#xFF0C;&#x90FD;&#x662F;&#x5B8C;&#x5168;&#x505A;&#x4E0D;&#x5230;&#x7684;;</p>
+</li>
+<li><p><strong>&#x8DDF;&#x65F6;&#x95F4;&#x76F8;&#x5173;&#x7684;&#x64CD;&#x4F5C;&#xFF0C;&#x76EE;&#x524D;&#x6211;&#x4EEC;&#x53EA;&#x4F1A;&#x7528;&#x7A97;&#x53E3;&#x6765;&#x5904;&#x7406;&#x3002;&#x800C;&#x5728;&#x5F88;&#x591A;&#x5E94;&#x7528;&#x9700;&#x6C42;&#x4E2D;&#xFF0C;&#x8981;&#x6C42;&#x6211;&#x4EEC;&#x5BF9;&#x65F6;&#x95F4;&#x6709;&#x66F4;&#x7CBE;&#x7EC6;&#x7684;&#x63A7;&#x5236;&#xFF0C;&#x9700;&#x8981;&#x80FD;&#x591F;&#x83B7;&#x53D6;&#x6C34;&#x4F4D;&#x7EBF;&#xFF0C;&#x751A;&#x81F3;&#x8981;&#x201C;&#x628A;&#x63A7;&#x65F6;&#x95F4;&#x201D;&#x3001;&#x5B9A;&#x4E49;&#x4EC0;&#x4E48;&#x65F6;&#x5019;&#x505A;&#x4EC0;&#x4E48;&#x4E8B;&#xFF0C;&#x8FD9;&#x5C31;&#x4E0D;&#x662F;&#x57FA;&#x672C;&#x7684;&#x65F6;&#x95F4;&#x7A97;&#x53E3;&#x80FD;&#x591F;&#x5B9E;&#x73B0;&#x7684;&#x4E86;&#x3002;&#x8FD9;&#x65F6;&#x5C31;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x5E95;&#x5C42;&#x7684;&#x5904;&#x7406;&#x51FD;&#x6570;(ProcessFunction)&#x3002;
+&#x5904;&#x7406;&#x51FD;&#x6570;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E00;&#x4E2A;&#x201C;&#x5B9A;&#x65F6;&#x670D;&#x52A1;&#x201D;(TimerService)&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5B83;&#x8BBF;&#x95EE;&#x6D41;&#x4E2D;&#x7684;&#x4E8B;&#x4EF6;(event)&#x3001; &#x65F6;&#x95F4;&#x6233;( timestamp)&#x3001;&#x6C34;&#x4F4D;&#x7EBF;( watermark)&#xFF0C;&#x751A;&#x81F3;&#x53EF;&#x4EE5;&#x6CE8;&#x518C;&#x201C;&#x5B9A;&#x65F6;&#x4E8B;&#x4EF6;&#x201D;</strong></p>
+</li>
+<li><p><strong>&#x800C;&#x4E14;&#x5904;&#x7406;&#x51FD;&#x6570;&#x7EE7;&#x627F;&#x4E86;AbstractRichFunction &#x62BD;&#x8C61;&#x7C7B;&#xFF0C;&#x6240;&#x4EE5;&#x62E5;&#x6709;&#x5BCC;&#x51FD;&#x6570;&#x7C7B;&#x7684;&#x6240;&#x6709;&#x7279;&#x6027;&#xFF0C;&#x540C;&#x6837;&#x53EF;&#x4EE5;&#x8BBF;&#x95EE;&#x72B6;&#x6001;(state) &#x548C;&#x5176;&#x4ED6;&#x8FD0;&#x884C;&#x65F6;&#x4FE1;&#x606F;&#x3002;&#x6B64;&#x5916;&#xFF0C;&#x5904;&#x7406;&#x51FD;&#x6570;&#x8FD8;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x5C06;&#x6570;&#x636E;&#x8F93;&#x51FA;&#x5230;&#x4FA7;&#x8F93;&#x51FA;&#x6D41;(sideoutput)&#x4E2D;&#x3002;&#x6240;&#x4EE5;&#xFF0C;&#x5904;&#x7406;&#x51FD;&#x6570;&#x662F;&#x6700;&#x4E3A;&#x7075;&#x6D3B;&#x7684;&#x5904;&#x7406;&#x65B9;&#x6CD5;&#xFF0C;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x5404;&#x79CD;&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x4E1A;&#x52A1;&#x903B;&#x8F91;;&#x540C;&#x65F6;&#x4E5F;&#x662F;&#x6574;&#x4E2A;DataStreamAPI&#x7684;&#x5E95;&#x5C42;&#x57FA;&#x7840;</strong></p>
+</li>
+<li><p>&#x5904;&#x7406;&#x51FD;&#x6570;&#x7684;&#x4F7F;&#x7528;&#x548C;&#x57FA;&#x672C;&#x7684;&#x8F6C;&#x6362;&#x64CD;&#x4F5C;&#x7C7B;&#x4F3C;&#xFF0C;&#x53EA;&#x9700;&#x8981;&#x57FA;&#x4E8E; DataStream&#x8C03;&#x7528;<code>.process()</code>&#x65B9;&#x6CD5;&#x5C31;&#x53EF;&#x4EE5;&#x4E86;&#x3002;&#x65B9;&#x6CD5;&#x9700;&#x8981;&#x4F20;&#x5165;&#x4E00;&#x4E2A;<code>ProcessFunction</code>&#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#xFF0C;&#x7528;&#x6765;&#x5B9A;&#x4E49;&#x5904;&#x7406;&#x903B;&#x8F91;</p>
+<pre><code class="lang-java">stream.process(<span class="hljs-keyword">new</span> MyProcessFunction())
+</code></pre>
+<p>&#x5176;&#x4E2D;ProcessFunction&#x4E0D;&#x662F;&#x63A5;&#x53E3;&#xFF0C;&#x800C;&#x662F;&#x4E00;&#x4E2A;&#x62BD;&#x8C61;&#x7C7B;&#xFF0C;&#x7EE7;&#x627F;&#x4E86;<code>AbstractRichFunction</code>&#x3002;&#x6240;&#x4EE5;&#x6240;&#x6709;&#x7684;&#x5904;&#x7406;&#x51FD;&#x6570;&#xFF0C;&#x90FD;&#x662F;&#x5BCC;&#x51FD;&#x6570;<code>RichFunction</code>,&#x5BCC;&#x51FD;&#x6570;&#x53EF;&#x4EE5;&#x8C03;&#x7528;&#x7684;&#x4E1C;&#x897F;&#x8FD9;&#x91CC;&#x540C;&#x6837;&#x53EF;&#x4EE5;&#x8C03;&#x7528;&#x3002;</p>
+</li>
+</ul>
+<h4 id="&#x5904;&#x7406;&#x51FD;&#x6570;&#x7684;&#x5206;&#x7C7B;">&#x5904;&#x7406;&#x51FD;&#x6570;&#x7684;&#x5206;&#x7C7B;</h4>
+<p>Flink&#x7684;&#x5904;&#x7406;&#x51FD;&#x6570;&#x662F;&#x4E00;&#x4E2A;&#x5927;&#x5BB6;&#x65CF;&#xFF0C;<code>ProcessFunction</code>&#x53EA;&#x662F;&#x5176;&#x4E2D;&#x4E00;&#x5458;&#x3002;
+DataStream&#x5728;&#x8C03;&#x7528;&#x4E00;&#x4E9B;&#x8F6C;&#x6362;&#x65B9;&#x6CD5;&#x540E;&#xFF0C;&#x53EF;&#x80FD;&#x751F;&#x6210;&#x65B0;&#x7684;&#x6D41;&#x7C7B;&#x578B;:</p>
+<ul>
+<li>&#x8C03;&#x7528; <code>.keyBy()</code>&#x4E4B;&#x540E;&#x5F97;&#x5230;<code>KeyedStream</code></li>
+<li>&#x518D;&#x8C03;&#x7528;<code>.window()</code>&#x4E4B;&#x540E;&#x5F97;&#x5230;<code>WindowStream</code>;</li>
+</ul>
+<p>&#x5BF9;&#x4E8E;&#x4E0D;&#x540C;&#x7C7B;&#x578B;&#x7684;&#x6D41;&#xFF0C;&#x5176;&#x5B9E;&#x90FD;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x8C03;&#x7528;<code>.process()</code>&#x65B9;&#x6CD5;&#x8FDB;&#x884C;&#x81EA;&#x5B9A;&#x4E49;&#x5904;&#x7406;&#xFF0C;&#x8FD9;&#x65F6;&#x4F20;&#x5165;&#x7684;&#x53C2;&#x6570;&#x5C31;&#x90FD;&#x53EB;&#x505A;&#x5904;&#x7406;&#x51FD;&#x6570;&#x3002;
+&#x4ED6;&#x4EEC;&#x5C3D;&#x7BA1;&#x672C;&#x8D28;&#x76F8;&#x540C;&#xFF0C;&#x90FD;&#x53EF;&#x4EE5;&#x8BBF;&#x95EE;&#x72B6;&#x6001;&#x548C;&#x65F6;&#x95F4;&#x4FE1;&#x606F;&#x7684;&#x5E95;&#x5C42;API&#xFF0C;&#x53EF;&#x5F7C;&#x6B64;&#x4E4B;&#x95F4;&#x4E5F;&#x4F1A;&#x6709;&#x6240;&#x5DEE;&#x5F02;&#x3002;</p>
+<p>Flink &#x63D0;&#x4F9B;&#x4E86;8&#x4E2A;&#x4E0D;&#x540C;&#x7684;&#x5904;&#x7406;&#x51FD;&#x6570;:</p>
+<ul>
+<li><p><strong>ProcessFunction</strong></p>
+<p>&#x6700;&#x57FA;&#x672C;&#x7684;&#x5904;&#x7406;&#x51FD;&#x6570;&#xFF0C;&#x57FA;&#x4E8E;<code>DataStream</code>&#x76F4;&#x63A5;&#x8C03;&#x7528;<code>.process()</code>&#x65F6;&#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#x4F20;&#x5165;;</p>
+</li>
+<li><p><strong><font style="color:red">KeyedProcessFunction</font></strong></p>
+<p>&#x8C03;&#x7528;<code>.keyBy()</code>&#x4E4B;&#x540E;&#x7684;&#x5904;&#x7406;&#x51FD;&#x6570;&#xFF0C;&#x57FA;&#x4E8E;<code>KeydStream</code>&#x8C03;&#x7528;<code>.process()</code>&#x65F6;&#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#x4F20;&#x5165;&#x3002;</p>
+</li>
+<li><p><strong>ProcessWindowFunction</strong></p>
+<p>&#x8C03;&#x7528;<code>.window()</code>&#x4E4B;&#x540E;&#x7684;&#x5904;&#x7406;&#x51FD;&#x6570;&#xFF0C;&#x4E5F;&#x662F;&#x5168;&#x7A97;&#x53E3;&#x51FD;&#x6570;&#x7684;&#x4EE3;&#x8868;&#x3002;&#x57FA;&#x4E8E;<code>WindowedStream</code>&#x8C03;&#x7528;<code>.process()</code>&#x65F6;&#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#x4F20;&#x5165;;</p>
+</li>
+<li><p><strong>ProcessAllWindowFunction</strong></p>
+<p>&#x540C;&#x65F6;&#x662F;&#x5F00;&#x7A97;&#x4E4B;&#x540E;&#x7684;&#x5904;&#x7406;&#x51FD;&#x6570;&#xFF0C;&#x57FA;&#x4E8E;<code>AllWindowedStream</code>&#x8C03;&#x7528;<code>.process()</code>&#x65F6;&#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#x4F20;&#x5165;&#x3002;</p>
+</li>
+<li><p><strong>CoProcessFunction</strong></p>
+<p>&#x5408;&#x5E76;<code>connect</code>&#x4E24;&#x6761;&#x6D41;&#x4E4B;&#x540E;&#x7684;&#x5904;&#x7406;&#x51FD;&#x6570;&#xFF0C;&#x57FA;&#x4E8E;<code>ConnectedStreams</code>&#x8C03;&#x7528;<code>.process()</code>&#x65F6;&#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#x4F20;&#x5165;&#x3002;&#x5173;&#x4E8E;&#x6D41;&#x7684;&#x5408;&#x5E76;&#x64CD;&#x4F5C;&#xFF0C;&#x540E;&#x9762;&#x4ECB;&#x7ECD;&#x3002;</p>
+</li>
+<li><p><strong>ProcesssJoinFunction</strong></p>
+<p>&#x95F4;&#x63A5;&#x8FDE;&#x63A5;(interval join)&#x4E24;&#x6761;&#x6D41;&#x4E4B;&#x540E;&#x7684;&#x5904;&#x7406;&#x51FD;&#x6570;&#xFF0C;&#x57FA;&#x4E8E;<code>IntervalJoined</code>&#x8C03;&#x7528;<code>.process()</code>&#x662F;&#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#x4F20;&#x5165;&#x3002;</p>
+</li>
+<li><p><strong>BroadcastProcessFunction</strong></p>
+</li>
+<li><p><strong>KeyedBroadcastProcessFunction</strong></p>
+</li>
+</ul>
+<h4 id="processfunction-&#x89E3;&#x6790;">ProcessFunction &#x89E3;&#x6790;</h4>
+<p>&#x62BD;&#x8C61;&#x7C7B;<code>ProcessFunction</code>&#x7EE7;&#x627F;&#x4E86;<code>AbstractRichFunction</code>&#x3002;
+&#x6709;&#x4E24;&#x4E2A;&#x6CDB;&#x578B;&#x7C7B;&#x578B;&#x53C2;&#x6570;: I &#x8868;&#x662F;Input&#xFF0C; &#x8F93;&#x5165;&#x53C2;&#x6570;&#x7C7B;&#x578B;&#xFF1B;O&#x4EE3;&#x8868; Output&#xFF0C;&#x5904;&#x7406;&#x5B8C;&#x6210;&#x540E;&#x8F93;&#x51FA;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x3002;
+&#x4E24;&#x4E2A;&#x65B9;&#x6CD5;: &#x4E00;&#x4E2A;&#x662F;&#x5FC5;&#x987B;&#x5B9E;&#x73B0;&#x7684;&#x62BD;&#x8C61;&#x65B9;&#x6CD5;<code>processElement)</code>; &#x53E6;&#x4E00;&#x4E2A;&#x662F;&#x975E;&#x62BD;&#x8C61;&#x65B9;&#x6CD5;<code>.onTimer()</code></p>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> com.luke.flink.datastreamdemo;
+<span class="hljs-keyword">import</span> java.time.Duration;
+<span class="hljs-keyword">import</span> org.apache.flink.api.common.eventtime.SerializableTimestampAssigner;
+<span class="hljs-keyword">import</span> org.apache.flink.api.common.eventtime.WatermarkStrategy;
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.datastream.SingleOutputStreamOperator;
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.functions.ProcessFunction;
+<span class="hljs-keyword">import</span> org.apache.flink.util.Collector;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ProcessFunctionTest</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+        StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
+        env.setParallelism(<span class="hljs-number">1</span>);
+        env.getConfig().setAutoWatermarkInterval(<span class="hljs-number">100</span>); <span class="hljs-comment">// 100&#x6BEB;&#x79D2;&#x53D1;&#x9001;watermark</span>
+        SingleOutputStreamOperator&lt;Event&gt; stream = env.addSource(<span class="hljs-keyword">new</span> ClickLogs())
+                <span class="hljs-comment">// &#x4E71;&#x5E8F;&#x6D41;&#x7684;watermark&#x751F;&#x6210;</span>
+                .assignTimestampsAndWatermarks(WatermarkStrategy.&lt;Event&gt;forBoundedOutOfOrderness(Duration.ZERO)
+                        .withTimestampAssigner(<span class="hljs-keyword">new</span> SerializableTimestampAssigner&lt;Event&gt;() {
+                            <span class="hljs-meta">@Override</span>
+                            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">long</span> <span class="hljs-title">extractTimestamp</span><span class="hljs-params">(Event element, <span class="hljs-keyword">long</span> recordTimestamp)</span> </span>{
+                                <span class="hljs-keyword">return</span> element.timestamp;
+                            }
+                        }));
+        stream.process(<span class="hljs-keyword">new</span> ProcessFunction&lt;Event, String&gt;() {
+            <span class="hljs-meta">@Override</span>
+            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">processElement</span><span class="hljs-params">(Event value, ProcessFunction&lt;Event, String&gt;.Context ctx, Collector&lt;String&gt; out)</span>
+                    <span class="hljs-keyword">throws</span> Exception </span>{
+                <span class="hljs-comment">// &#x7B80;&#x5355;&#x7684;filter&#x3001;map&#x7B49;&#x64CD;&#x4F5C;&#x90FD;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; ProcessFunction&#x641E;&#x5B9A;</span>
+                <span class="hljs-keyword">if</span> (value.user.equals(<span class="hljs-string">&quot;Mary&quot;</span>)) {
+                    out.collect(value.user + <span class="hljs-string">&quot; clicks &quot;</span> + value.url);
+                } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (value.user.equals(<span class="hljs-string">&quot;Bob&quot;</span>)) {
+                    out.collect(value.user);
+                    out.collect(value.user);
+                }
+                System.out.println(<span class="hljs-string">&quot;timestamp: &quot;</span> + ctx.timestamp()); <span class="hljs-comment">//&#x5F53;&#x524D;&#x65F6;&#x95F4;</span>
+                System.out.println(<span class="hljs-string">&quot;watermark: &quot;</span> + ctx.timerService().currentWatermark()); <span class="hljs-comment">//&#x6C34;&#x4F4D;&#x7EBF;</span>
+            }
+
+              <span class="hljs-comment">// onTimer()&#x9700;&#x8981;&#x548C; ctx.timerService().registerProcessingTimeTimer() &#x4E00;&#x8D77;&#x4F7F;&#x7528;, &#x8FD9;&#x91CC;&#x662F;&#x7528;&#x4E0D;&#x4E86;&#x7684;</span>
+              <span class="hljs-comment">// &#x56E0;&#x4E3A;&#x53EA;&#x6709; KeyedProcessFunctiton &#x624D;&#x80FD;&#x8C03;&#x7528; timeService()</span>
+            <span class="hljs-meta">@Override</span>
+            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onTimer</span><span class="hljs-params">(<span class="hljs-keyword">long</span> timestamp, ProcessFunction&lt;Event, String&gt;.OnTimerContext ctx,
+                    Collector&lt;String&gt; out)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+                <span class="hljs-keyword">super</span>.onTimer(timestamp, ctx, out);
+            }
+        }).print();
+        env.execute();
+    }
+}
+
+<span class="hljs-comment">// &#x8F93;&#x51FA;</span>
+Event [user=Blob, url=. /home, timestamp=<span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">04</span> <span class="hljs-number">22</span>:<span class="hljs-number">46</span>:<span class="hljs-number">28.585</span>] <span class="hljs-comment">// &#x8FD9;&#x4E2A;&#x662F;&#x5728; new Clicklogs()&#x4E2D;,&#x6BCF;&#x751F;&#x6210;&#x4E00;&#x4E2A;Event&#x6253;&#x5370;&#x7684;</span>
+timestamp: <span class="hljs-number">1670193988585</span>
+watermark: -<span class="hljs-number">9223372036854775808</span> <span class="hljs-comment">// &#x7B2C;&#x4E00;&#x4E2A;event&#x5904;&#x7406;&#x65F6;, watermark&#x8FD8;&#x662F; LONG.Min</span>
+
+Event [user=Cary, url=./home, timestamp=<span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">04</span> <span class="hljs-number">22</span>:<span class="hljs-number">46</span>:<span class="hljs-number">29.586</span>] <span class="hljs-comment">// &#x8FD9;&#x4E2A;&#x662F;&#x5728; new Clicklogs()&#x4E2D;,&#x6BCF;&#x751F;&#x6210;&#x4E00;&#x4E2A;Event&#x6253;&#x5370;&#x7684;</span>
+timestamp: <span class="hljs-number">1670193989586</span>
+watermark: <span class="hljs-number">1670193988584</span> <span class="hljs-comment">// &#x7B2C;&#x4E8C;&#x4E2A;event&#x5904;&#x7406;&#x65F6;,watermark&#x662F;&#x4E0A;&#x4E00;&#x6761;&#x6570;&#x636E;&#x7684; timestamp -1ms</span>
+
+Event [user=Cary, url=./prod?id=<span class="hljs-number">100</span>, timestamp=<span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">04</span> <span class="hljs-number">22</span>:<span class="hljs-number">46</span>:<span class="hljs-number">30.588</span>]
+timestamp: <span class="hljs-number">1670193990588</span>
+watermark: <span class="hljs-number">1670193989585</span>
+
+Event [user=Mary, url=./home, timestamp=<span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">04</span> <span class="hljs-number">22</span>:<span class="hljs-number">46</span>:<span class="hljs-number">31.589</span>]
+Mary clicks ./home <span class="hljs-comment">//processElement()&#x51FD;&#x6570;&#x4E2D;&#x9047;&#x5230;&#x4E86; Mary</span>
+timestamp: <span class="hljs-number">1670193991589</span>
+watermark: <span class="hljs-number">1670193990587</span>
+</code></pre>
+<p>ProcessFunction&#x7684;&#x7F3A;&#x70B9;&#x662F; &#x65E0;&#x6CD5;&#x4F7F;&#x7528; <code>TimerService</code>&#x8BBE;&#x7F6E;&#x5B9A;&#x65F6;&#x5668;&#x3002;</p>
+<h4 id="&#x6309;&#x952E;&#x5206;&#x533A;&#x5904;&#x7406;&#x51FD;&#x6570;-keyedprocessfunctiton">&#x6309;&#x952E;&#x5206;&#x533A;&#x5904;&#x7406;&#x51FD;&#x6570; (KeyedProcessFunctiton)</h4>
+<p>&#x53EA;&#x6709;&#x5728;KeyedStream&#x4E2D;&#x624D;&#x652F;&#x6301;&#x4F7F;&#x7528; TimerService&#x8BBE;&#x7F6E;&#x5B9A;&#x65F6;&#x5668;&#x64CD;&#x4F5C;;
+&#x6240;&#x4EE5;&#x4E00;&#x822C;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x6211;&#x4EEC;&#x90FD;&#x662F;&#x73B0;&#x505A; keyBy&#x5206;&#x533A;&#x540E;&#xFF0C;&#x518D;&#x53BB;&#x5B9A;&#x4E49;&#x5904;&#x7406;&#x64CD;&#x4F5C;&#xFF0C;&#x5904;&#x7406;&#x51FD;&#x6570;&#x4E00;&#x822C;&#x662F;<code>KeydProcessFunction</code>&#x3002;</p>
+<h5 id="&#x5B9A;&#x65F6;&#x5668;timer&#x548C;&#x5B9A;&#x65F6;&#x670D;&#x52A1;timerservice">&#x5B9A;&#x65F6;&#x5668;(Timer)&#x548C;&#x5B9A;&#x65F6;&#x670D;&#x52A1;(TimerService)</h5>
+<ul>
+<li><p>&#x5B9A;&#x65F6;&#x5668;(timers)&#x662F;&#x5904;&#x7406;&#x51FD;&#x6570;&#x4E2D;&#x8FDB;&#x884C;&#x65F6;&#x95F4;&#x76F8;&#x5173;&#x64CD;&#x4F5C;&#x7684;&#x4E3B;&#x8981;&#x673A;&#x5236;;</p>
+</li>
+<li><p><strong>&#x5728;.onTimer()&#x65B9;&#x6CD5;&#x4E2D;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x5B9A;&#x65F6;&#x5904;&#x7406;&#x7684;&#x903B;&#x8F91;&#xFF0C;&#x800C;&#x5B83;&#x80FD;&#x89E6;&#x53D1;&#x7684;&#x524D;&#x63D0;&#xFF0C;&#x5C31;&#x662F;&#x4E4B;&#x524D;&#x66FE;&#x7ECF;&#x6CE8;&#x518C;&#x8FC7;&#x5B9A;&#x65F6;&#x5668;&#x3001;&#x5E76;&#x4E14;&#x73B0;&#x5728;&#x5DF2;&#x7ECF;&#x5230;&#x4E86;&#x89E6;&#x53D1;&#x65F6;&#x95F4;&#x3002;&#x6CE8;&#x518C;&#x5B9A;&#x65F6;&#x5668;&#x7684;&#x529F;&#x80FD;&#xFF0C;&#x662F;&#x901A;&#x8FC7;&#x4E0A;&#x4E0B;&#x6587;&#x4E2D;&#x63D0;&#x4F9B;&#x7684;&#x201C;&#x5B9A;&#x65F6;&#x670D;&#x52A1;&#x201D;(TimerService)&#x6765;&#x5B9E;&#x73B0;&#x7684;</strong></p>
+</li>
+<li><p>&#x5B9A;&#x65F6;&#x670D;&#x52A1;&#x4E0E;&#x5F53;&#x524D;&#x8FD0;&#x884C;&#x7684;&#x73AF;&#x5883;&#x6709;&#x5173;&#x3002;&#x524D;&#x9762;&#x5DF2;&#x7ECF;&#x4ECB;&#x7ECD;&#x8FC7;&#xFF0C;ProcessFunction &#x7684;&#x4E0A;&#x4E0B;&#x6587;(Context)&#x4E2D;&#x63D0;&#x4F9B;&#x4E86;.timerService(&#x65B9;&#x6CD5;&#xFF0C;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;TimerService&#x5BF9;&#x8C61;&#x3002;</p>
+</li>
+<li><p><strong>TimerService &#x662F;Flink&#x5173;&#x4E8E;&#x65F6;&#x95F4;&#x548C;&#x5B9A;&#x65F6;&#x5668;&#x7684;&#x57FA;&#x7840;&#x670D;&#x52A1;&#x63A5;&#x53E3;&#xFF0C;&#x5305;&#x542B;&#x4EE5;&#x4E0B;&#x516D;&#x4E2A;&#x65B9;&#x6CD5;</strong></p>
+<pre><code class="lang-java"><span class="hljs-comment">//&#x83B7;&#x53D6;&#x5F53;&#x524D;&#x7684;&#x5904;&#x7406;&#x65F6;&#x95F4;</span>
+<span class="hljs-function"><span class="hljs-keyword">long</span> <span class="hljs-title">currentProcessingTime</span><span class="hljs-params">()</span> </span>;
+
+<span class="hljs-comment">//&#x83B7;&#x53D6;&#x5F53;&#x524D;&#x7684;&#x6C34;&#x4F4D;&#x7EBF;(&#x4E8B;&#x4EF6;&#x65F6;&#x95F4;)</span>
+<span class="hljs-function"><span class="hljs-keyword">long</span> <span class="hljs-title">currentWatermark</span><span class="hljs-params">()</span> </span>;
+
+<span class="hljs-comment">//&#x6CE8;&#x518C;&#x5904;&#x7406;&#x65F6;&#x95F4;&#x5B9A;&#x65F6;&#x5668;&#xFF0C;&#x5F53;&#x5904;&#x7406;&#x65F6;&#x95F4;&#x8D85;&#x8FC7;time&#x65F6;&#x89E6;&#x53D1;,&#x7136;&#x540E;&#x8C03;&#x7528;.onTimer()&#x65B9;&#x6CD5;</span>
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">registerProcessingTimeTimer</span> <span class="hljs-params">(<span class="hljs-keyword">long</span> time)</span> </span>;
+
+<span class="hljs-comment">//&#x6CE8;&#x518C;&#x4E8B;&#x4EF6;&#x65F6;&#x95F4;&#x5B9A;&#x65F6;&#x5668;&#xFF0C;&#x5F53;&#x6C34;&#x4F4D;&#x7EBF;&#x8D85;&#x8FC7;time&#x65F6;&#x89E6;&#x53D1;,&#x7136;&#x540E;&#x8C03;&#x7528;.onTimer()&#x65B9;&#x6CD5;</span>
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">registerEventTimeTimer</span> <span class="hljs-params">(<span class="hljs-keyword">long</span> time)</span> </span>;
+
+<span class="hljs-comment">//&#x5220;&#x9664;&#x89E6;&#x53D1;&#x65F6;&#x95F4;&#x4E3A;time&#x7684;&#x5904;&#x7406;&#x65F6;&#x95F4;&#x5B9A;&#x65F6;&#x5668;</span>
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">deleteProcessingTimeTimer</span> <span class="hljs-params">(<span class="hljs-keyword">long</span> time)</span> </span>;
+
+<span class="hljs-comment">//&#x5220;&#x9664;&#x89E6;&#x53D1;&#x65F6;&#x95F4;&#x4E3A;time&#x7684;&#x5904;&#x7406;&#x65F6;&#x95F4;&#x5B9A;&#x65F6;&#x5668;</span>
+<span class="hljs-function"><span class="hljs-keyword">void</span> deleteEventT <span class="hljs-title">imeTimer</span> <span class="hljs-params">(<span class="hljs-number">1</span>ong time)</span> </span>;
+</code></pre>
+<p>6&#x4E2A;&#x65B9;&#x6CD5;&#x53EF;&#x4EE5;&#x5206;&#x6210;&#x4E24;&#x5927;&#x7C7B;: &#x57FA;&#x4E8E;&#x5904;&#x7406;&#x65F6;&#x95F4;&#x548C;&#x57FA;&#x4E8E;&#x4E8B;&#x4EF6;&#x65F6;&#x95F4;&#x3002;&#x800C;&#x5BF9;&#x5E94;&#x7684;&#x64CD;&#x4F5C;&#x4E3B;&#x8981;&#x6709;&#x4E09;&#x4E2A;:&#x83B7;&#x53D6;&#x5F53;&#x524D;&#x65F6;&#x95F4;&#xFF0C;&#x6CE8;&#x518C;&#x5B9A;&#x65F6;&#x5668;&#xFF0C;&#x4EE5;&#x53CA;&#x5220;&#x9664;&#x5B9A;&#x65F6;&#x5668;&#x3002;</p>
+<p>&#x9700;&#x8981;&#x6CE8;&#x610F;&#xFF0C;&#x5C3D;&#x7BA1;&#x5904;&#x7406;&#x51FD;&#x6570;&#x4E2D;&#x90FD;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x8BBF;&#x95EE;TimerService&#xFF0C;&#x4E0D;&#x8FC7;&#x53EA;&#x6709;&#x57FA;&#x4E8E;KeyedStream&#x7684;&#x5904;&#x7406;&#x51FD;&#x6570;&#xFF0C;&#x624D;&#x80FD;&#x53BB;&#x8C03;&#x7528;&#x6CE8;&#x518C;&#x548C;&#x5220;&#x9664;&#x5B9A;&#x65F6;&#x5668;&#x7684;&#x65B9;&#x6CD5;;&#x672A;&#x4F5C;&#x6309;&#x952E;&#x5206;&#x533A;&#x7684;DataStream&#x4E0D;&#x652F;&#x6301;&#x5B9A;&#x65F6;&#x5668;&#x64CD;&#x4F5C;&#xFF0C;&#x53EA;&#x80FD;&#x83B7;&#x53D6;&#x5F53;&#x524D;&#x65F6;&#x95F4;&#x3002;
+<strong>TimerService&#x4F1A;&#x4EE5;&#x952E;(key)&#x548C;&#x65F6;&#x95F4;&#x6233;&#x4E3A;&#x6807;&#x51C6;&#xFF0C;&#x5BF9;&#x5B9A;&#x65F6;&#x5668;&#x8FDB;&#x884C;&#x53BB;&#x91CD;;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#x5BF9;&#x4E8E;&#x6BCF;&#x4E2A;key&#x548C;&#x65F6;&#x95F4;&#x6233;&#xFF0C;&#x6700;&#x591A;&#x53EA;&#x6709;&#x4E00;&#x4E2A;&#x5B9A;&#x65F6;&#x5668;&#xFF0C;&#x5982;&#x679C;&#x6CE8;&#x518C;&#x4E86;&#x591A;&#x6B21;&#xFF0C;onTimer ()&#x65B9;&#x6CD5;&#x4E5F;&#x5C06;&#x53EA;&#x88AB;&#x8C03;&#x7528;&#x4E00;&#x6B21;&#x3002;&#x8FD9;&#x6837;&#x4E00;&#x6765;&#xFF0C;&#x6211;&#x4EEC;&#x5728;&#x4EE3;&#x7801;&#x4E2D;&#x5C31;&#x65B9;&#x4FBF;&#x4E86;&#x5F88;&#x591A;&#xFF0C;&#x53EF;&#x4EE5;&#x8086;&#x65E0;&#x5FCC;&#x60EE;&#x5730;&#x5BF9;&#x4E00;&#x4E2A;key&#x6CE8;&#x518C;&#x5B9A;&#x65F6;&#x5668;&#xFF0C;&#x800C;&#x4E0D;&#x7528;&#x62C5;&#x5FC3;&#x91CD;&#x590D;&#x5B9A;&#x4E49;&#x2014;&#x2014;&#x56E0;&#x4E3A;&#x4E00;&#x4E2A;&#x65F6;&#x95F4;&#x6233;&#x4E0A;&#x7684;&#x5B9A;&#x65F6;&#x5668;&#x53EA;&#x4F1A;&#x89E6;&#x53D1;&#x4E00;&#x6B21;</strong></p>
+</li>
+</ul>
+<h5 id="keyedprocessfunction&#x7684;&#x4F7F;&#x7528;">KeyedProcessFunction&#x7684;&#x4F7F;&#x7528;</h5>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> com.luke.flink.datastreamdemo;
+
+<span class="hljs-keyword">import</span> java.sql.Timestamp;
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.datastream.DataStreamSource;
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.functions.KeyedProcessFunction;
+<span class="hljs-keyword">import</span> org.apache.flink.util.Collector;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ProcessingTimeTimerTest</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+        StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
+        env.setParallelism(<span class="hljs-number">1</span>);
+        DataStreamSource&lt;Event&gt; stream = env.addSource(<span class="hljs-keyword">new</span> ClickLogs());
+        stream.keyBy(data -&gt; data.user)
+                <span class="hljs-comment">// &#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x662F;key&#x7C7B;&#x578B;,&#x7B2C;&#x4E8C;&#x4E2A;&#x662F;&#x8F93;&#x5165;&#x6570;&#x636E;&#x7C7B;&#x578B;,&#x7B2C;&#x4E09;&#x4E2A;&#x8F93;&#x51FA;&#x6570;&#x636E;&#x7C7B;&#x578B;</span>
+                .process(<span class="hljs-keyword">new</span> KeyedProcessFunction&lt;String, Event, String&gt;() {
+                    <span class="hljs-meta">@Override</span>
+                    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">processElement</span><span class="hljs-params">(Event value, KeyedProcessFunction&lt;String, Event, String&gt;.Context ctx,
+                            Collector&lt;String&gt; out)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+                        Long currTs = ctx.timerService().currentProcessingTime();
+                        out.collect(ctx.getCurrentKey() + <span class="hljs-string">&quot;&#x6570;&#x636E;&#x5230;&#x8FBE;,&#x5230;&#x8FBE;&#x65F6;&#x95F4;:&quot;</span> + <span class="hljs-keyword">new</span> Timestamp(currTs));
+
+                        <span class="hljs-comment">// &#x6CE8;&#x518C;&#x4E00;&#x4E2A;10&#x79D2;&#x540E;&#x7684;&#x5B9A;&#x65F6;&#x5668;</span>
+                        ctx.timerService().registerProcessingTimeTimer(currTs + <span class="hljs-number">10</span> * <span class="hljs-number">1000L</span>);
+                    }
+                    <span class="hljs-meta">@Override</span>
+                    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onTimer</span><span class="hljs-params">(<span class="hljs-keyword">long</span> timestamp,
+                            KeyedProcessFunction&lt;String, Event, String&gt;.OnTimerContext ctx,
+                            Collector&lt;String&gt; out)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+                        out.collect(ctx.getCurrentKey() + <span class="hljs-string">&quot;&#x5B9A;&#x65F6;&#x5668;&#x89E6;&#x53D1;,&#x89E6;&#x53D1;&#x65F6;&#x95F4;: &quot;</span> + <span class="hljs-keyword">new</span> Timestamp(timestamp));
+                    };
+                }).print();
+
+        env.execute();
+    }
+}
+
+<span class="hljs-comment">// &#x8F93;&#x51FA;&#x7ED3;&#x679C;</span>
+Cary&#x6570;&#x636E;&#x5230;&#x8FBE;,&#x5230;&#x8FBE;&#x65F6;&#x95F4;:<span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">05</span> <span class="hljs-number">22</span>:<span class="hljs-number">15</span>:<span class="hljs-number">56.866</span>
+Mary&#x6570;&#x636E;&#x5230;&#x8FBE;,&#x5230;&#x8FBE;&#x65F6;&#x95F4;:<span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">05</span> <span class="hljs-number">22</span>:<span class="hljs-number">15</span>:<span class="hljs-number">57.876</span>
+Blob&#x6570;&#x636E;&#x5230;&#x8FBE;,&#x5230;&#x8FBE;&#x65F6;&#x95F4;:<span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">05</span> <span class="hljs-number">22</span>:<span class="hljs-number">15</span>:<span class="hljs-number">58.888</span>
+Mary&#x6570;&#x636E;&#x5230;&#x8FBE;,&#x5230;&#x8FBE;&#x65F6;&#x95F4;:<span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">05</span> <span class="hljs-number">22</span>:<span class="hljs-number">15</span>:<span class="hljs-number">59.899</span>
+Alice&#x6570;&#x636E;&#x5230;&#x8FBE;,&#x5230;&#x8FBE;&#x65F6;&#x95F4;:<span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">05</span> <span class="hljs-number">22</span>:<span class="hljs-number">16</span>:<span class="hljs-number">00.812</span>
+Cary&#x6570;&#x636E;&#x5230;&#x8FBE;,&#x5230;&#x8FBE;&#x65F6;&#x95F4;:<span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">05</span> <span class="hljs-number">22</span>:<span class="hljs-number">16</span>:<span class="hljs-number">01.82</span>
+Alice&#x6570;&#x636E;&#x5230;&#x8FBE;,&#x5230;&#x8FBE;&#x65F6;&#x95F4;:<span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">05</span> <span class="hljs-number">22</span>:<span class="hljs-number">16</span>:<span class="hljs-number">02.828</span>
+Cary&#x6570;&#x636E;&#x5230;&#x8FBE;,&#x5230;&#x8FBE;&#x65F6;&#x95F4;:<span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">05</span> <span class="hljs-number">22</span>:<span class="hljs-number">16</span>:<span class="hljs-number">03.833</span>
+Cary&#x6570;&#x636E;&#x5230;&#x8FBE;,&#x5230;&#x8FBE;&#x65F6;&#x95F4;:<span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">05</span> <span class="hljs-number">22</span>:<span class="hljs-number">16</span>:<span class="hljs-number">04.844</span>
+Blob&#x6570;&#x636E;&#x5230;&#x8FBE;,&#x5230;&#x8FBE;&#x65F6;&#x95F4;:<span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">05</span> <span class="hljs-number">22</span>:<span class="hljs-number">16</span>:<span class="hljs-number">05.846</span>
+Alice&#x6570;&#x636E;&#x5230;&#x8FBE;,&#x5230;&#x8FBE;&#x65F6;&#x95F4;:<span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">05</span> <span class="hljs-number">22</span>:<span class="hljs-number">16</span>:<span class="hljs-number">06.854</span>
+Cary&#x5B9A;&#x65F6;&#x5668;&#x89E6;&#x53D1;,&#x89E6;&#x53D1;&#x65F6;&#x95F4;: <span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">05</span> <span class="hljs-number">22</span>:<span class="hljs-number">16</span>:<span class="hljs-number">06.866</span> <span class="hljs-comment">//Cary&#x7B2C;&#x4E00;&#x6761;&#x6570;&#x636E;&#x7684;&#x5B9A;&#x65F6;&#x5668;&#x89E6;&#x53D1;</span>
+Blob&#x6570;&#x636E;&#x5230;&#x8FBE;,&#x5230;&#x8FBE;&#x65F6;&#x95F4;:<span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">05</span> <span class="hljs-number">22</span>:<span class="hljs-number">16</span>:<span class="hljs-number">07.862</span> 
+Mary&#x5B9A;&#x65F6;&#x5668;&#x89E6;&#x53D1;,&#x89E6;&#x53D1;&#x65F6;&#x95F4;: <span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">05</span> <span class="hljs-number">22</span>:<span class="hljs-number">16</span>:<span class="hljs-number">07.876</span> <span class="hljs-comment">//Mary&#x7B2C;&#x4E00;&#x6761;&#x6570;&#x636E;&#x7684;&#x5B9A;&#x65F6;&#x5668;&#x89E6;&#x53D1;</span>
+Alice&#x6570;&#x636E;&#x5230;&#x8FBE;,&#x5230;&#x8FBE;&#x65F6;&#x95F4;:<span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">05</span> <span class="hljs-number">22</span>:<span class="hljs-number">16</span>:<span class="hljs-number">08.873</span>
+Blob&#x5B9A;&#x65F6;&#x5668;&#x89E6;&#x53D1;,&#x89E6;&#x53D1;&#x65F6;&#x95F4;: <span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">05</span> <span class="hljs-number">22</span>:<span class="hljs-number">16</span>:<span class="hljs-number">08.888</span>
+Alice&#x6570;&#x636E;&#x5230;&#x8FBE;,&#x5230;&#x8FBE;&#x65F6;&#x95F4;:<span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">05</span> <span class="hljs-number">22</span>:<span class="hljs-number">16</span>:<span class="hljs-number">09.883</span>
+Mary&#x5B9A;&#x65F6;&#x5668;&#x89E6;&#x53D1;,&#x89E6;&#x53D1;&#x65F6;&#x95F4;: <span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">05</span> <span class="hljs-number">22</span>:<span class="hljs-number">16</span>:<span class="hljs-number">09.899</span> <span class="hljs-comment">//Mary 10&#x79D2;&#x524D;&#x6570;&#x636E;&#x7684;&#x5B9A;&#x65F6;&#x5668;&#x89E6;&#x53D1;</span>
+</code></pre>
+<p><strong>&#x6839;&#x636E;EventTime</strong></p>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> com.luke.flink.datastreamdemo;
+
+<span class="hljs-keyword">import</span> java.sql.Timestamp;
+<span class="hljs-keyword">import</span> java.time.Duration;
+
+<span class="hljs-keyword">import</span> org.apache.flink.api.common.eventtime.SerializableTimestampAssigner;
+<span class="hljs-keyword">import</span> org.apache.flink.api.common.eventtime.WatermarkStrategy;
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.datastream.SingleOutputStreamOperator;
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.functions.KeyedProcessFunction;
+<span class="hljs-keyword">import</span> org.apache.flink.util.Collector;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ProcessingEventTimer</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+        StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
+        env.setParallelism(<span class="hljs-number">1</span>);
+        SingleOutputStreamOperator&lt;Event&gt; stream = env.addSource(<span class="hljs-keyword">new</span> ClickLogs())
+                <span class="hljs-comment">// &#x4E71;&#x5E8F;&#x6D41;&#x7684;watermark&#x751F;&#x6210;</span>
+                .assignTimestampsAndWatermarks(WatermarkStrategy.&lt;Event&gt;forBoundedOutOfOrderness(Duration.ZERO)
+                        .withTimestampAssigner(<span class="hljs-keyword">new</span> SerializableTimestampAssigner&lt;Event&gt;() {
+                            <span class="hljs-meta">@Override</span>
+                            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">long</span> <span class="hljs-title">extractTimestamp</span><span class="hljs-params">(Event element, <span class="hljs-keyword">long</span> recordTimestamp)</span> </span>{
+                                <span class="hljs-keyword">return</span> element.timestamp;
+                            }
+                        }));
+        <span class="hljs-comment">// &#x4E8B;&#x4EF6;&#x65F6;&#x95F4;</span>
+        stream.keyBy(data -&gt; data.user)
+                <span class="hljs-comment">// &#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x662F;key&#x7C7B;&#x578B;,&#x7B2C;&#x4E8C;&#x4E2A;&#x662F;&#x8F93;&#x5165;&#x6570;&#x636E;&#x7C7B;&#x578B;,&#x7B2C;&#x4E09;&#x4E2A;&#x8F93;&#x51FA;&#x6570;&#x636E;&#x7C7B;&#x578B;</span>
+                .process(<span class="hljs-keyword">new</span> KeyedProcessFunction&lt;String, Event, String&gt;() {
+                    <span class="hljs-meta">@Override</span>
+                    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">processElement</span><span class="hljs-params">(Event value, KeyedProcessFunction&lt;String, Event, String&gt;.Context ctx,
+                            Collector&lt;String&gt; out)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+                        Long currTs = ctx.timestamp();
+                        out.collect(ctx.getCurrentKey() + <span class="hljs-string">&quot;&#x6570;&#x636E;&#x5230;&#x8FBE;,&#x65F6;&#x95F4;&#x6233;:&quot;</span> + <span class="hljs-keyword">new</span> Timestamp(currTs) + <span class="hljs-string">&quot; &#x5F53;&#x524D;&#x7684;waterMark:&quot;</span>
+                                + ctx.timerService().currentWatermark());
+                        <span class="hljs-comment">// &#x6CE8;&#x518C;&#x4E00;&#x4E2A;10&#x79D2;&#x540E;&#x7684;&#x5B9A;&#x65F6;&#x5668;</span>
+                        ctx.timerService().registerEventTimeTimer(currTs + <span class="hljs-number">10</span> * <span class="hljs-number">1000L</span>);
+                    }
+
+                    <span class="hljs-meta">@Override</span>
+                    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onTimer</span><span class="hljs-params">(<span class="hljs-keyword">long</span> timestamp,
+                            KeyedProcessFunction&lt;String, Event, String&gt;.OnTimerContext ctx,
+                            Collector&lt;String&gt; out)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+                        out.collect(ctx.getCurrentKey() + <span class="hljs-string">&quot;&#x5B9A;&#x65F6;&#x5668;&#x89E6;&#x53D1;,&#x89E6;&#x53D1;&#x65F6;&#x95F4;: &quot;</span> + <span class="hljs-keyword">new</span> Timestamp(timestamp) + <span class="hljs-string">&quot; &#x5F53;&#x524D;&#x7684;waterMark:&quot;</span>
+                                + ctx.timerService().currentWatermark());
+                    };
+                }).print();
+
+        env.execute();
+    }
+}
+<span class="hljs-comment">// &#x8F93;&#x51FA;</span>
+Cary&#x6570;&#x636E;&#x5230;&#x8FBE;,&#x65F6;&#x95F4;&#x6233;:<span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">05</span> <span class="hljs-number">22</span>:<span class="hljs-number">46</span>:<span class="hljs-number">49.988</span> &#x5F53;&#x524D;&#x7684;waterMark:-<span class="hljs-number">9223372036854775808</span>
+Blob&#x6570;&#x636E;&#x5230;&#x8FBE;,&#x65F6;&#x95F4;&#x6233;:<span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">05</span> <span class="hljs-number">22</span>:<span class="hljs-number">46</span>:<span class="hljs-number">50.991</span> &#x5F53;&#x524D;&#x7684;waterMark:<span class="hljs-number">1670280409987</span>
+Blob&#x6570;&#x636E;&#x5230;&#x8FBE;,&#x65F6;&#x95F4;&#x6233;:<span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">05</span> <span class="hljs-number">22</span>:<span class="hljs-number">46</span>:<span class="hljs-number">51.992</span> &#x5F53;&#x524D;&#x7684;waterMark:<span class="hljs-number">1670280410990</span>
+Cary&#x6570;&#x636E;&#x5230;&#x8FBE;,&#x65F6;&#x95F4;&#x6233;:<span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">05</span> <span class="hljs-number">22</span>:<span class="hljs-number">46</span>:<span class="hljs-number">52.993</span> &#x5F53;&#x524D;&#x7684;waterMark:<span class="hljs-number">1670280411991</span>
+Mary&#x6570;&#x636E;&#x5230;&#x8FBE;,&#x65F6;&#x95F4;&#x6233;:<span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">05</span> <span class="hljs-number">22</span>:<span class="hljs-number">46</span>:<span class="hljs-number">53.994</span> &#x5F53;&#x524D;&#x7684;waterMark:<span class="hljs-number">1670280412992</span>
+Mary&#x6570;&#x636E;&#x5230;&#x8FBE;,&#x65F6;&#x95F4;&#x6233;:<span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">05</span> <span class="hljs-number">22</span>:<span class="hljs-number">46</span>:<span class="hljs-number">54.994</span> &#x5F53;&#x524D;&#x7684;waterMark:<span class="hljs-number">1670280413993</span>
+Alice&#x6570;&#x636E;&#x5230;&#x8FBE;,&#x65F6;&#x95F4;&#x6233;:<span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">05</span> <span class="hljs-number">22</span>:<span class="hljs-number">46</span>:<span class="hljs-number">55.995</span> &#x5F53;&#x524D;&#x7684;waterMark:<span class="hljs-number">1670280414993</span>
+Alice&#x6570;&#x636E;&#x5230;&#x8FBE;,&#x65F6;&#x95F4;&#x6233;:<span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">05</span> <span class="hljs-number">22</span>:<span class="hljs-number">46</span>:<span class="hljs-number">56.996</span> &#x5F53;&#x524D;&#x7684;waterMark:<span class="hljs-number">1670280415994</span>
+Blob&#x6570;&#x636E;&#x5230;&#x8FBE;,&#x65F6;&#x95F4;&#x6233;:<span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">05</span> <span class="hljs-number">22</span>:<span class="hljs-number">46</span>:<span class="hljs-number">57.996</span> &#x5F53;&#x524D;&#x7684;waterMark:<span class="hljs-number">1670280416995</span>
+Alice&#x6570;&#x636E;&#x5230;&#x8FBE;,&#x65F6;&#x95F4;&#x6233;:<span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">05</span> <span class="hljs-number">22</span>:<span class="hljs-number">46</span>:<span class="hljs-number">58.997</span> &#x5F53;&#x524D;&#x7684;waterMark:<span class="hljs-number">1670280417995</span>
+Alice&#x6570;&#x636E;&#x5230;&#x8FBE;,&#x65F6;&#x95F4;&#x6233;:<span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">05</span> <span class="hljs-number">22</span>:<span class="hljs-number">46</span>:<span class="hljs-number">59.998</span> &#x5F53;&#x524D;&#x7684;waterMark:<span class="hljs-number">1670280418996</span>
+Cary&#x5B9A;&#x65F6;&#x5668;&#x89E6;&#x53D1;,&#x89E6;&#x53D1;&#x65F6;&#x95F4;: <span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">05</span> <span class="hljs-number">22</span>:<span class="hljs-number">46</span>:<span class="hljs-number">59.988</span> &#x5F53;&#x524D;&#x7684;waterMark:<span class="hljs-number">1670280419997</span> <span class="hljs-comment">// &#x53EA;&#x6709;waterMark&#x5230;&#x4E86;&#xFF0C;&#x624D;&#x4F1A;&#x89E6;&#x53D1;waterMark&#x4E4B;&#x524D;&#x7684;Event</span>
+Alice&#x6570;&#x636E;&#x5230;&#x8FBE;,&#x65F6;&#x95F4;&#x6233;:<span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">05</span> <span class="hljs-number">22</span>:<span class="hljs-number">47</span>:<span class="hljs-number">00.999</span> &#x5F53;&#x524D;&#x7684;waterMark:<span class="hljs-number">1670280419997</span>
+Blob&#x5B9A;&#x65F6;&#x5668;&#x89E6;&#x53D1;,&#x89E6;&#x53D1;&#x65F6;&#x95F4;: <span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">05</span> <span class="hljs-number">22</span>:<span class="hljs-number">47</span>:<span class="hljs-number">00.991</span> &#x5F53;&#x524D;&#x7684;waterMark:<span class="hljs-number">1670280420998</span>
+Mary&#x6570;&#x636E;&#x5230;&#x8FBE;,&#x65F6;&#x95F4;&#x6233;:<span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">05</span> <span class="hljs-number">22</span>:<span class="hljs-number">47</span>:<span class="hljs-number">02.0</span> &#x5F53;&#x524D;&#x7684;waterMark:<span class="hljs-number">1670280420998</span>
+Blob&#x5B9A;&#x65F6;&#x5668;&#x89E6;&#x53D1;,&#x89E6;&#x53D1;&#x65F6;&#x95F4;: <span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">05</span> <span class="hljs-number">22</span>:<span class="hljs-number">47</span>:<span class="hljs-number">01.992</span> &#x5F53;&#x524D;&#x7684;waterMark:<span class="hljs-number">1670280421999</span>
+Mary&#x6570;&#x636E;&#x5230;&#x8FBE;,&#x65F6;&#x95F4;&#x6233;:<span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">05</span> <span class="hljs-number">22</span>:<span class="hljs-number">47</span>:<span class="hljs-number">03.001</span> &#x5F53;&#x524D;&#x7684;waterMark:<span class="hljs-number">1670280421999</span>
+
+<span class="hljs-comment">//&#x6700;&#x540E;&#x7684;waterMark&#x4F1A;&#x662F; Long.MAX, &#x8FD9;&#x6837;&#x65B9;&#x4FBF;&#x89E6;&#x53D1;&#x6240;&#x6709;&#x7684;Event</span>
+</code></pre>
+<h5 id="&#x5E94;&#x7528;&#x6848;&#x4F8B;&#x2014;&#x2014;topn">&#x5E94;&#x7528;&#x6848;&#x4F8B;&#x2014;&#x2014;TopN</h5>
+<p>&#x9700;&#x6C42;: &#x7EDF;&#x8BA1;&#x6700;&#x8FD1;10&#x79D2;&#x949F;&#x5185;&#x6700;&#x70ED;&#x95E8;&#x7684;url&#x94FE;&#x63A5;&#xFF0C;&#x4E14;&#x6BCF;5&#x79D2;&#x66F4;&#x65B0;&#x4E00;&#x6B21;&#x3002;
+&#x6280;&#x672F;: &#x6ED1;&#x52A8;&#x7A97;&#x53E3;</p>
+<p><strong>&#x4F7F;&#x7528;ProcessAllWindowFunction&#x5B9E;&#x73B0;</strong></p>
+<p>&#x7B80;&#x5355;&#x60F3;&#x6CD5;: &#x4E0D;&#x533A;&#x5206;url,&#x5C06;&#x6240;&#x6709;&#x6570;&#x636E;&#x90FD;&#x6536;&#x96C6;&#x8D77;&#x6765;&#xFF0C;&#x7EDF;&#x4E00;&#x8FDB;&#x884C;&#x7EDF;&#x8BA1;&#x8BA1;&#x7B97;&#x3002;&#x6240;&#x4EE5;&#x65E0;&#x9700;keyBy, &#x76F4;&#x63A5;&#x901A;&#x8FC7;datastream &#x5F00;&#x7A97;&#x3002;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> com.luke.flink.datastreamdemo;
+
+<span class="hljs-keyword">import</span> java.sql.Timestamp;
+<span class="hljs-keyword">import</span> java.time.Duration;
+<span class="hljs-keyword">import</span> java.util.ArrayList;
+<span class="hljs-keyword">import</span> java.util.Comparator;
+<span class="hljs-keyword">import</span> java.util.HashMap;
+
+<span class="hljs-keyword">import</span> org.apache.flink.api.common.eventtime.SerializableTimestampAssigner;
+<span class="hljs-keyword">import</span> org.apache.flink.api.common.eventtime.WatermarkStrategy;
+<span class="hljs-keyword">import</span> org.apache.flink.api.common.functions.AggregateFunction;
+<span class="hljs-keyword">import</span> org.apache.flink.api.java.tuple.Tuple2;
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.datastream.SingleOutputStreamOperator;
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.functions.windowing.ProcessAllWindowFunction;
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.windowing.assigners.SlidingEventTimeWindows;
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.windowing.time.Time;
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.windowing.windows.TimeWindow;
+<span class="hljs-keyword">import</span> org.apache.flink.util.Collector;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TopNExample_ProcessAllWindowFunction</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+        StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
+        env.setParallelism(<span class="hljs-number">1</span>);
+        env.getConfig().setAutoWatermarkInterval(<span class="hljs-number">100</span>); <span class="hljs-comment">// &#x548C;&#x4E0B;&#x9762;&#x7684;createWatermarkGenerator&#x6709;&#x5173;&#x7CFB; ,100&#x6BEB;&#x79D2;&#x751F;&#x6210;watermark</span>
+        SingleOutputStreamOperator&lt;Event&gt; stream = env.addSource(<span class="hljs-keyword">new</span> ClickLogs())
+                <span class="hljs-comment">// &#x4E71;&#x5E8F;&#x6D41;&#x7684;watermark&#x751F;&#x6210;</span>
+                .assignTimestampsAndWatermarks(WatermarkStrategy.&lt;Event&gt;forBoundedOutOfOrderness(Duration.ZERO)
+                        .withTimestampAssigner(<span class="hljs-keyword">new</span> SerializableTimestampAssigner&lt;Event&gt;() {
+                            <span class="hljs-meta">@Override</span>
+                            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">long</span> <span class="hljs-title">extractTimestamp</span><span class="hljs-params">(Event element, <span class="hljs-keyword">long</span> recordTimestamp)</span> </span>{
+                                <span class="hljs-keyword">return</span> element.timestamp;
+                            }
+                        }));
+
+        <span class="hljs-comment">// &#x76F4;&#x63A5;&#x5F00;&#x7A97;,&#x6536;&#x96C6;&#x6240;&#x6709;&#x6570;&#x636E;&#x6392;&#x5E8F;</span>
+        stream.map(data -&gt; data.url)
+                .windowAll(SlidingEventTimeWindows.of(Time.seconds(<span class="hljs-number">10</span>), Time.seconds(<span class="hljs-number">5</span>)))
+                .aggregate(<span class="hljs-keyword">new</span> UrlHashMapCountAgg(), <span class="hljs-keyword">new</span> UrlAllWindowResult())
+                .print();
+
+        env.execute();
+    }
+
+    <span class="hljs-comment">// &#x5B9E;&#x73B0;&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x589E;&#x91CF;&#x805A;&#x5408;&#x51FD;&#x6570;</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UrlHashMapCountAgg</span>
+            <span class="hljs-keyword">implements</span> <span class="hljs-title">AggregateFunction</span>&lt;<span class="hljs-title">String</span>, <span class="hljs-title">HashMap</span>&lt;<span class="hljs-title">String</span>, <span class="hljs-title">Long</span>&gt;, <span class="hljs-title">ArrayList</span>&lt;<span class="hljs-title">Tuple2</span>&lt;<span class="hljs-title">String</span>, <span class="hljs-title">Long</span>&gt;&gt;&gt; </span>{
+        <span class="hljs-meta">@Override</span>
+        <span class="hljs-function"><span class="hljs-keyword">public</span> HashMap&lt;String, Long&gt; <span class="hljs-title">createAccumulator</span><span class="hljs-params">()</span> </span>{
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> HashMap&lt;String, Long&gt;();
+        }
+
+        <span class="hljs-meta">@Override</span>
+        <span class="hljs-function"><span class="hljs-keyword">public</span> HashMap&lt;String, Long&gt; <span class="hljs-title">add</span><span class="hljs-params">(String value, HashMap&lt;String, Long&gt; accumulator)</span> </span>{
+            Long cnt = <span class="hljs-number">0L</span>;
+            <span class="hljs-keyword">if</span> (accumulator.containsKey(value)) {
+                cnt = accumulator.get(value);
+            }
+            cnt++;
+            accumulator.put(value, cnt);
+            <span class="hljs-keyword">return</span> accumulator;
+        }
+
+        <span class="hljs-meta">@Override</span>
+        <span class="hljs-keyword">public</span> ArrayList&lt;Tuple2&lt;String, Long&gt;&gt; getResult(HashMap&lt;String, Long&gt; accumulator) {
+            ArrayList&lt;Tuple2&lt;String, Long&gt;&gt; result = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
+            <span class="hljs-keyword">for</span> (String key : accumulator.keySet()) {
+                result.add(Tuple2.of(key, accumulator.get(key)));
+            }
+            result.sort(<span class="hljs-keyword">new</span> Comparator&lt;Tuple2&lt;String, Long&gt;&gt;() {
+                <span class="hljs-meta">@Override</span>
+                <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">compare</span><span class="hljs-params">(Tuple2&lt;String, Long&gt; o1, Tuple2&lt;String, Long&gt; o2)</span> </span>{
+                    <span class="hljs-keyword">if</span> (o1.f1 &gt; o2.f1) {
+                        <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;
+                    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (o1.f1 == o2.f1) {
+                        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+                    } <span class="hljs-keyword">else</span> {
+                        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
+                    }
+                }
+            });
+            <span class="hljs-keyword">return</span> result;
+        }
+
+        <span class="hljs-meta">@Override</span>
+        <span class="hljs-function"><span class="hljs-keyword">public</span> HashMap&lt;String, Long&gt; <span class="hljs-title">merge</span><span class="hljs-params">(HashMap&lt;String, Long&gt; a, HashMap&lt;String, Long&gt; b)</span> </span>{
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
+        }
+    }
+
+    <span class="hljs-comment">// &#x5B9E;&#x73B0;&#x81EA;&#x5B9A;&#x4E49;&#x5168;</span>
+  &#x7A97;&#x53E3;&#x51FD;&#x6570;,&#x5305;&#x88C5;&#x4FE1;&#x606F;&#x8F93;&#x51FA;&#x7ED3;&#x679C;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UrlAllWindowResult</span>
+            <span class="hljs-keyword">extends</span> <span class="hljs-title">ProcessAllWindowFunction</span>&lt;<span class="hljs-title">ArrayList</span>&lt;<span class="hljs-title">Tuple2</span>&lt;<span class="hljs-title">String</span>, <span class="hljs-title">Long</span>&gt;&gt;, <span class="hljs-title">String</span>, <span class="hljs-title">TimeWindow</span>&gt; </span>{
+        <span class="hljs-meta">@Override</span>
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">process</span><span class="hljs-params">(
+                ProcessAllWindowFunction&lt;ArrayList&lt;Tuple2&lt;String, Long&gt;&gt;, String, TimeWindow&gt;.Context context,
+                Iterable&lt;ArrayList&lt;Tuple2&lt;String, Long&gt;&gt;&gt; elements, Collector&lt;String&gt; out)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+
+            ArrayList&lt;Tuple2&lt;String, Long&gt;&gt; ret01 = elements.iterator().next();
+            StringBuilder result = <span class="hljs-keyword">new</span> StringBuilder();
+            result.append(<span class="hljs-string">&quot;----------------------\n&quot;</span>);
+            result.append(<span class="hljs-string">&quot;&#x7A97;&#x53E3;&#x7ED3;&#x675F;&#x65F6;&#x95F4;: &quot;</span> + <span class="hljs-keyword">new</span> Timestamp(context.window().getEnd()) + <span class="hljs-string">&quot;\n&quot;</span>);
+
+            <span class="hljs-comment">// &#x53D6;list&#x524D;2&#x4E2A;,&#x5305;&#x88C5;&#x4FE1;&#x606F;&#x8F93;&#x51FA;</span>
+            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">2</span>; i++) {
+                Tuple2&lt;String, Long&gt; currTuple = ret01.get(i);
+                String info = <span class="hljs-string">&quot;No. &quot;</span> + (i + <span class="hljs-number">1</span>) + <span class="hljs-string">&quot; &quot;</span> + <span class="hljs-string">&quot;url:&quot;</span> + currTuple.f0 + <span class="hljs-string">&quot;&#x8BBF;&#x95EE;&#x91CF;: &quot;</span> + currTuple.f1 + <span class="hljs-string">&quot;\n&quot;</span>;
+                result.append(info);
+            }
+            result.append(<span class="hljs-string">&quot;----------------------\n&quot;</span>);
+            out.collect(result.toString());
+        }
+    }
+}
+
+<span class="hljs-comment">//&#x8F93;&#x51FA;&#x7ED3;&#x679C;:</span>
+Event [user=Cary, url=./prod?id=<span class="hljs-number">10</span>, timestamp=<span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">07</span> <span class="hljs-number">23</span>:<span class="hljs-number">00</span>:<span class="hljs-number">53.011</span>]
+Event [user=Cary, url=./home, timestamp=<span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">07</span> <span class="hljs-number">23</span>:<span class="hljs-number">00</span>:<span class="hljs-number">54.014</span>]
+Event [user=Mary, url=./home, timestamp=<span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">07</span> <span class="hljs-number">23</span>:<span class="hljs-number">00</span>:<span class="hljs-number">55.016</span>]
+----------------------
+&#x7A97;&#x53E3;&#x7ED3;&#x675F;&#x65F6;&#x95F4;: <span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">07</span> <span class="hljs-number">23</span>:<span class="hljs-number">00</span>:<span class="hljs-number">55.0</span>
+No. <span class="hljs-number">1</span> url:./prod?id=<span class="hljs-number">10</span>&#x8BBF;&#x95EE;&#x91CF;: <span class="hljs-number">1</span>
+No. <span class="hljs-number">2</span> url:./home&#x8BBF;&#x95EE;&#x91CF;: <span class="hljs-number">1</span>
+----------------------
+
+Event [user=Alice, url=./home, timestamp=<span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">07</span> <span class="hljs-number">23</span>:<span class="hljs-number">00</span>:<span class="hljs-number">56.018</span>]
+Event [user=Alice, url=. /home, timestamp=<span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">07</span> <span class="hljs-number">23</span>:<span class="hljs-number">00</span>:<span class="hljs-number">57.019</span>]
+Event [user=Blob, url=./cart, timestamp=<span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">07</span> <span class="hljs-number">23</span>:<span class="hljs-number">00</span>:<span class="hljs-number">58.021</span>]
+Event [user=Mary, url=./home, timestamp=<span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">07</span> <span class="hljs-number">23</span>:<span class="hljs-number">00</span>:<span class="hljs-number">59.023</span>]
+Event [user=Blob, url=. /home, timestamp=<span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">07</span> <span class="hljs-number">23</span>:<span class="hljs-number">01</span>:<span class="hljs-number">00.024</span>]
+----------------------
+&#x7A97;&#x53E3;&#x7ED3;&#x675F;&#x65F6;&#x95F4;: <span class="hljs-number">2022</span>-<span class="hljs-number">12</span>-<span class="hljs-number">07</span> <span class="hljs-number">23</span>:<span class="hljs-number">01</span>:<span class="hljs-number">00.0</span>
+No. <span class="hljs-number">1</span> url:./home&#x8BBF;&#x95EE;&#x91CF;: <span class="hljs-number">4</span>
+No. <span class="hljs-number">2</span> url:./cart&#x8BBF;&#x95EE;&#x91CF;: <span class="hljs-number">1</span>
+----------------------
+</code></pre>
+<h4 id="&#x4FA7;&#x8F93;&#x51FA;&#x6D41;side-output">&#x4FA7;&#x8F93;&#x51FA;&#x6D41;(Side Output)</h4>
+<p>&#x4E3B;&#x6D41; &#x4E4B;&#x5916;&#x53EF;&#x4EE5;&#x6709; &#x652F;&#x6D41;&#xFF0C;&#x53EF;&#x4EE5;&#x4E00;&#x6761;&#x6D41;&#x4EA7;&#x751F;&#x591A;&#x6761;&#x6D41;&#x3002;
+&#x5177;&#x4F53;&#x5E94;&#x7528;&#x65F6;, &#x53EA;&#x8981;&#x5728;&#x5904;&#x7406;&#x51FD;&#x6570;&#x7684;<code>.processEelement()</code>&#x6216;&#x8005;<code>.onTimer()</code>&#x65B9;&#x6CD5;&#x4E2D;&#xFF0C;&#x8C03;&#x7528;&#x4E0A;&#x4E0B;&#x6587;&#x7684;<code>.output</code>&#x65B9;&#x6CD5;&#x5C31;&#x53EF;&#x4EE5;&#x4E86;&#x3002;</p>
+<pre><code class="lang-java">        OutputTag&lt;String&gt; outputTag = <span class="hljs-keyword">new</span> OutputTag&lt;String&gt;(<span class="hljs-string">&quot;side&quot;</span>) {
+        };
+
+        SingleOutputStreamOperator&lt;Long&gt; longStream = stream.process(<span class="hljs-keyword">new</span> ProcessFunction&lt;Event, Long&gt;() {
+            <span class="hljs-meta">@Override</span>
+            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">processElement</span><span class="hljs-params">(Event value, ProcessFunction&lt;Event, Long&gt;.Context ctx, Collector&lt;Long&gt; out)</span>
+                    <span class="hljs-keyword">throws</span> Exception </span>{
+                <span class="hljs-comment">// timestamp &#x8F93;&#x51FA;&#x5230;&#x4E3B;&#x6D41;&#x4E2D;</span>
+                out.collect(value.timestamp);
+                <span class="hljs-comment">// url&#x8F93;&#x51FA;&#x5230;&#x4FA7;&#x8F93;&#x51FA;&#x6D41;&#x4E2D;</span>
+                ctx.output(outputTag, value.url);
+            }
+        });
+        <span class="hljs-comment">// &#x62FF;&#x5230;&#x4FA7;&#x8F93;&#x51FA;&#x6D41;&#x4E2D;&#x7684;&#x6570;&#x636E;</span>
+        DataStream&lt;String&gt; sideOutput = longStream.getSideOutput(outputTag);
+</code></pre>
+<p>&#x8FD9;&#x91CC;<code>output()</code>&#x65B9;&#x6CD5;&#x9700;&#x8981;&#x8F93;&#x5165;&#x4E24;&#x4E2A;&#x53C2;&#x6570;&#xFF0C;&#x4E00;&#x4E2A;&#x662F;&#x8F93;&#x51FA;&#x6807;&#x7B7E;<code>OutputTag</code>&#xFF0C;&#x7528;&#x4E8E;&#x6807;&#x8BC6;&#x4FA7;&#x8F93;&#x51FA;&#x6D41;&#xFF0C;&#x4E00;&#x822C;&#x5728;<code>ProcessFunction</code>&#x4E4B;&#x5916;&#x58F0;&#x660E;&#x3002;&#x7B2C;&#x4E8C;&#x4E2A;&#x662F;&#x8981;&#x8F93;&#x51FA;&#x7684;&#x6570;&#x636E;&#x3002;
+&#x5982;&#x679C;&#x60F3;&#x8981;&#x83B7;&#x53D6;&#x8FD9;&#x4E2A;&#x4FA7;&#x8F93;&#x51FA;&#x6D41;&#xFF0C;&#x53EF;&#x4EE5;&#x57FA;&#x4E8E;&#x5904;&#x7406;&#x4E4B;&#x540E;&#x7684;<code>DataStream</code>&#x76F4;&#x63A5;&#x8C03;&#x7528;<code>.getSideOutput()</code>&#x65B9;&#x6CD5;&#xFF0C;&#x4F20;&#x5165;&#x5BF9;&#x5E94;&#x7684;<code>OutputTag</code>&#xFF0C;&#x8FD9;&#x4E2A;&#x65B9;&#x5F0F;&#x4E0E;&#x7A97;&#x53E3;API&#x4E2D;&#x83B7;&#x53D6;&#x4FA7;&#x8F93;&#x51FA;&#x6D41;&#x5B8C;&#x5168;&#x4E00;&#x6837;&#x3002;</p>
+<pre><code class="lang-java">DataStream&lt;String&gt; sideOutput = longStream.getSideOutput(outputTag);
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="flink基础07-时间和窗口.html" class="navigation navigation-prev " aria-label="Previous page: flink基础07-时间和窗口">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="flink基础09-多流转换(分流与合流" class="navigation navigation-next " aria-label="Next page: flink基础09-多流转换(分流与合流)">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"flink基础08-处理函数","level":"1.12.8","depth":2,"next":{"title":"flink基础09-多流转换(分流与合流)","level":"1.12.9","depth":2,"path":"Flink学习笔记/flink基础09-多流转换(分流与合流","ref":"Flink学习笔记/flink基础09-多流转换(分流与合流","articles":[]},"previous":{"title":"flink基础07-时间和窗口","level":"1.12.7","depth":2,"path":"Flink学习笔记/flink基础07-时间和窗口.md","ref":"Flink学习笔记/flink基础07-时间和窗口.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Flink学习笔记/flink基础08-处理函数.md","mtime":"2022-12-10T00:54:52.714Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-02-08T08:43:27.159Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

@@ -6,7 +6,7 @@
 
 **使用场景**
 
-- `volatile`关键字是一种类型修饰符，用它声明的类型变量表示可以被某些编译器未知的因素(操作系统、硬件、其他线程等)更改。所以使用volatile 告诉编译器不应对这样的对象进行优化;
+- `volatile`关键字是一种类型修饰符，普通情况下声明的类型变量表示可以被某些编译器未知的因素(操作系统、硬件、其他线程等)更改。所以使用volatile 告诉编译器不应对这样的对象进行优化;
 - `volatile`关键字声明的变量，每次访问时都必须从内存中读取值(没有被`volatile`修饰的变量，可能由于编译器的优化，从CPU寄存器中取值);
 - const 可以是 `volatile`(如只读状态的寄存器);
 - 指针可以是`volatile`;
@@ -221,8 +221,6 @@ namespace rs{
 }
 ```
 
-
-
 #### 取代typedef
 
 C中常用typedef A B这样的语法，将B定义为A类型，也就是给A类型一个别名B。
@@ -243,6 +241,7 @@ public:
 protected:
  std::size_t n;
 };
+
 class Derived : private Base {
 public:
  using Base::size;

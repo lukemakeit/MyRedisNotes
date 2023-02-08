@@ -1,0 +1,1667 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>gdb调试 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="perf、strace等工具.html" />
+    
+    
+    <link rel="prev" href="CMake学习与使用.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    README
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../redis学习/">
+            
+                <a href="../redis学习/">
+            
+                    
+                    Redis学习
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../redis学习/Redis备份.html">
+            
+                <a href="../redis学习/Redis备份.html">
+            
+                    
+                    Redis备份
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../redis学习/Redis复制.html">
+            
+                <a href="../redis学习/Redis复制.html">
+            
+                    
+                    Redis复制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../redis学习/Redis集群.html">
+            
+                <a href="../redis学习/Redis集群.html">
+            
+                    
+                    Redis集群
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../redis学习/缓存与数据库一致性.html">
+            
+                <a href="../redis学习/缓存与数据库一致性.html">
+            
+                    
+                    缓存与数据库一致性
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../redis学习/Redis消息队列Stream.html">
+            
+                <a href="../redis学习/Redis消息队列Stream.html">
+            
+                    
+                    Redis消息队列
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="../redis学习/RedisModule.html">
+            
+                <a href="../redis学习/RedisModule.html">
+            
+                    
+                    RedisModule
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../mysql/">
+            
+                <a href="../mysql/">
+            
+                    
+                    mysql学习
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../mysql/mysql补充.html">
+            
+                <a href="../mysql/mysql补充.html">
+            
+                    
+                    mysql补充
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../mysql/mysql8.0-手动安装.html">
+            
+                <a href="../mysql/mysql8.0-手动安装.html">
+            
+                    
+                    mysql8.0-手动安装
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../rocksdb-xue-xi/README.md">
+            
+                <span>
+            
+                    
+                    RocksDB学习
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../rocksdb学习/RocksDB基础概念.html">
+            
+                <a href="../rocksdb学习/RocksDB基础概念.html">
+            
+                    
+                    RocksDB基础概念
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../rocksdb学习/RocksDB基础操作-C语言.html">
+            
+                <a href="../rocksdb学习/RocksDB基础操作-C语言.html">
+            
+                    
+                    RocksDB基础操作-C语言
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../c语言笔记/">
+            
+                <a href="../c语言笔记/">
+            
+                    
+                    C语言笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../c语言笔记/C语言补充笔记一.html">
+            
+                <a href="../c语言笔记/C语言补充笔记一.html">
+            
+                    
+                    C语言补充笔记一
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../c++学习笔记/">
+            
+                <a href="../c++学习笔记/">
+            
+                    
+                    C++学习笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../c++学习笔记/C++Primer基础-01引用指针const.html">
+            
+                <a href="../c++学习笔记/C++Primer基础-01引用指针const.html">
+            
+                    
+                    C++Primer基础:引用、指针、const、auto/decltype
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../c++学习笔记/C++Primer基础-02volatile与using.html">
+            
+                <a href="../c++学习笔记/C++Primer基础-02volatile与using.html">
+            
+                    
+                    C++Primer基础:volatile、using
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../c++学习笔记/C++Primer基础-03stringvector数组.html">
+            
+                <a href="../c++学习笔记/C++Primer基础-03stringvector数组.html">
+            
+                    
+                    C++Primer基础: string、vector、数组
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../c++学习笔记/C++Primer基础-04函数重载函数指针.html">
+            
+                <a href="../c++学习笔记/C++Primer基础-04函数重载函数指针.html">
+            
+                    
+                    C++Primer基础:函数、重载、函数指针
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="../c++学习笔记/C++Primer基础-05function与bind与forward.html">
+            
+                <a href="../c++学习笔记/C++Primer基础-05function与bind与forward.html">
+            
+                    
+                    C++Primer基础:std::function、std::bind、std::forward
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6" data-path="../c++学习笔记/C++Primer基础-06-lambda.html">
+            
+                <a href="../c++学习笔记/C++Primer基础-06-lambda.html">
+            
+                    
+                    C++Primer基础:lambda
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.7" data-path="../c++学习笔记/C++Primer基础-07类基础.html">
+            
+                <a href="../c++学习笔记/C++Primer基础-07类基础.html">
+            
+                    
+                    C++ Primer基础: 类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.8" data-path="../c++学习笔记/C++Primer标准库-IO库.html">
+            
+                <a href="../c++学习笔记/C++Primer标准库-IO库.html">
+            
+                    
+                    C++ Primer 标准库: IO库
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.9" data-path="../c++学习笔记/C++Primer标准库-顺序容器.html">
+            
+                <a href="../c++学习笔记/C++Primer标准库-顺序容器.html">
+            
+                    
+                    C++ Primer 标准库: 顺序容器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.10" data-path="../c++学习笔记/C++Primer标准库-泛型算法.html">
+            
+                <a href="../c++学习笔记/C++Primer标准库-泛型算法.html">
+            
+                    
+                    C++ Primer 标准库: 泛型算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.11" data-path="../c++学习笔记/C++Primer标准库-关联容器.html">
+            
+                <a href="../c++学习笔记/C++Primer标准库-关联容器.html">
+            
+                    
+                    C++ Primer 标准库: 关联容器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.12" data-path="../c++学习笔记/C++Primer标准库-动态内存.html">
+            
+                <a href="../c++学习笔记/C++Primer标准库-动态内存.html">
+            
+                    
+                    C++ Primer 标准库: 动态内存
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.13" data-path="../c++学习笔记/C++Primer类设计-拷贝控制.html">
+            
+                <a href="../c++学习笔记/C++Primer类设计-拷贝控制.html">
+            
+                    
+                    C++ Primer 类设计: 拷贝控制、explicit
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.14" data-path="../c++学习笔记/C++Primer类设计-基类派生类虚函数.html">
+            
+                <a href="../c++学习笔记/C++Primer类设计-基类派生类虚函数.html">
+            
+                    
+                    C++ Primer 类设计: 基类、派生类、虚函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.15" data-path="../c++学习笔记/C++Primer类设计-模板与泛型编程.html">
+            
+                <a href="../c++学习笔记/C++Primer类设计-模板与泛型编程.html">
+            
+                    
+                    C++ Primer 类设计:模板与泛型编程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.16" data-path="../c++学习笔记/C++并发编程实战-01基础使用Join传参.html">
+            
+                <a href="../c++学习笔记/C++并发编程实战-01基础使用Join传参.html">
+            
+                    
+                    C++并发编程实战一:基础使用、Join、传参、线程所有权转移
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.17" data-path="../c++学习笔记/C++并发编程实战-02mutexlock.html">
+            
+                <a href="../c++学习笔记/C++并发编程实战-02mutexlock.html">
+            
+                    
+                    C++并发编程实战: mutex、lock、unique_lock、call_once、shared_lock
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.18" data-path="../c++学习笔记/C++并发编程实战-03条件变量.html">
+            
+                <a href="../c++学习笔记/C++并发编程实战-03条件变量.html">
+            
+                    
+                    C++并发编程实战三: 条件变量
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.19" data-path="../c++学习笔记/C++并发编程实战-04原子操作和类型.html">
+            
+                <a href="../c++学习笔记/C++并发编程实战-04原子操作和类型.html">
+            
+                    
+                    C++并发编程实战四: 原子操作和类型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.20" data-path="../c++学习笔记/C++并发编程实战-05内存模型.html">
+            
+                <a href="../c++学习笔记/C++并发编程实战-05内存模型.html">
+            
+                    
+                    C++并发编程实战五: 内存模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.21" data-path="../c++学习笔记/C++补充-01.html">
+            
+                <a href="../c++学习笔记/C++补充-01.html">
+            
+                    
+                    c++补充-01
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.22" data-path="../c++学习笔记/C++补充-02EffectiveSTL有用使用经验.html">
+            
+                <a href="../c++学习笔记/C++补充-02EffectiveSTL有用使用经验.html">
+            
+                    
+                    C++补充02: Effective STL使用经验
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.23" data-path="../c++学习笔记/C++面试题—算法.html">
+            
+                <a href="../c++学习笔记/C++面试题—算法.html">
+            
+                    
+                    C++面试题-算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.24" data-path="../c++学习笔记/Linux传统IO和零拷贝Zero-Copy技术.html">
+            
+                <a href="../c++学习笔记/Linux传统IO和零拷贝Zero-Copy技术.html">
+            
+                    
+                    Linux传统IO和零拷贝Zero-Copy技术
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.25" data-path="../c++学习笔记/Glog使用.html">
+            
+                <a href="../c++学习笔记/Glog使用.html">
+            
+                    
+                    Glog使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../golang学习笔记/">
+            
+                <a href="../golang学习笔记/">
+            
+                    
+                    Golang学习笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../golang学习笔记/Go常见错误集锦.html">
+            
+                <a href="../golang学习笔记/Go常见错误集锦.html">
+            
+                    
+                    Go常见错误集锦
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../golang学习笔记/Go高性能的一些技巧.html">
+            
+                <a href="../golang学习笔记/Go高性能的一些技巧.html">
+            
+                    
+                    Go常见高性能技巧
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../golang学习笔记/Golang反射.html">
+            
+                <a href="../golang学习笔记/Golang反射.html">
+            
+                    
+                    Golang反射
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="../golang学习笔记/内存逃逸.html">
+            
+                <a href="../golang学习笔记/内存逃逸.html">
+            
+                    
+                    内存逃逸
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="../golang学习笔记/调度器GMP.html">
+            
+                <a href="../golang学习笔记/调度器GMP.html">
+            
+                    
+                    调度器GMP
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6" data-path="../golang学习笔记/GC垃圾回收.html">
+            
+                <a href="../golang学习笔记/GC垃圾回收.html">
+            
+                    
+                    GC垃圾回收
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../网络协议学习/">
+            
+                <a href="../网络协议学习/">
+            
+                    
+                    网络协议学习
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../网络协议学习/网络面试题.html">
+            
+                <a href="../网络协议学习/网络面试题.html">
+            
+                    
+                    网络面试题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="../网络协议学习/TCP常见问题.html">
+            
+                <a href="../网络协议学习/TCP常见问题.html">
+            
+                    
+                    TCP常见问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" data-path="../网络协议学习/tcpdump工具.html">
+            
+                <a href="../网络协议学习/tcpdump工具.html">
+            
+                    
+                    tcpdump工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../java学习笔记/">
+            
+                <a href="../java学习笔记/">
+            
+                    
+                    java学习笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="../java学习笔记/java01基础.html">
+            
+                <a href="../java学习笔记/java01基础.html">
+            
+                    
+                    java01基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" data-path="../java学习笔记/java02核心类.html">
+            
+                <a href="../java学习笔记/java02核心类.html">
+            
+                    
+                    java02核心类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3" data-path="../java学习笔记/Maven.html">
+            
+                <a href="../java学习笔记/Maven.html">
+            
+                    
+                    Maven
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="../hadoop学习笔记/">
+            
+                <a href="../hadoop学习笔记/">
+            
+                    
+                    hadoop学习笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="../hadoop学习笔记/hadoop入门01-架构与安装.html">
+            
+                <a href="../hadoop学习笔记/hadoop入门01-架构与安装.html">
+            
+                    
+                    hadoop入门01-架构与安装
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" data-path="../hadoop学习笔记/hadoop入门02-HDFS基础.html">
+            
+                <a href="../hadoop学习笔记/hadoop入门02-HDFS基础.html">
+            
+                    
+                    hadoop入门02-HDFS基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.3" data-path="../hadoop学习笔记/hadoop入门03-MapReduce.html">
+            
+                <a href="../hadoop学习笔记/hadoop入门03-MapReduce.html">
+            
+                    
+                    hadoop入门03-MapReduce
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.4" data-path="../hadoop学习笔记/hadoop入门04-MapReduce框架原理.html">
+            
+                <a href="../hadoop学习笔记/hadoop入门04-MapReduce框架原理.html">
+            
+                    
+                    hadoop入门04-MapReduce框架原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.5" data-path="../hadoop学习笔记/hadoop入门05-MapReduce数据清洗和压缩.html">
+            
+                <a href="../hadoop学习笔记/hadoop入门05-MapReduce数据清洗和压缩.html">
+            
+                    
+                    hadoop入门05-MapReduce数据清洗与压缩
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.6" data-path="../hadoop学习笔记/hadoop入门06-yarn.html">
+            
+                <a href="../hadoop学习笔记/hadoop入门06-yarn.html">
+            
+                    
+                    hadoop入门06-yarn
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.7" data-path="../hadoop学习笔记/Hive入门01-基础入门.html">
+            
+                <a href="../hadoop学习笔记/Hive入门01-基础入门.html">
+            
+                    
+                    Hive入门01-基础入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="../kafka学习笔记/">
+            
+                <a href="../kafka学习笔记/">
+            
+                    
+                    kafka学习笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.11.1" data-path="../kafka学习笔记/kafka01概述与应用场景.html">
+            
+                <a href="../kafka学习笔记/kafka01概述与应用场景.html">
+            
+                    
+                    kafka概述与应用场景
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.2" data-path="../kafka学习笔记/kafka02安装与部署.md">
+            
+                <span>
+            
+                    
+                    kafka安装与部署
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.3" data-path="../kafka学习笔记/kafka03基本操作.html">
+            
+                <a href="../kafka学习笔记/kafka03基本操作.html">
+            
+                    
+                    kafka基本操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.4" data-path="../kafka学习笔记/kafka04生产者原理.html">
+            
+                <a href="../kafka学习笔记/kafka04生产者原理.html">
+            
+                    
+                    kafka生产者原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.5" data-path="../kafka学习笔记/kafka05Broker.html">
+            
+                <a href="../kafka学习笔记/kafka05Broker.html">
+            
+                    
+                    kafka中Broker
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.6" data-path="../kafka学习笔记/kafka06消费者.html">
+            
+                <a href="../kafka学习笔记/kafka06消费者.html">
+            
+                    
+                    kafka消费者
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="../Flink学习笔记/">
+            
+                <a href="../Flink学习笔记/">
+            
+                    
+                    Flink学习笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1" data-path="../Flink学习笔记/flink基础01—简介.html">
+            
+                <a href="../Flink学习笔记/flink基础01—简介.html">
+            
+                    
+                    flink基础01—简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2" data-path="../Flink学习笔记/flink基础02-集群启动-部署模式.html">
+            
+                <a href="../Flink学习笔记/flink基础02-集群启动-部署模式.html">
+            
+                    
+                    flink基础02-集群启动-部署模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3" data-path="../Flink学习笔记/flink基础03-运行时架构.html">
+            
+                <a href="../Flink学习笔记/flink基础03-运行时架构.html">
+            
+                    
+                    flink基础03-运行时架构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.4" data-path="../Flink学习笔记/flink基础04-DataStreamAPI-Source.html">
+            
+                <a href="../Flink学习笔记/flink基础04-DataStreamAPI-Source.html">
+            
+                    
+                    flink基础04-DataStreamAPI-Source
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.5" data-path="../Flink学习笔记/flink基础05-DataStreamAPI-Transformation.html">
+            
+                <a href="../Flink学习笔记/flink基础05-DataStreamAPI-Transformation.html">
+            
+                    
+                    flink基础05-DataStreamAPI-Transformation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.6" data-path="../Flink学习笔记/flink基础06-DataStreamAPI-Sink.html">
+            
+                <a href="../Flink学习笔记/flink基础06-DataStreamAPI-Sink.html">
+            
+                    
+                    flink基础06-DataStreamAPI-Sink
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.7" data-path="../Flink学习笔记/flink基础07-时间和窗口.html">
+            
+                <a href="../Flink学习笔记/flink基础07-时间和窗口.html">
+            
+                    
+                    flink基础07-时间和窗口
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.8" data-path="../Flink学习笔记/flink基础08-处理函数.html">
+            
+                <a href="../Flink学习笔记/flink基础08-处理函数.html">
+            
+                    
+                    flink基础08-处理函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.9" data-path="../Flink学习笔记/flink基础09-多流转换(分流与合流">
+            
+                <span>
+            
+                    
+                    flink基础09-多流转换(分流与合流)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.10" data-path="../Flink学习笔记/flink基础10-状态编程.html">
+            
+                <a href="../Flink学习笔记/flink基础10-状态编程.html">
+            
+                    
+                    flink基础10-状态编程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.11" data-path="../Flink学习笔记/flink基础11-容错机制.html">
+            
+                <a href="../Flink学习笔记/flink基础11-容错机制.html">
+            
+                    
+                    flink基础11-容错机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.12" data-path="../Flink学习笔记/flink基础12-TableAPI和SQL.html">
+            
+                <a href="../Flink学习笔记/flink基础12-TableAPI和SQL.html">
+            
+                    
+                    flink基础12-TableAPI和SQL
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.13" data-path="../Flink学习笔记/flink基础13-CEP.html">
+            
+                <a href="../Flink学习笔记/flink基础13-CEP.html">
+            
+                    
+                    flink基础13-CEP
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    工具使用
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.13.1" data-path="VSCode使用小技巧.html">
+            
+                <a href="VSCode使用小技巧.html">
+            
+                    
+                    VS Code使用小技巧
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.2" data-path="GCC安装.html">
+            
+                <a href="GCC安装.html">
+            
+                    
+                    GCC安装
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.3" data-path="CMake学习与使用.html">
+            
+                <a href="CMake学习与使用.html">
+            
+                    
+                    CMake学习与使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.13.4" data-path="gdb调试.html">
+            
+                <a href="gdb调试.html">
+            
+                    
+                    gdb调试
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.5" data-path="perf、strace等工具.html">
+            
+                <a href="perf、strace等工具.html">
+            
+                    
+                    perf、strace等工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >gdb调试</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h3 id="gdb&#x8C03;&#x8BD5;&#x6280;&#x5DE7;">gdb&#x8C03;&#x8BD5;&#x6280;&#x5DE7;</h3>
+<p>&#x53C2;&#x8003;&#x6587;&#x7AE0;:</p>
+<ul>
+<li><a href="https://zhuanlan.zhihu.com/p/74897601" target="_blank">GDB&#x8C03;&#x8BD5;&#x5165;&#x95E8;&#x6307;&#x5357;</a></li>
+</ul>
+<p>&#x8C03;&#x8BD5;&#x65B9;&#x5F0F;&#x8FD0;&#x884C;&#x7A0B;&#x5E8F;:</p>
+<pre><code class="lang-shell">gdb helloWorld
+</code></pre>
+<p>&#x542F;&#x52A8;&#x540E;&#x8BBE;&#x7F6E;&#x53C2;&#x6570;:</p>
+<pre><code>$ gdb helloWorld
+$ set args 1 2 3
+$ run
+</code></pre><p><strong>&#x76F4;&#x63A5;&#x8C03;&#x8BD5;&#x76F8;&#x5173;id&#x8FDB;&#x7A0B;</strong></p>
+<pre><code class="lang-java">$ gdb hello <span class="hljs-number">20829</span>
+$ gdb hello --pid <span class="hljs-number">20829</span>
+</code></pre>
+<p><strong>attach&#x65B9;&#x5F0F;: &#x8C03;&#x8BD5;&#x5DF2;&#x8FD0;&#x884C;&#x7684;&#x8FDB;&#x7A0B;</strong></p>
+<pre><code class="lang-shell">$ gdb
+(gdb) file hello
+Reading symbols from hello...done.
+(gdb) attach 20829
+</code></pre>
+<p><strong>&#x8FD0;&#x884C;</strong></p>
+<ul>
+<li>run&#xFF1A;&#x7B80;&#x8BB0;&#x4E3A; r &#xFF0C;&#x5176;&#x4F5C;&#x7528;&#x662F;&#x8FD0;&#x884C;&#x7A0B;&#x5E8F;&#xFF0C;&#x5F53;&#x9047;&#x5230;&#x65AD;&#x70B9;&#x540E;&#xFF0C;&#x7A0B;&#x5E8F;&#x4F1A;&#x5728;&#x65AD;&#x70B9;&#x5904;&#x505C;&#x6B62;&#x8FD0;&#x884C;&#xFF0C;&#x7B49;&#x5F85;&#x7528;&#x6237;&#x8F93;&#x5165;&#x4E0B;&#x4E00;&#x6B65;&#x7684;&#x547D;&#x4EE4;&#x3002;</li>
+<li>continue &#xFF08;&#x7B80;&#x5199;c &#xFF09;&#xFF1A;&#x7EE7;&#x7EED;&#x6267;&#x884C;&#xFF0C;&#x5230;&#x4E0B;&#x4E00;&#x4E2A;&#x65AD;&#x70B9;&#x5904;&#xFF08;&#x6216;&#x8FD0;&#x884C;&#x7ED3;&#x675F;&#xFF09;</li>
+<li>next&#xFF1A;&#xFF08;&#x7B80;&#x5199; n&#xFF09;&#xFF0C;&#x5355;&#x6B65;&#x8DDF;&#x8E2A;&#x7A0B;&#x5E8F;&#xFF0C;&#x5F53;&#x9047;&#x5230;&#x51FD;&#x6570;&#x8C03;&#x7528;&#x65F6;&#xFF0C;&#x4E5F;&#x4E0D;&#x8FDB;&#x5165;&#x6B64;&#x51FD;&#x6570;&#x4F53;&#xFF1B;&#x6B64;&#x547D;&#x4EE4;&#x540C; step &#x7684;&#x4E3B;&#x8981;&#x533A;&#x522B;&#x662F;&#xFF0C;step &#x9047;&#x5230;&#x7528;&#x6237;&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x51FD;&#x6570;&#xFF0C;&#x5C06;&#x6B65;&#x8FDB;&#x5230;&#x51FD;&#x6570;&#x4E2D;&#x53BB;&#x8FD0;&#x884C;&#xFF0C;&#x800C; next &#x5219;&#x76F4;&#x63A5;&#x8C03;&#x7528;&#x51FD;&#x6570;&#xFF0C;&#x4E0D;&#x4F1A;&#x8FDB;&#x5165;&#x5230;&#x51FD;&#x6570;&#x4F53;&#x5185;&#x3002;</li>
+<li>step &#xFF08;&#x7B80;&#x5199;s&#xFF09;&#xFF1A;<strong>&#x5355;&#x6B65;&#x8C03;&#x8BD5;&#x5982;&#x679C;&#x6709;&#x51FD;&#x6570;&#x8C03;&#x7528;&#xFF0C;&#x5219;&#x8FDB;&#x5165;&#x51FD;&#x6570;</strong>&#xFF1B;&#x4E0E;&#x547D;&#x4EE4;n&#x4E0D;&#x540C;&#xFF0C;n&#x662F;&#x4E0D;&#x8FDB;&#x5165;&#x8C03;&#x7528;&#x7684;&#x51FD;&#x6570;&#x7684;</li>
+<li>until&#xFF1A;&#x5F53;&#x4F60;&#x538C;&#x5026;&#x4E86;&#x5728;&#x4E00;&#x4E2A;&#x5FAA;&#x73AF;&#x4F53;&#x5185;&#x5355;&#x6B65;&#x8DDF;&#x8E2A;&#x65F6;&#xFF0C;&#x8FD9;&#x4E2A;&#x547D;&#x4EE4;&#x53EF;&#x4EE5;&#x8FD0;&#x884C;&#x7A0B;&#x5E8F;&#x76F4;&#x5230;&#x9000;&#x51FA;&#x5FAA;&#x73AF;&#x4F53;&#x3002;</li>
+<li>until+&#x884C;&#x53F7;&#xFF1A; <strong>&#x8FD0;&#x884C;&#x81F3;&#x67D0;&#x884C;&#xFF0C;&#x4E0D;&#x4EC5;&#x4EC5;&#x7528;&#x6765;&#x8DF3;&#x51FA;&#x5FAA;&#x73AF;</strong></li>
+<li>finish&#xFF1A; <strong>&#x8FD0;&#x884C;&#x7A0B;&#x5E8F;&#xFF0C;&#x76F4;&#x5230;&#x5F53;&#x524D;&#x51FD;&#x6570;&#x5B8C;&#x6210;&#x8FD4;&#x56DE;&#xFF0C;&#x5E76;&#x6253;&#x5370;&#x51FD;&#x6570;&#x8FD4;&#x56DE;&#x65F6;&#x7684;&#x5806;&#x6808;&#x5730;&#x5740;&#x548C;&#x8FD4;&#x56DE;&#x503C;&#x53CA;&#x53C2;&#x6570;&#x503C;&#x7B49;&#x4FE1;&#x606F;</strong></li>
+<li>call &#x51FD;&#x6570;(&#x53C2;&#x6570;)&#xFF1A;<strong>&#x8C03;&#x7528;&#x7A0B;&#x5E8F;&#x4E2D;&#x53EF;&#x89C1;&#x7684;&#x51FD;&#x6570;&#xFF0C;&#x5E76;&#x4F20;&#x9012;&#x201C;&#x53C2;&#x6570;&#x201D;&#xFF0C;&#x5982;&#xFF1A;call gdb_test(55)</strong></li>
+<li>quit&#xFF1A;&#x7B80;&#x8BB0;&#x4E3A; q &#xFF0C;&#x9000;&#x51FA;gdb</li>
+</ul>
+<p><strong>&#x67E5;&#x770B;&#x6E90;&#x7801;</strong></p>
+<ul>
+<li><p>list &#xFF1A;&#x7B80;&#x8BB0;&#x4E3A; l &#xFF0C;&#x5176;&#x4F5C;&#x7528;&#x5C31;&#x662F;&#x5217;&#x51FA;&#x7A0B;&#x5E8F;&#x7684;&#x6E90;&#x4EE3;&#x7801;&#xFF0C;&#x9ED8;&#x8BA4;&#x6BCF;&#x6B21;&#x663E;&#x793A;10&#x884C;&#x3002;</p>
+</li>
+<li><p>list &#x884C;&#x53F7;&#xFF1A;&#x5C06;&#x663E;&#x793A;&#x5F53;&#x524D;&#x6587;&#x4EF6;&#x4EE5;&#x201C;&#x884C;&#x53F7;&#x201D;&#x4E3A;&#x4E2D;&#x5FC3;&#x7684;&#x524D;&#x540E;10&#x884C;&#x4EE3;&#x7801;&#xFF0C;&#x5982;&#xFF1A;list 12</p>
+</li>
+<li><p>list &#x51FD;&#x6570;&#x540D;&#xFF1A;&#x5C06;&#x663E;&#x793A;&#x201C;&#x51FD;&#x6570;&#x540D;&#x201D;&#x6240;&#x5728;&#x51FD;&#x6570;&#x7684;&#x6E90;&#x4EE3;&#x7801;&#xFF0C;&#x5982;&#xFF1A;list main</p>
+</li>
+<li><p>list &#xFF1A;&#x4E0D;&#x5E26;&#x53C2;&#x6570;&#xFF0C;&#x5C06;&#x63A5;&#x7740;&#x4E0A;&#x4E00;&#x6B21; list &#x547D;&#x4EE4;&#x7684;&#xFF0C;&#x8F93;&#x51FA;&#x4E0B;&#x8FB9;&#x7684;&#x5185;&#x5BB9;</p>
+</li>
+<li><p>&#x8BBE;&#x7F6E;&#x6E90;&#x7801;&#x4E00;&#x6B21;&#x5217;&#x51FA;&#x7684;&#x884C;&#x6570;</p>
+<p>&#x6BCF;&#x6B21;&#x53EA;&#x663E;&#x793A;10&#x884C;&#xFF0C;&#x90A3;&#x4E48;&#x6709;&#x6CA1;&#x6709;&#x65B9;&#x6CD5;&#x6BCF;&#x6B21;&#x5217;&#x51FA;&#x66F4;&#x591A;&#x5462;&#xFF1F;</p>
+<p>&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;listsize&#x5C5E;&#x6027;&#x6765;&#x8BBE;&#x7F6E;&#xFF0C;&#x4F8B;&#x5982;&#x8BBE;&#x7F6E;&#x6BCF;&#x6B21;&#x5217;&#x51FA;20&#x884C;:</p>
+<pre><code class="lang-shell">(gdb) set listsize 20
+(gdb) show listsize
+Number of source lines gdb will list by default is 20.
+</code></pre>
+</li>
+</ul>
+<p><strong>&#x8BBE;&#x7F6E;&#x65AD;&#x70B9;</strong></p>
+<ul>
+<li><p><strong>break n &#xFF08;&#x7B80;&#x5199;b n&#xFF09;:&#x5728;&#x7B2C;n&#x884C;&#x5904;&#x8BBE;&#x7F6E;&#x65AD;&#x70B9;</strong></p>
+<p><strong>(&#x53EF;&#x4EE5;&#x5E26;&#x4E0A;&#x4EE3;&#x7801;&#x8DEF;&#x5F84;&#x548C;&#x4EE3;&#x7801;&#x540D;&#x79F0;&#xFF1A; b  test.c:578)</strong></p>
+</li>
+<li><p>b fn1 if a&#xFF1E;b&#xFF1A;&#x6761;&#x4EF6;&#x65AD;&#x70B9;&#x8BBE;&#x7F6E;, &#x5982;<code>break test.c:6 if num&gt;0</code></p>
+</li>
+<li><p>break func&#xFF08;break&#x7F29;&#x5199;&#x4E3A;b&#xFF09;&#xFF1A;&#x5728;&#x51FD;&#x6570;func()&#x7684;&#x5165;&#x53E3;&#x5904;&#x8BBE;&#x7F6E;&#x65AD;&#x70B9;&#xFF0C;&#x5982;&#xFF1A;break cb_button</p>
+</li>
+<li><p>delete &#x65AD;&#x70B9;&#x53F7;n&#xFF1A;&#x5220;&#x9664;&#x7B2C;n&#x4E2A;&#x65AD;&#x70B9;</p>
+</li>
+<li><p>disable &#x65AD;&#x70B9;&#x53F7;n&#xFF1A;&#x6682;&#x505C;&#x7B2C;n&#x4E2A;&#x65AD;&#x70B9;</p>
+</li>
+<li><p>enable &#x65AD;&#x70B9;&#x53F7;n&#xFF1A;&#x5F00;&#x542F;&#x7B2C;n&#x4E2A;&#x65AD;&#x70B9;</p>
+</li>
+<li><p>clear &#x884C;&#x53F7;n&#xFF1A;&#x6E05;&#x9664;&#x7B2C;n&#x884C;&#x7684;&#x65AD;&#x70B9;</p>
+</li>
+<li><p>info b &#xFF08;info breakpoints&#xFF09; &#xFF1A;&#x663E;&#x793A;&#x5F53;&#x524D;&#x7A0B;&#x5E8F;&#x7684;&#x65AD;&#x70B9;&#x8BBE;&#x7F6E;&#x60C5;&#x51B5;</p>
+</li>
+<li><p>delete breakpoints&#xFF1A;&#x6E05;&#x9664;&#x6240;&#x6709;&#x65AD;&#x70B9;&#xFF1A;</p>
+</li>
+</ul>
+<p><strong>&#x6253;&#x5370;&#x8868;&#x8FBE;&#x5F0F;</strong></p>
+<ul>
+<li><p>print a&#xFF1A;&#x5C06;&#x663E;&#x793A;&#x6574;&#x6570; a &#x7684;&#x503C;</p>
+</li>
+<li><p>print ++a&#xFF1A;&#x5C06;&#x628A; a &#x4E2D;&#x7684;&#x503C;&#x52A0;1,&#x5E76;&#x663E;&#x793A;&#x51FA;&#x6765;</p>
+</li>
+<li><p>print name&#xFF1A;&#x5C06;&#x663E;&#x793A;&#x5B57;&#x7B26;&#x4E32; name &#x7684;&#x503C;</p>
+</li>
+<li><p>print gdb_test(22)&#xFF1A;&#x5C06;&#x4EE5;&#x6574;&#x6570;22&#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#x8C03;&#x7528; gdb_test() &#x51FD;&#x6570;</p>
+</li>
+<li><p>print gdb_test(a)&#xFF1A;&#x5C06;&#x4EE5;&#x53D8;&#x91CF; a &#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#x8C03;&#x7528; gdb_test() &#x51FD;&#x6570;</p>
+</li>
+<li><p><strong>display &#x8868;&#x8FBE;&#x5F0F;&#xFF1A;&#x5728;&#x5355;&#x6B65;&#x8FD0;&#x884C;&#x65F6;&#x5C06;&#x975E;&#x5E38;&#x6709;&#x7528;&#xFF0C;&#x4F7F;&#x7528;display&#x547D;&#x4EE4;&#x8BBE;&#x7F6E;&#x4E00;&#x4E2A;&#x8868;&#x8FBE;&#x5F0F;&#x540E;&#xFF0C;&#x5B83;&#x5C06;&#x5728;&#x6BCF;&#x6B21;&#x5355;&#x6B65;&#x8FDB;&#x884C;&#x6307;&#x4EE4;&#x540E;&#xFF0C;&#x7D27;&#x63A5;&#x7740;&#x8F93;&#x51FA;&#x88AB;&#x8BBE;&#x7F6E;&#x7684;&#x8868;&#x8FBE;&#x5F0F;&#x53CA;&#x503C;&#x3002;&#x5982;&#xFF1A; display a</strong></p>
+</li>
+<li><p><strong>watch &#x8868;&#x8FBE;&#x5F0F;&#xFF1A;&#x8BBE;&#x7F6E;&#x4E00;&#x4E2A;&#x76D1;&#x89C6;&#x70B9;&#xFF0C;&#x4E00;&#x65E6;&#x88AB;&#x76D1;&#x89C6;&#x7684;&#x201C;&#x8868;&#x8FBE;&#x5F0F;&#x201D;&#x7684;&#x503C;&#x6539;&#x53D8;&#xFF0C;gdb&#x4F1A;&#x6682;&#x505C;&#x6267;&#x884C;&#xFF0C;&#x5E76;&#x628A;&#x904D;&#x5386;old&#x503C;&#x548C;new&#x503C;&#x90FD;&#x4F1A;&#x663E;&#x793A;&#x51FA;&#x6765;&#x3002;&#x5982;&#xFF1A; watch a</strong></p>
+</li>
+<li><p>whatis &#xFF1A;&#x67E5;&#x8BE2;&#x53D8;&#x91CF;&#x6216;&#x51FD;&#x6570;</p>
+</li>
+<li><font style="color:red">&#x6269;&#x5C55;info locals&#xFF1A; &#x663E;&#x793A;&#x5F53;&#x524D;&#x5806;&#x6808;&#x9875;&#x7684;&#x6240;&#x6709;&#x53D8;&#x91CF;</font>
+</li>
+<li><p><strong>&#x67E5;&#x770B;&#x6307;&#x9488;</strong></p>
+<pre><code class="lang-shell">(gdb) print *buf
+$3 = 110 &apos;n&apos;
+</code></pre>
+<p>&#x4EC5;&#x4EC5;&#x4F7F;&#x7528;<code>*</code>&#x53EA;&#x80FD;&#x6253;&#x5370;&#x7B2C;&#x4E00;&#x4E2A;&#x503C;,&#x5982;&#x679C;&#x8981;&#x6253;&#x5370;&#x591A;&#x4E2A;&#x5B57;&#x7B26;&#x503C;,&#x53EF;&#x4EE5;&#x540E;&#x9762;&#x8DDF;&#x4E0A;<code>@</code>&#x5E76;&#x52A0;&#x4E0A;&#x6253;&#x5370;&#x7684;&#x957F;&#x5EA6;&#xFF0C;&#x6216;&#x8005;@&#x540E;&#x9762;&#x8DDF;&#x4E0A;&#x53D8;&#x91CF;&#x503C;&#x3002;&#x5982;:</p>
+<pre><code class="lang-shell">(gdb) print *buf@i
+$4 = 110 &apos;nwlrbbmqb&apos;
+
+(gdb) p *d
+$2 = 0
+(gdb) p *d@10
+$3 = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+</code></pre>
+<p><strong>&#x53E6;&#x5916;&#x503C;&#x5F97;&#x4E00;&#x63D0;&#x7684;&#x662F;&#xFF0C;<code>$</code>&#x53EF;&#x8868;&#x793A;&#x4E0A;&#x4E00;&#x4E2A;&#x53D8;&#x91CF;&#xFF0C;&#x5728;&#x8C03;&#x8BD5;&#x94FE;&#x8868;&#x65F6;&#x65F6;&#x7ECF;&#x5E38;&#x4F1A;&#x7528;&#x5230;&#x7684;&#xFF0C;&#x5B83;&#x6709;next&#x6210;&#x5458;&#x4EE3;&#x8868;&#x4E0B;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#xFF0C;&#x5219;&#x53EF;&#x4F7F;&#x7528;&#x4E0B;&#x9762;&#x65B9;&#x5F0F;&#x4E0D;&#x65AD;&#x6253;&#x5370;&#x94FE;&#x8868;&#x5185;&#x5BB9;</strong></p>
+<pre><code class="lang-shell">p *linkNode #&#x8FD9;&#x91CC;&#x663E;&#x793A;linkNode&#x8282;&#x70B9;&#x5185;&#x5BB9;
+p *$.next #&#x8FD9;&#x91CC;&#x663E;&#x793A;linkNode&#x8282;&#x70B9;&#x4E0B;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#x5185;&#x5BB9;
+</code></pre>
+</li>
+</ul>
+<p>&#x66F4;&#x591A;&#x7528;&#x6CD5;&#x53C2;&#x8003;&#x6587;&#x7AE0;: <a href="https://zhuanlan.zhihu.com/p/74897601" target="_blank">GDB&#x8C03;&#x8BD5;&#x5165;&#x95E8;&#x6307;&#x5357;</a></p>
+<h3 id="gdb-&#x8C03;&#x8BD5;coredump">gdb &#x8C03;&#x8BD5;coredump</h3>
+<h4 id="&#x8BBE;&#x7F6E;core&#x6587;&#x4EF6;&#x5927;&#x5C0F;">&#x8BBE;&#x7F6E;core&#x6587;&#x4EF6;&#x5927;&#x5C0F;</h4>
+<p>&#x7CFB;&#x7EDF;&#x9ED8;&#x8BA4;&#x4E0D;&#x751F;&#x6210;core&#x6587;&#x4EF6;&#xFF0C;&#x9700;&#x8981;&#x8FDB;&#x4E00;&#x6B65;&#x5728;ulimi&#x4E2D;&#x8BBE;&#x7F6E;core&#x6587;&#x4EF6;&#x5927;&#x5C0F;&#x3002;</p>
+<pre><code class="lang-shell">$ ulimit -a
+core file size          (blocks, -c) 0 # &#x9ED8;&#x8BA4;&#x4E0D;&#x751F;&#x4EA7;core file
+data seg size           (kbytes, -d) unlimited
+scheduling priority             (-e) 0
+...
+</code></pre>
+<p>&#x4F7F;&#x7528;&#x547D;&#x4EE4;<strong><code>ulimit -c unlimited</code></strong>&#x8BBE;&#x7F6E;core file size&#x65E0;&#x9650;&#x5236;</p>
+<pre><code class="lang-shell">$ ulimit -c unlimited
+$ ulimit -a
+core file size          (blocks, -c) unlimited
+data seg size           (kbytes, -d) unlimited
+scheduling priority             (-e) 0
+...
+</code></pre>
+<p>&#x6C38;&#x4E45;&#x8BBE;&#x7F6E;:</p>
+<pre><code class="lang-shell">$ vim /etc/security/limits.conf
+* soft core unlimited
+* soft hard unlimited
+</code></pre>
+<h4 id="&#x8BBE;&#x7F6E;core&#x6587;&#x4EF6;&#x4FDD;&#x5B58;&#x4F4D;&#x7F6E;">&#x8BBE;&#x7F6E;core&#x6587;&#x4EF6;&#x4FDD;&#x5B58;&#x4F4D;&#x7F6E;</h4>
+<p>&#x67E5;&#x770B;core&#x6587;&#x4EF6;&#x4FDD;&#x5B58;&#x4F4D;&#x7F6E;:</p>
+<pre><code class="lang-shell">$ cat /proc/sys/kernel/core_pattern
+/data/corefile/core_%e_%t
+</code></pre>
+<p>&#x4E34;&#x65F6;&#x8BBE;&#x7F6E;core&#x6587;&#x4EF6;&#x4FDD;&#x5B58;&#x4F4D;&#x7F6E;:</p>
+<pre><code class="lang-shell">$ echo &quot;/data/corefile/core_%e_%t&quot; &gt; /proc/sys/kernel/core_pattern
+</code></pre>
+<p>&#x6C38;&#x4E45;&#x8BBE;&#x7F6E;core&#x6587;&#x4EF6;&#x4FDD;&#x5B58;&#x4F4D;&#x7F6E;:</p>
+<pre><code class="lang-shell">$ vim /etc/sysctl.conf
+kernel.core_uses_pid = 0
+kernel.core_pattern= /data/corefile/core_%e_%t
+
+$ sysctl -p
+</code></pre>
+<p>core dump&#x547D;&#x540D;&#x65B9;&#x5F0F;&#x4E2D;pattern&#x7684;&#x542B;&#x4E49;:</p>
+<ul>
+<li><code>%p</code> &#x8FDB;&#x7A0B;ID</li>
+<li><code>%u</code>&#x5B9E;&#x9645;&#x7528;&#x6237;ID</li>
+<li><code>%g</code>&#x8FDB;&#x7A0B;&#x7684;&#x79DF;ID</li>
+<li><code>%s</code>&#x5BFC;&#x81F4;&#x672C;&#x6B21;core dump&#x7684;&#x4FE1;&#x53F7;</li>
+<li><code>%t</code> core dump&#x7684;&#x65F6;&#x95F4;(1970&#x5E74;1&#x6708;1&#x65E5;&#x8BA1;&#x8D77;&#x7684;&#x79D2;&#x6570;)</li>
+<li><code>%h</code> &#x4E3B;&#x673A;&#x540D;</li>
+<li><code>%e</code> &#x7A0B;&#x5E8F;&#x6587;&#x4EF6;&#x540D;</li>
+</ul>
+<h3 id="gdb&#x8C03;&#x8BD5;coredump&#x5C1D;&#x8BD5;">gdb&#x8C03;&#x8BD5;coredump&#x5C1D;&#x8BD5;</h3>
+<p>&#x8BED;&#x6CD5;:<strong>gdb &#x53EF;&#x6267;&#x884C;&#x6587;&#x4EF6; core&#x6587;&#x4EF6;</strong>&#xFF0C;&#x5982;:<code>gdb ./demo01 /data/corefile/core_demo01_1673508115</code></p>
+<ul>
+<li><p><code>bt</code>&#x3001;<code>where</code>&#x67E5;&#x770B;&#x6808;&#x4FE1;&#x606F;</p>
+<pre><code class="lang-shell">gdb$ bt
+#0  0x00007fdb87b774dc in free () from /lib64/libc.so.6
+#1  0x000000000050f558 in dumpTest::test (this=0x7ffe9d008a50) at /data/home/lukexwang/code/c++Code/demo01/generalTest.cpp:35
+#2  0x00000000004d0d2d in main (argc=0x1, argv=0x7ffe9d0090a8) at /data/home/lukexwang/code/c++Code/demo01/demo01.cpp:417
+gdb$ where
+#0  0x00007fdb87b774dc in free () from /lib64/libc.so.6
+#1  0x000000000050f558 in dumpTest::test (this=0x7ffe9d008a50) at /data/home/lukexwang/code/c++Code/demo01/generalTest.cpp:35
+#2  0x00000000004d0d2d in main (argc=0x1, argv=0x7ffe9d0090a8) at /data/home/lukexwang/code/c++Code/demo01/demo01.cpp:417
+</code></pre>
+</li>
+<li><p><code>f 1</code>&#x5207;&#x6362;&#x6808;&#x5E27;,&#x56E0;&#x4E3A;&#x4E0A;&#x9762;&#x7684;<code>f 0</code>&#x662F;&#x7CFB;&#x7EDF;<code>libc.so.6</code>&#x7684;&#x4EE3;&#x7801;&#xFF0C;&#x4E0D;&#x662F;&#x6211;&#x4EEC;&#x7684;&#x4EE3;&#x7801;&#x3002;&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x5207;&#x6362;&#x4E3A;<code>f 1</code></p>
+</li>
+</ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="CMake学习与使用.html" class="navigation navigation-prev " aria-label="Previous page: CMake学习与使用">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="perf、strace等工具.html" class="navigation navigation-next " aria-label="Next page: perf、strace等工具">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"gdb调试","level":"1.13.4","depth":2,"next":{"title":"perf、strace等工具","level":"1.13.5","depth":2,"path":"工具使用/perf、strace等工具.md","ref":"工具使用/perf、strace等工具.md","articles":[]},"previous":{"title":"CMake学习与使用","level":"1.13.3","depth":2,"path":"工具使用/CMake学习与使用.md","ref":"工具使用/CMake学习与使用.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"工具使用/gdb调试.md","mtime":"2023-01-13T02:25:44.574Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-02-08T08:43:27.159Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

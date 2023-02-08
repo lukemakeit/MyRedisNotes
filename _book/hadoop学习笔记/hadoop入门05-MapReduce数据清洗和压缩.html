@@ -1,0 +1,1592 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>hadoop入门05-MapReduce数据清洗与压缩 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="hadoop入门06-yarn.html" />
+    
+    
+    <link rel="prev" href="hadoop入门04-MapReduce框架原理.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    README
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../redis学习/">
+            
+                <a href="../redis学习/">
+            
+                    
+                    Redis学习
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../redis学习/Redis备份.html">
+            
+                <a href="../redis学习/Redis备份.html">
+            
+                    
+                    Redis备份
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../redis学习/Redis复制.html">
+            
+                <a href="../redis学习/Redis复制.html">
+            
+                    
+                    Redis复制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../redis学习/Redis集群.html">
+            
+                <a href="../redis学习/Redis集群.html">
+            
+                    
+                    Redis集群
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../redis学习/缓存与数据库一致性.html">
+            
+                <a href="../redis学习/缓存与数据库一致性.html">
+            
+                    
+                    缓存与数据库一致性
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../redis学习/Redis消息队列Stream.html">
+            
+                <a href="../redis学习/Redis消息队列Stream.html">
+            
+                    
+                    Redis消息队列
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="../redis学习/RedisModule.html">
+            
+                <a href="../redis学习/RedisModule.html">
+            
+                    
+                    RedisModule
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../mysql/">
+            
+                <a href="../mysql/">
+            
+                    
+                    mysql学习
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../mysql/mysql补充.html">
+            
+                <a href="../mysql/mysql补充.html">
+            
+                    
+                    mysql补充
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../mysql/mysql8.0-手动安装.html">
+            
+                <a href="../mysql/mysql8.0-手动安装.html">
+            
+                    
+                    mysql8.0-手动安装
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../rocksdb-xue-xi/README.md">
+            
+                <span>
+            
+                    
+                    RocksDB学习
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../rocksdb学习/RocksDB基础概念.html">
+            
+                <a href="../rocksdb学习/RocksDB基础概念.html">
+            
+                    
+                    RocksDB基础概念
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../rocksdb学习/RocksDB基础操作-C语言.html">
+            
+                <a href="../rocksdb学习/RocksDB基础操作-C语言.html">
+            
+                    
+                    RocksDB基础操作-C语言
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../c语言笔记/">
+            
+                <a href="../c语言笔记/">
+            
+                    
+                    C语言笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../c语言笔记/C语言补充笔记一.html">
+            
+                <a href="../c语言笔记/C语言补充笔记一.html">
+            
+                    
+                    C语言补充笔记一
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../c++学习笔记/">
+            
+                <a href="../c++学习笔记/">
+            
+                    
+                    C++学习笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../c++学习笔记/C++Primer基础-01引用指针const.html">
+            
+                <a href="../c++学习笔记/C++Primer基础-01引用指针const.html">
+            
+                    
+                    C++Primer基础:引用、指针、const、auto/decltype
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../c++学习笔记/C++Primer基础-02volatile与using.html">
+            
+                <a href="../c++学习笔记/C++Primer基础-02volatile与using.html">
+            
+                    
+                    C++Primer基础:volatile、using
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../c++学习笔记/C++Primer基础-03stringvector数组.html">
+            
+                <a href="../c++学习笔记/C++Primer基础-03stringvector数组.html">
+            
+                    
+                    C++Primer基础: string、vector、数组
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../c++学习笔记/C++Primer基础-04函数重载函数指针.html">
+            
+                <a href="../c++学习笔记/C++Primer基础-04函数重载函数指针.html">
+            
+                    
+                    C++Primer基础:函数、重载、函数指针
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="../c++学习笔记/C++Primer基础-05function与bind与forward.html">
+            
+                <a href="../c++学习笔记/C++Primer基础-05function与bind与forward.html">
+            
+                    
+                    C++Primer基础:std::function、std::bind、std::forward
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6" data-path="../c++学习笔记/C++Primer基础-06-lambda.html">
+            
+                <a href="../c++学习笔记/C++Primer基础-06-lambda.html">
+            
+                    
+                    C++Primer基础:lambda
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.7" data-path="../c++学习笔记/C++Primer基础-07类基础.html">
+            
+                <a href="../c++学习笔记/C++Primer基础-07类基础.html">
+            
+                    
+                    C++ Primer基础: 类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.8" data-path="../c++学习笔记/C++Primer标准库-IO库.html">
+            
+                <a href="../c++学习笔记/C++Primer标准库-IO库.html">
+            
+                    
+                    C++ Primer 标准库: IO库
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.9" data-path="../c++学习笔记/C++Primer标准库-顺序容器.html">
+            
+                <a href="../c++学习笔记/C++Primer标准库-顺序容器.html">
+            
+                    
+                    C++ Primer 标准库: 顺序容器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.10" data-path="../c++学习笔记/C++Primer标准库-泛型算法.html">
+            
+                <a href="../c++学习笔记/C++Primer标准库-泛型算法.html">
+            
+                    
+                    C++ Primer 标准库: 泛型算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.11" data-path="../c++学习笔记/C++Primer标准库-关联容器.html">
+            
+                <a href="../c++学习笔记/C++Primer标准库-关联容器.html">
+            
+                    
+                    C++ Primer 标准库: 关联容器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.12" data-path="../c++学习笔记/C++Primer标准库-动态内存.html">
+            
+                <a href="../c++学习笔记/C++Primer标准库-动态内存.html">
+            
+                    
+                    C++ Primer 标准库: 动态内存
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.13" data-path="../c++学习笔记/C++Primer类设计-拷贝控制.html">
+            
+                <a href="../c++学习笔记/C++Primer类设计-拷贝控制.html">
+            
+                    
+                    C++ Primer 类设计: 拷贝控制、explicit
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.14" data-path="../c++学习笔记/C++Primer类设计-基类派生类虚函数.html">
+            
+                <a href="../c++学习笔记/C++Primer类设计-基类派生类虚函数.html">
+            
+                    
+                    C++ Primer 类设计: 基类、派生类、虚函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.15" data-path="../c++学习笔记/C++Primer类设计-模板与泛型编程.html">
+            
+                <a href="../c++学习笔记/C++Primer类设计-模板与泛型编程.html">
+            
+                    
+                    C++ Primer 类设计:模板与泛型编程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.16" data-path="../c++学习笔记/C++并发编程实战-01基础使用Join传参.html">
+            
+                <a href="../c++学习笔记/C++并发编程实战-01基础使用Join传参.html">
+            
+                    
+                    C++并发编程实战一:基础使用、Join、传参、线程所有权转移
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.17" data-path="../c++学习笔记/C++并发编程实战-02mutexlock.html">
+            
+                <a href="../c++学习笔记/C++并发编程实战-02mutexlock.html">
+            
+                    
+                    C++并发编程实战: mutex、lock、unique_lock、call_once、shared_lock
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.18" data-path="../c++学习笔记/C++并发编程实战-03条件变量.html">
+            
+                <a href="../c++学习笔记/C++并发编程实战-03条件变量.html">
+            
+                    
+                    C++并发编程实战三: 条件变量
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.19" data-path="../c++学习笔记/C++并发编程实战-04原子操作和类型.html">
+            
+                <a href="../c++学习笔记/C++并发编程实战-04原子操作和类型.html">
+            
+                    
+                    C++并发编程实战四: 原子操作和类型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.20" data-path="../c++学习笔记/C++并发编程实战-05内存模型.html">
+            
+                <a href="../c++学习笔记/C++并发编程实战-05内存模型.html">
+            
+                    
+                    C++并发编程实战五: 内存模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.21" data-path="../c++学习笔记/C++补充-01.html">
+            
+                <a href="../c++学习笔记/C++补充-01.html">
+            
+                    
+                    c++补充-01
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.22" data-path="../c++学习笔记/C++补充-02EffectiveSTL有用使用经验.html">
+            
+                <a href="../c++学习笔记/C++补充-02EffectiveSTL有用使用经验.html">
+            
+                    
+                    C++补充02: Effective STL使用经验
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.23" data-path="../c++学习笔记/C++面试题—算法.html">
+            
+                <a href="../c++学习笔记/C++面试题—算法.html">
+            
+                    
+                    C++面试题-算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.24" data-path="../c++学习笔记/Linux传统IO和零拷贝Zero-Copy技术.html">
+            
+                <a href="../c++学习笔记/Linux传统IO和零拷贝Zero-Copy技术.html">
+            
+                    
+                    Linux传统IO和零拷贝Zero-Copy技术
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.25" data-path="../c++学习笔记/Glog使用.html">
+            
+                <a href="../c++学习笔记/Glog使用.html">
+            
+                    
+                    Glog使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../golang学习笔记/">
+            
+                <a href="../golang学习笔记/">
+            
+                    
+                    Golang学习笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../golang学习笔记/Go常见错误集锦.html">
+            
+                <a href="../golang学习笔记/Go常见错误集锦.html">
+            
+                    
+                    Go常见错误集锦
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../golang学习笔记/Go高性能的一些技巧.html">
+            
+                <a href="../golang学习笔记/Go高性能的一些技巧.html">
+            
+                    
+                    Go常见高性能技巧
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../golang学习笔记/Golang反射.html">
+            
+                <a href="../golang学习笔记/Golang反射.html">
+            
+                    
+                    Golang反射
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="../golang学习笔记/内存逃逸.html">
+            
+                <a href="../golang学习笔记/内存逃逸.html">
+            
+                    
+                    内存逃逸
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="../golang学习笔记/调度器GMP.html">
+            
+                <a href="../golang学习笔记/调度器GMP.html">
+            
+                    
+                    调度器GMP
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6" data-path="../golang学习笔记/GC垃圾回收.html">
+            
+                <a href="../golang学习笔记/GC垃圾回收.html">
+            
+                    
+                    GC垃圾回收
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../网络协议学习/">
+            
+                <a href="../网络协议学习/">
+            
+                    
+                    网络协议学习
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../网络协议学习/网络面试题.html">
+            
+                <a href="../网络协议学习/网络面试题.html">
+            
+                    
+                    网络面试题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="../网络协议学习/TCP常见问题.html">
+            
+                <a href="../网络协议学习/TCP常见问题.html">
+            
+                    
+                    TCP常见问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" data-path="../网络协议学习/tcpdump工具.html">
+            
+                <a href="../网络协议学习/tcpdump工具.html">
+            
+                    
+                    tcpdump工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../java学习笔记/">
+            
+                <a href="../java学习笔记/">
+            
+                    
+                    java学习笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="../java学习笔记/java01基础.html">
+            
+                <a href="../java学习笔记/java01基础.html">
+            
+                    
+                    java01基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" data-path="../java学习笔记/java02核心类.html">
+            
+                <a href="../java学习笔记/java02核心类.html">
+            
+                    
+                    java02核心类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3" data-path="../java学习笔记/Maven.html">
+            
+                <a href="../java学习笔记/Maven.html">
+            
+                    
+                    Maven
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    hadoop学习笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="hadoop入门01-架构与安装.html">
+            
+                <a href="hadoop入门01-架构与安装.html">
+            
+                    
+                    hadoop入门01-架构与安装
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" data-path="hadoop入门02-HDFS基础.html">
+            
+                <a href="hadoop入门02-HDFS基础.html">
+            
+                    
+                    hadoop入门02-HDFS基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.3" data-path="hadoop入门03-MapReduce.html">
+            
+                <a href="hadoop入门03-MapReduce.html">
+            
+                    
+                    hadoop入门03-MapReduce
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.4" data-path="hadoop入门04-MapReduce框架原理.html">
+            
+                <a href="hadoop入门04-MapReduce框架原理.html">
+            
+                    
+                    hadoop入门04-MapReduce框架原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.10.5" data-path="hadoop入门05-MapReduce数据清洗和压缩.html">
+            
+                <a href="hadoop入门05-MapReduce数据清洗和压缩.html">
+            
+                    
+                    hadoop入门05-MapReduce数据清洗与压缩
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.6" data-path="hadoop入门06-yarn.html">
+            
+                <a href="hadoop入门06-yarn.html">
+            
+                    
+                    hadoop入门06-yarn
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.7" data-path="Hive入门01-基础入门.html">
+            
+                <a href="Hive入门01-基础入门.html">
+            
+                    
+                    Hive入门01-基础入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="../kafka学习笔记/">
+            
+                <a href="../kafka学习笔记/">
+            
+                    
+                    kafka学习笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.11.1" data-path="../kafka学习笔记/kafka01概述与应用场景.html">
+            
+                <a href="../kafka学习笔记/kafka01概述与应用场景.html">
+            
+                    
+                    kafka概述与应用场景
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.2" data-path="../kafka学习笔记/kafka02安装与部署.md">
+            
+                <span>
+            
+                    
+                    kafka安装与部署
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.3" data-path="../kafka学习笔记/kafka03基本操作.html">
+            
+                <a href="../kafka学习笔记/kafka03基本操作.html">
+            
+                    
+                    kafka基本操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.4" data-path="../kafka学习笔记/kafka04生产者原理.html">
+            
+                <a href="../kafka学习笔记/kafka04生产者原理.html">
+            
+                    
+                    kafka生产者原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.5" data-path="../kafka学习笔记/kafka05Broker.html">
+            
+                <a href="../kafka学习笔记/kafka05Broker.html">
+            
+                    
+                    kafka中Broker
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.6" data-path="../kafka学习笔记/kafka06消费者.html">
+            
+                <a href="../kafka学习笔记/kafka06消费者.html">
+            
+                    
+                    kafka消费者
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="../Flink学习笔记/">
+            
+                <a href="../Flink学习笔记/">
+            
+                    
+                    Flink学习笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1" data-path="../Flink学习笔记/flink基础01—简介.html">
+            
+                <a href="../Flink学习笔记/flink基础01—简介.html">
+            
+                    
+                    flink基础01—简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2" data-path="../Flink学习笔记/flink基础02-集群启动-部署模式.html">
+            
+                <a href="../Flink学习笔记/flink基础02-集群启动-部署模式.html">
+            
+                    
+                    flink基础02-集群启动-部署模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3" data-path="../Flink学习笔记/flink基础03-运行时架构.html">
+            
+                <a href="../Flink学习笔记/flink基础03-运行时架构.html">
+            
+                    
+                    flink基础03-运行时架构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.4" data-path="../Flink学习笔记/flink基础04-DataStreamAPI-Source.html">
+            
+                <a href="../Flink学习笔记/flink基础04-DataStreamAPI-Source.html">
+            
+                    
+                    flink基础04-DataStreamAPI-Source
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.5" data-path="../Flink学习笔记/flink基础05-DataStreamAPI-Transformation.html">
+            
+                <a href="../Flink学习笔记/flink基础05-DataStreamAPI-Transformation.html">
+            
+                    
+                    flink基础05-DataStreamAPI-Transformation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.6" data-path="../Flink学习笔记/flink基础06-DataStreamAPI-Sink.html">
+            
+                <a href="../Flink学习笔记/flink基础06-DataStreamAPI-Sink.html">
+            
+                    
+                    flink基础06-DataStreamAPI-Sink
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.7" data-path="../Flink学习笔记/flink基础07-时间和窗口.html">
+            
+                <a href="../Flink学习笔记/flink基础07-时间和窗口.html">
+            
+                    
+                    flink基础07-时间和窗口
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.8" data-path="../Flink学习笔记/flink基础08-处理函数.html">
+            
+                <a href="../Flink学习笔记/flink基础08-处理函数.html">
+            
+                    
+                    flink基础08-处理函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.9" data-path="../Flink学习笔记/flink基础09-多流转换(分流与合流">
+            
+                <span>
+            
+                    
+                    flink基础09-多流转换(分流与合流)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.10" data-path="../Flink学习笔记/flink基础10-状态编程.html">
+            
+                <a href="../Flink学习笔记/flink基础10-状态编程.html">
+            
+                    
+                    flink基础10-状态编程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.11" data-path="../Flink学习笔记/flink基础11-容错机制.html">
+            
+                <a href="../Flink学习笔记/flink基础11-容错机制.html">
+            
+                    
+                    flink基础11-容错机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.12" data-path="../Flink学习笔记/flink基础12-TableAPI和SQL.html">
+            
+                <a href="../Flink学习笔记/flink基础12-TableAPI和SQL.html">
+            
+                    
+                    flink基础12-TableAPI和SQL
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.13" data-path="../Flink学习笔记/flink基础13-CEP.html">
+            
+                <a href="../Flink学习笔记/flink基础13-CEP.html">
+            
+                    
+                    flink基础13-CEP
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" data-path="../工具使用/">
+            
+                <a href="../工具使用/">
+            
+                    
+                    工具使用
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.13.1" data-path="../工具使用/VSCode使用小技巧.html">
+            
+                <a href="../工具使用/VSCode使用小技巧.html">
+            
+                    
+                    VS Code使用小技巧
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.2" data-path="../工具使用/GCC安装.html">
+            
+                <a href="../工具使用/GCC安装.html">
+            
+                    
+                    GCC安装
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.3" data-path="../工具使用/CMake学习与使用.html">
+            
+                <a href="../工具使用/CMake学习与使用.html">
+            
+                    
+                    CMake学习与使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.4" data-path="../工具使用/gdb调试.html">
+            
+                <a href="../工具使用/gdb调试.html">
+            
+                    
+                    gdb调试
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.5" data-path="../工具使用/perf、strace等工具.html">
+            
+                <a href="../工具使用/perf、strace等工具.html">
+            
+                    
+                    perf、strace等工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >hadoop入门05-MapReduce数据清洗与压缩</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h3 id="&#x6570;&#x636E;&#x6E05;&#x6D17;-etl">&#x6570;&#x636E;&#x6E05;&#x6D17; (ETL)</h3>
+<p>&quot;ETL&quot;, &#x662F;&#x82F1;&#x6587;<code>Extract-Transform-Load</code>&#x7684;&#x7F29;&#x5199;&#xFF0C;&#x7528;&#x4E8E;&#x63CF;&#x8FF0;&#x5C06;&#x6570;&#x636E;&#x4ECE;&#x6E90;&#x7AEF;&#x7ECF;&#x8FC7;&#x62BD;&#x53D6;(Extract)&#x3001;&#x8F6C;&#x6362;(Transform)&#x3001;&#x52A0;&#x8F7D;(Load)&#x81F3;&#x76EE;&#x7684;&#x7AEF;&#x7684;&#x8FC7;&#x7A0B;&#x3002;ETL&#x4E00;&#x8BCD;&#x8F83;&#x5E38;&#x7528;&#x5728;&#x6570;&#x636E;&#x4ED3;&#x5E93;&#xFF0C;&#x4F46;&#x5176;&#x5BF9;&#x8C61;&#x4E0D;&#x4E0D;&#x9650;&#x4E8E;&#x6570;&#x636E;&#x4ED3;&#x5E93;&#x3002;
+&#x5728;&#x8FD0;&#x884C;&#x6838;&#x5FC3;&#x4E1A;&#x52A1;MapReduce&#x7A0B;&#x5E8F;&#x4E4B;&#x524D;&#xFF0C;&#x5F80;&#x5F80;&#x9700;&#x8981;&#x5148;&#x5BF9;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x6E05;&#x6D17;&#xFF0C;&#x6E05;&#x7406;&#x6389;&#x4E0D;&#x7B26;&#x5408;&#x7528;&#x6237;&#x8981;&#x6C42;&#x7684;&#x6570;&#x636E;&#x3002;<strong>&#x6E05;&#x7406;&#x7684;&#x8FC7;&#x7A0B;&#x5F80;&#x5F80;&#x53EA;&#x9700;&#x8981;&#x8FD0;&#x884C;Map&#x7A0B;&#x5E8F;&#xFF0C;&#x800C;&#x4E0D;&#x9700;&#x8981;&#x8FD0;&#x884C;Reduce&#x7A0B;&#x5E8F;&#x3002;</strong>
+&#x4E00;&#x4E2A;&#x7B80;&#x8981;&#x793A;&#x4F8B;:</p>
+<pre><code class="lang-java"><span class="hljs-comment">/*   */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">etlDemoMapper</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Mapper</span>&lt;<span class="hljs-title">LongWritable</span>, <span class="hljs-title">Text</span>, <span class="hljs-title">Text</span>, <span class="hljs-title">NullWritable</span>&gt; </span>{
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">map</span><span class="hljs-params">(LongWritable key, Text value, Mapper&lt;LongWritable, Text, Text, NullWritable&gt;.Context context)</span>
+            <span class="hljs-keyword">throws</span> IOException, InterruptedException </span>{
+        <span class="hljs-comment">// 1 &#x8BFB;&#x53D6;&#x4E00;&#x884C;</span>
+        String line = value.toString();
+
+        <span class="hljs-comment">// 2 ETL</span>
+        <span class="hljs-keyword">boolean</span> result = parseLog(line, context);
+        <span class="hljs-keyword">if</span> (!result) {
+            <span class="hljs-keyword">return</span>;
+        }
+
+        <span class="hljs-comment">// 3 &#x5199;&#x51FA;</span>
+        context.write(value, NullWritable.get());
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">parseLog</span><span class="hljs-params">(String line, Mapper&lt;LongWritable, Text, Text, NullWritable&gt;.Context context)</span> </span>{
+        <span class="hljs-keyword">return</span> line.contains(<span class="hljs-string">&quot;error&quot;</span>);
+    }
+}
+</code></pre>
+<h3 id="&#x6570;&#x636E;&#x538B;&#x7F29;">&#x6570;&#x636E;&#x538B;&#x7F29;</h3>
+<p>&#x4F18;&#x70B9;: &#x51CF;&#x5C11;&#x78C1;&#x76D8;IO&#xFF0C;&#x51CF;&#x5C11;&#x78C1;&#x76D8;&#x5B58;&#x50A8;&#x7A7A;&#x95F4;;
+&#x7F3A;&#x70B9;: &#x589E;&#x52A0;CPU&#x5F00;&#x9500;;</p>
+<p><strong>&#x538B;&#x7F29;&#x539F;&#x5219;:</strong></p>
+<ol>
+<li>&#x8FD0;&#x7B97;&#x5BC6;&#x96C6;&#x578B;Job&#xFF0C;&#x5C11;&#x7528;&#x538B;&#x7F29;;</li>
+<li>IO&#x5BC6;&#x96C6;&#x578B;Job, &#x591A;&#x7528;&#x538B;&#x7F29;;</li>
+</ol>
+<p><img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20221005131444211.png" alt="image-20221005131444211"></p>
+<p><img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20221005140348107.png" alt="image-20221005140348107"></p>
+<p>Snappy &#x538B;&#x7F29;&#x80FD;&#x8FBE;&#x5230;&#x6BCF;&#x79D2;&#x949F; 250MB/s &#x6216;&#x8005;&#x66F4;&#x591A;&#xFF0C;&#x89E3;&#x538B;&#x7F29;&#x80FD;&#x8FBE;&#x5230;500MB/s &#x6216;&#x8005;&#x66F4;&#x591A;&#x3002;</p>
+<p><strong>&#x538B;&#x7F29;&#x65B9;&#x5F0F;&#x9009;&#x62E9;</strong>
+&#x538B;&#x7F29;&#x65B9;&#x5F0F;&#x9009;&#x62E9;&#x65F6;&#x91CD;&#x70B9;&#x8003;&#x8651;: <strong>&#x538B;&#x7F29;/&#x89E3;&#x538B;&#x7F29;&#x901F;&#x5EA6;&#x3001;&#x538B;&#x7F29;&#x7387;(&#x538B;&#x7F29;&#x540E;&#x5B58;&#x50A8;&#x5927;&#x5C0F;)&#x3001;&#x538B;&#x7F29;&#x540E;&#x662F;&#x5426;&#x652F;&#x6301;&#x5207;&#x7247;&#x3002;</strong></p>
+<p><strong>MapReduce&#x6570;&#x636E;&#x538B;&#x7F29;</strong></p>
+<p><img src="https://my-typora-pictures-1252258460.cos.ap-guangzhou.myqcloud.com/img/image-20221005141119092.png" alt="image-20221005141119092"></p>
+<p><strong>Hadoop&#x4E2D;&#x542F;&#x7528;&#x538B;&#x7F29;&#xFF0C;&#x53EF;&#x4EE5;&#x914D;&#x7F6E;&#x5982;&#x4E0B;&#x53C2;&#x6570;:</strong></p>
+<table>
+<thead>
+<tr>
+<th>&#x53C2;&#x6570;</th>
+<th>&#x9ED8;&#x8BA4;&#x503C;</th>
+<th>&#x9636;&#x6BB5;</th>
+<th>&#x5EFA;&#x8BAE;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><mark style="color:red"><code>io.compress.codecs</code>(&#x5728;<code>core-site.xml</code>&#x4E2D;&#x914D;&#x7F6E;)</mark></td>
+<td>&#x65E0;,&#x8FD9;&#x4E2A;&#x9700;&#x8981;&#x5728;&#x547D;&#x4EE4;&#x884C;&#x901A;&#x8FC7;&#x8F93;&#x5165;<code>hadoop checknative</code>&#x67E5;&#x770B;</td>
+<td>&#x8F93;&#x5165;&#x538B;&#x7F29;</td>
+<td>Haoop&#x4F7F;&#x7528;&#x6587;&#x4EF6;&#x6269;&#x5C55;&#x540D;&#x5224;&#x65AD;&#x662F;&#x5426;&#x652F;&#x6301;&#x67D0;&#x79CD;&#x7F16;&#x89E3;&#x7801;&#x5668;</td>
+</tr>
+<tr>
+<td><mark style="color:blue"><code>mapreduce.map.output.compress</code>(&#x5728;<code>mapred-site.xml</code>&#x4E2D;&#x914D;&#x7F6E;)</mark></td>
+<td><code>false</code></td>
+<td>mapper&#x8F93;&#x51FA;</td>
+<td>&#x8FD9;&#x4E2A;&#x53C2;&#x6570;&#x8BBE;&#x7F6E;&#x4E3A;<code>true</code>&#x542F;&#x7528;&#x538B;&#x7F29;</td>
+</tr>
+<tr>
+<td><mark style="color:blue"><code>mapreduce.map.output.compress.codec</code>(&#x5728;<code>mapred-site.xml</code>&#x4E2D;&#x914D;&#x7F6E;)</mark></td>
+<td><code>org.apache.hadoop.io.compress.DefaultCodec</code></td>
+<td>mapper&#x8F93;&#x51FA;</td>
+<td>&#x4F01;&#x4E1A;&#x591A;&#x4F7F;&#x7528;<code>LZO</code>&#x6216;<code>Snappy</code>&#x7F16;&#x7801;&#x5668;&#x5728;&#x6B64;&#x9636;&#x6BB5;&#x538B;&#x7F29;&#x6570;&#x636E;</td>
+</tr>
+<tr>
+<td><mark style="color:purple"><code>mapreduce.output.fileoutputformat.compress</code>(&#x5728;<code>mapred-site.xml</code>&#x4E2D;&#x914D;&#x7F6E;)</mark></td>
+<td><code>false</code></td>
+<td>reducer&#x8F93;&#x51FA;</td>
+<td>&#x8FD9;&#x4E2A;&#x53C2;&#x6570;&#x8BBE;&#x7F6E;&#x5582;<code>true</code>&#x542F;&#x7528;&#x538B;&#x7F29;</td>
+</tr>
+<tr>
+<td><mark style="color:purple"><code>mapreduce.output.fileoutputformat.compress.codec</code>(&#x5728;<code>mapred-site.xml</code>&#x4E2D;&#x914D;&#x7F6E;)</mark></td>
+<td><code>org.apache.hadoop.io.compress.DefaultCodec</code></td>
+<td>reducer&#x8F93;&#x51FA;</td>
+<td>&#x4F7F;&#x7528;&#x6807;&#x51C6;&#x5DE5;&#x5177;&#x6216;&#x8005;&#x7F16;&#x89E3;&#x7801;&#x5668;,&#x5982;gzip &#x548C; bzip2</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Map&#x8F93;&#x51FA;&#x7AEF;&#x91C7;&#x7528;&#x538B;&#x7F29;</strong>
+&#x5373;&#x4F7F;MapReduce&#x7684;&#x8F93;&#x5165;&#x8F93;&#x51FA;&#x6587;&#x4EF6;&#x90FD;&#x662F;&#x672A;&#x538B;&#x7F29;&#x6587;&#x4EF6;&#xFF0C;&#x4F60;&#x4ECD;&#x7136;<strong>&#x53EF;&#x4EE5;&#x5BF9;Map&#x4EFB;&#x52A1;&#x7684;&#x4E2D;&#x95F4;&#x7ED3;&#x679C;&#x8F93;&#x51FA;&#x505A;&#x538B;&#x7F29;,&#x56E0;&#x4E3A;&#x5B83;&#x8981;&#x5199;&#x5728;&#x78C1;&#x76D8;&#x5E76;&#x901A;&#x8FC7;&#x7F51;&#x7EDC;&#x4F20;&#x8F93;&#x5230;Reduce&#x8282;&#x70B9;&#xFF0C;&#x5BF9;&#x5176;&#x538B;&#x7F29;&#x53EF;&#x63D0;&#x9AD8;&#x5F88;&#x591A;&#x6027;&#x80FD;&#xFF0C;&#x8FD9;&#x4E9B;&#x5DE5;&#x4F5C;&#x53EA;&#x9700;&#x8981;&#x8BBE;&#x7F6E;&#x8FDE;&#x4E2A;&#x5C5E;&#x6027;&#x5373;&#x53EF;&#x3002;</strong></p>
+<p>Hadoop&#x6E90;&#x7801;&#x652F;&#x6301;&#x7684;&#x538B;&#x7F29;&#x683C;&#x5F0F;&#x6709;: <code>Bzip2Codec</code>&#x3001;<code>DefaultCodec</code></p>
+<pre><code class="lang-java"><span class="hljs-comment">/* Driver.java &#x6587;&#x4EF6;&#x4E2D; */</span>
+
+<span class="hljs-comment">// 1. &#x83B7;&#x53D6;job</span>
+Configuration conf = <span class="hljs-keyword">new</span> Configuration();
+<span class="hljs-comment">// &#x5F00;&#x542F;map&#x7AEF;&#x8F93;&#x51FA;&#x538B;&#x7F29;</span>
+conf.setBoolean(<span class="hljs-string">&quot;mapreduce.map.output.compress&quot;</span>, <span class="hljs-keyword">true</span>);
+<span class="hljs-comment">// &#x8BBE;&#x7F6E;map&#x7AEF;&#x8F93;&#x51FA;&#x538B;&#x7F29;&#x65B9;&#x5F0F;</span>
+conf.setClass(<span class="hljs-string">&quot;mapreduce.map.output.compress.codec&quot;</span>, BZip2Codec.class, CompressionCodec.class);
+</code></pre>
+<p><strong>Reduce&#x8F93;&#x51FA;&#x7AEF;&#x91C7;&#x7528;&#x538B;&#x7F29;</strong></p>
+<pre><code class="lang-java"><span class="hljs-comment">// &#x8BBE;&#x7F6E;Reduce&#x7AEF;&#x8F93;&#x51FA; &#x538B;&#x7F29;&#x5F00;&#x542F;</span>
+FileOutputFormat.setCompressOutput(job, <span class="hljs-keyword">true</span>);
+<span class="hljs-comment">// &#x8BBE;&#x7F6E;&#x538B;&#x7F29;&#x7684;&#x65B9;&#x5F0F;</span>
+FileOutputFormat.setOutputCompressorClass(job, GzipCodec.class);
+<span class="hljs-comment">// FileOutputFormat.setOutputCompressorClass(job,DefaultCodec.class);</span>
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="hadoop入门04-MapReduce框架原理.html" class="navigation navigation-prev " aria-label="Previous page: hadoop入门04-MapReduce框架原理">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="hadoop入门06-yarn.html" class="navigation navigation-next " aria-label="Next page: hadoop入门06-yarn">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"hadoop入门05-MapReduce数据清洗与压缩","level":"1.10.5","depth":2,"next":{"title":"hadoop入门06-yarn","level":"1.10.6","depth":2,"path":"hadoop学习笔记/hadoop入门06-yarn.md","ref":"hadoop学习笔记/hadoop入门06-yarn.md","articles":[]},"previous":{"title":"hadoop入门04-MapReduce框架原理","level":"1.10.4","depth":2,"path":"hadoop学习笔记/hadoop入门04-MapReduce框架原理.md","ref":"hadoop学习笔记/hadoop入门04-MapReduce框架原理.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"hadoop学习笔记/hadoop入门05-MapReduce数据清洗和压缩.md","mtime":"2022-10-05T06:46:49.627Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-02-08T08:43:27.159Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
